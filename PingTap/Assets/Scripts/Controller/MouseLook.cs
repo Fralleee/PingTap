@@ -2,52 +2,38 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-
-  public enum RotationAxes { MouseXAndY = 0, MouseX = 1, MouseY = 2 }
-  public RotationAxes axes = RotationAxes.MouseXAndY;
-  public float sensitivityX = 15F;
-  public float sensitivityY = 15F;
-
-  public float minimumX = -360F;
-  public float maximumX = 360F;
-
+  public float sensitivity = 15F;
   public float minimumY = -60F;
   public float maximumY = 60F;
-
   public bool invertY = false;
 
   float rotationY = 0F;
+  Rigidbody rigidBody;
 
   void Start()
   {
-    Rigidbody rb = GetComponent<Rigidbody>();
-    if (rb) rb.freezeRotation = true;
+    rigidBody = GetComponentInParent<Rigidbody>();
+
+    Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
   }
 
   void Update()
   {
-    float ySens = sensitivityY;
+    float ySens = sensitivity;
     if (invertY) { ySens *= -1f; }
+    rotationY += GetMouseY() * ySens;
+    rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
+    transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+  }
 
-    if (axes == RotationAxes.MouseXAndY)
+  private void LateUpdate()
+  {
+    var rotationX = GetMouseX() * sensitivity;
+    Debug.Log(GetMouseX() + " : " + Input.GetAxis("Mouse X"));
+    if (rigidBody)
     {
-      float rotationX = transform.localEulerAngles.y + GetMouseX() * sensitivityX;
-
-      rotationY += GetMouseY() * ySens;
-      rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
-      transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-    }
-    else if (axes == RotationAxes.MouseX)
-    {
-      transform.Rotate(0, GetMouseX() * sensitivityX, 0);
-    }
-    else
-    {
-      rotationY += GetMouseY() * ySens;
-      rotationY = Mathf.Clamp(rotationY, minimumY, maximumY);
-
-      transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+      rigidBody.rotation = Quaternion.Euler(rigidBody.rotation.eulerAngles + new Vector3(0, rotationX, 0));
     }
   }
 
