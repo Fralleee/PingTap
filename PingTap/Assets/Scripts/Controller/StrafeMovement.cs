@@ -10,8 +10,6 @@ public class StrafeMovement : MonoBehaviour
   [SerializeField] private float jumpForce = 5f;       // How high the player jumps
   [SerializeField] private LayerMask groundLayers;
 
-  [SerializeField] private GameObject camObj;
-
   private float lastJumpPress = -1f;
   private float jumpPressDuration = 0.1f;
   private bool onGround = false;
@@ -32,7 +30,7 @@ public class StrafeMovement : MonoBehaviour
     playerVelocity += CalculateMovement(input, playerVelocity);
     GetComponent<Rigidbody>().velocity = playerVelocity;
   }
-  
+
   private Vector3 CalculateFriction(Vector3 currentVelocity)
   {
     onGround = CheckGround();
@@ -52,8 +50,8 @@ public class StrafeMovement : MonoBehaviour
     float curAccel = onGround ? accel : airAccel;
     float curMaxSpeed = onGround ? maxSpeed : maxAirSpeed;
 
-    Vector3 camRotation = new Vector3(0f, camObj.transform.rotation.eulerAngles.y, 0f);
-    Vector3 inputVelocity = Quaternion.Euler(camRotation) * new Vector3(input.x * curAccel, 0f, input.y * curAccel);
+    Vector3 rotation = new Vector3(0f, transform.rotation.eulerAngles.y, 0f);
+    Vector3 inputVelocity = Quaternion.Euler(rotation) * new Vector3(input.x * curAccel, 0f, input.y * curAccel);
 
     Vector3 alignedInputVelocity = new Vector3(inputVelocity.x, 0f, inputVelocity.z) * Time.deltaTime;
     Vector3 currentVelocity = new Vector3(velocity.x, 0f, velocity.z);

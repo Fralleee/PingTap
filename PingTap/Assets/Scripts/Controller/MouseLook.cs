@@ -30,8 +30,7 @@ public class MouseLook : MonoBehaviour
   private void LateUpdate()
   {
     var rotationX = GetMouseX() * sensitivity;
-    Debug.Log(GetMouseX() + " : " + Input.GetAxis("Mouse X"));
-    if (rigidBody)
+    if (rigidBody & rotationX != 0)
     {
       rigidBody.rotation = Quaternion.Euler(rigidBody.rotation.eulerAngles + new Vector3(0, rotationX, 0));
     }

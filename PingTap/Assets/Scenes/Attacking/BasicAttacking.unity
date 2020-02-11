@@ -330,6 +330,11 @@ PrefabInstance:
       propertyPath: maximumY
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 5551485365314477466, guid: 621629ebb46bda44a8dadee97dd6177a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5551485365314477467, guid: 621629ebb46bda44a8dadee97dd6177a,
         type: 3}
       propertyPath: near clip plane
@@ -358,7 +363,6 @@ GameObject:
   - component: {fileID: 1268500359}
   - component: {fileID: 1268500362}
   - component: {fileID: 1268500361}
-  - component: {fileID: 1268500360}
   m_Layer: 8
   m_Name: Eyes
   m_TagString: Untagged
@@ -380,19 +384,6 @@ Transform:
   m_Father: {fileID: 1603528676}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1268500360
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268500358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1268500361
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -670,4 +661,4 @@ MonoBehaviour:
   projectile: {fileID: 3435547992971711713, guid: 1ba073512d89a8f4cae34888c23080bc,
     type: 3}
   projectileOrigin: {fileID: 914970553}
-  speed: 750
+  speed: 1500
