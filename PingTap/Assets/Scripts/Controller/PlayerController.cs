@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
   [Header("Debug")]
   [SerializeField] string currentVelocity;
   [SerializeField] Vector3 inputMovement;
+  [SerializeField] bool isGrounded;
 
   new Rigidbody rigidbody;
   Transform orientation;
@@ -22,18 +23,18 @@ public class PlayerController : MonoBehaviour
   float stopZ;
   float distToGround;
 
-  bool IsGrounded => Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
 
   void Awake()
   {
     rigidbody = GetComponent<Rigidbody>();
-    distToGround = GetComponent<Collider>().bounds.extents.y;
+    distToGround = GetComponent<Collider>().bounds.extents.y + 0.2f;
     orientation = transform.Find(("Orientation"));
   }
 
   void Update()
   {
     GatherInputs();
+    SlopeControl();
     Movement();
   }
 
@@ -51,9 +52,21 @@ public class PlayerController : MonoBehaviour
     performJump = Input.GetButton("Jump");
   }
 
+  void SlopeControl()
+  {
+    rigidbody.useGravity = true;
+    isGrounded = Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hit, distToGround);
+    if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
+    if (hit.normal.y > 0.85f)
+    {
+      rigidbody.useGravity = false;
+      rigidbody.AddRelativeForce(-hit.normal * Physics.gravity.magnitude);
+    }
+  }
+
   void Movement()
   {
-    var modifier = IsGrounded ? 1 : 0.5f;
+    var modifier = isGrounded ? 1 : 0.5f;
     Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.deltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.deltaTime;
     rigidbody.AddRelativeForce(force * modifier, ForceMode.VelocityChange);
     currentVelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude.ToString("##.0");
@@ -69,7 +82,7 @@ public class PlayerController : MonoBehaviour
 
   void StoppingForces()
   {
-    if (!IsGrounded || inputMovement.magnitude > 0.5f) return;
+    if (!isGrounded || inputMovement.magnitude > 0.5f) return;
     float velocityX = Mathf.SmoothDamp(rigidbody.velocity.x, 0, ref stopX, stopTime);
     float velocityZ = Mathf.SmoothDamp(rigidbody.velocity.z, 0, ref stopZ, stopTime);
     rigidbody.velocity = new Vector3(velocityX, rigidbody.velocity.y, velocityZ);
@@ -78,9 +91,6 @@ public class PlayerController : MonoBehaviour
   void Jump()
   {
     if (!performJump) return;
-    if (IsGrounded)
-    {
-      rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
-    }
+    if (isGrounded && rigidbody.velocity.y < 3f) rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
   }
 }
