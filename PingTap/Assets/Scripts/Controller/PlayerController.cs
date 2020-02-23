@@ -18,28 +18,40 @@ public class PlayerController : MonoBehaviour
 
   new Rigidbody rigidbody;
   Transform orientation;
+  RaycastHit groundHit;
   bool performJump;
   float stopX;
   float stopZ;
   float distToGround;
+  float capsuleRadius;
 
+  /**
+   * https://www.youtube.com/watch?v=98MBwtZU2kk&fbclid=IwAR3XuvSJQv0SuTXEn8hbPvqq62PsGLIWSUiw6QfaKlw66EGwts7QjNdCjsc
+   * - Calculate forward based on hitInfo. Also other directions since we can strafe? Maybe set orientation based on this?
+   * - Reformat groundangle to degress and let this be a setting, max allowed degress on slope.
+   **/
 
   void Awake()
   {
     rigidbody = GetComponent<Rigidbody>();
-    distToGround = GetComponent<Collider>().bounds.extents.y + 0.2f;
+    rigidbody.freezeRotation = true;
+
+    var capsuleCollider = GetComponent<CapsuleCollider>();
+    distToGround = capsuleCollider.bounds.extents.y + 0.2f;
+    capsuleRadius = capsuleCollider.radius;
+
     orientation = transform.Find(("Orientation"));
   }
 
   void Update()
   {
     GatherInputs();
-    SlopeControl();
-    Movement();
   }
 
   void FixedUpdate()
   {
+    GroundControl();
+    Movement();
     Jump();
     LimitSpeed();
     StoppingForces();
@@ -52,12 +64,12 @@ public class PlayerController : MonoBehaviour
     performJump = Input.GetButton("Jump");
   }
 
-  void SlopeControl()
+  void GroundControl()
   {
     rigidbody.useGravity = true;
-    isGrounded = Physics.Raycast(transform.position, -Vector3.up, out RaycastHit hit, distToGround);
+    isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out groundHit, distToGround);
     if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
-    if (hit.normal.y > 0.85f)
+    if (groundHit.normal.y > 0.85f)
     {
       rigidbody.useGravity = false;
       rigidbody.AddRelativeForce(-hit.normal * Physics.gravity.magnitude);
@@ -67,7 +79,7 @@ public class PlayerController : MonoBehaviour
   void Movement()
   {
     var modifier = isGrounded ? 1 : 0.5f;
-    Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.deltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.deltaTime;
+    Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.fixedDeltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.fixedDeltaTime;
     rigidbody.AddRelativeForce(force * modifier, ForceMode.VelocityChange);
     currentVelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude.ToString("##.0");
   }
