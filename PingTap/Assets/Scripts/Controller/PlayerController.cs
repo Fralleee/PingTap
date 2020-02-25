@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -10,6 +9,7 @@ public class PlayerController : MonoBehaviour
   [SerializeField] float maxSpeed = 5f;
   [SerializeField] float stopTime = 0.05f;
   [SerializeField] float jumpStrength = 8f;
+  [SerializeField] float maxSlopeAngle = 35;
 
   [Header("Debug")]
   [SerializeField] string currentVelocity;
@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
   new Rigidbody rigidbody;
   Transform orientation;
-  RaycastHit groundHit;
   bool performJump;
   float stopX;
   float stopZ;
@@ -37,7 +36,7 @@ public class PlayerController : MonoBehaviour
     rigidbody.freezeRotation = true;
 
     var capsuleCollider = GetComponent<CapsuleCollider>();
-    distToGround = capsuleCollider.bounds.extents.y + 0.2f;
+    distToGround = capsuleCollider.bounds.extents.y - capsuleCollider.bounds.extents.x + 0.1f;
     capsuleRadius = capsuleCollider.radius;
 
     orientation = transform.Find(("Orientation"));
@@ -52,9 +51,9 @@ public class PlayerController : MonoBehaviour
   {
     GroundControl();
     Movement();
-    Jump();
     LimitSpeed();
     StoppingForces();
+    Jump();
   }
 
   void GatherInputs()
@@ -67,12 +66,13 @@ public class PlayerController : MonoBehaviour
   void GroundControl()
   {
     rigidbody.useGravity = true;
-    isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out groundHit, distToGround);
+    isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out RaycastHit hit, distToGround);
     if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
-    if (groundHit.normal.y > 0.85f)
+    var slopeAngle = Vector3.Angle(hit.normal, Vector3.forward) - 90f;
+    if (slopeAngle < maxSlopeAngle + 1f)
     {
       rigidbody.useGravity = false;
-      rigidbody.AddRelativeForce(-hit.normal * Physics.gravity.magnitude);
+      rigidbody.AddRelativeForce(-hit.normal * Physics.gravity.magnitude * 2);
     }
   }
 
@@ -103,6 +103,9 @@ public class PlayerController : MonoBehaviour
   void Jump()
   {
     if (!performJump) return;
-    if (isGrounded && rigidbody.velocity.y < 3f) rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
+    if (isGrounded)
+    {
+      rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
+    }
   }
 }

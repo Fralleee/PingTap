@@ -2,7 +2,7 @@
 
 public class MouseLook : MonoBehaviour
 {
-  [Header("Mouse Look")] 
+  [Header("Mouse Look")]
   [SerializeField] GameObject orientation;
   [SerializeField] float mouseSensitivity = 50f;
   [SerializeField] float mouseLookSmooth = 0f;
@@ -17,7 +17,7 @@ public class MouseLook : MonoBehaviour
 
   float mouseLookDampX;
   float mouseLookDampY;
-  
+
   void Awake()
   {
     Cursor.visible = false;
@@ -47,7 +47,8 @@ public class MouseLook : MonoBehaviour
     currentRotationX = Mathf.SmoothDamp(currentRotationX, inputMouseLook.x, ref mouseLookDampX, mouseLookSmooth);
     currentRotationY = Mathf.SmoothDamp(currentRotationY, inputMouseLook.y, ref mouseLookDampY, mouseLookSmooth);
 
-    orientation.transform.localRotation = Quaternion.Euler(0, currentRotationX, 0);
+    Vector3 rot = orientation.transform.rotation.eulerAngles;
+    orientation.transform.localRotation = Quaternion.Euler(rot.x, currentRotationX, rot.z);
     transform.localRotation = Quaternion.Euler(currentRotationY, currentRotationX, 0);
   }
 
