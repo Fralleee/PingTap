@@ -8,27 +8,31 @@ public class PlayerController : MonoBehaviour
   [SerializeField] float strafeSpeed = 75f;
   [SerializeField] float maxSpeed = 5f;
   [SerializeField] float stopTime = 0.05f;
-  [SerializeField] float jumpStrength = 8f;
   [SerializeField] float maxSlopeAngle = 35;
+
+
+  [Header("Jumping")]
+  [SerializeField] float jumpStrength = 8f;
+  [SerializeField] float fallMultiplier = 2.5f;
+  [SerializeField] float lowJumpModifier = 2f;
 
   [Header("Debug")]
   [SerializeField] string currentVelocity;
   [SerializeField] Vector3 inputMovement;
   [SerializeField] bool isGrounded;
+  [SerializeField] Vector3 latestPreJumpVelocity;
+  [SerializeField] Vector3 oldPreJumpVelocity;
+  [SerializeField] Vector3 oldestPreJumpVelocity;
+
 
   new Rigidbody rigidbody;
   Transform orientation;
-  bool performJump;
+  bool jumpButtonDown;
+  bool jumpButtonHold;
   float stopX;
   float stopZ;
   float distToGround;
   float capsuleRadius;
-
-  /**
-   * https://www.youtube.com/watch?v=98MBwtZU2kk&fbclid=IwAR3XuvSJQv0SuTXEn8hbPvqq62PsGLIWSUiw6QfaKlw66EGwts7QjNdCjsc
-   * - Calculate forward based on hitInfo. Also other directions since we can strafe? Maybe set orientation based on this?
-   * - Reformat groundangle to degress and let this be a setting, max allowed degress on slope.
-   **/
 
   void Awake()
   {
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
 
     var capsuleCollider = GetComponent<CapsuleCollider>();
     distToGround = capsuleCollider.bounds.extents.y - capsuleCollider.bounds.extents.x + 0.1f;
+
     capsuleRadius = capsuleCollider.radius;
 
     orientation = transform.Find(("Orientation"));
@@ -45,6 +50,7 @@ public class PlayerController : MonoBehaviour
   void Update()
   {
     GatherInputs();
+    Jump();
   }
 
   void FixedUpdate()
@@ -53,14 +59,16 @@ public class PlayerController : MonoBehaviour
     Movement();
     LimitSpeed();
     StoppingForces();
-    Jump();
+    GravityAdjuster();
   }
+
 
   void GatherInputs()
   {
     inputMovement.x = Input.GetAxisRaw("Horizontal");
     inputMovement.y = Input.GetAxisRaw("Vertical");
-    performJump = Input.GetButton("Jump");
+    jumpButtonDown = Input.GetButtonDown("Jump");
+    jumpButtonHold = Input.GetButton("Jump");
   }
 
   void GroundControl()
@@ -79,7 +87,7 @@ public class PlayerController : MonoBehaviour
   void Movement()
   {
     var modifier = isGrounded ? 1 : 0.5f;
-    Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.fixedDeltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.fixedDeltaTime;
+    Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.deltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.deltaTime;
     rigidbody.AddRelativeForce(force * modifier, ForceMode.VelocityChange);
     currentVelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude.ToString("##.0");
   }
@@ -102,10 +110,25 @@ public class PlayerController : MonoBehaviour
 
   void Jump()
   {
-    if (!performJump) return;
+    if (!jumpButtonDown) return;
     if (isGrounded)
     {
+      oldPreJumpVelocity = latestPreJumpVelocity;
+      oldestPreJumpVelocity = oldPreJumpVelocity;
+      latestPreJumpVelocity = rigidbody.velocity;
       rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
+    }
+  }
+
+  void GravityAdjuster()
+  {
+    if (rigidbody.velocity.y < 0)
+    {
+      rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+    }
+    else if (rigidbody.velocity.y > 0 && !jumpButtonHold)
+    {
+      rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpModifier - 1) * Time.deltaTime;
     }
   }
 }
