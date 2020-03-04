@@ -20,9 +20,7 @@ public class PlayerController : MonoBehaviour
   [SerializeField] string currentVelocity;
   [SerializeField] Vector3 inputMovement;
   [SerializeField] bool isGrounded;
-  [SerializeField] Vector3 latestPreJumpVelocity;
-  [SerializeField] Vector3 oldPreJumpVelocity;
-  [SerializeField] Vector3 oldestPreJumpVelocity;
+  [SerializeField] float currentSlopeAngle;
 
 
   new Rigidbody rigidbody;
@@ -76,7 +74,9 @@ public class PlayerController : MonoBehaviour
     rigidbody.useGravity = true;
     isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out RaycastHit hit, distToGround);
     if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
+
     var slopeAngle = Vector3.Angle(hit.normal, Vector3.forward) - 90f;
+    currentSlopeAngle = slopeAngle;
     if (slopeAngle < maxSlopeAngle + 1f)
     {
       rigidbody.useGravity = false;
@@ -113,15 +113,13 @@ public class PlayerController : MonoBehaviour
     if (!jumpButtonDown) return;
     if (isGrounded)
     {
-      oldPreJumpVelocity = latestPreJumpVelocity;
-      oldestPreJumpVelocity = oldPreJumpVelocity;
-      latestPreJumpVelocity = rigidbody.velocity;
       rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
     }
   }
 
   void GravityAdjuster()
   {
+    if (isGrounded) return;
     if (rigidbody.velocity.y < 0)
     {
       rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
