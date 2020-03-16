@@ -14,17 +14,11 @@ public class TerrainGenerator : MonoBehaviour
   public int xSize = 20;
   public int zSize = 20;
 
-  public int textureWidth = 1024;
-  public int textureHeight = 1024;
+  //public int textureWidth = 1024;
+  //public int textureHeight = 1024;
 
-  public float noise01Scale = 2F;
-  public float noise01Amp = 2F;
-
-  public float noise02Scale = 4F;
-  public float noise02Amp = 4F;
-
-  public float noise03Scale = 6F;
-  public float noise03Amp = 6F;
+  public float xScale = 1f;
+  public float zScale = 1f;
 
   public Gradient gradient;
 
@@ -36,11 +30,6 @@ public class TerrainGenerator : MonoBehaviour
     mesh = new Mesh();
     GetComponent<MeshFilter>().mesh = mesh;
     CreateShape();
-    //UpdateMesh();
-  }
-
-  void Update()
-  {
     CreateColors();
     UpdateMesh();
   }
@@ -56,11 +45,17 @@ public class TerrainGenerator : MonoBehaviour
   void CreateVertices()
   {
     vertices = new Vector3[(xSize + 1) * (zSize + 1)];
+    float zMiddle = zSize / 2;
+    float xMiddle = xSize / 2;
     for (int i = 0, z = 0; z <= zSize; z++)
     {
+      float zVal = 1 - Mathf.Abs((z - zMiddle) / zMiddle);
       for (int x = 0; x <= xSize; x++)
       {
+        float xVal = 1 - Mathf.Abs((x - xMiddle) / xMiddle);
+        float modifier = (xVal * zVal) * 1.5f;
         float y = GetNoiseSample(x, z);
+        y = Mathf.Clamp((y + modifier * 2) * modifier, 0, 1);
         vertices[i] = new Vector3(x, y, z);
         i++;
       }
@@ -134,13 +129,9 @@ public class TerrainGenerator : MonoBehaviour
 
   float GetNoiseSample(int x, int z)
   {
-    float noiseHeight = 0;
-
-    float sampleX = x / noise01Scale;
-    float sampleZ = z / noise01Scale;
-    float perlinValue = Mathf.PerlinNoise(sampleX, sampleZ) * 2 - 1;
-    //noiseHeight += perlinValue * noise01Amp;
-
+    float sampleX = x * xScale;
+    float sampleZ = z * zScale;
+    float perlinValue = Mathf.PerlinNoise(sampleX, sampleZ);
     return perlinValue;
   }
 
