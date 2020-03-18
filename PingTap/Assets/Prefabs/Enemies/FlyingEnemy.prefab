@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4911353467714394957}
   - component: {fileID: 4911353467714394958}
   - component: {fileID: 4911353467714394955}
+  - component: {fileID: -1657223847493178258}
   m_Layer: 0
   m_Name: FlyingEnemy
   m_TagString: Untagged
@@ -44,7 +45,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 20
+  m_Speed: 100
   m_Acceleration: 500
   avoidancePriority: 50
   m_AngularSpeed: 2000
@@ -83,6 +84,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navPoint: {fileID: 0}
   stoppingDistance: 5
+--- !u!114 &-1657223847493178258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911353467714394959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adb17b8cec3d4342b7a6a64f7ed02be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4911353468376173306
 GameObject:
   m_ObjectHideFlags: 0

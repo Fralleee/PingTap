@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class AgentNavigation : MonoBehaviour
 {
   [SerializeField] NavPoint navPoint;
   [SerializeField] float stoppingDistance;
 
+  Enemy enemy;
   NavMeshAgent navMeshAgent;
   Vector3 nextPosition;
 
 
   void Awake()
   {
+    enemy = GetComponent<Enemy>();
     navMeshAgent = GetComponent<NavMeshAgent>();
   }
 
@@ -45,7 +49,7 @@ public class AgentNavigation : MonoBehaviour
   void FinalDestination()
   {
     navMeshAgent.isStopped = true;
-    Destroy(gameObject, .2f);
+    enemy.ReachedDestination();
   }
 
   void CheckDestinationReached()
