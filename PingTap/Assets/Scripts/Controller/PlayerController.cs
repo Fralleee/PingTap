@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
   {
     var modifier = isGrounded ? 1 : 0.5f;
     Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.deltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.deltaTime;
-    rigidbody.AddRelativeForce(force * modifier, ForceMode.VelocityChange);
+    rigidbody.AddForce(force * modifier, ForceMode.VelocityChange);
     currentVelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude.ToString("##.0");
   }
 
