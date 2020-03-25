@@ -6,6 +6,7 @@ public class MouseLook : MonoBehaviour
   [SerializeField] GameObject orientation;
   [SerializeField] float mouseSensitivity = 50f;
   [SerializeField] float mouseLookSmooth = 0f;
+  [SerializeField] float affectSmooth = 0.05f;
 
   [SerializeField] float clampYMax = 90f;
   [SerializeField] float clampYMin = -90f;
@@ -15,13 +16,11 @@ public class MouseLook : MonoBehaviour
   [SerializeField] float currentRotationX;
   [SerializeField] float currentRotationY;
 
-  float mouseLookDampX;
-  float mouseLookDampY;
+  Vector2 affectRotation;
 
   void Awake()
   {
-    Cursor.visible = false;
-    Cursor.lockState = CursorLockMode.Locked;
+    ConfigureCursor(true);
   }
 
   void Update()
@@ -34,6 +33,26 @@ public class MouseLook : MonoBehaviour
     Look();
   }
 
+  public void AddRotation(Vector2 rotation)
+  {
+    affectRotation = rotation;
+  }
+
+  void ConfigureCursor(bool doLock = true)
+  {
+    if (doLock)
+    {
+      Cursor.visible = false;
+      Cursor.lockState = CursorLockMode.Locked;
+    }
+    else
+    {
+
+      Cursor.visible = true;
+      Cursor.lockState = CursorLockMode.None;
+    }
+  }
+
   void GatherInputs()
   {
     inputMouseLook.x += Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
@@ -42,15 +61,27 @@ public class MouseLook : MonoBehaviour
 
   void Look()
   {
+    if (Cursor.visible) return;
+
+    float mouseLookDampX = 0;
+    float mouseLookDampY = 0;
+    Vector2 affectRotationDamp = Vector2.zero;
+
     inputMouseLook.y = Mathf.Clamp(inputMouseLook.y, clampYMin, clampYMax);
 
-    currentRotationX = Mathf.SmoothDamp(currentRotationX, inputMouseLook.x, ref mouseLookDampX, mouseLookSmooth);
-    currentRotationY = Mathf.SmoothDamp(currentRotationY, inputMouseLook.y, ref mouseLookDampY, mouseLookSmooth);
+    currentRotationX = Mathf.SmoothDamp(currentRotationX, inputMouseLook.x + affectRotation.x, ref mouseLookDampX, mouseLookSmooth);
+    currentRotationY = Mathf.SmoothDamp(currentRotationY, inputMouseLook.y + affectRotation.y, ref mouseLookDampY, mouseLookSmooth);
+
+    affectRotation = Vector2.SmoothDamp(affectRotation, Vector2.zero, ref affectRotationDamp, affectSmooth);
 
     Vector3 rot = orientation.transform.rotation.eulerAngles;
     orientation.transform.localRotation = Quaternion.Euler(rot.x, currentRotationX, rot.z);
     transform.localRotation = Quaternion.Euler(currentRotationY, currentRotationX, 0);
   }
 
+  void OnApplicationFocus(bool hasFocus)
+  {
+    ConfigureCursor(hasFocus);
+  }
 
 }
