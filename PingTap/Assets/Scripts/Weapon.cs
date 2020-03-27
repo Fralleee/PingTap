@@ -9,7 +9,11 @@ public abstract class Weapon : MonoBehaviour, IWeapon
   [Header("Equip")]
   [SerializeField] internal float animationTime = 0.3f;
 
+
+
   [Header("Shooting")]
+  [SerializeField] internal float range = 50;
+  [SerializeField] internal float kickbackForce = 0.15f;
   [SerializeField] internal int shotsPerSecond = 20;
   [SerializeField] internal bool tapable = false;
   [SerializeField] internal float resetSmooth = 11.75f;

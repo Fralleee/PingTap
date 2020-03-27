@@ -24,6 +24,7 @@ namespace Fralle
       if (infiniteAmmo) return;
       if (isReloading)
       {
+
         rotationTime += Time.deltaTime;
         var spinDelta = -(Mathf.Cos(Mathf.PI * (rotationTime / reloadSpeed)) - 1f) / 2f;
         transform.localRotation = Quaternion.Euler(new Vector3(spinDelta * 360f, 0, 0));

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Fralle;
+using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
