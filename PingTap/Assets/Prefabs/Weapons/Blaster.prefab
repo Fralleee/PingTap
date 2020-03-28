@@ -47,14 +47,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 0.3
+  weaponName: Blaster
+  animationTime: 0.5
   kickbackForce: 0.2
   shotsPerSecond: 10
   tapable: 0
   resetSmooth: 11.75
   scopePos: {x: -0.225, y: 0.1, z: 0}
   muzzle: {fileID: 5576700993631069988}
-  projectilePrefab: {fileID: -1167507731464939408, guid: 435fc77f1b1d7f1438937c2d6ee27f43,
+  projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
     type: 3}
   projectileData:
     force: 25
@@ -189,7 +190,6 @@ GameObject:
   - component: {fileID: 3672827191256802970}
   - component: {fileID: 480677320036456508}
   - component: {fileID: 2761987063763356671}
-  - component: {fileID: 724425060988799044}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -258,19 +258,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &724425060988799044
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6094848260605049996}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7066653345785793989
 GameObject:
   m_ObjectHideFlags: 0

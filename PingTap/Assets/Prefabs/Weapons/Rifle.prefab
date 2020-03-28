@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 828126370941642993}
+  - {fileID: 8968837684219522382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,16 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e729f40f6e38f4e95d030b2b8a6676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 0.3
-  pushForce: 15
-  range: 50
+  weaponName: Rifle
+  animationTime: 0.5
   kickbackForce: 0.15
   shotsPerSecond: 20
   tapable: 0
   resetSmooth: 11.75
   scopePos: {x: -0.225, y: 0.1, z: 0}
+  muzzle: {fileID: 8968837684219522382}
+  range: 50
   spreadIncreseEachShot: 3.5
   maxSpread: 3.5
+  pushForce: 15
 --- !u!114 &5876375756895984437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +169,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &4462043668454193918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8968837684219522382}
+  m_Layer: 10
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8968837684219522382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4462043668454193918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.829}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 828126370911196197}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

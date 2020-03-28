@@ -31,6 +31,15 @@ namespace Fralle
       bool hasImpact = collision != null;
       var position = hasImpact ? collision.GetContact(0).point : transform.position;
       if (hasImpact && data.kinematicOnImpact) rigidbody.isKinematic = true;
+      if (hasImpact && impactParticlePrefab)
+      {
+        var impactParticle = Instantiate(
+          impactParticlePrefab,
+          transform.position,
+          Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal)
+        );
+        Destroy(impactParticle, 5f);
+      }
 
       var colliders = Physics.OverlapSphere(position, data.explosionRadius);
       foreach (var col in colliders)
@@ -92,6 +101,7 @@ namespace Fralle
 
     void OnCollisionEnter(Collision collision)
     {
+      Debug.Log($"Collided with {collision.gameObject.name}");
       if (data.explosionRadius > 0) Explode(collision);
       else Hit(collision);
     }

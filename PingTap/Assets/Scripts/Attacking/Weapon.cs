@@ -6,10 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(RecoilController))]
 public abstract class Weapon : MonoBehaviour, IWeapon
 {
+  [Header("Information")] 
+  [SerializeField] internal string weaponName;
+
   [Header("Equip")]
   [SerializeField] internal float animationTime = 0.3f;
-
-
 
   [Header("Shooting")]
   [SerializeField] internal float kickbackForce = 0.15f;
@@ -32,6 +33,7 @@ public abstract class Weapon : MonoBehaviour, IWeapon
 
   internal virtual void Awake()
   {
+    if (string.IsNullOrWhiteSpace(weaponName)) weaponName = name;
     ammoController = GetComponent<AmmoController>();
     recoilController = GetComponent<RecoilController>();
   }

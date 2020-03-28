@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children:
   - {fileID: 7859067747459573557}
+  - {fileID: 2192433880555540710}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,23 +47,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationTime: 0.3
-  range: 50
-  kickbackForce: 1
+  weaponName: Launcher
+  animationTime: 0.5
+  kickbackForce: 0.5
   shotsPerSecond: 2
   tapable: 0
   resetSmooth: 11.75
   scopePos: {x: -0.225, y: 0.1, z: 0}
-  projectilePrefab: {fileID: -1167507731464939408, guid: 435fc77f1b1d7f1438937c2d6ee27f43,
+  muzzle: {fileID: 2192433880555540710}
+  projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
     type: 3}
   projectileData:
     force: 50
     useGravity: 1
     kinematicOnImpact: 1
+    explodeOnMaxRange: 0
     destroyOnImpactTime: 1
     explosionRadius: 10
     explosionDamage: 10
     pushForce: 1000
+    range: 50
     launcherCamera: {fileID: 0}
 --- !u!114 &1610195183787891451
 MonoBehaviour:
@@ -93,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomizeRecoil: 1
-  randomRecoilConstraints: {x: 5, y: 5}
+  randomRecoilConstraints: {x: 1, y: 3}
   recoilPattern: []
 --- !u!1 &1539390847172385141
 GameObject:
@@ -174,3 +178,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3421135731639930395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2192433880555540710}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2192433880555540710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3421135731639930395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.816}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7514887777775201149}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
