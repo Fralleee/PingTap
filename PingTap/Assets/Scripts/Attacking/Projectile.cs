@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 
 namespace Fralle
 {
@@ -12,7 +13,10 @@ namespace Fralle
     new Rigidbody rigidbody;
     ProjectileData data;
     bool active;
+    bool hasCollision;
     float distanceTraveled;
+    float activeTime;
+    float afterCollisionTime;
 
     void FixedUpdate()
     {
@@ -22,52 +26,55 @@ namespace Fralle
         if (data.explodeOnMaxRange) Explode();
         else Destroy(gameObject);
       }
+
+      if (data.explodeOnTime > 0)
+      {
+        activeTime += Time.fixedDeltaTime;
+        if (activeTime > data.explodeOnTime) Explode();
+      }
+
+      if (hasCollision && data.explodeOnImpactTime > 0)
+      {
+        afterCollisionTime += Time.fixedDeltaTime;
+        if (afterCollisionTime > data.explodeOnImpactTime) Explode();
+      }
     }
 
     void Explode(Collision collision = null)
     {
       active = true;
 
-      bool hasImpact = collision != null;
-      var position = hasImpact ? collision.GetContact(0).point : transform.position;
-      if (hasImpact && data.kinematicOnImpact) rigidbody.isKinematic = true;
-      if (hasImpact && impactParticlePrefab)
+      if (impactParticlePrefab)
       {
-        var impactParticle = Instantiate(
-          impactParticlePrefab,
-          transform.position,
-          Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal)
-        );
+        var impactParticle = Instantiate( impactParticlePrefab, transform.position, Quaternion.identity );
         Destroy(impactParticle, 5f);
       }
 
-      var colliders = Physics.OverlapSphere(position, data.explosionRadius);
+      var colliders = Physics.OverlapSphere(transform.position, data.explosionRadius);
       foreach (var col in colliders)
       {
-        var distance = Vector3.Distance(col.transform.position, position);
+        var distance = Vector3.Distance(col.transform.position, transform.position);
         var distanceDamageMultiplier = Mathf.Clamp01(1 - distance / data.explosionRadius);
 
         var colRb = col.GetComponent<Rigidbody>();
-        if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius);
+        if (colRb) colRb.AddExplosionForce(data.pushForce, transform.position, data.explosionRadius);
 
         var damageable = col.GetComponent<IDamageable>();
-        if (damageable != null) damageable.TakeDamage(data.explosionDamage * distanceDamageMultiplier);
+        damageable?.TakeDamage(data.explosionDamage * distanceDamageMultiplier);
       }
 
-      Destroy(gameObject, hasImpact ? data.destroyOnImpactTime : 0);
+      Destroy(gameObject);
     }
 
     void Hit(Collision collision)
     {
       active = true;
 
-      if (data.kinematicOnImpact) rigidbody.isKinematic = true;
-
       var colRb = collision.gameObject.GetComponent<Rigidbody>();
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 
       var damageable = collision.gameObject.GetComponent<IDamageable>();
-      if (damageable != null) damageable.TakeDamage(data.explosionDamage);
+      damageable?.TakeDamage(data.explosionDamage);
 
       if (impactParticlePrefab)
       {
@@ -80,7 +87,7 @@ namespace Fralle
       }
 
 
-      Destroy(gameObject, data.destroyOnImpactTime);
+      Destroy(gameObject);
     }
 
     public void Initiate(ProjectileData inputData)
@@ -102,8 +109,12 @@ namespace Fralle
     void OnCollisionEnter(Collision collision)
     {
       Debug.Log($"Collided with {collision.gameObject.name}");
-      if (data.explosionRadius > 0) Explode(collision);
-      else Hit(collision);
+
+      if (data.kinematicOnImpact) rigidbody.isKinematic = true;
+
+      if (data.explodeOnImpactTime > 0) hasCollision = true;
+      if (data.explosionRadius > 0 && data.explodeOnImpactTime == 0) Explode(collision);
+      else if (data.explosionRadius == 0 && data.explodeOnImpactTime == 0) Hit(collision);
     }
 
     void OnDrawGizmos()

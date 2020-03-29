@@ -1,7 +1,7 @@
 ﻿using Fralle;
 using UnityEngine;
 
-public class Launcher : Weapon
+public class Launcher : WeaponAction
 {
   [Header("Launcher", order = 0)]
   [SerializeField] Projectile projectilePrefab;
@@ -9,13 +9,9 @@ public class Launcher : Weapon
 
   public override void Fire()
   {
-    transform.localPosition -= new Vector3(0, 0, kickbackForce);
+    var projectile = Instantiate(projectilePrefab, weapon.muzzle.position, transform.rotation);
 
-    var projectile = Instantiate(projectilePrefab, muzzle.position, transform.rotation);
-
-    projectileData.launcherCamera = playerCamera;
+    projectileData.launcherCamera = weapon.playerCamera;
     projectile.Initiate(projectileData);
-
-    recoilController?.AddRecoil();
   }
 }

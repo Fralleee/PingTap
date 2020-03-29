@@ -1,90 +1,54 @@
-﻿using Fralle;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(AmmoController))]
-[RequireComponent(typeof(RecoilController))]
-public abstract class Weapon : MonoBehaviour, IWeapon
+namespace Fralle
 {
-  [Header("Information")] 
-  [SerializeField] internal string weaponName;
-
-  [Header("Equip")]
-  [SerializeField] internal float animationTime = 0.3f;
-
-  [Header("Shooting")]
-  [SerializeField] internal float kickbackForce = 0.15f;
-  [SerializeField] internal int shotsPerSecond = 20;
-  [SerializeField] internal bool tapable = false;
-  [SerializeField] internal float resetSmooth = 11.75f;
-  [SerializeField] internal Vector3 scopePos = new Vector3(-0.225f, 0.1f);
-  [SerializeField] internal Transform muzzle;
-
-
-  internal float time;
-  internal bool scoping;
-  internal bool shooting;
-  internal Transform playerCamera;
-  internal Vector3 startPosition;
-  internal Quaternion startRotation;
-
-  internal AmmoController ammoController;
-  internal RecoilController recoilController;
-
-  internal virtual void Awake()
+  public class Weapon : MonoBehaviour
   {
-    if (string.IsNullOrWhiteSpace(weaponName)) weaponName = name;
-    ammoController = GetComponent<AmmoController>();
-    recoilController = GetComponent<RecoilController>();
-  }
+    [Header("Weapon")]
+    public string weaponName;
+    [SerializeField] float equipAnimationTime = 0.3f;
 
-  internal virtual void Update()
-  {
-    bool isEquipping = time < animationTime;
-    if (isEquipping)
+    public Transform muzzle;
+    public bool performingAction;
+
+    [HideInInspector] public Transform playerCamera;
+    [HideInInspector] public RecoilController recoilController;
+    [HideInInspector] public AmmoController ammoController;
+
+    float time;
+    Vector3 startPosition;
+    Quaternion startRotation;
+
+
+    internal virtual void Awake()
     {
+      if (string.IsNullOrWhiteSpace(weaponName)) weaponName = name;
+      recoilController = GetComponent<RecoilController>();
+      ammoController = GetComponent<AmmoController>();
+    }
+
+    internal virtual void Update()
+    {
+      bool isEquipping = time < equipAnimationTime;
+      if (!isEquipping) return;
+
       time += Time.deltaTime;
-      time = Mathf.Clamp(time, 0f, animationTime);
-      var delta = -(Mathf.Cos(Mathf.PI * (time / animationTime)) - 1f) / 2f;
+      time = Mathf.Clamp(time, 0f, equipAnimationTime);
+      var delta = -(Mathf.Cos(Mathf.PI * (time / equipAnimationTime)) - 1f) / 2f;
       transform.localPosition = Vector3.Lerp(startPosition, Vector3.zero, delta);
       transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.identity, delta);
     }
-    else
-    {
-      scoping = Input.GetMouseButton(1) && !ammoController.isReloading;
-      transform.localRotation = Quaternion.identity;
-      transform.localPosition = Vector3.Lerp(transform.localPosition, scoping ? scopePos : Vector3.zero, resetSmooth * Time.deltaTime);
-    }
 
-    bool shootWeapon = (tapable ? Input.GetMouseButtonDown(0) : Input.GetMouseButton(0)) && !shooting && !ammoController.isReloading;
-    if (shootWeapon)
+    public void Equip(Transform weaponHolder, Transform playerCamera)
     {
-      ammoController.ChangeAmmo(-1);
-      Fire();
-      if (ammoController.HasAmmo()) StartCoroutine(ShootingCooldown());
+      time = 0f;
+      transform.parent = weaponHolder;
+
+      startPosition = transform.localPosition;
+      startRotation = transform.localRotation;
+
+      this.playerCamera = playerCamera;
+      recoilController.Initiate(playerCamera);
     }
   }
-
-  internal IEnumerator ShootingCooldown()
-  {
-    shooting = true;
-    yield return new WaitForSeconds(1f / shotsPerSecond);
-    shooting = false;
-  }
-
-  public void Equip(Transform weaponHolder, Transform playerCamera)
-  {
-    time = 0f;
-    transform.parent = weaponHolder;
-
-    startPosition = transform.localPosition;
-    startRotation = transform.localRotation;
-
-    this.playerCamera = playerCamera;
-    recoilController.Initiate(playerCamera);
-  }
-
-  public abstract void Fire();
-
-  public bool Scoping => scoping;
 }

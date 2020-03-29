@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 828126370911196197}
+  - component: {fileID: 249318252600298902}
   - component: {fileID: 757777470}
+  - component: {fileID: -1393097630866474087}
   - component: {fileID: 5876375756895984437}
   - component: {fileID: 1732339530149410872}
   m_Layer: 10
@@ -35,6 +37,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &249318252600298902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828126370911196199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: 
+  equipAnimationTime: 0.3
+  muzzle: {fileID: 8968837684219522382}
+  performingAction: 0
+  playerCamera: {fileID: 0}
+  recoilController: {fileID: 0}
+  ammoController: {fileID: 0}
 --- !u!114 &757777470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,18 +68,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e729f40f6e38f4e95d030b2b8a6676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Rifle
-  animationTime: 0.5
-  kickbackForce: 0.15
+  fireInput: 0
   shotsPerSecond: 20
   tapable: 0
-  resetSmooth: 11.75
-  scopePos: {x: -0.225, y: 0.1, z: 0}
-  muzzle: {fileID: 8968837684219522382}
   range: 50
   spreadIncreseEachShot: 3.5
   maxSpread: 3.5
   pushForce: 15
+--- !u!114 &-1393097630866474087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828126370911196199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireInput: 1
+  shotsPerSecond: 1
+  tapable: 1
+  projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
+    type: 3}
+  projectileData:
+    force: 50
+    useGravity: 1
+    kinematicOnImpact: 1
+    explodeOnMaxRange: 1
+    explodeOnImpactTime: 0.25
+    explodeOnTime: 1
+    explosionRadius: 5
+    explosionDamage: 5
+    pushForce: 5
+    range: 100
+    launcherCamera: {fileID: 0}
 --- !u!114 &5876375756895984437
 MonoBehaviour:
   m_ObjectHideFlags: 0

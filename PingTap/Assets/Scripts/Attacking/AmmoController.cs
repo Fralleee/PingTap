@@ -10,9 +10,14 @@ namespace Fralle
     [SerializeField] float reloadSpeed = 0.75f;
     [SerializeField] int currentAmmo;
 
-    public bool isReloading { get; private set; }
-
+    bool isReloading;
     float rotationTime;
+    Weapon weapon;
+
+    void Awake()
+    {
+      weapon = GetComponent<Weapon>();
+    }
 
     void Start()
     {
@@ -24,12 +29,11 @@ namespace Fralle
       if (infiniteAmmo) return;
       if (isReloading)
       {
-
         rotationTime += Time.deltaTime;
         var spinDelta = -(Mathf.Cos(Mathf.PI * (rotationTime / reloadSpeed)) - 1f) / 2f;
         transform.localRotation = Quaternion.Euler(new Vector3(spinDelta * 360f, 0, 0));
       }
-      else if (Input.GetKeyDown(KeyCode.R) && !isReloading && currentAmmo < maxAmmo) StartCoroutine(ReloadCooldown());
+      else if (Input.GetKeyDown(KeyCode.R) && !weapon.performingAction && currentAmmo < maxAmmo) StartCoroutine(ReloadCooldown());
     }
 
     public void ChangeAmmo(int change)
@@ -37,19 +41,21 @@ namespace Fralle
       currentAmmo += change;
     }
 
-    public bool HasAmmo()
+    public bool HasAmmo(int requiredAmmo = 1)
     {
-      if (infiniteAmmo || currentAmmo > 0) return true;
+      if (infiniteAmmo || currentAmmo >= requiredAmmo) return true;
       StartCoroutine(ReloadCooldown());
       return false;
     }
 
     IEnumerator ReloadCooldown()
     {
+      weapon.performingAction = true;
       isReloading = true;
       rotationTime = 0f;
       yield return new WaitForSeconds(reloadSpeed);
       currentAmmo = maxAmmo;
+      weapon.performingAction = false;
       isReloading = false;
     }
   }

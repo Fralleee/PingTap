@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Hitscan : Weapon
+public class Hitscan : WeaponAction
 {
   [Header("Hitscan", order = 0)]
   [SerializeField] float range = 50;
@@ -10,12 +10,10 @@ public class Hitscan : Weapon
 
   public override void Fire()
   {
-    transform.localPosition -= new Vector3(0, 0, kickbackForce);
-    if (Physics.Raycast(playerCamera.position, playerCamera.forward, out var hitInfo, range))
+    if (Physics.Raycast(weapon.playerCamera.position, weapon.playerCamera.forward, out var hitInfo, range))
     {
       var rb = hitInfo.transform.GetComponent<Rigidbody>();
-      if (rb != null) rb.AddForce(playerCamera.forward * pushForce);
+      if (rb != null) rb.AddForce(weapon.playerCamera.forward * pushForce);
     }
-    recoilController?.AddRecoil();
   }
 }

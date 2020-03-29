@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7514887777775201149}
+  - component: {fileID: 1285405834807961118}
   - component: {fileID: 1681630517884302616}
   - component: {fileID: 1610195183787891451}
   - component: {fileID: 3836973685045133861}
@@ -35,6 +36,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285405834807961118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520322471462546784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponName: 
+  equipAnimationTime: 0.3
+  muzzle: {fileID: 2192433880555540710}
+  performingAction: 0
+  playerCamera: {fileID: 0}
+  recoilController: {fileID: 0}
+  ammoController: {fileID: 0}
 --- !u!114 &1681630517884302616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,14 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Launcher
-  animationTime: 0.5
-  kickbackForce: 0.5
+  fireInput: 0
   shotsPerSecond: 2
   tapable: 0
-  resetSmooth: 11.75
-  scopePos: {x: -0.225, y: 0.1, z: 0}
-  muzzle: {fileID: 2192433880555540710}
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
     type: 3}
   projectileData:

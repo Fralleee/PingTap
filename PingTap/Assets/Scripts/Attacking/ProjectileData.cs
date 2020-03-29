@@ -10,8 +10,9 @@ namespace Fralle
     public bool useGravity;
     public bool kinematicOnImpact;
     public bool explodeOnMaxRange;
-
-    public float destroyOnImpactTime;
+    
+    public float explodeOnImpactTime;
+    public float explodeOnTime;
     public float explosionRadius;
     public float explosionDamage;
     public float pushForce;
