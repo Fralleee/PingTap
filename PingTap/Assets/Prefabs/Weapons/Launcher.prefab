@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1681630517884302616}
   - component: {fileID: 1610195183787891451}
   - component: {fileID: 3836973685045133861}
+  - component: {fileID: 8002208106888561017}
   m_Layer: 0
   m_Name: Launcher
   m_TagString: Untagged
@@ -51,7 +52,7 @@ MonoBehaviour:
   weaponName: 
   equipAnimationTime: 0.3
   muzzle: {fileID: 2192433880555540710}
-  performingAction: 0
+  activeWeaponAction: 0
   playerCamera: {fileID: 0}
   recoilController: {fileID: 0}
   ammoController: {fileID: 0}
@@ -68,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
+  ammoPerShot: 1
   shotsPerSecond: 2
   tapable: 0
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
@@ -77,7 +79,8 @@ MonoBehaviour:
     useGravity: 1
     kinematicOnImpact: 1
     explodeOnMaxRange: 0
-    destroyOnImpactTime: 1
+    explodeOnImpactTime: 0
+    explodeOnTime: 0
     explosionRadius: 10
     explosionDamage: 10
     pushForce: 1000
@@ -114,6 +117,24 @@ MonoBehaviour:
   randomizeRecoil: 1
   randomRecoilConstraints: {x: 1, y: 3}
   recoilPattern: []
+--- !u!114 &8002208106888561017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520322471462546784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907ad991b0dee4e4e8f41887d6d55187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scopeButton: 1
+  scopePos: {x: -0.225, y: 0.1, z: 0}
+  resetSmooth: 11.75
+  fovSmooth: 7
+  defaultFov: 60
+  scopedFov: 45
 --- !u!1 &1539390847172385141
 GameObject:
   m_ObjectHideFlags: 0

@@ -72,7 +72,7 @@ namespace Photon.Pun.Demo.Asteroids
             {
                 shootingTimer = 0.2f;
 
-                photonView.RPC("Fire", RpcTarget.AllViaServer, rigidbody.position, rigidbody.rotation);
+                photonView.RPC("PerformAction", RpcTarget.AllViaServer, rigidbody.position, rigidbody.rotation);
             }
 
             if (shootingTimer > 0.0f)

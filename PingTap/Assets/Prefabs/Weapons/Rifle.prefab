@@ -52,7 +52,7 @@ MonoBehaviour:
   weaponName: 
   equipAnimationTime: 0.3
   muzzle: {fileID: 8968837684219522382}
-  performingAction: 0
+  activeWeaponAction: 0
   playerCamera: {fileID: 0}
   recoilController: {fileID: 0}
   ammoController: {fileID: 0}
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
+  ammoPerShot: 1
   shotsPerSecond: 20
   tapable: 0
   range: 50
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 1
+  ammoPerShot: 1
   shotsPerSecond: 1
   tapable: 1
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,

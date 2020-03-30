@@ -33,7 +33,7 @@ namespace Fralle
         var spinDelta = -(Mathf.Cos(Mathf.PI * (rotationTime / reloadSpeed)) - 1f) / 2f;
         transform.localRotation = Quaternion.Euler(new Vector3(spinDelta * 360f, 0, 0));
       }
-      else if (Input.GetKeyDown(KeyCode.R) && !weapon.performingAction && currentAmmo < maxAmmo) StartCoroutine(ReloadCooldown());
+      else if (Input.GetKeyDown(KeyCode.R) && weapon.activeWeaponAction == ActiveWeaponAction.READY && currentAmmo < maxAmmo) StartCoroutine(ReloadCooldown());
     }
 
     public void ChangeAmmo(int change)
@@ -50,12 +50,12 @@ namespace Fralle
 
     IEnumerator ReloadCooldown()
     {
-      weapon.performingAction = true;
+      weapon.activeWeaponAction = ActiveWeaponAction.RELOADING;
       isReloading = true;
       rotationTime = 0f;
       yield return new WaitForSeconds(reloadSpeed);
       currentAmmo = maxAmmo;
-      weapon.performingAction = false;
+      weapon.activeWeaponAction = ActiveWeaponAction.READY;
       isReloading = false;
     }
   }

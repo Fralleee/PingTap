@@ -52,7 +52,7 @@ MonoBehaviour:
   weaponName: Launcher
   equipAnimationTime: 0.3
   muzzle: {fileID: 5576700993631069988}
-  performingAction: 0
+  activeWeaponAction: 0
   playerCamera: {fileID: 0}
   recoilController: {fileID: 0}
   ammoController: {fileID: 0}
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
+  ammoPerShot: 1
   shotsPerSecond: 10
   tapable: 0
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
@@ -78,7 +79,8 @@ MonoBehaviour:
     useGravity: 0
     kinematicOnImpact: 0
     explodeOnMaxRange: 0
-    destroyOnImpactTime: 0
+    explodeOnImpactTime: 0
+    explodeOnTime: 0
     explosionRadius: 0
     explosionDamage: 10
     pushForce: 200
@@ -97,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 1
+  ammoPerShot: 5
   shotsPerSecond: 20
   tapable: 1
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
@@ -106,7 +109,8 @@ MonoBehaviour:
     useGravity: 1
     kinematicOnImpact: 1
     explodeOnMaxRange: 1
-    destroyOnImpactTime: 3
+    explodeOnImpactTime: 0
+    explodeOnTime: 0
     explosionRadius: 10
     explosionDamage: 10
     pushForce: 20

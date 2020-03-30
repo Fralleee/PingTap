@@ -7,6 +7,7 @@ public abstract class WeaponAction : MonoBehaviour
 {
   [Header("Shooting")]
   [SerializeField] internal MouseButton fireInput = MouseButton.Left;
+  [SerializeField] internal int ammoPerShot = 1;
   [SerializeField] internal int shotsPerSecond = 20;
   [SerializeField] internal bool tapable = false;
 
@@ -21,10 +22,10 @@ public abstract class WeaponAction : MonoBehaviour
 
   internal virtual void Update()
   {
-    bool shootWeapon = (tapable ? Input.GetMouseButtonDown((int)fireInput) : Input.GetMouseButton((int)fireInput)) && !weapon.performingAction;
+    bool shootWeapon = (tapable ? Input.GetMouseButtonDown((int)fireInput) : Input.GetMouseButton((int)fireInput)) && weapon.activeWeaponAction == ActiveWeaponAction.READY; ;
     if (!shootWeapon) return;
 
-    if(HasAmmo) weapon.ammoController.ChangeAmmo(-1);
+    if(HasAmmo) weapon.ammoController.ChangeAmmo(-ammoPerShot);
     Fire();
     if (weapon.recoilController) weapon.recoilController.AddRecoil();
     if (HasAmmo) StartCoroutine(ShootingCooldown());
@@ -32,9 +33,9 @@ public abstract class WeaponAction : MonoBehaviour
 
   internal IEnumerator ShootingCooldown()
   {
-    weapon.performingAction = true;
+    weapon.activeWeaponAction = ActiveWeaponAction.FIRING;
     yield return new WaitForSeconds(1f / shotsPerSecond);
-    weapon.performingAction = false;
+    weapon.activeWeaponAction = ActiveWeaponAction.READY;
   }
 
   public abstract void Fire();

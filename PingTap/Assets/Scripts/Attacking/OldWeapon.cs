@@ -6,7 +6,7 @@
 //[RequireComponent(typeof(RecoilController))]
 //public abstract class OldWeapon : MonoBehaviour
 //{
-//  [Header("Information")] 
+//  [Header("Information")]
 //  [SerializeField] internal string weaponName;
 //  [SerializeField] internal MouseButton fireInput = MouseButton.Left;
 

@@ -6,19 +6,13 @@ namespace Fralle
   {
     [SerializeField] Weapon[] weapons;
 
-
     [SerializeField] float swaySize = 0.004f;
     [SerializeField] float swaySmooth = 25f;
-
-    [SerializeField] float defaultFov = 60f;
-    [SerializeField] float scopedFov = 50f;
-    [SerializeField] float fovSmooth = 0.1f;
 
     [SerializeField] new Rigidbody rigidbody;
     [SerializeField] Transform weaponHolder;
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform swayHolder;
-    [SerializeField] Camera[] playerCams;
 
     bool hasEquippedWeapon;
     Weapon equippedWeapon;
@@ -37,12 +31,6 @@ namespace Fralle
       SwapWeapon();
 
       if (!hasEquippedWeapon) return;
-
-      //foreach (var cam in playerCams)
-      //{
-      //  var fov = equippedWeapon.Scoping ? scopedFov : defaultFov;
-      //  cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, fovSmooth * Time.deltaTime);
-      //}
 
       float velocityY = rigidbody.velocity.y;
       if (oldRBVelocityY != 0 && velocityY == 0) bounceBackVelocityY = 5f;

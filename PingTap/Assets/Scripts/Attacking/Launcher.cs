@@ -9,7 +9,7 @@ public class Launcher : WeaponAction
 
   public override void Fire()
   {
-    var projectile = Instantiate(projectilePrefab, weapon.muzzle.position, transform.rotation);
+    Projectile projectile = Instantiate(projectilePrefab, weapon.muzzle.position, transform.rotation);
 
     projectileData.launcherCamera = weapon.playerCamera;
     projectile.Initiate(projectileData);

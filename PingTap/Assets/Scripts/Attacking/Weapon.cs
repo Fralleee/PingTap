@@ -9,7 +9,7 @@ namespace Fralle
     [SerializeField] float equipAnimationTime = 0.3f;
 
     public Transform muzzle;
-    public bool performingAction;
+    public ActiveWeaponAction activeWeaponAction;
 
     [HideInInspector] public Transform playerCamera;
     [HideInInspector] public RecoilController recoilController;
