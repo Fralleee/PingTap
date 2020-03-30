@@ -51,7 +51,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: 
   equipAnimationTime: 0.3
-  muzzle: {fileID: 2192433880555540710}
+  muzzles:
+  - {fileID: 2192433880555540710}
   activeWeaponAction: 0
   playerCamera: {fileID: 0}
   recoilController: {fileID: 0}
@@ -72,6 +73,7 @@ MonoBehaviour:
   ammoPerShot: 1
   shotsPerSecond: 2
   tapable: 0
+  alternateMuzzle: 0
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
     type: 3}
   projectileData:
@@ -131,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopeButton: 1
   scopePos: {x: -0.225, y: 0.1, z: 0}
+  interruptScopeOnFire: 1
   resetSmooth: 11.75
   fovSmooth: 7
   defaultFov: 60

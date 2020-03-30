@@ -1,17 +1,22 @@
-﻿using Fralle;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Launcher : WeaponAction
+namespace Fralle
 {
-  [Header("Launcher", order = 0)]
-  [SerializeField] Projectile projectilePrefab;
-  [SerializeField] ProjectileData projectileData;
-
-  public override void Fire()
+  public class Launcher : WeaponAction
   {
-    Projectile projectile = Instantiate(projectilePrefab, weapon.muzzle.position, transform.rotation);
+    [Header("Launcher")]
+    [SerializeField] Projectile projectilePrefab;
+    [SerializeField] ProjectileData projectileData;
 
-    projectileData.launcherCamera = weapon.playerCamera;
-    projectile.Initiate(projectileData);
+    public override void Fire()
+    {
+      Transform muzzle = GetMuzzle();
+
+      Projectile projectile = Instantiate(projectilePrefab, muzzle.position, transform.rotation);
+
+      projectileData.launcherCamera = weapon.playerCamera;
+      projectile.Initiate(projectileData);
+    }
   }
+
 }

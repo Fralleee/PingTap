@@ -108,8 +108,6 @@ namespace Fralle
 
     void OnCollisionEnter(Collision collision)
     {
-      Debug.Log($"Collided with {collision.gameObject.name}");
-
       if (data.kinematicOnImpact) rigidbody.isKinematic = true;
 
       if (data.explodeOnImpactTime > 0) hasCollision = true;

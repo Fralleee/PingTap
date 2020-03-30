@@ -8,7 +8,7 @@ namespace Fralle
     public string weaponName;
     [SerializeField] float equipAnimationTime = 0.3f;
 
-    public Transform muzzle;
+    public Transform[] muzzles;
     public ActiveWeaponAction activeWeaponAction;
 
     [HideInInspector] public Transform playerCamera;

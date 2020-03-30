@@ -12,6 +12,7 @@ public abstract class WeaponAction : MonoBehaviour
   [SerializeField] internal bool tapable = false;
 
   internal Weapon weapon;
+  int nextMuzzle;
 
   bool HasAmmo => weapon.ammoController && weapon.ammoController.HasAmmo();
 
@@ -31,6 +32,8 @@ public abstract class WeaponAction : MonoBehaviour
     if (HasAmmo) StartCoroutine(ShootingCooldown());
   }
 
+  public abstract void Fire();
+
   internal IEnumerator ShootingCooldown()
   {
     weapon.activeWeaponAction = ActiveWeaponAction.FIRING;
@@ -38,5 +41,14 @@ public abstract class WeaponAction : MonoBehaviour
     weapon.activeWeaponAction = ActiveWeaponAction.READY;
   }
 
-  public abstract void Fire();
+  internal Transform GetMuzzle()
+  {
+    Transform muzzle = weapon.muzzles[nextMuzzle];
+    if (weapon.muzzles.Length <= 1) return muzzle;
+
+    nextMuzzle++;
+    if (nextMuzzle > weapon.muzzles.Length - 1) nextMuzzle = 0;
+
+    return muzzle;
+  }
 }
