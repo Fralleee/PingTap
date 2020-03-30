@@ -73,9 +73,16 @@ MonoBehaviour:
   shotsPerSecond: 20
   tapable: 0
   range: 50
-  spreadIncreseEachShot: 3.5
-  maxSpread: 3.5
   pushForce: 15
+  impactParticlePrefab: {fileID: 1469201857544070, guid: d1e27766830781946b7e50a599bfaaac,
+    type: 3}
+  muzzleParticlePrefab: {fileID: 1670457245891842, guid: acad5363ee599db48a2fc0aecd98bc29,
+    type: 3}
+  useSpread: 1
+  spreadIncreaseEachShot: 0.75
+  maxSpread: 5
+  recovery: 5
+  currentSpread: 0
 --- !u!114 &-1393097630866474087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +144,7 @@ MonoBehaviour:
   randomizeRecoil: 1
   kickbackForce: 0.15
   recoverTime: 20
-  randomRecoilConstraints: {x: 0.5, y: 0.5}
+  randomRecoilConstraints: {x: 0.5, y: 0.75}
   recoilPattern: []
 --- !u!1 &828126370941643004
 GameObject:

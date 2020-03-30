@@ -1,5 +1,4 @@
-﻿using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle
 {
@@ -46,7 +45,7 @@ namespace Fralle
 
       if (impactParticlePrefab)
       {
-        var impactParticle = Instantiate( impactParticlePrefab, transform.position, Quaternion.identity );
+        var impactParticle = Instantiate(impactParticlePrefab, transform.position, Quaternion.identity);
         Destroy(impactParticle, 5f);
       }
 
