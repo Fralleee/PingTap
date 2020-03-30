@@ -32,7 +32,6 @@ namespace Fralle
       {
         weapon.muzzles[i].parent.localPosition = Vector3.Lerp(weapon.muzzles[i].parent.localPosition, startPositions[i], recoverTime * Time.deltaTime);
       }
-      //foreach (Transform weaponMuzzle in weapon.muzzles) weaponMuzzle.parent.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, recoverTime * Time.deltaTime);
     }
 
     public void Initiate(Transform playerCamera)
@@ -43,7 +42,7 @@ namespace Fralle
     public void AddRecoil()
     {
       if (mouseLook == null) return;
-      
+
       AddKickback();
 
       if (randomizeRecoil)

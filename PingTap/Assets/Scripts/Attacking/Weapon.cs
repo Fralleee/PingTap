@@ -9,7 +9,7 @@ namespace Fralle
     [SerializeField] float equipAnimationTime = 0.3f;
 
     public Transform[] muzzles;
-    public ActiveWeaponAction activeWeaponAction;
+    [Readonly] public ActiveWeaponAction activeWeaponAction;
 
     [HideInInspector] public Transform playerCamera;
     [HideInInspector] public RecoilController recoilController;
@@ -48,6 +48,7 @@ namespace Fralle
       startRotation = transform.localRotation;
 
       this.playerCamera = playerCamera;
+
       recoilController.Initiate(playerCamera);
     }
   }

@@ -33,7 +33,6 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 828126370941642993}
-  - {fileID: 8968837684219522382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,7 +72,6 @@ MonoBehaviour:
   ammoPerShot: 1
   shotsPerSecond: 20
   tapable: 0
-  alternateMuzzle: 0
   range: 50
   spreadIncreseEachShot: 3.5
   maxSpread: 3.5
@@ -94,7 +92,6 @@ MonoBehaviour:
   ammoPerShot: 1
   shotsPerSecond: 1
   tapable: 1
-  alternateMuzzle: 0
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
     type: 3}
   projectileData:
@@ -138,6 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomizeRecoil: 1
+  kickbackForce: 0.15
+  recoverTime: 20
   randomRecoilConstraints: {x: 0.5, y: 0.5}
   recoilPattern: []
 --- !u!1 &828126370941643004
@@ -168,7 +167,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.322}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 8968837684219522382}
   m_Father: {fileID: 828126370911196197}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -243,9 +243,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4462043668454193918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.829}
+  m_LocalPosition: {x: 0, y: 0, z: 0.50699997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 828126370911196197}
-  m_RootOrder: 1
+  m_Father: {fileID: 828126370941642993}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
