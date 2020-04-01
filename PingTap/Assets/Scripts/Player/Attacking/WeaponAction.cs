@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Weapon))]
+[RequireComponent(typeof(AmmoController))]
+[RequireComponent(typeof(RecoilController))]
 public abstract class WeaponAction : PlayerAction
 {
   [Header("Shooting")]
@@ -23,7 +25,7 @@ public abstract class WeaponAction : PlayerAction
 
   internal virtual void Update()
   {
-    bool shootWeapon = (tapable ? Input.GetMouseButtonDown((int)fireInput) : Input.GetMouseButton((int)fireInput)) && weapon.activeWeaponAction == ActiveWeaponAction.READY; ;
+    bool shootWeapon = (tapable ? Input.GetMouseButtonDown((int)fireInput) : Input.GetMouseButton((int)fireInput)) && weapon.activeWeaponAction == ActiveWeaponAction.READY;
     if (!shootWeapon) return;
 
     if (HasAmmo) weapon.ammoController.ChangeAmmo(-ammoPerShot);

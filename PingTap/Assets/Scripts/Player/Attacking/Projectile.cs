@@ -2,6 +2,7 @@
 
 namespace Fralle
 {
+  [RequireComponent(typeof(SphereCollider))]
   [RequireComponent(typeof(Rigidbody))]
   public class Projectile : MonoBehaviour
   {
@@ -43,20 +44,23 @@ namespace Fralle
     {
       active = true;
 
+      var position = transform.position;
+      if (collision != null) position = collision.GetContact(0).point;
+
       if (impactParticlePrefab)
       {
-        var impactParticle = Instantiate(impactParticlePrefab, transform.position, Quaternion.identity);
+        var impactParticle = Instantiate(impactParticlePrefab, position, Quaternion.identity);
         Destroy(impactParticle, 5f);
       }
 
-      var colliders = Physics.OverlapSphere(transform.position, data.explosionRadius);
+      var colliders = Physics.OverlapSphere(position, data.explosionRadius);
       foreach (var col in colliders)
       {
-        var distance = Vector3.Distance(col.transform.position, transform.position);
+        var distance = Vector3.Distance(col.transform.position, position);
         var distanceDamageMultiplier = Mathf.Clamp01(1 - distance / data.explosionRadius);
 
         var colRb = col.GetComponent<Rigidbody>();
-        if (colRb) colRb.AddExplosionForce(data.pushForce, transform.position, data.explosionRadius);
+        if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius);
 
         var damageable = col.GetComponent<IDamageable>();
         damageable?.TakeDamage(data.explosionDamage * distanceDamageMultiplier);
@@ -96,7 +100,7 @@ namespace Fralle
 
       rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
       rigidbody.useGravity = data.useGravity;
-      rigidbody.AddForce(data.launcherCamera.forward * data.force, ForceMode.VelocityChange);
+      rigidbody.AddForce(data.forward * data.force, ForceMode.VelocityChange);
 
       if (muzzleParticlePrefab)
       {
@@ -107,6 +111,8 @@ namespace Fralle
 
     void OnCollisionEnter(Collision collision)
     {
+      Debug.Log($"{gameObject.name} collided with {collision.gameObject.name}");
+
       if (data.kinematicOnImpact) rigidbody.isKinematic = true;
 
       if (data.explodeOnImpactTime > 0) hasCollision = true;

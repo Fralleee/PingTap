@@ -10,7 +10,7 @@ namespace Fralle
     public bool useGravity;
     public bool kinematicOnImpact;
     public bool explodeOnMaxRange;
-    
+
     public float explodeOnImpactTime;
     public float explodeOnTime;
     public float explosionRadius;
@@ -18,6 +18,6 @@ namespace Fralle
     public float pushForce;
     public float range;
 
-    [HideInInspector] public Transform launcherCamera;
+    [HideInInspector] public Vector3 forward;
   }
 }

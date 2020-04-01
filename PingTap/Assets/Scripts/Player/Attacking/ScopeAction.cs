@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScopeAction : PlayerAction
 {
-  [SerializeField] MouseButton scopeButton = MouseButton.Left;
+  [SerializeField] MouseButton scopeButton = MouseButton.Right;
   [SerializeField] Vector3 scopePos = new Vector3(-0.225f, 0.1f);
 
   [SerializeField] bool interruptScopeOnFire = true;
@@ -30,9 +30,8 @@ public class ScopeAction : PlayerAction
   void Update()
   {
     float fov = IsScoping ? scopedFov : defaultFov;
-    playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, fovSmooth * Time.deltaTime);
 
-    transform.localRotation = Quaternion.identity;
+    playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, fovSmooth * Time.deltaTime);
     transform.localPosition = Vector3.Lerp(transform.localPosition, IsScoping ? scopePos : Vector3.zero, resetSmooth * Time.deltaTime);
   }
 }

@@ -11,9 +11,9 @@ public class Hitscan : WeaponAction
 
   [Header("Spread")]
   [SerializeField] bool useSpread;
-  [SerializeField] float spreadIncreaseEachShot = 0.1f;
-  [SerializeField] float maxSpread = 0.25f;
-  [SerializeField] float recovery = 0.5f;
+  [SerializeField] float spreadIncreaseEachShot = 0.75f;
+  [SerializeField] float maxSpread = 5f;
+  [SerializeField] float recovery = 5f;
 
   [Readonly] public float currentSpread;
 
