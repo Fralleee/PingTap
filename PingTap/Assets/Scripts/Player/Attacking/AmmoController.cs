@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Fralle
 {
   public class AmmoController : MonoBehaviour
   {
+    public event EventHandler<int> OnAmmoChanged;
+
+    public int maxAmmo = 30;
+    public int currentAmmo;
+
     [SerializeField] bool infiniteAmmo;
-    [SerializeField] int maxAmmo = 30;
     [SerializeField] float reloadSpeed = 0.75f;
-    [SerializeField] int currentAmmo;
 
     bool isReloading;
     float rotationTime;
@@ -36,9 +40,12 @@ namespace Fralle
       else if (Input.GetKeyDown(KeyCode.R) && weapon.activeWeaponAction == ActiveWeaponAction.READY && currentAmmo < maxAmmo) StartCoroutine(ReloadCooldown());
     }
 
-    public void ChangeAmmo(int change)
+    public void ChangeAmmo(int change, bool apply = true)
     {
-      currentAmmo += change;
+      if (apply) currentAmmo += change;
+      else currentAmmo = change;
+      currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
+      OnAmmoChanged.Invoke(this, currentAmmo);
     }
 
     public bool HasAmmo(int requiredAmmo = 1)
@@ -54,7 +61,7 @@ namespace Fralle
       isReloading = true;
       rotationTime = 0f;
       yield return new WaitForSeconds(reloadSpeed);
-      currentAmmo = maxAmmo;
+      ChangeAmmo(maxAmmo, false);
       weapon.activeWeaponAction = ActiveWeaponAction.READY;
       isReloading = false;
     }

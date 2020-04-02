@@ -6824,6 +6824,7 @@ GameObject:
   - component: {fileID: 2891254597158060914}
   - component: {fileID: 2074382200130931024}
   - component: {fileID: -1001846449385186208}
+  - component: {fileID: -1908755622400236360}
   m_Layer: 0
   m_Name: Dual Guns
   m_TagString: Untagged
@@ -6897,7 +6898,7 @@ MonoBehaviour:
     explosionDamage: 5
     pushForce: 5
     range: 35
-    launcherCamera: {fileID: 0}
+    forward: {x: 0, y: 0, z: 0}
 --- !u!114 &2891254597158060914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6927,7 +6928,7 @@ MonoBehaviour:
     explosionDamage: 25
     pushForce: 25
     range: 100
-    launcherCamera: {fileID: 0}
+    forward: {x: 0, y: 0, z: 0}
 --- !u!114 &2074382200130931024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6940,10 +6941,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infiniteAmmo: 0
   maxAmmo: 12
-  reloadSpeed: 0.25
   currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.25
 --- !u!114 &-1001846449385186208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6961,3 +6962,19 @@ MonoBehaviour:
   recoverTime: 10
   randomRecoilConstraints: {x: 1, y: 2}
   recoilPattern: []
+--- !u!114 &-1908755622400236360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086867461110716825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb95d93432f5c3e49b03c061701a925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
+  asChild: 1
+  lifecycle: 1

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6252643534136959937}
   - component: {fileID: 6273474797109520075}
   - component: {fileID: -5047340116561051035}
+  - component: {fileID: -8683043241772851520}
   m_Layer: 0
   m_Name: Blaster Rifle
   m_TagString: Untagged
@@ -68,10 +69,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infiniteAmmo: 0
   maxAmmo: 1
-  reloadSpeed: 0.5
   currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.5
 --- !u!114 &6252643534136959937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +139,22 @@ MonoBehaviour:
   fovSmooth: 7
   defaultFov: 60
   scopedFov: 40
+--- !u!114 &-8683043241772851520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65906159098248847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb95d93432f5c3e49b03c061701a925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
+  asChild: 1
+  lifecycle: 1
 --- !u!1 &2020161605756361513
 GameObject:
   m_ObjectHideFlags: 0

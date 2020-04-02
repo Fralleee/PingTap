@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5450656253379110295}
   - component: {fileID: 6749799737417924175}
   - component: {fileID: 3062482478047422874}
+  - component: {fileID: -1778066229078913185}
   m_Layer: 0
   m_Name: Rocket launcher
   m_TagString: Untagged
@@ -98,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infiniteAmmo: 0
   maxAmmo: 6
-  reloadSpeed: 0.75
   currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.75
 --- !u!114 &5450656253379110295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +180,22 @@ MonoBehaviour:
     pushForce: 500
     range: 100
     forward: {x: 0, y: 0, z: 0}
+--- !u!114 &-1778066229078913185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783289418158167475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb95d93432f5c3e49b03c061701a925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
+  asChild: 1
+  lifecycle: 1
 --- !u!1 &8382213724980659626
 GameObject:
   m_ObjectHideFlags: 0

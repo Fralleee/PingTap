@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -193412882233909061}
   - component: {fileID: 5420870821815435381}
   - component: {fileID: 4169591861229383100}
+  - component: {fileID: 4028727317570622237}
   m_Layer: 0
   m_Name: Assault Rifle
   m_TagString: Untagged
@@ -112,7 +113,7 @@ MonoBehaviour:
     explosionDamage: 25
     pushForce: 10
     range: 100
-    launcherCamera: {fileID: 0}
+    forward: {x: 0, y: 0, z: 0}
 --- !u!114 &5420870821815435381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,10 +126,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infiniteAmmo: 0
   maxAmmo: 30
-  reloadSpeed: 0.75
   currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.75
 --- !u!114 &4169591861229383100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +147,22 @@ MonoBehaviour:
   recoverTime: 15
   randomRecoilConstraints: {x: 0.5, y: 0.75}
   recoilPattern: []
+--- !u!114 &4028727317570622237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943643353794196974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb95d93432f5c3e49b03c061701a925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
+  asChild: 1
+  lifecycle: 1
 --- !u!1 &2261335780125604892
 GameObject:
   m_ObjectHideFlags: 0
