@@ -45,9 +45,13 @@ namespace Fralle
 
     void HandleDeath()
     {
+      Destroy(gameObject);
+    }
+
+    void OnDestroy()
+    {
       damageController.OnHealthChange -= HandleHealthChange;
       damageController.OnDeath -= HandleDeath;
-      Destroy(gameObject);
     }
 
     IEnumerator AnimateHealthGain(float percentage)

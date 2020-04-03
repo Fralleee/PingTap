@@ -62,7 +62,7 @@ namespace Fralle
         var colRb = col.GetComponent<Rigidbody>();
         if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius);
 
-        var damageable = col.GetComponent<IDamageable>();
+        var damageable = col.GetComponentInParent<DamageController>();
         damageable?.TakeDamage(data.explosionDamage * distanceDamageMultiplier);
       }
 
@@ -76,7 +76,7 @@ namespace Fralle
       var colRb = collision.gameObject.GetComponent<Rigidbody>();
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 
-      var damageable = collision.gameObject.GetComponent<IDamageable>();
+      var damageable = collision.gameObject.GetComponentInParent<DamageController>();
       damageable?.TakeDamage(data.explosionDamage);
 
       if (impactParticlePrefab)
@@ -111,13 +111,11 @@ namespace Fralle
 
     void OnCollisionEnter(Collision collision)
     {
-      Debug.Log($"{gameObject.name} collided with {collision.gameObject.name}");
-
       if (data.kinematicOnImpact) rigidbody.isKinematic = true;
 
       if (data.explodeOnImpactTime > 0) hasCollision = true;
       if (data.explosionRadius > 0 && data.explodeOnImpactTime == 0) Explode(collision);
-      else if (data.explosionRadius == 0 && data.explodeOnImpactTime == 0) Hit(collision);
+      else if (data.explosionRadius == 0) Hit(collision);
     }
 
     void OnDrawGizmos()
