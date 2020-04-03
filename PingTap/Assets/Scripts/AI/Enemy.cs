@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
 
   void EnemyDeath()
   {
+    gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
     OnDeath(this);
     navMeshAgent.enabled = false;
     var rigidBody = gameObject.AddComponent<Rigidbody>();
