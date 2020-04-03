@@ -13,7 +13,6 @@ namespace Fralle
     void Start()
     {
       ammoController = GetComponentInParent<AmmoController>();
-      Debug.Log($"Ammo is {ammoController.currentAmmo}");
 
       currentAmmoText.text = ammoController.currentAmmo.ToString();
       maxAmmoText.text = ammoController.maxAmmo.ToString();
