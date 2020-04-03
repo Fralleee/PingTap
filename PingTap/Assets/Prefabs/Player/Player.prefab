@@ -181,10 +181,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
-  - {fileID: 249318252600298902, guid: 2d5d654a291e71945bf2a9ef093d99aa, type: 3}
-  - {fileID: -3986460761937667548, guid: e270d1196dd65cc4691d9120c4a8e073, type: 3}
-  - {fileID: 1285405834807961118, guid: 113787e801fb69d4dabcd10ae6f48423, type: 3}
-  - {fileID: 249318252600298902, guid: f24374a9ccda4c446a7ca103a20467a7, type: 3}
+  - {fileID: -5829858850810243681, guid: 0d3d5ecb19266fa469e1a3b041555a2d, type: 3}
+  - {fileID: -1476022736335663015, guid: c6d95449487dee34581640c3a0dd593b, type: 3}
+  - {fileID: -6140752178504457658, guid: 941ec3f802227664f9c9ded69002d628, type: 3}
+  - {fileID: -2727820791764079801, guid: 5c2965b1ab994ff48b3f480bcb0376ed, type: 3}
   swaySize: 0.002
   swaySmooth: 40
   rigidbody: {fileID: 1386371905872086475}
@@ -772,7 +772,6 @@ GameObject:
   - component: {fileID: 1386371905205327084}
   - component: {fileID: 1386371905205327085}
   - component: {fileID: 7901915596786580998}
-  - component: {fileID: 1571269654}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -870,73 +869,13 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
-  m_Antialiasing: 2
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1571269654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386371905205327087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 1386371905205327086}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 3
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!1 &1386371905833920357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1035,7 @@ MonoBehaviour:
   forwardSpeed: 100
   strafeSpeed: 75
   maxSpeed: 5
-  stopTime: 0.05
+  stopTime: 0.025
   maxSlopeAngle: 45
   jumpStrength: 8
   fallMultiplier: 2
@@ -1145,6 +1084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386371906627268469}
   - component: {fileID: 1089889711}
+  - component: {fileID: 940673088}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1181,6 +1121,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f071039b9a182418e594d93b4fb47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &940673088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ecce055e403b464782e92953e7d6c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - {fileID: 1386371907097986398}
+  - {fileID: 1386371905872086468}
+  - {fileID: 516560044}
+  menuButton: 27
+  overlay: {fileID: 0}
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0
