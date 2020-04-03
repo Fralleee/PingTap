@@ -26,7 +26,6 @@ namespace Fralle
 
     public void TakeDamage(float rawDamage)
     {
-      Debug.Log($"DamageController TakeDamage Rawdamage: {rawDamage}");
       if (isDead) return;
       float damage = rawDamage * damageMultiplier;
       currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
