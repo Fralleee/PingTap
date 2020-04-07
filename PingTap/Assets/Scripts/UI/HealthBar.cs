@@ -43,7 +43,7 @@ namespace Fralle
       oldValue = percentage;
     }
 
-    void HandleDeath()
+    void HandleDeath(DamageController damageController)
     {
       Destroy(gameObject);
     }

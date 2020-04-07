@@ -12,25 +12,26 @@ public class UIManager : MonoBehaviour
   void Start()
   {
     gameStatusUI.SetActive(false);
-    LevelManager.OnDefeat += HandleDefeat;
-    LevelManager.OnVictory += HandleVictory;
+    MatchManager.OnDefeat += HandleDefeat;
+    MatchManager.OnVictory += HandleVictory;
 
   }
-  void Dispose()
-  {
-    LevelManager.OnDefeat -= HandleDefeat;
-    LevelManager.OnVictory -= HandleVictory;
-  }
 
-  void HandleDefeat(LevelManager levelManager)
+  void HandleDefeat(MatchManager matchManager)
   {
     gameStatusUI.SetActive(true);
     gameStatusText.text = "DEFEAT";
   }
 
-  void HandleVictory(LevelManager levelManager)
+  void HandleVictory(MatchManager matchManager)
   {
     gameStatusUI.SetActive(true);
     gameStatusText.text = "VICTORY";
+  }
+
+  void OnDestroy()
+  {
+    MatchManager.OnDefeat -= HandleDefeat;
+    MatchManager.OnVictory -= HandleVictory;
   }
 }

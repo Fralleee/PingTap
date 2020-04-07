@@ -5,12 +5,13 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class AgentNavigation : MonoBehaviour
 {
-  [SerializeField] NavPoint navPoint;
+  public WaypointSchema wayPointSchema;
   [SerializeField] float stoppingDistance;
 
   Enemy enemy;
   NavMeshAgent navMeshAgent;
   Vector3 nextPosition;
+  int waypointIndex;
 
   void Awake()
   {
@@ -20,33 +21,23 @@ public class AgentNavigation : MonoBehaviour
 
   void Start()
   {
-    if (navPoint == null)
-    {
-      var navPointObject = GameObject.Find("NavPoint 1");
-      if (navPointObject) navPoint = navPointObject.GetComponent<NavPoint>();
-    }
-
-    if (navPoint)
-    {
-      nextPosition = navPoint.transform.position.With(y: navMeshAgent.baseOffset);
-      navMeshAgent.SetDestination(nextPosition);
-    }
-    else Debug.LogWarning("NavMeshAgent is missing NavPoint");
+    nextPosition = wayPointSchema.waypoints[waypointIndex].With(y: navMeshAgent.baseOffset);
+    navMeshAgent.SetDestination(nextPosition);
   }
 
   void Update()
   {
-    if (navPoint != null) CheckDestinationReached();
+    if (nextPosition != Vector3.zero) CheckDestinationReached();
   }
 
   void SetNextDestination()
   {
-    var nextPoint = navPoint.GetComponent<NavPoint>().GetNearestPoint(transform.position);
-    if (nextPoint == null) FinalDestination();
+    if (!navMeshAgent.enabled) return;
+    waypointIndex++;
+    if (waypointIndex > wayPointSchema.waypoints.Count - 1) FinalDestination();
     else
     {
-      navPoint = nextPoint;
-      nextPosition = nextPoint.transform.position.With(y: navMeshAgent.baseOffset);
+      nextPosition = wayPointSchema.waypoints[waypointIndex].With(y: navMeshAgent.baseOffset);
       navMeshAgent.SetDestination(nextPosition);
     }
   }
@@ -67,7 +58,7 @@ public class AgentNavigation : MonoBehaviour
   {
     Gizmos.color = new Color(0, 0, 1, 1F);
     Gizmos.DrawWireSphere(transform.position, stoppingDistance);
-    if (navPoint) Gizmos.DrawLine(transform.position, nextPosition);
+    if (nextPosition != Vector3.zero) Gizmos.DrawLine(transform.position, nextPosition);
   }
 
 }

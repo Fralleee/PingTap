@@ -6895,9 +6895,9 @@ MonoBehaviour:
     explodeOnImpactTime: 0
     explodeOnTime: 0
     explosionRadius: 0
-    explosionDamage: 5
+    explosionDamage: 25
     pushForce: 5
-    range: 35
+    range: 100
     forward: {x: 0, y: 0, z: 0}
 --- !u!114 &2891254597158060914
 MonoBehaviour:
@@ -6918,14 +6918,14 @@ MonoBehaviour:
   projectilePrefab: {fileID: 859342118846965753, guid: 0a6229f9e361b6f49975c895481029db,
     type: 3}
   projectileData:
-    force: 25
+    force: 40
     useGravity: 1
     kinematicOnImpact: 1
     explodeOnMaxRange: 0
-    explodeOnImpactTime: 3
+    explodeOnImpactTime: 1.5
     explodeOnTime: 0
     explosionRadius: 10
-    explosionDamage: 25
+    explosionDamage: 125
     pushForce: 25
     range: 100
     forward: {x: 0, y: 0, z: 0}

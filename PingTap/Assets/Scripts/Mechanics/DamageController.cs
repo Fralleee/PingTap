@@ -1,11 +1,12 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Fralle
 {
   public class DamageController : MonoBehaviour, IDamageable
   {
-    public event Action OnDeath = delegate { };
+    public event Action<DamageController> OnDeath = delegate { };
     public event Action<float, float, bool> OnHealthChange = delegate { };
     public event Action<float, bool> OnDamage = delegate { };
 
@@ -17,7 +18,7 @@ namespace Fralle
 
     bool isDead;
 
-    public float damageMultiplier { get { return 1 - 0.06f * armor / (1 + 0.06f * armor); } }
+    public float damageMultiplier => 1 - 0.06f * armor / (1 + 0.06f * armor);
 
     void Start()
     {
@@ -45,7 +46,7 @@ namespace Fralle
       else
       {
         isDead = true;
-        OnDeath();
+        OnDeath(this);
       }
     }
 
