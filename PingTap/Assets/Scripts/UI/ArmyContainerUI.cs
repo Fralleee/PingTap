@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ArmyContainerUI : MonoBehaviour
 {
-  [SerializeField] WaveUI armyPrefab;
+  [SerializeField] RoundUI armyPrefab;
 
-  List<WaveUI> armies = new List<WaveUI>();
+  [SerializeField] Sprite sprite;
+
+  List<RoundUI> armies = new List<RoundUI>();
 
   void Awake()
   {
@@ -32,7 +34,8 @@ public class ArmyContainerUI : MonoBehaviour
   {
     for (var i = 0; i < waveManager.armies.Length; i++)
     {
-      WaveUI army = Instantiate(armyPrefab, transform);
+      RoundUI army = Instantiate(armyPrefab, transform);
+      army.SetImage(sprite);
       armies.Add(army);
     }
   }

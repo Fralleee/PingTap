@@ -19,6 +19,8 @@ public class WaveManager : MonoBehaviour
 
   public bool WavesRemaining => currentArmy < armies.Length - 1 || schemaRound < maxRounds;
 
+  public Army GetCurrentArmy => armies[currentArmy];
+
   void Start()
   {
     SetNextSchema();
@@ -37,6 +39,7 @@ public class WaveManager : MonoBehaviour
     OnNewWave(this);
     return spawner.SpawnRound(schemaRound);
   }
+
 
   public int NextWave()
   {

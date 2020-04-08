@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.28235295}
+  m_Color: {r: 0.08235294, g: 0.08235294, b: 0.10980392, a: 0.60784316}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armyPrefab: {fileID: 7610081237610820979, guid: ec5826880cde1fd44bcd7bf531890b37,
     type: 3}
+  sprite: {fileID: 21300000, guid: 6b14ebfd625504242a30ac533eea00b6, type: 3}
 --- !u!1 &3475787437800578570
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.28235295}
+  m_Color: {r: 0.08235294, g: 0.08235294, b: 0.10980392, a: 0.60784316}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -356,5 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58795541e34e42e419f936bbd25ca62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wavePrefab: {fileID: 7610081237610820979, guid: ec5826880cde1fd44bcd7bf531890b37,
+  roundPrefab: {fileID: 7610081237610820979, guid: ec5826880cde1fd44bcd7bf531890b37,
     type: 3}
+  ground: {fileID: 21300000, guid: c7d6e17a99d619643ad30bd78fdf211b, type: 3}
+  air: {fileID: 21300000, guid: b072c8a988b592a419d92602a8f7eac6, type: 3}
+  invisible: {fileID: 21300000, guid: a87619b17c0a0434b95d5df774575f6e, type: 3}
+  attacking: {fileID: 21300000, guid: 51bf9c7cf06246941807851f4a73d5ad, type: 3}
+  boss: {fileID: 21300000, guid: 68af7b9e48d622a49b18771b52ecc50f, type: 3}

@@ -1,28 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaveUI : MonoBehaviour
+public class RoundUI : MonoBehaviour
 {
   [SerializeField] Color defaultColor;
   [SerializeField] Color activeColor;
   [SerializeField] Color successColor;
   [SerializeField] Color defeatColor;
 
-  Image[] images;
+  Image image;
 
   void Awake()
   {
-    images = GetComponentsInChildren<Image>();
+    image = GetComponent<Image>();
   }
-
+  
   void ChangeColor(Color newColor)
   {
-    foreach (Image image in images)
-    {
-      image.color = newColor;
-    }
+    image.color = newColor;
+  }
+
+  public void SetImage(Sprite sprite)
+  {
+    image.sprite = sprite;
   }
 
   public void Activate()
