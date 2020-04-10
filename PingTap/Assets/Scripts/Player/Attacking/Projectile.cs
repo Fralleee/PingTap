@@ -33,18 +33,16 @@ namespace Fralle
         if (activeTime > data.explodeOnTime) Explode();
       }
 
-      if (hasCollision && data.explodeOnImpactTime > 0)
-      {
-        afterCollisionTime += Time.fixedDeltaTime;
-        if (afterCollisionTime > data.explodeOnImpactTime) Explode();
-      }
+      if (!hasCollision || !(data.explodeOnImpactTime > 0)) return;
+      afterCollisionTime += Time.fixedDeltaTime;
+      if (afterCollisionTime > data.explodeOnImpactTime) Explode();
     }
 
     void Explode(Collision collision = null)
     {
       active = true;
 
-      var position = transform.position;
+      Vector3 position = transform.position;
       if (collision != null) position = collision.GetContact(0).point;
 
       if (impactParticlePrefab)
@@ -53,17 +51,21 @@ namespace Fralle
         Destroy(impactParticle, 5f);
       }
 
-      var colliders = Physics.OverlapSphere(position, data.explosionRadius);
-      foreach (var col in colliders)
+      Collider[] colliders = Physics.OverlapSphere(position, data.explosionRadius);
+      foreach (Collider col in colliders)
       {
-        var distance = Vector3.Distance(col.transform.position, position);
-        var distanceDamageMultiplier = Mathf.Clamp01(1 - distance / data.explosionRadius);
+        float distance = Vector3.Distance(col.transform.position, position);
+        float distanceDamageMultiplier = Mathf.Clamp01(1 - distance / data.explosionRadius);
 
         var colRb = col.GetComponent<Rigidbody>();
         if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius);
 
         var damageable = col.GetComponentInParent<DamageController>();
-        damageable?.TakeDamage(data.explosionDamage * distanceDamageMultiplier);
+        damageable?.TakeDamage(new DamageData()
+        {
+          player = data.player,
+          damage = data.explosionDamage * distanceDamageMultiplier
+        });
       }
 
       Destroy(gameObject);
@@ -77,11 +79,15 @@ namespace Fralle
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 
       var damageable = collision.gameObject.GetComponentInParent<DamageController>();
-      damageable?.TakeDamage(data.explosionDamage);
+      damageable?.TakeDamage(new DamageData()
+      {
+        player = data.player,
+        damage = data.explosionDamage
+      });
 
       if (impactParticlePrefab)
       {
-        var impactParticle = Instantiate(
+        GameObject impactParticle = Instantiate(
           impactParticlePrefab,
           transform.position,
           Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal)
@@ -104,14 +110,18 @@ namespace Fralle
 
       if (muzzleParticlePrefab)
       {
-        var muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
+        var muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation, data.muzzle);
         Destroy(muzzleParticle, 1.5f);
       }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-      if (data.kinematicOnImpact) rigidbody.isKinematic = true;
+      if (data.kinematicOnImpact)
+      {
+        rigidbody.isKinematic = true;
+        transform.parent = collision.transform;
+      }
 
       if (data.explodeOnImpactTime > 0) hasCollision = true;
       if (data.explosionRadius > 0 && data.explodeOnImpactTime == 0) Explode(collision);

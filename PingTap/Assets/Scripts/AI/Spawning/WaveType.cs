@@ -1,7 +1,7 @@
 ﻿public enum WaveType
 {
   Ground,
-  Air,
+  Flying,
   Invisible,
   Attacking,
   Boss

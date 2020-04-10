@@ -12,6 +12,7 @@ public class MatchManager : MonoBehaviour
 
   [Space(10)]
   [Readonly] public int enemiesAlive;
+  [Readonly] public int totalEnemies;
   [Readonly] public float prepareTimer;
   [Readonly] public float totalTimer;
   [Readonly] public float roundTimer;

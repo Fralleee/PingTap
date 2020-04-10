@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,21 +12,25 @@ public class RoundUI : MonoBehaviour
   [SerializeField] Color successColor;
   [SerializeField] Color defeatColor;
 
-  Image image;
+  [SerializeField] Image iconBorder;
+  [SerializeField] TextMeshProUGUI textUI;
+  [SerializeField] Image fillBg;
+  [SerializeField] Image fillImage;
 
-  void Awake()
-  {
-    image = GetComponent<Image>();
-  }
-  
   void ChangeColor(Color newColor)
   {
-    image.color = newColor;
+    iconBorder.color = newColor;
   }
 
-  public void SetImage(Sprite sprite)
+  public void SetText(string text)
   {
-    image.sprite = sprite;
+    textUI.text = text;
+  }
+
+  public void DisableFill()
+  {
+    fillBg.enabled = false;
+    fillImage.enabled = false;
   }
 
   public void Activate()
@@ -41,6 +46,11 @@ public class RoundUI : MonoBehaviour
   public void Defeat()
   {
     ChangeColor(defeatColor);
+  }
+
+  public void UpdateFill(float percent)
+  {
+    fillImage.fillAmount = percent;
   }
 
   void OnEnable()

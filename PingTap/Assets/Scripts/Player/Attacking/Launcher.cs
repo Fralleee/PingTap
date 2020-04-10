@@ -12,6 +12,7 @@ namespace Fralle
     {
       Transform muzzle = GetMuzzle();
 
+      projectileData.player = weapon.GetComponentInParent<Player>();
       projectileData.forward = weapon.playerCamera.forward;
 
       if (Physics.Raycast(weapon.playerCamera.position, weapon.playerCamera.forward, out var hitInfo, projectileData.range))

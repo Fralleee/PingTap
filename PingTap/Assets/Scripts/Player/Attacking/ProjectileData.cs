@@ -6,6 +6,8 @@ namespace Fralle
   [Serializable]
   public class ProjectileData
   {
+    public Player player;
+    public Transform muzzle;
     public float force = 100f;
     public bool useGravity;
     public bool kinematicOnImpact;

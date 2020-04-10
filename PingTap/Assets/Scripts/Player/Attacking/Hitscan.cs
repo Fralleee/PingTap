@@ -41,7 +41,7 @@ public class Hitscan : WeaponAction
       if (muzzleParticlePrefab)
       {
         Transform muzzle = GetMuzzle();
-        var muzzleParticle = Instantiate(muzzleParticlePrefab, muzzle.position, transform.rotation);
+        var muzzleParticle = Instantiate(muzzleParticlePrefab, muzzle.position, transform.rotation, muzzle);
         Destroy(muzzleParticle, 1.5f);
       }
 

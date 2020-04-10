@@ -8,18 +8,20 @@ public class WaveContainerUI : MonoBehaviour
 {
   [SerializeField] RoundUI roundPrefab;
 
-  [SerializeField] Sprite ground;
-  [SerializeField] Sprite air;
-  [SerializeField] Sprite invisible;
-  [SerializeField] Sprite attacking;
-  [SerializeField] Sprite boss;
+  [SerializeField] string ground;
+  [SerializeField] string flying;
+  [SerializeField] string invisible;
+  [SerializeField] string attacking;
+  [SerializeField] string boss;
 
   List<RoundUI> waves = new List<RoundUI>();
+  RoundUI currentWave;
 
   void Awake()
   {
     WaveManager.OnNewSchema += HandleNewSchema;
     WaveManager.OnNewWave += HandleNewWave;
+    WaveManager.OnWaveProgress += HandleWaveProgress;
     MatchManager.OnVictory += HandleVictory;
   }
 
@@ -43,19 +45,19 @@ public class WaveContainerUI : MonoBehaviour
     switch (waveType)
     {
       case WaveType.Ground:
-        round.SetImage(ground);
+        round.SetText(ground);
         break;
-      case WaveType.Air:
-        round.SetImage(air);
+      case WaveType.Flying:
+        round.SetText(flying);
         break;
       case WaveType.Invisible:
-        round.SetImage(invisible);
+        round.SetText(invisible);
         break;
       case WaveType.Attacking:
-        round.SetImage(attacking);
+        round.SetText(attacking);
         break;
       case WaveType.Boss:
-        round.SetImage(boss);
+        round.SetText(boss);
         break;
       default:
         throw new ArgumentOutOfRangeException(nameof(waveType), waveType, null);
@@ -64,13 +66,19 @@ public class WaveContainerUI : MonoBehaviour
 
   void HandleNewWave(WaveManager waveManager)
   {
-    int index = waveManager.schemaRound - 1;
+    int index = waveManager.currentWave - 1;
+    currentWave = waves[index];
     if (index > 0) waves[index - 1].Victory();
-    waves[index].Activate();
+    currentWave.Activate();
   }
 
   void HandleVictory(MatchManager waveManager)
   {
     waves.ForEach(x => x.Victory());
+  }
+
+  void HandleWaveProgress(float percentage)
+  {
+    currentWave.UpdateFill(percentage);
   }
 }

@@ -43,7 +43,7 @@ namespace Fralle
       oldValue = percentage;
     }
 
-    void HandleDeath(DamageController damageController)
+    void HandleDeath(DamageController damageController, DamageData damageData)
     {
       Destroy(gameObject);
     }
@@ -57,7 +57,6 @@ namespace Fralle
     IEnumerator AnimateHealthGain(float percentage)
     {
       changeIndicator.fillAmount = percentage;
-      changeIndicator.color = new Color(0.67f, 0.85f, 1f);
       float beforeChange = foregroundImage.fillAmount;
       float elapsed = -0.25f;
 
@@ -74,7 +73,6 @@ namespace Fralle
     IEnumerator AnimateHealthLoss(float percentage)
     {
       foregroundImage.fillAmount = percentage;
-      changeIndicator.color = new Color(0.96f, 0.95f, 0.07f);
       float beforeChange = changeIndicator.fillAmount;
       float elapsed = -0.5f;
       while (elapsed < updateSpeedSeconds)

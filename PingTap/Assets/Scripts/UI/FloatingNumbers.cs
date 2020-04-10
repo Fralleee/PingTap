@@ -15,7 +15,7 @@ namespace Fralle
       damageController.OnDamage += HandleDamage;
     }
 
-    void HandleDamage(float damage, bool criticalHit)
+    void HandleDamage(DamageData damageData, float damage, bool criticalHit)
     {
       var instance = Instantiate(numberPrefab, transform);
       instance.text = Mathf.Round(damage).ToString();

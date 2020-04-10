@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
 
   [SerializeField] GameObject healthBar;
   [SerializeField] GameObject floatingNumbers;
+
+  bool isDead;
   
   void Awake()
   {
@@ -47,7 +49,7 @@ public class Enemy : MonoBehaviour
     EnemyDeath(true);
   }
 
-  void HandleDeath(DamageController damageController)
+  void HandleDeath(DamageController damageController, DamageData damageData)
   {
     EnemyDeath();
   }
@@ -59,6 +61,9 @@ public class Enemy : MonoBehaviour
 
   void EnemyDeath(bool destroyImmediately = false)
   {
+    if (isDead) return;
+
+    isDead = true;
     OnAnyEnemyDeath(this);
     OnDeath(this);
 

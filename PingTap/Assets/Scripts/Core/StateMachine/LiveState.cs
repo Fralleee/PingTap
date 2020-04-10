@@ -11,10 +11,10 @@ namespace Fralle
     public override void Enter(StateController controller)
     {
       base.Enter(controller);
-      if (controller.waveManager.WavesRemaining)
-      {
-        controller.matchManager.enemiesAlive = controller.waveManager.NextWave();
-      }
+      if (!controller.waveManager.WavesRemaining) return;
+      int enemyCount = controller.waveManager.NextWave();
+      controller.matchManager.enemiesAlive = enemyCount;
+      controller.matchManager.totalEnemies = enemyCount;
     }
 
     public override void Exit(StateController controller)

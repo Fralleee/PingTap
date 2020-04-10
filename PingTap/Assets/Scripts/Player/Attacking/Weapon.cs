@@ -2,7 +2,7 @@
 
 namespace Fralle
 {
-  public class Weapon : MonoBehaviour
+  public class Weapon : InventoryItem
   {
     [Header("Weapon")]
     public string weaponName;

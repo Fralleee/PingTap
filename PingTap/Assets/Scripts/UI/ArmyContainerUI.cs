@@ -6,7 +6,7 @@ public class ArmyContainerUI : MonoBehaviour
 {
   [SerializeField] RoundUI armyPrefab;
 
-  [SerializeField] Sprite sprite;
+  [SerializeField] string text;
 
   List<RoundUI> armies = new List<RoundUI>();
 
@@ -35,7 +35,8 @@ public class ArmyContainerUI : MonoBehaviour
     for (var i = 0; i < waveManager.armies.Length; i++)
     {
       RoundUI army = Instantiate(armyPrefab, transform);
-      army.SetImage(sprite);
+      army.SetText(text);
+      army.DisableFill();
       armies.Add(army);
     }
   }

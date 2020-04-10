@@ -17,14 +17,17 @@ public class Nexus : MonoBehaviour
     Enemy.OnEnemyReachedPowerStone += HandleEnemyReachedPowerStone;
   }
 
-  void HandleDeath(DamageController damageController)
+  void HandleDeath(DamageController damageController, DamageData damageData)
   {
     Destroy(gameObject);
   }
 
   void HandleEnemyReachedPowerStone(Enemy enemy)
   {
-    damageController.TakeDamage(enemy.damage);
+    damageController.TakeDamage(new DamageData()
+    {
+      damage = enemy.damage
+    });
   }
 
   void OnDestroy()

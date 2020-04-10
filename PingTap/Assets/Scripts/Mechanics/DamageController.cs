@@ -6,9 +6,9 @@ namespace Fralle
 {
   public class DamageController : MonoBehaviour, IDamageable
   {
-    public event Action<DamageController> OnDeath = delegate { };
+    public event Action<DamageController, DamageData> OnDeath = delegate { };
     public event Action<float, float, bool> OnHealthChange = delegate { };
-    public event Action<float, bool> OnDamage = delegate { };
+    public event Action<DamageData, float, bool> OnDamage = delegate { };
 
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float currentHealth;
@@ -25,17 +25,17 @@ namespace Fralle
       if (currentHealth == 0) currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float rawDamage)
+    public void TakeDamage(DamageData damageData)
     {
       if (isDead) return;
-      float damage = rawDamage * damageMultiplier;
+      float damage = damageData.damage * damageMultiplier;
       currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
       OnHealthChange(currentHealth, maxHealth, true);
-      OnDamage(damage, false);
-      if (currentHealth <= 0) Death();
+      OnDamage(damageData, damage, false);
+      if (currentHealth <= 0) Death(damageData);
     }
 
-    public void Death()
+    public void Death(DamageData damageData)
     {
       if (isDead) return;
       if (immortal)
@@ -46,7 +46,7 @@ namespace Fralle
       else
       {
         isDead = true;
-        OnDeath(this);
+        OnDeath(this, damageData);
       }
     }
 

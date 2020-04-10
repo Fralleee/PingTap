@@ -19,15 +19,6 @@ public class Spawner : MonoBehaviour
         enemy.agentNavigation.wayPointSchema = waypointSchema;
       }
     }
-    //foreach (EnemyGroup enemyGroup in waveDefinition.enemyGroups)
-    //{
-    //  var schema = enemyGroup.waypointSchema;
-    //  for (var i = 0; i < enemyGroup.count; i++)
-    //  {
-    //    Enemy enemy = Instantiate(enemyGroup.enemy, schema.waypoints.FirstOrDefault(), Quaternion.identity, transform);
-    //    enemy.agentNavigation.wayPointSchema = schema;
-    //  }
-    //}
 
     return waveDefinition.count * army.waypointSchemas.Length;
   }

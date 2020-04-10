@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Fralle
 {
   public class WeaponManager : MonoBehaviour
   {
-    [SerializeField] Weapon[] weapons;
-
     [SerializeField] float swaySize = 0.004f;
     [SerializeField] float swaySmooth = 25f;
 
@@ -15,14 +14,22 @@ namespace Fralle
     [SerializeField] Transform swayHolder;
 
     bool hasEquippedWeapon;
+    InventoryController inventory;
     Weapon equippedWeapon;
+    Weapon[] weapons;
 
     float oldRBVelocityY;
     float bounceBackVelocityY;
     float bounceBackThreshold = 0.1f;
 
+    void Awake()
+    {
+      inventory = GetComponentInParent<InventoryController>();
+    }
+
     void Start()
     {
+      weapons = inventory.items.Where(x => x.GetType() == typeof(Weapon)).Select(x => (Weapon)x).ToArray();
       if (weapons.Length > 0) EquipWeapon(weapons[0]);
     }
 

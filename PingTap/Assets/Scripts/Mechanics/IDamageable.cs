@@ -2,7 +2,7 @@
 {
   public interface IDamageable
   {
-    void TakeDamage(float rawDamage);
-    void Death();
+    void TakeDamage(DamageData data);
+    void Death(DamageData data);
   }
 }
