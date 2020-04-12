@@ -127,10 +127,5 @@ namespace Fralle
       if (data.explosionRadius > 0 && data.explodeOnImpactTime == 0) Explode(collision);
       else if (data.explosionRadius == 0) Hit(collision);
     }
-
-    void OnDrawGizmos()
-    {
-      if (data.explosionRadius > 0 && active) Gizmos.DrawWireSphere(transform.position, data.explosionRadius);
-    }
   }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -17,14 +18,14 @@ public class PlayerController : MonoBehaviour
   [SerializeField] float lowJumpModifier = 2f;
 
   [Header("Debug")]
-  [SerializeField] string currentVelocity;
-  [SerializeField] Vector3 inputMovement;
-  [SerializeField] bool isGrounded;
-  [SerializeField] float currentSlopeAngle;
+  [SerializeField] GameObject debugUI;
+  [SerializeField] bool debugMode;
 
-
+  Vector3 inputMovement;
+  MovementDebugUI movementDebugUi;
   new Rigidbody rigidbody;
   Transform orientation;
+  bool isGrounded;
   bool jumpButtonDown;
   bool jumpButtonHold;
   float stopX;
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
     capsuleRadius = capsuleCollider.radius;
 
     orientation = transform.Find(("Orientation"));
+
+    InitializeDebug();
   }
 
   void Update()
@@ -73,28 +76,30 @@ public class PlayerController : MonoBehaviour
   {
     rigidbody.useGravity = true;
     isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out RaycastHit hit, distToGround);
+
+    if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
     if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
 
-    var slopeAngle = Vector3.Angle(hit.normal, Vector3.forward) - 90f;
-    currentSlopeAngle = slopeAngle;
-    if (slopeAngle < maxSlopeAngle + 1f)
-    {
-      rigidbody.useGravity = false;
-      rigidbody.AddRelativeForce(-hit.normal * Physics.gravity.magnitude * 2);
-    }
+    float slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
+    if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
+    if (slopeAngle > maxSlopeAngle + 1f) return;
+
+    rigidbody.useGravity = false;
+    rigidbody.AddForce(-hit.normal * Physics.gravity.magnitude * 5f);
   }
 
   void Movement()
   {
-    var modifier = isGrounded ? 1 : 0.5f;
+    float modifier = isGrounded ? 1 : 0.5f;
     Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.deltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.deltaTime;
     rigidbody.AddForce(force * modifier, ForceMode.VelocityChange);
-    currentVelocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude.ToString("##.0");
+
+    if (debugMode) movementDebugUi.SetVelocityText(new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude);
   }
 
   void LimitSpeed()
   {
-    Vector3 horizontalMovement = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+    var horizontalMovement = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
     if (!(horizontalMovement.magnitude > maxSpeed)) return;
     horizontalMovement = horizontalMovement.normalized * maxSpeed;
     rigidbody.velocity = new Vector3(horizontalMovement.x, rigidbody.velocity.y, horizontalMovement.z);
@@ -128,5 +133,13 @@ public class PlayerController : MonoBehaviour
     {
       rigidbody.velocity += Vector3.up * Physics.gravity.y * (lowJumpModifier - 1) * Time.deltaTime;
     }
+  }
+
+  void InitializeDebug()
+  {
+    var ui = new GameObject("UI");
+    ui.transform.parent = transform;
+    GameObject activeDebugUI = Instantiate(debugUI, ui.transform);
+    movementDebugUi = activeDebugUI.GetComponentInChildren<MovementDebugUI>();
   }
 }
