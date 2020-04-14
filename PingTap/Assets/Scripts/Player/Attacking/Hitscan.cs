@@ -18,7 +18,7 @@ public class Hitscan : WeaponAction
 
   [Readonly] public float currentSpread;
 
-  override internal void Update()
+  internal override void Update()
   {
     base.Update();
     if (currentSpread == 0) return;
@@ -29,9 +29,6 @@ public class Hitscan : WeaponAction
   public override void Fire()
   {
     Vector3 forward = weapon.playerCamera.forward;
-    Transform muzzle = GetMuzzle();
-    Vector3 target = muzzle.position + transform.forward * range;
-
     if (useSpread) forward = CalculateBulletSpread();
 
     int layerMask = ~LayerMask.GetMask("Corpse");
@@ -41,7 +38,10 @@ public class Hitscan : WeaponAction
       if (rb != null) rb.AddForce(weapon.playerCamera.forward * pushForce);
 
       var damageable = hitInfo.transform.GetComponentInParent<DamageController>();
-      damageable?.TakeDamage(new DamageData() { player = player, damage = damage });
+      if (damageable != null) damageable.TakeDamage(new DamageData() {player = player, damage = damage});
+
+      Transform muzzle = GetMuzzle();
+      BulletTrace(muzzle.position, hitInfo.point);
 
       if (muzzleParticlePrefab)
       {
@@ -55,14 +55,11 @@ public class Hitscan : WeaponAction
         Destroy(impactParticle, 5f);
       }
 
-      target = hitInfo.point;
-
       if (!useSpread) return;
       currentSpread += spreadIncreaseEachShot;
       currentSpread = Mathf.Clamp(currentSpread, 0, maxSpread);
     }
 
-    BulletTrace(muzzle.position, target);
   }
 
   Vector3 CalculateBulletSpread()

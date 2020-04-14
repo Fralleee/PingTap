@@ -20,8 +20,9 @@ public class MeleeController : MonoBehaviour
   float activeRecoveryTime;
   Player player;
   WeaponManager weaponManager;
-  Vector3 swingPosition = new Vector3(0.4f, 0, 0.75f);
-  Quaternion swingRotation = Quaternion.Euler(0, -160f, 0);
+
+  readonly Vector3 swingPosition = new Vector3(0.4f, 0, 0.75f);
+  readonly Quaternion swingRotation = Quaternion.Euler(0, -160f, 0);
 
   void Awake()
   {
@@ -59,10 +60,10 @@ public class MeleeController : MonoBehaviour
         var delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
         transform.localPosition = Vector3.Lerp(Vector3.zero, swingPosition, delta);
         transform.localRotation = Quaternion.Lerp(Quaternion.identity, swingRotation, delta);
-        if(activeSwingTime <= 0) weaponManager.equippedWeapon.activeWeaponAction = ActiveWeaponAction.READY;
+        if (activeSwingTime <= 0) weaponManager.equippedWeapon.activeWeaponAction = ActiveWeaponAction.READY;
       }
     }
-    else if(activeRecoveryTime > 0)
+    else if (activeRecoveryTime > 0)
     {
       activeRecoveryTime -= Time.deltaTime;
       swinging = false;
@@ -80,7 +81,7 @@ public class MeleeController : MonoBehaviour
     Collider[] targets = GetTargets();
     foreach (Collider col in targets)
     {
-      if(!TargetInArc(col)) continue;
+      if (!TargetInArc(col)) continue;
 
       var damageController = col.GetComponent<DamageController>();
       damageController.TakeDamage(new DamageData()

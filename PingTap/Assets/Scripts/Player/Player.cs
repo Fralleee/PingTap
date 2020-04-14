@@ -10,7 +10,8 @@ namespace Fralle
     void Start()
     {
       int layer = LayerMask.NameToLayer("Self");
-      gameObject.SetLayerRecursively(layer);
+      int ignoreLayer = LayerMask.NameToLayer("First Person Objects");
+      gameObject.SetLayerRecursively(layer, ignoreLayer);
 
       SetupUI();
     }

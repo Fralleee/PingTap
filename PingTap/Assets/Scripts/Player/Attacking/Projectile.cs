@@ -79,11 +79,7 @@ namespace Fralle
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 
       var damageable = collision.gameObject.GetComponentInParent<DamageController>();
-      damageable?.TakeDamage(new DamageData()
-      {
-        player = data.player,
-        damage = data.explosionDamage
-      });
+      if (damageable != null) damageable.TakeDamage(new DamageData() { player = data.player, damage = data.explosionDamage });
 
       if (impactParticlePrefab)
       {

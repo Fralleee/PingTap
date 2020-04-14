@@ -11,9 +11,9 @@ public class ScopeAction : PlayerAction
   [SerializeField] float resetSmooth = 11.75f;
   [SerializeField] float fovSmooth = 0.1f;
 
-  [SerializeField] float defaultFov = 60f;
   [SerializeField] float scopedFov = 50f;
 
+  float defaultFov = 60f;
   Weapon weapon;
   Camera playerCamera;
 
@@ -25,6 +25,7 @@ public class ScopeAction : PlayerAction
   {
     weapon = GetComponent<Weapon>();
     playerCamera = weapon.playerCamera.GetComponent<Camera>();
+    defaultFov = playerCamera.fieldOfView;
   }
 
   void Update()

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217825853}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.225, y: -0.225, z: 0.162}
+  m_LocalPosition: {x: 0.225, y: -0.225, z: 0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 544313220}
@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &408011391
 Transform:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 100
-  field of view: 60
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -120,19 +120,19 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 1
   m_RequiresOpaqueTextureOption: 0
-  m_CameraType: 0
-  m_CameraOutput: 0
+  m_CameraType: 1
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -146,6 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 516560043}
   - component: {fileID: 516560044}
+  - component: {fileID: 374833809}
   m_Layer: 0
   m_Name: Weapon Manager
   m_TagString: Untagged
@@ -180,12 +181,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9895aae5ef02e5b4ba77797bd9a1874b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 0}
   swaySize: 0.002
   swaySmooth: 40
   rigidbody: {fileID: 1386371905872086475}
   weaponHolder: {fileID: 217825854}
   playerCamera: {fileID: 1386371905205327086}
   swayHolder: {fileID: 544313220}
+--- !u!114 &374833809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516560042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16dfa70db7988a54695034926ebf322e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeDamage: 40
+  meleeRadius: 2
+  inputKey: 118
+  swingTime: 0.125
+  recoveryTime: 0.2
 --- !u!1 &544313219
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,13 +295,13 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 100
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 14135
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -318,18 +337,19 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
-  m_Cameras: []
-  m_RendererIndex: -1
+  m_Cameras:
+  - {fileID: 408011393}
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
+  m_ClearDepth: 1
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
@@ -497,10 +517,6 @@ MonoBehaviour:
   jumpStrength: 8
   fallMultiplier: 2
   lowJumpModifier: 1.5
-  currentVelocity: 
-  inputMovement: {x: 0, y: 0, z: 0}
-  isGrounded: 0
-  currentSlopeAngle: 0
   debugUI: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3, type: 3}
   debugMode: 1
 --- !u!1 &1386371906370868751
@@ -602,7 +618,6 @@ MonoBehaviour:
   - {fileID: -1476022736335663015, guid: ead46b4a43ecabd40a119dc40409703e, type: 3}
   - {fileID: -6140752178504457658, guid: 941ec3f802227664f9c9ded69002d628, type: 3}
   - {fileID: -2727820791764079801, guid: 5c2965b1ab994ff48b3f480bcb0376ed, type: 3}
-  - {fileID: -5829858850810243681, guid: 64fc9955989758f4a8111b9f4d4d3faf, type: 3}
 --- !u!114 &940673088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386371907097986393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1386371905205327086}

@@ -44,6 +44,9 @@ namespace Fralle
       time = 0f;
       transform.parent = weaponHolder;
 
+      int layer = LayerMask.NameToLayer("First Person Objects");
+      gameObject.SetLayerRecursively(layer);
+
       startPosition = transform.localPosition;
       startRotation = transform.localRotation;
 
