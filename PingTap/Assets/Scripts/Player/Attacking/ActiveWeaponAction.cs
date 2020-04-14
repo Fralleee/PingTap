@@ -4,6 +4,7 @@
   {
     READY = 0,
     FIRING = 1,
-    RELOADING = 2
+    RELOADING = 2,
+    MELEE = 3
   }
 }

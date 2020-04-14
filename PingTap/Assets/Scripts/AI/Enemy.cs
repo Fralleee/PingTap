@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(AgentNavigation))]
 [RequireComponent(typeof(DamageController))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
@@ -74,7 +73,7 @@ public class Enemy : MonoBehaviour
     }
 
     gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
-    navMeshAgent.enabled = false;
+    if (navMeshAgent) navMeshAgent.enabled = false;
     var rigidBody = gameObject.AddComponent<Rigidbody>();
     rigidBody.AddTorque(Random.onUnitSphere * 180f);
     Destroy(gameObject, 3f);

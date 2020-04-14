@@ -5,6 +5,8 @@ namespace Fralle
 {
   public class WeaponManager : MonoBehaviour
   {
+    public Weapon equippedWeapon;
+
     [SerializeField] float swaySize = 0.004f;
     [SerializeField] float swaySmooth = 25f;
 
@@ -15,7 +17,6 @@ namespace Fralle
 
     bool hasEquippedWeapon;
     InventoryController inventory;
-    Weapon equippedWeapon;
     Weapon[] weapons;
 
     float oldRBVelocityY;
@@ -63,7 +64,7 @@ namespace Fralle
       if (equippedWeapon) Destroy(equippedWeapon.gameObject);
 
       equippedWeapon = Instantiate(weapon, transform.position.With(y: -0.5f), transform.rotation);
-      equippedWeapon?.Equip(weaponHolder, playerCamera);
+      equippedWeapon.Equip(weaponHolder, playerCamera);
       hasEquippedWeapon = equippedWeapon != null;
     }
 

@@ -12,10 +12,11 @@ namespace Fralle
     {
       Transform muzzle = GetMuzzle();
 
-      projectileData.player = weapon.GetComponentInParent<Player>();
+      projectileData.player = player;
       projectileData.forward = weapon.playerCamera.forward;
 
-      if (Physics.Raycast(weapon.playerCamera.position, weapon.playerCamera.forward, out var hitInfo, projectileData.range))
+      int layerMask = ~LayerMask.GetMask("Corpse");
+      if (Physics.Raycast(weapon.playerCamera.position, weapon.playerCamera.forward, out RaycastHit hitInfo, projectileData.range, layerMask))
         projectileData.forward = (hitInfo.point - muzzle.position).normalized;
 
       Projectile projectile = Instantiate(projectilePrefab, muzzle.position, transform.rotation);

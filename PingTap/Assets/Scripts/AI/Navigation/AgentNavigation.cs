@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Enemy))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class AgentNavigation : MonoBehaviour
 {
@@ -45,7 +44,7 @@ public class AgentNavigation : MonoBehaviour
   void FinalDestination()
   {
     navMeshAgent.isStopped = true;
-    enemy.ReachedDestination();
+    enemy?.ReachedDestination();
   }
 
   void CheckDestinationReached()
