@@ -12,35 +12,33 @@ namespace Fralle
 
     void Update()
     {
-      if (Input.GetKeyDown(menuButton))
-      {
-        menuIsOpen = !menuIsOpen;
-        if (!menuIsOpen) EnableBehaviours(); // Disable stuff if we press Escape
-        else DisableBehaviours(); // Disable stuff if we press Escape
-      }
+      if (!Input.GetKeyDown(menuButton)) return;
+      menuIsOpen = !menuIsOpen;
+      if (!menuIsOpen) EnableBehaviours(); // Disable stuff if we press Escape
+      else DisableBehaviours(); // Disable stuff if we press Escape
     }
 
     void DisableBehaviours()
     {
-      overlay.SetActive(true);
-      foreach (var behaviour in behaviours) behaviour.enabled = false;
+      if (overlay != null) overlay.SetActive(true);
+      foreach (Behaviour behaviour in behaviours) behaviour.enabled = false;
 
-      var actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
-      foreach (var action in actionBehaviours) action.enabled = false;
+      PlayerAction[] actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
+      foreach (PlayerAction action in actionBehaviours) action.enabled = false;
     }
 
     void EnableBehaviours()
     {
-      overlay.SetActive(false);
-      foreach (var behaviour in behaviours) behaviour.enabled = true;
+      if (overlay != null) overlay.SetActive(false);
+      foreach (Behaviour behaviour in behaviours) behaviour.enabled = true;
 
-      var actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
-      foreach (var action in actionBehaviours) action.enabled = true;
+      PlayerAction[] actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
+      foreach (PlayerAction action in actionBehaviours) action.enabled = true;
     }
 
     void OnApplicationFocus(bool hasFocus)
     {
-      if (hasFocus && !menuIsOpen) EnableBehaviours(); // Enable stuff on Alt+tab if we didnt press escape
+      if (hasFocus && !menuIsOpen) EnableBehaviours(); // Enable stuff on Alt+tab if we didn't press escape
       else DisableBehaviours(); // Disable stuff on alt+tab if the window is not in focus
     }
 
