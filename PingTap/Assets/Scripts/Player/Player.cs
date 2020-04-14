@@ -6,6 +6,8 @@ namespace Fralle
   {
     [SerializeField] GameObject characterUI;
     [SerializeField] GameObject resourceUI;
+    [SerializeField] GameObject enemyHealthBarUI;
+    [SerializeField] GameObject damageNumbersUI;
 
     void Start()
     {
@@ -22,6 +24,8 @@ namespace Fralle
       ui.transform.parent = transform;
       Instantiate(characterUI, ui.transform);
       Instantiate(resourceUI, ui.transform);
+      Instantiate(enemyHealthBarUI, ui.transform);
+      Instantiate(damageNumbersUI, ui.transform);
     }
   }
 }
