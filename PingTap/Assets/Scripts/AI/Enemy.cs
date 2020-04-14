@@ -19,9 +19,6 @@ public class Enemy : MonoBehaviour
   public int damage = 1;
   public WaveType waveType = WaveType.Ground;
 
-  [SerializeField] GameObject healthBar;
-  [SerializeField] GameObject floatingNumbers;
-
   bool isDead;
   
   void Awake()
@@ -32,9 +29,6 @@ public class Enemy : MonoBehaviour
 
     damageController.OnDeath += HandleDeath;
     MatchManager.OnDefeat += HandleDefeat;
-
-    Instantiate(healthBar, transform);
-    Instantiate(floatingNumbers, transform);
   }
 
   void Update()

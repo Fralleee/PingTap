@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Globalization;
+using TMPro;
 using UnityEngine;
 
 namespace Fralle
@@ -8,29 +9,33 @@ namespace Fralle
     [SerializeField] TextMeshProUGUI numberPrefab;
 
     DamageController damageController;
-
-    void Awake()
+    new Camera camera;
+    
+    public void Initialize(DamageController damageController)
     {
-      damageController = GetComponentInParent<DamageController>();
+      this.damageController = damageController;
       damageController.OnDamage += HandleDamage;
+
+      camera = Camera.main;
     }
 
     void HandleDamage(DamageData damageData, float damage, bool criticalHit)
     {
-      var instance = Instantiate(numberPrefab, transform);
-      instance.text = Mathf.Round(damage).ToString();
+      TextMeshProUGUI instance = Instantiate(numberPrefab, transform);
+      instance.text = Mathf.Round(damage).ToString(CultureInfo.InvariantCulture);
       Destroy(instance, 2f);
     }
 
     void OnDestroy()
     {
-      damageController.OnDamage += HandleDamage;
+      damageController.OnDamage -= HandleDamage;
     }
 
     void LateUpdate()
     {
-      transform.LookAt(Camera.main.transform);
-      transform.Rotate(0, 180, 0);
+      if (damageController == null) return;
+
+      transform.position = camera.WorldToScreenPoint(damageController.transform.position + Vector3.up * 2f);
     }
 
   }

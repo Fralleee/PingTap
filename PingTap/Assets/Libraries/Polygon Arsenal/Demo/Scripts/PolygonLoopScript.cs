@@ -23,7 +23,7 @@ namespace PolygonArsenal
 
         IEnumerator EffectLoop()
         {
-            //GameObject effectPlayer = (GameObject)Instantiate(chosenEffect, transform.position, transform.rotation);
+            //GameObject effectPlayer = (GameObject)Initialize(chosenEffect, transform.position, transform.rotation);
 
             GameObject effectPlayer = (GameObject)Instantiate(chosenEffect);
             effectPlayer.transform.position = transform.position;

@@ -86,7 +86,7 @@ namespace PolygonArsenal
             if (!hasCollided)
             {
                 hasCollided = true;
-                impactParticle = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, impactNormal)) as GameObject;
+                impactParticle = Initialize(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, impactNormal)) as GameObject;
 
                 if (hit.gameObject.tag == "Destructible") // Projectile will destroy objects tagged as Destructible
                 {

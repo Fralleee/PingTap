@@ -11,23 +11,24 @@ namespace Fralle
 
     float oldValue = 1f;
     const float updateSpeedSeconds = 0.2f;
-
+    
     DamageController damageController;
-    Canvas canvas;
+    new Camera camera;
+    Vector3 defaultScale;
 
-    void Awake()
+    public void Initialize(DamageController damageController)
     {
-      damageController = GetComponentInParent<DamageController>();
-      damageController.OnHealthChange += HandleHealthChange;
-      damageController.OnDeath += HandleDeath;
+      defaultScale = transform.localScale;
 
-      canvas = GetComponent<Canvas>();
-      canvas.enabled = false;
+      this.damageController = damageController;
+      this.damageController.OnHealthChange += HandleHealthChange;
+      this.damageController.OnDeath += HandleDeath;
+
+      camera = Camera.main;
     }
 
     void HandleHealthChange(float currentHealth, float maxHealth, bool animate)
     {
-      canvas.enabled = true;
       float percentage = currentHealth / maxHealth;
       if (animate)
       {
@@ -46,12 +47,6 @@ namespace Fralle
     void HandleDeath(DamageController damageController, DamageData damageData)
     {
       Destroy(gameObject);
-    }
-
-    void OnDestroy()
-    {
-      damageController.OnHealthChange -= HandleHealthChange;
-      damageController.OnDeath -= HandleDeath;
     }
 
     IEnumerator AnimateHealthGain(float percentage)
@@ -86,8 +81,18 @@ namespace Fralle
 
     void LateUpdate()
     {
-      transform.LookAt(Camera.main.transform);
-      transform.Rotate(0, 180, 0);
+      float distance = Vector3.Distance(camera.transform.position, damageController.transform.position);
+      float yPositionOffset = Mathf.Lerp(damageController.yLowestOffset, damageController.yHighestOffset, distance / 40);
+      float scale = Mathf.Lerp(1.6f, 0.8f, distance / 40);
+
+      transform.localScale = defaultScale * scale;
+      transform.position = camera.WorldToScreenPoint(damageController.transform.position + Vector3.up * yPositionOffset);
+    }
+
+    void OnDestroy()
+    {
+      damageController.OnHealthChange -= HandleHealthChange;
+      damageController.OnDeath -= HandleDeath;
     }
 
   }
