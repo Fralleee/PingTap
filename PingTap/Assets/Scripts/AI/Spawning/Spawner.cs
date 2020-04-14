@@ -11,15 +11,13 @@ public class Spawner : MonoBehaviour
   {
     WaveDefinition waveDefinition = army.NextWave(round);
 
-    foreach (WaypointSchema waypointSchema in army.waypointSchemas)
+    for (var i = 0; i < waveDefinition.count; i++)
     {
-      for (var i = 0; i < waveDefinition.count; i++)
-      {
-        Enemy enemy = Instantiate(waveDefinition.enemy, waypointSchema.waypoints.FirstOrDefault(), Quaternion.identity, transform);
-        enemy.agentNavigation.wayPointSchema = waypointSchema;
-      }
+      WaypointSchema schema = army.waypointSchemas[i % army.waypointSchemas.Length];
+      Enemy enemy = Instantiate(waveDefinition.enemy, schema.waypoints.FirstOrDefault(), Quaternion.identity, transform);
+      enemy.agentNavigation.wayPointSchema = schema;
     }
 
-    return waveDefinition.count * army.waypointSchemas.Length;
+    return waveDefinition.count;
   }
 }
