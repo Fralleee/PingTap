@@ -13,8 +13,7 @@ namespace Fralle
       base.Enter(controller);
       if (!controller.waveManager.WavesRemaining) return;
       int enemyCount = controller.waveManager.NextWave();
-      controller.matchManager.enemiesAlive = enemyCount;
-      controller.matchManager.totalEnemies = enemyCount;
+      controller.matchManager.NewWave(enemyCount);
     }
 
     public override void Exit(StateController controller)

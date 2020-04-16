@@ -4,18 +4,23 @@ namespace Fralle
 {
   public class FloatingText : MonoBehaviour
   {
-    [SerializeField] float destroyTime = 2f;
-    [SerializeField] Vector3 randomizeIntensity = new Vector3(0.5f, 0, 0);
+    [SerializeField] float destroyTime = 1f;
+
+    [SerializeField] Vector2 randomPosition = new Vector2(75f, 25f);
 
     void Start()
     {
       Destroy(gameObject, destroyTime);
-      transform.localPosition += new Vector3(
-        Random.Range(-randomizeIntensity.x, randomizeIntensity.x),
-        Random.Range(-randomizeIntensity.y, randomizeIntensity.y),
-        Random.Range(-randomizeIntensity.z, randomizeIntensity.z)
-      );
-    }
 
+      transform.localPosition += new Vector3(Random.Range(-randomPosition.x, randomPosition.x), Random.Range(-randomPosition.y, randomPosition.y), 0);
+
+      var rect = GetComponent<RectTransform>();
+      
+      LTDescr tweenObjectScale = LeanTween.scale(gameObject, Vector3.zero, destroyTime);
+      LTDescr tweenObjectMove = LeanTween.move(rect, new Vector3(transform.localPosition.x, -100f, 0), destroyTime);
+
+      tweenObjectScale.setEase(LeanTweenType.easeInBack);
+      tweenObjectMove.setEase(LeanTweenType.easeInBack);
+    }
   }
 }

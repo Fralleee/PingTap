@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 4984745544428349286}
   - component: {fileID: 427832184810618589}
   - component: {fileID: 8634419315588945282}
+  - component: {fileID: 470764846358584645}
   m_Layer: 5
   m_Name: AmmoUI
   m_TagString: Untagged
@@ -655,3 +656,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmoText: {fileID: 7779310858149287240}
   maxAmmoText: {fileID: 7096438629452440129}
+--- !u!114 &470764846358584645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439019483547225446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573a82429b3fc434d98905137a65b249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToAnimate: {fileID: 6864399348324137780}
+  animationType: 3
+  easeType: 4
+  duration: 0.15
+  delay: 0
+  loop: 0
+  pingPong: 0
+  startPositionOffset: 0
+  from: {x: 1, y: 1, z: 1}
+  to: {x: 1.15, y: 1.15, z: 1.15}

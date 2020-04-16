@@ -9,10 +9,12 @@ namespace Fralle
     [SerializeField] TextMeshProUGUI maxAmmoText;
 
     AmmoController ammoController;
+    UITweener tweener;
 
     void Start()
     {
       ammoController = GetComponentInParent<AmmoController>();
+      tweener = GetComponentInParent<UITweener>();
 
       currentAmmoText.text = ammoController.currentAmmo.ToString();
       maxAmmoText.text = ammoController.maxAmmo.ToString();
@@ -28,6 +30,8 @@ namespace Fralle
     void UpdateCurrentAmmoText(object sender, int newAmmo)
     {
       currentAmmoText.text = newAmmo.ToString();
+
+      tweener.HandleTween();
     }
 
   }

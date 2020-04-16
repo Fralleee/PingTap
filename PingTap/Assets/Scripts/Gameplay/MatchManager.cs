@@ -6,6 +6,7 @@ public class MatchManager : MonoBehaviour
 {
   public static event Action<MatchManager> OnDefeat = delegate { };
   public static event Action<MatchManager> OnVictory = delegate { };
+  public static event Action<MatchManager> OnNewRound = delegate { };
 
   public GameState gameState;
   public float prepareTime = 30f;
@@ -34,6 +35,13 @@ public class MatchManager : MonoBehaviour
   {
     if (gameState == GameState.End) return;
     totalTimer += Time.deltaTime;
+  }
+
+  public void NewWave(int enemyCount)
+  {
+    enemiesAlive = enemyCount;
+    totalEnemies = enemyCount;
+    OnNewRound(this);
   }
 
   public void HandleEnemyDeath(Enemy enemy)

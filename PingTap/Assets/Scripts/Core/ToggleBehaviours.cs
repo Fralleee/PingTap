@@ -14,8 +14,8 @@ namespace Fralle
     {
       if (!Input.GetKeyDown(menuButton)) return;
       menuIsOpen = !menuIsOpen;
-      if (!menuIsOpen) EnableBehaviours(); // Disable stuff if we press Escape
-      else DisableBehaviours(); // Disable stuff if we press Escape
+      if (!menuIsOpen) EnableBehaviours();
+      else DisableBehaviours();
     }
 
     void DisableBehaviours()
