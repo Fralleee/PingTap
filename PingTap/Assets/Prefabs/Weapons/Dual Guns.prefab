@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237941416057246492}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: 0.00806}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 0, y: 0.02, z: 0.00806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1341070298065413839}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!1 &899186766865590384
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,13 +53,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899186766865590384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: 0.00806}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -0, y: 0.02, z: 0.0081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8070643671516552980}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!1 &9086867461110716825
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
+  minDamage: 20
+  maxDamage: 40
   ammoPerShot: 1
   shotsPerSecond: 4
   tapable: 0
@@ -147,9 +149,9 @@ MonoBehaviour:
     explodeOnImpactTime: 0
     explodeOnTime: 0
     explosionRadius: 0
-    explosionDamage: 25
     pushForce: 5
     range: 100
+    damage: 0
     forward: {x: 0, y: 0, z: 0}
 --- !u!114 &2891254597158060914
 MonoBehaviour:
@@ -164,6 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 1
+  minDamage: 80
+  maxDamage: 120
   ammoPerShot: 5
   shotsPerSecond: 1
   tapable: 1
@@ -179,9 +183,9 @@ MonoBehaviour:
     explodeOnImpactTime: 1.5
     explodeOnTime: 0
     explosionRadius: 10
-    explosionDamage: 125
     pushForce: 25
     range: 100
+    damage: 0
     forward: {x: 0, y: 0, z: 0}
 --- !u!114 &2074382200130931024
 MonoBehaviour:

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Fralle
 {
@@ -73,6 +74,17 @@ namespace Fralle
       for (int i = 1; i <= weapons.Length; i++)
         if (Input.GetKeyDown("" + i))
           EquipWeapon(weapons[i - 1]);
+    }
+
+
+    public void OnPrimaryFire(InputValue value)
+    {
+      Debug.Log("OnPrimaryFire" + value);
+    }
+
+    public void OnSecondaryFire(InputValue value)
+    {
+      Debug.Log("OnSecondaryFire" + value);
     }
   }
 }

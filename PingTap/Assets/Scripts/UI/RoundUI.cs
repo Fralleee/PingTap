@@ -27,12 +27,6 @@ public class RoundUI : MonoBehaviour
     textUI.text = text;
   }
 
-  public void DisableFill()
-  {
-    fillBg.enabled = false;
-    fillImage.enabled = false;
-  }
-
   public void Activate()
   {
     ChangeColor(activeColor);

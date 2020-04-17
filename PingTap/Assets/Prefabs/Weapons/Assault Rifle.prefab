@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
-  damage: 20
+  minDamage: 18
+  maxDamage: 22
   ammoPerShot: 1
   shotsPerSecond: 30
   tapable: 0
@@ -100,7 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 1
-  damage: 5
+  minDamage: 60
+  maxDamage: 80
   ammoPerShot: 3
   shotsPerSecond: 20
   tapable: 1
@@ -116,9 +118,9 @@ MonoBehaviour:
     explodeOnImpactTime: 0
     explodeOnTime: 0
     explosionRadius: 5
-    explosionDamage: 25
     pushForce: 10
     range: 100
+    damage: 0
     forward: {x: 0, y: 0, z: 0}
 --- !u!114 &5420870821815435381
 MonoBehaviour:

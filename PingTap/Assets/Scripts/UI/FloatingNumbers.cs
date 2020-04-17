@@ -36,7 +36,7 @@ namespace Fralle
 
     void LateUpdate()
     {
-      if (damageController == null) return;
+      if (damageController == null || damageController.isDead) return;
       if (renderer && !renderer.isVisible) return;
 
       transform.position = camera.WorldToScreenPoint(damageController.transform.position + Vector3.up * 2f);

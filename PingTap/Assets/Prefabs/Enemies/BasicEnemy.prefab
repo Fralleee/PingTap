@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2626577486964819000}
   - component: {fileID: 7767797421755471903}
   - component: {fileID: 4727276578734697480}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,10 +103,7 @@ MonoBehaviour:
   damageController: {fileID: 0}
   damage: 100
   waveType: 0
-  healthBar: {fileID: 7598578631745175009, guid: be6873deb0e0b604bbfc80dafcb2304a,
-    type: 3}
-  floatingNumbers: {fileID: 2705511967477650135, guid: 0fb1a4840cdb5944c8b1e2755ba2a915,
-    type: 3}
+  enemyDeathReaction: 0
 --- !u!114 &7767797421755471903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b0cb39d84c1bd4c90035f9bae7b4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yLowestOffset: 2
+  yHighestOffset: 3.5
+  isDead: 0
   maxHealth: 100
   currentHealth: 0
   armor: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: 2
+  randomizeDropPosition: {x: 200, y: 200}
 --- !u!1 &4911353468376173306
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ GameObject:
   - component: {fileID: 4911353468376173305}
   - component: {fileID: 4911353468376173191}
   - component: {fileID: 4911353468376173304}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

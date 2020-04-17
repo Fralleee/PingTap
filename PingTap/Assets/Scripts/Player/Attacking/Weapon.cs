@@ -18,8 +18,7 @@ namespace Fralle
     float time;
     Vector3 startPosition;
     Quaternion startRotation;
-
-
+    
     internal virtual void Awake()
     {
       if (string.IsNullOrWhiteSpace(weaponName)) weaponName = name;

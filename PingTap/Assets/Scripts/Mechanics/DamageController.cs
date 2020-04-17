@@ -13,16 +13,18 @@ namespace Fralle
     public event Action<float, float, bool> OnHealthChange = delegate { };
     public event Action<DamageData, float, bool> OnDamage = delegate { };
 
+    [Header("HealthBar")]
     public float yLowestOffset = 2f;
     public float yHighestOffset = 3.5f;
 
+    [Header("Stats")]
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float currentHealth;
     [SerializeField] int armor;
-
     [SerializeField] bool immortal;
+    public bool isDead;
 
-    bool isDead;
+
     bool isTouched;
 
     public float damageMultiplier => 1 - 0.06f * armor / (1 + 0.06f * armor);

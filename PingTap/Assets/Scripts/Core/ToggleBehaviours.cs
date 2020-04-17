@@ -1,26 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Fralle
 {
   public class ToggleBehaviours : MonoBehaviour
   {
     [SerializeField] Behaviour[] behaviours;
-    [SerializeField] KeyCode menuButton = KeyCode.Escape;
-    [SerializeField] GameObject overlay;
 
+    Player player;
     bool menuIsOpen;
+
+    void Start()
+    {
+      player = GetComponent<Player>();
+    }
 
     void Update()
     {
-      if (!Input.GetKeyDown(menuButton)) return;
-      menuIsOpen = !menuIsOpen;
-      if (!menuIsOpen) EnableBehaviours();
-      else DisableBehaviours();
+      if (Input.GetKeyDown(KeyCode.Escape)) ToggleMenu();
     }
 
     void DisableBehaviours()
     {
-      if (overlay != null) overlay.SetActive(true);
+      if (player.menu != null) player.menu.SetActive(true);
       foreach (Behaviour behaviour in behaviours) behaviour.enabled = false;
 
       PlayerAction[] actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
@@ -29,19 +31,18 @@ namespace Fralle
 
     void EnableBehaviours()
     {
-      if (overlay != null) overlay.SetActive(false);
+      if (player.menu != null) player.menu.SetActive(false);
       foreach (Behaviour behaviour in behaviours) behaviour.enabled = true;
 
       PlayerAction[] actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
       foreach (PlayerAction action in actionBehaviours) action.enabled = true;
     }
 
-    void OnApplicationFocus(bool hasFocus)
+    public void ToggleMenu()
     {
-      if (hasFocus && !menuIsOpen) EnableBehaviours(); // Enable stuff on Alt+tab if we didn't press escape
-      else DisableBehaviours(); // Disable stuff on alt+tab if the window is not in focus
+      menuIsOpen = !menuIsOpen;
+      if (menuIsOpen) DisableBehaviours();
+      else EnableBehaviours();
     }
-
-
   }
 }

@@ -61,11 +61,7 @@ namespace Fralle
         if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius);
 
         var damageable = col.GetComponentInParent<DamageController>();
-        damageable?.TakeDamage(new DamageData()
-        {
-          player = data.player,
-          damage = data.explosionDamage * distanceDamageMultiplier
-        });
+        if (damageable != null) damageable.TakeDamage(new DamageData() { player = data.player, damage = data.damage * distanceDamageMultiplier });
       }
 
       Destroy(gameObject);
@@ -79,7 +75,7 @@ namespace Fralle
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 
       var damageable = collision.gameObject.GetComponentInParent<DamageController>();
-      if (damageable != null) damageable.TakeDamage(new DamageData() { player = data.player, damage = data.explosionDamage });
+      if (damageable != null) damageable.TakeDamage(new DamageData() { player = data.player, damage = data.damage });
 
       if (impactParticlePrefab)
       {
@@ -104,11 +100,11 @@ namespace Fralle
       rigidbody.useGravity = data.useGravity;
       rigidbody.AddForce(data.forward * data.force, ForceMode.VelocityChange);
 
-      if (muzzleParticlePrefab)
-      {
-        var muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation, data.muzzle);
-        Destroy(muzzleParticle, 1.5f);
-      }
+      if (!muzzleParticlePrefab) return;
+      GameObject muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
+      int layer = LayerMask.NameToLayer("First Person Objects");
+      muzzleParticle.SetLayerRecursively(layer);
+      Destroy(muzzleParticle, 1.5f);
     }
 
     void OnCollisionEnter(Collision collision)

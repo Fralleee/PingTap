@@ -11,6 +11,11 @@ public class MatchManager : MonoBehaviour
   public GameState gameState;
   public float prepareTime = 30f;
 
+  [Header("UI")]
+  [SerializeField] GameObject roundsUI;
+  [SerializeField] GameObject timersUI;
+  [SerializeField] GameObject enemiesUI;
+
   [Space(10)]
   [Readonly] public int enemiesAlive;
   [Readonly] public int totalEnemies;
@@ -31,10 +36,24 @@ public class MatchManager : MonoBehaviour
     WaveManager.OnWavesComplete += HandleWavesComplete;
   }
 
+  void Start()
+  {
+    SetupUI();
+  }
+
   void Update()
   {
     if (gameState == GameState.End) return;
     totalTimer += Time.deltaTime;
+  }
+
+  void SetupUI()
+  {
+    var ui = new GameObject("UI");
+    ui.transform.parent = transform;
+    Instantiate(roundsUI, ui.transform);
+    Instantiate(timersUI, ui.transform);
+    Instantiate(enemiesUI, ui.transform);
   }
 
   public void NewWave(int enemyCount)
@@ -54,23 +73,23 @@ public class MatchManager : MonoBehaviour
     Victory();
   }
 
-  void Dispose()
-  {
-    Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
-    Nexus.OnDeath -= Defeat;
-  }
-
   void Victory()
   {
     stateController.enabled = false;
 
-    Dispose();
     OnVictory(this);
   }
 
   void Defeat(Nexus nexus)
   {
-    Dispose();
     OnDefeat(this);
   }
+
+  void OnDestroy()
+  {
+    Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
+    Nexus.OnDeath -= Defeat;
+    WaveManager.OnWavesComplete -= HandleWavesComplete;
+  }
+
 }

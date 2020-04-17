@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1657223847493178258}
   - component: {fileID: 527609039837363779}
   - component: {fileID: -8848854164117446963}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: FlyingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +103,7 @@ MonoBehaviour:
   damageController: {fileID: 0}
   damage: 100
   waveType: 1
-  floatingNumbers: {fileID: 2705511967477650135, guid: 0fb1a4840cdb5944c8b1e2755ba2a915,
-    type: 3}
+  enemyDeathReaction: 1
 --- !u!114 &527609039837363779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yLowestOffset: 3
   yHighestOffset: 5
+  isDead: 0
   maxHealth: 100
   currentHealth: 0
   armor: 0
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: 2
+  randomizeDropPosition: {x: 200, y: 200}
 --- !u!1 &4911353468376173306
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +148,7 @@ GameObject:
   - component: {fileID: 4911353468376173305}
   - component: {fileID: 4911353468376173191}
   - component: {fileID: 4911353468376173304}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

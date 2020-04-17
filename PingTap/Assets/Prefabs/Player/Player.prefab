@@ -55,7 +55,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408011390}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -262,7 +262,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386371905205327087}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -301,7 +301,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 14135
+    m_Bits: 30519
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -604,6 +604,9 @@ MonoBehaviour:
     type: 3}
   damageNumbersUI: {fileID: 6248745576978661917, guid: dffb2453f4c5dac43a9035e32a0b1839,
     type: 3}
+  menuUI: {fileID: 4038077519139060140, guid: e6e9972b2ef61404d9ad3115bca869ae, type: 3}
+  menu: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!114 &6817597722629130795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,11 +638,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   behaviours:
-  - {fileID: 1386371907097986398}
+  - {fileID: 6989787498152017760}
   - {fileID: 1386371905872086468}
   - {fileID: 516560044}
-  menuButton: 27
-  overlay: {fileID: 0}
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386371907097986392}
   - component: {fileID: 1386371907097986399}
-  - component: {fileID: 1386371907097986398}
+  - component: {fileID: 6989787498152017760}
   m_Layer: 0
   m_Name: Camera Rig
   m_TagString: Untagged
@@ -687,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1386371905833920356}
---- !u!114 &1386371907097986398
+--- !u!114 &6989787498152017760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

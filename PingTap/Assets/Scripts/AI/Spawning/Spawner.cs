@@ -9,8 +9,9 @@ public class Spawner : MonoBehaviour
 
   public int SpawnRound(int round)
   {
-    WaveDefinition waveDefinition = army.NextWave(round);
+    if (army.waypointSchemas.Length == 0) return 0;
 
+    WaveDefinition waveDefinition = army.NextWave(round);
     for (var i = 0; i < waveDefinition.count; i++)
     {
       WaypointSchema schema = army.waypointSchemas[i % army.waypointSchemas.Length];

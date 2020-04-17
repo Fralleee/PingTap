@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
 
   public int damage = 1;
   public WaveType waveType = WaveType.Ground;
+  [SerializeField] EnemyDeathReaction enemyDeathReaction = EnemyDeathReaction.UpInTheAir;
 
   bool isDead;
   
@@ -68,8 +69,19 @@ public class Enemy : MonoBehaviour
 
     gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
     if (navMeshAgent) navMeshAgent.enabled = false;
+    
     var rigidBody = gameObject.AddComponent<Rigidbody>();
-    rigidBody.AddTorque(Random.onUnitSphere * 180f);
+    switch (enemyDeathReaction)
+    {
+      case EnemyDeathReaction.UpInTheAir:
+        rigidBody.AddForce(Vector3.up * Random.Range(500f, 1000f));
+        rigidBody.AddTorque(Random.onUnitSphere * 360f);
+        break;
+      case EnemyDeathReaction.DropDead:
+        rigidBody.AddTorque(Random.onUnitSphere * 90f);
+        break;
+    }
+
     Destroy(gameObject, 3f);
   }
 

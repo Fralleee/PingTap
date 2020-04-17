@@ -6,7 +6,7 @@ using UnityEngine;
 public class DropResource : MonoBehaviour
 {
   public int credits;
-
+  
   void Awake()
   {
     GetComponent<DamageController>().OnDeath += HandleDeath;
@@ -17,7 +17,7 @@ public class DropResource : MonoBehaviour
     if (!damageData.player) return;
 
     var inventory = damageData.player.GetComponentInParent<InventoryController>();
-    inventory?.Receive(credits);
+    if (inventory != null) inventory.Receive(credits);
   }
 
   void OnDestroy()

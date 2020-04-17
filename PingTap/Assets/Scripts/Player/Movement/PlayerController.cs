@@ -21,13 +21,17 @@ public class PlayerController : MonoBehaviour
   [SerializeField] GameObject debugUI;
   [SerializeField] bool debugMode;
 
-  Vector3 inputMovement;
   MovementDebugUI movementDebugUi;
+
+  Vector3 inputMovement;
+  CapsuleCollider capsule;
   new Rigidbody rigidbody;
   Transform orientation;
+
   bool isGrounded;
   bool jumpButtonDown;
   bool jumpButtonHold;
+
   float stopX;
   float stopZ;
   float distToGround;
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
   void Awake()
   {
+    capsule = GetComponent<CapsuleCollider>();
+
     rigidbody = GetComponent<Rigidbody>();
     rigidbody.freezeRotation = true;
 
@@ -56,7 +62,6 @@ public class PlayerController : MonoBehaviour
 
   void FixedUpdate()
   {
-    GroundControl();
     Movement();
     LimitSpeed();
     StoppingForces();
@@ -70,22 +75,6 @@ public class PlayerController : MonoBehaviour
     inputMovement.y = Input.GetAxisRaw("Vertical");
     jumpButtonDown = Input.GetButtonDown("Jump");
     jumpButtonHold = Input.GetButton("Jump");
-  }
-
-  void GroundControl()
-  {
-    rigidbody.useGravity = true;
-    isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out RaycastHit hit, distToGround);
-
-    if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
-    if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
-
-    float slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
-    if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
-    if (slopeAngle > maxSlopeAngle + 1f) return;
-
-    rigidbody.useGravity = false;
-    rigidbody.AddForce(-hit.normal * Physics.gravity.magnitude * 5f);
   }
 
   void Movement()
@@ -142,4 +131,54 @@ public class PlayerController : MonoBehaviour
     GameObject activeDebugUI = Instantiate(debugUI, ui.transform);
     movementDebugUi = activeDebugUI.GetComponentInChildren<MovementDebugUI>();
   }
+
+  void OnCollisionStay(Collision collision)
+  {
+    rigidbody.useGravity = true;
+    if (!isGrounded && !(rigidbody.velocity.y < 0.1)) return;
+    isGrounded = false;
+
+    for (var i = 0; i < collision.contactCount; i++)
+    {
+      ContactPoint contact = collision.GetContact(i);
+      if (!(contact.point.y < (transform.position.y - (capsule.radius + 0.199f)))) continue;
+
+      isGrounded = true;
+      if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? contact.otherCollider.transform.name : "");
+
+      float slopeAngle = Mathf.Abs(Vector3.Angle(contact.normal, Vector3.forward) - 90f);
+      if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
+      if (slopeAngle > maxSlopeAngle + 1f) break;
+
+      rigidbody.useGravity = false;
+      rigidbody.AddForce(-contact.normal * Physics.gravity.magnitude * 5f);
+
+      break;
+    }
+  }
+
+  void OnCollisionExit()
+  {
+    rigidbody.useGravity = true;
+  }
+
+  #region Old code
+  // # FixedUpdate
+  //void GroundControl()
+  //{
+  //rigidbody.useGravity = true;
+  //isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out RaycastHit hit, distToGround);
+
+  //if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
+  //if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
+
+  //float slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
+  //if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
+  //if (slopeAngle > maxSlopeAngle + 1f) return;
+
+  //rigidbody.useGravity = false;
+  //rigidbody.AddForce(-hit.normal * Physics.gravity.magnitude * 5f);
+  //}
+  #endregion
+
 }

@@ -9,7 +9,8 @@ public abstract class WeaponAction : PlayerAction
 {
   [Header("Shooting")]
   [SerializeField] internal MouseButton fireInput = MouseButton.Left;
-  [SerializeField] internal float damage = 5;
+  [SerializeField] internal float minDamage = 1;
+  [SerializeField] internal float maxDamage = 10;
   [SerializeField] internal int ammoPerShot = 1;
   [SerializeField] internal int shotsPerSecond = 20;
   [SerializeField] internal bool tapable = false;
@@ -18,9 +19,10 @@ public abstract class WeaponAction : PlayerAction
   internal Player player;
   int nextMuzzle;
 
+  internal float Damage => Random.Range(minDamage, maxDamage);
   bool HasAmmo => weapon.ammoController && weapon.ammoController.HasAmmo();
 
-  internal virtual void Awake()
+  internal virtual void Start()
   {
     weapon = GetComponent<Weapon>();
     player = weapon.GetComponentInParent<Player>();

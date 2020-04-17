@@ -38,7 +38,7 @@ public class Hitscan : WeaponAction
       if (rb != null) rb.AddForce(weapon.playerCamera.forward * pushForce);
 
       var damageable = hitInfo.transform.GetComponentInParent<DamageController>();
-      if (damageable != null) damageable.TakeDamage(new DamageData() {player = player, damage = damage});
+      if (damageable != null) damageable.TakeDamage(new DamageData() {player = player, damage = Damage});
 
       Transform muzzle = GetMuzzle();
       BulletTrace(muzzle.position, hitInfo.point);
