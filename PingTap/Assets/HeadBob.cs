@@ -20,16 +20,15 @@ public class HeadBob : MonoBehaviour
   float timer = Mathf.PI / 2;
   float velocityY;
   float bounceBackVelocityY;
+  float bounceBackThreshold = 0.0001f;
   float jumpTimer = Mathf.PI / 2;
-
-  readonly float bounceBackThreshold = 0.0001f;
 
   void Awake()
   {
     playerController = GetComponent<PlayerController>();
     playerController.OnMovement += HandleMovement;
-    playerController.OnJump += HandleJump;
-    playerController.OnGroundHit += HandleGroundHit;
+    //playerController.OnJump += HandleJump;
+    playerController.OnGroundChanged += HandleGroundHit;
   }
 
   void FixedUpdate()
@@ -48,16 +47,18 @@ public class HeadBob : MonoBehaviour
     }
   }
 
-  void HandleGroundHit(Collision collision)
+  void HandleGroundHit(bool isGrounded)
   {
-    jumpTimer = 0.33f;
-    bounceBackVelocityY = bounceBackPower * -collision.impulse.y;
-  }
-
-  void HandleJump(Rigidbody rigidbody)
-  {
-    jumpTimer = 0f;
-    bounceBackVelocityY = 0f;
+    if (isGrounded)
+    {
+      jumpTimer = 0.33f;
+      bounceBackVelocityY = -bounceBackPower;
+    }
+    else
+    {
+      jumpTimer = 0f;
+      bounceBackVelocityY = 0f;
+    }
   }
 
   void HandleMovement(Vector3 movement)
@@ -75,9 +76,8 @@ public class HeadBob : MonoBehaviour
       newPosition = Vector3.Lerp(headBob.localPosition, Vector3.zero, transitionSpeed * Time.deltaTime);
     }
 
-    headBob.localPosition = newPosition.With(Mathf.Abs(velocityY) > bounceBackThreshold 
-      ? Mathf.Lerp(headBob.localPosition.y, velocityY, transitionSpeed * Time.deltaTime) 
-      : Mathf.Lerp(headBob.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
+    if (Mathf.Abs(velocityY) > bounceBackThreshold) headBob.localPosition = newPosition.With(y: Mathf.Lerp(headBob.localPosition.y, velocityY, transitionSpeed * Time.deltaTime));
+    else headBob.localPosition = newPosition.With(y: Mathf.Lerp(headBob.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
 
     if (timer > Mathf.PI * 2) timer = 0;
   }

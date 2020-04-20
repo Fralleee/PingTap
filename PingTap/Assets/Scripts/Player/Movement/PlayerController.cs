@@ -6,8 +6,7 @@ using UnityEngine.Rendering;
 public class PlayerController : MonoBehaviour
 {
   public event Action<Vector3> OnMovement = delegate { };
-  public event Action<Collision> OnGroundHit = delegate { };
-  public event Action<Rigidbody> OnJump = delegate { };
+  public event Action<bool> OnGroundChanged = delegate { };
 
   [Header("Movement")]
   [SerializeField] float forwardSpeed = 100f;
@@ -40,7 +39,6 @@ public class PlayerController : MonoBehaviour
   float stopX;
   float stopZ;
   float distToGround;
-  float capsuleRadius;
 
   void Awake()
   {
@@ -49,10 +47,7 @@ public class PlayerController : MonoBehaviour
     rigidbody = GetComponent<Rigidbody>();
     rigidbody.freezeRotation = true;
 
-    var capsuleCollider = GetComponent<CapsuleCollider>();
-    distToGround = capsuleCollider.bounds.extents.y - capsuleCollider.bounds.extents.x + 0.1f;
-
-    capsuleRadius = capsuleCollider.radius;
+    distToGround = capsule.bounds.extents.y - capsule.bounds.extents.x + 0.1f;
 
     orientation = transform.Find(("Orientation"));
 
@@ -67,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
   void FixedUpdate()
   {
+    GroundControl();
     Movement();
     LimitSpeed();
     StoppingForces();
@@ -114,7 +110,6 @@ public class PlayerController : MonoBehaviour
     if (!isGrounded) return;
 
     rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
-    OnJump(rigidbody);
   }
 
   void GravityAdjuster()
@@ -137,56 +132,23 @@ public class PlayerController : MonoBehaviour
     GameObject activeDebugUI = Instantiate(debugUI, ui.transform);
     movementDebugUi = activeDebugUI.GetComponentInChildren<MovementDebugUI>();
   }
-  
-  void OnCollisionStay(Collision collision)
+
+  void GroundControl()
   {
     rigidbody.useGravity = true;
-    if (!isGrounded && !(rigidbody.velocity.y < 0.1)) return;
+    bool wasGrounded = isGrounded;
+    isGrounded = Physics.SphereCast(transform.position, capsule.radius, -Vector3.up, out RaycastHit hit, distToGround);
+    if(wasGrounded != isGrounded) OnGroundChanged(isGrounded);
 
-    for (var i = 0; i < collision.contactCount; i++)
-    {
-      ContactPoint contact = collision.GetContact(i);
-      if (!(contact.point.y < (transform.position.y - (capsule.radius + 0.199f)))) continue;
+    if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
+    if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
 
-      if (!isGrounded) OnGroundHit(collision);
-      isGrounded = true;
-      if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? contact.otherCollider.transform.name : "");
+    float slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
+    if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
+    if (slopeAngle > maxSlopeAngle + 1f) return;
 
-      float slopeAngle = Mathf.Abs(Vector3.Angle(contact.normal, Vector3.forward) - 90f);
-      if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
-      if (slopeAngle > maxSlopeAngle + 1f) break;
-
-      rigidbody.useGravity = false;
-      rigidbody.AddForce(-contact.normal * Physics.gravity.magnitude * 5f);
-
-      break;
-    }
+    rigidbody.useGravity = false;
+    rigidbody.AddForce(-hit.normal * Physics.gravity.magnitude * 5f);
   }
-
-  void OnCollisionExit()
-  {
-    isGrounded = false;
-    rigidbody.useGravity = true;
-    if (debugMode) movementDebugUi.SetGroundedText(isGrounded, "");
-  }
-
-  #region Old code
-  // # FixedUpdate
-  //void GroundControl()
-  //{
-  //rigidbody.useGravity = true;
-  //isGrounded = Physics.SphereCast(transform.position, capsuleRadius, -Vector3.up, out RaycastHit hit, distToGround);
-
-  //if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
-  //if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
-
-  //float slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
-  //if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
-  //if (slopeAngle > maxSlopeAngle + 1f) return;
-
-  //rigidbody.useGravity = false;
-  //rigidbody.AddForce(-hit.normal * Physics.gravity.magnitude * 5f);
-  //}
-  #endregion
 
 }
