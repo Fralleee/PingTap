@@ -20,8 +20,9 @@ public class HeadBob : MonoBehaviour
   float timer = Mathf.PI / 2;
   float velocityY;
   float bounceBackVelocityY;
-  float bounceBackThreshold = 0.0001f;
   float jumpTimer = Mathf.PI / 2;
+
+  readonly float bounceBackThreshold = 0.0001f;
 
   void Awake()
   {
