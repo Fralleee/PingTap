@@ -61,7 +61,7 @@ public class HeadBob : MonoBehaviour
 
   void HandleMovement(Vector3 movement)
   {
-    Vector3 newPosition = Vector3.zero;
+    Vector3 newPosition;
     if (movement.magnitude > 0)
     {
       float actualBobAmount = bobAmount * movement.magnitude;
@@ -74,8 +74,9 @@ public class HeadBob : MonoBehaviour
       newPosition = Vector3.Lerp(headBob.localPosition, Vector3.zero, transitionSpeed * Time.deltaTime);
     }
 
-    if (Mathf.Abs(velocityY) > bounceBackThreshold) headBob.localPosition = newPosition.With(y: Mathf.Lerp(headBob.localPosition.y, velocityY, transitionSpeed * Time.deltaTime));
-    else headBob.localPosition = newPosition.With(y: Mathf.Lerp(headBob.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
+    headBob.localPosition = newPosition.With(Mathf.Abs(velocityY) > bounceBackThreshold 
+      ? Mathf.Lerp(headBob.localPosition.y, velocityY, transitionSpeed * Time.deltaTime) 
+      : Mathf.Lerp(headBob.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
 
     if (timer > Mathf.PI * 2) timer = 0;
   }
