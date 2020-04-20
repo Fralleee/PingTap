@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,12 +48,12 @@ public class HeadBob : MonoBehaviour
     }
   }
 
-  void HandleGroundHit(bool isGrounded)
+  void HandleGroundHit(bool isGrounded, float velocity)
   {
     if (isGrounded)
     {
       jumpTimer = 0.33f;
-      bounceBackVelocityY = -bounceBackPower;
+      bounceBackVelocityY = bounceBackPower * Mathf.Clamp(velocity, -20, -10);
     }
     else
     {

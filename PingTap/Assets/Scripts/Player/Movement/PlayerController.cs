@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class PlayerController : MonoBehaviour
 {
   public event Action<Vector3> OnMovement = delegate { };
-  public event Action<bool> OnGroundChanged = delegate { };
+  public event Action<bool, float> OnGroundChanged = delegate { };
 
   [Header("Movement")]
   [SerializeField] float forwardSpeed = 100f;
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
     rigidbody.useGravity = true;
     bool wasGrounded = isGrounded;
     isGrounded = Physics.SphereCast(transform.position, capsule.radius, -Vector3.up, out RaycastHit hit, distToGround);
-    if(wasGrounded != isGrounded) OnGroundChanged(isGrounded);
+    if(wasGrounded != isGrounded) OnGroundChanged(isGrounded, rigidbody.velocity.y);
 
     if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
     if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
