@@ -10,7 +10,7 @@ namespace Fralle
     public static event Action<DamageController> OnHealthBarRemoved = delegate { };
 
     public event Action<DamageController, DamageData> OnDeath = delegate { };
-    public event Action<float, float, bool> OnHealthChange = delegate { };
+    public event Action<float, float> OnHealthChange = delegate { };
     public event Action<DamageData, float, bool> OnDamage = delegate { };
 
     [Header("HealthBar")]
@@ -45,7 +45,7 @@ namespace Fralle
 
       float damage = damageData.damage * damageMultiplier;
       currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-      OnHealthChange(currentHealth, maxHealth, true);
+      OnHealthChange(currentHealth, maxHealth);
       OnDamage(damageData, damage, false);
       if (currentHealth <= 0) Death(damageData);
     }
@@ -57,7 +57,7 @@ namespace Fralle
       if (immortal)
       {
         currentHealth = maxHealth;
-        OnHealthChange(currentHealth, maxHealth, true);
+        OnHealthChange(currentHealth, maxHealth);
       }
       else
       {

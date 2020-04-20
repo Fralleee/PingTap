@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 944653447897434283}
   - component: {fileID: 1139744867440160691}
   - component: {fileID: 1141184870228575613}
-  - component: {fileID: 902399338810720817}
+  - component: {fileID: -8109939980554594307}
   - component: {fileID: 2769368145261848433}
   - component: {fileID: 3066094974245227055}
   - component: {fileID: 859342118846965753}
@@ -9660,7 +9660,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &902399338810720817
+--- !u!114 &-8109939980554594307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9669,14 +9669,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 942541010798045517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa5c1e37409a9344a344c0468db383d, type: 3}
+  m_Script: {fileID: 11500000, guid: c1dd0d8343f91684994bcb81a683bd93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSound: {fileID: 1297775994297274, guid: 19e3728972664534ca6b822384d2e965,
     type: 3}
   destroyWhenDone: 1
-  soundPrefabIsChild: 1
-  pitchRandomMultiplier: 1.1
+  soundPrefabIsChild: 0
+  pitchRandomMultiplier: 1.2
 --- !u!135 &2769368145261848433
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9718,9 +9718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494f56b9000b70e43acbf94b8174391e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactParticlePrefab: {fileID: 1746838236574612, guid: 1136e183095a225479ac1b7c87e2ebfa,
+  impactParticlePrefab: {fileID: 1238559689201452, guid: f9b78a489651370428ab1a0a80213a8f,
     type: 3}
-  muzzleParticlePrefab: {fileID: 1867989569379810, guid: c3eecc1284890ac4c9b841cc6c01f4ee,
+  muzzleParticlePrefab: {fileID: 1821755270249548, guid: 5811a3cb94539af48b5e8cf7845e93a3,
     type: 3}
   trailParticles: []
 --- !u!1 &942546821594316997

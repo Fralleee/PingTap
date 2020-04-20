@@ -18,6 +18,7 @@ namespace Fralle
 
     bool hasEquippedWeapon;
     InventoryController inventory;
+    Animator animator;
     Weapon[] weapons;
 
     float oldRBVelocityY;
@@ -27,6 +28,7 @@ namespace Fralle
     void Awake()
     {
       inventory = GetComponentInParent<InventoryController>();
+      animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -41,17 +43,16 @@ namespace Fralle
 
       if (!hasEquippedWeapon) return;
 
-      float velocityY = rigidbody.velocity.y;
-      if (oldRBVelocityY != 0 && velocityY == 0) bounceBackVelocityY = 5f;
-      if (bounceBackVelocityY > bounceBackThreshold && velocityY == 0)
-      {
-        velocityY = bounceBackVelocityY;
-        Mathf.SmoothDamp(bounceBackVelocityY, 0, ref bounceBackVelocityY, 1f);
-      }
+      //float velocityY = rigidbody.velocity.y;
+      //if (oldRBVelocityY != 0 && velocityY == 0) bounceBackVelocityY = 5f;
+      //if (bounceBackVelocityY > bounceBackThreshold && velocityY == 0)
+      //{
+      //  velocityY = bounceBackVelocityY;
+      //  Mathf.SmoothDamp(bounceBackVelocityY, 0, ref bounceBackVelocityY, 1f);
+      //}
+      //oldRBVelocityY = rigidbody.velocity.y;
 
-      oldRBVelocityY = rigidbody.velocity.y;
-      Vector2 delta = -new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") + velocityY);
-
+      Vector2 delta = -new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")); // + velocityY);
       if (!Cursor.visible)
       {
         swayHolder.localPosition = Vector3.Lerp(swayHolder.localPosition, Vector3.zero, swaySmooth * Time.deltaTime);

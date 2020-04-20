@@ -12,7 +12,6 @@ namespace Fralle
 
     new Rigidbody rigidbody;
     ProjectileData data;
-    bool active;
     bool hasCollision;
     float distanceTraveled;
     float activeTime;
@@ -40,14 +39,12 @@ namespace Fralle
 
     void Explode(Collision collision = null)
     {
-      active = true;
-
       Vector3 position = transform.position;
       if (collision != null) position = collision.GetContact(0).point;
 
       if (impactParticlePrefab)
       {
-        var impactParticle = Instantiate(impactParticlePrefab, position, Quaternion.identity);
+        GameObject impactParticle = Instantiate(impactParticlePrefab, position, Quaternion.identity);
         Destroy(impactParticle, 5f);
       }
 
@@ -69,8 +66,6 @@ namespace Fralle
 
     void Hit(Collision collision)
     {
-      active = true;
-
       var colRb = collision.gameObject.GetComponent<Rigidbody>();
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 

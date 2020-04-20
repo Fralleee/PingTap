@@ -60,6 +60,38 @@ Transform:
   m_Father: {fileID: 8070643671516552980}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+--- !u!1 &4890690803270939596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7096021317393371237}
+  m_Layer: 0
+  m_Name: Graphics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7096021317393371237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890690803270939596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8070643671516552980}
+  - {fileID: 1341070298065413839}
+  m_Father: {fileID: 1693239140963163333}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9086867461110716825
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,8 +125,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8070643671516552980}
-  - {fileID: 1341070298065413839}
+  - {fileID: 7096021317393371237}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -140,8 +171,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: -2482091467279127213, guid: 2fd7f9217dc710f40bcc9391fac5b9ab,
     type: 3}
   projectileData:
-    player: {fileID: 0}
-    muzzle: {fileID: 0}
     force: 50
     useGravity: 0
     kinematicOnImpact: 0
@@ -151,6 +180,7 @@ MonoBehaviour:
     explosionRadius: 0
     pushForce: 5
     range: 100
+    player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
 --- !u!114 &2891254597158060914
@@ -174,8 +204,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 859342118846965753, guid: 0a6229f9e361b6f49975c895481029db,
     type: 3}
   projectileData:
-    player: {fileID: 0}
-    muzzle: {fileID: 0}
     force: 40
     useGravity: 1
     kinematicOnImpact: 1
@@ -185,6 +213,7 @@ MonoBehaviour:
     explosionRadius: 10
     pushForce: 25
     range: 100
+    player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
 --- !u!114 &2074382200130931024
@@ -241,7 +270,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1693239140963163333}
+    m_TransformParent: {fileID: 7096021317393371237}
     m_Modifications:
     - target: {fileID: -4216859302048453862, guid: fac5f964810704f4c8c495b3a3ef6fbd,
         type: 3}
@@ -331,7 +360,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1693239140963163333}
+    m_TransformParent: {fileID: 7096021317393371237}
     m_Modifications:
     - target: {fileID: -4216859302048453862, guid: fac5f964810704f4c8c495b3a3ef6fbd,
         type: 3}

@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+  public event Action<Vector3> OnMovement = delegate { };
+  public event Action<Collision> OnGroundHit = delegate { };
+  public event Action<Rigidbody> OnJump = delegate { };
+
   [Header("Movement")]
   [SerializeField] float forwardSpeed = 100f;
   [SerializeField] float strafeSpeed = 75f;
@@ -25,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
   Vector3 inputMovement;
   CapsuleCollider capsule;
-  new Rigidbody rigidbody;
+  public new Rigidbody rigidbody;
   Transform orientation;
 
   bool isGrounded;
@@ -82,6 +87,7 @@ public class PlayerController : MonoBehaviour
     float modifier = isGrounded ? 1 : 0.5f;
     Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.deltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.deltaTime;
     rigidbody.AddForce(force * modifier, ForceMode.VelocityChange);
+    OnMovement(force * modifier);
 
     if (debugMode) movementDebugUi.SetVelocityText(new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z).magnitude);
   }
@@ -105,10 +111,10 @@ public class PlayerController : MonoBehaviour
   void Jump()
   {
     if (!jumpButtonDown) return;
-    if (isGrounded)
-    {
-      rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
-    }
+    if (!isGrounded) return;
+
+    rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
+    OnJump(rigidbody);
   }
 
   void GravityAdjuster()
@@ -131,18 +137,18 @@ public class PlayerController : MonoBehaviour
     GameObject activeDebugUI = Instantiate(debugUI, ui.transform);
     movementDebugUi = activeDebugUI.GetComponentInChildren<MovementDebugUI>();
   }
-
+  
   void OnCollisionStay(Collision collision)
   {
     rigidbody.useGravity = true;
     if (!isGrounded && !(rigidbody.velocity.y < 0.1)) return;
-    isGrounded = false;
 
     for (var i = 0; i < collision.contactCount; i++)
     {
       ContactPoint contact = collision.GetContact(i);
       if (!(contact.point.y < (transform.position.y - (capsule.radius + 0.199f)))) continue;
 
+      if (!isGrounded) OnGroundHit(collision);
       isGrounded = true;
       if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? contact.otherCollider.transform.name : "");
 
@@ -159,7 +165,9 @@ public class PlayerController : MonoBehaviour
 
   void OnCollisionExit()
   {
+    isGrounded = false;
     rigidbody.useGravity = true;
+    if (debugMode) movementDebugUi.SetGroundedText(isGrounded, "");
   }
 
   #region Old code

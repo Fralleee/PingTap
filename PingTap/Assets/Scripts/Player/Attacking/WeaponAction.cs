@@ -30,7 +30,7 @@ public abstract class WeaponAction : PlayerAction
 
   internal virtual void Update()
   {
-    bool shootWeapon = (tapable ? Input.GetMouseButtonDown((int)fireInput) : Input.GetMouseButton((int)fireInput)) && weapon.activeWeaponAction == ActiveWeaponAction.READY;
+    bool shootWeapon = (tapable ? Input.GetMouseButtonDown((int)fireInput) : Input.GetMouseButton((int)fireInput)) && weapon.ActiveWeaponAction == ActiveWeaponAction.READY;
     if (!shootWeapon) return;
 
     if (HasAmmo) weapon.ammoController.ChangeAmmo(-ammoPerShot);
@@ -43,9 +43,9 @@ public abstract class WeaponAction : PlayerAction
 
   internal IEnumerator ShootingCooldown()
   {
-    weapon.activeWeaponAction = ActiveWeaponAction.FIRING;
+    weapon.ChangeWeaponAction(ActiveWeaponAction.FIRING);
     yield return new WaitForSeconds(1f / shotsPerSecond);
-    weapon.activeWeaponAction = ActiveWeaponAction.READY;
+    weapon.ChangeWeaponAction(ActiveWeaponAction.READY);
   }
 
   internal Transform GetMuzzle()

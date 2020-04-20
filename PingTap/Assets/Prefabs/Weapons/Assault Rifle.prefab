@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Assault Rifle
   equipAnimationTime: 0.3
+  graphics: {fileID: 0}
   muzzles:
   - {fileID: 7401508142080020281}
   activeWeaponAction: 0
@@ -77,9 +78,9 @@ MonoBehaviour:
   tapable: 0
   range: 50
   pushForce: 15
-  impactParticlePrefab: {fileID: 1469201857544070, guid: d1e27766830781946b7e50a599bfaaac,
+  impactParticlePrefab: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
     type: 3}
-  muzzleParticlePrefab: {fileID: 1670457245891842, guid: acad5363ee599db48a2fc0aecd98bc29,
+  muzzleParticlePrefab: {fileID: 1670457245891842, guid: a946afce73718d54f85ad6cb3e38705d,
     type: 3}
   lineRendererPrefab: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
     type: 3}
@@ -109,8 +110,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
     type: 3}
   projectileData:
-    player: {fileID: 0}
-    muzzle: {fileID: 0}
     force: 50
     useGravity: 1
     kinematicOnImpact: 0
@@ -120,6 +119,7 @@ MonoBehaviour:
     explosionRadius: 5
     pushForce: 10
     range: 100
+    player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
 --- !u!114 &5420870821815435381
@@ -281,7 +281,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Name
-      value: LongPistol
+      value: Graphics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1fb58e2fd3061741aa9134c3c53441d, type: 3}

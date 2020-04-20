@@ -29,7 +29,14 @@ public class Hitscan : WeaponAction
   public override void Fire()
   {
     Vector3 forward = weapon.playerCamera.forward;
+    Transform muzzle = GetMuzzle();
+
     if (useSpread) forward = CalculateBulletSpread();
+    if (muzzleParticlePrefab)
+    {
+      GameObject muzzleParticle = Instantiate(muzzleParticlePrefab, muzzle.position, transform.rotation, muzzle);
+      Destroy(muzzleParticle, 1.5f);
+    }
 
     int layerMask = ~LayerMask.GetMask("Corpse");
     if (Physics.Raycast(weapon.playerCamera.position, forward, out var hitInfo, range, layerMask))
@@ -40,15 +47,8 @@ public class Hitscan : WeaponAction
       var damageable = hitInfo.transform.GetComponentInParent<DamageController>();
       if (damageable != null) damageable.TakeDamage(new DamageData() {player = player, damage = Damage});
 
-      Transform muzzle = GetMuzzle();
       BulletTrace(muzzle.position, hitInfo.point);
-
-      if (muzzleParticlePrefab)
-      {
-        GameObject muzzleParticle = Instantiate(muzzleParticlePrefab, muzzle.position, transform.rotation, muzzle);
-        Destroy(muzzleParticle, 1.5f);
-      }
-
+      
       if (impactParticlePrefab)
       {
         GameObject impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));

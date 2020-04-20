@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using Fralle;
+using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
   [Header("Mouse Look")]
+  [Readonly] public float currentSensitivity;
   [SerializeField] GameObject orientation;
-  [SerializeField] float mouseSensitivity = 50f;
+  public float mouseSensitivity = 50f;
+  public float mouseZoomSensitivity = 20f;
   [SerializeField] float mouseLookSmooth = 0f;
   [SerializeField] float affectSmooth = 0.05f;
 
@@ -17,10 +20,12 @@ public class MouseLook : MonoBehaviour
   [SerializeField] float currentRotationY;
 
   Vector2 affectRotation;
+  
 
   void Awake()
   {
     ConfigureCursor(true);
+    currentSensitivity = mouseSensitivity;
   }
 
   void Update()
@@ -55,8 +60,8 @@ public class MouseLook : MonoBehaviour
 
   void GatherInputs()
   {
-    inputMouseLook.x += Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
-    inputMouseLook.y -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime;
+    inputMouseLook.x += Input.GetAxis("Mouse X") * currentSensitivity * Time.fixedDeltaTime;
+    inputMouseLook.y -= Input.GetAxis("Mouse Y") * currentSensitivity * Time.fixedDeltaTime;
   }
 
   void Look()

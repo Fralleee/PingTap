@@ -4,6 +4,7 @@ namespace Fralle
 {
   public class Player : MonoBehaviour
   {
+    [SerializeField] GameObject crosshair;
     [SerializeField] GameObject characterUI;
     [SerializeField] GameObject resourceUI;
     [SerializeField] GameObject enemyHealthBarUI;
@@ -27,6 +28,7 @@ namespace Fralle
     {
       var ui = new GameObject("UI");
       ui.transform.parent = transform;
+      Instantiate(crosshair, ui.transform);
       Instantiate(characterUI, ui.transform);
       Instantiate(resourceUI, ui.transform);
       Instantiate(enemyHealthBarUI, ui.transform);

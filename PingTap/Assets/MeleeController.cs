@@ -32,7 +32,7 @@ public class MeleeController : MonoBehaviour
 
   void Update()
   {
-    if (weaponManager.equippedWeapon.activeWeaponAction != ActiveWeaponAction.READY) return;
+    if (weaponManager.equippedWeapon.ActiveWeaponAction != ActiveWeaponAction.READY) return;
     if (Input.GetKeyDown(inputKey) || Input.GetMouseButtonDown(3))
     {
       PerformMelee();
@@ -60,7 +60,7 @@ public class MeleeController : MonoBehaviour
         var delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
         transform.localPosition = Vector3.Lerp(Vector3.zero, swingPosition, delta);
         transform.localRotation = Quaternion.Lerp(Quaternion.identity, swingRotation, delta);
-        if (activeSwingTime <= 0) weaponManager.equippedWeapon.activeWeaponAction = ActiveWeaponAction.READY;
+        if (activeSwingTime <= 0) weaponManager.equippedWeapon.ChangeWeaponAction(ActiveWeaponAction.READY);
       }
     }
     else if (activeRecoveryTime > 0)
@@ -76,7 +76,7 @@ public class MeleeController : MonoBehaviour
     activeSwingTime = swingTime;
     activeRecoveryTime = recoveryTime;
     swinging = true;
-    weaponManager.equippedWeapon.activeWeaponAction = ActiveWeaponAction.MELEE;
+    weaponManager.equippedWeapon.ChangeWeaponAction(ActiveWeaponAction.MELEE);
 
     Collider[] targets = GetTargets();
     foreach (Collider col in targets)

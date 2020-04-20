@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 516560043}
   - component: {fileID: 516560044}
   - component: {fileID: 374833809}
+  - component: {fileID: 1695469431}
   m_Layer: 0
   m_Name: Weapon Manager
   m_TagString: Untagged
@@ -205,6 +206,25 @@ MonoBehaviour:
   inputKey: 118
   swingTime: 0.125
   recoveryTime: 0.2
+--- !u!95 &1695469431
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516560042}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5af44faca4271142bdac663db61de15, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &544313219
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +248,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544313219}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -267,7 +287,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 516560043}
-  m_Father: {fileID: 1386371907097986392}
+  m_Father: {fileID: 3187656414626874248}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1386371905205327084
@@ -397,6 +417,7 @@ GameObject:
   - component: {fileID: 1386371905872086474}
   - component: {fileID: 1386371905872086475}
   - component: {fileID: 1386371905872086468}
+  - component: {fileID: 3662307569142649154}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -514,11 +535,31 @@ MonoBehaviour:
   maxSpeed: 5
   stopTime: 0.025
   maxSlopeAngle: 45
-  jumpStrength: 8
+  jumpStrength: 12
   fallMultiplier: 2
   lowJumpModifier: 1.5
   debugUI: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3, type: 3}
   debugMode: 1
+  rigidbody: {fileID: 0}
+--- !u!114 &3662307569142649154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371905872086469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bb1e24921b78748872b60d1d384964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headBob: {fileID: 3187656414626874248}
+  transitionSpeed: 10
+  bobSpeed: 10
+  bobAmount: 0.005
+  jumpBobPower: 0.015
+  bounceBackPower: 0.5
+  bounceBackTimeMultiplier: 3
 --- !u!1 &1386371906370868751
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f071039b9a182418e594d93b4fb47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 5767136545138703017, guid: 7c839d5aab9603e42b8a5b27ec8fa862,
+    type: 3}
   characterUI: {fileID: 6085171198757724303, guid: 0acfc2c6662ea58449e4845641edafbd,
     type: 3}
   resourceUI: {fileID: 4609884483907960962, guid: f9b5cad6d60de2742b8275d6a53d8c36,
@@ -670,7 +713,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1386371905205327086}
+  - {fileID: 3187656414626874248}
   - {fileID: 408011391}
   m_Father: {fileID: 1386371906627268469}
   m_RootOrder: 1
@@ -700,8 +743,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8307b0ea483684ba21127b1387d67d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSensitivity: 0
   orientation: {fileID: 1386371906370868751}
   mouseSensitivity: 40
+  mouseZoomSensitivity: 15
   mouseLookSmooth: 0
   affectSmooth: 0.05
   clampYMax: 90
@@ -709,3 +754,34 @@ MonoBehaviour:
   inputMouseLook: {x: 0, y: 0, z: 0}
   currentRotationX: 0
   currentRotationY: 0
+--- !u!1 &8487388410035754587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3187656414626874248}
+  m_Layer: 0
+  m_Name: Head Bob
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3187656414626874248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487388410035754587}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1386371905205327086}
+  m_Father: {fileID: 1386371907097986392}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1757552681298961792}
   - component: {fileID: 1933458415494318732}
   - component: {fileID: 1922955947973037930}
-  - component: {fileID: 1869704939803811362}
   - component: {fileID: 68840725481026283}
   - component: {fileID: 4968383349944088428}
   - component: {fileID: 7864193850413935297}
+  - component: {fileID: -878292337120811080}
   m_Layer: 12
   m_Name: Rocket
   m_TagString: Untagged
@@ -4828,23 +4828,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1869704939803811362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759028648861206742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa5c1e37409a9344a344c0468db383d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabSound: {fileID: 1297775994297274, guid: 867c17ae7e3d7444bbb246ca664e6a6f,
-    type: 3}
-  destroyWhenDone: 1
-  soundPrefabIsChild: 0
-  pitchRandomMultiplier: 1
 --- !u!135 &68840725481026283
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4886,11 +4869,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494f56b9000b70e43acbf94b8174391e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactParticlePrefab: {fileID: 1070101629368536, guid: 1ef475ebfb44d964bb2037eaa9db1cb2,
+  impactParticlePrefab: {fileID: 1070101629368536, guid: b969cf0e4ca04b449b0f7eec6741290e,
     type: 3}
-  muzzleParticlePrefab: {fileID: 1936648311554952, guid: d101388f5eb9cf34497d768f73795a3a,
+  muzzleParticlePrefab: {fileID: 1936648311554952, guid: 63f4f66e2e2c0624d97d0e7690883fb3,
     type: 3}
   trailParticles: []
+--- !u!114 &-878292337120811080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759028648861206742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1dd0d8343f91684994bcb81a683bd93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSound: {fileID: 1297775994297274, guid: 867c17ae7e3d7444bbb246ca664e6a6f,
+    type: 3}
+  destroyWhenDone: 1
+  soundPrefabIsChild: 0
+  pitchRandomMultiplier: 1.2
 --- !u!1 &1760018808396550136
 GameObject:
   m_ObjectHideFlags: 0

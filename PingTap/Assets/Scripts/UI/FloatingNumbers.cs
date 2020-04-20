@@ -11,6 +11,7 @@ namespace Fralle
     DamageController damageController;
     new Camera camera;
     new Renderer renderer;
+    Vector3 lastPosition = Vector3.zero;
 
     public void Initialize(DamageController damageController)
     {
@@ -36,10 +37,11 @@ namespace Fralle
 
     void LateUpdate()
     {
-      if (damageController == null || damageController.isDead) return;
-      if (renderer && !renderer.isVisible) return;
+      bool isVisible = renderer && renderer.isVisible;
+      bool notDead = damageController != null && !damageController.isDead;
+      if (isVisible && notDead) lastPosition = damageController.transform.position;
 
-      transform.position = camera.WorldToScreenPoint(damageController.transform.position + Vector3.up * 2f);
+      transform.position = camera.WorldToScreenPoint(lastPosition + Vector3.up * 2f);
     }
 
   }
