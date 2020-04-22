@@ -39,26 +39,35 @@ public class Hitscan : WeaponAction
     }
 
     int layerMask = ~LayerMask.GetMask("Corpse");
-    if (Physics.Raycast(weapon.playerCamera.position, forward, out var hitInfo, range, layerMask))
+    if (!Physics.Raycast(weapon.playerCamera.position, forward, out RaycastHit hitInfo, range, layerMask)) return;
+
+    var rb = hitInfo.transform.GetComponent<Rigidbody>();
+    if (rb != null) rb.AddForce(weapon.playerCamera.forward * pushForce);
+
+    var bodyPart = hitInfo.transform.GetComponent<BodyPart>();
+    if (bodyPart != null)
     {
-      var rb = hitInfo.transform.GetComponent<Rigidbody>();
-      if (rb != null) rb.AddForce(weapon.playerCamera.forward * pushForce);
-
-      var damageable = hitInfo.transform.GetComponentInParent<DamageController>();
-      if (damageable != null) damageable.TakeDamage(new DamageData() {player = player, damage = Damage});
-
-      BulletTrace(muzzle.position, hitInfo.point);
-      
-      if (impactParticlePrefab)
+      bodyPart.ApplyHit(new DamageData()
       {
-        GameObject impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
-        Destroy(impactParticle, 5f);
-      }
-
-      if (!useSpread) return;
-      currentSpread += spreadIncreaseEachShot;
-      currentSpread = Mathf.Clamp(currentSpread, 0, maxSpread);
+        player = player,
+        damageType = damageType,
+        position = hitInfo.point,
+        bodyPartType = bodyPart.bodyPartType,
+        damage = Damage
+      });
     }
+
+    BulletTrace(muzzle.position, hitInfo.point);
+
+    if (impactParticlePrefab)
+    {
+      GameObject impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
+      Destroy(impactParticle, 5f);
+    }
+
+    if (!useSpread) return;
+    currentSpread += spreadIncreaseEachShot;
+    currentSpread = Mathf.Clamp(currentSpread, 0, maxSpread);
 
   }
 

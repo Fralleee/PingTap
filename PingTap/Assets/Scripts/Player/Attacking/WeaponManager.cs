@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.ProBuilder.MeshOperations;
 
 namespace Fralle
 {
@@ -10,25 +11,21 @@ namespace Fralle
 
     [SerializeField] float swaySize = 0.004f;
     [SerializeField] float swaySmooth = 25f;
+    [SerializeField] float idleSmooth = 1f;
 
-    [SerializeField] new Rigidbody rigidbody;
     [SerializeField] Transform weaponHolder;
     [SerializeField] Transform playerCamera;
     [SerializeField] Transform swayHolder;
 
     bool hasEquippedWeapon;
     InventoryController inventory;
-    Animator animator;
     Weapon[] weapons;
 
-    float oldRBVelocityY;
-    float bounceBackVelocityY;
-    float bounceBackThreshold = 0.1f;
+    Vector3 nextIdlePosition = Vector3.zero;
 
     void Awake()
     {
       inventory = GetComponentInParent<InventoryController>();
-      animator = GetComponent<Animator>();
     }
 
     void Start()
@@ -43,21 +40,22 @@ namespace Fralle
 
       if (!hasEquippedWeapon) return;
 
-      //float velocityY = rigidbody.velocity.y;
-      //if (oldRBVelocityY != 0 && velocityY == 0) bounceBackVelocityY = 5f;
-      //if (bounceBackVelocityY > bounceBackThreshold && velocityY == 0)
-      //{
-      //  velocityY = bounceBackVelocityY;
-      //  Mathf.SmoothDamp(bounceBackVelocityY, 0, ref bounceBackVelocityY, 1f);
-      //}
-      //oldRBVelocityY = rigidbody.velocity.y;
-
       Vector2 delta = -new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")); // + velocityY);
-      if (!Cursor.visible)
+      if (!Cursor.visible && delta.magnitude > 0)
       {
         swayHolder.localPosition = Vector3.Lerp(swayHolder.localPosition, Vector3.zero, swaySmooth * Time.deltaTime);
         swayHolder.localPosition += (Vector3)delta * swaySize;
       }
+      else
+      {
+        swayHolder.localPosition = Vector3.Lerp(swayHolder.localPosition, nextIdlePosition, idleSmooth * Time.deltaTime);
+        if(Vector3.Distance(swayHolder.localPosition, nextIdlePosition) < 0.005f) NewIdlePosition();
+      }
+    }
+
+    void NewIdlePosition()
+    {
+      nextIdlePosition = Random.insideUnitCircle * 0.01f;
     }
 
     void EquipWeapon(Weapon weapon)
@@ -72,7 +70,7 @@ namespace Fralle
 
     void SwapWeapon()
     {
-      for (int i = 1; i <= weapons.Length; i++)
+      for (var i = 1; i <= weapons.Length; i++)
         if (Input.GetKeyDown("" + i))
           EquipWeapon(weapons[i - 1]);
     }

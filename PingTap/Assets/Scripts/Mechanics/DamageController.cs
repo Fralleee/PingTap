@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
+using Vector3 = System.Numerics.Vector3;
 
 namespace Fralle
 {
@@ -8,30 +11,39 @@ namespace Fralle
   {
     public static event Action<DamageController> OnHealthBarAdded = delegate { };
     public static event Action<DamageController> OnHealthBarRemoved = delegate { };
+    public static event Action<DamageData> OnAnyDamage = delegate { };
 
     public event Action<DamageController, DamageData> OnDeath = delegate { };
     public event Action<float, float> OnHealthChange = delegate { };
-    public event Action<DamageData, float, bool> OnDamage = delegate { };
+    public event Action<DamageData> OnDamage = delegate { };
 
     [Header("HealthBar")]
     public float yLowestOffset = 2f;
     public float yHighestOffset = 3.5f;
 
     [Header("Stats")]
-    [SerializeField] float maxHealth = 100f;
-    [SerializeField] float currentHealth;
+    public float maxHealth = 100f;
+    public float currentHealth;
     [SerializeField] int armor;
     [SerializeField] bool immortal;
     public bool isDead;
-
-
+    
     bool isTouched;
-
     public float damageMultiplier => 1 - 0.06f * armor / (1 + 0.06f * armor);
+
+    public List<DamageEffect> damageEffects = new List<DamageEffect>();
 
     void Start()
     {
       if (currentHealth == 0) currentHealth = maxHealth;
+    }
+
+    void Update()
+    {
+      foreach (DamageEffect damageEffect in damageEffects)
+         damageEffect.Tick(this);
+
+      damageEffects.RemoveAll(x => x.timer > x.time);
     }
 
     public void TakeDamage(DamageData damageData)
@@ -46,8 +58,15 @@ namespace Fralle
       float damage = damageData.damage * damageMultiplier;
       currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
       OnHealthChange(currentHealth, maxHealth);
-      OnDamage(damageData, damage, false);
+      OnAnyDamage(damageData);
+
       if (currentHealth <= 0) Death(damageData);
+    }
+
+    public void ApplyEffect(DamageEffect effect)
+    {
+      DamageEffect oldEffect = damageEffects.FirstOrDefault(x => x.name == effect.name);
+      damageEffects.Upsert(oldEffect, effect.Append(oldEffect));
     }
 
     public void Death(DamageData damageData)

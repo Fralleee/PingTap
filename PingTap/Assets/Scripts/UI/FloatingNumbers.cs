@@ -23,10 +23,11 @@ namespace Fralle
       renderer = damageController.gameObject.GetComponentInChildren<Renderer>();
     }
 
-    void HandleDamage(DamageData damageData, float damage, bool criticalHit)
+    void HandleDamage(DamageData damageData)
     {
-      TextMeshProUGUI instance = Instantiate(numberPrefab, transform);
-      instance.text = Mathf.Round(damage).ToString(CultureInfo.InvariantCulture);
+      Vector3 localSpaceHitPoint = transform.worldToLocalMatrix.MultiplyPoint(damageData.position);
+      TextMeshProUGUI instance = Instantiate(numberPrefab, localSpaceHitPoint, Quaternion.identity, transform);
+      instance.text = Mathf.Round(damageData.damage).ToString(CultureInfo.InvariantCulture);
       Destroy(instance, 2f);
     }
 

@@ -12,6 +12,7 @@ namespace Fralle
     new Camera camera;
     new Renderer renderer;
     Vector3 defaultScale;
+    Canvas canvas;
 
     public void Initialize(DamageController damageController)
     {
@@ -24,6 +25,7 @@ namespace Fralle
       camera = Camera.main;
 
       renderer = damageController.gameObject.GetComponentInChildren<Renderer>();
+      canvas = GetComponent<Canvas>();
     }
 
     void HandleHealthChange(float currentHealth, float maxHealth)
@@ -39,10 +41,25 @@ namespace Fralle
 
     void LateUpdate()
     {
+      bool isVisible = ToggleIfVisible();
+      if (isVisible) UpdatePosition();
+    }
+
+    bool ToggleIfVisible()
+    {
       bool isvisible = renderer && !renderer.isVisible;
       bool isDestroyed = damageController == null || damageController.isDead;
-      if (isvisible || isDestroyed) return;
+      if (isvisible || isDestroyed)
+      {
+        canvas.enabled = false;
+        return false;
+      }
+      canvas.enabled = true;
+      return true;
+    }
 
+    void UpdatePosition()
+    {
       float distance = Vector3.Distance(camera.transform.position, damageController.transform.position);
       float yPositionOffset = Mathf.Lerp(damageController.yLowestOffset, damageController.yHighestOffset, distance / 40);
       float scale = Mathf.Lerp(1.6f, 0.8f, distance / 40);
@@ -56,7 +73,5 @@ namespace Fralle
       damageController.OnHealthChange -= HandleHealthChange;
       damageController.OnDeath -= HandleDeath;
     }
-
   }
-
 }

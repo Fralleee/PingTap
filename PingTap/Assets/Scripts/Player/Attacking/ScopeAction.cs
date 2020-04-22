@@ -89,7 +89,7 @@ public class ScopeAction : PlayerAction
     {
       time += Time.deltaTime / scopeTime;
       time = Mathf.Clamp(time, 0, 1);
-      float fadeTime = Mathf.Clamp(time + 0.5f, 0, 1);
+      float fadeTime = Mathf.Clamp(time + 0.7f, 0, 1);
 
       transform.localPosition = Vector3.Lerp(transform.localPosition, scopePos, time);
       playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, scopedFov, time);

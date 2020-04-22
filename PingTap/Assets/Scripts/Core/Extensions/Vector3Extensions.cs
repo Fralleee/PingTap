@@ -26,4 +26,9 @@ public static class Vector3Extensions
     return Vector3.Normalize(destination - source);
   }
 
+  public static bool InViewPort(this Vector3 v)
+  {
+    return v.x >= 0 && v.x <= 1 && v.y >= 0 && v.y <= 1 && v.z >= 0;
+  }
+
 }

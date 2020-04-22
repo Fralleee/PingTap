@@ -1,33 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using Fralle;
+using TMPro;
 using UnityEngine;
 
 public class FloatingNumbersController : MonoBehaviour
 {
-  [SerializeField] FloatingNumbers floatingNumbersPrefab;
-
-  Dictionary<DamageController, FloatingNumbers> floatingNumbers = new Dictionary<DamageController, FloatingNumbers>();
+  [SerializeField] FloatingText prefab;
+  new Camera camera;
 
   void Awake()
   {
-    DamageController.OnHealthBarAdded += AddFloatingNumbers;
-    DamageController.OnHealthBarRemoved += RemoveFloatingNumbers;
+    camera = Camera.main;
+    DamageController.OnAnyDamage += AddFloatingNumber;
   }
 
-  void AddFloatingNumbers(DamageController damageController)
+  void AddFloatingNumber(DamageData damageData)
   {
-    if (floatingNumbers.ContainsKey(damageController)) return;
+    FloatingText floatingText = Instantiate(prefab, transform);
 
-    FloatingNumbers floatingNumbersInstance = Instantiate(floatingNumbersPrefab, transform);
-    floatingNumbersInstance.Initialize(damageController);
-  }
+    string damageText = Mathf.Round(damageData.damage).ToString(CultureInfo.InvariantCulture);
 
-  void RemoveFloatingNumbers(DamageController damageController)
-  {
-    if (!floatingNumbers.ContainsKey(damageController)) return;
-
-    Destroy(floatingNumbers[damageController].gameObject);
-    floatingNumbers.Remove(damageController);
+    floatingText.Setup(damageText, damageData.position, camera);
   }
 }

@@ -14,6 +14,7 @@ public abstract class WeaponAction : PlayerAction
   [SerializeField] internal int ammoPerShot = 1;
   [SerializeField] internal int shotsPerSecond = 20;
   [SerializeField] internal bool tapable = false;
+  [SerializeField] internal DamageType damageType;
 
   internal Weapon weapon;
   internal Player player;

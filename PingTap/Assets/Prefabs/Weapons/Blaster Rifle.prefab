@@ -54,10 +54,10 @@ MonoBehaviour:
   graphics: {fileID: 2759592706289089460}
   muzzles:
   - {fileID: 7070611560347587878}
-  activeWeaponAction: 0
   playerCamera: {fileID: 0}
   recoilController: {fileID: 0}
   ammoController: {fileID: 0}
+  weaponScore: 0
 --- !u!114 &-1501675579605271907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,11 +104,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
-  minDamage: 50
-  maxDamage: 150
+  minDamage: 15
+  maxDamage: 100
   ammoPerShot: 1
   shotsPerSecond: 1
   tapable: 1
+  damageType: {fileID: 11400000, guid: a30ab0255ea3f7746a3234d6b9eddb55, type: 2}
   projectilePrefab: {fileID: -2482091467279127213, guid: 2fd7f9217dc710f40bcc9391fac5b9ab,
     type: 3}
   projectileData:
@@ -124,6 +125,7 @@ MonoBehaviour:
     player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
+    damageType: {fileID: 0}
 --- !u!114 &-5047340116561051035
 MonoBehaviour:
   m_ObjectHideFlags: 0

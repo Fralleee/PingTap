@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 516560043}
   - component: {fileID: 516560044}
   - component: {fileID: 374833809}
-  - component: {fileID: 1695469431}
   m_Layer: 0
   m_Name: Weapon Manager
   m_TagString: Untagged
@@ -185,7 +184,7 @@ MonoBehaviour:
   equippedWeapon: {fileID: 0}
   swaySize: 0.002
   swaySmooth: 40
-  rigidbody: {fileID: 1386371905872086475}
+  idleSmooth: 0.5
   weaponHolder: {fileID: 217825854}
   playerCamera: {fileID: 1386371905205327086}
   swayHolder: {fileID: 544313220}
@@ -206,25 +205,6 @@ MonoBehaviour:
   inputKey: 118
   swingTime: 0.125
   recoveryTime: 0.2
---- !u!95 &1695469431
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516560042}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c5af44faca4271142bdac663db61de15, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &544313219
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +235,36 @@ Transform:
   - {fileID: 217825854}
   m_Father: {fileID: 516560043}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2005528993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2005528994}
+  m_Layer: 0
+  m_Name: Mass point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005528994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005528993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.476, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1386371905872086479}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386371905205327087
 GameObject:
@@ -438,6 +448,7 @@ Transform:
   m_Children:
   - {fileID: 1386371905833920356}
   - {fileID: 1386371906370868750}
+  - {fileID: 2005528994}
   m_Father: {fileID: 1386371906627268469}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -540,7 +551,6 @@ MonoBehaviour:
   lowJumpModifier: 1.5
   debugUI: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3, type: 3}
   debugMode: 1
-  rigidbody: {fileID: 0}
 --- !u!114 &3662307569142649154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,8 +568,8 @@ MonoBehaviour:
   bobSpeed: 10
   bobAmount: 0.005
   jumpBobPower: 0.015
-  bounceBackPower: 0.5
-  bounceBackTimeMultiplier: 3
+  bounceBackPower: 0.015
+  bounceBackTimeMultiplier: 2.5
 --- !u!1 &1386371906370868751
 GameObject:
   m_ObjectHideFlags: 0

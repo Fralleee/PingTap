@@ -29,10 +29,10 @@ public class PlayerController : MonoBehaviour
 
   Vector3 inputMovement;
   CapsuleCollider capsule;
-  public new Rigidbody rigidbody;
+  new Rigidbody rigidbody;
   Transform orientation;
 
-  bool isGrounded;
+  public bool IsGrounded { get; private set; }
   bool jumpButtonDown;
   bool jumpButtonHold;
 
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
   void Movement()
   {
-    float modifier = isGrounded ? 1 : 0.5f;
+    float modifier = IsGrounded ? 1 : 0.5f;
     Vector3 force = orientation.right * inputMovement.x * strafeSpeed * Time.deltaTime + orientation.forward * inputMovement.y * forwardSpeed * Time.deltaTime;
     rigidbody.AddForce(force * modifier, ForceMode.VelocityChange);
     OnMovement(force * modifier);
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
   void StoppingForces()
   {
-    if (!isGrounded || inputMovement.magnitude > 0.5f) return;
+    if (!IsGrounded || inputMovement.magnitude > 0.5f) return;
     float velocityX = Mathf.SmoothDamp(rigidbody.velocity.x, 0, ref stopX, stopTime);
     float velocityZ = Mathf.SmoothDamp(rigidbody.velocity.z, 0, ref stopZ, stopTime);
     rigidbody.velocity = new Vector3(velocityX, rigidbody.velocity.y, velocityZ);
@@ -107,14 +107,14 @@ public class PlayerController : MonoBehaviour
   void Jump()
   {
     if (!jumpButtonDown) return;
-    if (!isGrounded) return;
+    if (!IsGrounded) return;
 
     rigidbody.AddForce(Vector3.up * jumpStrength, ForceMode.VelocityChange);
   }
 
   void GravityAdjuster()
   {
-    if (isGrounded) return;
+    if (IsGrounded) return;
     if (rigidbody.velocity.y < 0)
     {
       rigidbody.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -136,12 +136,12 @@ public class PlayerController : MonoBehaviour
   void GroundControl()
   {
     rigidbody.useGravity = true;
-    bool wasGrounded = isGrounded;
-    isGrounded = Physics.SphereCast(transform.position, capsule.radius, -Vector3.up, out RaycastHit hit, distToGround);
-    if(wasGrounded != isGrounded) OnGroundChanged(isGrounded, rigidbody.velocity.y);
+    bool wasGrounded = IsGrounded;
+    IsGrounded = Physics.SphereCast(transform.position, capsule.radius, -Vector3.up, out RaycastHit hit, distToGround);
+    if (wasGrounded != IsGrounded) OnGroundChanged(IsGrounded, rigidbody.velocity.y);
 
-    if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
-    if (!isGrounded || rigidbody.velocity.y < -0.5f) return;
+    if (debugMode) movementDebugUi.SetGroundedText(IsGrounded, IsGrounded ? hit.transform.name : "");
+    if (!IsGrounded || rigidbody.velocity.y < -0.5f) return;
 
     float slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
     if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);

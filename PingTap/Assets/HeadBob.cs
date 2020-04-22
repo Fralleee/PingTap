@@ -16,7 +16,7 @@ public class HeadBob : MonoBehaviour
   [SerializeField] float jumpBobPower = 0.015f;
   [SerializeField] float bounceBackPower = 0.5f;
   [SerializeField] float bounceBackTimeMultiplier = 3f;
-
+  
   PlayerController playerController;
   float timer = Mathf.PI / 2;
   float velocityY;
@@ -28,13 +28,13 @@ public class HeadBob : MonoBehaviour
   {
     playerController = GetComponent<PlayerController>();
     playerController.OnMovement += HandleMovement;
-    //playerController.OnJump += HandleJump;
     playerController.OnGroundChanged += HandleGroundHit;
   }
 
   void FixedUpdate()
   {
-    velocityY = playerController.rigidbody.velocity.y * jumpBobPower;
+    velocityY = !playerController.IsGrounded ? playerController.GetComponent<Rigidbody>().velocity.y * jumpBobPower : 0;
+
     if (Mathf.Abs(bounceBackVelocityY) > bounceBackThreshold)
     {
       jumpTimer += Time.deltaTime * bounceBackTimeMultiplier;
@@ -48,12 +48,13 @@ public class HeadBob : MonoBehaviour
     }
   }
 
-  void HandleGroundHit(bool isGrounded, float velocity)
+  void HandleGroundHit(bool touchedGround, float velocity)
   {
-    if (isGrounded)
+    if (touchedGround)
     {
       jumpTimer = 0.33f;
-      bounceBackVelocityY = bounceBackPower * Mathf.Clamp(velocity, -20, -10);
+      float clampedVelocity = Mathf.Clamp(velocity, -30, -10);
+      bounceBackVelocityY = bounceBackPower * clampedVelocity;
     }
     else
     {
@@ -81,5 +82,11 @@ public class HeadBob : MonoBehaviour
     else headBob.localPosition = newPosition.With(y: Mathf.Lerp(headBob.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
 
     if (timer > Mathf.PI * 2) timer = 0;
+  }
+
+  void OnDestroy()
+  {
+    playerController.OnMovement -= HandleMovement;
+    playerController.OnGroundChanged -= HandleGroundHit;
   }
 }

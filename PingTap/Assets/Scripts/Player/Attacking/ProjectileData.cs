@@ -20,5 +20,6 @@ namespace Fralle
     [HideInInspector] public Player player;
     [HideInInspector] public float damage;
     [HideInInspector] public Vector3 forward;
+    [HideInInspector] public DamageType damageType;
   }
 }

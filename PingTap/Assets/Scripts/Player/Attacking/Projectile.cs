@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Fralle
 {
@@ -49,16 +51,26 @@ namespace Fralle
       }
 
       Collider[] colliders = Physics.OverlapSphere(position, data.explosionRadius);
-      foreach (Collider col in colliders)
+      
+      DamageController[] damageControllers = colliders.Select(x => x.GetComponentInParent<DamageController>()).Where(x => x != null).Distinct().ToArray();
+
+      foreach (DamageController damageController in damageControllers)
       {
-        float distance = Vector3.Distance(col.transform.position, position);
+        float distance = Vector3.Distance(damageController.transform.position, position);
         float distanceDamageMultiplier = Mathf.Clamp01(1 - distance / data.explosionRadius);
 
-        var colRb = col.GetComponent<Rigidbody>();
+        var colRb = damageController.GetComponent<Rigidbody>();
         if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius);
 
-        var damageable = col.GetComponentInParent<DamageController>();
-        if (damageable != null) damageable.TakeDamage(new DamageData() { player = data.player, damage = data.damage * distanceDamageMultiplier });
+        var damageData = new DamageData()
+        {
+          player = data.player, 
+          damageType = data.damageType, 
+          position = damageController.transform.position,
+          damage = data.damage * distanceDamageMultiplier
+        };
+        damageController.TakeDamage(damageData);
+        if (damageData.damageType) damageData.damageType.ApplyEffect(damageController, damageData);
       }
 
       Destroy(gameObject);
@@ -69,8 +81,18 @@ namespace Fralle
       var colRb = collision.gameObject.GetComponent<Rigidbody>();
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 
-      var damageable = collision.gameObject.GetComponentInParent<DamageController>();
-      if (damageable != null) damageable.TakeDamage(new DamageData() { player = data.player, damage = data.damage });
+      var bodyPart = collision.gameObject.GetComponent<BodyPart>();
+      if (bodyPart != null)
+      {
+        bodyPart.ApplyHit(new DamageData()
+        {
+          player = data.player,
+          damageType = data.damageType,
+          position = collision.GetContact(0).point,
+          bodyPartType = bodyPart.bodyPartType,
+          damage = data.damage
+        });
+      }
 
       if (impactParticlePrefab)
       {
