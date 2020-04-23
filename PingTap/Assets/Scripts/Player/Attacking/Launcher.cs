@@ -15,7 +15,8 @@ namespace Fralle
       projectileData.player = player;
       projectileData.forward = weapon.playerCamera.forward;
       projectileData.damage = Damage;
-      projectileData.damageType = damageType;
+      projectileData.element = element;
+      projectileData.damageEffects = damageEffects;
 
       int layerMask = ~LayerMask.GetMask("Corpse");
       if (Physics.Raycast(weapon.playerCamera.position, weapon.playerCamera.forward, out RaycastHit hitInfo, projectileData.range, layerMask))

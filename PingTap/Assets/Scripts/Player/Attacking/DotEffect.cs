@@ -30,7 +30,14 @@ public class DotEffect : DamageEffect
     damageController.TakeDamage(new DamageData()
     {
       player = player,
+      position = damageController.transform.position,
       damage = damage * stacks
     });
+  }
+
+  public override DamageEffect Recalculate(float modifier)
+  {
+    damageModifier *= modifier;
+    return this;
   }
 }

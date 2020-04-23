@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 2626577486964819000}
   - component: {fileID: 7767797421755471903}
   - component: {fileID: 4727276578734697480}
+  - component: {fileID: 1326110304942313836}
   m_Layer: 14
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -323,7 +324,6 @@ MonoBehaviour:
   yHighestOffset: 3.5
   maxHealth: 100
   currentHealth: 0
-  armor: 0
   immortal: 0
   isDead: 0
   damageEffects: []
@@ -340,6 +340,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: 2
+--- !u!114 &1326110304942313836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911353467714394959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621adc350e1067841a5e99c3a430c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 5
+  armorElementModifiers:
+  - element: 1
+    modifier: 2
+  damageProtections:
+  - {fileID: 11400000, guid: 4e2bdf1f31b432d4ab4d8aeeb07e9a1c, type: 2}
 --- !u!1 &4911353468376173306
 GameObject:
   m_ObjectHideFlags: 0

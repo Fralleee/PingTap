@@ -10,7 +10,6 @@ namespace Fralle
   {
     [SerializeField] GameObject impactParticlePrefab;
     [SerializeField] GameObject muzzleParticlePrefab;
-    [SerializeField] GameObject[] trailParticles;
 
     new Rigidbody rigidbody;
     ProjectileData data;
@@ -51,7 +50,7 @@ namespace Fralle
       }
 
       Collider[] colliders = Physics.OverlapSphere(position, data.explosionRadius);
-      
+
       DamageController[] damageControllers = colliders.Select(x => x.GetComponentInParent<DamageController>()).Where(x => x != null).Distinct().ToArray();
 
       foreach (DamageController damageController in damageControllers)
@@ -64,13 +63,14 @@ namespace Fralle
 
         var damageData = new DamageData()
         {
-          player = data.player, 
-          damageType = data.damageType, 
+          player = data.player,
+          element = data.element,
+          effects = data.damageEffects,
+          hitAngle = Vector3.Angle((position - damageController.transform.position).normalized, damageController.transform.forward),
           position = damageController.transform.position,
           damage = data.damage * distanceDamageMultiplier
         };
-        damageController.TakeDamage(damageData);
-        if (damageData.damageType) damageData.damageType.ApplyEffect(damageController, damageData);
+        damageController.Hit(damageData);
       }
 
       Destroy(gameObject);
@@ -87,7 +87,8 @@ namespace Fralle
         bodyPart.ApplyHit(new DamageData()
         {
           player = data.player,
-          damageType = data.damageType,
+          element = data.element,
+          hitAngle = Vector3.Angle(collision.GetContact(0).normal, collision.transform.forward),
           position = collision.GetContact(0).point,
           bodyPartType = bodyPart.bodyPartType,
           damage = data.damage

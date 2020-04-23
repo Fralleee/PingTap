@@ -17,8 +17,7 @@ public class BodyPart : MonoBehaviour
   
   public void ApplyHit(DamageData damageData)
   {
-    damageController.TakeDamage(damageData.WithBodyPartModifier());
-    if (damageData.damageType) damageData.damageType.ApplyEffect(damageController, damageData);
+    damageController.Hit(damageData);
   }
 
 }

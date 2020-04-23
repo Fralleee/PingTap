@@ -12,4 +12,9 @@ public class StunEffect : DamageEffect
   {
     throw new System.NotImplementedException();
   }
+
+  public override DamageEffect Recalculate(float modifier)
+  {
+    throw new System.NotImplementedException();
+  }
 }

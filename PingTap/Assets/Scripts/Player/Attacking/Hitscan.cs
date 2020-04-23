@@ -1,4 +1,5 @@
-﻿using Fralle;
+﻿
+using Fralle;
 using UnityEngine;
 
 public class Hitscan : WeaponAction
@@ -50,7 +51,9 @@ public class Hitscan : WeaponAction
       bodyPart.ApplyHit(new DamageData()
       {
         player = player,
-        damageType = damageType,
+        element = element,
+        effects = damageEffects,
+        hitAngle = Vector3.Angle(hitInfo.normal, hitInfo.transform.forward),
         position = hitInfo.point,
         bodyPartType = bodyPart.bodyPartType,
         damage = Damage

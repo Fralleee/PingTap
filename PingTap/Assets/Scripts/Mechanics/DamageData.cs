@@ -6,10 +6,17 @@ namespace Fralle
   public class DamageData
   {
     public Player player;
-    public DamageType damageType;
+    public Element element;
+    public DamageEffect[] effects;
     public BodyPartType bodyPartType = BodyPartType.Major;
     public Vector3 position;
+    public float hitAngle;
     public float damage;
+
+    public DamageData()
+    {
+      effects = new DamageEffect[0];
+    }
 
     public DamageData WithBodyPartModifier()
     {

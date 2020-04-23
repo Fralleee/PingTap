@@ -23,17 +23,18 @@ namespace Fralle
     [Header("Stats")]
     public float maxHealth = 100f;
     public float currentHealth;
-    [SerializeField] int armor;
     [SerializeField] bool immortal;
-    public bool isDead;
-    
+
+    [HideInInspector] public bool isDead;
+    [HideInInspector] public List<DamageEffect> damageEffects = new List<DamageEffect>();
+
     bool isTouched;
-    public float damageMultiplier => 1 - 0.06f * armor / (1 + 0.06f * armor);
-
-    public List<DamageEffect> damageEffects = new List<DamageEffect>();
-
+    Armor armor;
+    
     void Start()
     {
+      armor = GetComponent<Armor>();
+
       if (currentHealth == 0) currentHealth = maxHealth;
     }
 
@@ -54,18 +55,39 @@ namespace Fralle
       }
       if (isDead) return;
 
-      float damage = damageData.damage * damageMultiplier;
-      currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+      currentHealth = Mathf.Clamp(currentHealth - damageData.damage, 0, maxHealth);
       OnHealthChange(currentHealth, maxHealth);
       OnAnyDamage(damageData);
 
       if (currentHealth <= 0) Death(damageData);
     }
 
-    public void ApplyEffect(DamageEffect effect)
+    void ApplyEffects(DamageData damageData)
     {
-      DamageEffect oldEffect = damageEffects.FirstOrDefault(x => x.name == effect.name);
-      damageEffects.Upsert(oldEffect, effect.Append(oldEffect));
+      foreach (DamageEffect effect in damageData.effects)
+      {
+        DamageEffect newEffect = effect.Setup(damageData);
+        DamageEffect oldEffect = damageEffects.FirstOrDefault(x => x.name == effect.name);
+        newEffect = newEffect.Append(oldEffect);
+        newEffect = armor.CalculateEffect(newEffect);
+        damageEffects.Upsert(oldEffect, newEffect);
+      }
+    }
+
+    void FalseHit(DamageData damageData)
+    {
+      OnAnyDamage(damageData);
+    }
+
+    public void Hit(DamageData damageData)
+    {
+      if (armor) damageData.damage = armor.CalculateDamage(damageData);
+      if (damageData.damage > 0)
+      {
+        TakeDamage(damageData.WithBodyPartModifier());
+        ApplyEffects(damageData);
+      }
+      else FalseHit(damageData);
     }
 
     public void Death(DamageData damageData)
