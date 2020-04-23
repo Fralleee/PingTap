@@ -96,7 +96,7 @@ public class ScopeAction : PlayerAction
       scopedVolume.weight = Mathf.Lerp(0, 1, fadeTime);
       scopeUICanvasGroup.alpha = Mathf.Lerp(0, 1, fadeTime);
 
-      foreach (Material material in weapon.graphics.GetComponent<Renderer>().materials)
+      foreach (Material material in weapon.GetComponentInChildren<Renderer>().materials)
       {
         Color color = material.GetColor("_BaseColor");
         color.a = Mathf.Clamp(1 - fadeTime, 0, 1);
@@ -124,7 +124,7 @@ public class ScopeAction : PlayerAction
       scopedVolume.weight = Mathf.Lerp(1, 0, fadeTime);
       scopeUICanvasGroup.alpha = Mathf.Lerp(1, 0, fadeTime);
 
-      foreach (Material material in weapon.graphics.GetComponent<Renderer>().materials)
+      foreach (Material material in weapon.GetComponentInChildren<Renderer>().materials)
       {
         Color color = material.GetColor("_BaseColor");
         color.a = fadeTime;

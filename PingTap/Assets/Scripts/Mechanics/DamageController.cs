@@ -15,7 +15,6 @@ namespace Fralle
 
     public event Action<DamageController, DamageData> OnDeath = delegate { };
     public event Action<float, float> OnHealthChange = delegate { };
-    public event Action<DamageData> OnDamage = delegate { };
 
     [Header("HealthBar")]
     public float yLowestOffset = 2f;

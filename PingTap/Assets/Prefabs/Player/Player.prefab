@@ -324,7 +324,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 100
+  far clip plane: 1000
   field of view: 70
   orthographic: 0
   orthographic size: 5
@@ -374,8 +374,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -568,7 +568,7 @@ MonoBehaviour:
   bobSpeed: 10
   bobAmount: 0.005
   jumpBobPower: 0.015
-  bounceBackPower: 0.015
+  bounceBackPower: 0.025
   bounceBackTimeMultiplier: 2.5
 --- !u!1 &1386371906370868751
 GameObject:

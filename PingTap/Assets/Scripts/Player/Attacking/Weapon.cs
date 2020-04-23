@@ -13,7 +13,6 @@ namespace Fralle
     public string weaponName;
     [SerializeField] float equipAnimationTime = 0.3f;
 
-    public GameObject graphics;
     public Transform[] muzzles;
     public ActiveWeaponAction ActiveWeaponAction { get; private set; }
 
@@ -24,6 +23,7 @@ namespace Fralle
     [Readonly] public float weaponScore;
 
     float equipTime;
+    bool equipped;
     Vector3 startPosition;
     Quaternion startRotation;
 
@@ -33,8 +33,6 @@ namespace Fralle
 
       recoilController = GetComponent<RecoilController>();
       ammoController = GetComponent<AmmoController>();
-
-      if (graphics == null) graphics = transform.Find("Graphics").gameObject;
     }
 
     void Start()
@@ -51,11 +49,18 @@ namespace Fralle
     {
       weaponScore = 1f;
     }
-     
+
     void PerformEquip()
     {
+      if (equipped) return;
+
       bool isEquipping = equipTime < equipAnimationTime;
-      if (!isEquipping) return;
+      if (!isEquipping)
+      {
+        equipped = true;
+        ActiveWeaponAction = ActiveWeaponAction.READY;
+        return;
+      }
 
       equipTime += Time.deltaTime;
       equipTime = Mathf.Clamp(equipTime, 0f, equipAnimationTime);
@@ -66,7 +71,9 @@ namespace Fralle
 
     public void Equip(Transform weaponHolder, Transform playerCamera)
     {
+      ActiveWeaponAction = ActiveWeaponAction.EQUIPPING;
       equipTime = 0f;
+      equipped = false;
       transform.parent = weaponHolder;
 
       int layer = LayerMask.NameToLayer("First Person Objects");

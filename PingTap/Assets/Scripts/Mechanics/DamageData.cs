@@ -7,7 +7,7 @@ namespace Fralle
   {
     public Player player;
     public DamageType damageType;
-    public BodyPartType bodyPartType;
+    public BodyPartType bodyPartType = BodyPartType.Major;
     public Vector3 position;
     public float damage;
 
@@ -15,8 +15,8 @@ namespace Fralle
     {
       switch (bodyPartType)
       {
-        case BodyPartType.Body: return this;
-        case BodyPartType.Head:
+        case BodyPartType.Major: return this;
+        case BodyPartType.Nerve:
           damage *= 2.5f;
           return this;
         case BodyPartType.Minor:

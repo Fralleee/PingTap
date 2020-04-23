@@ -22,6 +22,6 @@ public class FloatingNumbersController : MonoBehaviour
 
     string damageText = Mathf.Round(damageData.damage).ToString(CultureInfo.InvariantCulture);
 
-    floatingText.Setup(damageText, damageData.position, camera);
+    floatingText.Setup(damageText, damageData.position, camera, damageData.bodyPartType);
   }
 }

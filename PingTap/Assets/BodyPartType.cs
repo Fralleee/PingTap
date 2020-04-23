@@ -1,6 +1,6 @@
 ﻿public enum BodyPartType
 {
-  Head,
-  Body,
+  Nerve,
+  Major,
   Minor
 }
