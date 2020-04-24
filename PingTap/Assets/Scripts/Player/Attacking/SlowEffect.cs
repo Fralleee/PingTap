@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using Fralle;
 using UnityEngine;
+using UnityScript.Steps;
 
+[CreateAssetMenu(menuName = "Attack/Effect/Slow")]
 public class SlowEffect : DamageEffect
 {
-  public float ticRate = 1f;
-  public float totalDamage = 1f;
+  [Header("Slow specific")]
+  public float slowModifier = 0.3f;
   
-  public override void Tick(DamageController damageController)
+  public override void Enter(DamageController damageController)
   {
-    throw new System.NotImplementedException();
+    damageController.GetComponent<AgentNavigation>().AddModifier(name, slowModifier);
   }
 
-  public override DamageEffect Recalculate(float modifier)
+  public override void Exit(DamageController damageController)
   {
-    throw new System.NotImplementedException();
+    damageController.GetComponent<AgentNavigation>().RemoveModifier(name);
   }
+
 }

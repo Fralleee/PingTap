@@ -30,7 +30,7 @@ namespace Fralle
 
     bool isTouched;
     Armor armor;
-    
+
     void Start()
     {
       armor = GetComponent<Armor>();
@@ -41,13 +41,21 @@ namespace Fralle
     void Update()
     {
       foreach (DamageEffect damageEffect in damageEffects)
-         damageEffect.Tick(this);
+        damageEffect.Tick(this);
+
+      foreach (DamageEffect damageEffect in damageEffects.Where(x => x.timer > x.time))
+        damageEffect.Exit(this);
 
       damageEffects.RemoveAll(x => x.timer > x.time);
     }
 
     public void TakeDamage(DamageData damageData)
     {
+      if (damageData.damage <= 0)
+      {
+        FalseHit(damageData);
+        return;
+      }
       if (!isTouched)
       {
         OnHealthBarAdded(this);
@@ -62,14 +70,15 @@ namespace Fralle
       if (currentHealth <= 0) Death(damageData);
     }
 
-    void ApplyEffects(DamageData damageData)
+    void ApplyEffects(DamageData damageData, EffectProtection effectProtection = EffectProtection.BlockNone)
     {
       foreach (DamageEffect effect in damageData.effects)
       {
         DamageEffect newEffect = effect.Setup(damageData);
         DamageEffect oldEffect = damageEffects.FirstOrDefault(x => x.name == effect.name);
         newEffect = newEffect.Append(oldEffect);
-        newEffect = armor.CalculateEffect(newEffect);
+        newEffect = armor.CalculateEffect(newEffect, effectProtection);
+        newEffect.Enter(this);
         damageEffects.Upsert(oldEffect, newEffect);
       }
     }
@@ -81,13 +90,21 @@ namespace Fralle
 
     public void Hit(DamageData damageData)
     {
-      if (armor) damageData.damage = armor.CalculateDamage(damageData);
-      if (damageData.damage > 0)
+      if (armor)
       {
-        TakeDamage(damageData.WithBodyPartModifier());
+        ProtectionResult result = armor.RunProtection(damageData, this);
+        result.damageData.damage = armor.CalculateDamage(result.damageData, this);
+        TakeDamage(result.damageData.WithHitboxModifier());
+        if (result.effectProtection != EffectProtection.BlockAll)
+        {
+          ApplyEffects(result.damageData, result.effectProtection);
+        }
+      }
+      else 
+      {
+        TakeDamage(damageData.WithHitboxModifier());
         ApplyEffects(damageData);
       }
-      else FalseHit(damageData);
     }
 
     public void Death(DamageData damageData)

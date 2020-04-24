@@ -10,6 +10,7 @@ public abstract class DamageEffect : ScriptableObject
   [Header("General")]
   public int level = 1;
   public Element element;
+  public float baseDamageModifier = 1f;
 
   [Header("Stacking")]
   public int maxStacks = 1;
@@ -20,7 +21,6 @@ public abstract class DamageEffect : ScriptableObject
   public float time = 3f;
 
   [HideInInspector] public float weaponDamage;
-  [HideInInspector] public bool validEffect = true;
 
   public virtual DamageEffect Setup(DamageData damageData)
   {
@@ -44,6 +44,12 @@ public abstract class DamageEffect : ScriptableObject
     return this;
   }
 
-  public abstract void Tick(DamageController damageController);
-  public abstract DamageEffect Recalculate(float modifier);
+  public virtual void Tick(DamageController damageController)
+  {
+    timer += Time.deltaTime;
+  }
+
+  public virtual void Enter(DamageController damageController) { }
+  public virtual void Exit(DamageController damageController) { }
+  public virtual DamageEffect Recalculate(float modifier) => this;
 }

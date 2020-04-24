@@ -8,7 +8,7 @@ namespace Fralle
     public Player player;
     public Element element;
     public DamageEffect[] effects;
-    public BodyPartType bodyPartType = BodyPartType.Major;
+    public HitBoxType hitBoxType = HitBoxType.Major;
     public Vector3 position;
     public float hitAngle;
     public float damage;
@@ -18,15 +18,15 @@ namespace Fralle
       effects = new DamageEffect[0];
     }
 
-    public DamageData WithBodyPartModifier()
+    public DamageData WithHitboxModifier()
     {
-      switch (bodyPartType)
+      switch (hitBoxType)
       {
-        case BodyPartType.Major: return this;
-        case BodyPartType.Nerve:
+        case HitBoxType.Major: return this;
+        case HitBoxType.Nerve:
           damage *= 2.5f;
           return this;
-        case BodyPartType.Minor:
+        case HitBoxType.Minor:
           damage *= 0.75f;
           return this;
         default:

@@ -81,16 +81,17 @@ namespace Fralle
       var colRb = collision.gameObject.GetComponent<Rigidbody>();
       if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
 
-      var bodyPart = collision.gameObject.GetComponent<BodyPart>();
-      if (bodyPart != null)
+      var hitBox = collision.gameObject.GetComponent<HitBox>();
+      if (hitBox != null)
       {
-        bodyPart.ApplyHit(new DamageData()
+        hitBox.ApplyHit(new DamageData()
         {
           player = data.player,
           element = data.element,
-          hitAngle = Vector3.Angle(collision.GetContact(0).normal, collision.transform.forward),
+          hitAngle = Vector3.Angle((transform.position - collision.transform.position).normalized, collision.transform.forward),
+          effects = data.damageEffects,
           position = collision.GetContact(0).point,
-          bodyPartType = bodyPart.bodyPartType,
+          hitBoxType = hitBox.hitBoxType,
           damage = data.damage
         });
       }

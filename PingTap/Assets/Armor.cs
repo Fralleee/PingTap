@@ -10,24 +10,27 @@ public class Armor : MonoBehaviour
 
   [SerializeField] int armor;
   [SerializeField] List<ArmorElementModifier> armorElementModifiers = new List<ArmorElementModifier>();
-  [SerializeField] List<DamageProtection> damageProtections = new List<DamageProtection>();
-  
-  public float CalculateDamage(DamageData damageData)
-  {
-    foreach (DamageProtection protection in damageProtections)
-    {
-      damageData = protection.RunProtection(damageData, transform);
-    }
+  [SerializeField] Protection protection;
 
+  public ProtectionResult RunProtection(DamageData damageData, DamageController damageController)
+  {
+    if (!protection) return new ProtectionResult() {effectProtection = EffectProtection.BlockNone, damageData = damageData};
+    return protection.RunProtection(damageData, damageController);
+  }
+
+  public float CalculateDamage(DamageData damageData, DamageController damageController)
+  {
     ArmorElementModifier armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == damageData.element);
     float modifier = armorElementModifier?.modifier ?? 1;
     float damage = damageData.damage * modifier * DamageMultiplier;
     return damage;
   }
 
-  public DamageEffect CalculateEffect(DamageEffect effect)
+  public DamageEffect CalculateEffect(DamageEffect effect, EffectProtection effectProtection)
   {
+    if (effectProtection == EffectProtection.BlockDamage) effect.baseDamageModifier = 0;
     ArmorElementModifier armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == effect.element);
+    Debug.Log($"CalculateEffect gave damage {effect.baseDamageModifier}");
     return armorElementModifier != null ? effect.Recalculate(armorElementModifier.modifier) : effect;
   }
 

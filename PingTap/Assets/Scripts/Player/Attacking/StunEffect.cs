@@ -13,6 +13,16 @@ public class StunEffect : DamageEffect
     throw new System.NotImplementedException();
   }
 
+  public override void Enter(DamageController damageController)
+  {
+    throw new System.NotImplementedException();
+  }
+
+  public override void Exit(DamageController damageController)
+  {
+    throw new System.NotImplementedException();
+  }
+
   public override DamageEffect Recalculate(float modifier)
   {
     throw new System.NotImplementedException();

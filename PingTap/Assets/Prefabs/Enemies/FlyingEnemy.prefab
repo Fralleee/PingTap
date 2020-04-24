@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca7831e3f77dd54bb49ff90aba56f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPartType: 2
+  hitBoxType: 2
 --- !u!1 &4380583927754145735
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca7831e3f77dd54bb49ff90aba56f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPartType: 0
+  hitBoxType: 0
 --- !u!1 &4911353467714394959
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointSchema: {fileID: 0}
   stoppingDistance: 5
+  currentMovementModifier: 1
 --- !u!114 &-1657223847493178258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +324,6 @@ MonoBehaviour:
   yHighestOffset: 5
   maxHealth: 100
   currentHealth: 0
-  armor: 0
   immortal: 0
   isDead: 0
   damageEffects: []
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca7831e3f77dd54bb49ff90aba56f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPartType: 1
+  hitBoxType: 1
 --- !u!1 &5329665483272990791
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,4 +553,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca7831e3f77dd54bb49ff90aba56f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyPartType: 2
+  hitBoxType: 2

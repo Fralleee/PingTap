@@ -45,17 +45,17 @@ public class Hitscan : WeaponAction
     var rb = hitInfo.transform.GetComponent<Rigidbody>();
     if (rb != null) rb.AddForce(weapon.playerCamera.forward * pushForce);
 
-    var bodyPart = hitInfo.transform.GetComponent<BodyPart>();
-    if (bodyPart != null)
+    var hitBox = hitInfo.transform.GetComponent<HitBox>();
+    if (hitBox != null)
     {
-      bodyPart.ApplyHit(new DamageData()
+      hitBox.ApplyHit(new DamageData()
       {
         player = player,
         element = element,
         effects = damageEffects,
-        hitAngle = Vector3.Angle(hitInfo.normal, hitInfo.transform.forward),
+        hitAngle = Vector3.Angle((weapon.transform.position - hitInfo.transform.position).normalized, hitInfo.transform.forward),
         position = hitInfo.point,
-        bodyPartType = bodyPart.bodyPartType,
+        hitBoxType = hitBox.hitBoxType,
         damage = Damage
       });
     }

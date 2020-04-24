@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Fralle;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Attack/DotEffect")]
+[CreateAssetMenu(menuName = "Attack/Effect/Damage over time")]
 public class DotEffect : DamageEffect
 {
   [Header("Dot specific")]
@@ -20,13 +20,13 @@ public class DotEffect : DamageEffect
 
   public override void Tick(DamageController damageController)
   {
-    timer += Time.deltaTime;
+    base.Tick(damageController);
     lastDamageTimer += Time.deltaTime;
 
     if (!(lastDamageTimer > 1)) return;
 
     lastDamageTimer -= 1f;
-    float damage = DamageConverter.AsDamageModifier(damageModifier / time, damageApplication, damageController, weaponDamage); ;
+    float damage = baseDamageModifier * DamageConverter.AsDamageModifier(damageModifier / time, damageApplication, damageController, weaponDamage);
     damageController.TakeDamage(new DamageData()
     {
       player = player,

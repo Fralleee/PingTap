@@ -11,9 +11,10 @@ public class MeleeController : MonoBehaviour
   public float meleeRadius = 2f;
 
   [SerializeField] KeyCode inputKey;
-
   [SerializeField] float swingTime = 0.25f;
   [SerializeField] float recoveryTime = 1f;
+  [SerializeField] Element element;
+  [SerializeField] DamageEffect[] damageEffects;
 
   bool swinging;
   float activeSwingTime;
@@ -51,13 +52,13 @@ public class MeleeController : MonoBehaviour
       activeSwingTime -= Time.deltaTime;
       if (swinging)
       {
-        var delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
+        float delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
         transform.localPosition = Vector3.Lerp(swingPosition, Vector3.zero, delta);
         transform.localRotation = Quaternion.Lerp(swingRotation, Quaternion.identity, delta);
       }
       else
       {
-        var delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
+        float delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
         transform.localPosition = Vector3.Lerp(Vector3.zero, swingPosition, delta);
         transform.localRotation = Quaternion.Lerp(Quaternion.identity, swingRotation, delta);
         if (activeSwingTime <= 0) weaponManager.equippedWeapon.ChangeWeaponAction(ActiveWeaponAction.READY);
@@ -78,31 +79,35 @@ public class MeleeController : MonoBehaviour
     swinging = true;
     weaponManager.equippedWeapon.ChangeWeaponAction(ActiveWeaponAction.MELEE);
 
-    Collider[] targets = GetTargets();
-    foreach (Collider col in targets)
+    DamageController[] targets = GetTargets();
+    foreach (DamageController target in targets)
     {
-      if (!TargetInArc(col)) continue;
+      if (!TargetInArc(target)) continue;
 
-      var damageController = col.GetComponent<DamageController>();
-      damageController.TakeDamage(new DamageData()
+      var damageData = new DamageData()
       {
         damage = meleeDamage,
-        player = player
-      });
+        player = player,
+        element = element,
+        effects = damageEffects,
+        hitAngle = Vector3.Angle((transform.position - target.transform.position).normalized, target.transform.forward),
+        position = target.transform.position
+      };
+      target.Hit(damageData);
     }
-
   }
 
-  bool TargetInArc(Collider collider)
+  bool TargetInArc(DamageController target)
   {
-    Vector3 vectorToCollider = (collider.transform.position - transform.position).normalized;
+    Vector3 vectorToCollider = (target.transform.position - transform.position).normalized;
     return Vector3.Dot(vectorToCollider, transform.forward) > 0;
   }
 
-  Collider[] GetTargets()
+  DamageController[] GetTargets()
   {
     Collider[] colliders = Physics.OverlapSphere(transform.position, meleeRadius);
-    return colliders.Where(x => x.GetComponent<DamageController>()).ToArray();
+    DamageController[] targets = colliders.Select(x => x.GetComponentInParent<DamageController>()).Where(x => x != null).Distinct().ToArray();
+    return targets;
   }
 
 }
