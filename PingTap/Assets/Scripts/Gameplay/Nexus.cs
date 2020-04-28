@@ -1,39 +1,37 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Fralle;
+﻿using Fralle.Attack;
+using System;
 using UnityEngine;
 
 public class Nexus : MonoBehaviour
 {
   public static event Action<Nexus> OnDeath = delegate { };
 
-  DamageController damageController;
+  Health health;
 
   void Awake()
   {
-    damageController = GetComponent<DamageController>();
-    damageController.OnDeath += HandleDeath;
+    health = GetComponent<Health>();
+    health.OnDeath += HandleDeath;
     Enemy.OnEnemyReachedPowerStone += HandleEnemyReachedPowerStone;
   }
 
-  void HandleDeath(DamageController damageController, DamageData damageData)
+  void HandleDeath(Health health, Damage damage)
   {
     Destroy(gameObject);
   }
 
   void HandleEnemyReachedPowerStone(Enemy enemy)
   {
-    damageController.TakeDamage(new DamageData()
+    health.TakeDamage(new Damage()
     {
-      damage = enemy.damage
+      damageAmount = enemy.damageAmount
     });
   }
 
   void OnDestroy()
   {
     OnDeath(this);
-    damageController.OnDeath -= HandleDeath;
+    health.OnDeath -= HandleDeath;
     Enemy.OnEnemyReachedPowerStone -= HandleEnemyReachedPowerStone;
   }
 }

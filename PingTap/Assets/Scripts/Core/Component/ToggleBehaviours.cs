@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using Fralle.Attack;
+using UnityEngine;
 
 namespace Fralle
 {
@@ -25,8 +25,8 @@ namespace Fralle
       if (player.menu != null) player.menu.SetActive(true);
       foreach (Behaviour behaviour in behaviours) behaviour.enabled = false;
 
-      PlayerAction[] actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
-      foreach (PlayerAction action in actionBehaviours) action.enabled = false;
+      Action[] actionBehaviours = gameObject.GetComponentsInChildren<Action>();
+      foreach (Action action in actionBehaviours) action.enabled = false;
     }
 
     void EnableBehaviours()
@@ -34,8 +34,8 @@ namespace Fralle
       if (player.menu != null) player.menu.SetActive(false);
       foreach (Behaviour behaviour in behaviours) behaviour.enabled = true;
 
-      PlayerAction[] actionBehaviours = gameObject.GetComponentsInChildren<PlayerAction>();
-      foreach (PlayerAction action in actionBehaviours) action.enabled = true;
+      Action[] actionBehaviours = gameObject.GetComponentsInChildren<Action>();
+      foreach (Action action in actionBehaviours) action.enabled = true;
     }
 
     public void ToggleMenu()

@@ -1,10 +1,8 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿#if UNITY_EDITOR
+using System;
 using System.Linq;
 using UnityEditor;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 [CustomPropertyDrawer(typeof(WaveDefinition))]
@@ -23,7 +21,7 @@ public class WaveDefinitionInspector : PropertyDrawer
   {
     return 48;
   }
-  
+
   void DrawEnemy(Rect rect, SerializedProperty prop)
   {
     Object[] enemies = Resources.FindObjectsOfTypeAll<Enemy>();
@@ -37,9 +35,10 @@ public class WaveDefinitionInspector : PropertyDrawer
 
     prop.objectReferenceValue = enemies[selectValue];
   }
-  
+
   void DrawCount(Rect rect, SerializedProperty prop)
   {
     prop.intValue = EditorGUI.IntField(new Rect(rect.x, rect.y + 20, rect.width, 20), "Count", prop.intValue);
   }
 }
+#endif

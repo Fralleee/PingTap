@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4492898620635679972}
   - component: {fileID: -6140752178504457658}
-  - component: {fileID: -1501675579605271907}
-  - component: {fileID: 6252643534136959937}
   - component: {fileID: 6273474797109520075}
   - component: {fileID: -5047340116561051035}
   - component: {fileID: -8683043241772851520}
+  - component: {fileID: 7948241083502263322}
+  - component: {fileID: 2304283516542304251}
   m_Layer: 0
   m_Name: Blaster Rifle
   m_TagString: Untagged
@@ -54,42 +54,9 @@ MonoBehaviour:
   muzzles:
   - {fileID: 7070611560347587878}
   playerCamera: {fileID: 0}
-  recoilController: {fileID: 0}
+  recoil: {fileID: 0}
   ammoController: {fileID: 0}
   weaponScore: 0
---- !u!114 &-1501675579605271907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65906159098248847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 1
-  currentAmmo: 0
-  infiniteAmmo: 0
-  reloadSpeed: 0.5
---- !u!114 &6252643534136959937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 65906159098248847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79594b98695ec5440a8e0227836109a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomizeRecoil: 0
-  kickbackForce: 0.15
-  recoverTime: 20
-  randomRecoilConstraints: {x: 0, y: 0}
-  recoilPattern: []
 --- !u!114 &6273474797109520075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +95,9 @@ MonoBehaviour:
     forward: {x: 0, y: 0, z: 0}
     element: 0
     damageEffects: []
+  projectilesPerFire: 1
+  delayTimePerProjectiles: 0
+  radiusOnMaxRange: 0
 --- !u!114 &-5047340116561051035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,11 +111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scopeButton: 1
-  scopePos: {x: -0.22, y: 0.1, z: -0.1}
+  scopePos: {x: -0.225, y: 0.1, z: -0.75}
   interruptScopeOnFire: 1
   scopedFov: 15
   scopeTime: 0.5
-  scopedUI: {fileID: 4000268992182174082, guid: 9050022753fd2c343b19717bf00e6557,
+  scopedUi: {fileID: 4000268992182174082, guid: 9050022753fd2c343b19717bf00e6557,
     type: 3}
   scopedPostProcess: {fileID: 6341452421117707918, guid: aeaae1ed3dec6174699d17e5c5437b87,
     type: 3}
@@ -165,6 +135,39 @@ MonoBehaviour:
   - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
   asChild: 1
   lifecycle: 1
+--- !u!114 &7948241083502263322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65906159098248847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bc0cd1540fa4242917d9851d1b712f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 30
+  currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.75
+--- !u!114 &2304283516542304251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65906159098248847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomizeRecoil: 1
+  kickbackForce: 0.15
+  recoverTime: 20
+  randomRecoilConstraints: {x: 0, y: 0}
+  recoilPattern: []
 --- !u!1 &4198658911239030476
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +274,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 5ad5df891cbfbc348a7cc1038224f89e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 5ad5df891cbfbc348a7cc1038224f89e,
         type: 3}

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -24,6 +23,7 @@ public class WaypointSchema : ScriptableObject
     }
   }
 
+#if UNITY_EDITOR
   void OnEnable()
   {
     SceneView.duringSceneGui += OnSceneGUI;
@@ -33,7 +33,7 @@ public class WaypointSchema : ScriptableObject
   {
     SceneView.duringSceneGui -= OnSceneGUI;
   }
-  
+
   void OnSceneGUI(SceneView sceneview)
   {
     if (Selection.activeObject != this) return;
@@ -43,4 +43,5 @@ public class WaypointSchema : ScriptableObject
     for (var i = 0; i < waypoints.Count; i++)
       waypoints[i] = Handles.PositionHandle(waypoints[i], Quaternion.identity);
   }
+#endif
 }

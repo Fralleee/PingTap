@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Fralle.Attack;
+using TMPro;
 using UnityEngine;
 
 namespace Fralle
@@ -8,26 +9,26 @@ namespace Fralle
     [SerializeField] TextMeshProUGUI currentAmmoText;
     [SerializeField] TextMeshProUGUI maxAmmoText;
 
-    AmmoController ammoController;
+    Ammo ammo;
     UITweener tweener;
 
     void Start()
     {
-      ammoController = GetComponentInParent<AmmoController>();
+      ammo = GetComponentInParent<Ammo>();
       tweener = GetComponentInParent<UITweener>();
 
-      currentAmmoText.text = ammoController.currentAmmo.ToString();
-      maxAmmoText.text = ammoController.maxAmmo.ToString();
+      currentAmmoText.text = ammo.currentAmmo.ToString();
+      maxAmmoText.text = ammo.maxAmmo.ToString();
 
-      ammoController.OnAmmoChanged += UpdateCurrentAmmoText;
+      ammo.OnAmmoChanged += UpdateCurrentAmmoText;
     }
 
     void OnDestroy()
     {
-      ammoController.OnAmmoChanged -= UpdateCurrentAmmoText;
+      ammo.OnAmmoChanged -= UpdateCurrentAmmoText;
     }
 
-    void UpdateCurrentAmmoText(object sender, int newAmmo)
+    void UpdateCurrentAmmoText(int newAmmo)
     {
       currentAmmoText.text = newAmmo.ToString();
 

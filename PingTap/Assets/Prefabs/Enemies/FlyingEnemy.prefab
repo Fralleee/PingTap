@@ -226,8 +226,9 @@ GameObject:
   - component: {fileID: 4911353467714394957}
   - component: {fileID: 4911353467714394955}
   - component: {fileID: -1657223847493178258}
-  - component: {fileID: 527609039837363779}
   - component: {fileID: -8848854164117446963}
+  - component: {fileID: 6556266009569853319}
+  - component: {fileID: -2097550899967262474}
   m_Layer: 14
   m_Name: FlyingEnemy
   m_TagString: Untagged
@@ -304,29 +305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agentNavigation: {fileID: 0}
   navMeshAgent: {fileID: 0}
-  damageController: {fileID: 0}
-  damage: 50
+  health: {fileID: 0}
+  damageAmount: 1
   waveType: 1
   enemyDeathReaction: 1
---- !u!114 &527609039837363779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911353467714394959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b0cb39d84c1bd4c90035f9bae7b4a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yLowestOffset: 3
-  yHighestOffset: 5
-  maxHealth: 100
-  currentHealth: 0
-  immortal: 0
-  isDead: 0
-  damageEffects: []
 --- !u!114 &-8848854164117446963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +322,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: 2
+--- !u!114 &6556266009569853319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911353467714394959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621adc350e1067841a5e99c3a430c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armor: 0
+  armorElementModifiers: []
+  protection: {fileID: 0}
+--- !u!114 &-2097550899967262474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911353467714394959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b4cefef7bf2204c812afbbb3bc89d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageEffects: []
+  isDead: 0
+  currentHealth: 0
+  maxHealth: 100
+  immortal: 0
 --- !u!1 &4911353468376173306
 GameObject:
   m_ObjectHideFlags: 0

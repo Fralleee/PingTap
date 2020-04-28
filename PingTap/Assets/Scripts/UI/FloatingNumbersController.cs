@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Fralle;
+using Fralle.Attack;
 using System.Globalization;
-using Fralle;
-using TMPro;
 using UnityEngine;
 
 public class FloatingNumbersController : MonoBehaviour
@@ -13,15 +11,15 @@ public class FloatingNumbersController : MonoBehaviour
   void Awake()
   {
     camera = Camera.main;
-    DamageController.OnAnyDamage += AddFloatingNumber;
+    Health.OnAnyDamage += AddFloatingNumber;
   }
 
-  void AddFloatingNumber(DamageData damageData)
+  void AddFloatingNumber(Damage damage)
   {
     FloatingText floatingText = Instantiate(prefab, transform);
 
-    string damageText = Mathf.Round(damageData.damage).ToString(CultureInfo.InvariantCulture);
+    string damageText = Mathf.Round(damage.damageAmount).ToString(CultureInfo.InvariantCulture);
 
-    floatingText.Setup(damageText, damageData.position, camera, damageData.hitBoxType);
+    floatingText.Setup(damageText, damage.position, camera, damage.hitBoxType);
   }
 }

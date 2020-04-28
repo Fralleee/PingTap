@@ -1,10 +1,10 @@
-﻿using Fralle;
+﻿using Fralle.Attack;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(DamageController))]
+[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
@@ -14,21 +14,21 @@ public class Enemy : MonoBehaviour
 
   [HideInInspector] public AgentNavigation agentNavigation;
   [HideInInspector] public NavMeshAgent navMeshAgent;
-  [HideInInspector] public DamageController damageController;
+  [HideInInspector] public Health health;
 
-  public int damage = 1;
+  public int damageAmount = 1;
   public WaveType waveType = WaveType.Ground;
   [SerializeField] EnemyDeathReaction enemyDeathReaction = EnemyDeathReaction.UpInTheAir;
 
   bool isDead;
-  
+
   void Awake()
   {
     agentNavigation = GetComponent<AgentNavigation>();
     navMeshAgent = GetComponent<NavMeshAgent>();
-    damageController = GetComponent<DamageController>();
+    health = GetComponent<Health>();
 
-    damageController.OnDeath += HandleDeath;
+    health.OnDeath += HandleDeath;
     MatchManager.OnDefeat += HandleDefeat;
   }
 
@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
     EnemyDeath(true);
   }
 
-  void HandleDeath(DamageController damageController, DamageData damageData)
+  void HandleDeath(Health health, Damage damage)
   {
     EnemyDeath();
   }
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
 
     gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
     if (navMeshAgent) navMeshAgent.enabled = false;
-    
+
     var rigidBody = gameObject.AddComponent<Rigidbody>();
     switch (enemyDeathReaction)
     {
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
 
   void OnDestroy()
   {
-    damageController.OnDeath -= HandleDeath;
+    health.OnDeath -= HandleDeath;
     MatchManager.OnDefeat -= HandleDefeat;
   }
 }

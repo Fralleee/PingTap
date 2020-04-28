@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5449819605020140755}
   - component: {fileID: -2727820791764079801}
-  - component: {fileID: -6171788933363915334}
-  - component: {fileID: 5450656253379110295}
   - component: {fileID: 6749799737417924175}
   - component: {fileID: 3062482478047422874}
   - component: {fileID: -1778066229078913185}
+  - component: {fileID: 6952187333952386547}
+  - component: {fileID: 5564897333815370623}
   m_Layer: 0
   m_Name: Rocket launcher
   m_TagString: Untagged
@@ -49,47 +49,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: Rocket Launcher
   equipAnimationTime: 0.3
   muzzles:
   - {fileID: 6574521738594642308}
-  activeWeaponAction: 0
   playerCamera: {fileID: 0}
-  recoilController: {fileID: 0}
+  recoil: {fileID: 0}
   ammoController: {fileID: 0}
---- !u!114 &-6171788933363915334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783289418158167475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 6
-  currentAmmo: 0
-  infiniteAmmo: 0
-  reloadSpeed: 0.75
---- !u!114 &5450656253379110295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6783289418158167475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79594b98695ec5440a8e0227836109a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomizeRecoil: 1
-  kickbackForce: 0.35
-  recoverTime: 10
-  randomRecoilConstraints: {x: 2, y: 4}
-  recoilPattern: []
+  weaponScore: 0
 --- !u!114 &6749799737417924175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +75,8 @@ MonoBehaviour:
   ammoPerShot: 1
   shotsPerSecond: 5
   tapable: 0
+  element: 0
+  damageEffects: []
   projectilePrefab: {fileID: 7864193850413935297, guid: 187cc59887a2fcb428573e5faee22d1d,
     type: 3}
   projectileData:
@@ -123,6 +92,11 @@ MonoBehaviour:
     player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
+    element: 0
+    damageEffects: []
+  projectilesPerFire: 1
+  delayTimePerProjectiles: 0
+  radiusOnMaxRange: 0
 --- !u!114 &3062482478047422874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +115,8 @@ MonoBehaviour:
   ammoPerShot: 6
   shotsPerSecond: 20
   tapable: 1
+  element: 0
+  damageEffects: []
   projectilePrefab: {fileID: -406201966393000394, guid: 6991d1283fde3cb409e21b142b2a6b95,
     type: 3}
   projectileData:
@@ -156,6 +132,11 @@ MonoBehaviour:
     player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
+    element: 0
+    damageEffects: []
+  projectilesPerFire: 0
+  delayTimePerProjectiles: 0
+  radiusOnMaxRange: 0
 --- !u!114 &-1778066229078913185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +153,41 @@ MonoBehaviour:
   - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
   asChild: 1
   lifecycle: 1
+--- !u!114 &6952187333952386547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783289418158167475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bc0cd1540fa4242917d9851d1b712f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 30
+  currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.75
+--- !u!114 &5564897333815370623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783289418158167475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kickbackForce: 0.15
+  kickbackRecoverTime: 20
+  randomizeRecoil: 1
+  randomRecoilConstraints: {x: 7, y: 15}
+  recoilPattern: []
+  recoilSpeed: 150
+  recoilRecoverTime: 5
 --- !u!1 &7194791976736094638
 GameObject:
   m_ObjectHideFlags: 0

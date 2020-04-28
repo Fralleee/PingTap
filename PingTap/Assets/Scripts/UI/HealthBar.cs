@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using Fralle.Attack;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,23 +8,23 @@ namespace Fralle
   {
     [SerializeField] Image foregroundImage;
 
-    DamageController damageController;
+    Health health;
     new Camera camera;
     new Renderer renderer;
     Vector3 defaultScale;
     Canvas canvas;
 
-    public void Initialize(DamageController damageController)
+    public void Initialize(Health health)
     {
       defaultScale = transform.localScale;
 
-      this.damageController = damageController;
-      this.damageController.OnHealthChange += HandleHealthChange;
-      this.damageController.OnDeath += HandleDeath;
+      this.health = health;
+      this.health.OnHealthChange += HandleHealthChange;
+      this.health.OnDeath += HandleDeath;
 
       camera = Camera.main;
 
-      renderer = damageController.gameObject.GetComponentInChildren<Renderer>();
+      renderer = health.gameObject.GetComponentInChildren<Renderer>();
       canvas = GetComponent<Canvas>();
     }
 
@@ -34,7 +34,7 @@ namespace Fralle
       foregroundImage.fillAmount = percentage;
     }
 
-    void HandleDeath(DamageController damageController, DamageData damageData)
+    void HandleDeath(Health health, Damage damage)
     {
       Destroy(gameObject);
     }
@@ -48,7 +48,7 @@ namespace Fralle
     bool ToggleIfVisible()
     {
       bool isvisible = renderer && !renderer.isVisible;
-      bool isDestroyed = damageController == null || damageController.isDead;
+      bool isDestroyed = health == null || health.isDead;
       if (isvisible || isDestroyed)
       {
         canvas.enabled = false;
@@ -60,18 +60,18 @@ namespace Fralle
 
     void UpdatePosition()
     {
-      float distance = Vector3.Distance(camera.transform.position, damageController.transform.position);
-      float yPositionOffset = Mathf.Lerp(damageController.yLowestOffset, damageController.yHighestOffset, distance / 40);
+      float distance = Vector3.Distance(camera.transform.position, health.transform.position);
+      float yPositionOffset = Mathf.Lerp(2, 3.5f, distance / 40);
       float scale = Mathf.Lerp(1.6f, 0.8f, distance / 40);
 
       transform.localScale = defaultScale * scale;
-      transform.position = camera.WorldToScreenPoint(damageController.transform.position + Vector3.up * yPositionOffset);
+      transform.position = camera.WorldToScreenPoint(health.transform.position + Vector3.up * yPositionOffset);
     }
 
     void OnDestroy()
     {
-      damageController.OnHealthChange -= HandleHealthChange;
-      damageController.OnDeath -= HandleDeath;
+      health.OnHealthChange -= HandleHealthChange;
+      health.OnDeath -= HandleDeath;
     }
   }
 }

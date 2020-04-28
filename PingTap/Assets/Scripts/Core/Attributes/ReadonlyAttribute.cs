@@ -1,5 +1,7 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Fralle
 {
@@ -8,6 +10,7 @@ namespace Fralle
 
   }
 
+#if UNITY_EDITOR
   [CustomPropertyDrawer(typeof(ReadonlyAttribute))]
   public class ReadonlyDrawer : PropertyDrawer
   {
@@ -23,4 +26,5 @@ namespace Fralle
       GUI.enabled = true;
     }
   }
+#endif
 }

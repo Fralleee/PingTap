@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: -5829858850810243681}
   - component: {fileID: 1923125321600534695}
   - component: {fileID: -193412882233909061}
-  - component: {fileID: 5420870821815435381}
-  - component: {fileID: 4169591861229383100}
   - component: {fileID: 4028727317570622237}
+  - component: {fileID: 4849536065285394247}
+  - component: {fileID: 8780596973138301923}
   m_Layer: 0
   m_Name: Assault Rifle
   m_TagString: Untagged
@@ -54,7 +54,7 @@ MonoBehaviour:
   muzzles:
   - {fileID: 7401508142080020281}
   playerCamera: {fileID: 0}
-  recoilController: {fileID: 0}
+  recoil: {fileID: 0}
   ammoController: {fileID: 0}
   weaponScore: 0
 --- !u!114 &1923125321600534695
@@ -74,11 +74,11 @@ MonoBehaviour:
   maxDamage: 5
   ammoPerShot: 1
   shotsPerSecond: 20
-  tapable: 1
+  tapable: 0
   element: 2
   damageEffects:
   - {fileID: 11400000, guid: 4600535bb04514a4c99377a5e8a9bcfe, type: 2}
-  range: 50
+  range: 250
   pushForce: 15
   impactParticlePrefab: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
     type: 3}
@@ -86,10 +86,10 @@ MonoBehaviour:
     type: 3}
   lineRendererPrefab: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
     type: 3}
-  useSpread: 1
-  spreadIncreaseEachShot: 0.75
-  maxSpread: 5
-  recovery: 5
+  bulletsPerFire: 1
+  spreadRadius: 0.2
+  spreadIncreaseEachShot: 0.075
+  recovery: 0.5
   currentSpread: 0
 --- !u!114 &-193412882233909061
 MonoBehaviour:
@@ -128,39 +128,9 @@ MonoBehaviour:
     forward: {x: 0, y: 0, z: 0}
     element: 0
     damageEffects: []
---- !u!114 &5420870821815435381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943643353794196974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 30
-  currentAmmo: 0
-  infiniteAmmo: 0
-  reloadSpeed: 0.75
---- !u!114 &4169591861229383100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943643353794196974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79594b98695ec5440a8e0227836109a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomizeRecoil: 1
-  kickbackForce: 0.15
-  recoverTime: 15
-  randomRecoilConstraints: {x: 0.5, y: 0.75}
-  recoilPattern: []
+  projectilesPerFire: 0
+  delayTimePerProjectiles: 0
+  radiusOnMaxRange: 0
 --- !u!114 &4028727317570622237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +147,40 @@ MonoBehaviour:
   - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
   asChild: 1
   lifecycle: 1
+--- !u!114 &4849536065285394247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943643353794196974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bc0cd1540fa4242917d9851d1b712f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 30
+  currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.75
+--- !u!114 &8780596973138301923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943643353794196974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomizeRecoil: 1
+  kickbackForce: 0.15
+  recoverTime: 20
+  randomRecoilConstraints: {x: 3, y: 3}
+  recoilPattern: []
+  recoilSpeed: 16
 --- !u!1 &5078208465294758218
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +287,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}

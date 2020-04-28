@@ -145,8 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 516560043}
-  - component: {fileID: 516560044}
-  - component: {fileID: 374833809}
+  - component: {fileID: 5455593843586120107}
   m_Layer: 0
   m_Name: Weapon Manager
   m_TagString: Untagged
@@ -169,7 +168,7 @@ Transform:
   m_Father: {fileID: 1386371905205327086}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &516560044
+--- !u!114 &5455593843586120107
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,33 +177,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 516560042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9895aae5ef02e5b4ba77797bd9a1874b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c5d62492cbad8b4f8464fae7ee98329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   equippedWeapon: {fileID: 0}
-  swaySize: 0.002
-  swaySmooth: 40
-  idleSmooth: 0.5
+  swaySize: 0.004
+  swaySmooth: 25
+  idleSmooth: 1
   weaponHolder: {fileID: 217825854}
   playerCamera: {fileID: 1386371905205327086}
   swayHolder: {fileID: 544313220}
---- !u!114 &374833809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516560042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16dfa70db7988a54695034926ebf322e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meleeDamage: 40
-  meleeRadius: 2
-  inputKey: 118
-  swingTime: 0.125
-  recoveryTime: 0.2
 --- !u!1 &544313219
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +460,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c8a0ef373dae6b47ba1679ed634aa09, type: 2}
+  - {fileID: 2100000, guid: 887424395ae5a7840bd92e8672a84c36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -678,6 +660,9 @@ MonoBehaviour:
   - {fileID: -1476022736335663015, guid: ead46b4a43ecabd40a119dc40409703e, type: 3}
   - {fileID: -6140752178504457658, guid: 941ec3f802227664f9c9ded69002d628, type: 3}
   - {fileID: -2727820791764079801, guid: 5c2965b1ab994ff48b3f480bcb0376ed, type: 3}
+  - {fileID: -5829858850810243681, guid: cc9350bf46688fe4daf441eb67535bcb, type: 3}
+  - {fileID: -5829858850810243681, guid: bc2ad91da2a439442a815d3a8d7ea38a, type: 3}
+  - {fileID: -5829858850810243681, guid: 902414baf3683d24fb6882270c27cce7, type: 3}
 --- !u!114 &940673088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,7 +678,7 @@ MonoBehaviour:
   behaviours:
   - {fileID: 6989787498152017760}
   - {fileID: 1386371905872086468}
-  - {fileID: 516560044}
+  - {fileID: 5455593843586120107}
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0

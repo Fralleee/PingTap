@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Fralle.Attack;
+using TMPro;
 using UnityEngine;
 
 namespace Fralle
@@ -6,7 +7,7 @@ namespace Fralle
   public class FloatingText : MonoBehaviour
   {
     [HideInInspector] public Vector3 position;
-    [HideInInspector] public Camera camera;
+    [HideInInspector] public new Camera camera;
 
     [SerializeField] float destroyTime = 2f;
     [SerializeField] Vector2 randomPosition = new Vector2(75f, 75f);
@@ -58,7 +59,7 @@ namespace Fralle
           break;
         case HitBoxType.Nerve:
           ColorUtility.TryParseHtmlString("#FA800B", out Color deepOrange);
-          this.text.color = deepOrange; 
+          this.text.color = deepOrange;
           this.text.fontStyle = FontStyles.Bold;
           this.text.fontSize = 28f;
           break;

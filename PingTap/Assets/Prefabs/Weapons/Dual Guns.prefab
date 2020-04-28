@@ -104,9 +104,9 @@ GameObject:
   - component: {fileID: -1476022736335663015}
   - component: {fileID: -1908855620869667311}
   - component: {fileID: 2891254597158060914}
-  - component: {fileID: 2074382200130931024}
-  - component: {fileID: -1001846449385186208}
   - component: {fileID: -1908755622400236360}
+  - component: {fileID: 4662959655046094650}
+  - component: {fileID: 8506052902678987002}
   m_Layer: 0
   m_Name: Dual Guns
   m_TagString: Untagged
@@ -146,10 +146,10 @@ MonoBehaviour:
   muzzles:
   - {fileID: 4116172483890414089}
   - {fileID: 4429796427738802477}
-  activeWeaponAction: 0
   playerCamera: {fileID: 0}
-  recoilController: {fileID: 0}
-  ammoController: {fileID: 0}
+  recoil: {fileID: 0}
+  ammo: {fileID: 0}
+  weaponScore: 0
 --- !u!114 &-1908855620869667311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +168,8 @@ MonoBehaviour:
   ammoPerShot: 1
   shotsPerSecond: 4
   tapable: 0
+  element: 0
+  damageEffects: []
   projectilePrefab: {fileID: -2482091467279127213, guid: 2fd7f9217dc710f40bcc9391fac5b9ab,
     type: 3}
   projectileData:
@@ -183,6 +185,8 @@ MonoBehaviour:
     player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
+    element: 0
+    damageEffects: []
 --- !u!114 &2891254597158060914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +205,8 @@ MonoBehaviour:
   ammoPerShot: 5
   shotsPerSecond: 1
   tapable: 1
+  element: 0
+  damageEffects: []
   projectilePrefab: {fileID: 859342118846965753, guid: 0a6229f9e361b6f49975c895481029db,
     type: 3}
   projectileData:
@@ -216,39 +222,8 @@ MonoBehaviour:
     player: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
---- !u!114 &2074382200130931024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9086867461110716825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc0783b572b310468faeedfbf68d506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 12
-  currentAmmo: 0
-  infiniteAmmo: 0
-  reloadSpeed: 0.25
---- !u!114 &-1001846449385186208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9086867461110716825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79594b98695ec5440a8e0227836109a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomizeRecoil: 1
-  kickbackForce: 0.25
-  recoverTime: 10
-  randomRecoilConstraints: {x: 1, y: 2}
-  recoilPattern: []
+    element: 0
+    damageEffects: []
 --- !u!114 &-1908755622400236360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +240,39 @@ MonoBehaviour:
   - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
   asChild: 1
   lifecycle: 1
+--- !u!114 &4662959655046094650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086867461110716825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bc0cd1540fa4242917d9851d1b712f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 30
+  currentAmmo: 0
+  infiniteAmmo: 0
+  reloadSpeed: 0.75
+--- !u!114 &8506052902678987002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086867461110716825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomizeRecoil: 1
+  kickbackForce: 0.15
+  recoverTime: 20
+  randomRecoilConstraints: {x: 0, y: 0}
+  recoilPattern: []
 --- !u!1001 &3853422557091214350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -341,6 +349,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: fac5f964810704f4c8c495b3a3ef6fbd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: fac5f964810704f4c8c495b3a3ef6fbd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: fac5f964810704f4c8c495b3a3ef6fbd,
         type: 3}
@@ -431,6 +449,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: fac5f964810704f4c8c495b3a3ef6fbd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: fac5f964810704f4c8c495b3a3ef6fbd,
+        type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: fac5f964810704f4c8c495b3a3ef6fbd,
         type: 3}

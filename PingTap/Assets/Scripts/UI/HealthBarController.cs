@@ -1,33 +1,33 @@
-﻿using System.Collections;
+﻿using Fralle;
+using Fralle.Attack;
 using System.Collections.Generic;
-using Fralle;
 using UnityEngine;
 
 public class HealthBarController : MonoBehaviour
 {
   [SerializeField] HealthBar healthBarPrefab;
 
-  Dictionary<DamageController, HealthBar> healthBars = new Dictionary<DamageController, HealthBar>();
+  Dictionary<Health, HealthBar> healthBars = new Dictionary<Health, HealthBar>();
 
   void Awake()
   {
-    DamageController.OnHealthBarAdded += AddHealthBar;
-    DamageController.OnHealthBarRemoved += RemoveHealthBar;
+    Health.OnHealthBarAdded += AddHealthBar;
+    Health.OnHealthBarRemoved += RemoveHealthBar;
   }
 
-  void AddHealthBar(DamageController damageController)
+  void AddHealthBar(Health health)
   {
-    if (healthBars.ContainsKey(damageController)) return;
+    if (healthBars.ContainsKey(health)) return;
 
     HealthBar healthBar = Instantiate(healthBarPrefab, transform);
-    healthBar.Initialize(damageController);
+    healthBar.Initialize(health);
   }
 
-  void RemoveHealthBar(DamageController damageController)
+  void RemoveHealthBar(Health health)
   {
-    if (!healthBars.ContainsKey(damageController)) return;
+    if (!healthBars.ContainsKey(health)) return;
 
-    Destroy(healthBars[damageController].gameObject);
-    healthBars.Remove(damageController);
+    Destroy(healthBars[health].gameObject);
+    healthBars.Remove(health);
   }
 }
