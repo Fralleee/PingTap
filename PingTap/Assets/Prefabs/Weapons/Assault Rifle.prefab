@@ -71,13 +71,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireInput: 0
   minDamage: 5
-  maxDamage: 5
+  maxDamage: 10
   ammoPerShot: 1
   shotsPerSecond: 20
   tapable: 0
   element: 2
   damageEffects:
-  - {fileID: 11400000, guid: 4600535bb04514a4c99377a5e8a9bcfe, type: 2}
+  - {fileID: 11400000, guid: 88c4f26538b5c804fb3f230b6dfb0c76, type: 2}
   range: 250
   pushForce: 15
   impactParticlePrefab: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
@@ -128,7 +128,7 @@ MonoBehaviour:
     forward: {x: 0, y: 0, z: 0}
     element: 0
     damageEffects: []
-  projectilesPerFire: 0
+  projectilesPerFire: 1
   delayTimePerProjectiles: 0
   radiusOnMaxRange: 0
 --- !u!114 &4028727317570622237
@@ -175,12 +175,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeRecoil: 1
   kickbackForce: 0.15
-  recoverTime: 20
-  randomRecoilConstraints: {x: 3, y: 3}
-  recoilPattern: []
+  kickbackRecoverTime: 20
+  randomizeRecoil: 1
   recoilSpeed: 16
+  recoilRecoverTime: 10
+  randomRecoilConstraints: {x: 3, y: 3, z: 3}
+  recoilPattern: []
 --- !u!1 &5078208465294758218
 GameObject:
   m_ObjectHideFlags: 0

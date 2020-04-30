@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2943930378434587043}
   - component: {fileID: 4750561224967258248}
   - component: {fileID: 5099786652254167994}
-  - component: {fileID: 1672789566483352593}
   - component: {fileID: 49460096710208174}
+  - component: {fileID: 7825020550972323710}
   m_Layer: 0
   m_Name: Nexus
   m_TagString: Untagged
@@ -96,22 +96,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &1672789566483352593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7681667764346707682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b0cb39d84c1bd4c90035f9bae7b4a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  armor: 0
-  immortal: 0
 --- !u!114 &49460096710208174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,3 +108,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cb44a0c739276418a5ce3fce20e276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7825020550972323710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7681667764346707682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b4cefef7bf2204c812afbbb3bc89d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageEffects: []
+  isDead: 0
+  currentHealth: 0
+  maxHealth: 1000
+  immortal: 0

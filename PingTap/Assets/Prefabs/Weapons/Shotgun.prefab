@@ -133,11 +133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kickbackForce: 0.25
+  kickbackRecoverTime: 20
   randomizeRecoil: 0
-  kickbackForce: 0.15
-  recoverTime: 20
+  recoilSpeed: 35
+  recoilRecoverTime: 10
   randomRecoilConstraints: {x: 0, y: 0}
-  recoilPattern: []
+  recoilPattern:
+  - {x: 1, y: -5}
+  - {x: -1, y: -4}
+  - {x: 0, y: -6}
 --- !u!1 &7623466945803982159
 GameObject:
   m_ObjectHideFlags: 0

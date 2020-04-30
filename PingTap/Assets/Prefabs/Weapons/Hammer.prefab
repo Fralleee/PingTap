@@ -66,10 +66,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeRecoil: 1
   kickbackForce: 0.15
-  recoverTime: 20
-  randomRecoilConstraints: {x: 5, y: 5}
+  kickbackRecoverTime: 20
+  randomizeRecoil: 1
+  recoilSpeed: 35
+  recoilRecoverTime: 10
+  randomRecoilConstraints: {x: 15, y: 5, z: 15}
   recoilPattern: []
 --- !u!114 &-7454947012209604454
 MonoBehaviour:

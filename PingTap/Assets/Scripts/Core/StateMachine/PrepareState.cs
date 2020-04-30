@@ -11,10 +11,12 @@ namespace Fralle
     {
       base.Enter(controller);
       controller.matchManager.prepareTimer = controller.matchManager.prepareTime;
+      controller.waveManager.ToggleBlocker(true);
     }
 
     public override void Exit(StateController controller)
     {
+      controller.waveManager.ToggleBlocker(false);
     }
 
     internal override void Tick(StateController controller)

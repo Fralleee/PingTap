@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Fralle.Attack
@@ -71,12 +72,18 @@ namespace Fralle.Attack
       foreach (Health health in targets)
       {
         float distance = Vector3.Distance(health.transform.position, position);
-        float distanceDamageMultiplier = Mathf.Clamp01(1 - distance / data.explosionRadius);
+        if (distance > data.explosionRadius + 1) continue;
+
+        float distanceDamageMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
 
         var colRb = health.GetComponent<Rigidbody>();
-        if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius);
+        if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius + 1);
 
         float damageAmount = data.damage * distanceDamageMultiplier;
+        if (damageAmount <= 0.5f)
+        {
+          Debug.Log($"Damage {damageAmount} and distance {distance}");
+        }
         Vector3 targetPosition = health.transform.position;
         var damage = new Damage()
         {

@@ -16,7 +16,7 @@ namespace Fralle
 
     public virtual void Enter(StateController controller)
     {
-      controller.matchManager.gameState = gameState;
+      controller.matchManager.NewState(gameState);
     }
 
     public abstract void Exit(StateController controller);

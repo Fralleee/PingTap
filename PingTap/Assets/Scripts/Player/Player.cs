@@ -10,6 +10,7 @@ namespace Fralle
     [SerializeField] GameObject enemyHealthBarUI;
     [SerializeField] GameObject damageNumbersUI;
     [SerializeField] GameObject menuUI;
+    [SerializeField] GameObject minimapUi;
 
     [HideInInspector] public GameObject menu;
     [HideInInspector] public new Camera camera;
@@ -33,6 +34,7 @@ namespace Fralle
       Instantiate(resourceUI, ui.transform);
       Instantiate(enemyHealthBarUI, ui.transform);
       Instantiate(damageNumbersUI, ui.transform);
+      Instantiate(minimapUi, ui.transform);
 
       menu = Instantiate(menuUI, ui.transform);
       menu.SetActive(false);

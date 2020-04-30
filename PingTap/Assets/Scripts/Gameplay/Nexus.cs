@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Nexus : MonoBehaviour
 {
-  public static event Action<Nexus> OnDeath = delegate { };
+  public event Action<Nexus> OnDeath = delegate { };
 
-  Health health;
+  public Health health;
 
   void Awake()
   {
     health = GetComponent<Health>();
     health.OnDeath += HandleDeath;
     Enemy.OnEnemyReachedPowerStone += HandleEnemyReachedPowerStone;
-  }
+}
 
   void HandleDeath(Health health, Damage damage)
   {

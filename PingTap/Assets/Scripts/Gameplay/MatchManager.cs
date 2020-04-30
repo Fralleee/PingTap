@@ -1,43 +1,46 @@
 ﻿using System;
 using Fralle;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MatchManager : MonoBehaviour
 {
   public static event Action<MatchManager> OnDefeat = delegate { };
   public static event Action<MatchManager> OnVictory = delegate { };
   public static event Action<MatchManager> OnNewRound = delegate { };
+  public static event Action<GameState> OnNewState = delegate { };
 
   public GameState gameState;
   public float prepareTime = 30f;
 
   [Header("UI")]
+  [SerializeField] GameObject prepareUi;
+  [SerializeField] GameObject nexusUI;
   [SerializeField] GameObject roundsUI;
-  [SerializeField] GameObject timersUI;
-  [SerializeField] GameObject enemiesUI;
+  [SerializeField] GameObject waveInfoUi;
 
   [Space(10)]
   [Readonly] public int enemiesAlive;
   [Readonly] public int totalEnemies;
   [Readonly] public float prepareTimer;
   [Readonly] public float totalTimer;
-  [Readonly] public float roundTimer;
+  [Readonly] public float waveTimer;
 
   [HideInInspector] public bool isVictory;
 
   StateController stateController;
+  Nexus nexus;
 
   void Awake()
   {
     stateController = GetComponent<StateController>();
 
-    Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
-    Nexus.OnDeath += Defeat;
-    WaveManager.OnWavesComplete += HandleWavesComplete;
-  }
+    nexus = FindObjectOfType<Nexus>();
+    nexus.OnDeath += Defeat;
 
-  void Start()
-  {
+    Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
+    WaveManager.OnWavesComplete += HandleWavesComplete;
+
     SetupUI();
   }
 
@@ -47,13 +50,10 @@ public class MatchManager : MonoBehaviour
     totalTimer += Time.deltaTime;
   }
 
-  void SetupUI()
+  public void NewState(GameState newState)
   {
-    var ui = new GameObject("UI");
-    ui.transform.parent = transform;
-    Instantiate(roundsUI, ui.transform);
-    Instantiate(timersUI, ui.transform);
-    Instantiate(enemiesUI, ui.transform);
+    gameState = newState;
+    OnNewState(newState);
   }
 
   public void NewWave(int enemyCount)
@@ -66,6 +66,18 @@ public class MatchManager : MonoBehaviour
   public void HandleEnemyDeath(Enemy enemy)
   {
     enemiesAlive--;
+  }
+
+  void SetupUI()
+  {
+    var ui = new GameObject("UI");
+    ui.transform.parent = transform;
+    Instantiate(prepareUi, ui.transform);
+    Instantiate(roundsUI, ui.transform);
+    Instantiate(waveInfoUi, ui.transform);
+
+    GameObject nexusUiInstance = Instantiate(nexusUI, ui.transform);
+    nexusUiInstance.GetComponent<NexusHealthUI>().SetNexus(nexus);
   }
 
   void HandleWavesComplete(WaveManager waveManager)
@@ -87,8 +99,9 @@ public class MatchManager : MonoBehaviour
 
   void OnDestroy()
   {
+    nexus.OnDeath -= Defeat;
+
     Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
-    Nexus.OnDeath -= Defeat;
     WaveManager.OnWavesComplete -= HandleWavesComplete;
   }
 

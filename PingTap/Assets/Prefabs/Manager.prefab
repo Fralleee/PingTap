@@ -59,18 +59,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  prepareTime: 0
-  roundsUI: {fileID: 3475787437800578570, guid: 8ac5a521d1c81bb4b93578b7ee6618e0,
+  prepareTime: 1
+  prepareUi: {fileID: 8847006089157585122, guid: 4833e60ae555bcf45ba7fc13b30736a8,
     type: 3}
-  timersUI: {fileID: 8878480488710971372, guid: 88260287344a1b04496578f1998c36a6,
+  nexusUI: {fileID: 3931466078484103568, guid: 6f99d1edc9124bf45bb717f94e3b81c6, type: 3}
+  roundsUI: {fileID: 3475787437800578570, guid: 47b5c350f0a780d4ea3da7376ac0ffcf,
     type: 3}
-  enemiesUI: {fileID: 3818775473953951849, guid: 18a710d8d1e69e042b6e7bd3a9b8b91d,
+  waveInfoUi: {fileID: 3475787437800578570, guid: 58fbc3ffd958e53438f0dd5355fd3c9a,
     type: 3}
   enemiesAlive: 0
   totalEnemies: 0
   prepareTimer: 0
   totalTimer: 0
-  roundTimer: 0
+  waveTimer: 0
   isVictory: 0
 --- !u!114 &615102588463662621
 MonoBehaviour:
@@ -99,12 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dff4ad98f483f43b7a70b2603257a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armies:
+  - {fileID: 11400000, guid: eb1a94b860dcd0d468fc3d5c825ae02e, type: 2}
+  - {fileID: 11400000, guid: 2504a9010f3d1b5468c19d266e27da24, type: 2}
+  spawner: {fileID: 0}
+  blockerPrefab: {fileID: 7821304005129427820, guid: f23baf1f5d961bf49bd966f74fa419ae,
+    type: 3}
   maxArmies: 0
   maxWaves: 0
   currentArmy: 0
   currentWave: 0
   waveProgress: 0
-  armies:
-  - {fileID: 11400000, guid: eb1a94b860dcd0d468fc3d5c825ae02e, type: 2}
-  - {fileID: 11400000, guid: 2504a9010f3d1b5468c19d266e27da24, type: 2}
-  spawner: {fileID: 0}

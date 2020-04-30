@@ -23,12 +23,15 @@ namespace Fralle.Attack
     [SerializeField] bool immortal;
 
     Armor armor;
+    Animator animator;
     bool isTouched;
 
     void Start()
     {
       armor = GetComponent<Armor>();
       if (currentHealth == 0) currentHealth = maxHealth;
+
+      animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -98,6 +101,7 @@ namespace Fralle.Attack
       {
         isDead = true;
         OnDeath(this, damage);
+        if (animator) animator.enabled = false;
       }
     }
   }

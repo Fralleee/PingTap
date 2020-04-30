@@ -181,12 +181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equippedWeapon: {fileID: 0}
+  weaponRig: {fileID: 544313220}
   swaySize: 0.004
   swaySmooth: 25
   idleSmooth: 1
   weaponHolder: {fileID: 217825854}
   playerCamera: {fileID: 1386371905205327086}
-  swayHolder: {fileID: 544313220}
 --- !u!1 &544313219
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 544313220}
   m_Layer: 0
-  m_Name: Sway Holder
+  m_Name: Weapon Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -640,6 +640,8 @@ MonoBehaviour:
   damageNumbersUI: {fileID: 6248745576978661917, guid: dffb2453f4c5dac43a9035e32a0b1839,
     type: 3}
   menuUI: {fileID: 4038077519139060140, guid: e6e9972b2ef61404d9ad3115bca869ae, type: 3}
+  minimapUi: {fileID: 4590892497937501361, guid: eb00496e3d13c3843b5c5ae3428fb1c3,
+    type: 3}
   menu: {fileID: 0}
   camera: {fileID: 0}
 --- !u!114 &6817597722629130795

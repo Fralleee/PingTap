@@ -158,7 +158,7 @@ MonoBehaviour:
     forward: {x: 0, y: 0, z: 0}
     element: 0
     damageEffects: []
-  projectilesPerFire: 0
+  projectilesPerFire: 1
   delayTimePerProjectiles: 0
   radiusOnMaxRange: 0
 --- !u!114 &4028727317570622237
@@ -205,9 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomizeRecoil: 0
   kickbackForce: 0.15
-  recoverTime: 20
+  kickbackRecoverTime: 20
+  randomizeRecoil: 0
+  recoilSpeed: 15
+  recoilRecoverTime: 10
   randomRecoilConstraints: {x: 0, y: 0}
   recoilPattern: []
 --- !u!1001 &8593046291294993141

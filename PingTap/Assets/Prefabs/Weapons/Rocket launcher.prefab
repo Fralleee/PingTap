@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireInput: 0
   minDamage: 30
-  maxDamage: 40
+  maxDamage: 30
   ammoPerShot: 1
   shotsPerSecond: 5
   tapable: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
     explodeOnMaxRange: 1
     explodeOnImpactTime: 0
     explodeOnTime: 0
-    explosionRadius: 10
+    explosionRadius: 3
     pushForce: 100
     range: 100
     player: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
     explodeOnMaxRange: 1
     explodeOnImpactTime: 0
     explodeOnTime: 0
-    explosionRadius: 25
+    explosionRadius: 5
     pushForce: 500
     range: 100
     player: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
     forward: {x: 0, y: 0, z: 0}
     element: 0
     damageEffects: []
-  projectilesPerFire: 0
+  projectilesPerFire: 1
   delayTimePerProjectiles: 0
   radiusOnMaxRange: 0
 --- !u!114 &-1778066229078913185
@@ -184,10 +184,10 @@ MonoBehaviour:
   kickbackForce: 0.15
   kickbackRecoverTime: 20
   randomizeRecoil: 1
-  randomRecoilConstraints: {x: 7, y: 15}
-  recoilPattern: []
   recoilSpeed: 150
   recoilRecoverTime: 5
+  randomRecoilConstraints: {x: 7, y: 15, z: 0}
+  recoilPattern: []
 --- !u!1 &7194791976736094638
 GameObject:
   m_ObjectHideFlags: 0

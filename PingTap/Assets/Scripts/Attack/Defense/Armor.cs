@@ -8,9 +8,9 @@ namespace Fralle.Attack.Defense
   {
     public float DamageMultiplier => 1 - 0.06f * armor / (1 + 0.06f * armor);
 
-    [SerializeField] int armor;
-    [SerializeField] List<ArmorElementModifier> armorElementModifiers = new List<ArmorElementModifier>();
-    [SerializeField] Protection protection;
+    public int armor;
+    public List<ArmorElementModifier> armorElementModifiers = new List<ArmorElementModifier>();
+    public Protection protection;
 
     public Damage Protect(Damage damage, Health health)
     {

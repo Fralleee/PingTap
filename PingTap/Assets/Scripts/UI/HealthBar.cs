@@ -13,6 +13,7 @@ namespace Fralle
     new Renderer renderer;
     Vector3 defaultScale;
     Canvas canvas;
+    RectTransform rectTransform;
 
     public void Initialize(Health health)
     {
@@ -25,6 +26,7 @@ namespace Fralle
       camera = Camera.main;
 
       renderer = health.gameObject.GetComponentInChildren<Renderer>();
+      rectTransform = GetComponent<RectTransform>();
       canvas = GetComponent<Canvas>();
     }
 
@@ -62,10 +64,22 @@ namespace Fralle
     {
       float distance = Vector3.Distance(camera.transform.position, health.transform.position);
       float yPositionOffset = Mathf.Lerp(2, 3.5f, distance / 40);
-      float scale = Mathf.Lerp(1.6f, 0.8f, distance / 40);
 
-      transform.localScale = defaultScale * scale;
-      transform.position = camera.WorldToScreenPoint(health.transform.position + Vector3.up * yPositionOffset);
+      Vector3 screenPosition = camera.WorldToScreenPoint(health.transform.position + Vector3.up * yPositionOffset);
+
+      // extra check
+      if (screenPosition.z < 0)
+      {
+        canvas.enabled = false;
+        return;
+      }
+
+      canvas.enabled = true;
+
+      rectTransform.anchoredPosition = screenPosition;
+
+      float scale = Mathf.Lerp(1.6f, 0.8f, distance / 40);
+      rectTransform.localScale = defaultScale * scale;
     }
 
     void OnDestroy()

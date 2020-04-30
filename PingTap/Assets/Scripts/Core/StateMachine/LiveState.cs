@@ -18,12 +18,12 @@ namespace Fralle
 
     public override void Exit(StateController controller)
     {
-      controller.matchManager.roundTimer = 0;
+      controller.matchManager.waveTimer = 0;
     }
 
     internal override void Tick(StateController controller)
     {
-      controller.matchManager.roundTimer += Time.deltaTime;
+      controller.matchManager.waveTimer += Time.deltaTime;
     }
 
     internal override void Transition(StateController controller)

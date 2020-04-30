@@ -223,8 +223,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4911353467714394956}
-  - component: {fileID: 4911353467714394957}
   - component: {fileID: 4911353467714394955}
+  - component: {fileID: 4911353467714394957}
   - component: {fileID: 2626577486964819000}
   - component: {fileID: 4727276578734697480}
   - component: {fileID: 1326110304942313836}
@@ -254,28 +254,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &4911353467714394957
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4911353467714394959}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 1
-  m_Speed: 2
-  m_Acceleration: 500
-  avoidancePriority: 50
-  m_AngularSpeed: 2000
-  m_StoppingDistance: 1
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &4911353467714394955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +269,28 @@ MonoBehaviour:
   wayPointSchema: {fileID: 0}
   stoppingDistance: 5
   currentMovementModifier: 1
+--- !u!195 &4911353467714394957
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911353467714394959}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 5
+  m_Acceleration: 500
+  avoidancePriority: 50
+  m_AngularSpeed: 2000
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &2626577486964819000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
   agentNavigation: {fileID: 0}
   navMeshAgent: {fileID: 0}
   health: {fileID: 0}
-  damageAmount: 1
+  damageAmount: 10
   waveType: 0
   enemyDeathReaction: 0
 --- !u!114 &4727276578734697480

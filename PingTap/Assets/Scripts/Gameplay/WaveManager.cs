@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Fralle;
 using UnityEngine;
 
@@ -11,19 +9,29 @@ public class WaveManager : MonoBehaviour
   public static event Action<WaveManager> OnWavesComplete = delegate { };
   public static event Action<float> OnWaveProgress = delegate { };
 
+  [Header("Armies")]
+  public Army[] armies;
+  [SerializeField] Spawner spawner;
+  [SerializeField] GameObject blockerPrefab;
+
+  public bool WavesRemaining => currentArmy < armies.Length - 1 || currentWave < maxWaves;
+  public Army GetCurrentArmy => armies[currentArmy];
+  public WaveDefinition GetCurrentWave => armies[currentArmy].NextWave(currentWave);
+
+  [Header("Current Stats")]
   [Readonly] public int maxArmies;
   [Readonly] public int maxWaves;
   [Readonly] public int currentArmy;
   [Readonly] public int currentWave;
   [Readonly] public int waveProgress;
 
-  public Army[] armies;
-  [SerializeField] Spawner spawner;
-
-  public bool WavesRemaining => currentArmy < armies.Length - 1 || currentWave < maxWaves;
-  public Army GetCurrentArmy => armies[currentArmy];
-
+  GameObject blocker;
   int currentWaveCount;
+
+  void Awake()
+  {
+    blocker = Instantiate(blockerPrefab, spawner.transform.position, Quaternion.identity, transform);
+  }
 
   void Start()
   {
@@ -33,9 +41,31 @@ public class WaveManager : MonoBehaviour
     Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
   }
 
+  public int NextWave()
+  {
+    currentWave++;
+    if (currentWave <= maxWaves) return SpawnWave();
+
+    if (currentArmy < armies.Length - 1)
+    {
+      currentArmy++;
+      SetNextSchema();
+      currentWave = 1;
+      return SpawnWave();
+    }
+
+    OnWavesComplete(this);
+    return 0;
+  }
+
+  public void ToggleBlocker(bool active)
+  {
+    blocker.SetActive(active);
+  }
+
   void SetNextSchema()
   {
-    Army army = armies[currentArmy];
+    var army = armies[currentArmy];
     maxWaves = army.MaxRounds;
     spawner.army = army;
     OnNewSchema(this);
@@ -48,35 +78,14 @@ public class WaveManager : MonoBehaviour
     return currentWaveCount;
   }
 
-  public int NextWave()
-  {
-    currentWave++;
-    if (currentWave <= maxWaves)
-    {
-      return SpawnWave();
-    }
-    else if (currentArmy < armies.Length - 1)
-    {
-      currentArmy++;
-      SetNextSchema();
-      currentWave = 1;
-      return SpawnWave();
-    }
-
-    OnWavesComplete(this);
-    return 0;
-  }
-
-  void UpdateWaveProgress(int change)
+  void UpdateWaveProgress()
   {
     currentWaveCount--;
-    int waveIndex = Mathf.Clamp(currentWave, 1, maxWaves - 1);
-    float total = armies[currentArmy].waveDefinitions[waveIndex].count;
-    OnWaveProgress(1 - currentWaveCount / total);
+    OnWaveProgress(1 - (currentWaveCount / (float)GetCurrentWave.count));
   }
 
   void HandleEnemyDeath(Enemy enemy)
   {
-    UpdateWaveProgress(-1);
+    UpdateWaveProgress();
   }
 }

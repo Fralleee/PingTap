@@ -15,14 +15,14 @@ namespace Fralle.Attack
     [SerializeField] bool randomizeRecoil;
     [SerializeField] float recoilSpeed = 15f;
     [SerializeField] float recoilRecoverTime = 10f;
-    [SerializeField] Vector2 randomRecoilConstraints;
-    [SerializeField] Vector2[] recoilPattern;
+    [SerializeField] Vector3 randomRecoilConstraints;
+    [SerializeField] Vector3[] recoilPattern;
 
     int recoilPatternStep;
     MouseLook mouseLook;
     Weapon weapon;
     Vector3[] startPositions;
-    Vector2 recoil;
+    Vector3 recoil;
     int nextMuzzle;
 
     void Awake()
@@ -40,8 +40,8 @@ namespace Fralle.Attack
         weapon.muzzles[i].parent.localPosition = Vector3.Lerp(weapon.muzzles[i].parent.localPosition, startPositions[i], kickbackRecoverTime * Time.deltaTime);
       }
 
-      weapon.playerCamera.localRotation = Quaternion.RotateTowards(weapon.playerCamera.localRotation, Quaternion.Euler(recoil.y, recoil.x, 0), recoilSpeed * Time.deltaTime);
-      recoil = Vector2.Lerp(recoil, Vector2.zero, recoilRecoverTime * Time.deltaTime);
+      weapon.playerCamera.localRotation = Quaternion.RotateTowards(weapon.playerCamera.localRotation, Quaternion.Euler(recoil.y, recoil.x, recoil.z), recoilSpeed * Time.deltaTime);
+      recoil = Vector3.Lerp(recoil, Vector3.zero, recoilRecoverTime * Time.deltaTime);
     }
 
     public void Initiate(Transform playerCamera)
@@ -59,7 +59,8 @@ namespace Fralle.Attack
       {
         float xRecoil = Random.Range(-randomRecoilConstraints.x, randomRecoilConstraints.x);
         float yRecoil = Random.Range(-randomRecoilConstraints.y, randomRecoilConstraints.y);
-        recoil += new Vector2(xRecoil, yRecoil);
+        float zRecoil = Random.Range(-randomRecoilConstraints.z, randomRecoilConstraints.z);
+        recoil += new Vector3(xRecoil, yRecoil, zRecoil);
       }
       else if (recoilPattern.Length > 0)
       {
