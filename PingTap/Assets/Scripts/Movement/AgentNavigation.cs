@@ -29,6 +29,7 @@ public class AgentNavigation : MonoBehaviour
 
   void Start()
   {
+    if (!wayPointSchema) return;
     nextPosition = wayPointSchema.waypoints[waypointIndex].With(y: navMeshAgent.baseOffset);
     navMeshAgent.SetDestination(nextPosition);
   }

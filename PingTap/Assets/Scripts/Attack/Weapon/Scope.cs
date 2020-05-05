@@ -86,7 +86,7 @@ namespace Fralle.Attack
     {
       var time = 0f;
       isScoping = true;
-      mouseLook.currentSensitivity = mouseLook.mouseZoomSensitivity;
+      mouseLook.currentSensitivity = mouseLook.mouseSensitivity * mouseLook.mouseZoomModifier;
 
       while (time < 1)
       {

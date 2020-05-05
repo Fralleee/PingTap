@@ -7,7 +7,7 @@ public class MouseLook : MonoBehaviour
   [Readonly] public float currentSensitivity;
   [SerializeField] GameObject orientation;
   public float mouseSensitivity = 50f;
-  public float mouseZoomSensitivity = 20f;
+  public float mouseZoomModifier = 0.4f;
   [SerializeField] float mouseLookSmooth = 0f;
   [SerializeField] float affectSmooth = 0.05f;
 
@@ -20,7 +20,7 @@ public class MouseLook : MonoBehaviour
   [SerializeField] float currentRotationY;
 
   Vector2 affectRotation;
-  
+
 
   void Awake()
   {
@@ -43,7 +43,7 @@ public class MouseLook : MonoBehaviour
     affectRotation = rotation;
   }
 
-  void ConfigureCursor(bool doLock = true)
+  public static void ConfigureCursor(bool doLock = true)
   {
     if (doLock)
     {
@@ -70,7 +70,7 @@ public class MouseLook : MonoBehaviour
 
     float mouseLookDampX = 0;
     float mouseLookDampY = 0;
-    Vector2 affectRotationDamp = Vector2.zero;
+    var affectRotationDamp = Vector2.zero;
 
     inputMouseLook.y = Mathf.Clamp(inputMouseLook.y, clampYMin, clampYMax);
 
@@ -79,7 +79,7 @@ public class MouseLook : MonoBehaviour
 
     affectRotation = Vector2.SmoothDamp(affectRotation, Vector2.zero, ref affectRotationDamp, affectSmooth);
 
-    Vector3 rot = orientation.transform.rotation.eulerAngles;
+    var rot = orientation.transform.rotation.eulerAngles;
     orientation.transform.localRotation = Quaternion.Euler(rot.x, currentRotationX, rot.z);
     transform.localRotation = Quaternion.Euler(currentRotationY, currentRotationX, 0);
   }
@@ -96,6 +96,12 @@ public class MouseLook : MonoBehaviour
 
   void OnEnable()
   {
+    if (currentSensitivity != mouseSensitivity)
+    {
+      mouseSensitivity = PlayerPrefs.GetFloat(Settings.MouseSensitivity.ToString());
+      currentSensitivity = mouseSensitivity * mouseZoomModifier;
+    }
+    else mouseSensitivity = PlayerPrefs.GetFloat(Settings.MouseSensitivity.ToString());
     ConfigureCursor();
   }
 

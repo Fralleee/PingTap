@@ -34,7 +34,6 @@ public class UITweener : MonoBehaviour
 
   public void HandleTween()
   {
-
     if (objectToAnimate == null) objectToAnimate = gameObject;
 
     animationMap[animationType]();
@@ -77,12 +76,4 @@ public class UITweener : MonoBehaviour
     tweenObject = LeanTween.scale(objectToAnimate, to, actualDuration)
       .setOnComplete(() => LeanTween.scale(objectToAnimate, from, actualDuration));
   }
-
-  void SwapDirection()
-  {
-    Vector3 temp = from;
-    from = to;
-    to = from;
-  }
-
 }

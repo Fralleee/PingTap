@@ -49,42 +49,38 @@ namespace Fralle.Attack
       rigidbody.AddForce(data.forward * data.force, ForceMode.VelocityChange);
 
       if (!muzzleParticlePrefab) return;
-      GameObject muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
-      int layer = LayerMask.NameToLayer("First Person Objects");
+      var muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
+      var layer = LayerMask.NameToLayer("First Person Objects");
       muzzleParticle.SetLayerRecursively(layer);
       Destroy(muzzleParticle, 1.5f);
     }
 
     void Explode(Collision collision = null)
     {
-      Vector3 position = transform.position;
+      var position = transform.position;
       if (collision != null) position = collision.GetContact(0).point;
 
       if (impactParticlePrefab)
       {
-        GameObject impactParticle = Instantiate(impactParticlePrefab, position, Quaternion.identity);
+        var impactParticle = Instantiate(impactParticlePrefab, position, Quaternion.identity);
         Destroy(impactParticle, 5f);
       }
 
-      Collider[] colliders = Physics.OverlapSphere(position, data.explosionRadius);
-      Health[] targets = colliders.Select(x => x.GetComponentInParent<Health>()).Where(x => x != null).Distinct().ToArray();
+      var colliders = Physics.OverlapSphere(position, data.explosionRadius);
+      var targets = colliders.Select(x => x.GetComponentInParent<Health>()).Where(x => x != null).Distinct().ToArray();
 
-      foreach (Health health in targets)
+      foreach (var health in targets)
       {
-        float distance = Vector3.Distance(health.transform.position, position);
+        var distance = Vector3.Distance(health.transform.position, position);
         if (distance > data.explosionRadius + 1) continue;
 
-        float distanceDamageMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
+        var distanceDamageMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
 
         var colRb = health.GetComponent<Rigidbody>();
         if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius + 1);
 
-        float damageAmount = data.damage * distanceDamageMultiplier;
-        if (damageAmount <= 0.5f)
-        {
-          Debug.Log($"Damage {damageAmount} and distance {distance}");
-        }
-        Vector3 targetPosition = health.transform.position;
+        var damageAmount = data.damage * distanceDamageMultiplier;
+        var targetPosition = health.transform.position;
         var damage = new Damage()
         {
           player = data.player,
@@ -122,7 +118,7 @@ namespace Fralle.Attack
 
       if (impactParticlePrefab)
       {
-        GameObject impactParticle = Instantiate(
+        var impactParticle = Instantiate(
           impactParticlePrefab,
           transform.position,
           Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal)

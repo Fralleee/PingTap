@@ -1,19 +1,26 @@
-﻿using UnityEngine;
+﻿
+using System;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Fralle
 {
   public class Player : MonoBehaviour
   {
     [SerializeField] GameObject crosshair;
-    [SerializeField] GameObject characterUI;
-    [SerializeField] GameObject resourceUI;
-    [SerializeField] GameObject enemyHealthBarUI;
-    [SerializeField] GameObject damageNumbersUI;
-    [SerializeField] GameObject menuUI;
+    [SerializeField] GameObject resourceUi;
+    [SerializeField] GameObject enemyHealthBarUi;
+    [SerializeField] GameObject damageNumbersUi;
+    [SerializeField] GameObject menuUi;
     [SerializeField] GameObject minimapUi;
 
-    [HideInInspector] public GameObject menu;
     [HideInInspector] public new Camera camera;
+    [HideInInspector] public ToggleBehaviours toggleBehaviours;
+
+    void Awake()
+    {
+      toggleBehaviours = GetComponent<ToggleBehaviours>();
+    }
 
     void Start()
     {
@@ -22,22 +29,19 @@ namespace Fralle
       gameObject.SetLayerRecursively(layer, ignoreLayer);
 
       camera = Camera.main;
-      SetupUI();
+      SetupUi();
     }
 
-    void SetupUI()
+    void SetupUi()
     {
       var ui = new GameObject("UI");
       ui.transform.parent = transform;
       Instantiate(crosshair, ui.transform);
-      Instantiate(characterUI, ui.transform);
-      Instantiate(resourceUI, ui.transform);
-      Instantiate(enemyHealthBarUI, ui.transform);
-      Instantiate(damageNumbersUI, ui.transform);
+      Instantiate(resourceUi, ui.transform);
+      Instantiate(enemyHealthBarUi, ui.transform);
+      Instantiate(damageNumbersUi, ui.transform);
       Instantiate(minimapUi, ui.transform);
-
-      menu = Instantiate(menuUI, ui.transform);
-      menu.SetActive(false);
+      Instantiate(menuUi, ui.transform);
     }
   }
 }
