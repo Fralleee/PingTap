@@ -2,24 +2,27 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(WaypointSchema))]
-public class WaypointSchemaEditor : Editor
+namespace Fralle.Movement
 {
-  WaypointSchema waypointSchema;
-
-  void OnEnable()
+  [CustomEditor(typeof(WaypointSchema))]
+  public class WaypointSchemaEditor : Editor
   {
-    waypointSchema = target as WaypointSchema;
-  }
+    WaypointSchema waypointSchema;
 
-  public override void OnInspectorGUI()
-  {
-    GUILayout.BeginHorizontal();
-    if (GUILayout.Button("Add waypoint")) waypointSchema.AddWaypoint();
-    if (GUILayout.Button("Remove waypoint")) waypointSchema.RemoveWaypoint();
-    GUILayout.EndHorizontal();
+    void OnEnable()
+    {
+      waypointSchema = target as WaypointSchema;
+    }
 
-    base.OnInspectorGUI();
+    public override void OnInspectorGUI()
+    {
+      GUILayout.BeginHorizontal();
+      if (GUILayout.Button("Add waypoint")) waypointSchema.AddWaypoint();
+      if (GUILayout.Button("Remove waypoint")) waypointSchema.RemoveWaypoint();
+      GUILayout.EndHorizontal();
+
+      base.OnInspectorGUI();
+    }
   }
 }
 #endif

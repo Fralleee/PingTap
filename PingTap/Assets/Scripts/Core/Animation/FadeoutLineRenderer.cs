@@ -1,28 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class FadeoutLineRenderer : MonoBehaviour
+namespace Fralle.Core.Animation
 {
-  public float fadeoutTime;
-  public bool destroyOnFadeout = true;
-
-  float fadeTimer;
-  LineRenderer lineRenderer;
-  Color currentColor;
-
-  void Awake()
+  public class FadeoutLineRenderer : MonoBehaviour
   {
-    lineRenderer = GetComponent<LineRenderer>();
-    currentColor = lineRenderer.material.color;
-    
-    if(destroyOnFadeout) Destroy(gameObject, fadeoutTime);
-  }
+    public float fadeoutTime;
+    public bool destroyOnFadeout = true;
 
-  void Update()
-  {
-    fadeTimer += Time.deltaTime;
-    Color newColor = Color.Lerp(currentColor, new Color(1f, 1f, 1f, 0f), fadeTimer / fadeoutTime);
-    lineRenderer.material.color = newColor;
+    float fadeTimer;
+    LineRenderer lineRenderer;
+    Color currentColor;
+
+    void Awake()
+    {
+      lineRenderer = GetComponent<LineRenderer>();
+      currentColor = lineRenderer.material.color;
+
+      if (destroyOnFadeout) Destroy(gameObject, fadeoutTime);
+    }
+
+    void Update()
+    {
+      fadeTimer += Time.deltaTime;
+      var newColor = Color.Lerp(currentColor, new Color(1f, 1f, 1f, 0f), fadeTimer / fadeoutTime);
+      lineRenderer.material.color = newColor;
+    }
   }
 }

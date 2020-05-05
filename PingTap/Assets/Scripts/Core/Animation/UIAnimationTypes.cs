@@ -1,7 +1,10 @@
-﻿public enum UIAnimationTypes
+﻿namespace Fralle.Core.Animation
 {
-  Fade,
-  Move,
-  Scale,
-  ScaleUpAndDown
+  public enum UiAnimationTypes
+  {
+    Fade,
+    Move,
+    Scale,
+    ScaleUpAndDown
+  }
 }

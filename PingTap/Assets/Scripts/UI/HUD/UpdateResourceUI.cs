@@ -1,27 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Fralle.Resource;
 using TMPro;
 using UnityEngine;
 
-public class UpdateResourceUi : MonoBehaviour
+namespace Fralle.UI.HUD
 {
-  [SerializeField] TextMeshProUGUI creditsText;
-
-  InventoryController inventoryController;
-
-  void Awake()
+  public class UpdateResourceUi : MonoBehaviour
   {
-    inventoryController = GetComponentInParent<InventoryController>();
-    inventoryController.OnCreditsUpdate += HandleCreditsUpdate;
-  }
+    [SerializeField] TextMeshProUGUI creditsText;
 
-  void HandleCreditsUpdate(int credits)
-  {
-    UpdateText(credits);
-  }
+    InventoryController inventoryController;
 
-  void UpdateText(int credits)
-  {
-    creditsText.text = $"Credits: {credits}";
+    void Awake()
+    {
+      inventoryController = GetComponentInParent<InventoryController>();
+      inventoryController.OnCreditsUpdate += HandleCreditsUpdate;
+    }
+
+    void HandleCreditsUpdate(int credits)
+    {
+      UpdateText(credits);
+    }
+
+    void UpdateText(int credits)
+    {
+      creditsText.text = $"Credits: {credits}";
+    }
   }
 }

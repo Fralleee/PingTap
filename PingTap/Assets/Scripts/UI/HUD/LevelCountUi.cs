@@ -1,18 +1,22 @@
-﻿using TMPro;
+﻿using Fralle.Gameplay;
+using TMPro;
 using UnityEngine;
 
-public class LevelCountUi : MonoBehaviour
+namespace Fralle.UI.HUD
 {
-  TextMeshProUGUI text;
-
-  void Awake()
+  public class LevelCountUi : MonoBehaviour
   {
-    text = GetComponent<TextMeshProUGUI>();
-    WaveManager.OnNewSchema += SetText;
-  }
+    TextMeshProUGUI text;
 
-  void SetText(WaveManager waveManager)
-  {
-    text.text = $"Level {waveManager.currentArmy + 1}";
+    void Awake()
+    {
+      text = GetComponent<TextMeshProUGUI>();
+      WaveManager.OnNewSchema += SetText;
+    }
+
+    void SetText(WaveManager waveManager)
+    {
+      text.text = $"Level {waveManager.currentArmy + 1}";
+    }
   }
 }

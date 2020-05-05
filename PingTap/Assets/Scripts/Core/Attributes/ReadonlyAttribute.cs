@@ -3,7 +3,7 @@
 using UnityEditor;
 #endif
 
-namespace Fralle
+namespace Fralle.Core.Attributes
 {
   public class ReadonlyAttribute : PropertyAttribute
   {

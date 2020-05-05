@@ -1,29 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Fralle.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class NexusHealthUI : MonoBehaviour
+namespace Fralle.UI.HUD
 {
-  [SerializeField] Image foregroundImage;
-
-  Nexus nexus;
-
-  void Update()
+  public class NexusHealthUi : MonoBehaviour
   {
-    if (!nexus) return;
+    [SerializeField] Image foregroundImage;
 
-    nexus.health.OnHealthChange += UpdateHealthbar;
-  }
+    Nexus nexus;
 
-  public void SetNexus(Nexus nexus)
-  {
-    this.nexus = nexus;
-  }
+    void Update()
+    {
+      if (!nexus) return;
 
-  public void UpdateHealthbar(float currentHealth, float maxHealth)
-  {
-    float percentage = currentHealth / maxHealth;
-    foregroundImage.fillAmount = percentage;
+      nexus.health.OnHealthChange += UpdateHealthbar;
+    }
+
+    public void SetNexus(Nexus nexus)
+    {
+      this.nexus = nexus;
+    }
+
+    public void UpdateHealthbar(float currentHealth, float maxHealth)
+    {
+      float percentage = currentHealth / maxHealth;
+      foregroundImage.fillAmount = percentage;
+    }
   }
 }

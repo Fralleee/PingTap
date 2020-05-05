@@ -7,13 +7,13 @@ using System.Linq;
 
 public class AnimationRecorder : MonoBehaviour
 {
-  const float CAPTURING_INTERVAL = 1.0f / 30.0f;
+  const float CapturingInterval = 1.0f / 30.0f;
 
-  float _lastCapturedTime;
-  float _recordingTimer;
-  bool _recording;
+  float lastCapturedTime;
+  float recordingTimer;
+  bool recording;
 
-  List<AnimationRecorderItem> _recorders;
+  List<AnimationRecorderItem> recorders;
 
 	void Start()
 	{
@@ -22,68 +22,68 @@ public class AnimationRecorder : MonoBehaviour
 
 	void Configurate()
 	{
-		_recorders = new List<AnimationRecorderItem>();
-		_recordingTimer = 0.0f;
+		recorders = new List<AnimationRecorderItem>();
+		recordingTimer = 0.0f;
 
 		var allTransforms = gameObject.GetComponentsInChildren<Transform>();
 		for (int i = 0; i < allTransforms.Length; ++i)
 		{
 			string path = CreateRelativePathForObject(transform, allTransforms[i]);
-			_recorders.Add(new AnimationRecorderItem(path, allTransforms[i]));
+			recorders.Add(new AnimationRecorderItem(path, allTransforms[i]));
 		}
 	}
 
 	public void StartRecording()
 	{
 		Debug.Log("AnimationRecorder recording started");
-		_recording = true;
+		recording = true;
 	}
 
 	public void StopRecording()
 	{
 		Debug.Log("AnimationRecorder recording stopped");
-		_recording = false;
+		recording = false;
 		ExportAnimationClip();
 		Configurate();
 	}
 
 	void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.Space) && !_recording)
+		if (Input.GetKeyDown(KeyCode.Space) && !recording)
 		{
 			StartRecording();
 			return;
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space) && _recording)
+		if (Input.GetKeyDown(KeyCode.Space) && recording)
 		{
 			StopRecording();
 			return;
 		}
 
-		if (_recording)
+		if (recording)
 		{
-			if (_recordingTimer == 0.0f || _recordingTimer - _lastCapturedTime >= CAPTURING_INTERVAL)
+			if (recordingTimer == 0.0f || recordingTimer - lastCapturedTime >= CapturingInterval)
 			{
-				for (int i = 0; i < _recorders.Count; ++i)
+				for (int i = 0; i < recorders.Count; ++i)
 				{
-					_recorders[i].AddFrame(_recordingTimer);
+					recorders[i].AddFrame(recordingTimer);
 				}
-				_lastCapturedTime = _recordingTimer;
+				lastCapturedTime = recordingTimer;
 			}
-			_recordingTimer += Time.deltaTime;
+			recordingTimer += Time.deltaTime;
 		}
 	}
 
   void ExportAnimationClip()
 	{
 		AnimationClip clip = new AnimationClip();
-		for (int i = 0; i < _recorders.Count; ++i)
+		for (int i = 0; i < recorders.Count; ++i)
 		{
-			Dictionary<string, AnimationCurve> propertiles = _recorders[i].Properties;
+			Dictionary<string, AnimationCurve> propertiles = recorders[i].Properties;
 			for (int j = 0; j < propertiles.Count; ++j)
 			{
-				string name = _recorders[i].PropertyName;
+				string name = recorders[i].PropertyName;
 				string propery = propertiles.ElementAt(j).Key;
 				var curve = propertiles.ElementAt(j).Value;
 				clip.SetCurve(name, typeof(Transform), propery, curve);

@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using Fralle.Gameplay;
+using UnityEngine;
 
 namespace Fralle
 {

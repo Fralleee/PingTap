@@ -1,4 +1,6 @@
-﻿namespace Fralle.Attack.Defense
+﻿using Fralle.Attack.Offense;
+
+namespace Fralle.Attack.Defense
 {
   public class ProtectionResult
   {

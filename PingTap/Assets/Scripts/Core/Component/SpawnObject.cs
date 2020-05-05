@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Fralle.Core.Enums;
+using UnityEngine;
 
-namespace Fralle
+namespace Fralle.Core.Component
 {
   public class SpawnObject : MonoBehaviour
   {

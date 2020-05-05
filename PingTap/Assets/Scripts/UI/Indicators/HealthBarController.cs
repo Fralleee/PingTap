@@ -1,40 +1,41 @@
-﻿using System;
-using Fralle;
-using Fralle.Attack;
+﻿using Fralle.Attack.Offense;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthBarController : MonoBehaviour
+namespace Fralle.UI.Indicators
 {
-  [SerializeField] HealthBar healthBarPrefab;
-
-  Dictionary<Health, HealthBar> healthBars = new Dictionary<Health, HealthBar>();
-
-  void Awake()
+  public class HealthBarController : MonoBehaviour
   {
-    Health.OnHealthBarAdded += AddHealthBar;
-    Health.OnHealthBarRemoved += RemoveHealthBar;
-  }
+    [SerializeField] HealthBar healthBarPrefab;
 
-  void AddHealthBar(Health health)
-  {
-    if (healthBars.ContainsKey(health)) return;
+    readonly Dictionary<Health, HealthBar> healthBars = new Dictionary<Health, HealthBar>();
 
-    HealthBar healthBar = Instantiate(healthBarPrefab, transform);
-    healthBar.Initialize(health);
-  }
+    void Awake()
+    {
+      Health.OnHealthBarAdded += AddHealthBar;
+      Health.OnHealthBarRemoved += RemoveHealthBar;
+    }
 
-  void RemoveHealthBar(Health health)
-  {
-    if (!healthBars.ContainsKey(health)) return;
+    void AddHealthBar(Health health)
+    {
+      if (healthBars.ContainsKey(health)) return;
 
-    Destroy(healthBars[health].gameObject);
-    healthBars.Remove(health);
-  }
+      var healthBar = Instantiate(healthBarPrefab, transform);
+      healthBar.Initialize(health);
+    }
 
-  void OnDestroy()
-  {
-    Health.OnHealthBarAdded -= AddHealthBar;
-    Health.OnHealthBarRemoved -= RemoveHealthBar;
+    void RemoveHealthBar(Health health)
+    {
+      if (!healthBars.ContainsKey(health)) return;
+
+      Destroy(healthBars[health].gameObject);
+      healthBars.Remove(health);
+    }
+
+    void OnDestroy()
+    {
+      Health.OnHealthBarAdded -= AddHealthBar;
+      Health.OnHealthBarRemoved -= RemoveHealthBar;
+    }
   }
 }

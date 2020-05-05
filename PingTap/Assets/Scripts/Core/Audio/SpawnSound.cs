@@ -1,32 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SpawnSound : MonoBehaviour
+namespace Fralle.Core.Audio
 {
-  public GameObject prefabSound;
-
-  public bool destroyWhenDone = true;
-  public bool soundPrefabIsChild = false;
-
-  [Range(0.01f, 10f)] public float pitchRandomMultiplier = 1f;
-
-  void Start()
+  public class SpawnSound : MonoBehaviour
   {
-    GameObject sound = Instantiate(prefabSound, transform.position, Quaternion.identity);
-    var source = sound.GetComponent<AudioSource>();
+    public GameObject prefabSound;
 
-    if (soundPrefabIsChild) sound.transform.SetParent(transform);
+    public bool destroyWhenDone = true;
+    public bool soundPrefabIsChild = false;
 
-    if (pitchRandomMultiplier != 1)
+    [Range(0.01f, 10f)] public float pitchRandomMultiplier = 1f;
+
+    void Start()
     {
-      if (Random.value < .5) source.pitch *= Random.Range(1 / pitchRandomMultiplier, 1);
-      else source.pitch *= Random.Range(1, pitchRandomMultiplier);
+      var sound = Instantiate(prefabSound, transform.position, Quaternion.identity);
+      var source = sound.GetComponent<AudioSource>();
+
+      if (soundPrefabIsChild) sound.transform.SetParent(transform);
+
+      if (pitchRandomMultiplier != 1)
+      {
+        if (Random.value < .5) source.pitch *= Random.Range(1 / pitchRandomMultiplier, 1);
+        else source.pitch *= Random.Range(1, pitchRandomMultiplier);
+      }
+
+      if (!destroyWhenDone) return;
+
+      float life = source.clip.length / source.pitch;
+      Destroy(sound, life);
     }
-
-    if (!destroyWhenDone) return;
-
-    float life = source.clip.length / source.pitch;
-    Destroy(sound, life);
   }
 }

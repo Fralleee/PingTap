@@ -2,50 +2,53 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelSelect : MonoBehaviour
+namespace Fralle.UI.Menu
 {
-  [SerializeField] GameObject backButton;
-  [SerializeField] GameObject loadingCanvasPrefab;
-
-  MainMenu menu;
-  AsyncOperation operation;
-  GameObject loadingCanvas;
-
-  void Awake()
+  public class LevelSelect : MonoBehaviour
   {
-    menu = FindObjectOfType<MainMenu>();
+    [SerializeField] GameObject backButton;
+    [SerializeField] GameObject loadingCanvasPrefab;
 
-    loadingCanvas = Instantiate(loadingCanvasPrefab);
-    loadingCanvas.SetActive(false);
-  }
+    MainMenu menu;
+    AsyncOperation operation;
+    GameObject loadingCanvas;
 
-  void Update()
-  {
-    if (Input.GetKeyDown(KeyCode.Escape)) OpenMainMenu();
-  }
-
-  public void OpenMainMenu()
-  {
-    menu.gameObject.SetActive(true);
-    gameObject.SetActive(false);
-  }
-
-  public void Maul()
-  {
-    StartCoroutine(LoadScene("Maul"));
-  }
-
-  IEnumerator LoadScene(string sceneName)
-  {
-    loadingCanvas.SetActive(true);
-    gameObject.SetActive(false);
-    operation = SceneManager.LoadSceneAsync(sceneName);
-
-    while (!operation.isDone)
+    void Awake()
     {
-      yield return null;
+      menu = FindObjectOfType<MainMenu>();
+
+      loadingCanvas = Instantiate(loadingCanvasPrefab);
+      loadingCanvas.SetActive(false);
     }
 
-    operation = null;
+    void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.Escape)) OpenMainMenu();
+    }
+
+    public void OpenMainMenu()
+    {
+      menu.gameObject.SetActive(true);
+      gameObject.SetActive(false);
+    }
+
+    public void Maul()
+    {
+      StartCoroutine(LoadScene("Maul"));
+    }
+
+    IEnumerator LoadScene(string sceneName)
+    {
+      loadingCanvas.SetActive(true);
+      gameObject.SetActive(false);
+      operation = SceneManager.LoadSceneAsync(sceneName);
+
+      while (!operation.isDone)
+      {
+        yield return null;
+      }
+
+      operation = null;
+    }
   }
 }

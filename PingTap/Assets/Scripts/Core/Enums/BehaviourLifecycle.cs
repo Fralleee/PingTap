@@ -1,4 +1,4 @@
-﻿namespace Fralle
+﻿namespace Fralle.Core.Enums
 {
   public enum BehaviourLifecycle
   {

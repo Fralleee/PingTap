@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 
-public static class FloatExtensions
+namespace Fralle.Core.Extensions
 {
-  public static float Floor(this float value)
+  public static class FloatExtensions
   {
-    return Mathf.Floor(value);
-  }
-  public static float Round(this float value)
-  {
-    return Mathf.Round(value);
-  }
-  public static float Ceil(this float value)
-  {
-    return Mathf.Ceil(value);
+    public static float Floor(this float value)
+    {
+      return Mathf.Floor(value);
+    }
+
+    public static float Round(this float value)
+    {
+      return Mathf.Round(value);
+    }
+
+    public static float Ceil(this float value)
+    {
+      return Mathf.Ceil(value);
+    }
   }
 }

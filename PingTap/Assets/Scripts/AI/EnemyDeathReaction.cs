@@ -1,5 +1,8 @@
-﻿public enum EnemyDeathReaction
+﻿namespace Fralle.AI
 {
-  UpInTheAir,
-  DropDead
+  public enum EnemyDeathReaction
+  {
+    UpInTheAir,
+    DropDead
+  }
 }

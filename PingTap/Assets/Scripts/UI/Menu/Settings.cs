@@ -1,6 +1,9 @@
-﻿public enum Settings
+﻿namespace Fralle.UI.Menu
 {
-  None,
-  MouseSensitivity,
-  Volume
+  public enum Settings
+  {
+    None,
+    MouseSensitivity,
+    Volume
+  }
 }

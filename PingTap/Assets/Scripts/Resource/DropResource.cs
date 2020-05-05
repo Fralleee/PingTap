@@ -1,25 +1,28 @@
-﻿using Fralle.Attack;
+﻿using Fralle.Attack.Offense;
 using UnityEngine;
 
-public class DropResource : MonoBehaviour
+namespace Fralle.Resource
 {
-  public int credits;
-
-  void Awake()
+  public class DropResource : MonoBehaviour
   {
-    GetComponent<Health>().OnDeath += HandleDeath;
-  }
+    public int credits;
 
-  void HandleDeath(Health health, Damage damage)
-  {
-    if (!damage.player) return;
+    void Awake()
+    {
+      GetComponent<Health>().OnDeath += HandleDeath;
+    }
 
-    var inventory = damage.player.GetComponentInParent<InventoryController>();
-    if (inventory != null) inventory.Receive(credits);
-  }
+    void HandleDeath(Health health, Damage damage)
+    {
+      if (!damage.player) return;
 
-  void OnDestroy()
-  {
-    GetComponent<Health>().OnDeath -= HandleDeath;
+      var inventory = damage.player.GetComponentInParent<InventoryController>();
+      if (inventory != null) inventory.Receive(credits);
+    }
+
+    void OnDestroy()
+    {
+      GetComponent<Health>().OnDeath -= HandleDeath;
+    }
   }
 }

@@ -1,21 +1,22 @@
-﻿using Fralle.Attack;
+﻿using Fralle.Attack.Addons;
+using Fralle.Core.Animation;
 using TMPro;
 using UnityEngine;
 
-namespace Fralle
+namespace Fralle.UI.HUD
 {
-  public class AmmoUIUpdater : MonoBehaviour
+  public class AmmoUiUpdater : MonoBehaviour
   {
     [SerializeField] TextMeshProUGUI currentAmmoText;
     [SerializeField] TextMeshProUGUI maxAmmoText;
 
     Ammo ammo;
-    UITweener tweener;
+    UiTweener tweener;
 
     void Start()
     {
       ammo = GetComponentInParent<Ammo>();
-      tweener = GetComponentInParent<UITweener>();
+      tweener = GetComponentInParent<UiTweener>();
 
       currentAmmoText.text = ammo.currentAmmo.ToString();
       maxAmmoText.text = ammo.maxAmmo.ToString();
@@ -34,6 +35,5 @@ namespace Fralle
 
       tweener.HandleTween();
     }
-
   }
 }

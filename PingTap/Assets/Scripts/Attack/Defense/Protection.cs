@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Fralle.Attack.Offense;
+using UnityEngine;
 
 namespace Fralle.Attack.Defense
 {

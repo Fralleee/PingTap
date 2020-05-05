@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class InventoryItem : MonoBehaviour
+namespace Fralle.Resource
 {
+  public class InventoryItem : MonoBehaviour
+  {
 
+  }
 }

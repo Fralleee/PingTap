@@ -1,91 +1,94 @@
-﻿using System;
-using Fralle;
+﻿using Fralle.AI;
+using Fralle.AI.Spawning;
+using Fralle.Core.Attributes;
+using System;
 using UnityEngine;
 
-public class WaveManager : MonoBehaviour
+namespace Fralle.Gameplay
 {
-  public static event Action<WaveManager> OnNewSchema = delegate { };
-  public static event Action<WaveManager> OnNewWave = delegate { };
-  public static event Action<WaveManager> OnWavesComplete = delegate { };
-  public static event Action<float> OnWaveProgress = delegate { };
-
-  [Header("Armies")]
-  public Army[] armies;
-  [SerializeField] Spawner spawner;
-  [SerializeField] GameObject blockerPrefab;
-
-  public bool WavesRemaining => currentArmy < armies.Length - 1 || currentWave < maxWaves;
-  public Army GetCurrentArmy => armies[currentArmy];
-  public WaveDefinition GetCurrentWave => armies[currentArmy].NextWave(currentWave);
-
-  [Header("Current Stats")]
-  [Readonly] public int maxArmies;
-  [Readonly] public int maxWaves;
-  [Readonly] public int currentArmy;
-  [Readonly] public int currentWave;
-  [Readonly] public int waveProgress;
-
-  GameObject blocker;
-  int currentWaveCount;
-
-  void Awake()
+  public class WaveManager : MonoBehaviour
   {
-    blocker = Instantiate(blockerPrefab, spawner.transform.position, Quaternion.identity, transform);
-  }
+    public static event Action<WaveManager> OnNewSchema = delegate { };
+    public static event Action<WaveManager> OnNewWave = delegate { };
+    public static event Action<WaveManager> OnWavesComplete = delegate { };
+    public static event Action<float> OnWaveProgress = delegate { };
 
-  void Start()
-  {
-    SetNextSchema();
-    maxArmies = armies.Length - 1;
+    [Header("Armies")] public Army[] armies;
+    [SerializeField] Spawner spawner;
+    [SerializeField] GameObject blockerPrefab;
 
-    Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
-  }
+    public bool WavesRemaining => currentArmy < armies.Length - 1 || currentWave < maxWaves;
+    public Army GetCurrentArmy => armies[currentArmy];
+    public WaveDefinition GetCurrentWave => armies[currentArmy].NextWave(currentWave);
 
-  public int NextWave()
-  {
-    currentWave++;
-    if (currentWave <= maxWaves) return SpawnWave();
+    [Header("Current Stats")] [Readonly] public int maxArmies;
+    [Readonly] public int maxWaves;
+    [Readonly] public int currentArmy;
+    [Readonly] public int currentWave;
+    [Readonly] public int waveProgress;
 
-    if (currentArmy < armies.Length - 1)
+    GameObject blocker;
+    int currentWaveCount;
+
+    void Awake()
     {
-      currentArmy++;
-      SetNextSchema();
-      currentWave = 1;
-      return SpawnWave();
+      blocker = Instantiate(blockerPrefab, spawner.transform.position, Quaternion.identity, transform);
     }
 
-    OnWavesComplete(this);
-    return 0;
-  }
+    void Start()
+    {
+      SetNextSchema();
+      maxArmies = armies.Length - 1;
 
-  public void ToggleBlocker(bool active)
-  {
-    blocker.SetActive(active);
-  }
+      Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
+    }
 
-  void SetNextSchema()
-  {
-    var army = armies[currentArmy];
-    maxWaves = army.MaxRounds;
-    spawner.army = army;
-    OnNewSchema(this);
-  }
+    public int NextWave()
+    {
+      currentWave++;
+      if (currentWave <= maxWaves) return SpawnWave();
 
-  int SpawnWave()
-  {
-    OnNewWave(this);
-    currentWaveCount = spawner.SpawnRound(currentWave);
-    return currentWaveCount;
-  }
+      if (currentArmy < armies.Length - 1)
+      {
+        currentArmy++;
+        SetNextSchema();
+        currentWave = 1;
+        return SpawnWave();
+      }
 
-  void UpdateWaveProgress()
-  {
-    currentWaveCount--;
-    OnWaveProgress(1 - (currentWaveCount / (float)GetCurrentWave.count));
-  }
+      OnWavesComplete(this);
+      return 0;
+    }
 
-  void HandleEnemyDeath(Enemy enemy)
-  {
-    UpdateWaveProgress();
+    public void ToggleBlocker(bool active)
+    {
+      blocker.SetActive(active);
+    }
+
+    void SetNextSchema()
+    {
+      var army = armies[currentArmy];
+      maxWaves = army.MaxRounds;
+      spawner.army = army;
+      OnNewSchema(this);
+    }
+
+    int SpawnWave()
+    {
+      OnNewWave(this);
+      currentWaveCount = spawner.SpawnRound(currentWave);
+      return currentWaveCount;
+    }
+
+    void UpdateWaveProgress()
+    {
+      currentWaveCount--;
+      OnWaveProgress(1 - (currentWaveCount / (float)GetCurrentWave.count));
+    }
+
+    void HandleEnemyDeath(Enemy enemy)
+    {
+      UpdateWaveProgress();
+    }
   }
 }

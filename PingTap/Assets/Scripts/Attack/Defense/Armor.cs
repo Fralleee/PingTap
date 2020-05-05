@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Fralle.Attack.Effect;
+using Fralle.Attack.Offense;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -14,7 +16,7 @@ namespace Fralle.Attack.Defense
 
     public Damage Protect(Damage damage, Health health)
     {
-      ProtectionResult result = RunProtection(damage, health);
+      var result = RunProtection(damage, health);
       result.damage.damageAmount = CalculateDamage(result.damage);
       if (result.effectProtection == EffectProtection.Block) result.damage.effects = new DamageEffect[0];
       else damage.effects = damage.effects.Select(CalculateEffect).ToArray();
@@ -37,8 +39,7 @@ namespace Fralle.Attack.Defense
 
     ProtectionResult RunProtection(Damage damage, Health health)
     {
-      if (!protection) return new ProtectionResult() { effectProtection = EffectProtection.Ignore, damage = damage };
-      return protection.RunProtection(damage, health);
+      return !protection ? new ProtectionResult() { effectProtection = EffectProtection.Ignore, damage = damage } : protection.RunProtection(damage, health);
     }
   }
 }

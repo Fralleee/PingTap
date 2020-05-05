@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
-public static class GameObjectExtensions
+namespace Fralle.Core.Extensions
 {
-  public static void SetLayerRecursively(this GameObject gameObject, int layer, int ignoreLayer = -1)
+  public static class GameObjectExtensions
   {
-    if (gameObject.layer == ignoreLayer) return;
-
-    gameObject.layer = layer;
-    foreach (Transform child in gameObject.transform)
+    public static void SetLayerRecursively(this GameObject gameObject, int layer, int ignoreLayer = -1)
     {
-      SetLayerRecursively(child.gameObject, layer, ignoreLayer);
+      if (gameObject.layer == ignoreLayer) return;
+
+      gameObject.layer = layer;
+      foreach (Transform child in gameObject.transform)
+      {
+        SetLayerRecursively(child.gameObject, layer, ignoreLayer);
+      }
     }
   }
-
 }

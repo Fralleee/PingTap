@@ -1,28 +1,30 @@
-﻿using Fralle;
-using Fralle.Attack;
+﻿using Fralle.Attack.Offense;
 using System.Globalization;
 using UnityEngine;
 
-public class FloatingNumbersController : MonoBehaviour
+namespace Fralle.UI.Indicators
 {
-  [SerializeField] FloatingText prefab;
-  new Camera camera;
-
-  void Awake()
+  public class FloatingNumbersController : MonoBehaviour
   {
-    camera = Camera.main;
-    Health.OnAnyDamage += AddFloatingNumber;
-  }
+    [SerializeField] FloatingText prefab;
+    new Camera camera;
 
-  void AddFloatingNumber(Damage damage)
-  {
-    var floatingText = Instantiate(prefab, transform);
-    var damageText = Mathf.Round(damage.damageAmount).ToString(CultureInfo.InvariantCulture);
-    floatingText.Setup(damageText, damage.position, camera, damage.hitBoxType);
-  }
+    void Awake()
+    {
+      camera = Camera.main;
+      Health.OnAnyDamage += AddFloatingNumber;
+    }
 
-  void OnDestroy()
-  {
-    Health.OnAnyDamage -= AddFloatingNumber;
+    void AddFloatingNumber(Damage damage)
+    {
+      var floatingText = Instantiate(prefab, transform);
+      var damageText = Mathf.Round(damage.damageAmount).ToString(CultureInfo.InvariantCulture);
+      floatingText.Setup(damageText, damage.position, camera, damage.hitBoxType);
+    }
+
+    void OnDestroy()
+    {
+      Health.OnAnyDamage -= AddFloatingNumber;
+    }
   }
 }

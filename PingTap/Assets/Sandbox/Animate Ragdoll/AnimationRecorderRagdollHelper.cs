@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AnimationRecorderRagdollHelper : MonoBehaviour
 {
-  [SerializeField] private Rigidbody _rigidBody;
-  [SerializeField] private Vector3 _applyingForce;
-  [SerializeField] private float _startingDelay;
-  [SerializeField] public bool _recordAnimation;
+  [FormerlySerializedAs("_rigidBody")] [SerializeField] private Rigidbody rigidBody;
+  [FormerlySerializedAs("_applyingForce")] [SerializeField] private Vector3 applyingForce;
+  [FormerlySerializedAs("_startingDelay")] [SerializeField] private float startingDelay;
+  [FormerlySerializedAs("_recordAnimation")] [SerializeField] public bool recordAnimation;
 
   void Start()
   {
@@ -16,7 +17,7 @@ public class AnimationRecorderRagdollHelper : MonoBehaviour
 
   private IEnumerator Handle()
   {
-    yield return new WaitForSeconds(_startingDelay);
+    yield return new WaitForSeconds(startingDelay);
 
     Animator animator = GetComponent<Animator>();
     if (animator != null)
@@ -48,10 +49,10 @@ public class AnimationRecorderRagdollHelper : MonoBehaviour
       sColliders[i].isTrigger = false;
     }
 
-    Debug.Log($"Apply force {_applyingForce}");
-    _rigidBody.AddForce(_applyingForce, mode: ForceMode.VelocityChange);
+    Debug.Log($"Apply force {applyingForce}");
+    rigidBody.AddForce(applyingForce, mode: ForceMode.VelocityChange);
 
-    if (_recordAnimation)
+    if (recordAnimation)
     {
       gameObject.AddComponent<AnimationRecorder>().StartRecording();
     }

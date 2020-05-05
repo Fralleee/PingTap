@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 
-[ExecuteInEditMode]
-public class NamingProcess : MonoBehaviour
+namespace Fralle.Core.Helpers
 {
-  [SerializeField] string naming;
-  [SerializeField] bool increment;
-  int counter;
-
-  void OnEnable()
+  [ExecuteInEditMode]
+  public class NamingProcess : MonoBehaviour
   {
-    if (increment) FindUnique(naming);
-    else name = naming;
-  }
+    [SerializeField] string naming;
+    [SerializeField] bool increment;
+    int counter;
 
-  void FindUnique(string name)
-  {
-    if (GameObject.Find(name))
+    void OnEnable()
     {
-      counter++;
-      FindUnique($"{naming} {counter}");
+      if (increment) FindUnique(naming);
+      else name = naming;
     }
-    else this.name = name;
+
+    void FindUnique(string name)
+    {
+      if (GameObject.Find(name))
+      {
+        counter++;
+        FindUnique($"{naming} {counter}");
+      }
+      else this.name = name;
+    }
   }
 }

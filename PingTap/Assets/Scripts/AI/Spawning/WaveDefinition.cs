@@ -1,8 +1,11 @@
 ﻿using System;
 
-[Serializable]
-public class WaveDefinition
+namespace Fralle.AI.Spawning
 {
-  public Enemy enemy;
-  public int count;
+  [Serializable]
+  public class WaveDefinition
+  {
+    public Enemy enemy;
+    public int count;
+  }
 }

@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MasterSceneLoader : MonoBehaviour
+namespace Fralle.Gameplay
 {
-  const string MASTERSCENESTR = "MasterScene";
-  void Awake()
+  public class MasterSceneLoader : MonoBehaviour
   {
-    var masterScene = SceneManager.GetSceneByName(MASTERSCENESTR);
-    if (masterScene == null) Debug.LogError("MasterScene not found");
-    if (!masterScene.isLoaded) SceneManager.LoadScene(MASTERSCENESTR, LoadSceneMode.Additive);
+    const string Masterscene = "MasterScene";
+
+    void Awake()
+    {
+      var masterScene = SceneManager.GetSceneByName(Masterscene);
+      if (!masterScene.isLoaded) SceneManager.LoadScene(Masterscene, LoadSceneMode.Additive);
+    }
   }
 }

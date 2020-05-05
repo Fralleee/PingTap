@@ -4,24 +4,24 @@ using System.Collections.Generic;
 
 public class AnimationRecorderItem
 {
-  const float MIN_DIFF_DISTANCE = 0.025f;
-  const float MIN_DIFF_SCALE = 0.025f;
-  const float MIN_DIFF_ANGLE = 5.0f;
+  const float MinDiffDistance = 0.025f;
+  const float MinDiffScale = 0.025f;
+  const float MinDiffAngle = 5.0f;
 
 	public Dictionary<string, AnimationCurve> Properties { get; }
 
 	public string PropertyName { get; }
 
-  Transform _animationObject;
-  Vector3? _lastPosition;
-  Vector3? _lastScale;
-  Quaternion? _lastRotation;
+  Transform animationObject;
+  Vector3? lastPosition;
+  Vector3? lastScale;
+  Quaternion? lastRotation;
 
 	public AnimationRecorderItem(string propertyName, Transform animatingObject)
 	{
 		Properties = new Dictionary<string, AnimationCurve>();
 		PropertyName = propertyName;
-		_animationObject = animatingObject;
+		animationObject = animatingObject;
 
 		Properties.Add("localPosition.x", new AnimationCurve());
 		Properties.Add("localPosition.y", new AnimationCurve());
@@ -39,29 +39,29 @@ public class AnimationRecorderItem
 
 	public void AddFrame(float time)
 	{
-		if (_lastPosition == null || Vector3.Distance((Vector3)_lastPosition, _animationObject.localPosition) > MIN_DIFF_DISTANCE)
+		if (lastPosition == null || Vector3.Distance((Vector3)lastPosition, animationObject.localPosition) > MinDiffDistance)
 		{
-			Properties["localPosition.x"].AddKey(new Keyframe(time, _animationObject.localPosition.x, 0.0f, 0.0f));
-			Properties["localPosition.y"].AddKey(new Keyframe(time, _animationObject.localPosition.y, 0.0f, 0.0f));
-			Properties["localPosition.z"].AddKey(new Keyframe(time, _animationObject.localPosition.z, 0.0f, 0.0f));
-			_lastPosition = _animationObject.localPosition;
+			Properties["localPosition.x"].AddKey(new Keyframe(time, animationObject.localPosition.x, 0.0f, 0.0f));
+			Properties["localPosition.y"].AddKey(new Keyframe(time, animationObject.localPosition.y, 0.0f, 0.0f));
+			Properties["localPosition.z"].AddKey(new Keyframe(time, animationObject.localPosition.z, 0.0f, 0.0f));
+			lastPosition = animationObject.localPosition;
 		}
 
-		if (_lastRotation == null || Quaternion.Angle((Quaternion)_lastRotation, _animationObject.localRotation) > MIN_DIFF_ANGLE)
+		if (lastRotation == null || Quaternion.Angle((Quaternion)lastRotation, animationObject.localRotation) > MinDiffAngle)
 		{
-			Properties["localRotation.x"].AddKey(new Keyframe(time, _animationObject.localRotation.x, 0.0f, 0.0f));
-			Properties["localRotation.y"].AddKey(new Keyframe(time, _animationObject.localRotation.y, 0.0f, 0.0f));
-			Properties["localRotation.z"].AddKey(new Keyframe(time, _animationObject.localRotation.z, 0.0f, 0.0f));
-			Properties["localRotation.w"].AddKey(new Keyframe(time, _animationObject.localRotation.w, 0.0f, 0.0f));
-			_lastRotation = _animationObject.localRotation;
+			Properties["localRotation.x"].AddKey(new Keyframe(time, animationObject.localRotation.x, 0.0f, 0.0f));
+			Properties["localRotation.y"].AddKey(new Keyframe(time, animationObject.localRotation.y, 0.0f, 0.0f));
+			Properties["localRotation.z"].AddKey(new Keyframe(time, animationObject.localRotation.z, 0.0f, 0.0f));
+			Properties["localRotation.w"].AddKey(new Keyframe(time, animationObject.localRotation.w, 0.0f, 0.0f));
+			lastRotation = animationObject.localRotation;
 		}
 
-		if (_lastScale == null || Vector3.Distance((Vector3)_lastScale, _animationObject.localScale) > MIN_DIFF_SCALE)
+		if (lastScale == null || Vector3.Distance((Vector3)lastScale, animationObject.localScale) > MinDiffScale)
 		{
-			Properties["localScale.x"].AddKey(new Keyframe(time, _animationObject.localScale.x, 0.0f, 0.0f));
-			Properties["localScale.y"].AddKey(new Keyframe(time, _animationObject.localScale.y, 0.0f, 0.0f));
-			Properties["localScale.z"].AddKey(new Keyframe(time, _animationObject.localScale.z, 0.0f, 0.0f));
-			_lastScale = _animationObject.localScale;
+			Properties["localScale.x"].AddKey(new Keyframe(time, animationObject.localScale.x, 0.0f, 0.0f));
+			Properties["localScale.y"].AddKey(new Keyframe(time, animationObject.localScale.y, 0.0f, 0.0f));
+			Properties["localScale.z"].AddKey(new Keyframe(time, animationObject.localScale.z, 0.0f, 0.0f));
+			lastScale = animationObject.localScale;
 		}
 	}
 }

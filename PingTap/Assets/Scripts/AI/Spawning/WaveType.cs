@@ -1,8 +1,11 @@
-﻿public enum WaveType
+﻿namespace Fralle.AI.Spawning
 {
-  Ground,
-  Flying,
-  Invisible,
-  Attacking,
-  Boss
+  public enum WaveType
+  {
+    Ground,
+    Flying,
+    Invisible,
+    Attacking,
+    Boss
+  }
 }

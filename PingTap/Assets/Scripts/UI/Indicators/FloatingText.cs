@@ -1,8 +1,10 @@
-﻿using Fralle.Attack;
+﻿using Fralle.Attack.Offense;
+using Fralle.Core.Extensions;
+using System.Data;
 using TMPro;
 using UnityEngine;
 
-namespace Fralle
+namespace Fralle.UI.Indicators
 {
   public class FloatingText : MonoBehaviour
   {
@@ -35,7 +37,7 @@ namespace Fralle
 
     bool ToggleIfVisible()
     {
-      Vector3 viewPortPoint = camera.WorldToViewportPoint(position);
+      var viewPortPoint = camera.WorldToViewportPoint(position);
       if (!viewPortPoint.InViewPort())
       {
         text.enabled = false;
@@ -58,16 +60,17 @@ namespace Fralle
           this.text.alpha = 0.75f;
           break;
         case HitBoxType.Nerve:
-          ColorUtility.TryParseHtmlString("#FA800B", out Color deepOrange);
+          ColorUtility.TryParseHtmlString("#FA800B", out var deepOrange);
           this.text.color = deepOrange;
           this.text.fontStyle = FontStyles.Bold;
           this.text.fontSize = 28f;
           break;
         case HitBoxType.Minor:
-          ColorUtility.TryParseHtmlString("#EEF0F2", out Color gray);
+          ColorUtility.TryParseHtmlString("#EEF0F2", out var gray);
           this.text.color = gray;
           this.text.alpha = 0.65f;
           break;
+        default: throw new SyntaxErrorException();
       }
 
       defaultSize = this.text.fontSize;
@@ -80,7 +83,7 @@ namespace Fralle
       float sizeOffset = Mathf.Lerp(2f, 1f, distance / 40);
       text.fontSize = defaultSize * sizeOffset;
 
-      Vector3 newPosition = camera.WorldToScreenPoint(position + Vector3.up * yPositionOffset);
+      var newPosition = camera.WorldToScreenPoint(position + Vector3.up * yPositionOffset);
       transform.position = newPosition;
     }
   }

@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 
-public class SubMenu : MonoBehaviour
+namespace Fralle.UI.Menu
 {
-  [SerializeField] GameObject parentMenu;
-
-  public bool inGame;
-
-  void Update()
+  public class SubMenu : MonoBehaviour
   {
-    if (Input.GetKeyDown(KeyCode.Escape)) ParentMenu();
-  }
+    [SerializeField] GameObject parentMenu;
 
-  public void Back()
-  {
-    gameObject.SetActive(false);
-    parentMenu.gameObject.SetActive(true);
-  }
+    public bool inGame;
 
-  public void ParentMenu()
-  {
-    gameObject.SetActive(false);
-    if (!inGame) parentMenu.gameObject.SetActive(true);
+    void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.Escape)) ParentMenu();
+    }
+
+    public void Back()
+    {
+      gameObject.SetActive(false);
+      parentMenu.gameObject.SetActive(true);
+    }
+
+    public void ParentMenu()
+    {
+      gameObject.SetActive(false);
+      if (!inGame) parentMenu.gameObject.SetActive(true);
+    }
   }
 }

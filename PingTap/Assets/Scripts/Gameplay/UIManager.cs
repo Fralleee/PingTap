@@ -1,37 +1,41 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class UIManager : MonoBehaviour
+namespace Fralle.Gameplay
 {
-
-  // Probably extract stuff from here when there's too much happening
-
-  [SerializeField] TextMeshProUGUI gameStatusText;
-  [SerializeField] GameObject gameStatusUI;
-
-  void Start()
+  public class UiManager : MonoBehaviour
   {
-    gameStatusUI.SetActive(false);
-    MatchManager.OnDefeat += HandleDefeat;
-    MatchManager.OnVictory += HandleVictory;
 
-  }
+    // Probably extract stuff from here when there's too much happening
 
-  void HandleDefeat(MatchManager matchManager)
-  {
-    gameStatusUI.SetActive(true);
-    gameStatusText.text = "DEFEAT";
-  }
+    [SerializeField] TextMeshProUGUI gameStatusText;
+    [FormerlySerializedAs("gameStatusUI")] [SerializeField] GameObject gameStatusUi;
 
-  void HandleVictory(MatchManager matchManager)
-  {
-    gameStatusUI.SetActive(true);
-    gameStatusText.text = "VICTORY";
-  }
+    void Start()
+    {
+      gameStatusUi.SetActive(false);
+      MatchManager.OnDefeat += HandleDefeat;
+      MatchManager.OnVictory += HandleVictory;
 
-  void OnDestroy()
-  {
-    MatchManager.OnDefeat -= HandleDefeat;
-    MatchManager.OnVictory -= HandleVictory;
+    }
+
+    void HandleDefeat(MatchManager matchManager)
+    {
+      gameStatusUi.SetActive(true);
+      gameStatusText.text = "DEFEAT";
+    }
+
+    void HandleVictory(MatchManager matchManager)
+    {
+      gameStatusUi.SetActive(true);
+      gameStatusText.text = "VICTORY";
+    }
+
+    void OnDestroy()
+    {
+      MatchManager.OnDefeat -= HandleDefeat;
+      MatchManager.OnVictory -= HandleVictory;
+    }
   }
 }

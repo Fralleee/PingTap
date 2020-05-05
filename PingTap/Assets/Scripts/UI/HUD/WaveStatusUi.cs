@@ -1,30 +1,31 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Fralle.Core.Animation;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WaveStatusUi : MonoBehaviour
+namespace Fralle.UI.HUD
 {
-  [SerializeField] Image foreGround;
-
-  UITweener uiTweener;
-
-  void Awake()
+  public class WaveStatusUi : MonoBehaviour
   {
-    uiTweener = GetComponent<UITweener>();
-  }
+    [SerializeField] Image foreGround;
 
-  public void SetFill(float percentage)
-  {
-    if (foreGround.fillAmount == 1) return;
+    UiTweener uiTweener;
 
-    foreGround.fillAmount = percentage;
-    if (percentage == 1) Animate();
-  }
+    void Awake()
+    {
+      uiTweener = GetComponent<UiTweener>();
+    }
 
-  void Animate()
-  {
-    uiTweener.HandleTween();
+    public void SetFill(float percentage)
+    {
+      if (foreGround.fillAmount == 1) return;
+
+      foreGround.fillAmount = percentage;
+      if (percentage == 1) Animate();
+    }
+
+    void Animate()
+    {
+      uiTweener.HandleTween();
+    }
   }
 }

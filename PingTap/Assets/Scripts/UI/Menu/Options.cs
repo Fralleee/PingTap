@@ -1,24 +1,27 @@
 ﻿using UnityEngine;
 
-public class Options : MonoBehaviour
+namespace Fralle.UI.Menu
 {
-  [SerializeField] GameObject backButton;
-
-  MainMenu menu;
-
-  void Awake()
+  public class Options : MonoBehaviour
   {
-    menu = FindObjectOfType<MainMenu>();
-  }
+    [SerializeField] GameObject backButton;
 
-  void Update()
-  {
-    if (Input.GetKeyDown(KeyCode.Escape)) OpenMainMenu();
-  }
+    MainMenu menu;
 
-  public void OpenMainMenu()
-  {
-    menu.gameObject.SetActive(true);
-    gameObject.SetActive(false);
+    void Awake()
+    {
+      menu = FindObjectOfType<MainMenu>();
+    }
+
+    void Update()
+    {
+      if (Input.GetKeyDown(KeyCode.Escape)) OpenMainMenu();
+    }
+
+    public void OpenMainMenu()
+    {
+      menu.gameObject.SetActive(true);
+      gameObject.SetActive(false);
+    }
   }
 }

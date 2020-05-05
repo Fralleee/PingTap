@@ -4,44 +4,47 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/WaypointSchema")]
-[Serializable]
-public class WaypointSchema : ScriptableObject
+namespace Fralle.Movement
 {
-  public List<Vector3> waypoints = new List<Vector3>();
-
-  public void AddWaypoint()
+  [CreateAssetMenu(menuName = "AI/WaypointSchema")]
+  [Serializable]
+  public class WaypointSchema : ScriptableObject
   {
-    waypoints.Add(waypoints.LastOrDefault());
-  }
+    public List<Vector3> waypoints = new List<Vector3>();
 
-  public void RemoveWaypoint()
-  {
-    if (waypoints.Count > 0)
+    public void AddWaypoint()
     {
-      waypoints.RemoveAt(waypoints.Count - 1);
+      waypoints.Add(waypoints.LastOrDefault());
     }
-  }
+
+    public void RemoveWaypoint()
+    {
+      if (waypoints.Count > 0)
+      {
+        waypoints.RemoveAt(waypoints.Count - 1);
+      }
+    }
 
 #if UNITY_EDITOR
-  void OnEnable()
-  {
-    SceneView.duringSceneGui += OnSceneGUI;
-  }
+    void OnEnable()
+    {
+      SceneView.duringSceneGui += OnSceneGUI;
+    }
 
-  void OnDisable()
-  {
-    SceneView.duringSceneGui -= OnSceneGUI;
-  }
+    void OnDisable()
+    {
+      SceneView.duringSceneGui -= OnSceneGUI;
+    }
 
-  void OnSceneGUI(SceneView sceneview)
-  {
-    if (Selection.activeObject != this) return;
-    if (waypoints.Count == 0) return;
+    void OnSceneGUI(SceneView sceneview)
+    {
+      if (Selection.activeObject != this) return;
+      if (waypoints.Count == 0) return;
 
-    Handles.DrawAAPolyLine(waypoints.ToArray());
-    for (var i = 0; i < waypoints.Count; i++)
-      waypoints[i] = Handles.PositionHandle(waypoints[i], Quaternion.identity);
-  }
+      Handles.DrawAAPolyLine(waypoints.ToArray());
+      for (var i = 0; i < waypoints.Count; i++)
+        waypoints[i] = Handles.PositionHandle(waypoints[i], Quaternion.identity);
+    }
 #endif
+  }
 }

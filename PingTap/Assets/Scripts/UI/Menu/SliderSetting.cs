@@ -1,62 +1,70 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class SliderSetting : MonoBehaviour
+namespace Fralle.UI.Menu
 {
-  [Header("General")]
-  [SerializeField] Settings setting;
-  [SerializeField] TMP_InputField input;
-  [SerializeField] Slider slider;
-
-  [Header("Clamp values")]
-  [SerializeField] float Min = 0.01f;
-  [SerializeField] float Max = 100f;
-
-  string key;
-
-  void Awake()
+  public class SliderSetting : MonoBehaviour
   {
-    key = setting.ToString();
+    [Header("General")] [SerializeField] Settings setting;
+    [SerializeField] TMP_InputField input;
+    [SerializeField] Slider slider;
 
-    slider.minValue = Min;
-    slider.maxValue = Max;
+    [FormerlySerializedAs("Min")]
+    [Header("Clamp values")]
+    [SerializeField]
+    float min = 0.01f;
 
-    input.contentType = TMP_InputField.ContentType.DecimalNumber;
+    [FormerlySerializedAs("Max")]
+    [SerializeField]
+    float max = 100f;
 
-    if (slider)
+    string key;
+
+    void Awake()
     {
-      slider.value = PlayerPrefs.GetFloat(key);
-      slider.onValueChanged.AddListener(SliderValueChanged);
+      key = setting.ToString();
+
+      slider.minValue = min;
+      slider.maxValue = max;
+
+      input.contentType = TMP_InputField.ContentType.DecimalNumber;
+
+      if (slider)
+      {
+        slider.value = PlayerPrefs.GetFloat(key);
+        slider.onValueChanged.AddListener(SliderValueChanged);
+      }
+
+      if (input)
+      {
+        input.text = PlayerPrefs.GetFloat(key).ToString("##.##");
+        input.onValueChanged.AddListener(InputValueChanged);
+      }
     }
 
-    if (input)
+    void SliderValueChanged(float value)
     {
-      input.text = PlayerPrefs.GetFloat(key).ToString("##.##");
+      PlayerPrefs.SetFloat(key, value);
+
+      if (!input) return;
+      input.onValueChanged.RemoveAllListeners();
+      input.text = value.ToString("##.##");
       input.onValueChanged.AddListener(InputValueChanged);
     }
-  }
 
-  void SliderValueChanged(float value)
-  {
-    PlayerPrefs.SetFloat(key, value);
+    void InputValueChanged(string value)
+    {
+      float floatValue = float.Parse(value);
+      floatValue = Mathf.Clamp(floatValue, min, max);
 
-    if (!input) return;
-    input.onValueChanged.RemoveAllListeners();
-    input.text = value.ToString("##.##");
-    input.onValueChanged.AddListener(InputValueChanged);
-  }
+      PlayerPrefs.SetFloat(key, floatValue);
 
-  void InputValueChanged(string value)
-  {
-    float floatValue = float.Parse(value);
-    floatValue = Mathf.Clamp(floatValue, Min, Max);
-
-    PlayerPrefs.SetFloat(key, floatValue);
-
-    if (!slider) return;
-    slider.onValueChanged.RemoveAllListeners();
-    slider.value = floatValue;
-    slider.onValueChanged.AddListener(SliderValueChanged);
+      if (!slider) return;
+      slider.onValueChanged.RemoveAllListeners();
+      slider.value = floatValue;
+      slider.onValueChanged.AddListener(SliderValueChanged);
+    }
   }
 }

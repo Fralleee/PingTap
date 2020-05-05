@@ -1,8 +1,8 @@
-﻿using Fralle.Attack;
+﻿using Fralle.Attack.Offense;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Fralle
+namespace Fralle.UI.Indicators
 {
   public class HealthBar : MonoBehaviour
   {
@@ -65,7 +65,7 @@ namespace Fralle
       float distance = Vector3.Distance(camera.transform.position, health.transform.position);
       float yPositionOffset = Mathf.Lerp(2, 3.5f, distance / 40);
 
-      Vector3 screenPosition = camera.WorldToScreenPoint(health.transform.position + Vector3.up * yPositionOffset);
+      var screenPosition = camera.WorldToScreenPoint(health.transform.position + Vector3.up * yPositionOffset);
 
       // extra check
       if (screenPosition.z < 0)

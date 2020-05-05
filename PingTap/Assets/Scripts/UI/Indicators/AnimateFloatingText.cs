@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Fralle
+namespace Fralle.UI.Indicators
 {
   public class AnimateFloatingText : MonoBehaviour
   {
@@ -8,10 +8,10 @@ namespace Fralle
     {
       float animationTime = Random.Range(1f, 1.5f);
       var rect = GetComponent<RectTransform>();
-      LTDescr tweenObjectScale = LeanTween.scale(gameObject, Vector3.zero, animationTime);
-      LTDescr tweenObjectMove = LeanTween.move(rect, new Vector3(transform.localPosition.x, -200f, 0), animationTime);
-      tweenObjectScale.setEase(LeanTweenType.easeInBack);
-      tweenObjectMove.setEase(LeanTweenType.easeInBack);
+      var tweenObjectScale = LeanTween.Scale(gameObject, Vector3.zero, animationTime);
+      var tweenObjectMove = LeanTween.Move(rect, new Vector3(transform.localPosition.x, -200f, 0), animationTime);
+      tweenObjectScale.SetEase(LeanTweenType.EaseInBack);
+      tweenObjectMove.SetEase(LeanTweenType.EaseInBack);
     }
   }
 }

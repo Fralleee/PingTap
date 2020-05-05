@@ -1,42 +1,44 @@
-﻿using System;
-using Fralle;
+﻿using Fralle.Gameplay;
 using TMPro;
 using UnityEngine;
 
-public class PrepareUI : MonoBehaviour
+namespace Fralle.UI.HUD
 {
-  [SerializeField] TextMeshProUGUI prepareTimer;
-
-  MatchManager matchManager;
-  Canvas canvas;
-
-  void Awake()
+  public class PrepareUi : MonoBehaviour
   {
-    canvas = GetComponent<Canvas>();
+    [SerializeField] TextMeshProUGUI prepareTimer;
 
-    matchManager = GetComponentInParent<MatchManager>();
-    MatchManager.OnNewState += HandleNewState;
-  }
+    MatchManager matchManager;
+    Canvas canvas;
 
-  void Update()
-  {
-    if (matchManager.gameState == GameState.Prepare) SetText(matchManager.prepareTimer);
-  }
+    void Awake()
+    {
+      canvas = GetComponent<Canvas>();
 
-  void SetText(float num)
-  {
-    var minutes = Mathf.Floor(num / 60).ToString("00");
-    var seconds = (num % 60).ToString("00");
-    prepareTimer.text = $"{minutes}:{seconds}";
-  }
+      matchManager = GetComponentInParent<MatchManager>();
+      MatchManager.OnNewState += HandleNewState;
+    }
 
-  void HandleNewState(GameState newState)
-  {
-    canvas.enabled = newState == GameState.Prepare;
-  }
+    void Update()
+    {
+      if (matchManager.gameState == GameState.Prepare) SetText(matchManager.prepareTimer);
+    }
 
-  void OnDestroy()
-  {
-    MatchManager.OnNewState -= HandleNewState;
+    void SetText(float num)
+    {
+      var minutes = Mathf.Floor(num / 60).ToString("00");
+      var seconds = (num % 60).ToString("00");
+      prepareTimer.text = $"{minutes}:{seconds}";
+    }
+
+    void HandleNewState(GameState newState)
+    {
+      canvas.enabled = newState == GameState.Prepare;
+    }
+
+    void OnDestroy()
+    {
+      MatchManager.OnNewState -= HandleNewState;
+    }
   }
 }

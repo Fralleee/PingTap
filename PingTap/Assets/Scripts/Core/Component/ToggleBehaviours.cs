@@ -1,7 +1,7 @@
-﻿using Fralle.Attack;
+﻿using Fralle.Attack.Action;
 using UnityEngine;
 
-namespace Fralle
+namespace Fralle.Core.Component
 {
   public class ToggleBehaviours : MonoBehaviour
   {
@@ -9,16 +9,16 @@ namespace Fralle
 
     void DisableBehaviours()
     {
-      foreach (Behaviour behaviour in behaviours) behaviour.enabled = false;
-      Action[] actionBehaviours = gameObject.GetComponentsInChildren<Action>();
-      foreach (Action action in actionBehaviours) action.enabled = false;
+      foreach (var behaviour in behaviours) behaviour.enabled = false;
+      Active[] actionBehaviours = gameObject.GetComponentsInChildren<Active>();
+      foreach (var action in actionBehaviours) action.enabled = false;
     }
 
     void EnableBehaviours()
     {
-      foreach (Behaviour behaviour in behaviours) behaviour.enabled = true;
-      Action[] actionBehaviours = gameObject.GetComponentsInChildren<Action>();
-      foreach (Action action in actionBehaviours) action.enabled = true;
+      foreach (var behaviour in behaviours) behaviour.enabled = true;
+      Active[] actionBehaviours = gameObject.GetComponentsInChildren<Active>();
+      foreach (var action in actionBehaviours) action.enabled = true;
     }
 
     public void Toggle(bool disable)

@@ -1,23 +1,27 @@
-﻿using System.Linq;
-using Fralle;
+﻿using Fralle.Core.Attributes;
+using System.Linq;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+namespace Fralle.AI.Spawning
 {
-  [Readonly] public Army army;
-
-  public int SpawnRound(int round)
+  public class Spawner : MonoBehaviour
   {
-    if (army.waypointSchemas.Length == 0) return 0;
+    [Readonly] public Army army;
 
-    WaveDefinition waveDefinition = army.NextWave(round);
-    for (var i = 0; i < waveDefinition.count; i++)
+    public int SpawnRound(int round)
     {
-      WaypointSchema schema = army.waypointSchemas[i % army.waypointSchemas.Length];
-      Enemy enemy = Instantiate(waveDefinition.enemy, schema.waypoints.FirstOrDefault(), Quaternion.identity, transform);
-      enemy.agentNavigation.wayPointSchema = schema;
-    }
+      if (army.waypointSchemas.Length == 0) return 0;
 
-    return waveDefinition.count;
+      var waveDefinition = army.NextWave(round);
+      for (var i = 0; i < waveDefinition.count; i++)
+      {
+        var schema = army.waypointSchemas[i % army.waypointSchemas.Length];
+        var enemy = Instantiate(waveDefinition.enemy, schema.waypoints.FirstOrDefault(), Quaternion.identity,
+          transform);
+        enemy.agentNavigation.wayPointSchema = schema;
+      }
+
+      return waveDefinition.count;
+    }
   }
 }

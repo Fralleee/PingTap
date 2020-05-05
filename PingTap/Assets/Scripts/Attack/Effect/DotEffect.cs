@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Fralle.Attack.Offense;
+using UnityEngine;
 
-namespace Fralle.Attack
+namespace Fralle.Attack.Effect
 {
   [CreateAssetMenu(menuName = "Attack/Effect/Damage over time")]
   public class DotEffect : DamageEffect
