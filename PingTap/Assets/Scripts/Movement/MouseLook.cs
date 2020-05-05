@@ -1,4 +1,5 @@
 ﻿using Fralle.Core.Attributes;
+using Fralle.UI.Menu;
 using UnityEngine;
 
 namespace Fralle.Movement

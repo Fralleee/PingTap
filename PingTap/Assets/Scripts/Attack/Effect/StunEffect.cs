@@ -1,4 +1,5 @@
 ﻿using Fralle.Attack.Offense;
+using Fralle.Movement;
 using UnityEngine;
 
 namespace Fralle.Attack.Effect

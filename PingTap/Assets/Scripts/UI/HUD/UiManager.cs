@@ -1,14 +1,12 @@
-﻿using TMPro;
+﻿using Fralle.Gameplay;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Fralle.Gameplay
+namespace Fralle.UI.HUD
 {
   public class UiManager : MonoBehaviour
   {
-
-    // Probably extract stuff from here when there's too much happening
-
     [SerializeField] TextMeshProUGUI gameStatusText;
     [FormerlySerializedAs("gameStatusUI")] [SerializeField] GameObject gameStatusUi;
 

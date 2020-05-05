@@ -31,10 +31,11 @@ namespace Fralle.Movement
 
     void Awake()
     {
-      rigidbody = playerController.GetComponent<Rigidbody>();
       playerController = GetComponent<PlayerController>();
       playerController.OnMovement += HandleMovement;
       playerController.OnGroundChanged += HandleGroundHit;
+
+      rigidbody = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()

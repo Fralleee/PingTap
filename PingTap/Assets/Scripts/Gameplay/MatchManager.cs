@@ -1,5 +1,6 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Attributes;
+using Fralle.UI.HUD;
 using System;
 using UnityEngine;
 using UnityEngine.Serialization;

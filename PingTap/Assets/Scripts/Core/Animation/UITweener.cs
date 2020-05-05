@@ -22,7 +22,7 @@ namespace Fralle.Core.Animation
     public Vector3 from;
     public Vector3 to;
 
-    LtDescr tweenObject;
+    LTDescr tweenObject;
     readonly Dictionary<UiAnimationTypes, Action> animationMap = new Dictionary<UiAnimationTypes, Action>();
 
     void Awake()
@@ -39,11 +39,11 @@ namespace Fralle.Core.Animation
 
       animationMap[animationType]();
 
-      tweenObject.SetDelay(delay);
-      tweenObject.SetEase(easeType);
+      tweenObject.setDelay(delay);
+      tweenObject.setEase(easeType);
 
       if (loop) tweenObject.loopCount = int.MaxValue;
-      if (pingPong) tweenObject.SetLoopPingPong();
+      if (pingPong) tweenObject.setLoopPingPong();
     }
 
     void Fade()
@@ -51,7 +51,7 @@ namespace Fralle.Core.Animation
       var objectCanvasGroup = objectToAnimate.GetComponent<CanvasGroup>();
       if (startPositionOffset) objectCanvasGroup.alpha = from.x;
 
-      tweenObject = LeanTween.AlphaCanvas(objectCanvasGroup, to.x, duration);
+      tweenObject = LeanTween.alphaCanvas(objectCanvasGroup, to.x, duration);
     }
 
     void Move()
@@ -59,14 +59,14 @@ namespace Fralle.Core.Animation
       var rect = objectToAnimate.GetComponent<RectTransform>();
       rect.anchoredPosition = from;
 
-      tweenObject = LeanTween.Move(rect, to, duration);
+      tweenObject = LeanTween.move(rect, to, duration);
     }
 
     void Scale()
     {
       if (startPositionOffset) objectToAnimate.GetComponent<RectTransform>().localScale = from;
 
-      tweenObject = LeanTween.Scale(objectToAnimate, to, duration);
+      tweenObject = LeanTween.scale(objectToAnimate, to, duration);
     }
 
     void ScaleUpAndDown()
@@ -74,8 +74,8 @@ namespace Fralle.Core.Animation
       if (startPositionOffset) objectToAnimate.GetComponent<RectTransform>().localScale = from;
 
       float actualDuration = duration * 0.5f;
-      tweenObject = LeanTween.Scale(objectToAnimate, to, actualDuration)
-        .setOnComplete(() => LeanTween.Scale(objectToAnimate, from, actualDuration));
+      tweenObject = LeanTween.scale(objectToAnimate, to, actualDuration)
+        .setOnComplete(() => LeanTween.scale(objectToAnimate, from, actualDuration));
     }
   }
 }
