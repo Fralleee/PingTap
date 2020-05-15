@@ -1,12 +1,13 @@
 ﻿using Fralle.Attack.Effect;
 using Fralle.Attack.Offense;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Fralle.Attack.Defense
 {
-  public class Armor : MonoBehaviour
+  [Serializable]
+  public class Armor
   {
     public float DamageMultiplier => 1 - 0.06f * armor / (1 + 0.06f * armor);
 
@@ -25,7 +26,7 @@ namespace Fralle.Attack.Defense
 
     float CalculateDamage(Damage damage)
     {
-      ArmorElementModifier armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == damage.element);
+      var armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == damage.element);
       float modifier = armorElementModifier?.modifier ?? 1;
       float damageAmount = damage.damageAmount * modifier * DamageMultiplier;
       return damageAmount;
@@ -33,7 +34,7 @@ namespace Fralle.Attack.Defense
 
     DamageEffect CalculateEffect(DamageEffect effect)
     {
-      ArmorElementModifier armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == effect.element);
+      var armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == effect.element);
       return armorElementModifier != null ? effect.Recalculate(armorElementModifier.modifier) : effect;
     }
 

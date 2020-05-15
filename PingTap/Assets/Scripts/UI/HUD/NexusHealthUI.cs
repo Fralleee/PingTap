@@ -10,16 +10,15 @@ namespace Fralle.UI.HUD
 
     Nexus nexus;
 
+    void Awake()
+    {
+      nexus = FindObjectOfType<Nexus>();
+    }
+
     void Update()
     {
       if (!nexus) return;
-
       nexus.health.OnHealthChange += UpdateHealthbar;
-    }
-
-    public void SetNexus(Nexus nexus)
-    {
-      this.nexus = nexus;
     }
 
     public void UpdateHealthbar(float currentHealth, float maxHealth)

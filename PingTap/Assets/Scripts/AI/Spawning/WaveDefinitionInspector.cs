@@ -27,13 +27,13 @@ namespace Fralle.AI.Spawning
     static void DrawEnemy(Rect rect, SerializedProperty prop)
     {
       Object[] enemies = Resources.FindObjectsOfTypeAll<Enemy>();
+      enemies = enemies.OrderBy(x => x.name).ToArray();
 
       string[] options = enemies.Select(x => x.name).ToArray();
       int[] values = enemies.Select((x, i) => i).ToArray();
 
       int currentIndex = prop.objectReferenceValue ? Array.IndexOf(enemies, prop.objectReferenceValue) : 0;
-      int selectValue = EditorGUI.IntPopup(new Rect(rect.x, rect.y, rect.width, 20), "Enemy", currentIndex,
-        options, values);
+      int selectValue = EditorGUI.IntPopup(new Rect(rect.x, rect.y, rect.width, 20), "Enemy", currentIndex, options, values);
 
       prop.objectReferenceValue = enemies[selectValue];
     }

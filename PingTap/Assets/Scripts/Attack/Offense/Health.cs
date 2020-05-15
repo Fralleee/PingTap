@@ -10,9 +10,12 @@ namespace Fralle.Attack.Offense
 {
   public class Health : MonoBehaviour, IDamageable
   {
+    static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
+
     public static event Action<Damage> OnAnyDamage = delegate { };
     public static event Action<Health> OnHealthBarAdded = delegate { };
     public static event Action<Health> OnHealthBarRemoved = delegate { };
+
     public event Action<Health, Damage> OnDeath = delegate { };
     public event Action<float, float> OnHealthChange = delegate { };
 
@@ -22,18 +25,20 @@ namespace Fralle.Attack.Offense
     [Header("Stats")]
     public float currentHealth;
     public float maxHealth = 100f;
-    [SerializeField] bool immortal;
+    public bool immortal;
+    public Armor armor;
 
-    Armor armor;
-    Animator animator;
+    new Renderer renderer;
+    Color defaultColor;
     bool isTouched;
+    float colorLerpTime;
 
     void Start()
     {
-      armor = GetComponent<Armor>();
-      if (currentHealth == 0) currentHealth = maxHealth;
+      renderer = GetComponentInChildren<Renderer>();
+      defaultColor = renderer.material.GetColor(RendererColor);
 
-      animator = GetComponent<Animator>();
+      if (currentHealth == 0) currentHealth = maxHealth;
     }
 
     void Update()
@@ -45,18 +50,34 @@ namespace Fralle.Attack.Offense
         damageEffects[i].Exit(this);
         damageEffects.RemoveAt(i);
       }
+
+      if (colorLerpTime < 1)
+      {
+        var currentColor = renderer.material.GetColor(RendererColor);
+        var lerpedColor = Color.Lerp(currentColor, defaultColor, colorLerpTime);
+        renderer.material.SetColor(RendererColor, lerpedColor);
+        colorLerpTime += Time.deltaTime * 0.25f;
+      }
     }
 
     public void ReceiveAttack(Damage damage)
     {
-      if (armor) damage = armor.Protect(damage, this);
+      damage = armor.Protect(damage, this);
       TakeDamage(damage.WithHitboxModifier());
       ApplyEffects(damage);
+
+      if (damage.hitAngle != -1)
+      {
+        renderer.material.SetColor(RendererColor, Color.white);
+        colorLerpTime = 0;
+      }
     }
 
     public void TakeDamage(Damage damage)
     {
       if (isDead) return;
+
+      if (damage.player) damage.player.stats.ReceiveDamageStats(damage);
 
       if (damage.damageAmount <= 0)
       {
@@ -91,6 +112,8 @@ namespace Fralle.Attack.Offense
     void Death(Damage damage)
     {
       if (isDead) return;
+
+      if (damage.player) damage.player.stats.ReceiveKillingBlow(1);
       OnHealthBarRemoved(this);
       if (immortal)
       {
@@ -101,7 +124,6 @@ namespace Fralle.Attack.Offense
       {
         isDead = true;
         OnDeath(this, damage);
-        if (animator) animator.enabled = false;
       }
     }
   }

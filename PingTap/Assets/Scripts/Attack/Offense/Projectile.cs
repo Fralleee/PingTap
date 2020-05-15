@@ -67,6 +67,11 @@ namespace Fralle.Attack.Offense
       }
 
       Collider[] colliders = Physics.OverlapSphere(position, data.explosionRadius);
+      foreach (var col in colliders)
+      {
+        AddExplosionForce(col, position);
+      }
+
       Health[] targets = colliders.Select(x => x.GetComponentInParent<Health>()).Where(x => x != null).Distinct().ToArray();
 
       foreach (var health in targets)
@@ -76,9 +81,6 @@ namespace Fralle.Attack.Offense
 
         float distanceDamageMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
 
-        var colRb = health.GetComponent<Rigidbody>();
-        if (colRb) colRb.AddExplosionForce(data.pushForce, position, data.explosionRadius + 1);
-
         float damageAmount = data.damage * distanceDamageMultiplier;
         var targetPosition = health.transform.position;
         var damage = new Damage()
@@ -87,7 +89,7 @@ namespace Fralle.Attack.Offense
           element = data.element,
           effects = data.damageEffects.Select(x => x.Setup(data.player, damageAmount)).ToArray(),
           hitAngle = Vector3.Angle((position - targetPosition).normalized, health.transform.forward),
-          position = targetPosition,
+          position = position,
           damageAmount = damageAmount
         };
         health.ReceiveAttack(damage);
@@ -98,8 +100,7 @@ namespace Fralle.Attack.Offense
 
     void Hit(Collision collision)
     {
-      var colRb = collision.gameObject.GetComponent<Rigidbody>();
-      if (colRb) colRb.AddForce(transform.position - collision.transform.position * data.pushForce);
+      AddForce(collision);
 
       var hitBox = collision.gameObject.GetComponent<HitBox>();
       if (hitBox != null)
@@ -130,8 +131,22 @@ namespace Fralle.Attack.Offense
       Destroy(gameObject);
     }
 
+    void AddExplosionForce(Component component, Vector3 position)
+    {
+      var enemyBody = component.GetComponentInParent<EnemyBody>();
+      if (enemyBody != null) enemyBody.AddExplosionForce(data.pushForce, position, data.explosionRadius + 1, 0.5f);
+    }
+
+    void AddForce(Collision collision)
+    {
+      var enemyBody = collision.gameObject.GetComponent<EnemyBody>();
+      if (enemyBody != null) enemyBody.AddForce(transform.position - collision.transform.position * data.pushForce);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
+      data.player.stats.ReceiveHits(1);
+
       if (data.kinematicOnImpact)
       {
         rigidbody.isKinematic = true;

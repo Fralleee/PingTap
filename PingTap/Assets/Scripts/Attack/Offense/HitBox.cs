@@ -2,6 +2,7 @@
 
 namespace Fralle.Attack.Offense
 {
+  [RequireComponent(typeof(SphereCollider))]
   public class HitBox : MonoBehaviour
   {
     public HitBoxType hitBoxType;

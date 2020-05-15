@@ -42,6 +42,8 @@ namespace Fralle.Attack.Action
 
     void FireBullet(Transform muzzle)
     {
+      player.stats.ReceiveShotsFired(1);
+
       var forward = CalculateBulletSpread();
 
       if (muzzleParticlePrefab)
@@ -50,15 +52,16 @@ namespace Fralle.Attack.Action
         Destroy(muzzleParticle, 1.5f);
       }
 
-      int layerMask = ~LayerMask.GetMask("Corpse");
+      int layerMask = ~LayerMask.GetMask("Corpse", "Enemy Rigidbody");
       if (!Physics.Raycast(weapon.playerCamera.position, forward, out var hitInfo, range, layerMask)) return;
 
-      var rb = hitInfo.transform.GetComponent<Rigidbody>();
-      if (rb != null) rb.AddForce(weapon.playerCamera.forward * pushForce);
+      AddForce(hitInfo);
 
-      var hitBox = hitInfo.transform.GetComponent<HitBox>();
+      var hitBox = hitInfo.collider.transform.GetComponent<HitBox>();
       if (hitBox != null)
       {
+        player.stats.ReceiveHits(1);
+
         float damageAmount = Damage;
         hitBox.ApplyHit(new Damage()
         {
@@ -95,6 +98,12 @@ namespace Fralle.Attack.Action
       var lineRenderer = lineRendererInstance.GetComponent<LineRenderer>();
       lineRenderer.SetPosition(0, origin);
       lineRenderer.SetPosition(1, target);
+    }
+
+    void AddForce(RaycastHit hitInfo)
+    {
+      var enemyBody = hitInfo.transform.GetComponent<EnemyBody>();
+      if (enemyBody != null) enemyBody.AddForce(weapon.playerCamera.forward * pushForce);
     }
   }
 }

@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.9411765}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -233,10 +233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5f7151056f9be489d1221004ba8765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_color1: {r: 0.39215687, g: 0.89864874, b: 1, a: 1}
-  m_color2: {r: 0.99215686, g: 0.52156866, b: 0.5803922, a: 1}
-  m_angle: -45
-  m_ignoreRatio: 1
+  mColor1: {r: 0.39215687, g: 0.89864874, b: 1, a: 0.9411765}
+  mColor2: {r: 0.99215686, g: 0.52156866, b: 0.5803922, a: 1}
+  mAngle: -45
+  mIgnoreRatio: 1
 --- !u!1001 &1760197648356849257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1155,7 +1155,7 @@ PrefabInstance:
     - target: {fileID: 3038868045641015787, guid: 6985f9b28c5e9784d9cb07d95c7debec,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Leave
+      value: ToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3814691593580461463, guid: 6985f9b28c5e9784d9cb07d95c7debec,
         type: 3}

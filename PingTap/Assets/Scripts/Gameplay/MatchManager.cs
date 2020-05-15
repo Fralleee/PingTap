@@ -1,26 +1,23 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Attributes;
-using Fralle.UI.HUD;
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Fralle.Gameplay
 {
   public class MatchManager : MonoBehaviour
   {
-    public static event Action<MatchManager> OnDefeat = delegate { };
-    public static event Action<MatchManager> OnVictory = delegate { };
+    public static event Action<MatchManager> OnMatchEnd = delegate { };
+    public static event Action<MatchManager, PlayerStats> OnDefeat = delegate { };
+    public static event Action<MatchManager, PlayerStats> OnVictory = delegate { };
     public static event Action<MatchManager> OnNewRound = delegate { };
     public static event Action<GameState> OnNewState = delegate { };
 
     public GameState gameState;
     public float prepareTime = 30f;
 
-    [Header("UI")] [SerializeField] GameObject prepareUi;
-    [FormerlySerializedAs("nexusUI")] [SerializeField] GameObject nexusUi;
-    [FormerlySerializedAs("roundsUI")] [SerializeField] GameObject roundsUi;
-    [SerializeField] GameObject waveInfoUi;
+    [Header("Cameras")]
+    [SerializeField] Camera sceneCamera;
 
     [Space(10)] [Readonly] public int enemiesAlive;
     [Readonly] public int totalEnemies;
@@ -36,14 +33,13 @@ namespace Fralle.Gameplay
     void Awake()
     {
       stateController = GetComponent<StateController>();
+      sceneCamera.gameObject.SetActive(false);
 
       nexus = FindObjectOfType<Nexus>();
       nexus.OnDeath += Defeat;
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
       WaveManager.OnWavesComplete += HandleWavesComplete;
-
-      SetupUi();
     }
 
     void Update()
@@ -70,39 +66,43 @@ namespace Fralle.Gameplay
       enemiesAlive--;
     }
 
-    void SetupUi()
-    {
-      var ui = new GameObject("UI");
-      ui.transform.parent = transform;
-      Instantiate(prepareUi, ui.transform);
-      Instantiate(roundsUi, ui.transform);
-      Instantiate(waveInfoUi, ui.transform);
-
-      var nexusUiInstance = Instantiate(nexusUi, ui.transform);
-      nexusUiInstance.GetComponent<NexusHealthUi>().SetNexus(nexus);
-    }
-
     void HandleWavesComplete(WaveManager waveManager)
     {
       Victory();
     }
 
+    PlayerStats FinishedMatch()
+    {
+      var stats = new PlayerStats();
+      var player = FindObjectOfType<Player>();
+      if (player) stats = player.stats;
+
+      if (sceneCamera)
+      {
+        Player.Disable();
+        sceneCamera.gameObject.SetActive(true);
+      }
+
+      stateController.enabled = false;
+      OnMatchEnd(this);
+      return stats;
+    }
+
     void Victory()
     {
-      stateController.enabled = false;
-
-      OnVictory(this);
+      var stats = FinishedMatch();
+      OnVictory(this, stats);
     }
 
     void Defeat(Nexus nexus)
     {
-      OnDefeat(this);
+      var stats = FinishedMatch();
+      OnDefeat(this, stats);
     }
 
     void OnDestroy()
     {
       nexus.OnDeath -= Defeat;
-
       Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
       WaveManager.OnWavesComplete -= HandleWavesComplete;
     }

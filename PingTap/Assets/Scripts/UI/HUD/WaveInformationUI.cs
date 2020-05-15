@@ -1,6 +1,5 @@
 ﻿using Fralle.AI;
 using Fralle.AI.Spawning;
-using Fralle.Attack.Defense;
 using Fralle.Core.Animation;
 using Fralle.Gameplay;
 using TMPro;
@@ -46,11 +45,11 @@ namespace Fralle.UI.HUD
     void SetupText(WaveDefinition wave)
     {
       var enemy = wave.enemy;
-      var armor = enemy.GetComponent<Armor>();
+      var armor = enemy.health.armor;
       enemyName.text = enemy.name;
       enemyCurrentCount.text = wave.count.ToString();
       enemyTotalCount.text = wave.count.ToString();
-      armorAmount.text = $"Armor {(armor ? armor.armor.ToString() : "0")}";
+      armorAmount.text = $"Armor {armor.armor.ToString()}";
 
       elementModifiers.text = "";
       armor.armorElementModifiers.ForEach(x => elementModifiers.text += $"{x.element}: {x.modifier * 100}%\n");

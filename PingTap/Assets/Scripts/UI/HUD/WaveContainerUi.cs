@@ -38,7 +38,7 @@ namespace Fralle.UI.HUD
       currentWave = waves[index];
     }
 
-    void HandleVictory(MatchManager waveManager)
+    void HandleVictory(MatchManager matchManager, PlayerStats stats)
     {
       waves.ForEach(x => x.SetFill(1));
     }

@@ -3,35 +3,38 @@ using Fralle.Attack.Offense;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
 using Fralle.Movement;
+using Pathfinding;
 using System;
 using UnityEngine;
-using UnityEngine.AI;
-using Random = UnityEngine.Random;
 
 namespace Fralle.AI
 {
   [RequireComponent(typeof(Health))]
-  [RequireComponent(typeof(NavMeshAgent))]
   public class Enemy : MonoBehaviour
   {
     public static event Action<Enemy> OnEnemyReachedPowerStone = delegate { };
     public static event Action<Enemy> OnAnyEnemyDeath = delegate { };
-    public event Action<Enemy> OnDeath = delegate { };
+    public event Action<Damage> OnDeath = delegate { };
 
-    [HideInInspector] public AgentNavigation agentNavigation;
-    [HideInInspector] public NavMeshAgent navMeshAgent;
+    [HideInInspector] public EnemyNavigation enemyNavigation;
+    [HideInInspector] public EnemyAnimator enemyAnimator;
+    [HideInInspector] public AIPath aiPath;
     [HideInInspector] public Health health;
 
+    [Header("General")]
     public int damageAmount = 1;
     public WaveType waveType = WaveType.Ground;
-    [SerializeField] EnemyDeathReaction enemyDeathReaction = EnemyDeathReaction.UpInTheAir;
 
-    bool isDead;
+    public bool IsDead { get; private set; }
+    public Player KilledByPlayer { get; private set; }
+
+    [SerializeField] DropResourceAction dropResource;
 
     void Awake()
     {
-      agentNavigation = GetComponent<AgentNavigation>();
-      navMeshAgent = GetComponent<NavMeshAgent>();
+      enemyNavigation = GetComponent<EnemyNavigation>();
+      enemyAnimator = GetComponent<EnemyAnimator>();
+      aiPath = GetComponent<AIPath>();
       health = GetComponent<Health>();
 
       health.OnDeath += HandleDeath;
@@ -40,55 +43,53 @@ namespace Fralle.AI
 
     void Update()
     {
-      if (Input.GetKeyDown(KeyCode.K)) EnemyDeath(true);
+      if (Input.GetKeyDown(KeyCode.K)) Death(null, true);
     }
 
     public void ReachedDestination()
     {
       OnEnemyReachedPowerStone(this);
-      EnemyDeath(true);
+      Death(null, true);
     }
 
     void HandleDeath(Health health, Damage damage)
     {
-      EnemyDeath();
+      Death(damage);
     }
 
-    void HandleDefeat(MatchManager levelManager)
+    void HandleDefeat(MatchManager matchManager, PlayerStats stats)
     {
       Destroy(gameObject);
     }
 
-    void EnemyDeath(bool destroyImmediately = false)
+    void Death(Damage damage, bool destroyImmediately = false)
     {
-      if (isDead) return;
+      if (IsDead) return;
 
-      isDead = true;
+      IsDead = true;
+      KilledByPlayer = damage.player;
+
+      DeathEvents(damage);
+      DeathVisuals(destroyImmediately);
+    }
+
+    void DeathEvents(Damage damage)
+    {
       OnAnyEnemyDeath(this);
-      OnDeath(this);
+      OnDeath(damage);
+      dropResource.Drop(this);
+    }
 
+    void DeathVisuals(bool destroyImmediately)
+    {
       if (destroyImmediately)
       {
         Destroy(gameObject);
         return;
       }
 
+      enemyAnimator.ToggleAnimator(false);
       gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
-      if (navMeshAgent) navMeshAgent.enabled = false;
-
-      var rigidBody = gameObject.AddComponent<Rigidbody>();
-      switch (enemyDeathReaction)
-      {
-        case EnemyDeathReaction.UpInTheAir:
-          rigidBody.AddForce(Vector3.up * Random.Range(500f, 1000f));
-          rigidBody.AddTorque(Random.onUnitSphere * 360f);
-          break;
-        case EnemyDeathReaction.DropDead:
-          rigidBody.AddTorque(Random.onUnitSphere * 90f);
-          break;
-        default:
-          throw new ArgumentOutOfRangeException();
-      }
 
       Destroy(gameObject, 3f);
     }

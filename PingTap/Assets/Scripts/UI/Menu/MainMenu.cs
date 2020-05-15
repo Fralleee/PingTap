@@ -47,13 +47,9 @@ namespace Fralle.UI.Menu
       }
     }
 
-    void ToggleMenu()
+    public static void ToMainMenu()
     {
-      isOpen = !isOpen;
-      main.SetActive(isOpen);
-      background.SetActive(isOpen);
-      player.toggleBehaviours.Toggle(isOpen);
-      MouseLook.ConfigureCursor(!isOpen);
+      SceneManager.LoadScene(MainMenuScene);
     }
 
     public void Play()
@@ -74,14 +70,18 @@ namespace Fralle.UI.Menu
       main.SetActive(false);
     }
 
-    public void Leave()
-    {
-      SceneManager.LoadScene(MainMenuScene);
-    }
-
     public void Quit()
     {
       Application.Quit();
+    }
+
+    void ToggleMenu()
+    {
+      isOpen = !isOpen;
+      main.SetActive(isOpen);
+      background.SetActive(isOpen);
+      player.toggleBehaviours.Toggle(isOpen);
+      MouseLook.ConfigureCursor(!isOpen);
     }
   }
 }

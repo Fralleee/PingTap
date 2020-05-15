@@ -32,6 +32,8 @@ namespace Fralle.Attack.Action
     {
       for (var i = 0; i < projectilesPerFire; i++)
       {
+        player.stats.ReceiveShotsFired(1);
+
         int layerMask = ~LayerMask.GetMask("Corpse");
         if (Physics.Raycast(weapon.playerCamera.position, weapon.playerCamera.forward, out var hitInfo, projectileData.range, layerMask))
           projectileData.forward = (hitInfo.point - muzzle.position).normalized;
@@ -41,6 +43,7 @@ namespace Fralle.Attack.Action
 
         var projectile = Instantiate(projectilePrefab, muzzle.position, transform.rotation);
         projectile.Initiate(projectileData);
+
         yield return new WaitForSeconds(delayTimePerProjectiles);
       }
     }

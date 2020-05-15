@@ -25,12 +25,12 @@ namespace Fralle.Attack.Effect
           damageAmount = damage
         });
       }
-      health.GetComponent<AgentNavigation>().AddModifier(name, 0f);
+      health.GetComponent<EnemyNavigation>().AddModifier(name, 0f);
     }
 
     public override void Exit(Health health)
     {
-      health.GetComponent<AgentNavigation>().RemoveModifier(name);
+      health.GetComponent<EnemyNavigation>().RemoveModifier(name);
     }
   }
 }

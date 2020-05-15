@@ -531,7 +531,7 @@ MonoBehaviour:
   jumpStrength: 12
   fallMultiplier: 2
   lowJumpModifier: 1.5
-  debugUI: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3, type: 3}
+  debugUi: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3, type: 3}
   debugMode: 1
 --- !u!114 &3662307569142649154
 MonoBehaviour:
@@ -640,6 +640,15 @@ MonoBehaviour:
   menuUi: {fileID: 4038077519139060140, guid: e6e9972b2ef61404d9ad3115bca869ae, type: 3}
   minimapUi: {fileID: 4590892497937501361, guid: eb00496e3d13c3843b5c5ae3428fb1c3,
     type: 3}
+  stats:
+    killingBlows: 0
+    totalDamage: 0
+    totalShotsFired: 0
+    totalShotsHit: 0
+    accuracyPercentage: 0
+    nerveHits: 0
+    majorHits: 0
+    minorHits: 0
   camera: {fileID: 0}
   toggleBehaviours: {fileID: 0}
 --- !u!114 &6817597722629130795
@@ -741,7 +750,7 @@ MonoBehaviour:
   currentSensitivity: 0
   orientation: {fileID: 1386371906370868751}
   mouseSensitivity: 40
-  mouseZoomSensitivity: 15
+  mouseZoomModifier: 0.4
   mouseLookSmooth: 0
   affectSmooth: 0.05
   clampYMax: 90

@@ -13,8 +13,20 @@ namespace Fralle
     [SerializeField] GameObject menuUi;
     [SerializeField] GameObject minimapUi;
 
+    public PlayerStats stats;
+
     [HideInInspector] public new Camera camera;
     [HideInInspector] public ToggleBehaviours toggleBehaviours;
+
+
+    public static void Disable()
+    {
+      Player[] players = FindObjectsOfType<Player>();
+      foreach (var player in players)
+      {
+        player.gameObject.SetActive(false);
+      }
+    }
 
     void Awake()
     {

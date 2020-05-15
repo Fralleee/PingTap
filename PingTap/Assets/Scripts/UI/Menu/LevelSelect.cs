@@ -37,6 +37,11 @@ namespace Fralle.UI.Menu
       StartCoroutine(LoadScene("Maul"));
     }
 
+    public void MaulV2()
+    {
+      StartCoroutine(LoadScene("Maul_v2"));
+    }
+
     IEnumerator LoadScene(string sceneName)
     {
       loadingCanvas.SetActive(true);
