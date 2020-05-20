@@ -3,7 +3,6 @@ using Fralle.Attack.Offense;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
 using Fralle.Movement;
-using Pathfinding;
 using System;
 using UnityEngine;
 
@@ -17,8 +16,6 @@ namespace Fralle.AI
     public event Action<Damage> OnDeath = delegate { };
 
     [HideInInspector] public EnemyNavigation enemyNavigation;
-    [HideInInspector] public EnemyAnimator enemyAnimator;
-    [HideInInspector] public AIPath aiPath;
     [HideInInspector] public Health health;
 
     [Header("General")]
@@ -33,11 +30,10 @@ namespace Fralle.AI
     void Awake()
     {
       enemyNavigation = GetComponent<EnemyNavigation>();
-      enemyAnimator = GetComponent<EnemyAnimator>();
-      aiPath = GetComponent<AIPath>();
       health = GetComponent<Health>();
 
       health.OnDeath += HandleDeath;
+      health.OnDamageTaken += HandleDamageTaken;
       MatchManager.OnDefeat += HandleDefeat;
     }
 
@@ -50,6 +46,11 @@ namespace Fralle.AI
     {
       OnEnemyReachedPowerStone(this);
       Death(null, true);
+    }
+
+    void HandleDamageTaken(Health health, Damage damage)
+    {
+      enemyNavigation.StopMovement(0.1f);
     }
 
     void HandleDeath(Health health, Damage damage)
@@ -67,7 +68,7 @@ namespace Fralle.AI
       if (IsDead) return;
 
       IsDead = true;
-      KilledByPlayer = damage.player;
+      KilledByPlayer = damage?.player;
 
       DeathEvents(damage);
       DeathVisuals(destroyImmediately);
@@ -88,7 +89,6 @@ namespace Fralle.AI
         return;
       }
 
-      enemyAnimator.ToggleAnimator(false);
       gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
 
       Destroy(gameObject, 3f);

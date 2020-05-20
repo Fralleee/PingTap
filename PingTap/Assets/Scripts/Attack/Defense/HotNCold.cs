@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using Fralle.Attack.Offense;
+﻿using Fralle.Attack.Offense;
+using System.Linq;
 using UnityEngine;
 
 namespace Fralle.Attack.Defense
@@ -16,7 +16,6 @@ namespace Fralle.Attack.Defense
       if (waterToFire) return new ProtectionResult() { effectProtection = EffectProtection.Ignore, damage = damage };
 
       damage.damageAmount = 0;
-      damage.hitBoxType = HitBoxType.Minor;
       return new ProtectionResult() { effectProtection = effectProtection, damage = damage };
     }
   }

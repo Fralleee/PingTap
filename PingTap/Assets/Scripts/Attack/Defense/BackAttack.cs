@@ -12,7 +12,6 @@ namespace Fralle.Attack.Defense
         return new ProtectionResult() { effectProtection = EffectProtection.Ignore, damage = data };
 
       data.damageAmount = 0;
-      data.hitBoxType = HitBoxType.Minor;
       return new ProtectionResult() { effectProtection = effectProtection, damage = data };
     }
   }

@@ -1,5 +1,5 @@
-﻿using Fralle.Attack.Offense;
-using Fralle.Movement;
+﻿using Fralle.AI;
+using Fralle.Attack.Offense;
 using UnityEngine;
 
 namespace Fralle.Attack.Effect

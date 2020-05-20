@@ -17,6 +17,7 @@ namespace Fralle.Attack.Offense
     public static event Action<Health> OnHealthBarRemoved = delegate { };
 
     public event Action<Health, Damage> OnDeath = delegate { };
+    public event Action<Health, Damage> OnDamageTaken = delegate { };
     public event Action<float, float> OnHealthChange = delegate { };
 
     [HideInInspector] public List<DamageEffect> damageEffects = new List<DamageEffect>();
@@ -28,21 +29,23 @@ namespace Fralle.Attack.Offense
     public bool immortal;
     public Armor armor;
 
-    new Renderer renderer;
+    [Header("Graphics")]
+    [SerializeField] Renderer model;
+    [SerializeField] GameObject deathModel;
+
     Color defaultColor;
     bool isTouched;
     float colorLerpTime;
 
     void Start()
     {
-      renderer = GetComponentInChildren<Renderer>();
-      defaultColor = renderer.material.GetColor(RendererColor);
-
+      defaultColor = model.material.GetColor(RendererColor);
       if (currentHealth == 0) currentHealth = maxHealth;
     }
 
     void Update()
     {
+      if (isDead) return;
       for (var i = 0; i < damageEffects.Count; i++)
       {
         damageEffects[i].Tick(this);
@@ -51,25 +54,27 @@ namespace Fralle.Attack.Offense
         damageEffects.RemoveAt(i);
       }
 
-      if (colorLerpTime < 1)
+      if (colorLerpTime > 0)
       {
-        var currentColor = renderer.material.GetColor(RendererColor);
-        var lerpedColor = Color.Lerp(currentColor, defaultColor, colorLerpTime);
-        renderer.material.SetColor(RendererColor, lerpedColor);
-        colorLerpTime += Time.deltaTime * 0.25f;
+        var currentColor = model.material.GetColor(RendererColor);
+        var lerpedColor = Color.Lerp(currentColor, defaultColor, 1 - colorLerpTime);
+        model.material.SetColor(RendererColor, lerpedColor);
+        colorLerpTime -= Time.deltaTime * 0.25f;
       }
     }
 
     public void ReceiveAttack(Damage damage)
     {
+      if (isDead) return;
+
       damage = armor.Protect(damage, this);
-      TakeDamage(damage.WithHitboxModifier());
+      TakeDamage(damage);
       ApplyEffects(damage);
 
       if (damage.hitAngle != -1)
       {
-        renderer.material.SetColor(RendererColor, Color.white);
-        colorLerpTime = 0;
+        model.material.SetColor(RendererColor, Color.white);
+        colorLerpTime = 1f;
       }
     }
 
@@ -94,6 +99,7 @@ namespace Fralle.Attack.Offense
       currentHealth = Mathf.Clamp(currentHealth - damage.damageAmount, 0, maxHealth);
       OnHealthChange(currentHealth, maxHealth);
       OnAnyDamage(damage);
+      OnDamageTaken(this, damage);
       if (currentHealth <= 0) Death(damage);
     }
 
@@ -107,6 +113,20 @@ namespace Fralle.Attack.Offense
         effect.Enter(this);
         damageEffects.Upsert(oldEffect, effect);
       }
+    }
+
+    void GraphicDeathEffect(Damage damage)
+    {
+      if (!model || !deathModel) return;
+      var deathModelInstance = Instantiate(deathModel, transform.position, transform.rotation);
+      Destroy(deathModelInstance, 3f);
+
+      foreach (var rigidBody in deathModelInstance.GetComponentsInChildren<Rigidbody>())
+      {
+        rigidBody.AddForceAtPosition(damage.force, damage.position);
+      }
+
+      Destroy(gameObject);
     }
 
     void Death(Damage damage)
@@ -124,6 +144,7 @@ namespace Fralle.Attack.Offense
       {
         isDead = true;
         OnDeath(this, damage);
+        GraphicDeathEffect(damage);
       }
     }
   }

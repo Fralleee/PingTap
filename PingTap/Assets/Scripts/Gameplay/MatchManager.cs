@@ -27,12 +27,12 @@ namespace Fralle.Gameplay
 
     [HideInInspector] public bool isVictory;
 
-    StateController stateController;
+    MatchState matchState;
     Nexus nexus;
 
     void Awake()
     {
-      stateController = GetComponent<StateController>();
+      matchState = GetComponent<MatchState>();
       sceneCamera.gameObject.SetActive(false);
 
       nexus = FindObjectOfType<Nexus>();
@@ -83,7 +83,7 @@ namespace Fralle.Gameplay
         sceneCamera.gameObject.SetActive(true);
       }
 
-      stateController.enabled = false;
+      matchState.enabled = false;
       OnMatchEnd(this);
       return stats;
     }

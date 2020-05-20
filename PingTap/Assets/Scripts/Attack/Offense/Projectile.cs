@@ -79,9 +79,9 @@ namespace Fralle.Attack.Offense
         float distance = Vector3.Distance(health.transform.position, position);
         if (distance > data.explosionRadius + 1) continue;
 
-        float distanceDamageMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
+        float distanceMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
 
-        float damageAmount = data.damage * distanceDamageMultiplier;
+        float damageAmount = data.damage * distanceMultiplier;
         var targetPosition = health.transform.position;
         var damage = new Damage()
         {
@@ -89,6 +89,7 @@ namespace Fralle.Attack.Offense
           element = data.element,
           effects = data.damageEffects.Select(x => x.Setup(data.player, damageAmount)).ToArray(),
           hitAngle = Vector3.Angle((position - targetPosition).normalized, health.transform.forward),
+          force = (targetPosition - position).normalized.With(y: 0.5f) * data.pushForce * distanceMultiplier,
           position = position,
           damageAmount = damageAmount
         };
@@ -100,19 +101,19 @@ namespace Fralle.Attack.Offense
 
     void Hit(Collision collision)
     {
-      AddForce(collision);
+      AddForce(collision, data.forward);
 
-      var hitBox = collision.gameObject.GetComponent<HitBox>();
-      if (hitBox != null)
+      var health = collision.gameObject.GetComponent<Health>();
+      if (health != null)
       {
-        hitBox.ApplyHit(new Damage()
+        health.ReceiveAttack(new Damage()
         {
           player = data.player,
           element = data.element,
           hitAngle = Vector3.Angle((transform.position - collision.transform.position).normalized, collision.transform.forward),
           effects = data.damageEffects.Select(x => x.Setup(data.player, data.damage)).ToArray(),
+          force = data.forward * data.pushForce,
           position = collision.GetContact(0).point,
-          hitBoxType = hitBox.hitBoxType,
           damageAmount = data.damage
         });
       }
@@ -133,14 +134,17 @@ namespace Fralle.Attack.Offense
 
     void AddExplosionForce(Component component, Vector3 position)
     {
-      var enemyBody = component.GetComponentInParent<EnemyBody>();
-      if (enemyBody != null) enemyBody.AddExplosionForce(data.pushForce, position, data.explosionRadius + 1, 0.5f);
+      var rigidBody = component.GetComponent<Rigidbody>();
+      if (rigidBody != null) rigidBody.AddExplosionForce(data.pushForce, position, data.explosionRadius + 1, 0.5f);
     }
 
-    void AddForce(Collision collision)
+    void AddForce(Collision collision, Vector3 direction)
     {
-      var enemyBody = collision.gameObject.GetComponent<EnemyBody>();
-      if (enemyBody != null) enemyBody.AddForce(transform.position - collision.transform.position * data.pushForce);
+      var rigidBody = collision.transform.GetComponent<Rigidbody>();
+      if (rigidBody == null) return;
+
+      if (direction == Vector3.zero) direction = -(transform.position - collision.collider.transform.position).normalized;
+      rigidBody.AddForce(direction * data.pushForce);
     }
 
     void OnCollisionEnter(Collision collision)

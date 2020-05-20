@@ -1,7 +1,7 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!135 &3405647665567827118
-SphereCollider:
+--- !u!136 &3904866658915905847
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10,9 +10,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.75
-  m_Center: {x: 0, y: -0.15, z: 0}
+  m_Radius: 0.65
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4824375539925220706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,7 +46,7 @@ GameObject:
   - component: {fileID: 1502826778400765119}
   - component: {fileID: -5300092972552529915}
   - component: {fileID: 653182162826224844}
-  m_Layer: 2
+  m_Layer: 14
   m_Name: Humanoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +277,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.65
   m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &7233568336650139082
 MonoBehaviour:
@@ -362,6 +363,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436829760782469501, guid: bc7639066094cb341bed1f7965fa9da6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167904293427101411, guid: bc7639066094cb341bed1f7965fa9da6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: bc7639066094cb341bed1f7965fa9da6, type: 3}

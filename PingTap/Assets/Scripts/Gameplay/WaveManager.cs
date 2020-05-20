@@ -62,7 +62,7 @@ namespace Fralle.Gameplay
 
     public void ToggleBlocker(bool active)
     {
-      blocker.SetActive(active);
+      if (blocker != null) blocker.SetActive(active);
     }
 
     void SetNextSchema()

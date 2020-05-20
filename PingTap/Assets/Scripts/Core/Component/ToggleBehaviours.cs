@@ -1,5 +1,4 @@
-﻿using Fralle.Attack.Action;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.Core.Component
 {
@@ -10,15 +9,11 @@ namespace Fralle.Core.Component
     void DisableBehaviours()
     {
       foreach (var behaviour in behaviours) behaviour.enabled = false;
-      Active[] actionBehaviours = gameObject.GetComponentsInChildren<Active>();
-      foreach (var action in actionBehaviours) action.enabled = false;
     }
 
     void EnableBehaviours()
     {
       foreach (var behaviour in behaviours) behaviour.enabled = true;
-      Active[] actionBehaviours = gameObject.GetComponentsInChildren<Active>();
-      foreach (var action in actionBehaviours) action.enabled = true;
     }
 
     public void Toggle(bool disable)

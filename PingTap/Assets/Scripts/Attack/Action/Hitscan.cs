@@ -57,20 +57,20 @@ namespace Fralle.Attack.Action
 
       AddForce(hitInfo);
 
-      var hitBox = hitInfo.collider.transform.GetComponent<HitBox>();
-      if (hitBox != null)
+      var health = hitInfo.transform.GetComponent<Health>();
+      if (health != null)
       {
         player.stats.ReceiveHits(1);
 
         float damageAmount = Damage;
-        hitBox.ApplyHit(new Damage()
+        health.ReceiveAttack(new Damage()
         {
           player = player,
           element = element,
           effects = damageEffects.Select(x => x.Setup(player, damageAmount)).ToArray(),
           hitAngle = Vector3.Angle((weapon.transform.position - hitInfo.transform.position).normalized, hitInfo.transform.forward),
+          force = weapon.playerCamera.forward * pushForce,
           position = hitInfo.point,
-          hitBoxType = hitBox.hitBoxType,
           damageAmount = damageAmount
         });
       }
@@ -102,8 +102,8 @@ namespace Fralle.Attack.Action
 
     void AddForce(RaycastHit hitInfo)
     {
-      var enemyBody = hitInfo.transform.GetComponent<EnemyBody>();
-      if (enemyBody != null) enemyBody.AddForce(weapon.playerCamera.forward * pushForce);
+      var rigidBody = hitInfo.transform.GetComponent<Rigidbody>();
+      if (rigidBody != null) rigidBody.AddForce(weapon.playerCamera.forward * pushForce);
     }
   }
 }

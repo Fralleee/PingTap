@@ -1,5 +1,5 @@
-﻿using Fralle.Attack.Offense;
-using Fralle.Movement;
+﻿using Fralle.AI;
+using Fralle.Attack.Offense;
 using UnityEngine;
 
 namespace Fralle.Attack.Effect
@@ -19,7 +19,6 @@ namespace Fralle.Attack.Effect
         {
           element = element,
           hitAngle = -1,
-          hitBoxType = HitBoxType.Major,
           player = player,
           position = health.transform.position,
           damageAmount = damage

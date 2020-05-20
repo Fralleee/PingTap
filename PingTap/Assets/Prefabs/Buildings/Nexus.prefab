@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 652107f36a28e44479c0b827dee5852a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cb44a0c739276418a5ce3fce20e276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
 --- !u!114 &7825020550972323710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +126,8 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 1000
   immortal: 0
+  armor:
+    armor: 0
+    armorElementModifiers: []
+    protection: {fileID: 0}
+  model: {fileID: 4750561224967258248}

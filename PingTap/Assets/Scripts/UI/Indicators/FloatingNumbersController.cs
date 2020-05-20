@@ -19,7 +19,7 @@ namespace Fralle.UI.Indicators
     {
       var floatingText = Instantiate(prefab, transform);
       var damageText = Mathf.Round(damage.damageAmount).ToString(CultureInfo.InvariantCulture);
-      floatingText.Setup(damageText, damage.position, camera, damage.hitBoxType);
+      floatingText.Setup(damageText, damage.position, camera);
     }
 
     void OnDestroy()

@@ -1,6 +1,4 @@
-﻿using Fralle.Attack.Offense;
-using Fralle.Core.Extensions;
-using System.Data;
+﻿using Fralle.Core.Extensions;
 using TMPro;
 using UnityEngine;
 
@@ -48,31 +46,11 @@ namespace Fralle.UI.Indicators
       return true;
     }
 
-    public void Setup(string text, Vector3 position, Camera camera, HitBoxType hitBoxType)
+    public void Setup(string text, Vector3 position, Camera camera)
     {
       this.text.text = text;
       this.position = position + generatedRandomPosition;
       this.camera = camera;
-
-      switch (hitBoxType)
-      {
-        case HitBoxType.Major:
-          this.text.alpha = 0.75f;
-          break;
-        case HitBoxType.Nerve:
-          ColorUtility.TryParseHtmlString("#FA800B", out var deepOrange);
-          this.text.color = deepOrange;
-          this.text.fontStyle = FontStyles.Bold;
-          this.text.fontSize = 28f;
-          break;
-        case HitBoxType.Minor:
-          ColorUtility.TryParseHtmlString("#EEF0F2", out var gray);
-          this.text.color = gray;
-          this.text.alpha = 0.65f;
-          break;
-        default: throw new SyntaxErrorException();
-      }
-
       defaultSize = this.text.fontSize;
     }
 
