@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Fralle.Attack.Defense
 {
-  [CreateAssetMenu(menuName = "Attack/Protection/Back attack")]
+  [CreateAssetMenu(menuName = "PlayerAttack/Protection/Back attack")]
   public class BackAttack : Protection
   {
     public override ProtectionResult RunProtection(Damage data, Health target)

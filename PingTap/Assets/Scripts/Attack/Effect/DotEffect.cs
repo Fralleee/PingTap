@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Fralle.Attack.Effect
 {
-  [CreateAssetMenu(menuName = "Attack/Effect/Damage over time")]
+  [CreateAssetMenu(menuName = "PlayerAttack/Effect/Damage over time")]
   public class DotEffect : DamageEffect
   {
     [Header("Dot specific")] public DamageType damageApplication = DamageType.Flat;

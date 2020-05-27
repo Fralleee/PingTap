@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Fralle.Attack.Defense
 {
-  [CreateAssetMenu(menuName = "Attack/Protection/Hot and cold")]
+  [CreateAssetMenu(menuName = "PlayerAttack/Protection/Hot and cold")]
   public class HotNCold : Protection
   {
     public override ProtectionResult RunProtection(Damage damage, Health target)

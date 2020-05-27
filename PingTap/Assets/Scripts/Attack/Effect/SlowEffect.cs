@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Fralle.Attack.Effect
 {
-  [CreateAssetMenu(menuName = "Attack/Effect/Slow")]
+  [CreateAssetMenu(menuName = "PlayerAttack/Effect/Slow")]
   public class SlowEffect : DamageEffect
   {
-    [Header("Slow specific")] public float slowModifier = 0.3f;
+    [Header("Slow specific")]
+    public float slowModifier = 0.3f;
 
     public override void Enter(Health health)
     {

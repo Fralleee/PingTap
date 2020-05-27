@@ -121,6 +121,30 @@ MonoBehaviour:
   currentAmmo: 0
   infiniteAmmo: 0
   reloadSpeed: 0.75
+  blendOverLifetime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8780596973138301923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,11 +162,11 @@ MonoBehaviour:
   randomizeRecoil: 0
   recoilSpeed: 35
   recoilRecoverTime: 10
-  randomRecoilConstraints: {x: 0, y: 0}
+  randomRecoilConstraints: {x: 0, y: 0, z: 0}
   recoilPattern:
-  - {x: 1, y: -5}
-  - {x: -1, y: -4}
-  - {x: 0, y: -6}
+  - {x: 1, y: -5, z: 0.000000041492406}
+  - {x: -1, y: -4, z: 0.00000068620113}
+  - {x: 0, y: -6, z: -2.4631622e+29}
 --- !u!1 &7623466945803982159
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +259,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.99998
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: c6abc02de45288c4e932ae242a944d4f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c8501910b161a4c42bf0b73c0c374f0a, type: 2}
+    - target: {fileID: -1504981713932161579, guid: c6abc02de45288c4e932ae242a944d4f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2781410738928257789, guid: 88f809eb357c90a449a9963312d3a918,
+        type: 3}
+    - target: {fileID: -1504981713932161579, guid: c6abc02de45288c4e932ae242a944d4f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: db7ab5bf4c4966445858a401aed50cf2, type: 2}
     - target: {fileID: -927199367670048503, guid: c6abc02de45288c4e932ae242a944d4f,
         type: 3}
       propertyPath: m_Name

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 615102588463662592}
   - component: {fileID: 1799010807110823819}
+  - component: {fileID: 6314654496378554421}
   - component: {fileID: 615102588463662622}
-  - component: {fileID: 615102588463662621}
   - component: {fileID: 615102588463662623}
   m_Layer: 0
   m_Name: Manager
@@ -47,6 +47,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1ddf546a8d0e64c93dc113a36428f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6314654496378554421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615102588463662593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3110c24f216925147a3fb37c292bafd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matchManager: {fileID: 0}
+  waveManager: {fileID: 0}
 --- !u!114 &615102588463662622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,21 +82,6 @@ MonoBehaviour:
   totalTimer: 0
   waveTimer: 0
   isVictory: 0
---- !u!114 &615102588463662621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615102588463662593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f812d6c2a8f44c14fbcfcf08ad8fe4a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: {fileID: 11400000, guid: 5a7e9ef999e7c1c45a3b1b2b03477cf7, type: 2}
-  matchManager: {fileID: 0}
-  waveManager: {fileID: 0}
 --- !u!114 &615102588463662623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +98,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eb1a94b860dcd0d468fc3d5c825ae02e, type: 2}
   - {fileID: 11400000, guid: 2504a9010f3d1b5468c19d266e27da24, type: 2}
   spawner: {fileID: 0}
-  blockerPrefab: {fileID: 7821304005129427820, guid: f23baf1f5d961bf49bd966f74fa419ae,
-    type: 3}
   maxArmies: 0
   maxWaves: 0
   currentArmy: 0

@@ -28,15 +28,15 @@ namespace Fralle.Gameplay
     [HideInInspector] public bool isVictory;
 
     MatchState matchState;
-    Nexus nexus;
+    PlayerHome playerHome;
 
     void Awake()
     {
       matchState = GetComponent<MatchState>();
       sceneCamera.gameObject.SetActive(false);
 
-      nexus = FindObjectOfType<Nexus>();
-      nexus.OnDeath += Defeat;
+      playerHome = FindObjectOfType<PlayerHome>();
+      playerHome.OnDeath += Defeat;
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
       WaveManager.OnWavesComplete += HandleWavesComplete;
@@ -94,7 +94,7 @@ namespace Fralle.Gameplay
       OnVictory(this, stats);
     }
 
-    void Defeat(Nexus nexus)
+    void Defeat(PlayerHome playerHome)
     {
       var stats = FinishedMatch();
       OnDefeat(this, stats);
@@ -102,7 +102,7 @@ namespace Fralle.Gameplay
 
     void OnDestroy()
     {
-      nexus.OnDeath -= Defeat;
+      playerHome.OnDeath -= Defeat;
       Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
       WaveManager.OnWavesComplete -= HandleWavesComplete;
     }

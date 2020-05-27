@@ -11,7 +11,8 @@ namespace Fralle.Attack.Action
   [RequireComponent(typeof(Recoil))]
   public abstract class AttackAction : Active
   {
-    [Header("Shooting")] [SerializeField] internal MouseButton fireInput = MouseButton.Left;
+    [Header("Shooting")]
+    [SerializeField] internal MouseButton fireInput = MouseButton.Left;
     [SerializeField] internal float minDamage = 1;
     [SerializeField] internal float maxDamage = 10;
     [SerializeField] internal int ammoPerShot = 1;
@@ -22,6 +23,7 @@ namespace Fralle.Attack.Action
 
     internal Weapon weapon;
     internal Player player;
+    PlayerInputController input;
     int nextMuzzle;
 
     internal float Damage => Random.Range(minDamage, maxDamage);
@@ -31,13 +33,12 @@ namespace Fralle.Attack.Action
     {
       weapon = GetComponent<Weapon>();
       player = weapon.GetComponentInParent<Player>();
+      input = weapon.GetComponentInParent<PlayerInputController>();
     }
 
     internal virtual void Update()
     {
-      bool shootWeapon =
-        (tapable ? Input.GetMouseButtonDown((int)fireInput) : Input.GetMouseButton((int)fireInput)) &&
-        weapon.ActiveWeaponAction == Status.Ready;
+      var shootWeapon = input.GetMouseButton(fireInput, tapable ? MouseButtonState.Down : MouseButtonState.Hold) && weapon.ActiveWeaponAction == Status.Ready;
       if (!shootWeapon) return;
 
       if (HasAmmo) weapon.ammoController.ChangeAmmo(-ammoPerShot);
@@ -57,7 +58,7 @@ namespace Fralle.Attack.Action
 
     internal Transform GetMuzzle()
     {
-      Transform muzzle = weapon.muzzles[nextMuzzle];
+      var muzzle = weapon.muzzles[nextMuzzle];
       if (weapon.muzzles.Length <= 1) return muzzle;
 
       nextMuzzle++;

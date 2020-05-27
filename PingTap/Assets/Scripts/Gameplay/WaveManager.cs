@@ -13,27 +13,22 @@ namespace Fralle.Gameplay
     public static event Action<WaveManager> OnWavesComplete = delegate { };
     public static event Action<float> OnWaveProgress = delegate { };
 
-    [Header("Armies")] public Army[] armies;
+    [Header("Armies")]
+    public Army[] armies;
     [SerializeField] Spawner spawner;
-    [SerializeField] GameObject blockerPrefab;
 
     public bool WavesRemaining => currentArmy < armies.Length - 1 || currentWave < maxWaves;
     public Army GetCurrentArmy => armies[currentArmy];
     public WaveDefinition GetCurrentWave => armies[currentArmy].NextWave(currentWave);
 
-    [Header("Current Stats")] [Readonly] public int maxArmies;
+    [Header("Current Stats")]
+    [Readonly] public int maxArmies;
     [Readonly] public int maxWaves;
     [Readonly] public int currentArmy;
     [Readonly] public int currentWave;
     [Readonly] public int waveProgress;
 
-    GameObject blocker;
     int currentWaveCount;
-
-    void Awake()
-    {
-      blocker = Instantiate(blockerPrefab, spawner.transform.position, Quaternion.identity, transform);
-    }
 
     void Start()
     {
@@ -58,11 +53,6 @@ namespace Fralle.Gameplay
 
       OnWavesComplete(this);
       return 0;
-    }
-
-    public void ToggleBlocker(bool active)
-    {
-      if (blocker != null) blocker.SetActive(active);
     }
 
     void SetNextSchema()

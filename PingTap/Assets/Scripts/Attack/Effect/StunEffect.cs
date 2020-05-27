@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Fralle.Attack.Effect
 {
-  [CreateAssetMenu(menuName = "Attack/Effect/Stun")]
+  [CreateAssetMenu(menuName = "PlayerAttack/Effect/Stun")]
   public class StunEffect : DamageEffect
   {
     public float chanceOnHit = 0.25f;

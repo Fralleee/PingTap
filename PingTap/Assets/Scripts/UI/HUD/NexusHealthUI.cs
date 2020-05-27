@@ -8,17 +8,17 @@ namespace Fralle.UI.HUD
   {
     [SerializeField] Image foregroundImage;
 
-    Nexus nexus;
+    PlayerHome playerHome;
 
     void Awake()
     {
-      nexus = FindObjectOfType<Nexus>();
+      playerHome = FindObjectOfType<PlayerHome>();
     }
 
     void Update()
     {
-      if (!nexus) return;
-      nexus.health.OnHealthChange += UpdateHealthbar;
+      if (!playerHome) return;
+      playerHome.health.OnHealthChange += UpdateHealthbar;
     }
 
     public void UpdateHealthbar(float currentHealth, float maxHealth)

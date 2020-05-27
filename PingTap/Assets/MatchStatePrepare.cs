@@ -15,7 +15,6 @@ public class MatchStatePrepare : IState
 
   public void OnEnter()
   {
-    waveManager.ToggleBlocker(true);
 
     matchManager.prepareTimer = matchManager.prepareTime;
     matchManager.NewState(GameState.Prepare);
@@ -28,6 +27,5 @@ public class MatchStatePrepare : IState
 
   public void OnExit()
   {
-    waveManager.ToggleBlocker(false);
   }
 }

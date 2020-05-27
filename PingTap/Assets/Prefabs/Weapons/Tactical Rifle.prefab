@@ -193,6 +193,30 @@ MonoBehaviour:
   currentAmmo: 0
   infiniteAmmo: 0
   reloadSpeed: 0.75
+  blendOverLifetime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8780596973138301923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +234,7 @@ MonoBehaviour:
   randomizeRecoil: 0
   recoilSpeed: 15
   recoilRecoverTime: 10
-  randomRecoilConstraints: {x: 0, y: 0}
+  randomRecoilConstraints: {x: 0, y: 0, z: 0}
   recoilPattern: []
 --- !u!1001 &8593046291294993141
 PrefabInstance:

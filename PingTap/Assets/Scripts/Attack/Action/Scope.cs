@@ -1,9 +1,9 @@
 ﻿using Fralle.Core.Enums;
 using Fralle.Movement;
+using Fralle.UI.Menu;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
 namespace Fralle.Attack.Action
 {
@@ -16,7 +16,6 @@ namespace Fralle.Attack.Action
     [SerializeField] float scopedFov = 50f;
     [SerializeField] float scopeTime = 1f;
 
-    [FormerlySerializedAs("scopedUI")]
     [Header("Scoped visuals")]
     [SerializeField] GameObject scopedUi;
     [SerializeField] GameObject scopedPostProcess;
@@ -27,17 +26,24 @@ namespace Fralle.Attack.Action
     CanvasGroup scopeUiCanvasGroup;
     GameObject scopedPostProcessInstance;
     Volume scopedVolume;
-    MouseLook mouseLook;
+    PlayerMouseLook playerMouseLook;
+    PlayerInputController input;
     Renderer weaponRenderer;
 
     float defaultFov = 60f;
     bool isScoping;
 
+    void Awake()
+    {
+      MainMenu.OnMenuToggle += HandleMenuToggle;
+    }
+
     void Start()
     {
       weapon = GetComponent<Weapon>();
+      input = weapon.GetComponentInParent<PlayerInputController>();
       playerCamera = weapon.playerCamera.GetComponent<Camera>();
-      mouseLook = GetComponentInParent<MouseLook>();
+      playerMouseLook = GetComponentInParent<PlayerMouseLook>();
       weaponRenderer = weapon.GetComponentInChildren<Renderer>();
 
       defaultFov = playerCamera.fieldOfView;
@@ -51,12 +57,13 @@ namespace Fralle.Attack.Action
     {
       if (weapon.ActiveWeaponAction != Status.Ready) return;
 
-      if (!isScoping && Input.GetMouseButton((int)scopeButton))
+      var startScoping = input.GetMouseButton(scopeButton, MouseButtonState.Hold) && !isScoping;
+      if (startScoping)
       {
         StopAllCoroutines();
         StartCoroutine(Scoping());
       }
-      else if (Input.GetMouseButtonUp((int)scopeButton))
+      else if (input.GetMouseButton(scopeButton, MouseButtonState.Up))
       {
         StopAllCoroutines();
         StartCoroutine(EndScoping(scopeTime * 0.5f));
@@ -88,7 +95,7 @@ namespace Fralle.Attack.Action
     {
       var time = 0f;
       isScoping = true;
-      mouseLook.currentSensitivity = mouseLook.mouseSensitivity * mouseLook.mouseZoomModifier;
+      input.mouseSensitivity = playerMouseLook.mouseSensitivity * playerMouseLook.mouseZoomModifier;
 
       while (time < 1)
       {
@@ -108,7 +115,7 @@ namespace Fralle.Attack.Action
     {
       isScoping = false;
       var time = 0f;
-      mouseLook.currentSensitivity = mouseLook.mouseSensitivity;
+      input.mouseSensitivity = playerMouseLook.mouseSensitivity;
 
       while (time < 1)
       {
@@ -122,6 +129,33 @@ namespace Fralle.Attack.Action
         if (time > scopeTime * 0.5f) weaponRenderer.enabled = true;
         yield return null;
       }
+    }
+
+    void EndScopingInstant()
+    {
+      isScoping = false;
+      input.mouseSensitivity = playerMouseLook.mouseSensitivity;
+      transform.localPosition = Vector3.zero;
+      playerCamera.fieldOfView = defaultFov;
+      scopedVolume.weight = 0;
+      scopeUiCanvasGroup.alpha = 0;
+      weaponRenderer.enabled = true;
+    }
+
+    void HandleMenuToggle(bool isMenuOpen)
+    {
+      enabled = !isMenuOpen;
+      if (!isMenuOpen) return;
+
+      StopAllCoroutines();
+      EndScopingInstant();
+    }
+
+    void OnDestroy()
+    {
+      MainMenu.OnMenuToggle -= HandleMenuToggle;
+      StopAllCoroutines();
+      EndScopingInstant();
     }
   }
 }

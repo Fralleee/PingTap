@@ -1,4 +1,4 @@
-﻿using Fralle.Movement;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +6,8 @@ namespace Fralle.UI.Menu
 {
   public class MainMenu : MonoBehaviour
   {
+    public static event Action<bool> OnMenuToggle = delegate { };
+
     [Header("Buttons")] [SerializeField] GameObject playButton;
     [SerializeField] GameObject resumeButton;
     [SerializeField] GameObject leaveButton;
@@ -17,14 +19,10 @@ namespace Fralle.UI.Menu
 
     const string MainMenuScene = "Main menu";
     bool isOpen;
-
-    Player player;
     bool inGame;
 
     void Awake()
     {
-      player = GetComponentInParent<Player>();
-
       var currentScene = SceneManager.GetActiveScene();
       inGame = currentScene.name != MainMenuScene;
 
@@ -80,8 +78,8 @@ namespace Fralle.UI.Menu
       isOpen = !isOpen;
       main.SetActive(isOpen);
       background.SetActive(isOpen);
-      player.toggleBehaviours.Toggle(isOpen);
-      MouseLook.ConfigureCursor(!isOpen);
+
+      OnMenuToggle(isOpen);
     }
   }
 }

@@ -13,6 +13,11 @@ namespace Fralle.Attack.Addons
 
     [SerializeField] bool infiniteAmmo;
     [SerializeField] float reloadSpeed = 0.75f;
+    [SerializeField] AnimationCurve blendOverLifetime = new AnimationCurve(
+
+      new Keyframe(0.0f, 0.0f, Mathf.Deg2Rad * 0.0f, Mathf.Deg2Rad * 720.0f),
+      new Keyframe(0.2f, 1.0f),
+      new Keyframe(1.0f, 0.0f));
 
     bool isReloading;
     float rotationTime;
@@ -33,8 +38,10 @@ namespace Fralle.Attack.Addons
       if (infiniteAmmo) return;
       if (isReloading)
       {
+        var agePercent = rotationTime / reloadSpeed;
         rotationTime = Mathf.Clamp(rotationTime + Time.deltaTime, 0, reloadSpeed);
-        float spinDelta = -(Mathf.Cos(Mathf.PI * (rotationTime / reloadSpeed)) - 1f) / 2f;
+        float animTime = blendOverLifetime.Evaluate(agePercent);
+        float spinDelta = -(Mathf.Cos(Mathf.PI * animTime) - 1f) / 2f;
         transform.localRotation = Quaternion.Euler(new Vector3(spinDelta * 360f, 0, 0));
       }
       else if (Input.GetKeyDown(KeyCode.R) && weapon.ActiveWeaponAction == Status.Ready && currentAmmo < maxAmmo) StartCoroutine(ReloadCooldown());

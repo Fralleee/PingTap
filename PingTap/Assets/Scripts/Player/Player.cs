@@ -1,11 +1,12 @@
-﻿using Fralle.Core.Component;
-using Fralle.Core.Extensions;
+﻿using Fralle.Core.Extensions;
 using UnityEngine;
 
 namespace Fralle
 {
   public class Player : MonoBehaviour
   {
+    [SerializeField] Transform Ui;
+
     [SerializeField] GameObject crosshair;
     [SerializeField] GameObject resourceUi;
     [SerializeField] GameObject enemyHealthBarUi;
@@ -14,29 +15,21 @@ namespace Fralle
     [SerializeField] GameObject minimapUi;
 
     public PlayerStats stats;
-
     [HideInInspector] public new Camera camera;
-    [HideInInspector] public ToggleBehaviours toggleBehaviours;
-
 
     public static void Disable()
     {
-      Player[] players = FindObjectsOfType<Player>();
+      var players = FindObjectsOfType<Player>();
       foreach (var player in players)
       {
         player.gameObject.SetActive(false);
       }
     }
 
-    void Awake()
-    {
-      toggleBehaviours = GetComponent<ToggleBehaviours>();
-    }
-
     void Start()
     {
-      int layer = LayerMask.NameToLayer("Self");
-      int ignoreLayer = LayerMask.NameToLayer("First Person Objects");
+      var layer = LayerMask.NameToLayer("Self");
+      var ignoreLayer = LayerMask.NameToLayer("First Person Objects");
       gameObject.SetLayerRecursively(layer, ignoreLayer);
 
       camera = Camera.main;
@@ -45,14 +38,12 @@ namespace Fralle
 
     void SetupUi()
     {
-      var ui = new GameObject("UI");
-      ui.transform.parent = transform;
-      Instantiate(crosshair, ui.transform);
-      Instantiate(resourceUi, ui.transform);
-      Instantiate(enemyHealthBarUi, ui.transform);
-      Instantiate(damageNumbersUi, ui.transform);
-      Instantiate(minimapUi, ui.transform);
-      Instantiate(menuUi, ui.transform);
+      Instantiate(crosshair, Ui);
+      Instantiate(resourceUi, Ui);
+      Instantiate(enemyHealthBarUi, Ui);
+      Instantiate(damageNumbersUi, Ui);
+      Instantiate(minimapUi, Ui);
+      Instantiate(menuUi, Ui);
     }
   }
 }

@@ -2,7 +2,6 @@
 using Fralle.Attack.Offense;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
-using Fralle.Movement;
 using System;
 using UnityEngine;
 

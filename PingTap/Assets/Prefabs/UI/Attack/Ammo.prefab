@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -289,6 +290,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -445,6 +447,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -553,10 +556,10 @@ GameObject:
   - component: {fileID: 7510949402073747763}
   - component: {fileID: 4984745544428349286}
   - component: {fileID: 427832184810618589}
-  - component: {fileID: 8634419315588945282}
   - component: {fileID: 470764846358584645}
+  - component: {fileID: 248777544167185939}
   m_Layer: 5
-  m_Name: AmmoUI
+  m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -642,20 +645,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8634419315588945282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439019483547225446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bc9054c14a7a54fabbbc65b13d700b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentAmmoText: {fileID: 7779310858149287240}
-  maxAmmoText: {fileID: 7096438629452440129}
 --- !u!114 &470764846358584645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,3 +667,17 @@ MonoBehaviour:
   startPositionOffset: 0
   from: {x: 1, y: 1, z: 1}
   to: {x: 1.15, y: 1.15, z: 1.15}
+--- !u!114 &248777544167185939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7439019483547225446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bc9054c14a7a54fabbbc65b13d700b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmoText: {fileID: 7779310858149287240}
+  maxAmmoText: {fileID: 7096438629452440129}

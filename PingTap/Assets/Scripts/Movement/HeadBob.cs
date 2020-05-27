@@ -5,42 +5,38 @@ namespace Fralle.Movement
 {
   public class HeadBob : MonoBehaviour
   {
-    [SerializeField] Transform headBob;
+    [SerializeField] Rigidbody rigidBody;
+    [SerializeField] AnimationCurve blendOverLifetime = new AnimationCurve();
 
     [Header("Running bob")]
-    [SerializeField]
-    float transitionSpeed = 10f;
-
+    [SerializeField] float transitionSpeed = 10f;
     [SerializeField] float bobSpeed = 10f;
     [SerializeField] float bobAmount = 0.005f;
 
     [Header("Jumping bob")]
-    [SerializeField]
-    float jumpBobPower = 0.015f;
+    [SerializeField] float jumpBobPower = 0.015f;
 
     [SerializeField] float bounceBackPower = 0.5f;
     [SerializeField] float bounceBackTimeMultiplier = 3f;
 
-    PlayerController playerController;
+    PlayerMovement movement;
     float timer = Mathf.PI / 2;
     float velocityY;
     float bounceBackVelocityY;
     const float BounceBackThreshold = 0.0001f;
     float jumpTimer = Mathf.PI / 2;
-    new Rigidbody rigidbody;
+
 
     void Awake()
     {
-      playerController = GetComponent<PlayerController>();
-      playerController.OnMovement += HandleMovement;
-      playerController.OnGroundChanged += HandleGroundHit;
-
-      rigidbody = GetComponent<Rigidbody>();
+      movement = GetComponentInParent<PlayerMovement>();
+      movement.OnMovement += HandleMovement;
+      movement.OnGroundChanged += HandleGroundHit;
     }
 
     void FixedUpdate()
     {
-      velocityY = !playerController.IsGrounded ? rigidbody.velocity.y * jumpBobPower : 0;
+      velocityY = !movement.groundCheck.IsGrounded ? rigidBody.velocity.y * jumpBobPower : 0;
 
       if (Mathf.Abs(bounceBackVelocityY) > BounceBackThreshold)
       {
@@ -60,7 +56,7 @@ namespace Fralle.Movement
       if (touchedGround)
       {
         jumpTimer = 0.33f;
-        float clampedVelocity = Mathf.Clamp(velocity, -30, -10);
+        var clampedVelocity = Mathf.Clamp(velocity, -30, -10);
         bounceBackVelocityY = bounceBackPower * clampedVelocity;
       }
       else
@@ -75,31 +71,28 @@ namespace Fralle.Movement
       Vector3 newPosition;
       if (movement.magnitude > 0)
       {
-        float actualBobAmount = bobAmount * movement.magnitude;
+        var agePercent = 1.0f - ((timer * 0.5f) / Mathf.PI);
+        var actualBobAmount = bobAmount * movement.magnitude * blendOverLifetime.Evaluate(agePercent);
         timer += bobSpeed * Time.deltaTime;
-        newPosition = new Vector3(Mathf.Cos(timer) * actualBobAmount, Mathf.Abs((Mathf.Sin(timer) * actualBobAmount)),
-          0);
+        newPosition = new Vector3(Mathf.Cos(timer) * actualBobAmount, Mathf.Abs((Mathf.Sin(timer) * actualBobAmount)), 0);
       }
       else
       {
         timer = Mathf.PI / 2;
-        newPosition = Vector3.Lerp(headBob.localPosition, Vector3.zero, transitionSpeed * Time.deltaTime);
+        newPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, transitionSpeed * Time.deltaTime);
       }
 
-      if (Mathf.Abs(velocityY) > BounceBackThreshold)
-        headBob.localPosition =
-          newPosition.With(y: Mathf.Lerp(headBob.localPosition.y, velocityY, transitionSpeed * Time.deltaTime));
-      else
-        headBob.localPosition = newPosition.With(y: Mathf.Lerp(headBob.localPosition.y, newPosition.y + velocityY,
-          transitionSpeed * Time.deltaTime));
+      transform.localPosition = newPosition.With(y: Mathf.Abs(velocityY) > BounceBackThreshold ?
+        Mathf.Lerp(transform.localPosition.y, velocityY, transitionSpeed * Time.deltaTime) :
+        Mathf.Lerp(transform.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
 
       if (timer > Mathf.PI * 2) timer = 0;
     }
 
     void OnDestroy()
     {
-      playerController.OnMovement -= HandleMovement;
-      playerController.OnGroundChanged -= HandleGroundHit;
+      movement.OnMovement -= HandleMovement;
+      movement.OnGroundChanged -= HandleGroundHit;
     }
   }
 }

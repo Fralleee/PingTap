@@ -163,6 +163,30 @@ MonoBehaviour:
   currentAmmo: 0
   infiniteAmmo: 0
   reloadSpeed: 0.75
+  blendOverLifetime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8780596973138301923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,17 +317,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 465442f82d5a43745a6fc07b8d15fcea, type: 2}
     - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: c8501910b161a4c42bf0b73c0c374f0a, type: 2}
     - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: f5fc066f8589f0d4fbaec62977f0b0c3, type: 2}
+    - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -4923169938548480685, guid: 88f809eb357c90a449a9963312d3a918,
+        type: 3}
     - target: {fileID: -927199367670048503, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Name

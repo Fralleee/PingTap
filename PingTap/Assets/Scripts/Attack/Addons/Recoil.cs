@@ -20,7 +20,7 @@ namespace Fralle.Attack.Addons
     [SerializeField] Vector3[] recoilPattern;
 
     int recoilPatternStep;
-    MouseLook mouseLook;
+    PlayerMouseLook playerMouseLook;
     Weapon weapon;
     Vector3[] startPositions;
     Vector3 recoil;
@@ -47,12 +47,12 @@ namespace Fralle.Attack.Addons
 
     public void Initiate(Transform playerCamera)
     {
-      mouseLook = playerCamera.GetComponentInParent<MouseLook>();
+      playerMouseLook = playerCamera.GetComponentInParent<PlayerMouseLook>();
     }
 
     public void AddRecoil()
     {
-      if (mouseLook == null) return;
+      if (playerMouseLook == null) return;
 
       AddKickback();
 

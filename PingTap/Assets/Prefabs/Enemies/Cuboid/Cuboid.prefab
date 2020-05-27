@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7684054321801576726}
   - component: {fileID: 1835535985047049594}
   - component: {fileID: 1169690573668540798}
-  - component: {fileID: 1502826778400765119}
+  - component: {fileID: 1017305939656644488}
   m_Layer: 14
   m_Name: Cuboid
   m_TagString: Untagged
@@ -114,7 +114,7 @@ MonoBehaviour:
   dropResource:
     minCredits: 1
     maxCredits: 3
---- !u!114 &1502826778400765119
+--- !u!114 &1017305939656644488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,13 +123,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2565378040731073697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe65bc7addb559e42b1bf4aa520eb1ca, type: 3}
+  m_Script: {fileID: 11500000, guid: e01d62b32b5621b4193308928687568c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPointSchema: {fileID: 0}
-  minStoppingDistance: 4
-  maxStoppingDistance: 6
   currentMovementModifier: 1
+  target: {fileID: 0}
 --- !u!1001 &6800776577071501016
 PrefabInstance:
   m_ObjectHideFlags: 0

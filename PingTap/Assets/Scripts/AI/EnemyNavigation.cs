@@ -1,5 +1,4 @@
 ﻿using Fralle.Attack.Offense;
-using Fralle.Movement;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,16 +6,13 @@ using UnityEngine.AI;
 
 namespace Fralle.AI
 {
-  public class EnemyNavigation : MonoBehaviour
+  public abstract class EnemyNavigation : MonoBehaviour
   {
-    public WaypointSchema wayPointSchema;
     public float currentMovementModifier = 1f;
 
     Enemy enemy;
-    NavMeshAgent navMeshAgent;
+    internal NavMeshAgent navMeshAgent;
 
-    Vector3 nextPosition;
-    int waypointIndex;
     float stopTime;
     float movementSpeed;
     readonly Dictionary<string, float> movementModifiers = new Dictionary<string, float>();
@@ -30,39 +26,17 @@ namespace Fralle.AI
       movementSpeed = navMeshAgent.speed;
     }
 
-    void Start()
+    internal virtual void Update()
     {
-      if (!wayPointSchema) return;
-      SetDestination();
+      if (!(stopTime > 0f)) return;
 
+      stopTime = Mathf.Clamp(stopTime - Time.deltaTime, 0, float.MaxValue);
+      if (stopTime <= 0) RemoveModifier("DamageTaken");
     }
 
-    void Update()
-    {
-      if (PathComplete()) SetNextDestination();
-      if (stopTime > 0f)
-      {
-        stopTime = Mathf.Clamp(stopTime - Time.deltaTime, 0, float.MaxValue);
-        if (stopTime <= 0) RemoveModifier("DamageTaken");
-      }
-    }
+    internal abstract void SetDestination();
 
-    void SetDestination()
-    {
-      nextPosition = wayPointSchema.waypoints[waypointIndex];
-      navMeshAgent.destination = nextPosition;
-    }
-
-    void SetNextDestination()
-    {
-      if (!navMeshAgent.enabled) return;
-
-      waypointIndex++;
-      if (waypointIndex > wayPointSchema.waypoints.Count - 1) FinalDestination();
-      else SetDestination();
-    }
-
-    void FinalDestination()
+    internal void FinalDestination()
     {
       navMeshAgent.isStopped = false;
       if (enemy != null) enemy.ReachedDestination();
@@ -82,7 +56,7 @@ namespace Fralle.AI
       movementModifiers.Remove(name);
       if (movementModifiers.Count > 0)
       {
-        float value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
+        var value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
         currentMovementModifier = value;
       }
       else currentMovementModifier = 1f;
@@ -106,7 +80,7 @@ namespace Fralle.AI
       if (navMeshAgent) navMeshAgent.enabled = false;
     }
 
-    bool PathComplete()
+    internal bool PathComplete()
     {
       if (!(Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)) return false;
       return !navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f;

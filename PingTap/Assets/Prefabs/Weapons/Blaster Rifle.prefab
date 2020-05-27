@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropPrefab: {fileID: 0}
   weaponName: Blaster Rifle
   equipAnimationTime: 0.5
   muzzles:
@@ -73,7 +74,7 @@ MonoBehaviour:
   minDamage: 200
   maxDamage: 300
   ammoPerShot: 1
-  shotsPerSecond: 1
+  shotsPerSecond: 2
   tapable: 1
   element: 1
   damageEffects:
@@ -114,7 +115,7 @@ MonoBehaviour:
   scopePos: {x: -0.225, y: 0.1, z: -0.75}
   interruptScopeOnFire: 1
   scopedFov: 15
-  scopeTime: 0.5
+  scopeTime: 0.35
   scopedUi: {fileID: 4000268992182174082, guid: 9050022753fd2c343b19717bf00e6557,
     type: 3}
   scopedPostProcess: {fileID: 6341452421117707918, guid: aeaae1ed3dec6174699d17e5c5437b87,
@@ -151,6 +152,30 @@ MonoBehaviour:
   currentAmmo: 0
   infiniteAmmo: 0
   reloadSpeed: 0.75
+  blendOverLifetime:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2304283516542304251
 MonoBehaviour:
   m_ObjectHideFlags: 0
