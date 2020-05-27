@@ -11,7 +11,6 @@ namespace Fralle
     [SerializeField] GameObject resourceUi;
     [SerializeField] GameObject enemyHealthBarUi;
     [SerializeField] GameObject damageNumbersUi;
-    [SerializeField] GameObject menuUi;
     [SerializeField] GameObject minimapUi;
 
     public PlayerStats stats;
@@ -43,7 +42,6 @@ namespace Fralle
       Instantiate(enemyHealthBarUi, Ui);
       Instantiate(damageNumbersUi, Ui);
       Instantiate(minimapUi, Ui);
-      Instantiate(menuUi, Ui);
     }
   }
 }
