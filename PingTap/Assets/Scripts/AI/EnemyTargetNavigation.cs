@@ -1,23 +1,25 @@
-﻿using Fralle.AI;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class EnemyTargetNavigation : EnemyNavigation
+namespace Fralle.AI
 {
-  public Transform target;
-
-  void Start()
+  public class EnemyTargetNavigation : EnemyNavigation
   {
-    if (target) SetDestination();
-  }
+    public Transform target;
 
-  internal override void Update()
-  {
-    if (PathComplete()) FinalDestination();
-    base.Update();
-  }
+    void Start()
+    {
+      if (target) SetDestination();
+    }
 
-  internal override void SetDestination()
-  {
-    navMeshAgent.destination = target.position;
+    internal override void Update()
+    {
+      if (PathComplete()) FinalDestination();
+      base.Update();
+    }
+
+    internal override void SetDestination()
+    {
+      navMeshAgent.destination = target.position;
+    }
   }
 }

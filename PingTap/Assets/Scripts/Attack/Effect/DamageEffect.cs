@@ -1,11 +1,12 @@
 ﻿using Fralle.Attack.Offense;
+using Fralle.Player;
 using UnityEngine;
 
 namespace Fralle.Attack.Effect
 {
   public abstract class DamageEffect : ScriptableObject
   {
-    [HideInInspector] public Player player;
+    [HideInInspector] public PlayerMain player;
 
     [Header("General")] public int level = 1;
     public Element element;
@@ -19,7 +20,7 @@ namespace Fralle.Attack.Effect
 
     [HideInInspector] public float weaponDamage;
 
-    public virtual DamageEffect Setup(Player pl, float weaponDamageAmount)
+    public virtual DamageEffect Setup(PlayerMain pl, float weaponDamageAmount)
     {
       DamageEffect instance = Instantiate(this);
       instance.player = pl;

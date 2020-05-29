@@ -1,9 +1,9 @@
 ﻿using Fralle.Core.Extensions;
 using UnityEngine;
 
-namespace Fralle
+namespace Fralle.Player
 {
-  public class Player : MonoBehaviour
+  public class PlayerMain : MonoBehaviour
   {
     [SerializeField] Transform Ui;
 
@@ -18,7 +18,7 @@ namespace Fralle
 
     public static void Disable()
     {
-      var players = FindObjectsOfType<Player>();
+      var players = FindObjectsOfType<PlayerMain>();
       foreach (var player in players)
       {
         player.gameObject.SetActive(false);

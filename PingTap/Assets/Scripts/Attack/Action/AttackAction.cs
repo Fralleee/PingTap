@@ -1,6 +1,7 @@
 ﻿using Fralle.Attack.Addons;
 using Fralle.Attack.Effect;
 using Fralle.Core.Enums;
+using Fralle.Player;
 using System.Collections;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ namespace Fralle.Attack.Action
     [SerializeField] internal DamageEffect[] damageEffects;
 
     internal Weapon weapon;
-    internal Player player;
+    internal PlayerMain player;
     PlayerInputController input;
     int nextMuzzle;
 
@@ -32,7 +33,7 @@ namespace Fralle.Attack.Action
     internal virtual void Start()
     {
       weapon = GetComponent<Weapon>();
-      player = weapon.GetComponentInParent<Player>();
+      player = weapon.GetComponentInParent<PlayerMain>();
       input = weapon.GetComponentInParent<PlayerInputController>();
     }
 

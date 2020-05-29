@@ -2,6 +2,8 @@
 using Fralle.Attack.Offense;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
+using Fralle.Player;
+using Fralle.Resource;
 using System;
 using UnityEngine;
 
@@ -22,7 +24,7 @@ namespace Fralle.AI
     public WaveType waveType = WaveType.Ground;
 
     public bool IsDead { get; private set; }
-    public Player KilledByPlayer { get; private set; }
+    public PlayerMain KilledByPlayer { get; private set; }
 
     [SerializeField] DropResourceAction dropResource;
 

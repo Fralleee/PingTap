@@ -1,5 +1,6 @@
 ﻿using Fralle.Core.Enums;
 using Fralle.Movement;
+using Fralle.Player;
 using Fralle.UI.Menu;
 using System.Collections;
 using UnityEngine;

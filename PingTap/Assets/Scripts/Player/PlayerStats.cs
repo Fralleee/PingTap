@@ -3,34 +3,36 @@ using Fralle.Core.Attributes;
 using System;
 using UnityEngine;
 
-[Serializable]
-public class PlayerStats
+namespace Fralle.Player
 {
-  [Header("General")]
-  [Readonly] public int killingBlows;
-  [Readonly] public float totalDamage;
-  [Readonly] public float totalShotsFired;
-  [Readonly] public float totalShotsHit;
-  [Readonly] public float accuracyPercentage;
-
-  public void ReceiveDamageStats(Damage damage)
+  [Serializable]
+  public class PlayerStats
   {
-    totalDamage += damage.damageAmount;
-  }
+    [Header("General")] [Readonly] public int killingBlows;
+    [Readonly] public float totalDamage;
+    [Readonly] public float totalShotsFired;
+    [Readonly] public float totalShotsHit;
+    [Readonly] public float accuracyPercentage;
 
-  public void ReceiveShotsFired(int shots)
-  {
-    totalShotsFired += shots;
-  }
+    public void ReceiveDamageStats(Damage damage)
+    {
+      totalDamage += damage.damageAmount;
+    }
 
-  public void ReceiveHits(int hits)
-  {
-    totalShotsHit += hits;
-    accuracyPercentage = totalShotsHit / totalShotsFired;
-  }
+    public void ReceiveShotsFired(int shots)
+    {
+      totalShotsFired += shots;
+    }
 
-  public void ReceiveKillingBlow(int killCount)
-  {
-    killingBlows += killCount;
+    public void ReceiveHits(int hits)
+    {
+      totalShotsHit += hits;
+      accuracyPercentage = totalShotsHit / totalShotsFired;
+    }
+
+    public void ReceiveKillingBlow(int killCount)
+    {
+      killingBlows += killCount;
+    }
   }
 }

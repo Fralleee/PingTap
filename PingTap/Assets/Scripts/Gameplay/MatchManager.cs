@@ -1,5 +1,6 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Attributes;
+using Fralle.Player;
 using System;
 using UnityEngine;
 
@@ -78,12 +79,12 @@ namespace Fralle.Gameplay
     PlayerStats FinishedMatch()
     {
       var stats = new PlayerStats();
-      var player = FindObjectOfType<Player>();
+      var player = FindObjectOfType<PlayerMain>();
       if (player) stats = player.stats;
 
       if (sceneCamera)
       {
-        Player.Disable();
+        PlayerMain.Disable();
         sceneCamera.gameObject.SetActive(true);
       }
 

@@ -1,4 +1,6 @@
 ﻿using Fralle.Gameplay;
+using Fralle.Player;
+using Fralle.UI;
 using Fralle.UI.Menu;
 using TMPro;
 using UnityEngine;

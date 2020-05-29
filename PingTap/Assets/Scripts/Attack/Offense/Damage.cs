@@ -1,11 +1,12 @@
 ﻿using Fralle.Attack.Effect;
+using Fralle.Player;
 using UnityEngine;
 
 namespace Fralle.Attack.Offense
 {
   public class Damage
   {
-    public Player player;
+    public PlayerMain player;
     public Element element;
     public DamageEffect[] effects;
 

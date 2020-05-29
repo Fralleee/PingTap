@@ -1,4 +1,4 @@
-﻿namespace Fralle
+﻿namespace Fralle.Gameplay
 {
   public enum GameState
   {

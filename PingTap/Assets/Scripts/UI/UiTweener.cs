@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fralle.Core.Animation
+namespace Fralle.UI
 {
   public class UiTweener : MonoBehaviour
   {

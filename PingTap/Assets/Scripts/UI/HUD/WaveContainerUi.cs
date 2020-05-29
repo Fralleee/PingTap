@@ -1,4 +1,5 @@
 ﻿using Fralle.Gameplay;
+using Fralle.Player;
 using System.Collections.Generic;
 using UnityEngine;
 

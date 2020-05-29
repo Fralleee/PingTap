@@ -1,4 +1,4 @@
-﻿namespace Fralle.Core.Animation
+﻿namespace Fralle.UI
 {
   public enum UiAnimationTypes
   {

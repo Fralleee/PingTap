@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Fralle.Gameplay;
+using UnityEngine;
 
-namespace Fralle.Gameplay
+namespace Fralle.UI
 {
   public class UiManager : MonoBehaviour
   {
