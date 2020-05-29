@@ -19,13 +19,15 @@ namespace Fralle.Gameplay
     [Header("Cameras")]
     [SerializeField] Camera sceneCamera;
 
-    [Space(10)] [Readonly] public int enemiesAlive;
+    [Space(10)]
+    [Readonly] public int enemiesAlive;
     [Readonly] public int totalEnemies;
     [Readonly] public float prepareTimer;
     [Readonly] public float totalTimer;
     [Readonly] public float waveTimer;
 
     [HideInInspector] public bool isVictory;
+    [HideInInspector] public TreasureSpawner treasureSpawner;
 
     MatchState matchState;
     PlayerHome playerHome;
@@ -37,6 +39,8 @@ namespace Fralle.Gameplay
 
       playerHome = FindObjectOfType<PlayerHome>();
       playerHome.OnDeath += Defeat;
+
+      treasureSpawner = GetComponent<TreasureSpawner>();
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
       WaveManager.OnWavesComplete += HandleWavesComplete;

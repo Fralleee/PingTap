@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: GunTransparents
   m_EditorClassIdentifier: 
+  m_Active: 1
   settings:
     passTag: GunTransparents
     Event: 500
@@ -54,6 +55,7 @@ MonoBehaviour:
   - {fileID: 7744045852996773999}
   - {fileID: -897837850709549971}
   - {fileID: 1757619879120603101}
+  m_RendererFeatureMap: 
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   shaders:
     blitPS: {fileID: 4800000, guid: c17132b1f77d20942aa75f8429c0f8bc, type: 3}
@@ -88,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: GunTransparentsOverlay
   m_EditorClassIdentifier: 
+  m_Active: 1
   settings:
     passTag: GunTransparentsOverlay
     Event: 500
@@ -126,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: Gun Renderer
   m_EditorClassIdentifier: 
+  m_Active: 1
   settings:
     passTag: Gun Renderer
     Event: 250
@@ -134,7 +138,9 @@ MonoBehaviour:
       LayerMask:
         serializedVersion: 2
         m_Bits: 2048
-      PassNames: []
+      PassNames:
+      - 
+      - 
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0

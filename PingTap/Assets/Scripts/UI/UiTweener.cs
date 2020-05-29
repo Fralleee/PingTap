@@ -14,6 +14,7 @@ namespace Fralle.Core.Animation
     public float duration;
     public float delay;
 
+    public bool playOnAwake;
     public bool loop;
     public bool pingPong;
 
@@ -31,6 +32,11 @@ namespace Fralle.Core.Animation
       animationMap.Add(UiAnimationTypes.Move, Move);
       animationMap.Add(UiAnimationTypes.Scale, Scale);
       animationMap.Add(UiAnimationTypes.ScaleUpAndDown, ScaleUpAndDown);
+    }
+
+    void Start()
+    {
+      if (playOnAwake) HandleTween();
     }
 
     public void HandleTween()
