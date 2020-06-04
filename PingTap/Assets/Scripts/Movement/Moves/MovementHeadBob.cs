@@ -1,9 +1,9 @@
 ﻿using Fralle.Core.Extensions;
 using UnityEngine;
 
-namespace Fralle.Movement
+namespace Fralle.Movement.Moves
 {
-  public class HeadBob : MonoBehaviour
+  public class MovementHeadBob : MonoBehaviour
   {
     [SerializeField] Rigidbody rigidBody;
     [SerializeField] AnimationCurve blendOverLifetime = new AnimationCurve();

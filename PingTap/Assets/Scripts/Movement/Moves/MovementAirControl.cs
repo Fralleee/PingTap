@@ -1,7 +1,7 @@
 ﻿using Fralle.Player;
 using UnityEngine;
 
-namespace Fralle.Movement
+namespace Fralle.Movement.Moves
 {
   public class MovementAirControl : MonoBehaviour
   {

@@ -1,11 +1,11 @@
 ﻿using Fralle.Player;
 using UnityEngine;
 
-namespace Fralle.Movement
+namespace Fralle.Movement.Moves
 {
   public class MovementRun : MonoBehaviour
   {
-    [HideInInspector] public HeadBob headBob;
+    [HideInInspector] public MovementHeadBob movementHeadBob;
 
     [SerializeField] float forwardSpeed = 100f;
     [SerializeField] float strafeSpeed = 75f;
@@ -40,7 +40,7 @@ namespace Fralle.Movement
     {
       var force = orientation.right * input.move.x * strafeSpeed * Time.deltaTime + orientation.forward * input.move.y * forwardSpeed * Time.deltaTime;
       rigidBody.AddForce(force * externalSpeedModifier, ForceMode.VelocityChange);
-      if (headBob) headBob.HandleMovement(force, externalSpeedModifier);
+      if (movementHeadBob) movementHeadBob.HandleMovement(force, externalSpeedModifier);
     }
 
     void LimitSpeed()

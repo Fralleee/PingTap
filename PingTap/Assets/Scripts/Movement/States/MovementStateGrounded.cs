@@ -1,18 +1,20 @@
-﻿namespace Fralle.Movement
+﻿using Fralle.Movement.Moves;
+
+namespace Fralle.Movement.States
 {
   public class MovementStateGrounded : IState
   {
     readonly MovementRun run;
     readonly MovementCrouch crouch;
     readonly MovementJump jump;
-    readonly HeadBob headBob;
+    readonly MovementHeadBob movementHeadBob;
 
-    public MovementStateGrounded(MovementRun run, MovementCrouch crouch, MovementJump jump, HeadBob headBob)
+    public MovementStateGrounded(MovementRun run, MovementCrouch crouch, MovementJump jump, MovementHeadBob movementHeadBob)
     {
       this.run = run;
       this.crouch = crouch;
       this.jump = jump;
-      this.headBob = headBob;
+      this.movementHeadBob = movementHeadBob;
     }
 
     public void OnEnter()
@@ -24,7 +26,7 @@
 
     public void Tick()
     {
-      headBob.GroundedTick();
+      movementHeadBob.GroundedTick();
     }
 
     public void OnExit()

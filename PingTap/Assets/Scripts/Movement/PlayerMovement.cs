@@ -1,4 +1,6 @@
 ﻿using Fralle.Core;
+using Fralle.Movement.Moves;
+using Fralle.Movement.States;
 using Fralle.Player;
 using NaughtyAttributes;
 using UnityEngine;
@@ -12,7 +14,7 @@ namespace Fralle.Movement
 
     PlayerInputController input;
     MovementGroundCheck groundCheck;
-    HeadBob headBob;
+    MovementHeadBob movementHeadBob;
 
     MovementRun run;
     MovementJump jump;
@@ -33,7 +35,7 @@ namespace Fralle.Movement
       // utilities
       input = GetComponent<PlayerInputController>();
       groundCheck = GetComponentInChildren<MovementGroundCheck>();
-      headBob = GetComponentInChildren<HeadBob>();
+      movementHeadBob = GetComponentInChildren<MovementHeadBob>();
 
       // moves
       run = GetComponentInChildren<MovementRun>();
@@ -45,11 +47,11 @@ namespace Fralle.Movement
 
       groundCheck.OnGroundChanged += HandleGroundedChange;
       // modifications
-      run.headBob = headBob;
+      run.movementHeadBob = movementHeadBob;
 
       // states
-      var grounded = new MovementStateGrounded(run, crouch, jump, headBob);
-      var airborne = new MovementStateAirborne(airControl, gravityAdjuster, headBob, rigidBody);
+      var grounded = new MovementStateGrounded(run, crouch, jump, movementHeadBob);
+      var airborne = new MovementStateAirborne(airControl, gravityAdjuster, movementHeadBob, rigidBody);
       var dashing = new MovementStateDashing(dash);
       //var blocked = new MovementBlocked();
 
@@ -85,7 +87,7 @@ namespace Fralle.Movement
 
     void HandleGroundedChange(bool isGrounded, float velocityY)
     {
-      headBob.HandleGroundHit(isGrounded, velocityY);
+      movementHeadBob.HandleGroundHit(isGrounded, velocityY);
     }
   }
 }

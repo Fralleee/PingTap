@@ -4,7 +4,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Fralle.Movement
+namespace Fralle.Movement.Moves
 {
   public class MovementDash : MonoBehaviour
   {

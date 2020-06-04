@@ -1,5 +1,5 @@
 ﻿using Fralle.Core.Extensions;
-using Fralle.Movement;
+using Fralle.Movement.Moves;
 using UnityEngine;
 
 namespace Fralle.Player

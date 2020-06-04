@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-namespace Fralle.Movement
+namespace Fralle.Movement.Moves
 {
   public class MovementCrouch : MonoBehaviour
   {

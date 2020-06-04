@@ -1,4 +1,4 @@
-﻿namespace Fralle.Movement
+﻿namespace Fralle.Movement.States
 {
   public class MovementBlocked : IState
   {

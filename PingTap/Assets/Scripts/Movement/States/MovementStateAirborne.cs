@@ -1,19 +1,20 @@
-﻿using UnityEngine;
+﻿using Fralle.Movement.Moves;
+using UnityEngine;
 
-namespace Fralle.Movement
+namespace Fralle.Movement.States
 {
   public class MovementStateAirborne : IState
   {
     readonly MovementAirControl airControl;
     readonly MovementGravityAdjuster gravityAdjuster;
-    readonly HeadBob headBob;
+    readonly MovementHeadBob movementHeadBob;
     readonly Rigidbody rigidBody;
 
-    public MovementStateAirborne(MovementAirControl airControl, MovementGravityAdjuster gravityAdjuster, HeadBob headBob, Rigidbody rigidBody)
+    public MovementStateAirborne(MovementAirControl airControl, MovementGravityAdjuster gravityAdjuster, MovementHeadBob movementHeadBob, Rigidbody rigidBody)
     {
       this.airControl = airControl;
       this.gravityAdjuster = gravityAdjuster;
-      this.headBob = headBob;
+      this.movementHeadBob = movementHeadBob;
       this.rigidBody = rigidBody;
     }
 
@@ -28,7 +29,7 @@ namespace Fralle.Movement
 
     public void Tick()
     {
-      headBob.AirborneTick();
+      movementHeadBob.AirborneTick();
     }
 
     public void OnExit()

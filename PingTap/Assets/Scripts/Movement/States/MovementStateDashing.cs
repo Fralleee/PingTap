@@ -1,4 +1,6 @@
-﻿namespace Fralle.Movement
+﻿using Fralle.Movement.Moves;
+
+namespace Fralle.Movement.States
 {
   public class MovementStateDashing : IState
   {
