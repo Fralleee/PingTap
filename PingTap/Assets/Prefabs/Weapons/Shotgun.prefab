@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropPrefab: {fileID: 0}
   weaponName: Shotgun
   equipAnimationTime: 0.3
   muzzles:
@@ -69,8 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
-  minDamage: 5
-  maxDamage: 5
+  minDamage: 25
+  maxDamage: 25
   ammoPerShot: 1
   shotsPerSecond: 2
   tapable: 0
@@ -158,15 +159,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kickbackForce: 0.25
-  kickbackRecoverTime: 20
-  randomizeRecoil: 0
+  kickbackRecoverTime: 5
+  randomizeRecoil: 1
   recoilSpeed: 35
   recoilRecoverTime: 10
   randomRecoilConstraints: {x: 0, y: 0, z: 0}
-  recoilPattern:
-  - {x: 1, y: -5, z: 0.000000041492406}
-  - {x: -1, y: -4, z: 0.00000068620113}
-  - {x: 0, y: -6, z: -2.4631622e+29}
+  recoilPattern: []
 --- !u!1 &7623466945803982159
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7623466945803982159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.126, z: 1.0926}
+  m_LocalPosition: {x: 0, y: 0.0125, z: 0.1191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4598955150655952323}

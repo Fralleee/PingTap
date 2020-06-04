@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Fralle.Movement
 {
   public class MovementGroundCheck : MonoBehaviour
   {
     public bool IsGrounded { get; private set; }
+    public event Action<bool, float> OnGroundChanged = delegate { };
 
     [SerializeField] float maxSlopeAngle = 35;
-
-    PlayerMovement movement;
 
     Rigidbody rigidBody;
     CapsuleCollider capsule;
@@ -17,8 +17,6 @@ namespace Fralle.Movement
 
     void Awake()
     {
-      movement = GetComponentInParent<PlayerMovement>();
-
       rigidBody = GetComponent<Rigidbody>();
       capsule = GetComponent<CapsuleCollider>();
 
@@ -35,12 +33,14 @@ namespace Fralle.Movement
       rigidBody.useGravity = true;
       var wasGrounded = IsGrounded;
       IsGrounded = Physics.SphereCast(transform.position, capsule.radius, -Vector3.up, out var hit, distToGround);
-      if (wasGrounded != IsGrounded) movement.GroundChange(IsGrounded, rigidBody.velocity.y, hit);
+      if (wasGrounded != IsGrounded)
+      {
+        OnGroundChanged(IsGrounded, rigidBody.velocity.y);
+      }
 
       if (!IsGrounded || rigidBody.velocity.y < -0.5f) return;
 
       var slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
-      movement.UpdateSlope(slopeAngle);
       if (slopeAngle > maxSlopeAngle + 1f) return;
 
       rigidBody.useGravity = false;

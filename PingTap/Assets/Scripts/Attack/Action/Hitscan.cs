@@ -7,7 +7,8 @@ namespace Fralle.Attack.Action
 {
   public class Hitscan : AttackAction
   {
-    [Header("Hitscan")] [SerializeField] float range = 50;
+    [Header("Hitscan")]
+    [SerializeField] float range = 50;
     [SerializeField] float pushForce = 3.5f;
     [SerializeField] GameObject impactParticlePrefab;
     [SerializeField] GameObject muzzleParticlePrefab;
@@ -32,6 +33,11 @@ namespace Fralle.Attack.Action
     public override void Fire()
     {
       var muzzle = GetMuzzle();
+      if (muzzleParticlePrefab)
+      {
+        var muzzleParticle = Instantiate(muzzleParticlePrefab, muzzle.position, weapon.playerCamera.rotation, weapon.playerCamera);
+        Destroy(muzzleParticle, 1.5f);
+      }
 
       for (var i = 0; i < bulletsPerFire; i++) FireBullet(muzzle);
 
@@ -44,15 +50,9 @@ namespace Fralle.Attack.Action
     {
       player.stats.ReceiveShotsFired(1);
 
-      var forward = CalculateBulletSpread();
+      var forward = CalculateBulletSpread(1 / player.extraAccuracy);
 
-      if (muzzleParticlePrefab)
-      {
-        var muzzleParticle = Instantiate(muzzleParticlePrefab, muzzle.position, transform.rotation, muzzle);
-        Destroy(muzzleParticle, 1.5f);
-      }
-
-      int layerMask = ~LayerMask.GetMask("Corpse", "Enemy Rigidbody");
+      var layerMask = ~LayerMask.GetMask("Corpse", "Enemy Rigidbody");
       if (!Physics.Raycast(weapon.playerCamera.position, forward, out var hitInfo, range, layerMask)) return;
 
       AddForce(hitInfo);
@@ -60,9 +60,11 @@ namespace Fralle.Attack.Action
       var health = hitInfo.transform.GetComponent<Health>();
       if (health != null)
       {
+        // this will cause issues if we harare for example hitting targets with shotgun
+        // we will receive more hits than shots fired
         player.stats.ReceiveHits(1);
 
-        float damageAmount = Damage;
+        var damageAmount = Damage;
         health.ReceiveAttack(new Damage()
         {
           player = player,
@@ -84,10 +86,10 @@ namespace Fralle.Attack.Action
       }
     }
 
-    Vector3 CalculateBulletSpread()
+    Vector3 CalculateBulletSpread(float modifier)
     {
-      float spreadPercent = spreadIncreaseEachShot > 0 ? currentSpread : 1;
-      var spread = spreadPercent * Random.insideUnitCircle * spreadRadius;
+      var spreadPercent = spreadIncreaseEachShot > 0 ? currentSpread : 1;
+      var spread = spreadPercent * modifier * Random.insideUnitCircle * spreadRadius;
       return weapon.playerCamera.forward + new Vector3(0, spread.y, spread.x);
     }
 

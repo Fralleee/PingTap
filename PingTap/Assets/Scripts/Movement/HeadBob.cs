@@ -19,7 +19,8 @@ namespace Fralle.Movement
     [SerializeField] float bounceBackPower = 0.5f;
     [SerializeField] float bounceBackTimeMultiplier = 3f;
 
-    PlayerMovement movement;
+
+    Vector3 newPosition;
     float timer = Mathf.PI / 2;
     float velocityY;
     float bounceBackVelocityY;
@@ -27,17 +28,20 @@ namespace Fralle.Movement
     float jumpTimer = Mathf.PI / 2;
 
 
-    void Awake()
+    public void GroundedTick()
     {
-      movement = GetComponentInParent<PlayerMovement>();
-      movement.OnMovement += HandleMovement;
-      movement.OnGroundChanged += HandleGroundHit;
+      velocityY = 0;
+      InternalTick();
     }
 
-    void FixedUpdate()
+    public void AirborneTick()
     {
-      velocityY = !movement.groundCheck.IsGrounded ? rigidBody.velocity.y * jumpBobPower : 0;
+      velocityY = rigidBody.velocity.y * jumpBobPower;
+      InternalTick();
+    }
 
+    void InternalTick()
+    {
       if (Mathf.Abs(bounceBackVelocityY) > BounceBackThreshold)
       {
         jumpTimer += Time.deltaTime * bounceBackTimeMultiplier;
@@ -49,9 +53,15 @@ namespace Fralle.Movement
         jumpTimer += Time.deltaTime;
         velocityY = -Mathf.Cos(jumpTimer) * velocityY;
       }
+
+      transform.localPosition = newPosition.With(y: Mathf.Abs(velocityY) > BounceBackThreshold ?
+        Mathf.Lerp(transform.localPosition.y, velocityY, transitionSpeed * Time.deltaTime) :
+        Mathf.Lerp(transform.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
+
+      if (timer > Mathf.PI * 2) timer = 0;
     }
 
-    void HandleGroundHit(bool touchedGround, float velocity)
+    public void HandleGroundHit(bool touchedGround, float velocity)
     {
       if (touchedGround)
       {
@@ -66,14 +76,13 @@ namespace Fralle.Movement
       }
     }
 
-    void HandleMovement(Vector3 movement)
+    public void HandleMovement(Vector3 movementInput, float percentageOfMaxSpeed)
     {
-      Vector3 newPosition;
-      if (movement.magnitude > 0)
+      if (movementInput.magnitude > 0)
       {
         var agePercent = 1.0f - ((timer * 0.5f) / Mathf.PI);
-        var actualBobAmount = bobAmount * movement.magnitude * blendOverLifetime.Evaluate(agePercent);
-        timer += bobSpeed * Time.deltaTime;
+        var actualBobAmount = bobAmount * movementInput.magnitude * blendOverLifetime.Evaluate(agePercent);
+        timer += bobSpeed * percentageOfMaxSpeed * Time.deltaTime;
         newPosition = new Vector3(Mathf.Cos(timer) * actualBobAmount, Mathf.Abs((Mathf.Sin(timer) * actualBobAmount)), 0);
       }
       else
@@ -82,17 +91,6 @@ namespace Fralle.Movement
         newPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, transitionSpeed * Time.deltaTime);
       }
 
-      transform.localPosition = newPosition.With(y: Mathf.Abs(velocityY) > BounceBackThreshold ?
-        Mathf.Lerp(transform.localPosition.y, velocityY, transitionSpeed * Time.deltaTime) :
-        Mathf.Lerp(transform.localPosition.y, newPosition.y + velocityY, transitionSpeed * Time.deltaTime));
-
-      if (timer > Mathf.PI * 2) timer = 0;
-    }
-
-    void OnDestroy()
-    {
-      movement.OnMovement -= HandleMovement;
-      movement.OnGroundChanged -= HandleGroundHit;
     }
   }
 }

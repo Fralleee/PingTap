@@ -6,7 +6,7 @@ namespace Fralle.Core
 {
   public class StateMachine
   {
-    IState currentState;
+    public IState currentState;
 
     readonly Dictionary<Type, List<Transition>> transitions = new Dictionary<Type, List<Transition>>();
     List<Transition> currentTransitions = new List<Transition>();

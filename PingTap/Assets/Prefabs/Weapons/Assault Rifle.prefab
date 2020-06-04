@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropPrefab: {fileID: 0}
   weaponName: Assault Rifle
   equipAnimationTime: 0.3
   muzzles:
@@ -201,11 +202,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kickbackForce: 0.15
   kickbackRecoverTime: 20
-  randomizeRecoil: 1
+  randomizeRecoil: 0
   recoilSpeed: 16
   recoilRecoverTime: 10
   randomRecoilConstraints: {x: 3, y: 3, z: 3}
-  recoilPattern: []
+  recoilPattern:
+  - {x: 0, y: -3, z: 0}
+  - {x: 1, y: -3, z: 0}
+  - {x: -1, y: -3, z: 0}
 --- !u!1 &5078208465294758218
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5078208465294758218}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.119, z: 0.168}
+  m_LocalPosition: {x: 0, y: 1.005, z: 0.168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 230508777385393071}

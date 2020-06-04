@@ -58,9 +58,9 @@ namespace Fralle.Attack.Addons
 
       if (randomizeRecoil)
       {
-        float xRecoil = Random.Range(-randomRecoilConstraints.x, randomRecoilConstraints.x);
-        float yRecoil = Random.Range(-randomRecoilConstraints.y, randomRecoilConstraints.y);
-        float zRecoil = Random.Range(-randomRecoilConstraints.z, randomRecoilConstraints.z);
+        var xRecoil = Random.Range(-randomRecoilConstraints.x, randomRecoilConstraints.x);
+        var yRecoil = Random.Range(-randomRecoilConstraints.y, randomRecoilConstraints.y);
+        var zRecoil = Random.Range(-randomRecoilConstraints.z, randomRecoilConstraints.z);
         recoil += new Vector3(xRecoil, yRecoil, zRecoil);
       }
       else if (recoilPattern.Length > 0)

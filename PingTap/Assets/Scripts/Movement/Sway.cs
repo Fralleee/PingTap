@@ -21,7 +21,7 @@ namespace Fralle.Movement
       input = GetComponentInParent<PlayerInputController>();
     }
 
-    void Update()
+    void LateUpdate()
     {
       if (playerAttack.equippedWeapon == null) return;
       if (Cursor.visible) return;
@@ -33,8 +33,8 @@ namespace Fralle.Movement
 
     void PerformSway(Vector2 delta)
     {
-      transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, swaySmooth * Time.deltaTime);
       transform.localPosition += (Vector3)delta * swaySize * 0.001f;
+      transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, swaySmooth * Time.deltaTime);
     }
 
     void PerformIdle()

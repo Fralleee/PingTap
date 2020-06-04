@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropPrefab: {fileID: 0}
   weaponName: Rocket Launcher
   equipAnimationTime: 0.3
   muzzles:
@@ -70,10 +71,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 0
-  minDamage: 50
-  maxDamage: 70
+  minDamage: 40
+  maxDamage: 60
   ammoPerShot: 1
-  shotsPerSecond: 5
+  shotsPerSecond: 3
   tapable: 0
   element: 0
   damageEffects: []
@@ -110,8 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInput: 1
-  minDamage: 50
-  maxDamage: 100
+  minDamage: 100
+  maxDamage: 150
   ammoPerShot: 6
   shotsPerSecond: 20
   tapable: 1
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bc0cd1540fa4242917d9851d1b712f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 30
+  maxAmmo: 6
   currentAmmo: 0
   infiniteAmmo: 0
   reloadSpeed: 0.75

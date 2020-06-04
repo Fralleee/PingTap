@@ -1,29 +1,25 @@
-﻿using System;
+﻿using Fralle.Core;
+using Fralle.Player;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Fralle.Movement
 {
   public class PlayerMovement : MonoBehaviour
   {
-    public event Action<Vector3> OnMovement = delegate { };
-    public event Action<Vector3> OnJump = delegate { };
-    public event Action<Vector3> OnDash = delegate { };
-    public event Action<bool, float> OnGroundChanged = delegate { };
+    StateMachine stateMachine;
+    [ReadOnly] public string currentState;
 
-    public PlayerMovementState state;
+    PlayerInputController input;
+    MovementGroundCheck groundCheck;
+    HeadBob headBob;
 
-    [SerializeField] Transform Ui;
-
-    [Header("Debug")]
-    [SerializeField] GameObject debugUi;
-    [SerializeField] bool debugMode;
-
-    [HideInInspector] public MovementDebugUi movementDebugUi;
-    [HideInInspector] public MovementGroundCheck groundCheck;
-    [HideInInspector] public MovementRun run;
-    [HideInInspector] public MovementJump jump;
-    [HideInInspector] public MovementDash dash;
-    [HideInInspector] public MovementCrouch crouch;
+    MovementRun run;
+    MovementJump jump;
+    MovementGravityAdjuster gravityAdjuster;
+    MovementAirControl airControl;
+    MovementDash dash;
+    MovementCrouch crouch;
 
     Rigidbody rigidBody;
 
@@ -32,46 +28,64 @@ namespace Fralle.Movement
       rigidBody = GetComponentInChildren<Rigidbody>();
       rigidBody.freezeRotation = true;
 
+      stateMachine = new StateMachine();
+
+      // utilities
+      input = GetComponent<PlayerInputController>();
       groundCheck = GetComponentInChildren<MovementGroundCheck>();
+      headBob = GetComponentInChildren<HeadBob>();
+
+      // moves
       run = GetComponentInChildren<MovementRun>();
       jump = GetComponentInChildren<MovementJump>();
+      airControl = GetComponentInChildren<MovementAirControl>();
+      gravityAdjuster = GetComponentInChildren<MovementGravityAdjuster>();
       dash = GetComponentInChildren<MovementDash>();
       crouch = GetComponentInChildren<MovementCrouch>();
 
-      InitializeDebug();
+      groundCheck.OnGroundChanged += HandleGroundedChange;
+      // modifications
+      run.headBob = headBob;
+
+      // states
+      var grounded = new MovementStateGrounded(run, crouch, jump, headBob);
+      var airborne = new MovementStateAirborne(airControl, gravityAdjuster, headBob, rigidBody);
+      var dashing = new MovementStateDashing(dash);
+      //var blocked = new MovementBlocked();
+
+      stateMachine.AddTransition(grounded, airborne, () => !groundCheck.IsGrounded);
+      stateMachine.AddTransition(grounded, dashing, () => input.dashButtonDown);
+
+      stateMachine.AddTransition(airborne, grounded, () => groundCheck.IsGrounded);
+      stateMachine.AddTransition(airborne, dashing, () => input.dashButtonDown);
+
+      stateMachine.AddTransition(dashing, grounded, () => dashing.dashComplete && groundCheck.IsGrounded);
+      stateMachine.AddTransition(dashing, airborne, () => dashing.dashComplete && !groundCheck.IsGrounded);
+
+      DisableAllMoves();
+
+      stateMachine.SetState(grounded);
     }
 
-    public void Movement(Vector3 force)
+    void Update()
     {
-      OnMovement(force);
-      if (debugMode) movementDebugUi.SetVelocityText(new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z).magnitude);
+      stateMachine.Tick();
+      currentState = stateMachine.currentState.ToString();
     }
 
-    public void Jump(Vector3 force)
+    void DisableAllMoves()
     {
-      OnJump(force);
+      run.enabled = false;
+      jump.enabled = false;
+      gravityAdjuster.enabled = false;
+      dash.enabled = false;
+      crouch.enabled = false;
+      airControl.enabled = false;
     }
 
-    public void Dash(Vector3 force)
+    void HandleGroundedChange(bool isGrounded, float velocityY)
     {
-      OnDash(force);
-    }
-
-    public void GroundChange(bool isGrounded, float velocityY, RaycastHit hit)
-    {
-      OnGroundChanged(isGrounded, velocityY);
-      if (debugMode) movementDebugUi.SetGroundedText(isGrounded, isGrounded ? hit.transform.name : "");
-    }
-
-    public void UpdateSlope(float slopeAngle)
-    {
-      if (debugMode) movementDebugUi.SetSlopeAngleText(slopeAngle);
-    }
-
-    void InitializeDebug()
-    {
-      var activeDebugUi = Instantiate(debugUi, Ui);
-      movementDebugUi = activeDebugUi.GetComponentInChildren<MovementDebugUi>();
+      headBob.HandleGroundHit(isGrounded, velocityY);
     }
   }
 }

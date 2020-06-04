@@ -1,4 +1,5 @@
 ﻿using Fralle.Core.Extensions;
+using Fralle.Movement;
 using UnityEngine;
 
 namespace Fralle.Player
@@ -16,6 +17,8 @@ namespace Fralle.Player
     public PlayerStats stats;
     [HideInInspector] public new Camera camera;
 
+    public float extraAccuracy = 1f;
+
     public static void Disable()
     {
       var players = FindObjectsOfType<PlayerMain>();
@@ -23,6 +26,11 @@ namespace Fralle.Player
       {
         player.gameObject.SetActive(false);
       }
+    }
+
+    void Awake()
+    {
+      MovementCrouch.OnCrouch += HandleCrouch;
     }
 
     void Start()
@@ -42,6 +50,11 @@ namespace Fralle.Player
       Instantiate(enemyHealthBarUi, Ui);
       Instantiate(damageNumbersUi, Ui);
       Instantiate(minimapUi, Ui);
+    }
+
+    void HandleCrouch(bool isCrouching)
+    {
+      extraAccuracy = isCrouching ? 1.5f : 1f;
     }
   }
 }

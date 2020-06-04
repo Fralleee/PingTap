@@ -4,6 +4,8 @@
   {
     Ready,
     Dashing,
+    InAir,
+    Crouching,
     ExternalBlocked
   }
 }

@@ -1,5 +1,6 @@
 ﻿using Fralle.Core.Camera;
 using Fralle.Player;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,13 +8,14 @@ namespace Fralle.Movement
 {
   public class MovementDash : MonoBehaviour
   {
+    public event Action OnComplete = delegate { };
+
     [SerializeField] float dashPower = 8f;
     [SerializeField] float dashStopTime = 0.1f;
     [SerializeField] Transform cameraRig;
     [SerializeField] ShakeTransformEventData cameraShake;
     [SerializeField] ShakeTransform cameraShakeTransform;
 
-    PlayerMovement movement;
     PlayerInputController input;
 
     Rigidbody rigidBody;
@@ -21,22 +23,14 @@ namespace Fralle.Movement
 
     void Awake()
     {
-      movement = GetComponentInParent<PlayerMovement>();
       input = GetComponentInParent<PlayerInputController>();
 
       rigidBody = GetComponent<Rigidbody>();
       orientation = transform.Find("Orientation");
     }
 
-    void Update()
+    public void PerformDash()
     {
-      Dash();
-    }
-
-    void Dash()
-    {
-      if (movement.state != PlayerMovementState.Ready || !input.dashButtonDown) return;
-
       var direction =
         input.move.y > 0 ? cameraRig.forward :
         input.move.y < 0 ? -orientation.forward :
@@ -47,22 +41,22 @@ namespace Fralle.Movement
       rigidBody.velocity = Vector3.zero;
       rigidBody.AddForce(direction * dashPower, ForceMode.VelocityChange);
 
-      movement.state = PlayerMovementState.Dashing;
-      movement.Dash(direction * dashPower);
-
       cameraShakeTransform.AddShakeEvent(cameraShake);
-
       StartCoroutine(StopDashing());
+    }
+
+    public void AbortDash()
+    {
+      StopAllCoroutines();
+      rigidBody.velocity = Vector3.zero;
     }
 
     IEnumerator StopDashing()
     {
       yield return new WaitForSeconds(dashStopTime);
 
-      if (movement.state != PlayerMovementState.Dashing) yield break;
-
       rigidBody.velocity = Vector3.zero;
-      movement.state = PlayerMovementState.Ready;
+      OnComplete();
     }
   }
 }

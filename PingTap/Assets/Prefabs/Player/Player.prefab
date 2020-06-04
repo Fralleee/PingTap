@@ -352,7 +352,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 90
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -458,6 +458,8 @@ GameObject:
   - component: {fileID: 2124457608702928143}
   - component: {fileID: 6253427277526533104}
   - component: {fileID: 4980217895567351953}
+  - component: {fileID: 855153777}
+  - component: {fileID: 855153778}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -570,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab43d510c6339e40bbecf226f1881ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headBob: {fileID: 0}
   forwardSpeed: 100
   strafeSpeed: 75
   maxSpeed: 5
@@ -587,8 +590,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpStrength: 12
-  fallMultiplier: 2.5
-  lowJumpModifier: 3
 --- !u!114 &2124457608702928143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +634,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlopeAngle: 35
+--- !u!114 &855153777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371905872086469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d5c4d79583e9a48bfdd6bb15203ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 2.5
+  lowJumpModifier: 3
+--- !u!114 &855153778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371905872086469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59134132dd298d64a819bb997206af41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startSpeed: 0
+  forwardSpeed: 50
+  strafeSpeed: 50
+  maxSpeed: 2.5
 --- !u!1 &1386371906370868751
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,6 +764,7 @@ MonoBehaviour:
     totalShotsHit: 0
     accuracyPercentage: 0
   camera: {fileID: 0}
+  extraAccuracy: 1
 --- !u!114 &4931947605093199377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -771,16 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36d50794ae8d55448534841e777a21a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  Ui: {fileID: 3869587230213185238}
-  debugUi: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3, type: 3}
-  debugMode: 1
-  movementDebugUi: {fileID: 0}
-  groundCheck: {fileID: 0}
-  run: {fileID: 0}
-  jump: {fileID: 0}
-  dash: {fileID: 0}
-  crouch: {fileID: 0}
+  currentState: 
 --- !u!114 &7422997080737124187
 MonoBehaviour:
   m_ObjectHideFlags: 0
