@@ -70,8 +70,8 @@ namespace Fralle.Movement
 
       input.mouse.y = Mathf.Clamp(input.mouse.y, clampYMin, clampYMax);
 
-      currentRotationX = Mathf.SmoothDamp(currentRotationX, input.mouse.x + affectRotation.x, ref mouseLookDampX, mouseLookSmooth);
-      currentRotationY = Mathf.SmoothDamp(currentRotationY, input.mouse.y + affectRotation.y, ref mouseLookDampY, mouseLookSmooth);
+      currentRotationX = Mathf.SmoothDamp(currentRotationX, input.mouse.x + affectRotation.x * Time.deltaTime, ref mouseLookDampX, mouseLookSmooth);
+      currentRotationY = Mathf.SmoothDamp(currentRotationY, input.mouse.y + affectRotation.y * Time.deltaTime, ref mouseLookDampY, mouseLookSmooth);
 
       affectRotation = Vector2.SmoothDamp(affectRotation, Vector2.zero, ref affectRotationDamp, affectSmooth);
 

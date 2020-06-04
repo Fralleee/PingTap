@@ -12,12 +12,15 @@ namespace Fralle.Movement.Moves
     [SerializeField] float maxSpeed = 5f;
 
     PlayerInputController input;
+    PlayerMovement playerMovement;
+
     Rigidbody rigidBody;
     Transform orientation;
 
     void Awake()
     {
       input = GetComponentInParent<PlayerInputController>();
+      playerMovement = GetComponentInParent<PlayerMovement>();
 
       rigidBody = GetComponent<Rigidbody>();
       orientation = transform.Find("Orientation");
@@ -42,6 +45,8 @@ namespace Fralle.Movement.Moves
 
       horizontalMovement = horizontalMovement.normalized * (maxSpeed + startSpeed);
       rigidBody.velocity = new Vector3(horizontalMovement.x, rigidBody.velocity.y, horizontalMovement.z);
+
+      //if (playerMovement.debug) playerMovement.debugUi.SetVelocityText(rigidBody.velocity.With(y: 0).magnitude);
     }
   }
 }

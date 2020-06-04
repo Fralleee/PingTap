@@ -12,6 +12,13 @@ namespace Fralle.Movement
     StateMachine stateMachine;
     [ReadOnly] public string currentState;
 
+    [Header("Debug")]
+    public bool debug;
+    [HideInInspector] public MovementDebugUi debugUi;
+    [SerializeField] Transform UiParent;
+    [SerializeField] GameObject debugUiPrefab;
+
+
     PlayerInputController input;
     MovementGroundCheck groundCheck;
     MovementHeadBob movementHeadBob;
@@ -67,12 +74,16 @@ namespace Fralle.Movement
       DisableAllMoves();
 
       stateMachine.SetState(grounded);
+
+      InitializeDebug();
     }
 
     void Update()
     {
       stateMachine.Tick();
       currentState = stateMachine.currentState.ToString();
+
+      debugUi.gameObject.SetActive(debug);
     }
 
     void DisableAllMoves()
@@ -83,6 +94,15 @@ namespace Fralle.Movement
       dash.enabled = false;
       crouch.enabled = false;
       airControl.enabled = false;
+    }
+
+    void InitializeDebug()
+    {
+      var activeDebugUi = Instantiate(debugUiPrefab, UiParent);
+
+      debugUi = activeDebugUi.GetComponentInChildren<MovementDebugUi>();
+      debugUi.rigidBody = rigidBody;
+      debugUi.gameObject.SetActive(debug);
     }
 
     void HandleGroundedChange(bool isGrounded, float velocityY)

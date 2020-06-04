@@ -572,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab43d510c6339e40bbecf226f1881ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headBob: {fileID: 0}
+  movementHeadBob: {fileID: 0}
   forwardSpeed: 100
   strafeSpeed: 75
   maxSpeed: 5
@@ -804,6 +804,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
+  debug: 0
+  debugUi: {fileID: 0}
+  UiParent: {fileID: 3869587230213185238}
+  debugUiPrefab: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3,
+    type: 3}
 --- !u!114 &7422997080737124187
 MonoBehaviour:
   m_ObjectHideFlags: 0

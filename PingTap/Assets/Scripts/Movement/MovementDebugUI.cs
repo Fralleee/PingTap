@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Fralle.Core.Extensions;
+using TMPro;
 using UnityEngine;
 
 namespace Fralle.Movement
@@ -8,6 +9,13 @@ namespace Fralle.Movement
     [SerializeField] TextMeshProUGUI groundedText;
     [SerializeField] TextMeshProUGUI slopeAngleText;
     [SerializeField] TextMeshProUGUI velocityText;
+
+    public Rigidbody rigidBody;
+
+    void Update()
+    {
+      SetVelocityText(rigidBody.velocity.With(y: 0).magnitude);
+    }
 
     public void SetGroundedText(bool isGrounded, string groundedObject)
     {

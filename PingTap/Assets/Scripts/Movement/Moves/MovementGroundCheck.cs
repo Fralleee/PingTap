@@ -10,6 +10,8 @@ namespace Fralle.Movement.Moves
 
     [SerializeField] float maxSlopeAngle = 35;
 
+    PlayerMovement playerMovement;
+
     Rigidbody rigidBody;
     CapsuleCollider capsule;
 
@@ -17,6 +19,8 @@ namespace Fralle.Movement.Moves
 
     void Awake()
     {
+      playerMovement = GetComponentInParent<PlayerMovement>();
+
       rigidBody = GetComponent<Rigidbody>();
       capsule = GetComponent<CapsuleCollider>();
 
@@ -36,11 +40,13 @@ namespace Fralle.Movement.Moves
       if (wasGrounded != IsGrounded)
       {
         OnGroundChanged(IsGrounded, rigidBody.velocity.y);
+        if (playerMovement.debug) playerMovement.debugUi.SetGroundedText(IsGrounded, IsGrounded ? hit.transform.name : "");
       }
 
       if (!IsGrounded || rigidBody.velocity.y < -0.5f) return;
 
       var slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
+      if (playerMovement.debug) playerMovement.debugUi.SetSlopeAngleText(slopeAngle);
       if (slopeAngle > maxSlopeAngle + 1f) return;
 
       rigidBody.useGravity = false;

@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.08235294, g: 0.08235294, b: 0.10980392, a: 0.21568628}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -92,6 +93,7 @@ MonoBehaviour:
   groundedText: {fileID: 896659008631840716}
   slopeAngleText: {fileID: 8057611665934792308}
   velocityText: {fileID: 1739812417187445406}
+  rigidBody: {fileID: 0}
 --- !u!1 &333099184966297766
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +154,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -308,10 +311,11 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Slope angle
+  m_text: "Slope angle 0\xB0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 72065842e97896943b7b4a57e0ac1d7b, type: 2}
   m_sharedMaterial: {fileID: -5125587381434790127, guid: 72065842e97896943b7b4a57e0ac1d7b,
@@ -381,10 +385,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8057611665934792308}
-    characterCount: 11
+    characterCount: 14
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 3
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -464,6 +468,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -573,7 +578,7 @@ GameObject:
   - component: {fileID: 6180948048699177630}
   - component: {fileID: 7294332662906978274}
   m_Layer: 0
-  m_Name: Debug UI
+  m_Name: Movement Debug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
