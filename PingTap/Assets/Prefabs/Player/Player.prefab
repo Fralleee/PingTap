@@ -602,11 +602,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe7647f2e43457f45babc929c312a9d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashPower: 25
-  dashStopTime: 0.25
+  power: 24
+  stopTime: 0.25
+  cooldown: 0
   cameraRig: {fileID: 1386371907097986392}
   cameraShake: {fileID: 11400000, guid: 8831cc65fdad0c74c875d0d8bfd61c39, type: 2}
   cameraShakeTransform: {fileID: 2078748404590883579}
+  isDashing: 0
 --- !u!114 &6253427277526533104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +785,8 @@ MonoBehaviour:
   jumpButtonDown: 0
   jumpButtonHold: 0
   dashButtonDown: 0
+  dashButtonHold: 0
+  dashButtonUp: 0
   crouchButtonHold: 0
   mouse1ButtonDown: 0
   mouse1ButtonHold: 0
@@ -804,7 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
-  debug: 0
+  debug: 1
   debugUi: {fileID: 0}
   UiParent: {fileID: 3869587230213185238}
   debugUiPrefab: {fileID: 9201332851157539614, guid: 88b0b49bdc187734a89df7d2cb05b2a3,

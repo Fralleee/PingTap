@@ -32,6 +32,13 @@ namespace Fralle.Movement
 
     Rigidbody rigidBody;
 
+    //- Add Dash-move to grounded and airborne
+    //- Never disable Dash-move
+    //- Enter dashstate on keyup
+    //- Test with long dashtimer that you can jump inbetween and change states without interrupting dash
+    //- Also timer should be percentage of boost.hold key 0.3s and get 60~of the boost
+    //- Dash-state should just have all moves disabled and a recovery timer that is set by Dash-move
+
     void Awake()
     {
       rigidBody = GetComponentInChildren<Rigidbody>();
@@ -57,16 +64,16 @@ namespace Fralle.Movement
       run.movementHeadBob = movementHeadBob;
 
       // states
-      var grounded = new MovementStateGrounded(run, crouch, jump, movementHeadBob);
-      var airborne = new MovementStateAirborne(airControl, gravityAdjuster, movementHeadBob, rigidBody);
+      var grounded = new MovementStateGrounded(run, crouch, jump, dash, movementHeadBob);
+      var airborne = new MovementStateAirborne(rigidBody, airControl, dash, gravityAdjuster, movementHeadBob);
       var dashing = new MovementStateDashing(dash);
       //var blocked = new MovementBlocked();
 
       stateMachine.AddTransition(grounded, airborne, () => !groundCheck.IsGrounded);
-      stateMachine.AddTransition(grounded, dashing, () => input.dashButtonDown);
+      stateMachine.AddTransition(grounded, dashing, () => dash.isDashing);
 
       stateMachine.AddTransition(airborne, grounded, () => groundCheck.IsGrounded);
-      stateMachine.AddTransition(airborne, dashing, () => input.dashButtonDown);
+      stateMachine.AddTransition(airborne, dashing, () => dash.isDashing);
 
       stateMachine.AddTransition(dashing, grounded, () => dashing.dashComplete && groundCheck.IsGrounded);
       stateMachine.AddTransition(dashing, airborne, () => dashing.dashComplete && !groundCheck.IsGrounded);

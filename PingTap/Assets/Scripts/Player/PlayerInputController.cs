@@ -14,6 +14,8 @@ namespace Fralle.Player
     public bool jumpButtonHold;
 
     public bool dashButtonDown;
+    public bool dashButtonHold;
+    public bool dashButtonUp;
 
     public bool crouchButtonHold;
 
@@ -46,6 +48,8 @@ namespace Fralle.Player
       jumpButtonHold = Input.GetButton("Jump");
 
       dashButtonDown = Input.GetKeyDown(KeyCode.LeftShift);
+      dashButtonHold = Input.GetKey(KeyCode.LeftShift);
+      dashButtonUp = Input.GetKeyUp(KeyCode.LeftShift);
 
       crouchButtonHold = Input.GetKey(KeyCode.LeftControl);
 
@@ -98,6 +102,8 @@ namespace Fralle.Player
       jumpButtonDown = false;
       jumpButtonHold = false;
       dashButtonDown = false;
+      dashButtonHold = false;
+      dashButtonUp = false;
       mouse1ButtonDown = false;
       mouse1ButtonHold = false;
       mouse1ButtonUp = false;

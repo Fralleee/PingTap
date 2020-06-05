@@ -1,28 +1,36 @@
 ﻿using Fralle.Movement.Moves;
+using System.Linq;
+using UnityEngine;
 
 namespace Fralle.Movement.States
 {
-  public class MovementStateDashing : IState
+  public class MovementStateDashing : MovementState
   {
     readonly MovementDash dash;
     public bool dashComplete;
 
-    public MovementStateDashing(MovementDash dash)
+    public MovementStateDashing(params MonoBehaviour[] moves) : base(moves)
     {
-      this.dash = dash;
+      dash = (MovementDash)moves.FirstOrDefault(x => x.GetType() == typeof(MovementDash));
     }
 
-    public void OnEnter()
+    public override void OnEnter()
     {
+      base.OnEnter();
+
       dashComplete = false;
       dash.OnComplete += HandleComplete;
-      dash.PerformDash();
     }
 
-    public void Tick() { }
-
-    public void OnExit()
+    public override void Tick()
     {
+      base.Tick();
+    }
+
+    public override void OnExit()
+    {
+      base.OnExit();
+
       dash.OnComplete -= HandleComplete;
     }
 

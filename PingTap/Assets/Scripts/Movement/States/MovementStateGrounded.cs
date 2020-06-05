@@ -1,39 +1,32 @@
 ﻿using Fralle.Movement.Moves;
+using System.Linq;
+using UnityEngine;
 
 namespace Fralle.Movement.States
 {
-  public class MovementStateGrounded : IState
+  public class MovementStateGrounded : MovementState
   {
-    readonly MovementRun run;
-    readonly MovementCrouch crouch;
-    readonly MovementJump jump;
-    readonly MovementHeadBob movementHeadBob;
-
-    public MovementStateGrounded(MovementRun run, MovementCrouch crouch, MovementJump jump, MovementHeadBob movementHeadBob)
+    readonly MovementHeadBob headBob;
+    public MovementStateGrounded(params MonoBehaviour[] moves) : base(moves)
     {
-      this.run = run;
-      this.crouch = crouch;
-      this.jump = jump;
-      this.movementHeadBob = movementHeadBob;
+      headBob = (MovementHeadBob)moves.FirstOrDefault(x => x.GetType() == typeof(MovementHeadBob));
     }
 
-    public void OnEnter()
+    public override void OnEnter()
     {
-      run.enabled = true;
-      crouch.enabled = true;
-      jump.enabled = true;
+      base.OnEnter();
     }
 
-    public void Tick()
+    public override void Tick()
     {
-      movementHeadBob.GroundedTick();
+      base.Tick();
+
+      headBob.GroundedTick();
     }
 
-    public void OnExit()
+    public override void OnExit()
     {
-      run.enabled = false;
-      crouch.enabled = false;
-      jump.enabled = false;
+      base.OnExit();
     }
   }
 }

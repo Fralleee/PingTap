@@ -1,42 +1,44 @@
 ﻿using Fralle.Movement.Moves;
+using System.Linq;
 using UnityEngine;
 
 namespace Fralle.Movement.States
 {
-  public class MovementStateAirborne : IState
+  public class MovementStateAirborne : MovementState
   {
-    readonly MovementAirControl airControl;
-    readonly MovementGravityAdjuster gravityAdjuster;
-    readonly MovementHeadBob movementHeadBob;
     readonly Rigidbody rigidBody;
+    readonly MovementAirControl airControl;
+    readonly MovementHeadBob headBob;
 
-    public MovementStateAirborne(MovementAirControl airControl, MovementGravityAdjuster gravityAdjuster, MovementHeadBob movementHeadBob, Rigidbody rigidBody)
+    public MovementStateAirborne(Rigidbody rb, params MonoBehaviour[] moves) : base(moves)
     {
-      this.airControl = airControl;
-      this.gravityAdjuster = gravityAdjuster;
-      this.movementHeadBob = movementHeadBob;
-      this.rigidBody = rigidBody;
+      rigidBody = rb;
+
+      airControl = (MovementAirControl)moves.FirstOrDefault(x => x.GetType() == typeof(MovementAirControl));
+      headBob = (MovementHeadBob)moves.FirstOrDefault(x => x.GetType() == typeof(MovementHeadBob));
     }
 
-    public void OnEnter()
+    public override void OnEnter()
     {
-      gravityAdjuster.enabled = true;
-      airControl.enabled = true;
+      base.OnEnter();
 
       var horizontalMovement = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
       airControl.startSpeed = horizontalMovement.magnitude;
     }
 
-    public void Tick()
+    public override void Tick()
     {
-      movementHeadBob.AirborneTick();
+      base.Tick();
+
+      headBob.AirborneTick();
     }
 
-    public void OnExit()
+    public override void OnExit()
     {
+      base.OnExit();
+
       airControl.startSpeed = 0f;
       airControl.enabled = false;
-      gravityAdjuster.enabled = false;
     }
   }
 }

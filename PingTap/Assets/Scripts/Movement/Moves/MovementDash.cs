@@ -10,16 +10,21 @@ namespace Fralle.Movement.Moves
   {
     public event Action OnComplete = delegate { };
 
-    [SerializeField] float dashPower = 8f;
-    [SerializeField] float dashStopTime = 0.1f;
+    [Header("Parameters")]
+    [SerializeField] float power = 16f;
+    [SerializeField] float stopTime = 0.25f;
+    [SerializeField] float cooldown = 5f;
+
+    [Header("Objects")]
     [SerializeField] Transform cameraRig;
     [SerializeField] ShakeTransformEventData cameraShake;
     [SerializeField] ShakeTransform cameraShakeTransform;
 
     PlayerInputController input;
-
     Rigidbody rigidBody;
     Transform orientation;
+    float cooldownTimer;
+    public bool isDashing;
 
     void Awake()
     {
@@ -29,8 +34,19 @@ namespace Fralle.Movement.Moves
       orientation = transform.Find("Orientation");
     }
 
+    public void Update()
+    {
+      if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
+      if (input.dashButtonDown && cooldownTimer <= 0) PerformDash();
+    }
+
     public void PerformDash()
     {
+      if (isDashing) return;
+      isDashing = true;
+
+      cooldownTimer = cooldown;
+
       var direction =
         input.move.y > 0 ? cameraRig.forward :
         input.move.y < 0 ? -orientation.forward :
@@ -39,7 +55,7 @@ namespace Fralle.Movement.Moves
         cameraRig.forward;
 
       rigidBody.velocity = Vector3.zero;
-      rigidBody.AddForce(direction * dashPower, ForceMode.VelocityChange);
+      rigidBody.AddForce(direction * power, ForceMode.VelocityChange);
 
       cameraShakeTransform.AddShakeEvent(cameraShake);
       StartCoroutine(StopDashing());
@@ -49,14 +65,22 @@ namespace Fralle.Movement.Moves
     {
       StopAllCoroutines();
       rigidBody.velocity = Vector3.zero;
+      ResetDash();
+    }
+
+    void ResetDash()
+    {
+      isDashing = false;
     }
 
     IEnumerator StopDashing()
     {
-      yield return new WaitForSeconds(dashStopTime);
+      yield return new WaitForSeconds(stopTime);
 
       rigidBody.velocity = Vector3.zero;
+      ResetDash();
       OnComplete();
     }
+
   }
 }
