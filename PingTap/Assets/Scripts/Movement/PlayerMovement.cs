@@ -32,13 +32,6 @@ namespace Fralle.Movement
 
     Rigidbody rigidBody;
 
-    //- Add Dash-move to grounded and airborne
-    //- Never disable Dash-move
-    //- Enter dashstate on keyup
-    //- Test with long dashtimer that you can jump inbetween and change states without interrupting dash
-    //- Also timer should be percentage of boost.hold key 0.3s and get 60~of the boost
-    //- Dash-state should just have all moves disabled and a recovery timer that is set by Dash-move
-
     void Awake()
     {
       rigidBody = GetComponentInChildren<Rigidbody>();

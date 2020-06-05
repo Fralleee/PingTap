@@ -1,22 +1,39 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Fralle.Core.Audio
 {
-  public class SpawnSound : MonoBehaviour
+  public class SpawnSounds : MonoBehaviour
   {
     public GameObject prefabSound;
 
+    public int spawnCount = 1;
+
+    public float spawnDelay = 1f;
+
     public bool destroyWhenDone = true;
-    public bool soundPrefabIsChild = false;
 
     [Range(0.01f, 10f)] public float pitchRandomMultiplier = 1f;
 
-    void Start()
+    public void Spawn()
+    {
+      if (spawnDelay > 0) StartCoroutine(SpawnSingle(spawnDelay));
+      else SpawnSingle();
+    }
+
+    IEnumerator SpawnSingle(float time)
+    {
+      for (var i = 0; i < spawnCount; i++)
+      {
+        SpawnSingle();
+        yield return new WaitForSeconds(time);
+      }
+    }
+
+    void SpawnSingle()
     {
       var sound = Instantiate(prefabSound, transform.position, Quaternion.identity);
       var source = sound.GetComponent<AudioSource>();
-
-      if (soundPrefabIsChild) sound.transform.SetParent(transform);
 
       if (pitchRandomMultiplier != 1)
       {

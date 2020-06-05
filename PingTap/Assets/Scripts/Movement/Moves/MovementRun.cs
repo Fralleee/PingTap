@@ -13,7 +13,6 @@ namespace Fralle.Movement.Moves
     [SerializeField] float stopTime = 0.05f;
 
     PlayerInputController input;
-    PlayerMovement playerMovement;
 
     Rigidbody rigidBody;
     Transform orientation;
@@ -25,7 +24,6 @@ namespace Fralle.Movement.Moves
     void Awake()
     {
       input = GetComponentInParent<PlayerInputController>();
-      playerMovement = GetComponentInParent<PlayerMovement>();
 
       rigidBody = GetComponent<Rigidbody>();
       orientation = transform.Find("Orientation");
@@ -52,8 +50,6 @@ namespace Fralle.Movement.Moves
       if (!(horizontalMovement.magnitude > actualMaxSpeed)) return;
       horizontalMovement = horizontalMovement.normalized * actualMaxSpeed;
       rigidBody.velocity = new Vector3(horizontalMovement.x, rigidBody.velocity.y, horizontalMovement.z);
-
-      //if (playerMovement.debug) playerMovement.debugUi.SetVelocityText(rigidBody.velocity.With(y: 0).magnitude);
     }
 
     void StoppingForces()

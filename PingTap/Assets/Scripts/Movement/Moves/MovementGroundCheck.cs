@@ -9,6 +9,7 @@ namespace Fralle.Movement.Moves
     public event Action<bool, float> OnGroundChanged = delegate { };
 
     [SerializeField] float maxSlopeAngle = 35;
+    [SerializeField] float maxWalkableSlopeAngle = 45;
 
     PlayerMovement playerMovement;
 
@@ -47,6 +48,7 @@ namespace Fralle.Movement.Moves
 
       var slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
       if (playerMovement.debug) playerMovement.debugUi.SetSlopeAngleText(slopeAngle);
+      if (slopeAngle > maxWalkableSlopeAngle) rigidBody.AddForce(Physics.gravity * 3f);
       if (slopeAngle > maxSlopeAngle + 1f) return;
 
       rigidBody.useGravity = false;

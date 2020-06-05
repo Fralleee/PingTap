@@ -11,7 +11,7 @@ namespace Fralle.Movement.Moves
     public event Action OnComplete = delegate { };
 
     [Header("Parameters")]
-    [SerializeField] float power = 16f;
+    [SerializeField] float power = 24f;
     [SerializeField] float stopTime = 0.25f;
     [SerializeField] float cooldown = 5f;
 

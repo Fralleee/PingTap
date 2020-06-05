@@ -8,7 +8,7 @@ namespace Fralle.AI.Spawning
 {
   public class Spawner : MonoBehaviour
   {
-    const float SpawnDelay = 0.1f;
+    [SerializeField] float SpawnDelay = 0.1f;
 
     [Readonly] public Army army;
 

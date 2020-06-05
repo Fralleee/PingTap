@@ -1,5 +1,6 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Attributes;
+using Fralle.Core.Audio;
 using Fralle.Player;
 using System;
 using UnityEngine;
@@ -20,6 +21,12 @@ namespace Fralle.Gameplay
     [Header("Cameras")]
     [SerializeField] Camera sceneCamera;
 
+    [Header("Audio")]
+    [SerializeField] SpawnSounds victorySoundPrefab;
+    [SerializeField] SpawnSounds defeatSoundPrefab;
+    SpawnSounds victorySound;
+    SpawnSounds defeatSound;
+
     [Space(10)]
     [Readonly] public int enemiesAlive;
     [Readonly] public int totalEnemies;
@@ -29,6 +36,8 @@ namespace Fralle.Gameplay
 
     [HideInInspector] public bool isVictory;
     [HideInInspector] public TreasureSpawner treasureSpawner;
+
+
 
     MatchState matchState;
     PlayerHome playerHome;
@@ -45,6 +54,12 @@ namespace Fralle.Gameplay
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
       WaveManager.OnWavesComplete += HandleWavesComplete;
+    }
+
+    void Start()
+    {
+      victorySound = Instantiate(victorySoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
+      defeatSound = Instantiate(defeatSoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
     }
 
     void Update()
@@ -86,6 +101,7 @@ namespace Fralle.Gameplay
       {
         PlayerMain.Disable();
         sceneCamera.gameObject.SetActive(true);
+        sceneCamera.GetComponent<AudioListener>().enabled = true;
       }
 
       matchState.enabled = false;
@@ -95,12 +111,14 @@ namespace Fralle.Gameplay
 
     void Victory()
     {
+      victorySound.Spawn();
       var stats = FinishedMatch();
       OnVictory(this, stats);
     }
 
     void Defeat(PlayerHome playerHome)
     {
+      defeatSound.Spawn();
       var stats = FinishedMatch();
       OnDefeat(this, stats);
     }
