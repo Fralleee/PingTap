@@ -1,10 +1,12 @@
 ﻿using Fralle.Attack.Defense;
 using Fralle.Attack.Effect;
 using Fralle.Core.Extensions;
+using Fralle.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Fralle.Attack.Offense
 {
@@ -28,18 +30,26 @@ namespace Fralle.Attack.Offense
     public float maxHealth = 100f;
     public bool immortal;
     public Armor armor;
+    [SerializeField] float dropChance = 0.25f;
+    [SerializeField] Loot dropOnDeath;
 
     [Header("Graphics")]
-    [SerializeField] Renderer model;
+    [SerializeField] Renderer renderer;
     [SerializeField] GameObject deathModel;
 
+    MaterialPropertyBlock propBlock;
     Color defaultColor;
+    Color currentColor;
+    int colorID;
     bool isTouched;
     float colorLerpTime;
 
     void Start()
     {
-      defaultColor = model.material.GetColor(RendererColor);
+      propBlock = new MaterialPropertyBlock();
+      renderer.GetPropertyBlock(propBlock);
+      defaultColor = propBlock.GetColor(RendererColor);
+
       if (currentHealth == 0) currentHealth = maxHealth;
     }
 
@@ -56,9 +66,9 @@ namespace Fralle.Attack.Offense
 
       if (colorLerpTime > 0)
       {
-        var currentColor = model.material.GetColor(RendererColor);
-        var lerpedColor = Color.Lerp(currentColor, defaultColor, 1 - colorLerpTime);
-        model.material.SetColor(RendererColor, lerpedColor);
+        currentColor = Color.Lerp(currentColor, defaultColor, 1 - colorLerpTime);
+        propBlock.SetColor(RendererColor, currentColor);
+        renderer.SetPropertyBlock(propBlock);
         colorLerpTime -= Time.deltaTime * 0.25f;
       }
     }
@@ -73,7 +83,9 @@ namespace Fralle.Attack.Offense
 
       if (damage.hitAngle != -1)
       {
-        model.material.SetColor(RendererColor, Color.white);
+        currentColor = Color.white;
+        propBlock.SetColor(RendererColor, currentColor);
+        renderer.SetPropertyBlock(propBlock);
         colorLerpTime = 1f;
       }
     }
@@ -117,7 +129,7 @@ namespace Fralle.Attack.Offense
 
     void GraphicDeathEffect(Damage damage)
     {
-      if (!model || !deathModel) return;
+      if (!renderer || !deathModel) return;
       var deathModelInstance = Instantiate(deathModel, transform.position, transform.rotation);
       Destroy(deathModelInstance, 3f);
 
@@ -145,6 +157,9 @@ namespace Fralle.Attack.Offense
         isDead = true;
         OnDeath(this, damage);
         GraphicDeathEffect(damage);
+
+        if (!dropOnDeath) return;
+        if (Random.value > 1 - dropChance) Instantiate(dropOnDeath, transform.position, Quaternion.identity);
       }
     }
   }

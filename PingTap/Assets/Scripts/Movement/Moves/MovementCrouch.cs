@@ -12,7 +12,7 @@ namespace Fralle.Movement.Moves
     [SerializeField] float crouchHeight = 1f;
 
     PlayerInputController input;
-    MovementRun run;
+    MovementLimitSpeed limitSpeed;
 
     CapsuleCollider capsuleCollider;
 
@@ -24,7 +24,7 @@ namespace Fralle.Movement.Moves
     void Awake()
     {
       input = GetComponentInParent<PlayerInputController>();
-      run = GetComponent<MovementRun>();
+      limitSpeed = GetComponent<MovementLimitSpeed>();
       capsuleCollider = GetComponentInParent<CapsuleCollider>();
 
       defaultHeight = capsuleCollider.height;
@@ -40,14 +40,14 @@ namespace Fralle.Movement.Moves
         goalHeight = defaultHeight;
         capsuleCollider.height = defaultHeight;
         isCrouching = false;
-        run.HandleCrouch(false);
+        limitSpeed.SetExternalSpeedModifier(1f);
         OnCrouch(false);
       }
       else if (input.crouchButtonHold && !isCrouching)
       {
         goalHeight = crouchHeight;
         isCrouching = true;
-        run.HandleCrouch(true);
+        limitSpeed.SetExternalSpeedModifier(0.5f);
         OnCrouch(true);
       }
       else if (!input.crouchButtonHold)
@@ -56,7 +56,7 @@ namespace Fralle.Movement.Moves
         {
           goalHeight = defaultHeight;
           isCrouching = false;
-          run.HandleCrouch(false);
+          limitSpeed.SetExternalSpeedModifier(1f);
           OnCrouch(false);
         }
       }

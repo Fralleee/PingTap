@@ -1,6 +1,7 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Attributes;
 using Fralle.Core.Audio;
+using Fralle.Movement;
 using Fralle.Player;
 using System;
 using UnityEngine;
@@ -54,6 +55,8 @@ namespace Fralle.Gameplay
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
       WaveManager.OnWavesComplete += HandleWavesComplete;
+
+      LeanTween.init(1000);
     }
 
     void Start()
@@ -97,6 +100,8 @@ namespace Fralle.Gameplay
       var player = FindObjectOfType<PlayerMain>();
       if (player) stats = player.stats;
 
+      PlayerMouseLook.ConfigureCursor(false);
+
       if (sceneCamera)
       {
         PlayerMain.Disable();
@@ -111,6 +116,7 @@ namespace Fralle.Gameplay
 
     void Victory()
     {
+      Debug.Log("Victory");
       victorySound.Spawn();
       var stats = FinishedMatch();
       OnVictory(this, stats);
@@ -118,6 +124,7 @@ namespace Fralle.Gameplay
 
     void Defeat(PlayerHome playerHome)
     {
+      Debug.Log("Defeat");
       defeatSound.Spawn();
       var stats = FinishedMatch();
       OnDefeat(this, stats);

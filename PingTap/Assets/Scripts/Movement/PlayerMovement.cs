@@ -26,6 +26,7 @@ namespace Fralle.Movement
     MovementRun run;
     MovementJump jump;
     MovementGravityAdjuster gravityAdjuster;
+    MovementLimitSpeed limitSpeed;
     MovementAirControl airControl;
     MovementDash dash;
     MovementCrouch crouch;
@@ -49,6 +50,7 @@ namespace Fralle.Movement
       jump = GetComponentInChildren<MovementJump>();
       airControl = GetComponentInChildren<MovementAirControl>();
       gravityAdjuster = GetComponentInChildren<MovementGravityAdjuster>();
+      limitSpeed = GetComponentInChildren<MovementLimitSpeed>();
       dash = GetComponentInChildren<MovementDash>();
       crouch = GetComponentInChildren<MovementCrouch>();
 
@@ -57,8 +59,8 @@ namespace Fralle.Movement
       run.movementHeadBob = movementHeadBob;
 
       // states
-      var grounded = new MovementStateGrounded(run, crouch, jump, dash, movementHeadBob);
-      var airborne = new MovementStateAirborne(rigidBody, airControl, dash, gravityAdjuster, movementHeadBob);
+      var grounded = new MovementStateGrounded(run, crouch, jump, dash, movementHeadBob, limitSpeed);
+      var airborne = new MovementStateAirborne(rigidBody, airControl, dash, gravityAdjuster, movementHeadBob, limitSpeed);
       var dashing = new MovementStateDashing(dash);
       //var blocked = new MovementBlocked();
 

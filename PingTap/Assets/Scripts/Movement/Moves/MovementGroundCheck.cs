@@ -37,19 +37,22 @@ namespace Fralle.Movement.Moves
     {
       rigidBody.useGravity = true;
       var wasGrounded = IsGrounded;
-      IsGrounded = Physics.SphereCast(transform.position, capsule.radius, -Vector3.up, out var hit, distToGround);
+      IsGrounded = Physics.SphereCast(transform.position, capsule.radius - Physics.defaultContactOffset, Vector3.down, out var hit, distToGround);
+
       if (wasGrounded != IsGrounded)
       {
         OnGroundChanged(IsGrounded, rigidBody.velocity.y);
         if (playerMovement.debug) playerMovement.debugUi.SetGroundedText(IsGrounded, IsGrounded ? hit.transform.name : "");
       }
 
-      if (!IsGrounded || rigidBody.velocity.y < -0.5f) return;
-
-      var slopeAngle = Mathf.Abs(Vector3.Angle(hit.normal, Vector3.forward) - 90f);
-      if (playerMovement.debug) playerMovement.debugUi.SetSlopeAngleText(slopeAngle);
-      if (slopeAngle > maxWalkableSlopeAngle) rigidBody.AddForce(Physics.gravity * 3f);
-      if (slopeAngle > maxSlopeAngle + 1f) return;
+      if (IsGrounded)
+      {
+        var slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+        if (playerMovement.debug) playerMovement.debugUi.SetSlopeAngleText(slopeAngle);
+        if (slopeAngle > maxWalkableSlopeAngle) rigidBody.AddForce(Physics.gravity * 3f);
+        if (slopeAngle > maxSlopeAngle + 1f) return;
+      }
+      else if (!IsGrounded || rigidBody.velocity.y < -0.5f) return;
 
       rigidBody.useGravity = false;
       rigidBody.AddForce(-hit.normal * Physics.gravity.magnitude * 5f);

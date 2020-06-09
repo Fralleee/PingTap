@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 4980217895567351953}
   - component: {fileID: 855153777}
   - component: {fileID: 855153778}
+  - component: {fileID: 930725827}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -575,7 +576,6 @@ MonoBehaviour:
   movementHeadBob: {fileID: 0}
   forwardSpeed: 100
   strafeSpeed: 75
-  maxSpeed: 5
   stopTime: 0.05
 --- !u!114 &5371966538959779295
 MonoBehaviour:
@@ -636,6 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSlopeAngle: 35
+  maxWalkableSlopeAngle: 45
 --- !u!114 &855153777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +667,19 @@ MonoBehaviour:
   forwardSpeed: 50
   strafeSpeed: 50
   maxSpeed: 2.5
+--- !u!114 &930725827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371905872086469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29ebd50c44506b47a1015b52cb29255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 7
 --- !u!1 &1386371906370868751
 GameObject:
   m_ObjectHideFlags: 0

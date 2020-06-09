@@ -72,6 +72,7 @@ namespace Fralle.UI
     {
       if (startPositionOffset) objectToAnimate.GetComponent<RectTransform>().localScale = from;
 
+
       tweenObject = LeanTween.scale(objectToAnimate, to, duration);
     }
 
@@ -79,7 +80,7 @@ namespace Fralle.UI
     {
       if (startPositionOffset) objectToAnimate.GetComponent<RectTransform>().localScale = from;
 
-      float actualDuration = duration * 0.5f;
+      var actualDuration = duration * 0.5f;
       tweenObject = LeanTween.scale(objectToAnimate, to, actualDuration)
         .setOnComplete(() => LeanTween.scale(objectToAnimate, from, actualDuration));
     }

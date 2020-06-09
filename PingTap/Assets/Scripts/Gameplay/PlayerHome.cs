@@ -21,6 +21,7 @@ namespace Fralle.Gameplay
 
     void HandleDeath(Health health, Damage damage)
     {
+      OnDeath(this);
       Destroy(gameObject);
     }
 
@@ -34,7 +35,6 @@ namespace Fralle.Gameplay
 
     void OnDestroy()
     {
-      OnDeath(this);
       health.OnDeath -= HandleDeath;
       Enemy.OnEnemyReachedPowerStone -= HandleEnemyReachedPowerStone;
     }

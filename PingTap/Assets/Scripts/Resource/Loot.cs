@@ -5,16 +5,23 @@ namespace Fralle.Resource
 {
   public class Loot : MonoBehaviour
   {
-    [SerializeField] int credits = 5;
+    static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
+
+    [SerializeField] LootConfiguration lootConfiguration;
+    [SerializeField] Renderer model;
+    [SerializeField] Transform effectSpawnPoint;
     [SerializeField] float lifeTime = 60f;
 
+    MaterialPropertyBlock propBlock;
     UiTweener uiTweener;
-
     bool pickedUp;
+    int credits = 5;
 
     void Awake()
     {
       uiTweener = GetComponent<UiTweener>();
+      propBlock = new MaterialPropertyBlock();
+      Drop();
     }
 
     void Update()
@@ -24,6 +31,18 @@ namespace Fralle.Resource
       {
         DeSpawn();
       }
+    }
+
+    void Drop()
+    {
+      var quality = lootConfiguration.GetQuality();
+      credits = lootConfiguration.GetQualityCredits(quality);
+      propBlock.SetColor(RendererColor, lootConfiguration.GetQualityColor(quality));
+      model.SetPropertyBlock(propBlock);
+
+      var prefab = lootConfiguration.GetQualityPrefab(quality);
+      var instance = Instantiate(prefab, transform);
+      if (effectSpawnPoint) instance.transform.position = effectSpawnPoint.position;
     }
 
     void DeSpawn()

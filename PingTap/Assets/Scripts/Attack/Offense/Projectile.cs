@@ -50,7 +50,7 @@ namespace Fralle.Attack.Offense
 
       if (!muzzleParticlePrefab) return;
       var muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
-      int layer = LayerMask.NameToLayer("First Person Objects");
+      var layer = LayerMask.NameToLayer("First Person Objects");
       muzzleParticle.SetLayerRecursively(layer);
       Destroy(muzzleParticle, 1.5f);
     }
@@ -66,22 +66,22 @@ namespace Fralle.Attack.Offense
         Destroy(impactParticle, 5f);
       }
 
-      Collider[] colliders = Physics.OverlapSphere(position, data.explosionRadius);
+      var colliders = Physics.OverlapSphere(position, data.explosionRadius);
       foreach (var col in colliders)
       {
         AddExplosionForce(col, position);
       }
 
-      Health[] targets = colliders.Select(x => x.GetComponentInParent<Health>()).Where(x => x != null).Distinct().ToArray();
+      var targets = colliders.Select(x => x.GetComponentInParent<Health>()).Where(x => x != null).Distinct().ToArray();
 
       foreach (var health in targets)
       {
-        float distance = Vector3.Distance(health.transform.position, position);
+        var distance = Vector3.Distance(health.transform.position, position);
         if (distance > data.explosionRadius + 1) continue;
 
-        float distanceMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
+        var distanceMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (data.explosionRadius + 1), 2));
 
-        float damageAmount = data.damage * distanceMultiplier;
+        var damageAmount = data.damage * distanceMultiplier;
         var targetPosition = health.transform.position;
         var damage = new Damage()
         {
