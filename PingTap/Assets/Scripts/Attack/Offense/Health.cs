@@ -1,12 +1,10 @@
 ﻿using Fralle.Attack.Defense;
 using Fralle.Attack.Effect;
 using Fralle.Core.Extensions;
-using Fralle.Resource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Fralle.Attack.Offense
 {
@@ -30,8 +28,6 @@ namespace Fralle.Attack.Offense
     public float maxHealth = 100f;
     public bool immortal;
     public Armor armor;
-    [SerializeField] float dropChance = 0.25f;
-    [SerializeField] Loot dropOnDeath;
 
     [Header("Graphics")]
     [SerializeField] Renderer renderer;
@@ -40,7 +36,6 @@ namespace Fralle.Attack.Offense
     MaterialPropertyBlock propBlock;
     Color defaultColor;
     Color currentColor;
-    int colorID;
     bool isTouched;
     float colorLerpTime;
 
@@ -157,9 +152,6 @@ namespace Fralle.Attack.Offense
         isDead = true;
         OnDeath(this, damage);
         GraphicDeathEffect(damage);
-
-        if (!dropOnDeath) return;
-        if (Random.value > 1 - dropChance) Instantiate(dropOnDeath, transform.position, Quaternion.identity);
       }
     }
   }

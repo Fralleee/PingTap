@@ -18,6 +18,7 @@ namespace Fralle.Movement.States
     {
       base.OnEnter();
 
+      dash.PerformDash();
       dashComplete = false;
       dash.OnComplete += HandleComplete;
     }

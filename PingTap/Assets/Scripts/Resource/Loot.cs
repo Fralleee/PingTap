@@ -3,46 +3,53 @@ using UnityEngine;
 
 namespace Fralle.Resource
 {
+  [RequireComponent(typeof(SphereCollider))]
   public class Loot : MonoBehaviour
   {
     static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
 
-    [SerializeField] LootConfiguration lootConfiguration;
-    [SerializeField] Renderer model;
-    [SerializeField] Transform effectSpawnPoint;
-    [SerializeField] float lifeTime = 60f;
-
-    MaterialPropertyBlock propBlock;
     UiTweener uiTweener;
+    SphereCollider collider;
+
+    [SerializeField] LootQuality.Type quality;
+
+    const float PickupRange = 3f;
+
+    int credits;
+    float lifeTime = 60f;
     bool pickedUp;
-    int credits = 5;
+
+    public void Setup(int credits)
+    {
+      this.credits = credits;
+    }
 
     void Awake()
     {
       uiTweener = GetComponent<UiTweener>();
-      propBlock = new MaterialPropertyBlock();
-      Drop();
+
+      collider = GetComponent<SphereCollider>();
+      collider.radius = PickupRange;
+      collider.isTrigger = true;
+
+      var renderer = GetComponentInChildren<Renderer>();
+      SetRendererColor(renderer, quality);
     }
 
     void Update()
     {
       lifeTime -= Time.deltaTime;
-      if (lifeTime <= 0 || pickedUp)
-      {
-        DeSpawn();
-      }
+      if (lifeTime <= 0) DeSpawn();
     }
 
-    void Drop()
+    void SetRendererColor(Renderer renderer, LootQuality.Type quality)
     {
-      var quality = lootConfiguration.GetQuality();
-      credits = lootConfiguration.GetQualityCredits(quality);
-      propBlock.SetColor(RendererColor, lootConfiguration.GetQualityColor(quality));
-      model.SetPropertyBlock(propBlock);
+      if (!renderer) return;
 
-      var prefab = lootConfiguration.GetQualityPrefab(quality);
-      var instance = Instantiate(prefab, transform);
-      if (effectSpawnPoint) instance.transform.position = effectSpawnPoint.position;
+      var propBlock = new MaterialPropertyBlock();
+      renderer.GetPropertyBlock(propBlock);
+      propBlock.SetColor(RendererColor, LootQuality.GetQualityColor(quality));
+      renderer.SetPropertyBlock(propBlock);
     }
 
     void DeSpawn()
@@ -51,15 +58,17 @@ namespace Fralle.Resource
       Destroy(gameObject, uiTweener.duration);
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Component component)
     {
       if (pickedUp) return;
 
-      var inventoryController = collider.GetComponentInParent<InventoryController>();
+      var inventoryController = component.GetComponentInParent<InventoryController>();
       if (!inventoryController) return;
 
       inventoryController.Receive(credits);
       pickedUp = true;
+      DeSpawn();
     }
+
   }
 }

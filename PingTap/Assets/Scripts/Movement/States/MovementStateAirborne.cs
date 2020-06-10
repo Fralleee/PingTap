@@ -23,22 +23,25 @@ namespace Fralle.Movement.States
       base.OnEnter();
 
       var horizontalMovement = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
-      airControl.startSpeed = horizontalMovement.magnitude;
+      if (airControl) airControl.startSpeed = horizontalMovement.magnitude;
     }
 
     public override void Tick()
     {
       base.Tick();
 
-      headBob.AirborneTick();
+      if (headBob) headBob.AirborneTick();
     }
 
     public override void OnExit()
     {
       base.OnExit();
 
-      airControl.startSpeed = 0f;
-      airControl.enabled = false;
+      if (airControl)
+      {
+        airControl.startSpeed = 0f;
+        airControl.enabled = false;
+      }
     }
   }
 }

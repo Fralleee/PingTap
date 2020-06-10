@@ -3,7 +3,6 @@ using Fralle.Attack.Offense;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
 using Fralle.Player;
-using Fralle.Resource;
 using System;
 using UnityEngine;
 
@@ -25,8 +24,6 @@ namespace Fralle.AI
 
     public bool IsDead { get; private set; }
     public PlayerMain KilledByPlayer { get; private set; }
-
-    [SerializeField] DropResourceAction dropResource;
 
     void Awake()
     {
@@ -79,7 +76,6 @@ namespace Fralle.AI
     {
       OnAnyEnemyDeath(this);
       OnDeath(damage);
-      dropResource.Drop(this);
     }
 
     void DeathVisuals(bool destroyImmediately)

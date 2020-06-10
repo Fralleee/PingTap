@@ -37,14 +37,17 @@ namespace Fralle.Movement.Moves
     public void Update()
     {
       if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
-      if (input.dashButtonDown && cooldownTimer <= 0) PerformDash();
+      if (input.dashButtonDown && cooldownTimer <= 0) StartDashing();
+    }
+
+    void StartDashing()
+    {
+      if (isDashing) return;
+      isDashing = true;
     }
 
     public void PerformDash()
     {
-      if (isDashing) return;
-      isDashing = true;
-
       cooldownTimer = cooldown;
 
       var direction =
@@ -55,6 +58,7 @@ namespace Fralle.Movement.Moves
         cameraRig.forward;
 
       rigidBody.velocity = Vector3.zero;
+      rigidBody.useGravity = false;
       rigidBody.AddForce(direction * power, ForceMode.VelocityChange);
 
       cameraShakeTransform.AddShakeEvent(cameraShake);
@@ -64,20 +68,19 @@ namespace Fralle.Movement.Moves
     public void AbortDash()
     {
       StopAllCoroutines();
-      rigidBody.velocity = Vector3.zero;
       ResetDash();
     }
 
     void ResetDash()
     {
+      rigidBody.velocity = Vector3.zero;
+      rigidBody.useGravity = true;
       isDashing = false;
     }
 
     IEnumerator StopDashing()
     {
       yield return new WaitForSeconds(stopTime);
-
-      rigidBody.velocity = Vector3.zero;
       ResetDash();
       OnComplete();
     }

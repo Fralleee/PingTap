@@ -21,7 +21,7 @@ namespace Fralle.Movement.States
     {
       base.Tick();
 
-      headBob.GroundedTick();
+      if (headBob) headBob.GroundedTick();
     }
 
     public override void OnExit()

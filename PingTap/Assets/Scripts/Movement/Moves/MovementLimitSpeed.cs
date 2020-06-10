@@ -4,8 +4,7 @@ namespace Fralle.Movement.Moves
 {
   public class MovementLimitSpeed : MonoBehaviour
   {
-    [SerializeField] float maxSpeed = 5f;
-
+    [SerializeField] float maxSpeed = 7f;
 
     Rigidbody rigidBody;
     float externalSpeedModifier = 1f;

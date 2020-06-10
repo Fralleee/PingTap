@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1835535985047049594}
   - component: {fileID: 1169690573668540798}
   - component: {fileID: 1017305939656644488}
+  - component: {fileID: -3496286409503540599}
   m_Layer: 14
   m_Name: Cuboid
   m_TagString: Untagged
@@ -92,8 +93,6 @@ MonoBehaviour:
     armor: 5
     armorElementModifiers: []
     protection: {fileID: 0}
-  dropChance: 0.25
-  dropOnDeath: {fileID: 243824878, guid: dbcc4242b02b91f488ede79ea42e46d8, type: 3}
   renderer: {fileID: 2309449638659141724}
   deathModel: {fileID: 3030067158557944911, guid: a6fe23b72e07de44d8d17f9dcd6fb8cf,
     type: 3}
@@ -113,9 +112,6 @@ MonoBehaviour:
   health: {fileID: 0}
   damageAmount: 1
   waveType: 0
-  dropResource:
-    minCredits: 1
-    maxCredits: 3
 --- !u!114 &1017305939656644488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +126,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMovementModifier: 1
   target: {fileID: 0}
+--- !u!114 &-3496286409503540599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565378040731073697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2eaa344dd2cf694ab934dfd5c3b47c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCredits: 1
+  maxCredits: 3
+  dropChance: 0.125
+  lootTable: {fileID: 11400000, guid: f1bee62d455a1464988c18fd55e05800, type: 2}
 --- !u!1001 &6800776577071501016
 PrefabInstance:
   m_ObjectHideFlags: 0
