@@ -2,20 +2,11 @@
 {
   public class MatchStateEnd : IState
   {
-    readonly WaveManager waveManager;
-    readonly MatchManager matchManager;
-
-    public MatchStateEnd(WaveManager waveManager, MatchManager matchManager)
-    {
-      this.waveManager = waveManager;
-      this.matchManager = matchManager;
-    }
-
     public void OnEnter()
     {
-      waveManager.NextWave();
+      WaveManager.Instance.NextWave();
 
-      matchManager.NewState(GameState.End);
+      MatchManager.Instance.NewState(GameState.End);
     }
 
     public void Tick()

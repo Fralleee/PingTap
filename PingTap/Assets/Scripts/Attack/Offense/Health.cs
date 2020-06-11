@@ -10,8 +10,6 @@ namespace Fralle.Attack.Offense
 {
   public class Health : MonoBehaviour, IDamageable
   {
-    static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
-
     public static event Action<Damage> OnAnyDamage = delegate { };
     public static event Action<Health> OnHealthBarAdded = delegate { };
     public static event Action<Health> OnHealthBarRemoved = delegate { };
@@ -29,23 +27,11 @@ namespace Fralle.Attack.Offense
     public bool immortal;
     public Armor armor;
 
-    [Header("Graphics")]
-    [SerializeField] Renderer renderer;
-    [SerializeField] GameObject deathModel;
-
-    MaterialPropertyBlock propBlock;
-    Color defaultColor;
-    Color currentColor;
     bool isTouched;
-    float colorLerpTime;
 
     void Start()
     {
-      propBlock = new MaterialPropertyBlock();
-      renderer.GetPropertyBlock(propBlock);
-      defaultColor = propBlock.GetColor(RendererColor);
-
-      if (currentHealth == 0) currentHealth = maxHealth;
+      if (currentHealth.EqualsWithTolerance(0f)) currentHealth = maxHealth;
     }
 
     void Update()
@@ -58,14 +44,6 @@ namespace Fralle.Attack.Offense
         damageEffects[i].Exit(this);
         damageEffects.RemoveAt(i);
       }
-
-      if (colorLerpTime > 0)
-      {
-        currentColor = Color.Lerp(currentColor, defaultColor, 1 - colorLerpTime);
-        propBlock.SetColor(RendererColor, currentColor);
-        renderer.SetPropertyBlock(propBlock);
-        colorLerpTime -= Time.deltaTime * 0.25f;
-      }
     }
 
     public void ReceiveAttack(Damage damage)
@@ -75,14 +53,6 @@ namespace Fralle.Attack.Offense
       damage = armor.Protect(damage, this);
       TakeDamage(damage);
       ApplyEffects(damage);
-
-      if (damage.hitAngle != -1)
-      {
-        currentColor = Color.white;
-        propBlock.SetColor(RendererColor, currentColor);
-        renderer.SetPropertyBlock(propBlock);
-        colorLerpTime = 1f;
-      }
     }
 
     public void TakeDamage(Damage damage)
@@ -122,20 +92,6 @@ namespace Fralle.Attack.Offense
       }
     }
 
-    void GraphicDeathEffect(Damage damage)
-    {
-      if (!renderer || !deathModel) return;
-      var deathModelInstance = Instantiate(deathModel, transform.position, transform.rotation);
-      Destroy(deathModelInstance, 3f);
-
-      foreach (var rigidBody in deathModelInstance.GetComponentsInChildren<Rigidbody>())
-      {
-        rigidBody.AddForceAtPosition(damage.force, damage.position);
-      }
-
-      Destroy(gameObject);
-    }
-
     void Death(Damage damage)
     {
       if (isDead) return;
@@ -151,7 +107,6 @@ namespace Fralle.Attack.Offense
       {
         isDead = true;
         OnDeath(this, damage);
-        GraphicDeathEffect(damage);
       }
     }
   }

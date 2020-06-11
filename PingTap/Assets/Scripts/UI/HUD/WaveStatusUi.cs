@@ -1,4 +1,4 @@
-﻿using Fralle.Core.Animation;
+﻿using Fralle.Core.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,10 +17,10 @@ namespace Fralle.UI.HUD
 
     public void SetFill(float percentage)
     {
-      if (foreGround.fillAmount == 1) return;
+      if (foreGround.fillAmount.EqualsWithTolerance(1f)) return;
 
       foreGround.fillAmount = percentage;
-      if (percentage == 1) Animate();
+      if (percentage.EqualsWithTolerance(1f)) Animate();
     }
 
     void Animate()

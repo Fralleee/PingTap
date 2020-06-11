@@ -22,8 +22,8 @@ namespace Fralle.Core.Extensions
 
     public static void LookAtFlat(this Transform source, Transform target)
     {
-      Vector3 targetPostition = new Vector3(target.position.x, source.position.y, target.position.z);
-      source.LookAt(targetPostition);
+      var position = new Vector3(target.position.x, source.position.y, target.position.z);
+      source.LookAt(position);
     }
   }
 }

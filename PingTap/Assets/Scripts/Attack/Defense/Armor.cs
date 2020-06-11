@@ -27,8 +27,8 @@ namespace Fralle.Attack.Defense
     float CalculateDamage(Damage damage)
     {
       var armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == damage.element);
-      float modifier = armorElementModifier?.modifier ?? 1;
-      float damageAmount = damage.damageAmount * modifier * DamageMultiplier;
+      var modifier = armorElementModifier?.modifier ?? 1;
+      var damageAmount = damage.damageAmount * modifier * DamageMultiplier;
       return damageAmount;
     }
 

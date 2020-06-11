@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Fralle.Core.Extensions;
+using UnityEngine;
 
 namespace Fralle.Core.Audio
 {
@@ -18,7 +19,7 @@ namespace Fralle.Core.Audio
 
       if (soundPrefabIsChild) sound.transform.SetParent(transform);
 
-      if (pitchRandomMultiplier != 1)
+      if (pitchRandomMultiplier.EqualsWithTolerance(1))
       {
         if (Random.value < .5) source.pitch *= Random.Range(1 / pitchRandomMultiplier, 1);
         else source.pitch *= Random.Range(1, pitchRandomMultiplier);

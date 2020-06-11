@@ -11,11 +11,11 @@ namespace Fralle.Resource
     public int credits;
     public List<InventoryItem> items = new List<InventoryItem>();
 
-    public void Receive(int credits = 0, InventoryItem item = null)
+    public void Receive(int droppedCredits = 0, InventoryItem item = null)
     {
-      if (credits > 0)
+      if (droppedCredits > 0)
       {
-        this.credits += credits;
+        this.credits += droppedCredits;
         OnCreditsUpdate(this.credits);
       }
 

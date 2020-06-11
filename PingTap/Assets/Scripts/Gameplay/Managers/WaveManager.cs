@@ -1,16 +1,17 @@
 ﻿using Fralle.AI;
 using Fralle.AI.Spawning;
 using Fralle.Core.Attributes;
+using Fralle.Core.Infrastructure;
 using System;
 using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-  public class WaveManager : MonoBehaviour
+  public class WaveManager : Singleton<WaveManager>
   {
-    public static event Action<WaveManager> OnNewSchema = delegate { };
-    public static event Action<WaveManager> OnNewWave = delegate { };
-    public static event Action<WaveManager> OnWavesComplete = delegate { };
+    public static event Action OnNewSchema = delegate { };
+    public static event Action OnNewWave = delegate { };
+    public static event Action OnWavesComplete = delegate { };
     public static event Action<float> OnWaveProgress = delegate { };
 
     [Header("Armies")]
@@ -51,7 +52,7 @@ namespace Fralle.Gameplay
         return SpawnWave();
       }
 
-      OnWavesComplete(this);
+      OnWavesComplete();
       return 0;
     }
 
@@ -60,12 +61,12 @@ namespace Fralle.Gameplay
       var army = armies[currentArmy];
       maxWaves = army.MaxRounds;
       spawner.army = army;
-      OnNewSchema(this);
+      OnNewSchema();
     }
 
     int SpawnWave()
     {
-      OnNewWave(this);
+      OnNewWave();
       currentWaveCount = spawner.SpawnRound(currentWave);
       return currentWaveCount;
     }

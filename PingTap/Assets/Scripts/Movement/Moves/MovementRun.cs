@@ -32,7 +32,6 @@ namespace Fralle.Movement.Moves
     void FixedUpdate()
     {
       Movement();
-      //LimitSpeed();
       StoppingForces();
     }
 
@@ -43,30 +42,11 @@ namespace Fralle.Movement.Moves
       if (movementHeadBob) movementHeadBob.HandleMovement(force, externalSpeedModifier);
     }
 
-    //void LimitSpeed()
-    //{
-    //  var actualMaxSpeed = maxSpeed * externalSpeedModifier;
-    //  var horizontalMovement = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
-    //  if (!(horizontalMovement.magnitude > actualMaxSpeed)) return;
-    //  horizontalMovement = horizontalMovement.normalized * actualMaxSpeed;
-    //  rigidBody.velocity = new Vector3(horizontalMovement.x, rigidBody.velocity.y, horizontalMovement.z);
-    //}
-
     void StoppingForces()
     {
       var velocityX = Mathf.SmoothDamp(rigidBody.velocity.x, 0, ref stopX, stopTime);
       var velocityZ = Mathf.SmoothDamp(rigidBody.velocity.z, 0, ref stopZ, stopTime);
       rigidBody.velocity = new Vector3(velocityX, rigidBody.velocity.y, velocityZ);
     }
-
-    //public void HandleCrouch(bool enter)
-    //{
-    //  SetExternalSpeedModifier(enter ? 0.5f : 1f);
-    //}
-
-    //public void SetExternalSpeedModifier(float modifier)
-    //{
-    //  externalSpeedModifier = Mathf.Clamp(modifier, 0, float.MaxValue);
-    //}
   }
 }

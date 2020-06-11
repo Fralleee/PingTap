@@ -14,9 +14,9 @@ namespace Fralle.UI.HUD
       WaveManager.OnNewSchema += SetText;
     }
 
-    void SetText(WaveManager waveManager)
+    void SetText()
     {
-      text.text = $"Level {waveManager.currentArmy + 1}";
+      text.text = $"Level {WaveManager.Instance.currentArmy + 1}";
     }
   }
 }

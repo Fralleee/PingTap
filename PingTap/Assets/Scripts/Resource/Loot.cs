@@ -9,7 +9,7 @@ namespace Fralle.Resource
     static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
 
     UiTweener uiTweener;
-    SphereCollider collider;
+    new SphereCollider collider;
 
     [SerializeField] LootQuality.Type quality;
 
@@ -19,9 +19,9 @@ namespace Fralle.Resource
     float lifeTime = 60f;
     bool pickedUp;
 
-    public void Setup(int credits)
+    public void Setup(int startCredits)
     {
-      this.credits = credits;
+      credits = startCredits;
     }
 
     void Awake()
@@ -32,8 +32,8 @@ namespace Fralle.Resource
       collider.radius = PickupRange;
       collider.isTrigger = true;
 
-      var renderer = GetComponentInChildren<Renderer>();
-      SetRendererColor(renderer, quality);
+      var rendererComponent = GetComponentInChildren<Renderer>();
+      SetRendererColor(rendererComponent, quality);
     }
 
     void Update()
@@ -42,14 +42,14 @@ namespace Fralle.Resource
       if (lifeTime <= 0) DeSpawn();
     }
 
-    void SetRendererColor(Renderer renderer, LootQuality.Type quality)
+    static void SetRendererColor(Renderer rendererP, LootQuality.Type qualityP)
     {
-      if (!renderer) return;
+      if (!rendererP) return;
 
       var propBlock = new MaterialPropertyBlock();
-      renderer.GetPropertyBlock(propBlock);
-      propBlock.SetColor(RendererColor, LootQuality.GetQualityColor(quality));
-      renderer.SetPropertyBlock(propBlock);
+      rendererP.GetPropertyBlock(propBlock);
+      propBlock.SetColor(RendererColor, LootQuality.GetQualityColor(qualityP));
+      rendererP.SetPropertyBlock(propBlock);
     }
 
     void DeSpawn()

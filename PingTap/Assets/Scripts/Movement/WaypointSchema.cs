@@ -36,7 +36,7 @@ namespace Fralle.Movement
       SceneView.duringSceneGui -= OnSceneGUI;
     }
 
-    void OnSceneGUI(SceneView sceneview)
+    void OnSceneGUI(SceneView sceneView)
     {
       if (Selection.activeObject != this) return;
       if (waypoints.Count == 0) return;

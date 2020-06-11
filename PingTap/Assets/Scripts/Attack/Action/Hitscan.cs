@@ -1,5 +1,6 @@
 ﻿using Fralle.Attack.Offense;
 using Fralle.Core.Attributes;
+using Fralle.Core.Extensions;
 using System.Linq;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace Fralle.Attack.Action
     internal override void Update()
     {
       base.Update();
-      if (currentSpread == 0) return;
+      if (currentSpread.EqualsWithTolerance(0f)) return;
       currentSpread -= Time.deltaTime * recovery;
       currentSpread = Mathf.Clamp(currentSpread, 0, spreadRadius);
     }

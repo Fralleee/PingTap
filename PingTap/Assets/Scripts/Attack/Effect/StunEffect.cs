@@ -12,7 +12,7 @@ namespace Fralle.Attack.Effect
 
     public override void Enter(Health health)
     {
-      float randValue = Random.value;
+      var randValue = Random.value;
       if (randValue <= chanceOnHit)
       {
         health.ReceiveAttack(new Damage()

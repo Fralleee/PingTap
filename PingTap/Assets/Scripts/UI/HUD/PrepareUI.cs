@@ -8,7 +8,6 @@ namespace Fralle.UI.HUD
   {
     [SerializeField] TextMeshProUGUI prepareTimer;
 
-    MatchManager matchManager;
     Canvas canvas;
     UiTweener uiTweener;
 
@@ -19,21 +18,20 @@ namespace Fralle.UI.HUD
       canvas = GetComponent<Canvas>();
       uiTweener = GetComponent<UiTweener>();
 
-      matchManager = GetComponentInParent<MatchManager>();
       MatchManager.OnNewState += HandleNewState;
     }
 
     void Update()
     {
-      if (matchManager.gameState != GameState.Prepare) return;
+      if (MatchManager.Instance.gameState != GameState.Prepare) return;
 
-      if (matchManager.prepareTimer >= 3) SetText(matchManager.prepareTimer);
-      else if (matchManager.prepareTimer < 3 && oldTimer >= 3) SetExplicitText("Ready");
-      else if (matchManager.prepareTimer < 2 && oldTimer >= 2) SetExplicitText("Set");
-      else if (matchManager.prepareTimer < 1 && oldTimer >= 1) SetExplicitText("Go");
+      if (MatchManager.Instance.prepareTimer >= 3) SetText(MatchManager.Instance.prepareTimer);
+      else if (MatchManager.Instance.prepareTimer < 3 && oldTimer >= 3) SetExplicitText("Ready");
+      else if (MatchManager.Instance.prepareTimer < 2 && oldTimer >= 2) SetExplicitText("Set");
+      else if (MatchManager.Instance.prepareTimer < 1 && oldTimer >= 1) SetExplicitText("Go");
 
-      prepareTimer.gameObject.SetActive(matchManager.prepareTimer > 0);
-      oldTimer = matchManager.prepareTimer;
+      prepareTimer.gameObject.SetActive(MatchManager.Instance.prepareTimer > 0);
+      oldTimer = MatchManager.Instance.prepareTimer;
     }
 
     void SetExplicitText(string text)

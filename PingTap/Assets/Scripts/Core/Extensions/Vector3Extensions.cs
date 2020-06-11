@@ -61,42 +61,24 @@ namespace Fralle.Core.Extensions
       v.z = Mathf.Floor(v.z);
     }
 
-    //
-
     public static Vector3 RoundedUp(this Vector3 t)
     {
-      Vector3 v = new Vector3();
-      v.x = Mathf.Round(t.x + .5f);
-      v.y = Mathf.Round(t.y + .5f);
-      v.z = Mathf.Round(t.z + .5f);
-      return v;
+      return new Vector3 { x = Mathf.Round(t.x + .5f), y = Mathf.Round(t.y + .5f), z = Mathf.Round(t.z + .5f) };
     }
 
     public static Vector3 RoundedDown(this Vector3 t)
     {
-      Vector3 v = new Vector3();
-      v.x = Mathf.Round(t.x - .5f);
-      v.y = Mathf.Round(t.y - .5f);
-      v.z = Mathf.Round(t.z - .5f);
-      return v;
+      return new Vector3 { x = Mathf.Round(t.x - .5f), y = Mathf.Round(t.y - .5f), z = Mathf.Round(t.z - .5f) };
     }
 
     public static Vector3 Rounded(this Vector3 t)
     {
-      Vector3 v = new Vector3();
-      v.x = Mathf.Round(t.x);
-      v.y = Mathf.Round(t.y);
-      v.z = Mathf.Round(t.z);
-      return v;
+      return new Vector3 { x = Mathf.Round(t.x), y = Mathf.Round(t.y), z = Mathf.Round(t.z) };
     }
 
     public static Vector3 Floored(this Vector3 t)
     {
-      Vector3 v = new Vector3();
-      v.x = Mathf.Floor(t.x);
-      v.y = Mathf.Floor(t.y);
-      v.z = Mathf.Floor(t.z);
-      return v;
+      return new Vector3 { x = Mathf.Floor(t.x), y = Mathf.Floor(t.y), z = Mathf.Floor(t.z) };
     }
   }
 }

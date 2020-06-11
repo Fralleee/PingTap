@@ -10,8 +10,6 @@ namespace Fralle.Core.Animation
     public Material mat4;
     public Material mat5;
 
-    public Material currentmaterial;
-
     public float lerptime;
 
     float q;

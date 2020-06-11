@@ -13,12 +13,10 @@ namespace Fralle.UI.Menu
 
     [FormerlySerializedAs("Min")]
     [Header("Clamp values")]
-    [SerializeField]
-    float min = 0.01f;
+    [SerializeField] float min = 0.01f;
 
     [FormerlySerializedAs("Max")]
-    [SerializeField]
-    float max = 100f;
+    [SerializeField] float max = 100f;
 
     string key;
 
@@ -56,7 +54,7 @@ namespace Fralle.UI.Menu
 
     void InputValueChanged(string value)
     {
-      float floatValue = float.Parse(value);
+      var floatValue = float.Parse(value);
       floatValue = Mathf.Clamp(floatValue, min, max);
 
       PlayerPrefs.SetFloat(key, floatValue);

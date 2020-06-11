@@ -38,11 +38,11 @@ namespace Fralle.Core.Camera
 
       public void Update()
       {
-        float deltaTime = Time.deltaTime;
+        var deltaTime = Time.deltaTime;
 
         timeRemaining -= deltaTime;
 
-        float noiseOffsetDelta = deltaTime * data.frequency;
+        var noiseOffsetDelta = deltaTime * data.frequency;
 
         noiseOffset.x += noiseOffsetDelta;
         noiseOffset.y += noiseOffsetDelta;
@@ -56,7 +56,7 @@ namespace Fralle.Core.Camera
 
         noise *= data.amplitude;
 
-        float agePercent = 1.0f - (timeRemaining / duration);
+        var agePercent = 1.0f - (timeRemaining / duration);
         noise *= data.blendOverLifetime.Evaluate(agePercent);
       }
     }
@@ -82,7 +82,7 @@ namespace Fralle.Core.Camera
       var positionOffset = Vector3.zero;
       var rotationOffset = Vector3.zero;
 
-      for (int i = shakeEvents.Count - 1; i != -1; i--)
+      for (var i = shakeEvents.Count - 1; i != -1; i--)
       {
         var se = shakeEvents[i];
         se.Update();

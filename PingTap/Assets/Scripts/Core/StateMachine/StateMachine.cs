@@ -38,7 +38,7 @@ namespace Fralle.Core
 
     public void AddTransition(IState from, IState to, Func<bool> predicate)
     {
-      if (this.transitions.TryGetValue(from.GetType(), out List<Transition> transitions) == false)
+      if (this.transitions.TryGetValue(from.GetType(), out var transitions) == false)
       {
         transitions = new List<Transition>();
         this.transitions[from.GetType()] = transitions;

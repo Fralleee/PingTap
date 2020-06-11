@@ -26,7 +26,7 @@ namespace Fralle.Core.Attributes
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
-      UnityEngine.Object target = property.serializedObject.targetObject;
+      var target = property.serializedObject.targetObject;
 
       // Find the property field using reflection, in order to get access to its getter/setter.
       if (propertyFieldInfo == null)
@@ -37,7 +37,7 @@ namespace Fralle.Core.Attributes
       {
 
         // Retrieve the value using the property getter:
-        object value = propertyFieldInfo.GetValue(target, null);
+        var value = propertyFieldInfo.GetValue(target, null);
 
         // Draw the property, checking for changes:
         EditorGUI.BeginChangeCheck();

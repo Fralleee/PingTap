@@ -17,7 +17,7 @@ namespace Fralle.Core.Animation
 
     void LateUpdate()
     {
-      float offset = Time.time * scrollSpeed;
+      var offset = Time.time * scrollSpeed;
       renderer.material.SetTextureOffset(MainTex, new Vector2(direction == Axis.X ? offset : 0, direction == Axis.Y ? offset : 0));
     }
 

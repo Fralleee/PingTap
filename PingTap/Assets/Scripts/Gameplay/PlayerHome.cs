@@ -19,7 +19,7 @@ namespace Fralle.Gameplay
       Enemy.OnEnemyReachedPowerStone += HandleEnemyReachedPowerStone;
     }
 
-    void HandleDeath(Health health, Damage damage)
+    void HandleDeath(Health hp, Damage damage)
     {
       OnDeath(this);
       Destroy(gameObject);

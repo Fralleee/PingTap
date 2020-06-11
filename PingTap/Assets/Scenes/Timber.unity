@@ -1406,6 +1406,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7901915596786580998, guid: bf1959b3f09bb2742aa60ded39558225,
+        type: 3}
+      propertyPath: m_RendererIndex
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf1959b3f09bb2742aa60ded39558225, type: 3}
 --- !u!1 &1617975769
@@ -1450,8 +1455,6 @@ MonoBehaviour:
     armor: 0
     armorElementModifiers: []
     protection: {fileID: 0}
-  renderer: {fileID: 1617975773}
-  deathModel: {fileID: 0}
 --- !u!114 &1617975771
 MonoBehaviour:
   m_ObjectHideFlags: 0

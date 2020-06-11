@@ -12,12 +12,12 @@ namespace Fralle.Attack.Effect
 
     public override void Enter(Health health)
     {
-      health.GetComponent<EnemyNavigation>()?.AddModifier(name, slowModifier);
+      if (health != null) health.GetComponent<EnemyNavigation>()?.AddModifier(name, slowModifier);
     }
 
     public override void Exit(Health health)
     {
-      health.GetComponent<EnemyNavigation>()?.RemoveModifier(name);
+      if (health != null) health.GetComponent<EnemyNavigation>()?.RemoveModifier(name);
     }
   }
 }

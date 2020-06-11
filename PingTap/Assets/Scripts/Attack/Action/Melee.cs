@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Fralle.Attack.Offense;
+using System.Collections.Generic;
 using System.Linq;
-using Fralle.Attack.Offense;
 using UnityEngine;
 
 namespace Fralle.Attack.Action
@@ -36,13 +36,13 @@ namespace Fralle.Attack.Action
         activeSwingTime -= Time.deltaTime;
         if (swinging)
         {
-          float delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
+          var delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
           transform.localPosition = Vector3.Lerp(swingPosition, Vector3.zero, delta);
           transform.localRotation = Quaternion.Lerp(swingRotation, Quaternion.identity, delta);
         }
         else
         {
-          float delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
+          var delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
           transform.localPosition = Vector3.Lerp(Vector3.zero, swingPosition, delta);
           transform.localRotation = Quaternion.Lerp(Quaternion.identity, swingRotation, delta);
           if (activeSwingTime <= 0) weapon.ChangeWeaponAction(Status.Ready);
@@ -63,8 +63,8 @@ namespace Fralle.Attack.Action
       swinging = true;
       weapon.ChangeWeaponAction(Status.Melee);
 
-      IEnumerable<Health> targets = GetTargets();
-      foreach (Health target in targets)
+      var targets = GetTargets();
+      foreach (var target in targets)
       {
         if (!TargetInArc(target)) continue;
 
@@ -84,13 +84,13 @@ namespace Fralle.Attack.Action
 
     bool TargetInArc(Component target)
     {
-      Vector3 vectorToCollider = (target.transform.position - transform.position).normalized;
+      var vectorToCollider = (target.transform.position - transform.position).normalized;
       return Vector3.Dot(vectorToCollider, transform.forward) > 0;
     }
 
     IEnumerable<Health> GetTargets()
     {
-      Collider[] colliders = Physics.OverlapSphere(transform.position, meleeRadius);
+      var colliders = Physics.OverlapSphere(transform.position, meleeRadius);
       return colliders.Select(x => x.GetComponentInParent<Health>())
         .Where(x => x != null).Distinct();
     }

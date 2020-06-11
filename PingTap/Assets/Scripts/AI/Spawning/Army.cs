@@ -15,9 +15,9 @@ namespace Fralle.AI.Spawning
 
     public WaveDefinition NextWave(int roundNo)
     {
-      int roundIndex = roundNo - 1;
-      int diff = (int)Mathf.Floor(roundIndex / waveDefinitions.Length) * waveDefinitions.Length;
-      int waveDefinitionNo = roundIndex - diff;
+      var roundIndex = roundNo - 1;
+      var diff = (int)Mathf.Floor(roundIndex / waveDefinitions.Length) * waveDefinitions.Length;
+      var waveDefinitionNo = roundIndex - diff;
       return waveDefinitions[waveDefinitionNo];
     }
   }

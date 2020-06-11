@@ -25,7 +25,7 @@ namespace Fralle.Attack.Effect
       if (!(lastDamageTimer > 1)) return;
 
       lastDamageTimer -= 1f;
-      float damage = baseDamageModifier * DamageConverter.AsDamageModifier(damageModifier / time, damageApplication, health, weaponDamage);
+      var damage = baseDamageModifier * DamageConverter.AsDamageModifier(damageModifier / time, damageApplication, health, weaponDamage);
       health.ReceiveAttack(new Damage()
       {
         player = player,

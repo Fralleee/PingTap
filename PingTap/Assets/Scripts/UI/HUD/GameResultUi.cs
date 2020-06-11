@@ -36,17 +36,17 @@ public class GameResultUi : MonoBehaviour
     MainMenu.ToMainMenu();
   }
 
-  void HandleDefeat(MatchManager matchManager, PlayerStats stats)
+  void HandleDefeat(PlayerStats statsP)
   {
-    this.stats = stats;
+    stats = statsP;
     statusText.gameObject.SetActive(true);
     statusScreen.SetActive(true);
     statusText.text = "DEFEAT";
   }
 
-  void HandleVictory(MatchManager matchManager, PlayerStats stats)
+  void HandleVictory(PlayerStats statsP)
   {
-    this.stats = stats;
+    stats = statsP;
     statusText.gameObject.SetActive(true);
     statusScreen.SetActive(true);
     statusText.text = "VICTORY";

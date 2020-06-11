@@ -17,13 +17,13 @@ namespace Fralle.Core.Extensions
 
     public static void ReplaceItem<T>(this List<T> list, T oldElement, T newElement)
     {
-      int index = list.IndexOf(oldElement);
+      var index = list.IndexOf(oldElement);
       if (index != -1) list[index] = newElement;
     }
 
     public static void Upsert<T>(this List<T> list, T oldElement, T newElement)
     {
-      int index = list.IndexOf(oldElement);
+      var index = list.IndexOf(oldElement);
       if (index != -1) list[index] = newElement;
       else list.Add(newElement);
     }
@@ -31,7 +31,7 @@ namespace Fralle.Core.Extensions
     public static T GetRandomElement<T>(this List<T> list)
     {
       var random = new Random();
-      int rnd = random.Next(0, list.Count);
+      var rnd = random.Next(0, list.Count);
       return list[rnd];
     }
   }

@@ -47,22 +47,22 @@ namespace Fralle.Attack
       PerformEquip();
     }
 
-    public void Equip(Transform weaponHolder, Transform playerCamera)
+    public void Equip(Transform weaponHolder, Transform pCamera)
     {
       ActiveWeaponAction = Status.Equipping;
       equipTime = 0f;
       equipped = false;
       transform.parent = weaponHolder;
 
-      int layer = LayerMask.NameToLayer("First Person Objects");
+      var layer = LayerMask.NameToLayer("First Person Objects");
       gameObject.SetLayerRecursively(layer);
 
       startPosition = transform.localPosition;
       startRotation = transform.localRotation;
 
-      this.playerCamera = playerCamera;
+      playerCamera = pCamera;
 
-      recoil.Initiate(playerCamera);
+      recoil.Initiate(pCamera);
     }
 
     public void ChangeWeaponAction(Status newActiveWeaponAction)
@@ -80,7 +80,7 @@ namespace Fralle.Attack
     {
       if (equipped) return;
 
-      bool isEquipping = equipTime < equipAnimationTime;
+      var isEquipping = equipTime < equipAnimationTime;
       if (!isEquipping)
       {
         equipped = true;
@@ -90,7 +90,7 @@ namespace Fralle.Attack
 
       equipTime += Time.deltaTime;
       equipTime = Mathf.Clamp(equipTime, 0f, equipAnimationTime);
-      float delta = -(Mathf.Cos(Mathf.PI * (equipTime / equipAnimationTime)) - 1f) / 2f;
+      var delta = -(Mathf.Cos(Mathf.PI * (equipTime / equipAnimationTime)) - 1f) / 2f;
       transform.localPosition = Vector3.Lerp(startPosition, Vector3.zero, delta);
       transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.identity, delta);
     }

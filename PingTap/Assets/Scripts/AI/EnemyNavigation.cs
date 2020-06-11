@@ -1,4 +1,5 @@
 ﻿using Fralle.Attack.Offense;
+using Fralle.Core.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -42,18 +43,18 @@ namespace Fralle.AI
       if (enemy != null) enemy.ReachedDestination();
     }
 
-    public void AddModifier(string name, float modifier)
+    public void AddModifier(string modifierName, float modifier)
     {
-      if (movementModifiers.ContainsKey(name)) movementModifiers[name] = modifier;
-      else movementModifiers.Add(name, modifier);
+      if (movementModifiers.ContainsKey(modifierName)) movementModifiers[modifierName] = modifier;
+      else movementModifiers.Add(modifierName, modifier);
       currentMovementModifier = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
 
       SetSpeed(movementSpeed * currentMovementModifier);
     }
 
-    public void RemoveModifier(string name)
+    public void RemoveModifier(string modifierName)
     {
-      movementModifiers.Remove(name);
+      movementModifiers.Remove(modifierName);
       if (movementModifiers.Count > 0)
       {
         var value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
@@ -83,7 +84,7 @@ namespace Fralle.AI
     internal bool PathComplete()
     {
       if (!(Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)) return false;
-      return !navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f;
+      return !navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude.EqualsWithTolerance(0f);
     }
 
     void OnDisable()

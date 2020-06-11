@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 615102588463662592}
   - component: {fileID: 1799010807110823819}
-  - component: {fileID: 6314654496378554421}
   - component: {fileID: 615102588463662622}
+  - component: {fileID: 6314654496378554421}
   - component: {fileID: 615102588463662623}
   - component: {fileID: 1126382571}
   m_Layer: 0
@@ -50,20 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuScene: Main menu
   masterScene: MasterScene
---- !u!114 &6314654496378554421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615102588463662593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3110c24f216925147a3fb37c292bafd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  matchManager: {fileID: 0}
-  waveManager: {fileID: 0}
 --- !u!114 &615102588463662622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +76,18 @@ MonoBehaviour:
   waveTimer: 0
   isVictory: 0
   treasureSpawner: {fileID: 0}
+--- !u!114 &6314654496378554421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615102588463662593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3110c24f216925147a3fb37c292bafd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &615102588463662623
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ namespace Fralle.UI.HUD
 
     public void UpdateHealthbar(float currentHealth, float maxHealth)
     {
-      float percentage = currentHealth / maxHealth;
+      var percentage = currentHealth / maxHealth;
       foregroundImage.fillAmount = percentage;
     }
   }

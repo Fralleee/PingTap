@@ -1,6 +1,5 @@
 ﻿using Fralle.AI;
 using Fralle.AI.Spawning;
-using Fralle.Core.Animation;
 using Fralle.Gameplay;
 using TMPro;
 using UnityEngine;
@@ -19,13 +18,11 @@ namespace Fralle.UI.HUD
 
     [SerializeField] TextMeshProUGUI totalTimer;
 
-    MatchManager matchManager;
-    UiTweener tweener;
+    UiTweener uiTweener;
 
     void Awake()
     {
-      matchManager = GetComponentInParent<MatchManager>();
-      tweener = GetComponentInParent<UiTweener>();
+      uiTweener = GetComponentInParent<UiTweener>();
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
       WaveManager.OnNewWave += HandleNewWave;
@@ -33,12 +30,12 @@ namespace Fralle.UI.HUD
 
     void Update()
     {
-      SetTimer(matchManager.totalTimer);
+      SetTimer(MatchManager.Instance.totalTimer);
     }
 
-    void HandleNewWave(WaveManager waveManager)
+    void HandleNewWave()
     {
-      var wave = waveManager.GetCurrentWave;
+      var wave = WaveManager.Instance.GetCurrentWave;
       SetupText(wave);
     }
 
@@ -65,8 +62,8 @@ namespace Fralle.UI.HUD
 
     void HandleEnemyDeath(Enemy enemy)
     {
-      enemyCurrentCount.text = matchManager.enemiesAlive.ToString();
-      tweener.HandleTween();
+      enemyCurrentCount.text = MatchManager.Instance.enemiesAlive.ToString();
+      uiTweener.HandleTween();
     }
 
     void OnDestroy()

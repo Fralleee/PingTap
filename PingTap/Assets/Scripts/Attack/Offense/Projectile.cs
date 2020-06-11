@@ -158,8 +158,8 @@ namespace Fralle.Attack.Offense
       }
 
       if (data.explodeOnImpactTime > 0) hasCollision = true;
-      if (data.explosionRadius > 0 && data.explodeOnImpactTime == 0) Explode(collision);
-      else if (data.explosionRadius == 0) Hit(collision);
+      if (data.explosionRadius > 0 && data.explodeOnImpactTime.EqualsWithTolerance(0f)) Explode(collision);
+      else if (data.explosionRadius.EqualsWithTolerance(0f)) Hit(collision);
     }
   }
 }

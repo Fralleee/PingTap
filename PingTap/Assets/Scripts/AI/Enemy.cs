@@ -46,17 +46,17 @@ namespace Fralle.AI
       Death(null, true);
     }
 
-    void HandleDamageTaken(Health health, Damage damage)
+    void HandleDamageTaken(Health hp, Damage damage)
     {
       enemyNavigation.StopMovement(0.1f);
     }
 
-    void HandleDeath(Health health, Damage damage)
+    void HandleDeath(Health hp, Damage damage)
     {
       Death(damage);
     }
 
-    void HandleDefeat(MatchManager matchManager, PlayerStats stats)
+    void HandleDefeat(PlayerStats stats)
     {
       Destroy(gameObject);
     }

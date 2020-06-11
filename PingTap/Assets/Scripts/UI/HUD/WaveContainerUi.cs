@@ -19,12 +19,12 @@ namespace Fralle.UI.HUD
       MatchManager.OnVictory += HandleVictory;
     }
 
-    void HandleNewSchema(WaveManager waveManager)
+    void HandleNewSchema()
     {
       waves.ForEach(x => Destroy(x.gameObject));
       waves.Clear();
 
-      var army = waveManager.GetCurrentArmy;
+      var army = WaveManager.Instance.GetCurrentArmy;
       for (var i = 0; i < army.MaxRounds; i++)
       {
         var wave = Instantiate(waveStatusPrefab, transform);
@@ -32,14 +32,14 @@ namespace Fralle.UI.HUD
       }
     }
 
-    void HandleNewWave(WaveManager waveManager)
+    void HandleNewWave()
     {
       if (currentWave) currentWave.SetFill(1);
-      int index = waveManager.currentWave - 1;
+      var index = WaveManager.Instance.currentWave - 1;
       currentWave = waves[index];
     }
 
-    void HandleVictory(MatchManager matchManager, PlayerStats stats)
+    void HandleVictory(PlayerStats stats)
     {
       waves.ForEach(x => x.SetFill(1));
     }
@@ -51,7 +51,6 @@ namespace Fralle.UI.HUD
 
     void OnDestroy()
     {
-
       WaveManager.OnNewSchema -= HandleNewSchema;
       WaveManager.OnNewWave -= HandleNewWave;
       WaveManager.OnWaveProgress -= HandleWaveProgress;

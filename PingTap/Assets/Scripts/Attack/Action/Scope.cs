@@ -102,7 +102,7 @@ namespace Fralle.Attack.Action
       {
         time += Time.deltaTime / scopeTime;
         time = Mathf.Clamp(time, 0, 1);
-        float fadeTime = Mathf.Clamp(time + 0.7f, 0, 1);
+        var fadeTime = Mathf.Clamp(time + 0.7f, 0, 1);
         transform.localPosition = Vector3.Lerp(transform.localPosition, scopePos, time);
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, scopedFov, time);
         scopedVolume.weight = Mathf.Lerp(0, 1, fadeTime);
@@ -122,7 +122,7 @@ namespace Fralle.Attack.Action
       {
         time += Time.deltaTime / timer;
         time = Mathf.Clamp(time, 0, 1);
-        float fadeTime = Mathf.Clamp(time * 4f, 0, 1);
+        var fadeTime = Mathf.Clamp(time * 4f, 0, 1);
         transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, time);
         playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, defaultFov, time);
         scopedVolume.weight = Mathf.Lerp(1, 0, fadeTime);

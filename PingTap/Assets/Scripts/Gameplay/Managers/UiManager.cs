@@ -1,7 +1,6 @@
-﻿using Fralle.Gameplay;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Fralle.UI
+namespace Fralle.Gameplay
 {
   public class UiManager : MonoBehaviour
   {
@@ -39,14 +38,13 @@ namespace Fralle.UI
     {
       Instantiate(prepareUi, liveUi.transform);
       Instantiate(waveCounterUi, liveUi.transform);
-      //Instantiate(waveInfoUi, liveUi.transform);
       Instantiate(nexusUi, liveUi.transform);
 
       Instantiate(gameResultUi, resultUi.transform);
     }
 
 
-    void HandleGameEnd(MatchManager matchManager)
+    void HandleGameEnd()
     {
       liveUi.SetActive(false);
       resultUi.SetActive(true);

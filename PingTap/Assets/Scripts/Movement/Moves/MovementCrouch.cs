@@ -1,4 +1,5 @@
-﻿using Fralle.Player;
+﻿using Fralle.Core.Extensions;
+using Fralle.Player;
 using System;
 using UnityEngine;
 
@@ -61,7 +62,7 @@ namespace Fralle.Movement.Moves
         }
       }
 
-      if (capsuleCollider.height != goalHeight) capsuleCollider.height = Mathf.Lerp(capsuleCollider.height, goalHeight, Time.deltaTime * crouchingSpeed);
+      if (!capsuleCollider.height.EqualsWithTolerance(goalHeight)) capsuleCollider.height = Mathf.Lerp(capsuleCollider.height, goalHeight, Time.deltaTime * crouchingSpeed);
     }
   }
 }

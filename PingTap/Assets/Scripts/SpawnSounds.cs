@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Fralle.Core.Extensions;
+using System.Collections;
 using UnityEngine;
 
 namespace Fralle.Core.Audio
@@ -35,7 +36,7 @@ namespace Fralle.Core.Audio
       var sound = Instantiate(prefabSound, transform.position, Quaternion.identity);
       var source = sound.GetComponent<AudioSource>();
 
-      if (pitchRandomMultiplier != 1)
+      if (!pitchRandomMultiplier.EqualsWithTolerance(1f))
       {
         if (Random.value < .5) source.pitch *= Random.Range(1 / pitchRandomMultiplier, 1);
         else source.pitch *= Random.Range(1, pitchRandomMultiplier);

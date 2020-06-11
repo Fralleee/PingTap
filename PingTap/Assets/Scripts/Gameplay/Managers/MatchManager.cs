@@ -1,6 +1,7 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Attributes;
 using Fralle.Core.Audio;
+using Fralle.Core.Infrastructure;
 using Fralle.Movement;
 using Fralle.Player;
 using System;
@@ -8,12 +9,12 @@ using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-  public class MatchManager : MonoBehaviour
+  public class MatchManager : Singleton<MatchManager>
   {
-    public static event Action<MatchManager> OnMatchEnd = delegate { };
-    public static event Action<MatchManager, PlayerStats> OnDefeat = delegate { };
-    public static event Action<MatchManager, PlayerStats> OnVictory = delegate { };
-    public static event Action<MatchManager> OnNewRound = delegate { };
+    public static event Action OnMatchEnd = delegate { };
+    public static event Action<PlayerStats> OnDefeat = delegate { };
+    public static event Action<PlayerStats> OnVictory = delegate { };
+    public static event Action OnNewRound = delegate { };
     public static event Action<GameState> OnNewState = delegate { };
 
     public GameState gameState;
@@ -38,12 +39,19 @@ namespace Fralle.Gameplay
     [HideInInspector] public bool isVictory;
     [HideInInspector] public TreasureSpawner treasureSpawner;
 
-
-
     MatchState matchState;
     PlayerHome playerHome;
 
-    void Awake()
+    protected override void Awake()
+    {
+      base.Awake();
+
+      Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
+      WaveManager.OnWavesComplete += HandleWavesComplete;
+      LeanTween.init(1000);
+    }
+
+    void Start()
     {
       matchState = GetComponent<MatchState>();
       sceneCamera.gameObject.SetActive(false);
@@ -53,14 +61,6 @@ namespace Fralle.Gameplay
 
       treasureSpawner = GetComponent<TreasureSpawner>();
 
-      Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
-      WaveManager.OnWavesComplete += HandleWavesComplete;
-
-      LeanTween.init(1000);
-    }
-
-    void Start()
-    {
       victorySound = Instantiate(victorySoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
       defeatSound = Instantiate(defeatSoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
     }
@@ -81,7 +81,7 @@ namespace Fralle.Gameplay
     {
       enemiesAlive = enemyCount;
       totalEnemies = enemyCount;
-      OnNewRound(this);
+      OnNewRound();
     }
 
     public void HandleEnemyDeath(Enemy enemy)
@@ -89,7 +89,7 @@ namespace Fralle.Gameplay
       enemiesAlive--;
     }
 
-    void HandleWavesComplete(WaveManager waveManager)
+    void HandleWavesComplete()
     {
       Victory();
     }
@@ -110,7 +110,7 @@ namespace Fralle.Gameplay
       }
 
       matchState.enabled = false;
-      OnMatchEnd(this);
+      OnMatchEnd();
       return stats;
     }
 
@@ -119,15 +119,15 @@ namespace Fralle.Gameplay
       Debug.Log("Victory");
       victorySound.Spawn();
       var stats = FinishedMatch();
-      OnVictory(this, stats);
+      OnVictory(stats);
     }
 
-    void Defeat(PlayerHome playerHome)
+    void Defeat(PlayerHome pHome)
     {
       Debug.Log("Defeat");
       defeatSound.Spawn();
       var stats = FinishedMatch();
-      OnDefeat(this, stats);
+      OnDefeat(stats);
     }
 
     void OnDestroy()

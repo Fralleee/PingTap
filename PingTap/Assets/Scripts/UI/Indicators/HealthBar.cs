@@ -15,43 +15,43 @@ namespace Fralle.UI.Indicators
     Canvas canvas;
     RectTransform rectTransform;
 
-    public void Initialize(Health health)
+    public void Initialize(Health hp)
     {
       defaultScale = transform.localScale;
 
-      this.health = health;
+      this.health = hp;
       this.health.OnHealthChange += HandleHealthChange;
       this.health.OnDeath += HandleDeath;
 
       camera = Camera.main;
 
-      renderer = health.gameObject.GetComponentInChildren<Renderer>();
+      renderer = hp.gameObject.GetComponentInChildren<Renderer>();
       rectTransform = GetComponent<RectTransform>();
       canvas = GetComponent<Canvas>();
     }
 
     void HandleHealthChange(float currentHealth, float maxHealth)
     {
-      float percentage = currentHealth / maxHealth;
+      var percentage = currentHealth / maxHealth;
       foregroundImage.fillAmount = percentage;
     }
 
-    void HandleDeath(Health health, Damage damage)
+    void HandleDeath(Health hp, Damage damage)
     {
       Destroy(gameObject);
     }
 
     void LateUpdate()
     {
-      bool isVisible = ToggleIfVisible();
+      var isVisible = ToggleIfVisible();
       if (isVisible) UpdatePosition();
     }
 
     bool ToggleIfVisible()
     {
-      bool isvisible = renderer && !renderer.isVisible;
-      bool isDestroyed = health == null || health.isDead;
-      if (isvisible || isDestroyed)
+      var isVisible = renderer && !renderer.isVisible;
+      var isDestroyed = health == null || health.isDead;
+      if (isVisible || isDestroyed)
       {
         canvas.enabled = false;
         return false;
@@ -62,8 +62,8 @@ namespace Fralle.UI.Indicators
 
     void UpdatePosition()
     {
-      float distance = Vector3.Distance(camera.transform.position, health.transform.position);
-      float yPositionOffset = Mathf.Lerp(2, 3.5f, distance / 40);
+      var distance = Vector3.Distance(camera.transform.position, health.transform.position);
+      var yPositionOffset = Mathf.Lerp(2, 3.5f, distance / 40);
 
       var screenPosition = camera.WorldToScreenPoint(health.transform.position + Vector3.up * yPositionOffset);
 
@@ -78,7 +78,7 @@ namespace Fralle.UI.Indicators
 
       rectTransform.anchoredPosition = screenPosition;
 
-      float scale = Mathf.Lerp(1.6f, 0.8f, distance / 40);
+      var scale = Mathf.Lerp(1.6f, 0.8f, distance / 40);
       rectTransform.localScale = defaultScale * scale;
     }
 

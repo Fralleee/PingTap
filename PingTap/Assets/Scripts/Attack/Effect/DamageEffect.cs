@@ -22,7 +22,7 @@ namespace Fralle.Attack.Effect
 
     public virtual DamageEffect Setup(PlayerMain pl, float weaponDamageAmount)
     {
-      DamageEffect instance = Instantiate(this);
+      var instance = Instantiate(this);
       instance.player = pl;
       instance.weaponDamage = weaponDamageAmount;
       instance.name = name;

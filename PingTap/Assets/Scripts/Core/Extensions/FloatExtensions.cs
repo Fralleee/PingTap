@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Fralle.Core.Extensions
 {
@@ -17,6 +18,11 @@ namespace Fralle.Core.Extensions
     public static float Ceil(this float value)
     {
       return Mathf.Ceil(value);
+    }
+
+    public static bool EqualsWithTolerance(this float value, float otherValue, float tolerance = 0.000001f)
+    {
+      return Math.Abs(value - otherValue) < tolerance;
     }
   }
 }
