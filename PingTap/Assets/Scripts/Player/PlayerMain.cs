@@ -6,13 +6,14 @@ namespace Fralle.Player
 {
   public class PlayerMain : MonoBehaviour
   {
-    [SerializeField] Transform Ui;
+    [SerializeField] Transform ui = null;
 
-    [SerializeField] GameObject crosshair;
-    [SerializeField] GameObject resourceUi;
-    [SerializeField] GameObject enemyHealthBarUi;
-    [SerializeField] GameObject damageNumbersUi;
-    [SerializeField] GameObject minimapUi;
+    [SerializeField] GameObject crosshair = null;
+    [SerializeField] GameObject resourceUi = null;
+    [SerializeField] GameObject enemyHealthBarUi = null;
+    [SerializeField] GameObject damageNumbersUi = null;
+    [SerializeField] GameObject minimapUi = null;
+    [SerializeField] GameObject compassUi = null;
 
     public PlayerStats stats;
     [HideInInspector] public new Camera camera;
@@ -45,11 +46,12 @@ namespace Fralle.Player
 
     void SetupUi()
     {
-      Instantiate(crosshair, Ui);
-      Instantiate(resourceUi, Ui);
-      Instantiate(enemyHealthBarUi, Ui);
-      Instantiate(damageNumbersUi, Ui);
-      Instantiate(minimapUi, Ui);
+      Instantiate(crosshair, ui);
+      Instantiate(resourceUi, ui);
+      Instantiate(enemyHealthBarUi, ui);
+      Instantiate(damageNumbersUi, ui);
+      Instantiate(minimapUi, ui);
+      Instantiate(compassUi, ui);
     }
 
     void HandleCrouch(bool isCrouching)

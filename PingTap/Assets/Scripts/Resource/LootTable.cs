@@ -9,28 +9,28 @@ namespace Fralle.Resource
   public class LootTable : ScriptableObject
   {
     [Header("Poor")]
-    [SerializeField] GameObject poorPrefab;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 poorCreditsDropped;
+    [SerializeField] GameObject poorPrefab = null;
+    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 poorCreditsDropped = Vector2.zero;
 
     [Header("Common")]
-    [SerializeField] GameObject commonPrefab;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 commonCreditsDropped;
+    [SerializeField] GameObject commonPrefab = null;
+    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 commonCreditsDropped = Vector2.zero;
 
     [Header("Uncommon")]
-    [SerializeField] GameObject uncommonPrefab;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 uncommonCreditsDropped;
+    [SerializeField] GameObject uncommonPrefab = null;
+    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 uncommonCreditsDropped = Vector2.zero;
 
     [Header("Rare")]
-    [SerializeField] GameObject rarePrefab;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 rareCreditsDropped;
+    [SerializeField] GameObject rarePrefab = null;
+    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 rareCreditsDropped = Vector2.zero;
 
     [Header("Epic")]
-    [SerializeField] GameObject epicPrefab;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 epicCreditsDropped;
+    [SerializeField] GameObject epicPrefab = null;
+    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 epicCreditsDropped = Vector2.zero;
 
     [Header("Legendary")]
-    [SerializeField] GameObject legendaryPrefab;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 legendaryCreditsDropped;
+    [SerializeField] GameObject legendaryPrefab = null;
+    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 legendaryCreditsDropped = Vector2.zero;
 
     static int GetRandomRange(Vector2 range) => (int)Math.Round(Random.Range(range.x, range.y));
 

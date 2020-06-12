@@ -6,7 +6,7 @@ namespace Fralle.UI.Indicators
 {
   public class HealthBarController : MonoBehaviour
   {
-    [SerializeField] HealthBar healthBarPrefab;
+    [SerializeField] HealthBar healthBarPrefab = null;
 
     readonly Dictionary<Health, HealthBar> healthBars = new Dictionary<Health, HealthBar>();
 

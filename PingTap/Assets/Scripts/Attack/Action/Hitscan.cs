@@ -11,14 +11,14 @@ namespace Fralle.Attack.Action
     [Header("Hitscan")]
     [SerializeField] float range = 50;
     [SerializeField] float pushForce = 3.5f;
-    [SerializeField] GameObject impactParticlePrefab;
-    [SerializeField] GameObject muzzleParticlePrefab;
-    [SerializeField] GameObject lineRendererPrefab;
+    [SerializeField] GameObject impactParticlePrefab = null;
+    [SerializeField] GameObject muzzleParticlePrefab = null;
+    [SerializeField] GameObject lineRendererPrefab = null;
     [SerializeField] int bulletsPerFire = 1;
 
     [Header("Spread")]
-    [SerializeField] float spreadRadius;
-    [SerializeField] float spreadIncreaseEachShot;
+    [SerializeField] float spreadRadius = 0f;
+    [SerializeField] float spreadIncreaseEachShot = 0f;
     [SerializeField] float recovery = 1f;
 
     [Readonly] public float currentSpread;

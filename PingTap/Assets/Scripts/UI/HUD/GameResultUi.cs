@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class GameResultUi : MonoBehaviour
 {
-  [SerializeField] TextMeshProUGUI statusText;
-  [SerializeField] GameObject statusScreen;
-  [SerializeField] GameObject scoreScreen;
+  [SerializeField] TextMeshProUGUI statusText = null;
+  [SerializeField] GameObject statusScreen = null;
+  [SerializeField] GameObject scoreScreen = null;
 
   PlayerStats stats;
 

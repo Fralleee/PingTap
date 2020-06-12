@@ -5,7 +5,7 @@ namespace Fralle.Movement.Moves
 {
   public class MovementHeadBob : MonoBehaviour
   {
-    [SerializeField] Rigidbody rigidBody;
+    [SerializeField] Rigidbody rigidBody = null;
     [SerializeField] AnimationCurve blendOverLifetime = new AnimationCurve();
 
     [Header("Running bob")]

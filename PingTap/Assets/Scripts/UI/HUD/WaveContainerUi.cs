@@ -7,7 +7,7 @@ namespace Fralle.UI.HUD
 {
   public class WaveContainerUi : MonoBehaviour
   {
-    [SerializeField] WaveStatusUi waveStatusPrefab;
+    [SerializeField] WaveStatusUi waveStatusPrefab = null;
     readonly List<WaveStatusUi> waves = new List<WaveStatusUi>();
     WaveStatusUi currentWave;
 

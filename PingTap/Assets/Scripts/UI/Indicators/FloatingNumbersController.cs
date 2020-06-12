@@ -6,7 +6,7 @@ namespace Fralle.UI.Indicators
 {
   public class FloatingNumbersController : MonoBehaviour
   {
-    [SerializeField] FloatingText prefab;
+    [SerializeField] FloatingText prefab = null;
     new Camera camera;
 
     void Awake()

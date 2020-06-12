@@ -5,7 +5,7 @@ using UnityEngine;
 public class Treasure : MonoBehaviour
 {
   [Header("Drops")]
-  [SerializeField] LootTable lootTable;
+  [SerializeField] LootTable lootTable = null;
 
   public float destroyAfterDrop = 5f;
 

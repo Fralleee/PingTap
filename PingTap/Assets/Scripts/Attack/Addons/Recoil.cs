@@ -13,11 +13,11 @@ namespace Fralle.Attack.Addons
     [FormerlySerializedAs("recoverTime")] [SerializeField] float kickbackRecoverTime = 20f;
 
     [Header("Recoil")]
-    [SerializeField] bool randomizeRecoil;
+    [SerializeField] bool randomizeRecoil = false;
     [SerializeField] float recoilSpeed = 15f;
     [SerializeField] float recoilRecoverTime = 10f;
-    [SerializeField] Vector3 randomRecoilConstraints;
-    [SerializeField] Vector3[] recoilPattern;
+    [SerializeField] Vector3 randomRecoilConstraints = Vector3.zero;
+    [SerializeField] Vector3[] recoilPattern = new Vector3[0];
 
     int recoilPatternStep;
     PlayerMouseLook playerMouseLook;

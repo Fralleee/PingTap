@@ -5,13 +5,13 @@ namespace Fralle.Gameplay
   public class UiManager : MonoBehaviour
   {
     [Header("Live Ui")]
-    [SerializeField] GameObject prepareUi;
-    [SerializeField] GameObject nexusUi;
-    [SerializeField] GameObject waveCounterUi;
-    [SerializeField] GameObject waveInfoUi;
+    [SerializeField] GameObject prepareUi = null;
+    [SerializeField] GameObject nexusUi = null;
+    [SerializeField] GameObject waveCounterUi = null;
+    [SerializeField] GameObject waveInfoUi = null;
 
     [Header("Result Ui")]
-    [SerializeField] GameObject gameResultUi;
+    [SerializeField] GameObject gameResultUi = null;
 
     GameObject liveUi;
     GameObject resultUi;

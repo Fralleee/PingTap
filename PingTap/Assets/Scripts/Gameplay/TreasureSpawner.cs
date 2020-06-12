@@ -5,8 +5,8 @@ namespace Fralle.Gameplay
 {
   public class TreasureSpawner : MonoBehaviour
   {
-    [SerializeField] GameObject treasurePrefab;
-    [SerializeField, Range(0, 1)] float spawnChance;
+    [SerializeField] GameObject treasurePrefab = null;
+    [SerializeField, Range(0, 1)] float spawnChance = 0f;
 
     Terrain terrain;
 

@@ -6,7 +6,7 @@ namespace Fralle.UI.HUD
 {
   public class UpdateResourceUi : MonoBehaviour
   {
-    [SerializeField] TextMeshProUGUI creditsText;
+    [SerializeField] TextMeshProUGUI creditsText = null;
 
     InventoryController inventoryController;
 

@@ -7,9 +7,10 @@ namespace Fralle.UI.Menu
 {
   public class SliderSetting : MonoBehaviour
   {
-    [Header("General")] [SerializeField] Settings setting;
-    [SerializeField] TMP_InputField input;
-    [SerializeField] Slider slider;
+    [Header("General")]
+    [SerializeField] Settings setting = Settings.None;
+    [SerializeField] TMP_InputField input = null;
+    [SerializeField] Slider slider = null;
 
     [FormerlySerializedAs("Min")]
     [Header("Clamp values")]

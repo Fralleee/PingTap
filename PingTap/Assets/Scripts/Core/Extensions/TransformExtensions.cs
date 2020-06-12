@@ -25,5 +25,18 @@ namespace Fralle.Core.Extensions
       var position = new Vector3(target.position.x, source.position.y, target.position.z);
       source.LookAt(position);
     }
+
+    public static Transform FindRecursively(this Transform aParent, string aName)
+    {
+      foreach (Transform child in aParent)
+      {
+        if (child.name == aName)
+          return child;
+        var result = child.FindRecursively(aName);
+        if (result != null)
+          return result;
+      }
+      return null;
+    }
   }
 }

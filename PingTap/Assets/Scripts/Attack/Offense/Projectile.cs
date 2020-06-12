@@ -8,8 +8,8 @@ namespace Fralle.Attack.Offense
   [RequireComponent(typeof(Rigidbody))]
   public class Projectile : MonoBehaviour
   {
-    [SerializeField] GameObject impactParticlePrefab;
-    [SerializeField] GameObject muzzleParticlePrefab;
+    [SerializeField] GameObject impactParticlePrefab = null;
+    [SerializeField] GameObject muzzleParticlePrefab = null;
 
     new Rigidbody rigidbody;
     ProjectileData data;

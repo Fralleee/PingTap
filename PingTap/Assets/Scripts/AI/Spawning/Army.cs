@@ -7,7 +7,6 @@ namespace Fralle.AI.Spawning
   public class Army : ScriptableObject
   {
     public int repeatCount = 0;
-    public float powerModifier = 1.33f;
     public WaypointSchema[] waypointSchemas;
     public WaveDefinition[] waveDefinitions;
 

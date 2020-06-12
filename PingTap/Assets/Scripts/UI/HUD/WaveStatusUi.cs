@@ -6,7 +6,7 @@ namespace Fralle.UI.HUD
 {
   public class WaveStatusUi : MonoBehaviour
   {
-    [SerializeField] Image foreGround;
+    [SerializeField] Image foreGround = null;
 
     UiTweener uiTweener;
 

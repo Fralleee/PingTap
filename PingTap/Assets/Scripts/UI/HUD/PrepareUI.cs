@@ -6,7 +6,7 @@ namespace Fralle.UI.HUD
 {
   public class PrepareUi : MonoBehaviour
   {
-    [SerializeField] TextMeshProUGUI prepareTimer;
+    [SerializeField] TextMeshProUGUI prepareTimer = null;
 
     Canvas canvas;
     UiTweener uiTweener;

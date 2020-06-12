@@ -8,7 +8,7 @@ namespace Fralle.AI.Spawning
 {
   public class Spawner : MonoBehaviour
   {
-    [SerializeField] float SpawnDelay = 0.1f;
+    [SerializeField] float spawnDelay = 0.1f;
 
     [Readonly] public Army army;
 
@@ -42,7 +42,7 @@ namespace Fralle.AI.Spawning
         var enemy = Instantiate(waveDefinition.enemy, transform.position + randomVector3, Quaternion.identity, transform);
         ((EnemyTargetNavigation)enemy.enemyNavigation).target = playerHome.transform;
         spawnedCount++;
-        yield return new WaitForSeconds(SpawnDelay);
+        yield return new WaitForSeconds(spawnDelay);
       }
     }
 
@@ -56,7 +56,7 @@ namespace Fralle.AI.Spawning
         var enemy = Instantiate(waveDefinition.enemy, position, Quaternion.identity, transform);
         ((EnemyWaypointNavigation)enemy.enemyNavigation).wayPointSchema = schema;
         spawnedCount++;
-        yield return new WaitForSeconds(SpawnDelay);
+        yield return new WaitForSeconds(spawnDelay);
       }
     }
   }

@@ -6,8 +6,8 @@ namespace Fralle.Movement
 {
   public class PlayerMouseLook : MonoBehaviour
   {
-    [SerializeField] GameObject orientation;
-    [SerializeField] Transform cameraRig;
+    [SerializeField] GameObject orientation = null;
+    [SerializeField] Transform cameraRig = null;
 
     public float mouseSensitivity = 50f;
     public float mouseZoomModifier = 0.4f;

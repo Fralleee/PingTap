@@ -1,7 +1,6 @@
 ﻿using Fralle.Core;
 using Fralle.Movement.Moves;
 using Fralle.Movement.States;
-using Fralle.Player;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -15,11 +14,9 @@ namespace Fralle.Movement
     [Header("Debug")]
     public bool debug;
     [HideInInspector] public MovementDebugUi debugUi;
-    [SerializeField] Transform UiParent;
-    [SerializeField] GameObject debugUiPrefab;
+    [SerializeField] Transform uiParent = null;
+    [SerializeField] GameObject debugUiPrefab = null;
 
-
-    PlayerInputController input;
     MovementGroundCheck groundCheck;
     MovementHeadBob movementHeadBob;
 
@@ -41,7 +38,6 @@ namespace Fralle.Movement
       stateMachine = new StateMachine();
 
       // utilities
-      input = GetComponent<PlayerInputController>();
       groundCheck = GetComponentInChildren<MovementGroundCheck>();
       movementHeadBob = GetComponentInChildren<MovementHeadBob>();
 
@@ -100,7 +96,7 @@ namespace Fralle.Movement
 
     void InitializeDebug()
     {
-      var activeDebugUi = Instantiate(debugUiPrefab, UiParent);
+      var activeDebugUi = Instantiate(debugUiPrefab, uiParent);
 
       debugUi = activeDebugUi.GetComponentInChildren<MovementDebugUi>();
       debugUi.rigidBody = rigidBody;

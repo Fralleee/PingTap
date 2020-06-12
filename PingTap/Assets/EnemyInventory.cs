@@ -11,7 +11,7 @@ public class EnemyInventory : MonoBehaviour
 
   [Header("Drops")]
   [SerializeField] float dropChance = 0.125f;
-  [SerializeField] LootTable lootTable;
+  [SerializeField] LootTable lootTable = null;
 
   Enemy enemy;
 
@@ -21,11 +21,11 @@ public class EnemyInventory : MonoBehaviour
     enemy.OnDeath += HandleDeath;
   }
 
-  void Reward(Enemy enemy)
+  void Reward(Enemy enemyP)
   {
-    if (!enemy.KilledByPlayer) return;
+    if (!enemyP.KilledByPlayer) return;
 
-    var inventoryController = enemy.KilledByPlayer.GetComponentInParent<InventoryController>();
+    var inventoryController = enemyP.KilledByPlayer.GetComponentInParent<InventoryController>();
     if (inventoryController != null) inventoryController.Receive(Random.Range(minCredits, maxCredits));
   }
 

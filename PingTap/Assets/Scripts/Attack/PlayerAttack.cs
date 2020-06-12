@@ -9,8 +9,8 @@ namespace Fralle.Attack
   {
     public Weapon equippedWeapon;
 
-    [SerializeField] Transform weaponHolder;
-    [SerializeField] Transform playerCamera;
+    [SerializeField] Transform weaponHolder = null;
+    [SerializeField] Transform playerCamera = null;
 
     InventoryController inventory;
     Weapon[] weapons;

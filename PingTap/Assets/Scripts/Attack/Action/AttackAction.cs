@@ -19,8 +19,8 @@ namespace Fralle.Attack.Action
     [SerializeField] internal int ammoPerShot = 1;
     [SerializeField] internal int shotsPerSecond = 20;
     [SerializeField] internal bool tapable = false;
-    [SerializeField] internal Element element;
-    [SerializeField] internal DamageEffect[] damageEffects;
+    [SerializeField] internal Element element = Element.Physical;
+    [SerializeField] internal DamageEffect[] damageEffects = new DamageEffect[0];
 
     internal Weapon weapon;
     internal PlayerMain player;

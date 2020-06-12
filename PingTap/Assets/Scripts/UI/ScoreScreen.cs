@@ -6,16 +6,16 @@ namespace Fralle.UI
 {
   public class ScoreScreen : MonoBehaviour
   {
-    [SerializeField] TextMeshProUGUI killsValue;
-    [SerializeField] TextMeshProUGUI totalDamageValue;
+    [SerializeField] TextMeshProUGUI killsValue = null;
+    [SerializeField] TextMeshProUGUI totalDamageValue = null;
 
-    [SerializeField] TextMeshProUGUI nerveHitsValue;
-    [SerializeField] TextMeshProUGUI majorHitsValue;
-    [SerializeField] TextMeshProUGUI minorHitsValue;
+    [SerializeField] TextMeshProUGUI nerveHitsValue = null;
+    [SerializeField] TextMeshProUGUI majorHitsValue = null;
+    [SerializeField] TextMeshProUGUI minorHitsValue = null;
 
-    [SerializeField] TextMeshProUGUI totalShotsValue;
-    [SerializeField] TextMeshProUGUI totalHitsValue;
-    [SerializeField] TextMeshProUGUI accuracyValue;
+    [SerializeField] TextMeshProUGUI totalShotsValue = null;
+    [SerializeField] TextMeshProUGUI totalHitsValue = null;
+    [SerializeField] TextMeshProUGUI accuracyValue = null;
 
     public void InitPlayerStats(PlayerStats stats)
     {

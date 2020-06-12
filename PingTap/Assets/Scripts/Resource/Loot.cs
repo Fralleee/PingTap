@@ -11,7 +11,7 @@ namespace Fralle.Resource
     UiTweener uiTweener;
     new SphereCollider collider;
 
-    [SerializeField] LootQuality.Type quality;
+    [SerializeField] LootQuality.Type quality = LootQuality.Type.Poor;
 
     const float PickupRange = 3f;
 

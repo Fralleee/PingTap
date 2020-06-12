@@ -7,7 +7,7 @@ namespace Fralle.UI.Menu
   public class LevelSelect : MonoBehaviour
   {
     [SerializeField] GameObject backButton;
-    [SerializeField] GameObject loadingCanvasPrefab;
+    [SerializeField] GameObject loadingCanvasPrefab = null;
 
     MainMenu menu;
     AsyncOperation operation;

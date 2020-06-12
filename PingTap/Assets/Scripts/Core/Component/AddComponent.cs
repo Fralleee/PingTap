@@ -5,8 +5,8 @@ namespace Fralle.Core.Component
 {
   public class AddComponent : MonoBehaviour
   {
-    [SerializeField] Behaviour[] components;
-    [SerializeField] BehaviourLifecycle lifecycle;
+    [SerializeField] Behaviour[] components = new Behaviour[0];
+    [SerializeField] BehaviourLifecycle lifecycle = BehaviourLifecycle.Awake;
 
     void Awake()
     {

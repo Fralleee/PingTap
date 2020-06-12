@@ -4,7 +4,7 @@ namespace Fralle.UI.Menu
 {
   public class SubMenu : MonoBehaviour
   {
-    [SerializeField] GameObject parentMenu;
+    [SerializeField] GameObject parentMenu = null;
 
     public bool inGame;
 

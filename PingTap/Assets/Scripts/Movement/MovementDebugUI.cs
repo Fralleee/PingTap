@@ -6,9 +6,9 @@ namespace Fralle.Movement
 {
   public class MovementDebugUi : MonoBehaviour
   {
-    [SerializeField] TextMeshProUGUI groundedText;
-    [SerializeField] TextMeshProUGUI slopeAngleText;
-    [SerializeField] TextMeshProUGUI velocityText;
+    [SerializeField] TextMeshProUGUI groundedText = null;
+    [SerializeField] TextMeshProUGUI slopeAngleText = null;
+    [SerializeField] TextMeshProUGUI velocityText = null;
 
     public Rigidbody rigidBody;
 

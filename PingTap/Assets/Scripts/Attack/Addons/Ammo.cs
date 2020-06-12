@@ -11,7 +11,7 @@ namespace Fralle.Attack.Addons
     public int maxAmmo = 30;
     public int currentAmmo;
 
-    [SerializeField] bool infiniteAmmo;
+    [SerializeField] bool infiniteAmmo = false;
     [SerializeField] float reloadSpeed = 0.75f;
     [SerializeField]
     AnimationCurve blendOverLifetime = new AnimationCurve(

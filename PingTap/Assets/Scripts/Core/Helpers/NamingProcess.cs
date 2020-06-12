@@ -5,8 +5,8 @@ namespace Fralle.Core.Helpers
   [ExecuteInEditMode]
   public class NamingProcess : MonoBehaviour
   {
-    [SerializeField] string naming;
-    [SerializeField] bool increment;
+    [SerializeField] string naming = null;
+    [SerializeField] bool increment = false;
     int counter;
 
     void OnEnable()

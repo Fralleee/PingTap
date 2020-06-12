@@ -4,7 +4,7 @@ namespace Fralle.Core.Component
 {
   public class ToggleBehaviours : MonoBehaviour
   {
-    [SerializeField] Behaviour[] behaviours;
+    [SerializeField] Behaviour[] behaviours = new Behaviour[0];
 
     void DisableBehaviours()
     {

@@ -9,15 +9,15 @@ namespace Fralle.UI.Menu
     public static event Action<bool> OnMenuToggle = delegate { };
 
     [Header("Buttons")]
-    [SerializeField] GameObject playButton;
-    [SerializeField] GameObject resumeButton;
-    [SerializeField] GameObject leaveButton;
+    [SerializeField] GameObject playButton = null;
+    [SerializeField] GameObject resumeButton = null;
+    [SerializeField] GameObject leaveButton = null;
 
     [Header("Other")]
-    [SerializeField] GameObject background;
-    [SerializeField] GameObject main;
-    [SerializeField] GameObject levelSelect;
-    [SerializeField] GameObject options;
+    [SerializeField] GameObject background = null;
+    [SerializeField] GameObject main = null;
+    [SerializeField] GameObject levelSelect = null;
+    [SerializeField] GameObject options = null;
 
     const string MainMenuScene = "Main menu";
     bool isOpen;

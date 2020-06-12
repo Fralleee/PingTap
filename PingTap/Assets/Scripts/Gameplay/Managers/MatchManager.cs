@@ -21,11 +21,11 @@ namespace Fralle.Gameplay
     public float prepareTime = 30f;
 
     [Header("Cameras")]
-    [SerializeField] Camera sceneCamera;
+    [SerializeField] Camera sceneCamera = null;
 
     [Header("Audio")]
-    [SerializeField] SpawnSounds victorySoundPrefab;
-    [SerializeField] SpawnSounds defeatSoundPrefab;
+    [SerializeField] SpawnSounds victorySoundPrefab = null;
+    [SerializeField] SpawnSounds defeatSoundPrefab = null;
     SpawnSounds victorySound;
     SpawnSounds defeatSound;
 

@@ -6,7 +6,7 @@ namespace Fralle.Core.Animation
   public class AnimatedUVs : MonoBehaviour
   {
     [SerializeField] float scrollSpeed = 0.25F;
-    [SerializeField] Axis direction;
+    [SerializeField] Axis direction = Axis.X;
     new Renderer renderer;
     static readonly int MainTex = Shader.PropertyToID("_MainTex");
 

@@ -5,9 +5,9 @@ namespace Fralle.Core.Component
 {
   public class SpawnObject : MonoBehaviour
   {
-    [SerializeField] GameObject[] objects;
-    [SerializeField] bool asChild;
-    [SerializeField] BehaviourLifecycle lifecycle;
+    [SerializeField] GameObject[] objects = new GameObject[0];
+    [SerializeField] bool asChild = false;
+    [SerializeField] BehaviourLifecycle lifecycle = BehaviourLifecycle.Awake;
 
     void Awake()
     {

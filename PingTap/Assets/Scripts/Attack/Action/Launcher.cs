@@ -7,13 +7,13 @@ namespace Fralle.Attack.Action
   public class Launcher : AttackAction
   {
     [Header("Launcher")]
-    [SerializeField] Projectile projectilePrefab;
-    [SerializeField] ProjectileData projectileData;
+    [SerializeField] Projectile projectilePrefab = null;
+    [SerializeField] ProjectileData projectileData = null;
 
     [Space(10)]
-    [SerializeField] int projectilesPerFire;
-    [SerializeField] float delayTimePerProjectiles;
-    [SerializeField] float radiusOnMaxRange;
+    [SerializeField] int projectilesPerFire = 0;
+    [SerializeField] float delayTimePerProjectiles = 0f;
+    [SerializeField] float radiusOnMaxRange = 0f;
 
     public override void Fire()
     {

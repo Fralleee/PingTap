@@ -8,15 +8,15 @@ namespace Fralle.UI.HUD
 {
   public class WaveInformationUi : MonoBehaviour
   {
-    [SerializeField] TextMeshProUGUI enemyName;
-    [SerializeField] TextMeshProUGUI enemyCurrentCount;
-    [SerializeField] TextMeshProUGUI enemyTotalCount;
+    [SerializeField] TextMeshProUGUI enemyName = null;
+    [SerializeField] TextMeshProUGUI enemyCurrentCount = null;
+    [SerializeField] TextMeshProUGUI enemyTotalCount = null;
 
-    [SerializeField] TextMeshProUGUI armorAmount;
-    [SerializeField] TextMeshProUGUI elementModifiers;
-    [SerializeField] TextMeshProUGUI protections;
+    [SerializeField] TextMeshProUGUI armorAmount = null;
+    [SerializeField] TextMeshProUGUI elementModifiers = null;
+    [SerializeField] TextMeshProUGUI protections = null;
 
-    [SerializeField] TextMeshProUGUI totalTimer;
+    [SerializeField] TextMeshProUGUI totalTimer = null;
 
     UiTweener uiTweener;
 

@@ -16,7 +16,7 @@ namespace Fralle.Gameplay
 
     [Header("Armies")]
     public Army[] armies;
-    [SerializeField] Spawner spawner;
+    [SerializeField] Spawner spawner = null;
 
     public bool WavesRemaining => currentArmy < armies.Length - 1 || currentWave < maxWaves;
     public Army GetCurrentArmy => armies[currentArmy];

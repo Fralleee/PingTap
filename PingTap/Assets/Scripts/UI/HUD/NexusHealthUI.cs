@@ -6,7 +6,7 @@ namespace Fralle.UI.HUD
 {
   public class NexusHealthUi : MonoBehaviour
   {
-    [SerializeField] Image foregroundImage;
+    [SerializeField] Image foregroundImage = null;
 
     PlayerHome playerHome;
 

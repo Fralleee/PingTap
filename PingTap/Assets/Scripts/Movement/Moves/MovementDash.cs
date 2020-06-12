@@ -16,9 +16,9 @@ namespace Fralle.Movement.Moves
     [SerializeField] float cooldown = 5f;
 
     [Header("Objects")]
-    [SerializeField] Transform cameraRig;
-    [SerializeField] ShakeTransformEventData cameraShake;
-    [SerializeField] ShakeTransform cameraShakeTransform;
+    [SerializeField] Transform cameraRig = null;
+    [SerializeField] ShakeTransformEventData cameraShake = null;
+    [SerializeField] ShakeTransform cameraShakeTransform = null;
 
     PlayerInputController input;
     Rigidbody rigidBody;

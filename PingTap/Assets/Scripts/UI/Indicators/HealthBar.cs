@@ -6,7 +6,7 @@ namespace Fralle.UI.Indicators
 {
   public class HealthBar : MonoBehaviour
   {
-    [SerializeField] Image foregroundImage;
+    [SerializeField] Image foregroundImage = null;
 
     Health health;
     new Camera camera;
@@ -19,9 +19,9 @@ namespace Fralle.UI.Indicators
     {
       defaultScale = transform.localScale;
 
-      this.health = hp;
-      this.health.OnHealthChange += HandleHealthChange;
-      this.health.OnDeath += HandleDeath;
+      health = hp;
+      health.OnHealthChange += HandleHealthChange;
+      health.OnDeath += HandleDeath;
 
       camera = Camera.main;
 

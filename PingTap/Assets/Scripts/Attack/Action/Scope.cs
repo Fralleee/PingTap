@@ -18,8 +18,8 @@ namespace Fralle.Attack.Action
     [SerializeField] float scopeTime = 1f;
 
     [Header("Scoped visuals")]
-    [SerializeField] GameObject scopedUi;
-    [SerializeField] GameObject scopedPostProcess;
+    [SerializeField] GameObject scopedUi = null;
+    [SerializeField] GameObject scopedPostProcess = null;
 
     Weapon weapon;
     Camera playerCamera;

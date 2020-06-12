@@ -6,8 +6,8 @@ namespace Fralle.Attack.Offense
   {
     static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
 
-    [SerializeField] new Renderer renderer;
-    [SerializeField] GameObject deathModel;
+    [SerializeField] new Renderer renderer = null;
+    [SerializeField] GameObject deathModel = null;
 
     Health health;
     MaterialPropertyBlock propBlock;
