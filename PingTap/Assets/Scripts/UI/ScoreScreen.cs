@@ -25,6 +25,8 @@ namespace Fralle.UI
       totalShotsValue.text = stats.totalShotsFired.ToString();
       totalHitsValue.text = stats.totalShotsHit.ToString();
       accuracyValue.text = $"{stats.accuracyPercentage * 100:##.#}%";
+
+      Debug.Log($"ScoreScreen: {nerveHitsValue}, {majorHitsValue} and {minorHitsValue} are not currently used");
     }
   }
 }
