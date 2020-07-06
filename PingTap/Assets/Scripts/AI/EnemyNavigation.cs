@@ -1,4 +1,4 @@
-﻿using Fralle.Attack.Offense;
+﻿using CombatSystem.Combat.Damage;
 using Fralle.Core.Extensions;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,7 +76,7 @@ namespace Fralle.AI
       stopTime = time;
     }
 
-    void HandleDeath(Damage damage)
+    void HandleDeath(DamageData damageData)
     {
       if (navMeshAgent) navMeshAgent.enabled = false;
     }

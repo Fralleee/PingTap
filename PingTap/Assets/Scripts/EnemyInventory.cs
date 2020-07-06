@@ -1,5 +1,5 @@
-﻿using Fralle.AI;
-using Fralle.Attack.Offense;
+﻿using CombatSystem.Combat.Damage;
+using Fralle.AI;
 using Fralle.Resource;
 using UnityEngine;
 
@@ -23,9 +23,9 @@ public class EnemyInventory : MonoBehaviour
 
   void Reward(Enemy enemyP)
   {
-    if (!enemyP.KilledByPlayer) return;
+    if (!enemyP.KilledByCombatant) return;
 
-    var inventoryController = enemyP.KilledByPlayer.GetComponentInParent<InventoryController>();
+    var inventoryController = enemyP.KilledByCombatant.GetComponentInParent<InventoryController>();
     if (inventoryController != null) inventoryController.Receive(Random.Range(minCredits, maxCredits));
   }
 
@@ -36,7 +36,7 @@ public class EnemyInventory : MonoBehaviour
     lootTable.DropLoot(transform.position);
   }
 
-  void HandleDeath(Damage damage)
+  void HandleDeath(DamageData damageData)
   {
     Reward(enemy);
     Drop();

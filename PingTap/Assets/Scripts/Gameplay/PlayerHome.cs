@@ -1,25 +1,25 @@
-﻿using Fralle.AI;
-using Fralle.Attack.Offense;
+﻿using CombatSystem.Combat.Damage;
+using Fralle.AI;
 using System;
 using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-  [RequireComponent(typeof(Health))]
+  [RequireComponent(typeof(DamageController))]
   public class PlayerHome : MonoBehaviour
   {
     public event Action<PlayerHome> OnDeath = delegate { };
 
-    public Health health;
+    public DamageController damageController;
 
     void Awake()
     {
-      health = GetComponent<Health>();
-      health.OnDeath += HandleDeath;
+      damageController = GetComponent<DamageController>();
+      damageController.OnDeath += HandleDeath;
       Enemy.OnEnemyReachedPowerStone += HandleEnemyReachedPowerStone;
     }
 
-    void HandleDeath(Health hp, Damage damage)
+    void HandleDeath(DamageController damageController, DamageData damageData)
     {
       OnDeath(this);
       Destroy(gameObject);
@@ -27,7 +27,7 @@ namespace Fralle.Gameplay
 
     void HandleEnemyReachedPowerStone(Enemy enemy)
     {
-      health.TakeDamage(new Damage()
+      damageController.TakeDamage(new DamageData()
       {
         damageAmount = enemy.damageAmount
       });
@@ -35,7 +35,7 @@ namespace Fralle.Gameplay
 
     void OnDestroy()
     {
-      health.OnDeath -= HandleDeath;
+      damageController.OnDeath -= HandleDeath;
       Enemy.OnEnemyReachedPowerStone -= HandleEnemyReachedPowerStone;
     }
   }

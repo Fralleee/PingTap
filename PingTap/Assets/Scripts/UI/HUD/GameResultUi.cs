@@ -1,6 +1,4 @@
 ﻿using Fralle.Gameplay;
-using Fralle.Player;
-using Fralle.UI;
 using Fralle.UI.Menu;
 using TMPro;
 using UnityEngine;
@@ -10,8 +8,6 @@ public class GameResultUi : MonoBehaviour
   [SerializeField] TextMeshProUGUI statusText = null;
   [SerializeField] GameObject statusScreen = null;
   [SerializeField] GameObject scoreScreen = null;
-
-  PlayerStats stats;
 
   void Awake()
   {
@@ -27,8 +23,8 @@ public class GameResultUi : MonoBehaviour
   {
     statusScreen.SetActive(false);
     scoreScreen.SetActive(true);
-    var scoreScreenComponent = scoreScreen.GetComponent<ScoreScreen>();
-    scoreScreenComponent.InitPlayerStats(stats);
+    //var scoreScreenComponent = scoreScreen.GetComponent<ScoreScreen>();
+    //scoreScreenComponent.InitPlayerStats(stats);
   }
 
   public void BackToMenu()
@@ -36,17 +32,15 @@ public class GameResultUi : MonoBehaviour
     MainMenu.ToMainMenu();
   }
 
-  void HandleDefeat(PlayerStats statsP)
+  void HandleDefeat()
   {
-    stats = statsP;
     statusText.gameObject.SetActive(true);
     statusScreen.SetActive(true);
     statusText.text = "DEFEAT";
   }
 
-  void HandleVictory(PlayerStats statsP)
+  void HandleVictory()
   {
-    stats = statsP;
     statusText.gameObject.SetActive(true);
     statusScreen.SetActive(true);
     statusText.text = "VICTORY";

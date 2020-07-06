@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.16598988, g: 0.0981018, b: 0.07637959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,99 +140,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1447258007}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &217224245
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 217224249}
-  - component: {fileID: 217224248}
-  - component: {fileID: 217224247}
-  - component: {fileID: 217224246}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &217224246
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217224245}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &217224247
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217224245}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &217224248
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217224245}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &217224249
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217224245}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.24, y: 10.96, z: 64}
-  m_LocalScale: {x: 1, y: 5, z: 5}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &290726091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 2355627997440873127, guid: 01beaefe5b12dff4dbc122d40fe02dd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2366695334603028168, guid: 01beaefe5b12dff4dbc122d40fe02dd2,
         type: 3}
@@ -1106,7 +1018,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.16509432, g: 0.757781, b: 1, a: 1}
   m_Intensity: 159.15494
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1148,8 +1060,8 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
+  m_ColorTemperature: 7463
+  m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
@@ -1162,7 +1074,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220843834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 59.4, y: 8.87, z: 48.4}
+  m_LocalPosition: {x: 59.4, y: 15.72, z: 60}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1432,7 +1344,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-535242
+  m_Name: pb_Mesh35328
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1675,42 +1587,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[0].passNames.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[1].passNames.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[0].passFoldout
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[1].passFoldout
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[0].m_Name
-      value: Custom Pass
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[0].overrideMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: c8501910b161a4c42bf0b73c0c374f0a, type: 2}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[1].m_Name
-      value: Main Custom Pass
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[1].passNames.Array.data[0]
-      value: Forward
-      objectReference: {fileID: 0}
-    - target: {fileID: 1738638595, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
-      propertyPath: customPasses.Array.data[1].overrideMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: 465442f82d5a43745a6fc07b8d15fcea, type: 2}
     - target: {fileID: 3321477440709210067, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1877,8 +1753,8 @@ GameObject:
   - component: {fileID: 2116517321}
   - component: {fileID: 2116517320}
   - component: {fileID: 2116517319}
-  - component: {fileID: 2116517318}
   - component: {fileID: 2116517317}
+  - component: {fileID: 2116517318}
   m_Layer: 0
   m_Name: Hut
   m_TagString: Untagged
@@ -1898,7 +1774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cb44a0c739276418a5ce3fce20e276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2116517318}
+  damageController: {fileID: 0}
 --- !u!114 &2116517318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1908,7 +1784,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2116517316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b4cefef7bf2204c812afbbb3bc89d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a5c58b46df3aad49bedd37585b6286a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageEffects: []

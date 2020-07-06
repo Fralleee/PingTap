@@ -1,5 +1,4 @@
-﻿using Fralle.Player;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Fralle.UI
@@ -17,16 +16,15 @@ namespace Fralle.UI
     [SerializeField] TextMeshProUGUI totalHitsValue = null;
     [SerializeField] TextMeshProUGUI accuracyValue = null;
 
-    public void InitPlayerStats(PlayerStats stats)
+    public void InitPlayerStats()
     {
-      killsValue.text = stats.killingBlows.ToString();
-      totalDamageValue.text = stats.totalDamage.ToString("# ##0.00");
+      Debug.Log($"ScoreScreen: Stats are not currently used");
+      //killsValue.text = stats.killingBlows.ToString();
+      //totalDamageValue.text = stats.totalDamage.ToString("# ##0.00");
 
-      totalShotsValue.text = stats.totalShotsFired.ToString();
-      totalHitsValue.text = stats.totalShotsHit.ToString();
-      accuracyValue.text = $"{stats.accuracyPercentage * 100:##.#}%";
-
-      Debug.Log($"ScoreScreen: {nerveHitsValue}, {majorHitsValue} and {minorHitsValue} are not currently used");
+      //totalShotsValue.text = stats.totalShotsFired.ToString();
+      //totalHitsValue.text = stats.totalShotsHit.ToString();
+      //accuracyValue.text = $"{stats.accuracyPercentage * 100:##.#}%"; 
     }
   }
 }

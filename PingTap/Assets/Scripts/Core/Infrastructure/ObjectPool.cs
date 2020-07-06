@@ -2,53 +2,56 @@
 using System.Linq;
 using UnityEngine;
 
-public static class ObjectPool
+namespace Fralle.Core.Infrastructure
 {
-  static readonly Dictionary<string, GameObject> Pool = new Dictionary<string, GameObject>();
-
-  public static GameObject GetFromPool(GameObject gameObject, Transform transform, Transform parent)
+  public static class ObjectPool
   {
-    var objectToPool = Find(gameObject);
-    GameObject go;
+    static readonly Dictionary<string, GameObject> Pool = new Dictionary<string, GameObject>();
 
-    if (objectToPool && !objectToPool.activeSelf)
+    public static GameObject GetFromPool(GameObject gameObject, Transform transform, Transform parent)
     {
-      go = Reuse(gameObject, transform.position, transform.rotation);
-      Pool.Remove(gameObject.name);
+      var objectToPool = Find(gameObject);
+      GameObject go;
+
+      if (objectToPool && !objectToPool.activeSelf)
+      {
+        go = Reuse(gameObject, transform.position, transform.rotation);
+        Pool.Remove(gameObject.name);
+      }
+      else
+      {
+        go = Object.Instantiate(gameObject, transform.position, transform.rotation, parent);
+        go.name = gameObject.name;
+
+        if (!Pool.Keys.Contains(go.name)) Pool.Add(go.name, go);
+      }
+
+      return go;
     }
-    else
+
+    public static void RemoveFromPool(GameObject gameObject)
     {
-      go = Object.Instantiate(gameObject, transform.position, transform.rotation, parent);
-      go.name = gameObject.name;
+      var poolObject = Find(gameObject);
+      if (!poolObject) return;
 
-      if (!Pool.Keys.Contains(go.name)) Pool.Add(go.name, go);
+      if (gameObject == poolObject) gameObject.SetActive(false);
+      else Object.Destroy(gameObject);
     }
 
-    return go;
-  }
+    static GameObject Find(Object go)
+    {
+      Pool.TryGetValue(go.name, out var result);
+      return result;
+    }
 
-  public static void RemoveFromPool(GameObject gameObject)
-  {
-    var poolObject = Find(gameObject);
-    if (!poolObject) return;
+    static GameObject Reuse(Object go, Vector3 position, Quaternion rotation)
+    {
+      var obj = Find(go);
 
-    if (gameObject == poolObject) gameObject.SetActive(false);
-    else Object.Destroy(gameObject);
-  }
-
-  static GameObject Find(Object go)
-  {
-    Pool.TryGetValue(go.name, out var result);
-    return result;
-  }
-
-  static GameObject Reuse(Object go, Vector3 position, Quaternion rotation)
-  {
-    var obj = Find(go);
-
-    obj.SetActive(true);
-    obj.transform.localPosition = position;
-    obj.transform.localRotation = rotation;
-    return obj;
+      obj.SetActive(true);
+      obj.transform.localPosition = position;
+      obj.transform.localRotation = rotation;
+      return obj;
+    }
   }
 }

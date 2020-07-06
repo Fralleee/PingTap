@@ -1,37 +1,37 @@
-﻿using Fralle.AI.Spawning;
-using Fralle.Attack.Offense;
+﻿using CombatSystem.Combat;
+using CombatSystem.Combat.Damage;
+using Fralle.AI.Spawning;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
-using Fralle.Player;
 using System;
 using UnityEngine;
 
 namespace Fralle.AI
 {
-  [RequireComponent(typeof(Health))]
+  [RequireComponent(typeof(DamageController))]
   public class Enemy : MonoBehaviour
   {
     public static event Action<Enemy> OnEnemyReachedPowerStone = delegate { };
     public static event Action<Enemy> OnAnyEnemyDeath = delegate { };
-    public event Action<Damage> OnDeath = delegate { };
+    public event Action<DamageData> OnDeath = delegate { };
 
     [HideInInspector] public EnemyNavigation enemyNavigation;
-    [HideInInspector] public Health health;
+    [HideInInspector] public DamageController damageController;
 
     [Header("General")]
     public int damageAmount = 1;
     public WaveType waveType = WaveType.Ground;
 
     public bool IsDead { get; private set; }
-    public PlayerMain KilledByPlayer { get; private set; }
+    public Combatant KilledByCombatant { get; private set; }
 
     void Awake()
     {
       enemyNavigation = GetComponent<EnemyNavigation>();
-      health = GetComponent<Health>();
+      damageController = GetComponent<DamageController>();
 
-      health.OnDeath += HandleDeath;
-      health.OnDamageTaken += HandleDamageTaken;
+      damageController.OnDeath += HandleDeath;
+      damageController.OnDamageTaken += HandleDamageTaken;
       MatchManager.OnDefeat += HandleDefeat;
     }
 
@@ -46,36 +46,36 @@ namespace Fralle.AI
       Death(null, true);
     }
 
-    void HandleDamageTaken(Health hp, Damage damage)
+    void HandleDamageTaken(DamageController damageController, DamageData damageData)
     {
       enemyNavigation.StopMovement(0.1f);
     }
 
-    void HandleDeath(Health hp, Damage damage)
+    void HandleDeath(DamageController damageController, DamageData damageData)
     {
-      Death(damage);
+      Death(damageData);
     }
 
-    void HandleDefeat(PlayerStats stats)
+    void HandleDefeat()
     {
       Destroy(gameObject);
     }
 
-    void Death(Damage damage, bool destroyImmediately = false)
+    void Death(DamageData damageData, bool destroyImmediately = false)
     {
       if (IsDead) return;
 
       IsDead = true;
-      KilledByPlayer = damage?.player;
+      KilledByCombatant = damageData.attacker;
 
-      DeathEvents(damage);
+      DeathEvents(damageData);
       DeathVisuals(destroyImmediately);
     }
 
-    void DeathEvents(Damage damage)
+    void DeathEvents(DamageData damageData)
     {
       OnAnyEnemyDeath(this);
-      OnDeath(damage);
+      OnDeath(damageData);
     }
 
     void DeathVisuals(bool destroyImmediately)
@@ -93,7 +93,7 @@ namespace Fralle.AI
 
     void OnDestroy()
     {
-      health.OnDeath -= HandleDeath;
+      damageController.OnDeath -= HandleDeath;
       MatchManager.OnDefeat -= HandleDefeat;
     }
   }

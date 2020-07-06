@@ -1,4 +1,4 @@
-﻿using Fralle.Attack.Offense;
+﻿using CombatSystem.Combat.Damage;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,34 +8,34 @@ namespace Fralle.UI.Indicators
   {
     [SerializeField] HealthBar healthBarPrefab = null;
 
-    readonly Dictionary<Health, HealthBar> healthBars = new Dictionary<Health, HealthBar>();
+    readonly Dictionary<DamageController, HealthBar> healthBars = new Dictionary<DamageController, HealthBar>();
 
     void Awake()
     {
-      Health.OnHealthBarAdded += AddHealthBar;
-      Health.OnHealthBarRemoved += RemoveHealthBar;
+      DamageController.OnHealthBarAdded += AddHealthBar;
+      DamageController.OnHealthBarRemoved += RemoveHealthBar;
     }
 
-    void AddHealthBar(Health health)
+    void AddHealthBar(DamageController damageController)
     {
-      if (healthBars.ContainsKey(health)) return;
+      if (healthBars.ContainsKey(damageController)) return;
 
       var healthBar = Instantiate(healthBarPrefab, transform);
-      healthBar.Initialize(health);
+      healthBar.Initialize(damageController);
     }
 
-    void RemoveHealthBar(Health health)
+    void RemoveHealthBar(DamageController damageController)
     {
-      if (!healthBars.ContainsKey(health)) return;
+      if (!healthBars.ContainsKey(damageController)) return;
 
-      Destroy(healthBars[health].gameObject);
-      healthBars.Remove(health);
+      Destroy(healthBars[damageController].gameObject);
+      healthBars.Remove(damageController);
     }
 
     void OnDestroy()
     {
-      Health.OnHealthBarAdded -= AddHealthBar;
-      Health.OnHealthBarRemoved -= RemoveHealthBar;
+      DamageController.OnHealthBarAdded -= AddHealthBar;
+      DamageController.OnHealthBarRemoved -= RemoveHealthBar;
     }
   }
 }

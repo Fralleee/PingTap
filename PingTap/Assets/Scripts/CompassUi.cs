@@ -1,5 +1,4 @@
 ﻿using Fralle.Core.Extensions;
-using Fralle.Player;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -28,7 +27,7 @@ namespace Fralle.UI.HUD
 
     void Start()
     {
-      var playerMain = GetComponentInParent<PlayerMain>();
+      var playerMain = GetComponentInParent<Player>();
       playerOrientation = playerMain.transform.FindRecursively("Orientation");
     }
 

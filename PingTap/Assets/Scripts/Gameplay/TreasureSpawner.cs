@@ -1,5 +1,4 @@
-﻿using NaughtyAttributes;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.Gameplay
 {
@@ -15,7 +14,6 @@ namespace Fralle.Gameplay
       terrain = FindObjectOfType<Terrain>();
     }
 
-    [Button]
     public bool Spawn()
     {
       var doSpawn = Random.value < spawnChance;

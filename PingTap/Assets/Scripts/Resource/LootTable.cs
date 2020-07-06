@@ -1,5 +1,4 @@
-﻿using NaughtyAttributes;
-using System;
+﻿using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,27 +9,27 @@ namespace Fralle.Resource
   {
     [Header("Poor")]
     [SerializeField] GameObject poorPrefab = null;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 poorCreditsDropped = Vector2.zero;
+    [SerializeField] Vector2 poorCreditsDropped = Vector2.zero;
 
     [Header("Common")]
     [SerializeField] GameObject commonPrefab = null;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 commonCreditsDropped = Vector2.zero;
+    [SerializeField] Vector2 commonCreditsDropped = Vector2.zero;
 
     [Header("Uncommon")]
     [SerializeField] GameObject uncommonPrefab = null;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 uncommonCreditsDropped = Vector2.zero;
+    [SerializeField] Vector2 uncommonCreditsDropped = Vector2.zero;
 
     [Header("Rare")]
     [SerializeField] GameObject rarePrefab = null;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 rareCreditsDropped = Vector2.zero;
+    [SerializeField] Vector2 rareCreditsDropped = Vector2.zero;
 
     [Header("Epic")]
     [SerializeField] GameObject epicPrefab = null;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 epicCreditsDropped = Vector2.zero;
+    [SerializeField] Vector2 epicCreditsDropped = Vector2.zero;
 
     [Header("Legendary")]
     [SerializeField] GameObject legendaryPrefab = null;
-    [SerializeField] [MinMaxSlider(0, 1000)] Vector2 legendaryCreditsDropped = Vector2.zero;
+    [SerializeField] Vector2 legendaryCreditsDropped = Vector2.zero;
 
     static int GetRandomRange(Vector2 range) => (int)Math.Round(Random.Range(range.x, range.y));
 

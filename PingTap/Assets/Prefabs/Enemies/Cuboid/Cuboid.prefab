@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1567626936455925426}
   - component: {fileID: 1471109051832761321}
   - component: {fileID: 7684054321801576726}
-  - component: {fileID: 1835535985047049594}
+  - component: {fileID: 8008550077327273441}
   - component: {fileID: 4322944903226680589}
   - component: {fileID: 1169690573668540798}
   - component: {fileID: 1017305939656644488}
@@ -73,7 +73,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1835535985047049594
+--- !u!114 &8008550077327273441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2565378040731073697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47b4cefef7bf2204c812afbbb3bc89d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a5c58b46df3aad49bedd37585b6286a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageEffects: []
@@ -91,7 +91,7 @@ MonoBehaviour:
   maxHealth: 100
   immortal: 0
   armor:
-    armor: 5
+    armor: 0
     armorElementModifiers: []
     protection: {fileID: 0}
 --- !u!114 &4322944903226680589
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyNavigation: {fileID: 0}
-  health: {fileID: 0}
+  damageController: {fileID: 0}
   damageAmount: 1
   waveType: 0
 --- !u!114 &1017305939656644488

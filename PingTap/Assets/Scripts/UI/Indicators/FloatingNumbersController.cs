@@ -1,4 +1,4 @@
-﻿using Fralle.Attack.Offense;
+﻿using CombatSystem.Combat.Damage;
 using System.Globalization;
 using UnityEngine;
 
@@ -12,19 +12,19 @@ namespace Fralle.UI.Indicators
     void Awake()
     {
       camera = Camera.main;
-      Health.OnAnyDamage += AddFloatingNumber;
+      DamageController.OnAnyDamage += AddFloatingNumber;
     }
 
-    void AddFloatingNumber(Damage damage)
+    void AddFloatingNumber(DamageData damageData)
     {
       var floatingText = Instantiate(prefab, transform);
-      var damageText = Mathf.Round(damage.damageAmount).ToString(CultureInfo.InvariantCulture);
-      floatingText.Setup(damageText, damage.position, camera);
+      var damageText = Mathf.Round(damageData.damageAmount).ToString(CultureInfo.InvariantCulture);
+      floatingText.Setup(damageText, damageData.position, camera);
     }
 
     void OnDestroy()
     {
-      Health.OnAnyDamage -= AddFloatingNumber;
+      DamageController.OnAnyDamage -= AddFloatingNumber;
     }
   }
 }

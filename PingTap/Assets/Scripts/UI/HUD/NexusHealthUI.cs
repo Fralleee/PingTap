@@ -18,7 +18,7 @@ namespace Fralle.UI.HUD
     void Update()
     {
       if (!playerHome) return;
-      playerHome.health.OnHealthChange += UpdateHealthbar;
+      playerHome.damageController.OnHealthChange += UpdateHealthbar;
     }
 
     public void UpdateHealthbar(float currentHealth, float maxHealth)

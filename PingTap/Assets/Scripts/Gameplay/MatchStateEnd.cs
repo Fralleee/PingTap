@@ -1,4 +1,6 @@
-﻿namespace Fralle.Gameplay
+﻿using Fralle.Core.Interfaces;
+
+namespace Fralle.Gameplay
 {
   public class MatchStateEnd : IState
   {

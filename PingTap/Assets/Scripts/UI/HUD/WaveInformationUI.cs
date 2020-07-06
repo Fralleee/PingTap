@@ -42,7 +42,7 @@ namespace Fralle.UI.HUD
     void SetupText(WaveDefinition wave)
     {
       var enemy = wave.enemy;
-      var armor = enemy.health.armor;
+      var armor = enemy.damageController.armor;
       enemyName.text = enemy.name;
       enemyCurrentCount.text = wave.count.ToString();
       enemyTotalCount.text = wave.count.ToString();

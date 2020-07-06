@@ -1,4 +1,4 @@
-﻿using Fralle.Attack.Offense;
+﻿using CombatSystem.Combat.Damage;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,35 +8,35 @@ namespace Fralle.UI.Indicators
   {
     [SerializeField] Image foregroundImage = null;
 
-    Health health;
+    DamageController damageController;
     new Camera camera;
     new Renderer renderer;
     Vector3 defaultScale;
     Canvas canvas;
     RectTransform rectTransform;
 
-    public void Initialize(Health hp)
+    public void Initialize(DamageController damageController)
     {
       defaultScale = transform.localScale;
 
-      health = hp;
-      health.OnHealthChange += HandleHealthChange;
-      health.OnDeath += HandleDeath;
+      this.damageController = damageController;
+      this.damageController.OnHealthChange += HandleDamageControllerChange;
+      this.damageController.OnDeath += HandleDeath;
 
       camera = Camera.main;
 
-      renderer = hp.gameObject.GetComponentInChildren<Renderer>();
+      renderer = this.damageController.gameObject.GetComponentInChildren<Renderer>();
       rectTransform = GetComponent<RectTransform>();
       canvas = GetComponent<Canvas>();
     }
 
-    void HandleHealthChange(float currentHealth, float maxHealth)
+    void HandleDamageControllerChange(float currentHealth, float maxHealth)
     {
       var percentage = currentHealth / maxHealth;
       foregroundImage.fillAmount = percentage;
     }
 
-    void HandleDeath(Health hp, Damage damage)
+    void HandleDeath(DamageController damageController, DamageData damageData)
     {
       Destroy(gameObject);
     }
@@ -50,7 +50,7 @@ namespace Fralle.UI.Indicators
     bool ToggleIfVisible()
     {
       var isVisible = renderer && !renderer.isVisible;
-      var isDestroyed = health == null || health.isDead;
+      var isDestroyed = damageController == null || damageController.isDead;
       if (isVisible || isDestroyed)
       {
         canvas.enabled = false;
@@ -62,10 +62,10 @@ namespace Fralle.UI.Indicators
 
     void UpdatePosition()
     {
-      var distance = Vector3.Distance(camera.transform.position, health.transform.position);
+      var distance = Vector3.Distance(camera.transform.position, damageController.transform.position);
       var yPositionOffset = Mathf.Lerp(2, 3.5f, distance / 40);
 
-      var screenPosition = camera.WorldToScreenPoint(health.transform.position + Vector3.up * yPositionOffset);
+      var screenPosition = camera.WorldToScreenPoint(damageController.transform.position + Vector3.up * yPositionOffset);
 
       // extra check
       if (screenPosition.z < 0)
@@ -84,8 +84,8 @@ namespace Fralle.UI.Indicators
 
     void OnDestroy()
     {
-      health.OnHealthChange -= HandleHealthChange;
-      health.OnDeath -= HandleDeath;
+      damageController.OnHealthChange -= HandleDamageControllerChange;
+      damageController.OnDeath -= HandleDeath;
     }
   }
 }

@@ -1,5 +1,4 @@
 ﻿using Fralle.Gameplay;
-using Fralle.Player;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,7 +38,7 @@ namespace Fralle.UI.HUD
       currentWave = waves[index];
     }
 
-    void HandleVictory(PlayerStats stats)
+    void HandleVictory()
     {
       waves.ForEach(x => x.SetFill(1));
     }

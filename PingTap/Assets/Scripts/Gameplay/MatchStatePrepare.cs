@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Fralle.Core.Interfaces;
+using UnityEngine;
 
 namespace Fralle.Gameplay
 {

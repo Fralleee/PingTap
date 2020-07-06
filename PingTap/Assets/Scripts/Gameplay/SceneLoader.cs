@@ -1,4 +1,4 @@
-﻿using NaughtyAttributes;
+﻿using Fralle.Core.Attributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

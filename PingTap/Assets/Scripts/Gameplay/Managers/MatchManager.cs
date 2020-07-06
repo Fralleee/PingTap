@@ -3,7 +3,6 @@ using Fralle.Core.Attributes;
 using Fralle.Core.Audio;
 using Fralle.Core.Infrastructure;
 using Fralle.Movement;
-using Fralle.Player;
 using System;
 using UnityEngine;
 
@@ -12,8 +11,8 @@ namespace Fralle.Gameplay
   public class MatchManager : Singleton<MatchManager>
   {
     public static event Action OnMatchEnd = delegate { };
-    public static event Action<PlayerStats> OnDefeat = delegate { };
-    public static event Action<PlayerStats> OnVictory = delegate { };
+    public static event Action OnDefeat = delegate { };
+    public static event Action OnVictory = delegate { };
     public static event Action OnNewRound = delegate { };
     public static event Action<GameState> OnNewState = delegate { };
 
@@ -94,40 +93,35 @@ namespace Fralle.Gameplay
       Victory();
     }
 
-    PlayerStats FinishedMatch()
+    void FinishedMatch()
     {
-      var stats = new PlayerStats();
-      var player = FindObjectOfType<PlayerMain>();
-      if (player) stats = player.stats;
-
       PlayerMouseLook.ConfigureCursor(false);
 
       if (sceneCamera)
       {
-        PlayerMain.Disable();
+        Player.Disable();
         sceneCamera.gameObject.SetActive(true);
         sceneCamera.GetComponent<AudioListener>().enabled = true;
       }
 
       matchState.enabled = false;
       OnMatchEnd();
-      return stats;
     }
 
     void Victory()
     {
       Debug.Log("Victory");
       victorySound.Spawn();
-      var stats = FinishedMatch();
-      OnVictory(stats);
+      FinishedMatch();
+      OnVictory();
     }
 
     void Defeat(PlayerHome pHome)
     {
       Debug.Log("Defeat");
       defeatSound.Spawn();
-      var stats = FinishedMatch();
-      OnDefeat(stats);
+      FinishedMatch();
+      OnDefeat();
     }
 
     void OnDestroy()

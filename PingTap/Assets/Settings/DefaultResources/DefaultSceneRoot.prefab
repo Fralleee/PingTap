@@ -135,8 +135,8 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 4084
-  m_UseColorTemperature: 0
+  m_ColorTemperature: 5126
+  m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
@@ -292,6 +292,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3321477440709210067}
     m_Modifications:
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[0].passNames.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[1].passNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[0].m_Name
+      value: Custom Pass
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[0].passFoldout
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[0].overrideMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: c8501910b161a4c42bf0b73c0c374f0a, type: 2}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[1].m_Name
+      value: Main Custom Pass
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[1].passFoldout
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[1].passNames.Array.data[0]
+      value: Forward
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120096689706142460, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
+        type: 3}
+      propertyPath: customPasses.Array.data[1].overrideMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 465442f82d5a43745a6fc07b8d15fcea, type: 2}
     - target: {fileID: 4120096689706142461, guid: 0a2d0debbdf4c3f4c985d1987ea03bc1,
         type: 3}
       propertyPath: m_Name

@@ -1,4 +1,4 @@
-﻿using Fralle.Attack.Addons;
+﻿using CombatSystem.Addons;
 using TMPro;
 using UnityEngine;
 
@@ -9,26 +9,26 @@ namespace Fralle.UI.HUD
     [SerializeField] TextMeshProUGUI currentAmmoText = null;
     [SerializeField] TextMeshProUGUI maxAmmoText = null;
 
-    Ammo ammo;
+    AmmoAddon ammoAddon;
     UiTweener uiTweener;
 
     void Start()
     {
-      ammo = GetComponentInParent<Ammo>();
+      ammoAddon = GetComponentInParent<AmmoAddon>();
       uiTweener = GetComponentInParent<UiTweener>();
 
-      currentAmmoText.text = ammo.currentAmmo.ToString();
-      maxAmmoText.text = ammo.maxAmmo.ToString();
+      currentAmmoText.text = ammoAddon.currentAmmo.ToString();
+      maxAmmoText.text = ammoAddon.maxAmmo.ToString();
 
-      ammo.OnAmmoChanged += UpdateCurrentAmmoText;
+      ammoAddon.OnAmmoChanged += UpdateCurrentAmmoAddonText;
     }
 
     void OnDestroy()
     {
-      ammo.OnAmmoChanged -= UpdateCurrentAmmoText;
+      ammoAddon.OnAmmoChanged -= UpdateCurrentAmmoAddonText;
     }
 
-    void UpdateCurrentAmmoText(int newAmmo)
+    void UpdateCurrentAmmoAddonText(int newAmmo)
     {
       currentAmmoText.text = newAmmo.ToString();
 
