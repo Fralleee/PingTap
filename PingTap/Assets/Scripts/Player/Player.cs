@@ -1,6 +1,5 @@
 ﻿using CombatSystem.Combat;
 using Fralle.Core.Extensions;
-using Fralle.Movement.Moves;
 using UnityEngine;
 
 namespace Fralle
@@ -30,7 +29,6 @@ namespace Fralle
 
     void Awake()
     {
-      MovementCrouch.OnCrouch += HandleCrouch;
       combatant = GetComponent<Combatant>();
     }
 
@@ -52,12 +50,6 @@ namespace Fralle
       Instantiate(damageNumbersUi, ui);
       Instantiate(minimapUi, ui);
       Instantiate(compassUi, ui);
-    }
-
-    void HandleCrouch(bool isCrouching)
-    {
-      Debug.LogWarning("Crouch is currently not affecting accuracy");
-      //extraAccuracy = isCrouching ? 1.5f : 1f;
     }
   }
 }

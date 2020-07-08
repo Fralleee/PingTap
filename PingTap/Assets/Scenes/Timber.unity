@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.16598988, g: 0.0981018, b: 0.07637959, a: 1}
+  m_IndirectSpecularColor: {r: 0.16581523, g: 0.09798504, b: 0.076315336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -122,12 +122,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: de837895b1d505f458e2b91ed8cd06ec, type: 2}
+--- !u!1 &126630785 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386371906627268470, guid: bf1959b3f09bb2742aa60ded39558225,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462182025}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &126630795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126630785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4854dee28dde3418774a40da5886ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretPrefab: {fileID: 8080229969330226229, guid: a91a057733e117343b1aec1bd9133d75,
+    type: 3}
+  cameraRig: {fileID: 1842586928}
+  cooldown: 1
+  throwingForce: 500
+  turrentCount: 2
 --- !u!4 &172933075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2349242729297132618, guid: d2a1b30a655188b4c84905d5c5aca7ce,
     type: 3}
   m_PrefabInstance: {fileID: 1646003380}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &192563651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386371905872086469, guid: bf1959b3f09bb2742aa60ded39558225,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462182025}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &192563666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192563651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5c58b46df3aad49bedd37585b6286a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageEffects: []
+  isDead: 0
+  currentHealth: 0
+  maxHealth: 100
+  immortal: 0
+  armor:
+    armor: 0
+    armorElementModifiers: []
+    protection: {fileID: 0}
 --- !u!4 &201107254 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2349242729297132618, guid: 5e47218f0aa3c8645abe94c5629297e2,
@@ -1262,6 +1313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3384301054174911590, guid: bf1959b3f09bb2742aa60ded39558225,
+        type: 3}
+      propertyPath: dithering
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf1959b3f09bb2742aa60ded39558225, type: 3}
 --- !u!1001 &1646003380
@@ -1344,7 +1400,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh35328
+  m_Name: pb_Mesh19412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1649,6 +1705,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae, type: 3}
+--- !u!4 &1842586928 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1386371907097986392, guid: bf1959b3f09bb2742aa60ded39558225,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462182025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1904685841
 PrefabInstance:
   m_ObjectHideFlags: 0

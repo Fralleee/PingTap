@@ -46,6 +46,8 @@ namespace CombatSystem.Action
       currentSpread = Mathf.Clamp(currentSpread, 0, spreadRadius);
     }
 
+    public override float GetRange() => range;
+
     void FireBullet(Transform muzzle)
     {
       attacker.Stats.OnAttack(1);

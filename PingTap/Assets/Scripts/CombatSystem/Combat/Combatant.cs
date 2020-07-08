@@ -13,20 +13,19 @@ namespace CombatSystem.Combat
     public Transform weaponHolder;
     public Weapon weapon;
 
-    Weapon equippedWeapon;
     AttackAction primaryAction;
     AttackAction secondaryAction;
 
     public void PrimaryAction(bool keyDown = false)
     {
-      if (!equippedWeapon || !primaryAction || primaryAction.tapable && !keyDown) return;
+      if (!weapon || !primaryAction || primaryAction.tapable && !keyDown) return;
 
       primaryAction.Perform();
     }
 
     public void SecondaryAction(bool keyDown = false)
     {
-      if (!equippedWeapon || !secondaryAction || secondaryAction.tapable && !keyDown) return;
+      if (!weapon || !secondaryAction || secondaryAction.tapable && !keyDown) return;
 
       secondaryAction.Perform();
     }
@@ -34,13 +33,12 @@ namespace CombatSystem.Combat
     public void SetFPSLayers(string layerName)
     {
       var layer = LayerMask.NameToLayer(layerName);
-      equippedWeapon.gameObject.SetLayerRecursively(layer);
+      weapon.gameObject.SetLayerRecursively(layer);
     }
 
     void Awake()
     {
       SetDefaults();
-      EquipWeapon();
     }
 
     void SetDefaults()
@@ -49,19 +47,11 @@ namespace CombatSystem.Combat
       if (weaponHolder == null) weaponHolder = transform;
     }
 
-    void EquipWeapon()
+    public void SetupWeapon(Weapon w)
     {
-      if (!weapon) return;
-
-      equippedWeapon = Instantiate(weapon, weaponHolder.position, transform.rotation, weaponHolder);
-      equippedWeapon.Equip(this);
-      SetupAttackActions();
-    }
-
-    void SetupAttackActions()
-    {
-      var attackActions = equippedWeapon.GetComponentsInChildren<AttackAction>();
-      if (attackActions.Length > 2) Debug.LogWarning($"Weapon {equippedWeapon} has more attack actions than possible (2).");
+      weapon = w;
+      var attackActions = weapon.GetComponentsInChildren<AttackAction>();
+      if (attackActions.Length > 2) Debug.LogWarning($"Weapon {weapon} has more attack actions than possible (2).");
       else if (attackActions.Length > 0)
       {
         primaryAction = attackActions[0];

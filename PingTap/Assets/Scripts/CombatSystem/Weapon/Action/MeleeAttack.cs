@@ -25,6 +25,8 @@ namespace CombatSystem.Action
       PerformMelee();
     }
 
+    public override float GetRange() => meleeRadius;
+
     void LateUpdate()
     {
       Animate();

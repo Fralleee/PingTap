@@ -2,7 +2,7 @@
 using Fralle.Core.Attributes;
 using Fralle.Core.Audio;
 using Fralle.Core.Infrastructure;
-using Fralle.Movement;
+using Fralle.FpsController;
 using System;
 using UnityEngine;
 
@@ -95,7 +95,7 @@ namespace Fralle.Gameplay
 
     void FinishedMatch()
     {
-      PlayerMouseLook.ConfigureCursor(false);
+      CameraController.ConfigureCursor(false);
 
       if (sceneCamera)
       {

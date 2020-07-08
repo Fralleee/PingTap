@@ -49,15 +49,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropPrefab: {fileID: 0}
   weaponName: Assault Rifle
   equipAnimationTime: 0.3
   muzzles:
   - {fileID: 7401508142080020281}
-  playerCamera: {fileID: 0}
-  recoil: {fileID: 0}
-  ammoController: {fileID: 0}
-  weaponScore: 0
+  combatant: {fileID: 0}
+  recoilAddon: {fileID: 0}
+  ammoAddonController: {fileID: 0}
 --- !u!114 &1923125321600534695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,15 +68,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e729f40f6e38f4e95d030b2b8a6676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireInput: 0
-  minDamage: 5
-  maxDamage: 10
+  minDamage: 10
+  maxDamage: 20
   ammoPerShot: 1
   shotsPerSecond: 20
   tapable: 0
   element: 2
-  damageEffects:
-  - {fileID: 11400000, guid: 4600535bb04514a4c99377a5e8a9bcfe, type: 2}
+  damageEffects: []
   range: 250
   pushForce: 500
   impactParticlePrefab: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
@@ -104,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireInput: 1
   minDamage: 60
   maxDamage: 80
   ammoPerShot: 3
@@ -124,7 +119,7 @@ MonoBehaviour:
     explosionRadius: 5
     pushForce: 1000
     range: 100
-    player: {fileID: 0}
+    attacker: {fileID: 0}
     damage: 0
     forward: {x: 0, y: 0, z: 0}
     element: 0

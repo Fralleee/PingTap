@@ -39,7 +39,7 @@ namespace CombatSystem
 
     void Update()
     {
-      PerformEquip();
+      AnimateEquip();
     }
 
     public void Equip(Combatant c)
@@ -53,6 +53,7 @@ namespace CombatSystem
       startRotation = transform.localRotation;
 
       isEquipped = true;
+      c.SetupWeapon(this);
     }
 
     public void ChangeWeaponAction(Status newActiveWeaponAction)
@@ -61,7 +62,7 @@ namespace CombatSystem
       OnActiveWeaponActionChanged(newActiveWeaponAction);
     }
 
-    void PerformEquip()
+    void AnimateEquip()
     {
       if (equipped) return;
 

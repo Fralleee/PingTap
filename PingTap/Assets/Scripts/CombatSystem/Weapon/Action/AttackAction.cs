@@ -50,6 +50,7 @@ namespace CombatSystem.Action
     }
 
     public abstract void Fire();
+    public abstract float GetRange();
 
     internal IEnumerator ShootingCooldown()
     {

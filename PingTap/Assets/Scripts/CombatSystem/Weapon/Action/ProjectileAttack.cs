@@ -28,6 +28,8 @@ namespace CombatSystem.Action
       StartCoroutine(SpawnProjectiles(muzzle));
     }
 
+    public override float GetRange() => projectileData.range;
+
     IEnumerator SpawnProjectiles(Transform muzzle)
     {
       for (var i = 0; i < projectilesPerFire; i++)
