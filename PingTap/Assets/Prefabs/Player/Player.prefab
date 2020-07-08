@@ -340,7 +340,7 @@ MonoBehaviour:
   volumeAnchorOverride: {fileID: 0}
   antialiasing: 2
   SMAAQuality: 2
-  dithering: 0
+  dithering: 1
   stopNaNs: 0
   taaSharpenStrength: 0
   physicalParameters:
@@ -700,6 +700,7 @@ GameObject:
   - component: {fileID: 1821515927939034793}
   - component: {fileID: 1588032943}
   - component: {fileID: 940673088}
+  - component: {fileID: 126630795}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -843,6 +844,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  animationTime: 0.2
 --- !u!114 &1821515927939034793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,6 +899,24 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 1821515927939034793}
+--- !u!114 &126630795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4854dee28dde3418774a40da5886ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretPrefab: {fileID: 8080229969330226229, guid: a91a057733e117343b1aec1bd9133d75,
+    type: 3}
+  cameraRig: {fileID: 1386371907097986392}
+  cooldown: 1
+  throwingForce: 500
+  turrentCount: 2
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +1002,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3187656414626874248}
-  - component: {fileID: 5759514564479015277}
   m_Layer: 0
   m_Name: Head Bob
   m_TagString: Untagged
@@ -1005,55 +1024,3 @@ Transform:
   m_Father: {fileID: 7278579137162569097}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5759514564479015277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8487388410035754587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34bb1e24921b78748872b60d1d384964, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidBody: {fileID: 1386371905872086475}
-  blendOverLifetime:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.6522522
-      value: 0.99998474
-      inSlope: -0.27603102
-      outSlope: -0.27603102
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.56862384
-    - serializedVersion: 3
-      time: 0.9958678
-      value: 0.007042253
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  transitionSpeed: 10
-  bobSpeed: 11
-  bobAmount: 0.0075
-  jumpBobPower: 0.01
-  bounceBackPower: 0.015
-  bounceBackTimeMultiplier: 2

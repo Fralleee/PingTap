@@ -47,6 +47,7 @@ namespace Fralle.Gameplay
     void HandleGameEnd()
     {
       liveUi.SetActive(false);
+      waveInfoUi.SetActive(false);
       resultUi.SetActive(true);
     }
 
