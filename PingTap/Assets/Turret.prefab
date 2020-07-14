@@ -4739,6 +4739,7 @@ MonoBehaviour:
   target: {fileID: 0}
   aimRig: {fileID: 7598825335407818443}
   IsDeployed: 0
+  targetHeight: 0
   range: 0
 --- !u!114 &4955626280165971108
 MonoBehaviour:
@@ -4767,7 +4768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71142196ed1ac648be70eb432572484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanTime: 0
+  scanRate: 2
+  rayCastRate: 0.5
   layerMask:
     serializedVersion: 2
     m_Bits: 32768
@@ -4785,7 +4787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equippedWeapon: {fileID: 0}
   weapons:
-  - {fileID: -5829858850810243681, guid: 0d3d5ecb19266fa469e1a3b041555a2d, type: 3}
+  - {fileID: -5829858850810243681, guid: bd0c6d978e2943b40982a1f0875c9055, type: 3}
 --- !u!114 &1884787291563795857
 MonoBehaviour:
   m_ObjectHideFlags: 0
