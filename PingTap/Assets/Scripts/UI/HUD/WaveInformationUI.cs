@@ -25,7 +25,7 @@ namespace Fralle.UI.HUD
       uiTweener = GetComponentInParent<UiTweener>();
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
-      WaveManager.OnNewWave += HandleNewWave;
+      //WaveManager.OnNewWave += HandleNewWave;
     }
 
     void Update()
@@ -35,8 +35,8 @@ namespace Fralle.UI.HUD
 
     void HandleNewWave()
     {
-      var wave = WaveManager.Instance.GetCurrentWave;
-      SetupText(wave);
+      //var wave = WaveManager.Instance.GetCurrentWave;
+      //SetupText(wave);
     }
 
     void SetupText(WaveDefinition wave)
@@ -69,7 +69,7 @@ namespace Fralle.UI.HUD
     void OnDestroy()
     {
       Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
-      WaveManager.OnNewWave -= HandleNewWave;
+      //WaveManager.OnNewWave -= HandleNewWave;
     }
   }
 }

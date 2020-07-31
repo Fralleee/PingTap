@@ -10,8 +10,7 @@ namespace Fralle.Gameplay
 
     public void OnEnter()
     {
-      var enemyCount = WaveManager.Instance.NextWave();
-      MatchManager.Instance.NewWave(enemyCount);
+      MatchManager.Instance.SpawnWave();
       MatchManager.Instance.NewState(GameState.Live);
     }
 

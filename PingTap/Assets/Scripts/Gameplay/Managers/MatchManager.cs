@@ -18,6 +18,7 @@ namespace Fralle.Gameplay
 
     public GameState gameState;
     public float prepareTime = 30f;
+    public int waveCount;
 
     [Header("Cameras")]
     [SerializeField] Camera sceneCamera = null;
@@ -34,25 +35,29 @@ namespace Fralle.Gameplay
     [Readonly] public float prepareTimer;
     [Readonly] public float totalTimer;
     [Readonly] public float waveTimer;
+    [Readonly] public int currentWave;
 
     [HideInInspector] public bool isVictory;
     [HideInInspector] public TreasureSpawner treasureSpawner;
+    [HideInInspector] public bool WavesRemaining => currentWave != waveCount || enemiesAlive > 0;
 
-    MatchState matchState;
+    StateMachine stateMachine;
     PlayerHome playerHome;
+    EnemyManager enemyManager;
 
     protected override void Awake()
     {
       base.Awake();
 
       Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
-      WaveManager.OnWavesComplete += HandleWavesComplete;
       LeanTween.init(1000);
+      SetupStateMachine();
     }
 
     void Start()
     {
-      matchState = GetComponent<MatchState>();
+      enemyManager = GetComponent<EnemyManager>();
+
       sceneCamera.gameObject.SetActive(false);
 
       playerHome = FindObjectOfType<PlayerHome>();
@@ -68,6 +73,15 @@ namespace Fralle.Gameplay
     {
       if (gameState == GameState.End) return;
       totalTimer += Time.deltaTime;
+      stateMachine.Tick();
+    }
+
+    public void SpawnWave()
+    {
+      currentWave++;
+      enemyManager.Reset();
+      enemiesAlive = enemyManager.enemiesToSpawn;
+      totalEnemies = enemyManager.enemiesToSpawn;
     }
 
     public void NewState(GameState newState)
@@ -76,21 +90,25 @@ namespace Fralle.Gameplay
       OnNewState(newState);
     }
 
-    public void NewWave(int enemyCount)
-    {
-      enemiesAlive = enemyCount;
-      totalEnemies = enemyCount;
-      OnNewRound();
-    }
-
     public void HandleEnemyDeath(Enemy enemy)
     {
       enemiesAlive--;
     }
 
-    void HandleWavesComplete()
+    void SetupStateMachine()
     {
-      Victory();
+      stateMachine = new StateMachine();
+
+      var matchStatePrepare = new MatchStatePrepare();
+      var matchStateLive = new MatchStateLive();
+      var matchStateEnd = new MatchStateEnd();
+
+      stateMachine.AddTransition(matchStatePrepare, matchStateLive, () => prepareTimer <= 0);
+      stateMachine.AddTransition(matchStateLive, matchStatePrepare, () => enemiesAlive == 0 && WavesRemaining);
+      stateMachine.AddTransition(matchStateLive, matchStateEnd, () => enemiesAlive == 0 && !WavesRemaining);
+
+      stateMachine.SetState(matchStatePrepare);
+      NewState(GameState.Prepare);
     }
 
     void FinishedMatch()
@@ -104,11 +122,10 @@ namespace Fralle.Gameplay
         sceneCamera.GetComponent<AudioListener>().enabled = true;
       }
 
-      matchState.enabled = false;
       OnMatchEnd();
     }
 
-    void Victory()
+    public void Victory()
     {
       Debug.Log("Victory");
       victorySound.Spawn();
@@ -116,7 +133,7 @@ namespace Fralle.Gameplay
       OnVictory();
     }
 
-    void Defeat(PlayerHome pHome)
+    public void Defeat(PlayerHome pHome)
     {
       Debug.Log("Defeat");
       defeatSound.Spawn();
@@ -128,7 +145,6 @@ namespace Fralle.Gameplay
     {
       playerHome.OnDeath -= Defeat;
       Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
-      WaveManager.OnWavesComplete -= HandleWavesComplete;
     }
   }
 }

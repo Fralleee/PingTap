@@ -1,5 +1,4 @@
-﻿using Fralle.Gameplay;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Fralle.UI.HUD
@@ -11,12 +10,12 @@ namespace Fralle.UI.HUD
     void Awake()
     {
       text = GetComponent<TextMeshProUGUI>();
-      WaveManager.OnNewSchema += SetText;
+      //WaveManager.OnNewSchema += SetText;
     }
 
     void SetText()
     {
-      text.text = $"Level {WaveManager.Instance.currentArmy + 1}";
+      //text.text = $"Level {WaveManager.Instance.currentArmy + 1}";
     }
   }
 }

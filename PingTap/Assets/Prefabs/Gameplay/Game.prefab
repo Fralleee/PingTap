@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 615102588463662592}
   - component: {fileID: 1799010807110823819}
   - component: {fileID: 615102588463662622}
-  - component: {fileID: 6314654496378554421}
-  - component: {fileID: 615102588463662623}
+  - component: {fileID: 1892061632}
   - component: {fileID: 1126382571}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   prepareTime: 0
+  waveCount: 0
   sceneCamera: {fileID: 0}
   victorySoundPrefab: {fileID: 4581494024291719903, guid: 2b3b580e5ffa7a84f936c012adbacb4b,
     type: 3}
@@ -74,9 +74,10 @@ MonoBehaviour:
   prepareTimer: 0
   totalTimer: 0
   waveTimer: 0
+  currentWave: 0
   isVictory: 0
   treasureSpawner: {fileID: 0}
---- !u!114 &6314654496378554421
+--- !u!114 &1892061632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,29 +86,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 615102588463662593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3110c24f216925147a3fb37c292bafd0, type: 3}
+  m_Script: {fileID: 11500000, guid: cc797cdff1cb7634b997e63a1fb05c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &615102588463662623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615102588463662593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9dff4ad98f483f43b7a70b2603257a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armies:
-  - {fileID: 11400000, guid: b2c5c5d08da00df419735b99b8d1abab, type: 2}
-  spawner: {fileID: 0}
-  maxArmies: 0
-  maxWaves: 0
-  currentArmy: 0
-  currentWave: 0
-  waveProgress: 0
+  spawnCenter: {x: -23.085617, y: 0, z: -23.894545}
+  enemyPrefab: {fileID: 2565378040731073697, guid: cd695f5ae0ecc3146bd699479b2f91b6,
+    type: 3}
+  enemiesToSpawn: 20
+  spawnRate: 1
+  minRange: 50
+  maxRange: 100
 --- !u!114 &1126382571
 MonoBehaviour:
   m_ObjectHideFlags: 0
