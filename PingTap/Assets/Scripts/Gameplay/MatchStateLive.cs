@@ -10,8 +10,8 @@ namespace Fralle.Gameplay
 
     public void OnEnter()
     {
-      MatchManager.Instance.SpawnWave();
-      MatchManager.Instance.NewState(GameState.Live);
+      //MatchManager.Instance.SpawnWave();
+      //MatchManager.Instance.NewState(GameState.Live);
     }
 
     public void Tick()

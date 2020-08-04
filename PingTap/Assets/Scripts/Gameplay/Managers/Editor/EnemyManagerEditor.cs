@@ -1,12 +1,12 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(EnemyManager)), CanEditMultipleObjects]
+[CustomEditor(typeof(Spawner)), CanEditMultipleObjects]
 public class EnemyManagerEditor : Editor
 {
   protected virtual void OnSceneGUI()
   {
-    EnemyManager enemyManager = (EnemyManager)target;
+    Spawner enemyManager = (Spawner)target;
 
     Handles.DrawWireDisc(enemyManager.spawnCenter, Vector3.up, enemyManager.minRange);
     Handles.DrawWireDisc(enemyManager.spawnCenter, Vector3.up, enemyManager.maxRange);

@@ -1,8 +1,6 @@
-﻿using Fralle.AI;
-using Fralle.Core.Attributes;
+﻿using Fralle.Core.Attributes;
 using Fralle.Core.Audio;
 using Fralle.Core.Infrastructure;
-using Fralle.FpsController;
 using System;
 using UnityEngine;
 
@@ -43,108 +41,108 @@ namespace Fralle.Gameplay
 
     StateMachine stateMachine;
     PlayerHome playerHome;
-    EnemyManager enemyManager;
+    Spawner enemyManager;
 
-    protected override void Awake()
-    {
-      base.Awake();
+    //protected override void Awake()
+    //{
+    //  base.Awake();
 
-      Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
-      LeanTween.init(1000);
-      SetupStateMachine();
-    }
+    //  Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
+    //  LeanTween.init(1000);
+    //  SetupStateMachine();
+    //}
 
-    void Start()
-    {
-      enemyManager = GetComponent<EnemyManager>();
+    //void Start()
+    //{
+    //  enemyManager = GetComponent<Spawner>();
 
-      sceneCamera.gameObject.SetActive(false);
+    //  sceneCamera.gameObject.SetActive(false);
 
-      playerHome = FindObjectOfType<PlayerHome>();
-      playerHome.OnDeath += Defeat;
+    //  playerHome = FindObjectOfType<PlayerHome>();
+    //  playerHome.OnDeath += Defeat;
 
-      treasureSpawner = GetComponent<TreasureSpawner>();
+    //  treasureSpawner = GetComponent<TreasureSpawner>();
 
-      victorySound = Instantiate(victorySoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
-      defeatSound = Instantiate(defeatSoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
-    }
+    //  victorySound = Instantiate(victorySoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
+    //  defeatSound = Instantiate(defeatSoundPrefab, sceneCamera.transform.position, Quaternion.identity, transform);
+    //}
 
-    void Update()
-    {
-      if (gameState == GameState.End) return;
-      totalTimer += Time.deltaTime;
-      stateMachine.Tick();
-    }
+    //void Update()
+    //{
+    //  if (gameState == GameState.End) return;
+    //  totalTimer += Time.deltaTime;
+    //  stateMachine.Tick();
+    //}
 
-    public void SpawnWave()
-    {
-      currentWave++;
-      enemyManager.Reset();
-      enemiesAlive = enemyManager.enemiesToSpawn;
-      totalEnemies = enemyManager.enemiesToSpawn;
-    }
+    //public void SpawnWave()
+    //{
+    //  currentWave++;
+    //  //enemyManager.Reset();
+    //  //enemiesAlive = enemyManager.enemiesToSpawn;
+    //  //totalEnemies = enemyManager.enemiesToSpawn;
+    //}
 
-    public void NewState(GameState newState)
-    {
-      gameState = newState;
-      OnNewState(newState);
-    }
+    //public void NewState(GameState newState)
+    //{
+    //  gameState = newState;
+    //  OnNewState(newState);
+    //}
 
-    public void HandleEnemyDeath(Enemy enemy)
-    {
-      enemiesAlive--;
-    }
+    //public void HandleEnemyDeath(Enemy enemy)
+    //{
+    //  enemiesAlive--;
+    //}
 
-    void SetupStateMachine()
-    {
-      stateMachine = new StateMachine();
+    //void SetupStateMachine()
+    //{
+    //  stateMachine = new StateMachine();
 
-      var matchStatePrepare = new MatchStatePrepare();
-      var matchStateLive = new MatchStateLive();
-      var matchStateEnd = new MatchStateEnd();
+    //  var matchStatePrepare = new MatchStatePrepare();
+    //  var matchStateLive = new MatchStateLive();
+    //  var matchStateEnd = new MatchStateEnd();
 
-      stateMachine.AddTransition(matchStatePrepare, matchStateLive, () => prepareTimer <= 0);
-      stateMachine.AddTransition(matchStateLive, matchStatePrepare, () => enemiesAlive == 0 && WavesRemaining);
-      stateMachine.AddTransition(matchStateLive, matchStateEnd, () => enemiesAlive == 0 && !WavesRemaining);
+    //  stateMachine.AddTransition(matchStatePrepare, matchStateLive, () => prepareTimer <= 0);
+    //  stateMachine.AddTransition(matchStateLive, matchStatePrepare, () => enemiesAlive == 0 && WavesRemaining);
+    //  stateMachine.AddTransition(matchStateLive, matchStateEnd, () => enemiesAlive == 0 && !WavesRemaining);
 
-      stateMachine.SetState(matchStatePrepare);
-      NewState(GameState.Prepare);
-    }
+    //  stateMachine.SetState(matchStatePrepare);
+    //  NewState(GameState.Prepare);
+    //}
 
-    void FinishedMatch()
-    {
-      CameraController.ConfigureCursor(false);
+    //void FinishedMatch()
+    //{
+    //  CameraController.ConfigureCursor(false);
 
-      if (sceneCamera)
-      {
-        Player.Disable();
-        sceneCamera.gameObject.SetActive(true);
-        sceneCamera.GetComponent<AudioListener>().enabled = true;
-      }
+    //  if (sceneCamera)
+    //  {
+    //    Player.Disable();
+    //    sceneCamera.gameObject.SetActive(true);
+    //    sceneCamera.GetComponent<AudioListener>().enabled = true;
+    //  }
 
-      OnMatchEnd();
-    }
+    //  OnMatchEnd();
+    //}
 
-    public void Victory()
-    {
-      Debug.Log("Victory");
-      victorySound.Spawn();
-      FinishedMatch();
-      OnVictory();
-    }
+    //public void Victory()
+    //{
+    //  Debug.Log("Victory");
+    //  victorySound.Spawn();
+    //  FinishedMatch();
+    //  OnVictory();
+    //}
 
-    public void Defeat(PlayerHome pHome)
-    {
-      Debug.Log("Defeat");
-      defeatSound.Spawn();
-      FinishedMatch();
-      OnDefeat();
-    }
+    //public void Defeat(PlayerHome pHome)
+    //{
+    //  Debug.Log("Defeat");
+    //  defeatSound.Spawn();
+    //  FinishedMatch();
+    //  OnDefeat();
+    //}
 
-    void OnDestroy()
-    {
-      playerHome.OnDeath -= Defeat;
-      Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
-    }
+    //void OnDestroy()
+    //{
+    //  playerHome.OnDeath -= Defeat;
+    //  Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
+    //}
   }
 }

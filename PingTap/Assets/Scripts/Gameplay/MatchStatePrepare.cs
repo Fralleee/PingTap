@@ -8,7 +8,7 @@ namespace Fralle.Gameplay
     public void OnEnter()
     {
       MatchManager.Instance.prepareTimer = MatchManager.Instance.prepareTime;
-      MatchManager.Instance.NewState(GameState.Prepare);
+      //MatchManager.Instance.NewState(GameState.Prepare);
     }
 
     public void Tick()

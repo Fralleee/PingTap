@@ -10,13 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 615102588463662592}
   - component: {fileID: 1799010807110823819}
-  - component: {fileID: 615102588463662622}
   - component: {fileID: 1892061632}
   - component: {fileID: 1126382571}
+  - component: {fileID: 2195956142788250111}
+  - component: {fileID: 3942923564115749215}
+  - component: {fileID: 1892061633}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: b1b079d053c3d0c41952dadf32a89ffd, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -49,34 +51,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuScene: Main menu
   masterScene: MasterScene
---- !u!114 &615102588463662622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615102588463662593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0bb745f9eefb8f429858572173d5adb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameState: 0
-  prepareTime: 0
-  waveCount: 0
-  sceneCamera: {fileID: 0}
-  victorySoundPrefab: {fileID: 4581494024291719903, guid: 2b3b580e5ffa7a84f936c012adbacb4b,
-    type: 3}
-  defeatSoundPrefab: {fileID: 8374457036373247660, guid: 109ebb445e09d094f8540c2d639f8c80,
-    type: 3}
-  enemiesAlive: 0
-  totalEnemies: 0
-  prepareTimer: 0
-  totalTimer: 0
-  waveTimer: 0
-  currentWave: 0
-  isVictory: 0
-  treasureSpawner: {fileID: 0}
 --- !u!114 &1892061632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,10 +64,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnCenter: {x: -23.085617, y: 0, z: -23.894545}
-  enemyPrefab: {fileID: 2565378040731073697, guid: cd695f5ae0ecc3146bd699479b2f91b6,
-    type: 3}
-  enemiesToSpawn: 20
-  spawnRate: 1
   minRange: 50
   maxRange: 100
 --- !u!114 &1126382571
@@ -111,6 +81,60 @@ MonoBehaviour:
   treasurePrefab: {fileID: 6918691692514331542, guid: 42844fb3796d2e84a9c36e9432b3e837,
     type: 3}
   spawnChance: 0.437
+--- !u!114 &2195956142788250111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615102588463662593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad9b61e9bd055a43977bc51c99e5155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+  prepareTime: 30
+  waveCount: 0
+  currentWave: 0
+  zombieLevelIncreaseFactor: 1.2
+  wave: {fileID: 11400000, guid: e49d17765de0a66498bbc9c00a075a14, type: 2}
+  sceneCamera: {fileID: 0}
+  victorySound: {fileID: 11400000, guid: dbb671076f8a6904183a055bf2c06e9e, type: 2}
+  defeatSound: {fileID: 11400000, guid: 0a652f879bd19b341a7264129e4df785, type: 2}
+  enemiesAlive: 0
+  totalEnemies: 0
+  prepareTimer: 0
+  totalTimer: 0
+  waveTimer: 0
+  isVictory: 0
+  treasureSpawner: {fileID: 0}
+--- !u!114 &3942923564115749215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615102588463662593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d6d4abfccebf84a918ce3fbf2b4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 3822862014493582118, guid: 01ef266c354462c46883e26e34ec5147, type: 3}
+--- !u!114 &1892061633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615102588463662593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f7945b3a79b7146a0695c9b96e5363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preloadedPrefabs: []
 --- !u!1 &4040883970222047209
 GameObject:
   m_ObjectHideFlags: 0

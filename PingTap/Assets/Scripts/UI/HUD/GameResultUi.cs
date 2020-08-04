@@ -15,8 +15,8 @@ public class GameResultUi : MonoBehaviour
     statusScreen.SetActive(false);
     scoreScreen.SetActive(false);
 
-    MatchManager.OnDefeat += HandleDefeat;
-    MatchManager.OnVictory += HandleVictory;
+    //MatchManager.OnDefeat += HandleDefeat;
+    //MatchManager.OnVictory += HandleVictory;
   }
 
   public void ScoreScreen()

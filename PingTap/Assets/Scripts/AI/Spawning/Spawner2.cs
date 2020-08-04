@@ -40,7 +40,7 @@ public class Spawner2 : MonoBehaviour
 
     var enemyInstance = Instantiate(enemyPrefab, position, Quaternion.identity);
     var enemy = enemyInstance.GetComponent<Enemy>();
-    ((EnemyTargetNavigation)enemy.enemyNavigation).target = playerHome.transform;
+    ((AINavigation)enemy.enemyNavigation).target = playerHome.transform;
 
     nextSpawnTime = Time.time + spawnRate;
     spawnedEnemies += 1;

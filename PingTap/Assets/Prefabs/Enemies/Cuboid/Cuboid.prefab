@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8008550077327273441}
   - component: {fileID: 4322944903226680589}
   - component: {fileID: 1169690573668540798}
-  - component: {fileID: 1017305939656644488}
   - component: {fileID: -3496286409503540599}
+  - component: {fileID: 6779265172047522588}
   m_Layer: 15
   m_Name: Cuboid
   m_TagString: Untagged
@@ -125,20 +125,6 @@ MonoBehaviour:
   damageController: {fileID: 0}
   damageAmount: 1
   waveType: 0
---- !u!114 &1017305939656644488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565378040731073697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e01d62b32b5621b4193308928687568c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMovementModifier: 1
-  target: {fileID: 0}
 --- !u!114 &-3496286409503540599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +141,20 @@ MonoBehaviour:
   maxCredits: 3
   dropChance: 0.125
   lootTable: {fileID: 11400000, guid: f1bee62d455a1464988c18fd55e05800, type: 2}
+--- !u!114 &6779265172047522588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565378040731073697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517a60ee217e81647a255b684f692338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMovementModifier: 1
+  target: {fileID: 0}
 --- !u!1001 &6800776577071501016
 PrefabInstance:
   m_ObjectHideFlags: 0
