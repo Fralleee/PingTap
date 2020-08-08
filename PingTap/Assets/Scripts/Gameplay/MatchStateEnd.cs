@@ -6,8 +6,8 @@ namespace Fralle.Gameplay
   {
     public void OnEnter()
     {
-      //MatchManager.Instance.NewState(GameState.End);
-      //MatchManager.Instance.Victory();
+      GameManager.Instance.SetState(GameState.End);
+      GameManager.Instance.Victory();
     }
 
     public void Tick()

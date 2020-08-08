@@ -1,12 +1,15 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
+  public event Action<int> OnSpawnComplete = delegate { };
+
   public Vector3 spawnCenter = Vector3.zero;
   public float minRange = 10f;
   public float maxRange = 10f;
@@ -21,6 +24,7 @@ public class Spawner : MonoBehaviour
 
   int maxSpawnCount;
   int currentSpawnCount;
+  int enemyCount;
 
   public void SetSpawnDefinition(SpawnWave wave)
   {
@@ -30,8 +34,8 @@ public class Spawner : MonoBehaviour
     currentWave.SetupProbabilityList();
 
     currentSpawnCount = 0;
+    enemyCount = 0;
     nextSpawnTime = Time.time + currentWave.spawnRate;
-    Debug.Log($"Should spawn enemy every {currentWave.spawnRate}s");
   }
 
   public void StartSpawning()
@@ -67,16 +71,20 @@ public class Spawner : MonoBehaviour
     var spawnedInstance = Instantiate(prefab, position, Quaternion.identity);
     spawnedInstance.GetComponent<AINavigation>().target = playerHome.transform;
 
+    if (spawnedInstance.GetComponent<Enemy>()) enemyCount += 1;
+
     nextSpawnTime += currentWave.spawnRate;
     currentSpawnCount += 1;
+
+    if (currentSpawnCount == maxSpawnCount) OnSpawnComplete(enemyCount);
   }
 
   Vector3 GetSpawnPoint()
   {
-    Vector3 randomVector = Random.insideUnitSphere.With(y: 0).normalized * Random.Range(minRange, maxRange);
     for (int i = 0; i < 30; i++)
     {
-      if (NavMesh.SamplePosition(transform.position + randomVector, out NavMeshHit hit, maxRange, NavMesh.AllAreas))
+      Vector3 randomVector = Random.insideUnitSphere.With(y: 0).normalized * Random.Range(minRange, maxRange);
+      if (NavMesh.SamplePosition((spawnCenter + randomVector).With(y: 0), out NavMeshHit hit, 2f, NavMesh.AllAreas))
       {
         return hit.position;
       }

@@ -7,13 +7,14 @@ namespace Fralle.Gameplay
   {
     public void OnEnter()
     {
-      MatchManager.Instance.prepareTimer = MatchManager.Instance.prepareTime;
-      //MatchManager.Instance.NewState(GameState.Prepare);
+      GameManager.Instance.prepareTimer = GameManager.Instance.prepareTime;
+      GameManager.Instance.SetState(GameState.Prepare);
+      GameManager.Instance.enemyManager.PrepareSpawner();
     }
 
     public void Tick()
     {
-      MatchManager.Instance.prepareTimer -= Time.deltaTime;
+      GameManager.Instance.prepareTimer -= Time.deltaTime;
     }
 
     public void OnExit()

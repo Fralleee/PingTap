@@ -10,30 +10,30 @@ namespace Fralle.Gameplay
 
     public void OnEnter()
     {
-      //MatchManager.Instance.SpawnWave();
-      //MatchManager.Instance.NewState(GameState.Live);
+      GameManager.Instance.SetState(GameState.Live);
+      GameManager.Instance.enemyManager.StartSpawner();
     }
 
     public void Tick()
     {
-      MatchManager.Instance.waveTimer += Time.deltaTime;
+      GameManager.Instance.waveTimer += Time.deltaTime;
 
-      if (spawnedTreasure || !(MatchManager.Instance.waveTimer >= nextUpdate)) return;
+      //if (spawnedTreasure || !(GameManager.Instance.waveTimer >= nextUpdate)) return;
 
-      nextUpdate = Mathf.FloorToInt(Time.time) + 1;
-      TreasureSpawn();
+      //nextUpdate = Mathf.FloorToInt(Time.time) + 1;
+      //TreasureSpawn();
     }
 
     public void OnExit()
     {
-      MatchManager.Instance.waveTimer = 0;
+      GameManager.Instance.waveTimer = 0;
 
       spawnedTreasure = false;
     }
 
     void TreasureSpawn()
     {
-      spawnedTreasure = MatchManager.Instance.treasureSpawner.Spawn();
+      //spawnedTreasure = GameManager.Instance.treasureSpawner.Spawn();
     }
   }
 }

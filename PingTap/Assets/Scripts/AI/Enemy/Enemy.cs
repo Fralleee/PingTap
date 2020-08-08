@@ -66,7 +66,7 @@ namespace Fralle.AI
       if (IsDead) return;
 
       IsDead = true;
-      KilledByCombatant = damageData.attacker;
+      KilledByCombatant = damageData?.attacker;
 
       DeathEvents(damageData);
       DeathVisuals(destroyImmediately);
