@@ -67,8 +67,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   prepareTime: 1
-  waves:
-  - {fileID: 11400000, guid: e49d17765de0a66498bbc9c00a075a14, type: 2}
   sceneCamera: {fileID: 4202389369920920066}
   victorySound: {fileID: 11400000, guid: dbb671076f8a6904183a055bf2c06e9e, type: 2}
   defeatSound: {fileID: 11400000, guid: 0a652f879bd19b341a7264129e4df785, type: 2}
@@ -81,6 +79,7 @@ MonoBehaviour:
   isVictory: 0
   treasureSpawner: {fileID: 0}
   enemyManager: {fileID: 0}
+  playerHome: {fileID: 0}
 --- !u!114 &8241612155394377501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnCenter: {x: -23.085617, y: 0, z: -23.894545}
-  minRange: 20
-  maxRange: 35
+  minRange: 50
+  maxRange: 100
 --- !u!114 &1126382571
 MonoBehaviour:
   m_ObjectHideFlags: 0

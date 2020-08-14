@@ -15,8 +15,7 @@ public class Spawner : MonoBehaviour
   public float maxRange = 10f;
 
   SpawnWave currentWave;
-  PlayerHome playerHome;
-  new Transform transform;
+  HeadQuarters playerHome;
 
   bool allowedSpawn;
   bool ShouldSpawnEnemy => allowedSpawn && currentSpawnCount < maxSpawnCount && nextSpawnTime <= Time.time;
@@ -45,8 +44,7 @@ public class Spawner : MonoBehaviour
 
   void Awake()
   {
-    transform = GetComponent<Transform>();
-    playerHome = FindObjectOfType<PlayerHome>();
+    playerHome = FindObjectOfType<HeadQuarters>();
   }
 
   void Update()
@@ -69,7 +67,9 @@ public class Spawner : MonoBehaviour
     if (position == Vector3.zero) return;
 
     var spawnedInstance = Instantiate(prefab, position, Quaternion.identity);
-    spawnedInstance.GetComponent<AINavigation>().target = playerHome.transform;
+    spawnedInstance.name = prefab.name;
+
+    spawnedInstance.GetComponent<AINavigation>().targetPosition = playerHome.Entry;
 
     if (spawnedInstance.GetComponent<Enemy>()) enemyCount += 1;
 

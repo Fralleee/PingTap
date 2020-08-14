@@ -1,5 +1,4 @@
 ﻿using Fralle.AI;
-using Fralle.AI.Spawning;
 using Fralle.Gameplay;
 using TMPro;
 using UnityEngine;
@@ -39,18 +38,18 @@ namespace Fralle.UI.HUD
       //SetupText(wave);
     }
 
-    void SetupText(WaveDefinition wave)
+    void SetupText()
     {
-      var enemy = wave.enemy;
-      var armor = enemy.damageController.armor;
-      enemyName.text = enemy.name;
-      enemyCurrentCount.text = wave.count.ToString();
-      enemyTotalCount.text = wave.count.ToString();
-      armorAmount.text = $"Armor {armor.armor.ToString()}";
+      //var enemy = wave.enemy;
+      //var armor = enemy.damageController.armor;
+      //enemyName.text = enemy.name;
+      //enemyCurrentCount.text = wave.count.ToString();
+      //enemyTotalCount.text = wave.count.ToString();
+      //armorAmount.text = $"Armor {armor.armor.ToString()}";
 
-      elementModifiers.text = "";
-      armor.armorElementModifiers.ForEach(x => elementModifiers.text += $"{x.element}: {x.modifier * 100}%\n");
-      protections.text = armor.protection ? armor.protection.name : "No protection";
+      //elementModifiers.text = "";
+      //armor.armorElementModifiers.ForEach(x => elementModifiers.text += $"{x.element}: {x.modifier * 100}%\n");
+      //protections.text = armor.protection ? armor.protection.name : "No protection";
     }
 
     void SetTimer(float num)

@@ -7,7 +7,15 @@ namespace Fralle.Gameplay
     public void OnEnter()
     {
       GameManager.Instance.SetState(GameState.End);
-      GameManager.Instance.Victory();
+      if (GameManager.Instance.playerHome.damageController.isDead)
+      {
+        GameManager.Instance.Defeat();
+      }
+      else
+      {
+        GameManager.Instance.Victory();
+      }
+
     }
 
     public void Tick()

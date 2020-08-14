@@ -1,4 +1,4 @@
-﻿using Fralle.Core.Camera;
+﻿using Fralle.Core.CameraControls;
 using System;
 using System.Collections;
 using UnityEngine;

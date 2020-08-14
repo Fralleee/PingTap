@@ -352,6 +352,7 @@ MonoBehaviour:
     m_BarrelClipping: 0.25
     m_Anamorphism: 0
   flipYMode: 0
+  xrRendering: 1
   fullscreenPassthrough: 0
   allowDynamicResolution: 0
   customRenderingSettings: 0
@@ -474,6 +475,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -498,6 +500,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &1386371905872086474
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -699,7 +702,6 @@ GameObject:
   - component: {fileID: 6817597722629130795}
   - component: {fileID: 1821515927939034793}
   - component: {fileID: 1588032943}
-  - component: {fileID: 940673088}
   - component: {fileID: 126630795}
   m_Layer: 13
   m_Name: Player
@@ -741,8 +743,6 @@ MonoBehaviour:
   crosshair: {fileID: 5767136545138703017, guid: 7c839d5aab9603e42b8a5b27ec8fa862,
     type: 3}
   resourceUi: {fileID: 4609884483907960962, guid: f9b5cad6d60de2742b8275d6a53d8c36,
-    type: 3}
-  enemyHealthBarUi: {fileID: 6248745576978661917, guid: 9a6de2e9b473b254eaa4ed0689a82d31,
     type: 3}
   damageNumbersUi: {fileID: 6248745576978661917, guid: dffb2453f4c5dac43a9035e32a0b1839,
     type: 3}
@@ -883,22 +883,6 @@ MonoBehaviour:
   aimTransform: {fileID: 1386371905205327086}
   weaponHolder: {fileID: 217825854}
   weapon: {fileID: 0}
---- !u!114 &940673088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386371906627268470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ecce055e403b464782e92953e7d6c6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  behaviours:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1821515927939034793}
 --- !u!114 &126630795
 MonoBehaviour:
   m_ObjectHideFlags: 0

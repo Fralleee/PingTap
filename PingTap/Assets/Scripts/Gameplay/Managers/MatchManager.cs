@@ -40,7 +40,7 @@ namespace Fralle.Gameplay
     [HideInInspector] public bool WavesRemaining => currentWave != waveCount || enemiesAlive > 0;
 
     StateMachine stateMachine;
-    PlayerHome playerHome;
+    HeadQuarters playerHome;
     Spawner enemyManager;
 
     //protected override void Awake()

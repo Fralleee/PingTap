@@ -10,7 +10,6 @@ namespace Fralle
 
     [SerializeField] GameObject crosshair = null;
     [SerializeField] GameObject resourceUi = null;
-    [SerializeField] GameObject enemyHealthBarUi = null;
     [SerializeField] GameObject damageNumbersUi = null;
     [SerializeField] GameObject minimapUi = null;
     [SerializeField] GameObject compassUi = null;
@@ -46,7 +45,6 @@ namespace Fralle
     {
       Instantiate(crosshair, ui);
       Instantiate(resourceUi, ui);
-      Instantiate(enemyHealthBarUi, ui);
       Instantiate(damageNumbersUi, ui);
       Instantiate(minimapUi, ui);
       Instantiate(compassUi, ui);

@@ -8,11 +8,11 @@ namespace Fralle.UI.HUD
   {
     [SerializeField] Image foregroundImage = null;
 
-    PlayerHome playerHome;
+    HeadQuarters playerHome;
 
     void Awake()
     {
-      playerHome = FindObjectOfType<PlayerHome>();
+      playerHome = FindObjectOfType<HeadQuarters>();
     }
 
     void Update()

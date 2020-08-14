@@ -1,0 +1,25 @@
+﻿using UnityEngine;
+
+namespace CombatSystem.Combat.Target
+{
+  public class TargetDetector : MonoBehaviour
+  {
+    [SerializeField] LayerMask layerMask;
+
+    readonly RaycastHit[] results = new RaycastHit[5];
+
+    void FixedUpdate()
+    {
+      int hits = Physics.RaycastNonAlloc(transform.position, transform.forward, results, 100f, layerMask);
+      for (int i = 0; i < hits; i++)
+      {
+        var targetController = results[i].transform.gameObject.GetComponent<TargetController>();
+        if (targetController)
+        {
+          targetController.RaycastHit();
+        }
+      }
+    }
+
+  }
+}

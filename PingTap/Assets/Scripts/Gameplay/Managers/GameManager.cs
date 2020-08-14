@@ -39,9 +39,12 @@ namespace Fralle.Gameplay
     [HideInInspector] public bool isVictory;
     [HideInInspector] public TreasureSpawner treasureSpawner;
     [HideInInspector] public EnemyManager enemyManager;
+    [HideInInspector] public HeadQuarters playerHome;
 
     AudioManager audioManager;
     StateMachine stateMachine;
+
+    bool endMatch;
 
     protected override void Awake()
     {
@@ -49,8 +52,11 @@ namespace Fralle.Gameplay
 
       audioManager = GetComponent<AudioManager>();
       enemyManager = GetComponent<EnemyManager>();
+      playerHome = FindObjectOfType<HeadQuarters>();
 
       SetupStateMachine();
+
+      playerHome.OnDeath += HandleHomeDeath;
     }
 
     void SetupStateMachine()
@@ -63,7 +69,7 @@ namespace Fralle.Gameplay
 
       stateMachine.AddTransition(matchStatePrepare, matchStateLive, () => prepareTimer <= 0);
       stateMachine.AddTransition(matchStateLive, matchStatePrepare, () => enemyManager.AllEnemiesDead && enemyManager.waves.Count > 0);
-      stateMachine.AddTransition(matchStateLive, matchStateEnd, () => enemyManager.AllEnemiesDead && enemyManager.waves.Count == 0);
+      stateMachine.AddTransition(matchStateLive, matchStateEnd, () => endMatch || enemyManager.AllEnemiesDead && enemyManager.waves.Count == 0);
 
       stateMachine.SetState(matchStatePrepare);
       SetState(GameState.Prepare);
@@ -104,12 +110,17 @@ namespace Fralle.Gameplay
       OnVictory();
     }
 
-    public void Defeat(PlayerHome pHome)
+    public void Defeat()
     {
       Debug.Log("Defeat");
       audioManager.Play(defeatSound);
       FinishedMatch();
       OnDefeat();
+    }
+
+    void HandleHomeDeath(HeadQuarters home)
+    {
+      endMatch = true;
     }
   }
 }

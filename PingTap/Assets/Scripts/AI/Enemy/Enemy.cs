@@ -1,6 +1,5 @@
 ﻿using CombatSystem.Combat;
 using CombatSystem.Combat.Damage;
-using Fralle.AI.Spawning;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
 using System;
@@ -15,24 +14,27 @@ namespace Fralle.AI
     public static event Action<Enemy> OnAnyEnemyDeath = delegate { };
     public event Action<DamageData> OnDeath = delegate { };
 
-    [HideInInspector] public EnemyNavigation enemyNavigation;
     [HideInInspector] public DamageController damageController;
+
+    [Header("UI")]
+    [SerializeField] GameObject infoPrefab;
 
     [Header("General")]
     public int damageAmount = 1;
-    public WaveType waveType = WaveType.Ground;
 
     public bool IsDead { get; private set; }
     public Combatant KilledByCombatant { get; private set; }
 
+
     void Awake()
     {
-      enemyNavigation = GetComponent<EnemyNavigation>();
       damageController = GetComponent<DamageController>();
 
       damageController.OnDeath += HandleDeath;
       damageController.OnDamageTaken += HandleDamageTaken;
       MatchManager.OnDefeat += HandleDefeat;
+
+      SetupUI();
     }
 
     void Update()
@@ -48,7 +50,7 @@ namespace Fralle.AI
 
     void HandleDamageTaken(DamageController damageController, DamageData damageData)
     {
-      enemyNavigation.StopMovement(0.1f);
+
     }
 
     void HandleDeath(DamageController damageController, DamageData damageData)
@@ -89,6 +91,12 @@ namespace Fralle.AI
       gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
 
       Destroy(gameObject, 3f);
+    }
+
+    void SetupUI()
+    {
+      var uiTransform = transform.Find("UI");
+      Instantiate(infoPrefab, uiTransform);
     }
 
     void OnDestroy()

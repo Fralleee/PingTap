@@ -38,7 +38,10 @@ public class EnemyInventory : MonoBehaviour
 
   void HandleDeath(DamageData damageData)
   {
-    Reward(enemy);
-    Drop();
+    if (damageData?.attacker)
+    {
+      Reward(enemy);
+      Drop();
+    }
   }
 }

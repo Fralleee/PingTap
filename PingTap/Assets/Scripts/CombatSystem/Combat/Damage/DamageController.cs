@@ -1,4 +1,5 @@
-﻿using CombatSystem.Defense;
+﻿using CombatSystem.Combat.Target;
+using CombatSystem.Defense;
 using CombatSystem.Effect;
 using CombatSystem.Interfaces;
 using Fralle.Core.Extensions;
@@ -22,13 +23,25 @@ namespace CombatSystem.Combat.Damage
     [HideInInspector] public List<DamageEffect> damageEffects = new List<DamageEffect>();
     [HideInInspector] public bool isDead;
 
+    [Header("UI")]
+    [SerializeField] GameObject healthbarPrefab;
+    [SerializeField] GameObject floatingNumbersPrefab;
+
     [Header("Stats")]
     public float currentHealth;
     public float maxHealth = 100f;
     public bool immortal;
     public Armor armor;
 
+
     bool isTouched;
+    TargetController targetController;
+
+    void Awake()
+    {
+      targetController = GetComponent<TargetController>();
+      SetupUI();
+    }
 
     void Start()
     {
@@ -50,6 +63,7 @@ namespace CombatSystem.Combat.Damage
     public void ReceiveAttack(DamageData damageData)
     {
       if (isDead) return;
+      if (targetController) targetController.RaycastHit(1.5f);
 
       damageData = armor.Protect(damageData, this);
       TakeDamage(damageData);
@@ -115,6 +129,13 @@ namespace CombatSystem.Combat.Damage
         isDead = true;
         OnDeath(this, damageData);
       }
+    }
+
+    void SetupUI()
+    {
+      var uiTransform = transform.Find("UI");
+      if (healthbarPrefab) Instantiate(healthbarPrefab, uiTransform);
+      if (floatingNumbersPrefab) Instantiate(floatingNumbersPrefab, uiTransform);
     }
   }
 }
