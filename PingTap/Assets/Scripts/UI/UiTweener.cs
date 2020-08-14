@@ -43,6 +43,8 @@ namespace Fralle.UI
     {
       if (objectToAnimate == null) objectToAnimate = gameObject;
 
+      LeanTween.reset();
+
       animationMap[animationType]();
 
       tweenObject.setDelay(delay);
