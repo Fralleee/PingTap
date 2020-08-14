@@ -6,7 +6,6 @@ namespace Fralle.Core.CameraControls
   public class BillboardSizeCamera : MonoBehaviour
   {
     new Camera camera;
-    //RectTransform rectTransform;
 
     [SerializeField] float maxDistance = 50f;
     [SerializeField] Vector2 scaleLimits = new Vector2(0.5f, 1.5f);
@@ -15,7 +14,6 @@ namespace Fralle.Core.CameraControls
     void Awake()
     {
       camera = Camera.main;
-      //rectTransform = GetComponent<RectTransform>();
     }
 
     void LateUpdate()
