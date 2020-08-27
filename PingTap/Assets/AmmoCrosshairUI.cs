@@ -32,8 +32,6 @@ public class AmmoCrosshairUI : MonoBehaviour
     currentAmmo = ammoAddon.maxAmmo;
 
     image.fillAmount = 1;
-
-    Debug.Log($"Weapon switch to {weapon.name}");
   }
 
   void HandleAmmoChanged(int ammoCount)
@@ -41,6 +39,5 @@ public class AmmoCrosshairUI : MonoBehaviour
     currentAmmo = ammoCount;
 
     image.fillAmount = currentAmmo / (float)maxAmmo;
-    Debug.Log($"Current Ammo changed {currentAmmo}");
   }
 }
