@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: -5829858850810243681}
   - component: {fileID: 1923125321600534695}
   - component: {fileID: -193412882233909061}
-  - component: {fileID: 4028727317570622237}
   - component: {fileID: 4849536065285394247}
   - component: {fileID: 8780596973138301923}
   m_Layer: 0
@@ -100,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDamage: 60
-  maxDamage: 80
-  ammoPerShot: 3
+  minDamage: 120
+  maxDamage: 160
+  ammoPerShot: 10
   shotsPerSecond: 20
   tapable: 1
   element: 0
@@ -116,7 +115,7 @@ MonoBehaviour:
     explodeOnMaxRange: 0
     explodeOnImpactTime: 0
     explodeOnTime: 0
-    explosionRadius: 5
+    explosionRadius: 10
     pushForce: 1000
     range: 100
     attacker: {fileID: 0}
@@ -127,22 +126,6 @@ MonoBehaviour:
   projectilesPerFire: 1
   delayTimePerProjectiles: 0
   radiusOnMaxRange: 0
---- !u!114 &4028727317570622237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943643353794196974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb95d93432f5c3e49b03c061701a925d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
-  asChild: 1
-  lifecycle: 1
 --- !u!114 &4849536065285394247
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,11 +1,14 @@
 ﻿using CombatSystem.Action;
 using Fralle.Core.Extensions;
+using System;
 using UnityEngine;
 
 namespace CombatSystem.Combat
 {
   public class Combatant : MonoBehaviour
   {
+    public event Action<Weapon> OnWeaponSwitch = delegate { };
+
     public CombatStats Stats = new CombatStats();
     public CombatModifiers Modifiers = new CombatModifiers();
 
@@ -49,6 +52,7 @@ namespace CombatSystem.Combat
 
     public void SetupWeapon(Weapon w)
     {
+      OnWeaponSwitch(w);
       weapon = w;
       var attackActions = weapon.GetComponentsInChildren<AttackAction>();
       if (attackActions.Length > 2) Debug.LogWarning($"Weapon {weapon} has more attack actions than possible (2).");
