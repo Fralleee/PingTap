@@ -20,7 +20,7 @@ public class AmmoCrosshairUI : MonoBehaviour
     combatant = GetComponentInParent<Combatant>();
     combatant.OnWeaponSwitch += HandleWeaponSwitch;
 
-    HandleWeaponSwitch(combatant.weapon);
+    if (combatant.weapon) HandleWeaponSwitch(combatant.weapon);
   }
 
   void HandleWeaponSwitch(Weapon weapon)
