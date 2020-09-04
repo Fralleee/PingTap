@@ -7,6 +7,7 @@ namespace Fralle
   public class Player : MonoBehaviour
   {
     [SerializeField] Transform ui = null;
+    [SerializeField] LayerMask ignoreLayers;
 
     [SerializeField] GameObject crosshair = null;
     [SerializeField] GameObject resourceUi = null;
@@ -33,8 +34,7 @@ namespace Fralle
     void Start()
     {
       var layer = LayerMask.NameToLayer("Player");
-      var ignoreLayer = LayerMask.NameToLayer("First Person Objects");
-      gameObject.SetLayerRecursively(layer, ignoreLayer);
+      gameObject.SetLayerRecursively(layer, ignoreLayers);
 
       camera = Camera.main;
       SetupUi();

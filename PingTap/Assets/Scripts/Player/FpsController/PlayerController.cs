@@ -17,7 +17,6 @@ namespace Fralle.FpsController
     public float strafeSpeed = 4f;
     public float stepHeight = 0.4f;
 
-
     [Header("Jump")]
     public float jumpStrength = 8f;
 
@@ -26,8 +25,10 @@ namespace Fralle.FpsController
     public float dashPower = 24f;
     public float dashCooldown = 5f;
 
+
     [HideInInspector] public bool IsGrounded;
     [HideInInspector] public bool PreviouslyGrounded;
+    [HideInInspector] public bool IsMoving;
     [HideInInspector] public bool IsJumping;
     [HideInInspector] public bool IsDashing;
     [HideInInspector] public Vector3 groundContactNormal;
@@ -65,7 +66,7 @@ namespace Fralle.FpsController
       {
         groundController.SlopeControl();
         stepClimber.ClimbSteps();
-        movement.Move();
+        IsMoving = movement.Move();
       }
       else airMovement.Move();
 

@@ -24,12 +24,13 @@ namespace Fralle.FpsController.Moves
       orientation = transform.Find("Orientation");
     }
 
-    public void Move()
+    public bool Move()
     {
       var desiredForce = orientation.right * input.Move.x + orientation.forward * input.Move.y;
       desiredForce = Vector3.ProjectOnPlane(desiredForce, controller.groundContactNormal).normalized;
       rigidBody.AddForce(desiredForce * controller.forwardSpeed, ForceMode.Impulse);
       StoppingForces();
+      return desiredForce.magnitude > 0;
     }
 
     void StoppingForces()

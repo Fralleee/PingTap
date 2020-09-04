@@ -66,7 +66,7 @@ public class Spawner : MonoBehaviour
     Vector3 position = GetSpawnPoint();
     if (position == Vector3.zero) return;
 
-    var spawnedInstance = Instantiate(prefab, position, Quaternion.identity);
+    var spawnedInstance = Instantiate(prefab, position.With(y: 0), Quaternion.identity);
     spawnedInstance.name = prefab.name;
 
     spawnedInstance.GetComponent<AINavigation>().targetPosition = playerHome.Entry;

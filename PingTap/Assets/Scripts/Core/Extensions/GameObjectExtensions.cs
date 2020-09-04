@@ -4,14 +4,23 @@ namespace Fralle.Core.Extensions
 {
   public static class GameObjectExtensions
   {
-    public static void SetLayerRecursively(this GameObject gameObject, int layer, int ignoreLayer = -1)
+    public static void SetLayerRecursively(this GameObject gameObject, int layer)
     {
-      if (gameObject.layer == ignoreLayer) return;
+      gameObject.layer = layer;
+      foreach (Transform child in gameObject.transform)
+      {
+        SetLayerRecursively(child.gameObject, layer);
+      }
+    }
+
+    public static void SetLayerRecursively(this GameObject gameObject, int layer, LayerMask layerMask)
+    {
+      if (layerMask.IsInLayerMask(gameObject.layer)) return;
 
       gameObject.layer = layer;
       foreach (Transform child in gameObject.transform)
       {
-        SetLayerRecursively(child.gameObject, layer, ignoreLayer);
+        SetLayerRecursively(child.gameObject, layer, layerMask);
       }
     }
   }

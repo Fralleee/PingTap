@@ -18,7 +18,7 @@ namespace Fralle.AI
     float movementSpeed;
     readonly Dictionary<string, float> movementModifiers = new Dictionary<string, float>();
 
-    void Awake()
+    protected void Awake()
     {
       enemy = GetComponent<Enemy>();
       enemy.OnDeath += HandleDeath;
