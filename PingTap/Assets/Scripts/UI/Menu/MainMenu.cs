@@ -19,6 +19,9 @@ namespace Fralle.UI.Menu
     [SerializeField] GameObject levelSelect = null;
     [SerializeField] GameObject options = null;
 
+    [Header("Cameras")]
+    [SerializeField] new Camera camera;
+
     const string MainMenuScene = "Main menu";
     bool isOpen;
     bool inGame;
@@ -27,6 +30,8 @@ namespace Fralle.UI.Menu
     {
       var currentScene = SceneManager.GetActiveScene();
       inGame = currentScene.name != MainMenuScene;
+
+      if (inGame) camera.gameObject.SetActive(false);
 
       levelSelect.SetActive(false);
       options.SetActive(false);
