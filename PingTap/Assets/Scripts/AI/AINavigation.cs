@@ -1,38 +1,96 @@
-﻿using UnityEngine;
+﻿using Fralle.Core.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Fralle.AI
 {
-  public class AINavigation : EnemyNavigation
+  public class AINavigation : MonoBehaviour
   {
-    public Vector3 targetPosition;
+    public event Action OnFinalDestination = delegate { };
 
-    AIController aiController;
+    public float currentMovementModifier = 1f;
 
-    protected new void Awake()
+    NavMeshAgent navMeshAgent;
+    readonly Dictionary<string, float> movementModifiers = new Dictionary<string, float>();
+
+    float stopTime;
+    float movementSpeed;
+
+    void Awake()
     {
-      base.Awake();
-      aiController = GetComponent<AIController>();
+      navMeshAgent = GetComponent<NavMeshAgent>();
+      movementSpeed = navMeshAgent.speed;
     }
 
-    void Start()
+    void Update()
     {
-      SetDestination();
-      aiController.IsMoving = true;
+      if (PathComplete()) FinalDestination();
+      if (!(stopTime > 0f)) return;
+
+      stopTime = Mathf.Clamp(stopTime - Time.deltaTime, 0, float.MaxValue);
+      if (stopTime <= 0) RemoveModifier("StopMovement");
     }
 
-    internal override void Update()
+    void FinalDestination()
     {
-      if (PathComplete())
+      OnFinalDestination();
+    }
+
+    public void SetDestination(Vector3 position)
+    {
+      navMeshAgent.destination = position;
+    }
+
+    public void AddModifier(string modifierName, float modifier)
+    {
+      if (movementModifiers.ContainsKey(modifierName)) movementModifiers[modifierName] = modifier;
+      else movementModifiers.Add(modifierName, modifier);
+      currentMovementModifier = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
+
+      SetSpeed(movementSpeed * currentMovementModifier);
+    }
+
+    public void RemoveModifier(string modifierName)
+    {
+      movementModifiers.Remove(modifierName);
+      if (movementModifiers.Count > 0)
       {
-        aiController.IsMoving = false;
-        FinalDestination();
+        var value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
+        currentMovementModifier = value;
       }
-      base.Update();
+      else currentMovementModifier = 1f;
+
+      SetSpeed(movementSpeed * currentMovementModifier);
     }
 
-    internal override void SetDestination()
+    public void SetSpeed(float speed)
     {
-      navMeshAgent.destination = targetPosition;
+      navMeshAgent.speed = speed;
+    }
+
+    public void StopMovement(float time)
+    {
+      AddModifier("StopMovement", 0);
+      stopTime = time;
+    }
+
+    public void Stop()
+    {
+      navMeshAgent.enabled = false;
+    }
+
+    public void Start()
+    {
+      navMeshAgent.enabled = true;
+    }
+
+    public bool PathComplete()
+    {
+      if (!(Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)) return false;
+      return !navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude.EqualsWithTolerance(0f);
     }
   }
 }

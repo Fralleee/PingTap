@@ -83,12 +83,13 @@ GameObject:
   - component: {fileID: 2644067566292102910}
   - component: {fileID: 7684054321801576726}
   - component: {fileID: 5857807135777271831}
-  - component: {fileID: 6779265172047522588}
+  - component: {fileID: 1741849414031811042}
+  - component: {fileID: 4703738346449836243}
+  - component: {fileID: -3496286409503540599}
+  - component: {fileID: 1169690573668540798}
   - component: {fileID: 8008550077327273441}
   - component: {fileID: 4322944903226680589}
   - component: {fileID: 4733774723736979095}
-  - component: {fileID: 1169690573668540798}
-  - component: {fileID: -3496286409503540599}
   m_Layer: 15
   m_Name: Generic Zombie
   m_TagString: Untagged
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMoving: 0
---- !u!114 &6779265172047522588
+--- !u!114 &1741849414031811042
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,11 +171,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 2565378040731073697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517a60ee217e81647a255b684f692338, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bc68df0420c1ec41ac64aa45ade5c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentMovementModifier: 1
+--- !u!114 &4703738346449836243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565378040731073697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6520187898dc44f854fb4dd86cb3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &-3496286409503540599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565378040731073697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2eaa344dd2cf694ab934dfd5c3b47c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCredits: 1
+  maxCredits: 3
+  dropChance: 0.125
+  lootTable: {fileID: 11400000, guid: f1bee62d455a1464988c18fd55e05800, type: 2}
+--- !u!114 &1169690573668540798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2565378040731073697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adb17b8cec3d4342b7a6a64f7ed02be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageController: {fileID: 0}
+  infoPrefab: {fileID: 8596261505599545216, guid: 00e6704f622027041b8e3111bd184b82,
+    type: 3}
+  damageAmount: 1
 --- !u!114 &8008550077327273441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,38 +274,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hideDelay: 0.5
   ui: {fileID: 346387581}
---- !u!114 &1169690573668540798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565378040731073697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1adb17b8cec3d4342b7a6a64f7ed02be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageController: {fileID: 0}
-  infoPrefab: {fileID: 8596261505599545216, guid: 00e6704f622027041b8e3111bd184b82,
-    type: 3}
-  damageAmount: 1
---- !u!114 &-3496286409503540599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2565378040731073697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2eaa344dd2cf694ab934dfd5c3b47c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minCredits: 1
-  maxCredits: 3
-  dropChance: 0.125
-  lootTable: {fileID: 11400000, guid: f1bee62d455a1464988c18fd55e05800, type: 2}
 --- !u!1001 &2488145309543705176
 PrefabInstance:
   m_ObjectHideFlags: 0

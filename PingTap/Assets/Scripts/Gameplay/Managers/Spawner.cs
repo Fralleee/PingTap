@@ -69,7 +69,7 @@ public class Spawner : MonoBehaviour
     var spawnedInstance = Instantiate(prefab, position.With(y: 0), Quaternion.identity);
     spawnedInstance.name = prefab.name;
 
-    spawnedInstance.GetComponent<AINavigation>().targetPosition = playerHome.Entry;
+    spawnedInstance.GetComponent<AINavigation>().SetDestination(playerHome.Entry);
 
     if (spawnedInstance.GetComponent<Enemy>()) enemyCount += 1;
 
