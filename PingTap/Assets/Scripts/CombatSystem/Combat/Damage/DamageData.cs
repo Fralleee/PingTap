@@ -19,6 +19,7 @@ namespace CombatSystem.Combat.Damage
     public float damageAmount;
 
     public bool killingBlow;
+    public bool gib;
     public bool damageFromHit = true;
 
     public DamageData()

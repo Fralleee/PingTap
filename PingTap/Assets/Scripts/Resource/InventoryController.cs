@@ -21,7 +21,8 @@ namespace Fralle.Resource
 
     void Awake()
     {
-      lootPickupVolume = GameObject.Find("Loot Pickup Volume").GetComponent<Volume>();
+      var lootPickupObject = GameObject.Find("Loot Pickup Volume");
+      lootPickupVolume = lootPickupObject?.GetComponent<Volume>();
     }
 
     void Update()

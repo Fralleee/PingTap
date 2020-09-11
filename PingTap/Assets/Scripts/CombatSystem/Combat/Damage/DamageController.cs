@@ -12,10 +12,6 @@ namespace CombatSystem.Combat.Damage
 {
   public class DamageController : MonoBehaviour, IDamageable
   {
-    public static event Action<DamageData> OnAnyDamage = delegate { };
-    public static event Action<DamageController> OnHealthBarAdded = delegate { };
-    public static event Action<DamageController> OnHealthBarRemoved = delegate { };
-
     public event Action<DamageController, DamageData> OnDeath = delegate { };
     public event Action<DamageController, DamageData> OnDamageTaken = delegate { };
     public event Action<float, float> OnHealthChange = delegate { };
@@ -33,8 +29,6 @@ namespace CombatSystem.Combat.Damage
     public bool immortal;
     public Armor armor;
 
-
-    bool isTouched;
     TargetController targetController;
 
     void Awake()
@@ -78,25 +72,18 @@ namespace CombatSystem.Combat.Damage
 
       if (damageData.damageAmount <= 0)
       {
-        OnAnyDamage(damageData);
         damageData.attacker?.Stats.OnSuccessfulAttack(damageData);
         return;
       }
 
-      if (!isTouched)
-      {
-        OnHealthBarAdded(this);
-        isTouched = true;
-      }
-
-      currentHealth = Mathf.Clamp(currentHealth - damageData.damageAmount, 0, maxHealth);
+      currentHealth -= damageData.damageAmount;
       OnHealthChange(currentHealth, maxHealth);
-      OnAnyDamage(damageData);
       OnDamageTaken(this, damageData);
       if (currentHealth <= 0)
       {
-        Death(damageData);
         damageData.killingBlow = true;
+        damageData.gib = currentHealth <= -maxHealth * 0.5f;
+        Death(damageData);
       }
 
       damageData.attacker?.Stats.OnSuccessfulAttack(damageData);
@@ -118,7 +105,6 @@ namespace CombatSystem.Combat.Damage
     {
       if (isDead) return;
 
-      OnHealthBarRemoved(this);
       if (immortal)
       {
         currentHealth = maxHealth;

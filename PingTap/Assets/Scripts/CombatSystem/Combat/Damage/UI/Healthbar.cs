@@ -17,7 +17,7 @@ namespace CombatSystem.Combat.Damage.UI
 
     void HandleDamageControllerChange(float currentHealth, float maxHealth)
     {
-      var percentage = currentHealth / maxHealth;
+      var percentage = Mathf.Clamp01(currentHealth / maxHealth);
       foregroundImage.fillAmount = percentage;
     }
 

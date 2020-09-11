@@ -9,7 +9,8 @@ namespace Fralle
     static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
 
     [SerializeField] new Renderer renderer = null;
-    [SerializeField] GameObject deathModel = null;
+    [SerializeField] GameObject ragdollModel = null;
+    [SerializeField] GameObject gibModel = null;
 
     DamageController damageController;
     MaterialPropertyBlock propBlock;
@@ -50,11 +51,35 @@ namespace Fralle
 
     void HandleDeath(DamageController damageController, DamageData damageData)
     {
-      if (!renderer || !deathModel) return;
-      var deathModelInstance = Instantiate(deathModel, transform.position, transform.rotation);
-      Destroy(deathModelInstance, 3f);
+      if (!renderer || !ragdollModel)
+      {
+        Destroy(gameObject);
+        return;
+      }
 
-      foreach (var rigidBody in deathModelInstance.GetComponentsInChildren<Rigidbody>())
+      if (damageData.gib) GibDeath(damageController, damageData);
+      else RagdollDeath(damageController, damageData);
+    }
+
+    void RagdollDeath(DamageController damageController, DamageData damageData)
+    {
+      var model = Instantiate(ragdollModel, transform.position, transform.rotation);
+      Destroy(model, 3f);
+
+      foreach (var rigidBody in model.GetComponentsInChildren<Rigidbody>())
+      {
+        rigidBody.AddForceAtPosition(damageData.force, damageData.position);
+      }
+
+      Destroy(gameObject);
+    }
+
+    void GibDeath(DamageController damageController, DamageData damageData)
+    {
+      var model = Instantiate(gibModel, transform.position, transform.rotation);
+      Destroy(model, 3f);
+
+      foreach (var rigidBody in model.GetComponentsInChildren<Rigidbody>())
       {
         rigidBody.AddForceAtPosition(damageData.force, damageData.position);
       }
