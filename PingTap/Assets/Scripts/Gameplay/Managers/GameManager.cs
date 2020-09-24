@@ -22,11 +22,11 @@ namespace Fralle.Gameplay
     public float prepareTime = 5f;
 
     [Header("Cameras")]
-    [SerializeField] Camera sceneCamera = null;
+    [SerializeField] Camera sceneCamera;
 
     [Header("Audio")]
-    [SerializeField] AudioEvent victorySound = null;
-    [SerializeField] AudioEvent defeatSound = null;
+    [SerializeField] AudioEvent victorySound;
+    [SerializeField] AudioEvent defeatSound;
 
     [Space(10)]
     [Readonly] public int enemiesSpawned;
