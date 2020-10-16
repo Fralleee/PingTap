@@ -8,6 +8,7 @@
 
 	public enum GameState
 	{
+		None,
 		Prepare,
 		Live,
 		End

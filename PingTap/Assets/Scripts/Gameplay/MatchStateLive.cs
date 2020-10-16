@@ -3,37 +3,32 @@ using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-  public class MatchStateLive : IState
-  {
-    int nextUpdate = 1;
-    bool spawnedTreasure;
+	public class MatchStateLive : IState
+	{
+		public void OnEnter()
+		{
+			Managers.Instance.State.SetState(GameState.Live);
+			Managers.Instance.Enemy.StartSpawner();
 
-    public void OnEnter()
-    {
-      GameManager.Instance.SetState(GameState.Live);
-      GameManager.Instance.enemyManager.StartSpawner();
-    }
+			EventManager.AddListener<GameOverEvent>(OnGameOver);
+		}
 
-    public void Tick()
-    {
-      GameManager.Instance.waveTimer += Time.deltaTime;
+		public void Tick()
+		{
+			Managers.Instance.Settings.waveTimer += Time.deltaTime;
+		}
 
-      //if (spawnedTreasure || !(GameManager.Instance.waveTimer >= nextUpdate)) return;
+		public void OnExit()
+		{
+			Managers.Instance.Settings.waveTimer = 0;
 
-      //nextUpdate = Mathf.FloorToInt(Time.time) + 1;
-      //TreasureSpawn();
-    }
+			EventManager.RemoveListener<GameOverEvent>(OnGameOver);
+		}
 
-    public void OnExit()
-    {
-      GameManager.Instance.waveTimer = 0;
+		void OnGameOver(GameOverEvent evt)
+		{
+			Managers.Instance.State.SetState(GameState.End);
+		}
 
-      spawnedTreasure = false;
-    }
-
-    void TreasureSpawn()
-    {
-      //spawnedTreasure = GameManager.Instance.treasureSpawner.Spawn();
-    }
-  }
+	}
 }

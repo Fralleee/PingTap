@@ -1,65 +1,61 @@
 ﻿using Fralle.AI;
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
-using Fralle.Core.Infrastructure;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-  public class EnemyManager : Singleton<GameManager>
-  {
-    public static event Action OnMatchEnd = delegate { };
-    public static event Action OnDefeat = delegate { };
-    public static event Action OnVictory = delegate { };
-    public static event Action OnNewWave = delegate { };
-    public static event Action<GameState> OnSetState = delegate { };
+	public class EnemyManager : MonoBehaviour
+	{
+		public List<SpawnWave> waves;
 
-    public List<SpawnWave> waves;
+		[Space(10)]
+		[Readonly] public int enemiesSpawned;
+		[Readonly] public int enemiesKilled;
+		[Readonly] public int totalEnemies;
 
-    [Space(10)]
-    [Readonly] public int enemiesSpawned;
-    [Readonly] public int enemiesKilled;
-    [Readonly] public int totalEnemies;
+		[HideInInspector] public Spawner spawner;
 
-    [HideInInspector] public Spawner spawner;
+		bool spawnComplete = false;
+		bool allEnemiesDead => spawnComplete && enemiesSpawned - enemiesKilled == 0;
+		public bool AllEnemiesDead;
 
-    bool spawnComplete = false;
-    public bool AllEnemiesDead => spawnComplete && enemiesSpawned - enemiesKilled == 0;
+		void Awake()
+		{
+			spawner = GetComponent<Spawner>();
+			spawner.OnSpawnComplete += HandleSpawnComplete;
+			Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
+		}
 
-    protected override void Awake()
-    {
-      base.Awake();
+		public void PrepareSpawner()
+		{
+			var wave = waves.PopAt(0);
+			spawner.SetSpawnDefinition(wave);
+		}
 
-      spawner = GetComponent<Spawner>();
-      spawner.OnSpawnComplete += HandleSpawnComplete;
-      Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
-    }
+		public void StartSpawner()
+		{
+			spawner.StartSpawning();
+			spawnComplete = false;
+			enemiesSpawned = 0;
+			enemiesKilled = 0;
+		}
 
-    public void PrepareSpawner()
-    {
-      var wave = waves.PopAt(0);
-      spawner.SetSpawnDefinition(wave);
-    }
+		void HandleSpawnComplete(int enemyCount)
+		{
+			enemiesSpawned = enemyCount;
+			spawnComplete = true;
+		}
 
-    public void StartSpawner()
-    {
-      spawner.StartSpawning();
-      spawnComplete = false;
-      enemiesSpawned = 0;
-      enemiesKilled = 0;
-    }
-
-    void HandleSpawnComplete(int enemyCount)
-    {
-      enemiesSpawned = enemyCount;
-      spawnComplete = true;
-    }
-
-    void HandleEnemyDeath(Enemy enemy)
-    {
-      enemiesKilled += 1;
-    }
-  }
+		void HandleEnemyDeath(Enemy enemy)
+		{
+			enemiesKilled += 1;
+			if (allEnemiesDead)
+			{
+				AllEnemiesDead = true;
+				EventManager.Broadcast(new GameOverEvent(true));
+			}
+		}
+	}
 }

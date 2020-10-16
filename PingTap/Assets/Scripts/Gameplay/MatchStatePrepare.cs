@@ -3,22 +3,29 @@ using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-  public class MatchStatePrepare : IState
-  {
-    public void OnEnter()
-    {
-      GameManager.Instance.prepareTimer = GameManager.Instance.prepareTime;
-      GameManager.Instance.SetState(GameState.Prepare);
-      GameManager.Instance.enemyManager.PrepareSpawner();
-    }
+	public class MatchStatePrepare : IState
+	{
+		float prepareTime;
 
-    public void Tick()
-    {
-      GameManager.Instance.prepareTimer -= Time.deltaTime;
-    }
+		public void OnEnter()
+		{
+			Managers.Instance.State.SetState(GameState.Prepare);
+			Managers.Instance.Enemy.PrepareSpawner();
 
-    public void OnExit()
-    {
-    }
-  }
+			prepareTime = Managers.Instance.Settings.prepareTimer;
+		}
+
+		public void Tick()
+		{
+			prepareTime -= Time.deltaTime;
+			if (prepareTime <= 0)
+			{
+				Managers.Instance.State.SetState(GameState.Live);
+			}
+		}
+
+		public void OnExit()
+		{
+		}
+	}
 }
