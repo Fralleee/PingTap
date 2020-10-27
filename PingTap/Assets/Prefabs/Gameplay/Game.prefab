@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5351482728222260537}
   - component: {fileID: 2998303709824652427}
   - component: {fileID: 4470179785821682972}
-  - component: {fileID: 2195956142788250111}
+  - component: {fileID: 8256421784121352467}
+  - component: {fileID: 4770459581213354188}
   - component: {fileID: 8241612155394377501}
   m_Layer: 0
   m_Name: Game
@@ -58,7 +59,8 @@ MonoBehaviour:
   Camera: {fileID: 0}
   UiManager: {fileID: 0}
   State: {fileID: 0}
-  Game: {fileID: 0}
+  Match: {fileID: 0}
+  Settings: {fileID: 0}
   Enemy: {fileID: 0}
 --- !u!114 &3942923564115749215
 MonoBehaviour:
@@ -85,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb89d17047562a44db3f8b1f79e105e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneCamera: {fileID: 0}
 --- !u!114 &2998303709824652427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,11 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf4c018ff600d940828ebefeb5d482c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prepareUi: {fileID: 0}
-  nexusUi: {fileID: 0}
-  waveCounterUi: {fileID: 0}
-  waveInfoUi: {fileID: 0}
-  gameResultUi: {fileID: 0}
+  prepareUiPrefab: {fileID: 8847006089157585122, guid: 4833e60ae555bcf45ba7fc13b30736a8,
+    type: 3}
+  gameResultUiPrefab: {fileID: 3310082845296957823, guid: e5b943965b8839b47978798fdcd7e01b,
+    type: 3}
+  uiTransform: {fileID: 6790507602137781587}
 --- !u!114 &4470179785821682972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26714331063f9694385e391a6c15e000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2195956142788250111
+  gameState: 0
+--- !u!114 &8256421784121352467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,24 +127,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 615102588463662593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cad9b61e9bd055a43977bc51c99e5155, type: 3}
+  m_Script: {fileID: 11500000, guid: b0bb745f9eefb8f429858572173d5adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
-  prepareTime: 1
-  sceneCamera: {fileID: 4202389369920920066}
-  victorySound: {fileID: 11400000, guid: dbb671076f8a6904183a055bf2c06e9e, type: 2}
-  defeatSound: {fileID: 11400000, guid: 0a652f879bd19b341a7264129e4df785, type: 2}
+  victorySound: {fileID: 0}
+  defeatSound: {fileID: 0}
+--- !u!114 &4770459581213354188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615102588463662593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5175891ab8946241adc616025abf82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   enemiesSpawned: 0
   enemiesKilled: 0
   totalEnemies: 0
   prepareTimer: 0
   totalTimer: 0
   waveTimer: 0
-  isVictory: 0
-  treasureSpawner: {fileID: 0}
-  enemyManager: {fileID: 0}
-  playerHome: {fileID: 0}
+  prepareTime: 5
 --- !u!114 &8241612155394377501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,9 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: e49d17765de0a66498bbc9c00a075a14, type: 2}
-  enemiesSpawned: 0
-  enemiesKilled: 0
-  totalEnemies: 0
   spawner: {fileID: 0}
 --- !u!1 &3517585810462122779
 GameObject:
@@ -212,7 +219,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6790507602137781587}
-  - component: {fileID: 4791872940274208594}
   m_Layer: 0
   m_Name: Ui
   m_TagString: Untagged
@@ -234,27 +240,6 @@ Transform:
   m_Father: {fileID: 615102588463662592}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4791872940274208594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4040883970222047209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf4c018ff600d940828ebefeb5d482c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prepareUi: {fileID: 8847006089157585122, guid: 4833e60ae555bcf45ba7fc13b30736a8,
-    type: 3}
-  nexusUi: {fileID: 3931466078484103568, guid: 6f99d1edc9124bf45bb717f94e3b81c6, type: 3}
-  waveCounterUi: {fileID: 3475787437800578570, guid: 47b5c350f0a780d4ea3da7376ac0ffcf,
-    type: 3}
-  waveInfoUi: {fileID: 3475787437800578570, guid: 58fbc3ffd958e53438f0dd5355fd3c9a,
-    type: 3}
-  gameResultUi: {fileID: 3310082845296957823, guid: e5b943965b8839b47978798fdcd7e01b,
-    type: 3}
 --- !u!1 &4861874009115775622
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +359,7 @@ GameObject:
   - component: {fileID: 6750959903254829100}
   - component: {fileID: 5321691637659301311}
   - component: {fileID: 295091260}
+  - component: {fileID: 3118747603808751105}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -478,6 +464,37 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
 --- !u!114 &295091260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280249816821655024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!114 &3118747603808751105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

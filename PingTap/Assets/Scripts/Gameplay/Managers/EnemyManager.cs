@@ -1,5 +1,4 @@
 ﻿using Fralle.AI;
-using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,20 +9,13 @@ namespace Fralle.Gameplay
 	{
 		public List<SpawnWave> waves;
 
-		[Space(10)]
-		[Readonly] public int enemiesSpawned;
-		[Readonly] public int enemiesKilled;
-		[Readonly] public int totalEnemies;
-
 		[HideInInspector] public Spawner spawner;
 
 		bool spawnComplete = false;
-		bool allEnemiesDead => spawnComplete && enemiesSpawned - enemiesKilled == 0;
-		public bool AllEnemiesDead;
 
 		void Awake()
 		{
-			spawner = GetComponent<Spawner>();
+			spawner = GetComponentInChildren<Spawner>();
 			spawner.OnSpawnComplete += HandleSpawnComplete;
 			Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
 		}
@@ -38,22 +30,17 @@ namespace Fralle.Gameplay
 		{
 			spawner.StartSpawning();
 			spawnComplete = false;
-			enemiesSpawned = 0;
-			enemiesKilled = 0;
 		}
 
 		void HandleSpawnComplete(int enemyCount)
 		{
-			enemiesSpawned = enemyCount;
 			spawnComplete = true;
 		}
 
 		void HandleEnemyDeath(Enemy enemy)
 		{
-			enemiesKilled += 1;
-			if (allEnemiesDead)
+			if (spawnComplete && Enemy.AliveCount == 0)
 			{
-				AllEnemiesDead = true;
 				EventManager.Broadcast(new GameOverEvent(true));
 			}
 		}

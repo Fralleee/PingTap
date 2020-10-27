@@ -13,7 +13,7 @@ namespace Fralle.Gameplay
 		StateMachine stateMachine;
 		readonly Dictionary<GameState, IState> States = new Dictionary<GameState, IState>();
 
-		void Awake()
+		void Start()
 		{
 			SetupStateMachine();
 		}

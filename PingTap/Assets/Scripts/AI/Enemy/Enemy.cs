@@ -3,6 +3,7 @@ using CombatSystem.Combat.Damage;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Fralle.AI
@@ -13,6 +14,12 @@ namespace Fralle.AI
 		public static event Action<Enemy> OnEnemyReachedPowerStone = delegate { };
 		public static event Action<Enemy> OnAnyEnemyDeath = delegate { };
 		public event Action<DamageData> OnDeath = delegate { };
+
+		public static int TotalCount;
+		public static int AliveCount;
+		public static int KillCount;
+
+		public static List<Enemy> AllAliveEnemies = new List<Enemy>();
 
 		[HideInInspector] public DamageController damageController;
 
@@ -25,7 +32,6 @@ namespace Fralle.AI
 		public bool IsDead { get; private set; }
 		public Combatant KilledByCombatant { get; private set; }
 
-
 		void Awake()
 		{
 			damageController = GetComponent<DamageController>();
@@ -35,12 +41,36 @@ namespace Fralle.AI
 			MatchManager.OnDefeat += HandleDefeat;
 
 			SetupUI();
+
+			IncrementOnSpawn();
+			AllAliveEnemies.Add(this);
 		}
 
 		void Update()
 		{
 			if (Input.GetKeyDown(KeyCode.K))
 				Death(null, true);
+		}
+
+		[RuntimeInitializeOnLoadMethod]
+		static void RunOnLoad()
+		{
+			TotalCount = 0;
+			AliveCount = 0;
+			KillCount = 0;
+			AllAliveEnemies = new List<Enemy>();
+		}
+
+		static void IncrementOnSpawn()
+		{
+			TotalCount++;
+			AliveCount++;
+		}
+
+		static void DecrementOnDeath()
+		{
+			AliveCount--;
+			KillCount++;
 		}
 
 		public void ReachedDestination()
@@ -64,11 +94,14 @@ namespace Fralle.AI
 			Destroy(gameObject);
 		}
 
+
 		void Death(DamageData damageData, bool destroyImmediately = false)
 		{
 			if (IsDead)
 				return;
 
+			DecrementOnDeath();
+			AllAliveEnemies.Remove(this);
 			IsDead = true;
 			KilledByCombatant = damageData?.attacker;
 

@@ -2,58 +2,52 @@
 
 namespace Fralle.Gameplay
 {
-  public class UiManager : MonoBehaviour
-  {
-    [Header("Live Ui")]
-    [SerializeField] GameObject prepareUi = null;
-    [SerializeField] GameObject nexusUi = null;
-    [SerializeField] GameObject waveCounterUi = null;
-    [SerializeField] GameObject waveInfoUi = null;
+	public class UiManager : MonoBehaviour
+	{
+		[Header("Prefabs")]
+		[SerializeField] GameObject prepareUiPrefab = null;
+		[SerializeField] GameObject gameResultUiPrefab = null;
 
-    [Header("Result Ui")]
-    [SerializeField] GameObject gameResultUi = null;
+		[Header("Container")]
+		[SerializeField] Transform uiTransform;
 
-    GameObject liveUi;
-    GameObject resultUi;
-
-    void Awake()
-    {
-      SetupTransforms();
-      SetupUi();
-
-      MatchManager.OnMatchEnd += HandleGameEnd;
-    }
-
-    void SetupTransforms()
-    {
-      liveUi = new GameObject("LiveUi");
-      liveUi.transform.SetParent(transform);
-
-      resultUi = new GameObject("ResultUi");
-      resultUi.transform.SetParent(transform);
-      resultUi.SetActive(false);
-    }
-
-    void SetupUi()
-    {
-      Instantiate(prepareUi, liveUi.transform);
-      Instantiate(waveCounterUi, liveUi.transform);
-      Instantiate(nexusUi, liveUi.transform);
-
-      Instantiate(gameResultUi, resultUi.transform);
-    }
+		GameObject prepareUi;
+		GameObject gameResultUi;
 
 
-    void HandleGameEnd()
-    {
-      liveUi.SetActive(false);
-      waveInfoUi.SetActive(false);
-      resultUi.SetActive(true);
-    }
+		void Awake()
+		{
+			SetupTransforms();
+			SetupUi();
 
-    void OnDestroy()
-    {
-      MatchManager.OnMatchEnd -= HandleGameEnd;
-    }
-  }
+			MatchManager.OnMatchEnd += HandleGameEnd;
+		}
+
+		void SetupTransforms()
+		{
+			if (uiTransform == null)
+			{
+				uiTransform = transform.Find("Ui");
+			}
+		}
+
+		void SetupUi()
+		{
+			prepareUi = Instantiate(prepareUiPrefab, uiTransform);
+			gameResultUi = Instantiate(gameResultUiPrefab, uiTransform);
+			gameResultUi.SetActive(false);
+
+		}
+
+		void HandleGameEnd()
+		{
+			prepareUi.SetActive(false);
+			gameResultUi.SetActive(true);
+		}
+
+		void OnDestroy()
+		{
+			MatchManager.OnMatchEnd -= HandleGameEnd;
+		}
+	}
 }
