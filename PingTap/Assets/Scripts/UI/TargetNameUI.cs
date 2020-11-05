@@ -2,14 +2,17 @@
 using TMPro;
 using UnityEngine;
 
-public class TargetNameUI : MonoBehaviour
+namespace Fralle.UI
 {
-  TextMeshProUGUI nameText;
+	public class TargetNameUI : MonoBehaviour
+	{
+		TextMeshProUGUI nameText;
 
-  void Awake()
-  {
-    nameText = GetComponent<TextMeshProUGUI>();
-    var damageController = GetComponentInParent<DamageController>();
-    nameText.text = damageController.name;
-  }
+		void Awake()
+		{
+			nameText = GetComponent<TextMeshProUGUI>();
+			var damageController = GetComponentInParent<DamageController>();
+			nameText.text = damageController.name;
+		}
+	}
 }

@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-public class AIAnimator : MonoBehaviour
+namespace Fralle.AI
 {
-  Animator animator;
-  AIController aiController;
+	public class AIAnimator : MonoBehaviour
+	{
+		Animator animator;
+		AIController aiController;
 
-  void Awake()
-  {
-    animator = GetComponent<Animator>();
-    aiController = GetComponentInParent<AIController>();
-  }
+		void Awake()
+		{
+			animator = GetComponent<Animator>();
+			aiController = GetComponentInParent<AIController>();
+		}
 
-  void Update()
-  {
-    animator.SetBool("IsMoving", aiController.IsMoving);
+		void Update()
+		{
+			animator.SetBool("IsMoving", aiController.IsMoving);
 
-  }
+		}
 
-  void OnAnimatorMove()
-  {
-    GetComponentInParent<NavMeshAgent>().speed = (animator.deltaPosition / Time.deltaTime).magnitude;
-  }
+		void OnAnimatorMove()
+		{
+			GetComponentInParent<NavMeshAgent>().speed = (animator.deltaPosition / Time.deltaTime).magnitude;
+		}
+	}
 }

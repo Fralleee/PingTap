@@ -1,9 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public class SpawnProbability
+namespace Fralle.Gameplay
 {
-  public float chance;
-  public GameObject prefab;
+	[Serializable]
+	public class SpawnProbability
+	{
+		public float chance;
+		public GameObject prefab;
+	}
 }

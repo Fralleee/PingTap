@@ -2,25 +2,29 @@
 using Fralle.UI;
 using UnityEngine;
 
-public class Treasure : MonoBehaviour
+namespace Fralle.Gameplay
 {
-  [Header("Drops")]
-  [SerializeField] LootTable lootTable = null;
+	public class Treasure : MonoBehaviour
+	{
+		[Header("Drops")]
+		[SerializeField] LootTable lootTable = null;
 
-  public float destroyAfterDrop = 5f;
+		public float destroyAfterDrop = 5f;
 
-  void Awake()
-  {
-    Drop();
+		void Awake()
+		{
+			Drop();
 
-    var uiTweener = GetComponentInChildren<UiTweener>();
-    uiTweener.delay = destroyAfterDrop - uiTweener.duration;
-  }
+			var uiTweener = GetComponentInChildren<UiTweener>();
+			uiTweener.delay = destroyAfterDrop - uiTweener.duration;
+		}
 
-  void Drop()
-  {
-    if (!lootTable) return;
-    lootTable.DropLoot(transform.position);
-    Destroy(gameObject, destroyAfterDrop);
-  }
+		void Drop()
+		{
+			if (!lootTable)
+				return;
+			lootTable.DropLoot(transform.position);
+			Destroy(gameObject, destroyAfterDrop);
+		}
+	}
 }

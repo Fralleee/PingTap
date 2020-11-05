@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class AIController : MonoBehaviour
+namespace Fralle.AI
 {
-  public bool IsMoving;
+	public class AIController : MonoBehaviour
+	{
+		public bool IsMoving;
+	}
 }
