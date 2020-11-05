@@ -1,5 +1,4 @@
-﻿using Fralle.BattleSystem;
-using Fralle.FpsController;
+﻿using Fralle.FpsController;
 using UnityEngine;
 
 namespace Fralle
