@@ -20,7 +20,8 @@ namespace Fralle.AI
 
 		void Start()
 		{
-			aiController.IsMoving = true;
+			if (aiNavigation.hasPurpose)
+				aiController.IsMoving = true;
 		}
 
 		void HandleFinalDestination()

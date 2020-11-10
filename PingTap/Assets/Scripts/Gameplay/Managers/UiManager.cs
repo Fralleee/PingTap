@@ -33,10 +33,15 @@ namespace Fralle.Gameplay
 
 		void SetupUi()
 		{
-			prepareUi = Instantiate(prepareUiPrefab, uiTransform);
-			gameResultUi = Instantiate(gameResultUiPrefab, uiTransform);
-			gameResultUi.SetActive(false);
+			prepareUi = SetupUiComponent(prepareUiPrefab);
+			gameResultUi = SetupUiComponent(gameResultUiPrefab);
+		}
 
+		GameObject SetupUiComponent(GameObject prefab)
+		{
+			var instance = Instantiate(prefab, uiTransform);
+			instance.SetActive(false);
+			return instance;
 		}
 
 		void HandleGameEnd()

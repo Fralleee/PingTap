@@ -1,4 +1,5 @@
 ﻿using CombatSystem.Combat.Damage;
+using Fralle.Targeting;
 using UnityEngine;
 
 namespace Fralle.AI

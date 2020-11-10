@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CombatSystem.Combat.Damage;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Fralle.AI
@@ -7,11 +8,19 @@ namespace Fralle.AI
 	{
 		Animator animator;
 		AIController aiController;
+		DamageController damageController;
 
 		void Awake()
 		{
 			animator = GetComponent<Animator>();
 			aiController = GetComponentInParent<AIController>();
+			damageController = GetComponentInParent<DamageController>();
+			damageController.OnDeath += DamageController_OnDeath;
+		}
+
+		void DamageController_OnDeath(DamageController arg1, DamageData arg2)
+		{
+			animator.enabled = false;
 		}
 
 		void Update()

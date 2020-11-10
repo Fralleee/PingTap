@@ -7,6 +7,8 @@ namespace Fralle.Gameplay
 {
 	public class StateManager : MonoBehaviour
 	{
+		[SerializeField] bool startGame;
+
 		public GameState gameState;
 		public IState currentState;
 
@@ -26,7 +28,10 @@ namespace Fralle.Gameplay
 			States.Add(GameState.Live, new MatchStateLive());
 			States.Add(GameState.End, new MatchStateEnd());
 
-			SetState(GameState.Prepare);
+			if (startGame)
+			{
+				SetState(GameState.Prepare);
+			}
 		}
 
 		void Update()

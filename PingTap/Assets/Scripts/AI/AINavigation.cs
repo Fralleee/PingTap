@@ -7,90 +7,103 @@ using UnityEngine.AI;
 
 namespace Fralle.AI
 {
-  public class AINavigation : MonoBehaviour
-  {
-    public event Action OnFinalDestination = delegate { };
+	public class AINavigation : MonoBehaviour
+	{
+		public event Action OnFinalDestination = delegate { };
 
-    public float currentMovementModifier = 1f;
+		public float currentMovementModifier = 1f;
 
-    NavMeshAgent navMeshAgent;
-    readonly Dictionary<string, float> movementModifiers = new Dictionary<string, float>();
+		NavMeshAgent navMeshAgent;
+		readonly Dictionary<string, float> movementModifiers = new Dictionary<string, float>();
 
-    float stopTime;
-    float movementSpeed;
+		float stopTime;
+		float movementSpeed;
 
-    void Awake()
-    {
-      navMeshAgent = GetComponent<NavMeshAgent>();
-      movementSpeed = navMeshAgent.speed;
-    }
+		public bool hasPurpose { get; private set; }
 
-    void Update()
-    {
-      if (PathComplete()) FinalDestination();
-      if (!(stopTime > 0f)) return;
+		void Awake()
+		{
+			navMeshAgent = GetComponent<NavMeshAgent>();
+			movementSpeed = navMeshAgent.speed;
+		}
 
-      stopTime = Mathf.Clamp(stopTime - Time.deltaTime, 0, float.MaxValue);
-      if (stopTime <= 0) RemoveModifier("StopMovement");
-    }
+		void Update()
+		{
+			if (!hasPurpose)
+				return;
 
-    void FinalDestination()
-    {
-      OnFinalDestination();
-    }
+			if (PathComplete())
+				FinalDestination();
+			if (stopTime <= 0f)
+				return;
 
-    public void SetDestination(Vector3 position)
-    {
-      navMeshAgent.destination = position;
-    }
+			stopTime = Mathf.Clamp(stopTime - Time.deltaTime, 0, float.MaxValue);
+			if (stopTime <= 0)
+				RemoveModifier("StopMovement");
+		}
 
-    public void AddModifier(string modifierName, float modifier)
-    {
-      if (movementModifiers.ContainsKey(modifierName)) movementModifiers[modifierName] = modifier;
-      else movementModifiers.Add(modifierName, modifier);
-      currentMovementModifier = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
+		void FinalDestination()
+		{
+			OnFinalDestination();
+		}
 
-      SetSpeed(movementSpeed * currentMovementModifier);
-    }
+		public void SetDestination(Vector3 position)
+		{
+			navMeshAgent.destination = position;
+			hasPurpose = true;
+		}
 
-    public void RemoveModifier(string modifierName)
-    {
-      movementModifiers.Remove(modifierName);
-      if (movementModifiers.Count > 0)
-      {
-        var value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
-        currentMovementModifier = value;
-      }
-      else currentMovementModifier = 1f;
+		public void AddModifier(string modifierName, float modifier)
+		{
+			if (movementModifiers.ContainsKey(modifierName))
+				movementModifiers[modifierName] = modifier;
+			else
+				movementModifiers.Add(modifierName, modifier);
+			currentMovementModifier = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
 
-      SetSpeed(movementSpeed * currentMovementModifier);
-    }
+			SetSpeed(movementSpeed * currentMovementModifier);
+		}
 
-    public void SetSpeed(float speed)
-    {
-      navMeshAgent.speed = speed;
-    }
+		public void RemoveModifier(string modifierName)
+		{
+			movementModifiers.Remove(modifierName);
+			if (movementModifiers.Count > 0)
+			{
+				var value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
+				currentMovementModifier = value;
+			}
+			else
+				currentMovementModifier = 1f;
 
-    public void StopMovement(float time)
-    {
-      AddModifier("StopMovement", 0);
-      stopTime = time;
-    }
+			SetSpeed(movementSpeed * currentMovementModifier);
+		}
 
-    public void Stop()
-    {
-      navMeshAgent.enabled = false;
-    }
+		public void SetSpeed(float speed)
+		{
+			navMeshAgent.speed = speed;
+		}
 
-    public void Start()
-    {
-      navMeshAgent.enabled = true;
-    }
+		public void StopMovement(float time)
+		{
+			AddModifier("StopMovement", 0);
+			stopTime = time;
+		}
 
-    public bool PathComplete()
-    {
-      if (!(Vector3.Distance(navMeshAgent.destination, transform.position) <= navMeshAgent.stoppingDistance)) return false;
-      return !navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude.EqualsWithTolerance(0f);
-    }
-  }
+		public void Stop()
+		{
+			navMeshAgent.enabled = false;
+		}
+
+		public void Start()
+		{
+			navMeshAgent.enabled = true;
+		}
+
+		public bool PathComplete()
+		{
+			if (Vector3.Distance(navMeshAgent.destination, transform.position) > navMeshAgent.stoppingDistance)
+				return false;
+			return !navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude.EqualsWithTolerance(0f);
+		}
+	}
 }

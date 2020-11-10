@@ -1,5 +1,7 @@
-﻿using CombatSystem.Defense;
+﻿using CombatSystem.Action;
+using CombatSystem.Defense;
 using CombatSystem.Effect;
+using CombatSystem.Enums;
 using CombatSystem.Interfaces;
 using Fralle.Core.Extensions;
 using System;
@@ -58,6 +60,31 @@ namespace CombatSystem.Combat.Damage
 		{
 			if (isDead)
 				return;
+
+			OnReceiveAttack(this, damageData);
+			damageData = armor.Protect(damageData, this);
+			TakeDamage(damageData);
+			ApplyEffects(damageData);
+		}
+
+		public void ReceiveAttack(RaycastAttack raycastAttack, RaycastHit hit)
+		{
+			if (isDead)
+				return;
+
+			var damageZone = hit.transform.GetComponent<DamageZone>();
+			var hitArea = damageZone ? damageZone.hitArea : HitArea.MAJOR;
+			var damageData = new DamageData()
+			{
+				attacker = raycastAttack.attacker,
+				element = raycastAttack.element,
+				effects = damageEffects.Select(x => x.Setup(raycastAttack.attacker, raycastAttack.Damage)).ToArray(),
+				hitAngle = Vector3.Angle((raycastAttack.weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
+				force = raycastAttack.attacker.aimTransform.forward * raycastAttack.pushForce,
+				position = hit.point,
+				hitArea = hitArea,
+				damageAmount = hitArea.GetMultiplier() * raycastAttack.Damage
+			};
 
 			OnReceiveAttack(this, damageData);
 			damageData = armor.Protect(damageData, this);
