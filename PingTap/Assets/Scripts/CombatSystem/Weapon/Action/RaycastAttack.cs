@@ -64,13 +64,30 @@ namespace CombatSystem.Action
 
 			AddForce(hitInfo);
 
+			bool hitboxHit = hitInfo.collider.gameObject.layer == hitboxLayer;
+			if (hitboxHit)
+			{
+				hitInfo = HitboxHit(hitInfo);
+			}
+
+			BulletTrace(muzzle.position, hitInfo.point);
+
+			if (impactParticlePrefab)
+			{
+				var impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
+				Destroy(impactParticle, 5f);
+			}
+		}
+
+		RaycastHit HitboxHit(RaycastHit hitInfo)
+		{
 			var damageController = hitInfo.transform.GetComponentInParent<DamageController>();
 			if (damageController != null)
 			{
 				// this will cause issues if we are for example hitting targets with shotgun
 				// we will receive more hits than shots fired
 
-				var damageZone = hitInfo.transform.GetComponent<DamageZone>();
+				var damageZone = hitInfo.collider.transform.GetComponent<DamageZone>();
 				var hitArea = damageZone ? damageZone.hitArea : HitArea.MAJOR;
 				var damageAmount = Damage;
 				var damageData = new DamageData()
@@ -88,13 +105,7 @@ namespace CombatSystem.Action
 				damageController.ReceiveAttack(damageData);
 			}
 
-			BulletTrace(muzzle.position, hitInfo.point);
-
-			if (impactParticlePrefab)
-			{
-				var impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
-				Destroy(impactParticle, 5f);
-			}
+			return hitInfo;
 		}
 
 		Vector3 CalculateBulletSpread(float modifier)
