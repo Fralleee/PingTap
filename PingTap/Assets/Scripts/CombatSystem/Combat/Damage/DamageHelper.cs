@@ -22,14 +22,14 @@ namespace CombatSystem.Combat.Damage
 			return damageEffects;
 		}
 
-		public static void RaycastHit(RaycastAttack raycastAttack, RaycastHit hit)
+		public static DamageData RaycastHit(RaycastAttack raycastAttack, RaycastHit hit)
 		{
 
 			AddForce(raycastAttack, hit);
 
 			bool hitboxHit = hit.collider.gameObject.layer == hitboxLayer;
 			if (!hitboxHit)
-				return;
+				return null;
 
 			var damageController = hit.transform.GetComponentInParent<DamageController>();
 			if (damageController != null)
@@ -49,11 +49,15 @@ namespace CombatSystem.Combat.Damage
 					force = raycastAttack.attacker.aimTransform.forward * raycastAttack.pushForce,
 					position = hit.point,
 					hitArea = hitArea,
-					damageAmount = hitArea.GetMultiplier() * damageAmount
+					damageAmount = hitArea.GetMultiplier() * damageAmount,
+					impactEffect = hitArea.GetImpactEffect(damageController)
 				};
 
 				damageController.ReceiveAttack(damageData);
+				return damageData;
 			}
+
+			return null;
 		}
 
 		public static void ProjectileHit(ProjectileData projectileData, Vector3 position, Collision collision)

@@ -60,11 +60,16 @@ namespace CombatSystem.Action
 			if (!Physics.Raycast(attacker.aimTransform.position, forward, out var hitInfo, range, layerMask))
 				return;
 
-			DamageHelper.RaycastHit(this, hitInfo);
+			var damageData = DamageHelper.RaycastHit(this, hitInfo);
 
 			BulletTrace(muzzle.position, hitInfo.point);
 
-			if (impactParticlePrefab)
+			if (damageData != null)
+			{
+				var impactParticle = Instantiate(damageData.impactEffect, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
+				Destroy(impactParticle, 5f);
+			}
+			else if (impactParticlePrefab)
 			{
 				var impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
 				Destroy(impactParticle, 5f);

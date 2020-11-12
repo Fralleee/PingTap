@@ -31,6 +31,11 @@ namespace CombatSystem.Combat.Damage
 		public bool immortal;
 		public Armor armor;
 
+		[Header("Effects")]
+		public GameObject minorImpactEffect;
+		public GameObject majorImpactEffect;
+		public GameObject nerveImpactEffect;
+
 		void Awake()
 		{
 			SetupUI();

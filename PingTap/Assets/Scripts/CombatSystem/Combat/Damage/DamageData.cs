@@ -8,6 +8,7 @@ namespace CombatSystem.Combat.Damage
 	{
 		public Combatant attacker;
 		public DamageController victim;
+		public GameObject impactEffect;
 
 		public HitArea hitArea;
 		public Element element;
