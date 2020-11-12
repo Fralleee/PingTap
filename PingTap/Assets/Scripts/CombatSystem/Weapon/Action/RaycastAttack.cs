@@ -87,8 +87,8 @@ namespace CombatSystem.Action
 				// this will cause issues if we are for example hitting targets with shotgun
 				// we will receive more hits than shots fired
 
-				var damageZone = hitInfo.collider.transform.GetComponent<DamageZone>();
-				var hitArea = damageZone ? damageZone.hitArea : HitArea.MAJOR;
+				var hitbox = hitInfo.collider.transform.GetComponent<Hitbox>();
+				var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
 				var damageAmount = Damage;
 				var damageData = new DamageData()
 				{

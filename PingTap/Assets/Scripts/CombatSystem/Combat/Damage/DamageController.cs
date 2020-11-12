@@ -72,8 +72,8 @@ namespace CombatSystem.Combat.Damage
 			if (isDead)
 				return;
 
-			var damageZone = hit.transform.GetComponent<DamageZone>();
-			var hitArea = damageZone ? damageZone.hitArea : HitArea.MAJOR;
+			var hitbox = hit.transform.GetComponent<Hitbox>();
+			var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
 			var damageData = new DamageData()
 			{
 				attacker = raycastAttack.attacker,

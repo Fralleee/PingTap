@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5755196496981927666}
   - component: {fileID: 9107978647712294175}
-  - component: {fileID: 2690162111180787928}
+  - component: {fileID: 7128992062933394217}
   m_Layer: 20
   m_Name: Hitbox
   m_TagString: Untagged
@@ -48,7 +48,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2690162111180787928
+--- !u!114 &7128992062933394217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,10 +57,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1110318940207460102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e84898002716a1f4e8d46897c39966d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e663726c66c96a459113a966e3f9f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hitArea: 1
+  activeColliderVisualizer: {fileID: 0}
 --- !u!1 &2112426097198978925
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0120cabc4df6c42448b2cee65b998a63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
