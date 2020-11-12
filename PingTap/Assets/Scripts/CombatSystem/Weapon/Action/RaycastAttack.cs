@@ -1,8 +1,6 @@
 ﻿using CombatSystem.Combat.Damage;
-using CombatSystem.Enums;
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
-using System.Linq;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -62,13 +60,7 @@ namespace CombatSystem.Action
 			if (!Physics.Raycast(attacker.aimTransform.position, forward, out var hitInfo, range, layerMask))
 				return;
 
-			AddForce(hitInfo);
-
-			bool hitboxHit = hitInfo.collider.gameObject.layer == hitboxLayer;
-			if (hitboxHit)
-			{
-				hitInfo = HitboxHit(hitInfo);
-			}
+			DamageHelper.RaycastHit(this, hitInfo);
 
 			BulletTrace(muzzle.position, hitInfo.point);
 
@@ -77,35 +69,6 @@ namespace CombatSystem.Action
 				var impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
 				Destroy(impactParticle, 5f);
 			}
-		}
-
-		RaycastHit HitboxHit(RaycastHit hitInfo)
-		{
-			var damageController = hitInfo.transform.GetComponentInParent<DamageController>();
-			if (damageController != null)
-			{
-				// this will cause issues if we are for example hitting targets with shotgun
-				// we will receive more hits than shots fired
-
-				var hitbox = hitInfo.collider.transform.GetComponent<Hitbox>();
-				var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
-				var damageAmount = Damage;
-				var damageData = new DamageData()
-				{
-					attacker = attacker,
-					element = element,
-					effects = damageEffects.Select(x => x.Setup(attacker, damageAmount)).ToArray(),
-					hitAngle = Vector3.Angle((weapon.transform.position - hitInfo.transform.position).normalized, hitInfo.transform.forward),
-					force = attacker.aimTransform.forward * pushForce,
-					position = hitInfo.point,
-					hitArea = hitArea,
-					damageAmount = hitArea.GetMultiplier() * damageAmount
-				};
-
-				damageController.ReceiveAttack(damageData);
-			}
-
-			return hitInfo;
 		}
 
 		Vector3 CalculateBulletSpread(float modifier)
@@ -125,11 +88,5 @@ namespace CombatSystem.Action
 			lineRenderer.SetPosition(1, target);
 		}
 
-		void AddForce(RaycastHit hitInfo)
-		{
-			var rigidBody = hitInfo.transform.GetComponent<Rigidbody>();
-			if (rigidBody != null)
-				rigidBody.AddForce(attacker.aimTransform.forward * pushForce);
-		}
 	}
 }
