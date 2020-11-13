@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Fralle
+namespace Fralle.UI
 {
 	public class FloatingNumbersNumber : MonoBehaviour
 	{
