@@ -4,56 +4,56 @@ using UnityEngine;
 
 namespace Fralle.UI.HUD
 {
-  public class WaveContainerUi : MonoBehaviour
-  {
-    [SerializeField] WaveStatusUi waveStatusPrefab = null;
-    readonly List<WaveStatusUi> waves = new List<WaveStatusUi>();
-    WaveStatusUi currentWave = null;
+	public class WaveContainerUi : MonoBehaviour
+	{
+		[SerializeField] WaveStatusUi waveStatusPrefab = null;
+		readonly List<WaveStatusUi> waves = new List<WaveStatusUi>();
+		WaveStatusUi currentWave = null;
 
-    void Awake()
-    {
-      //WaveManager.OnNewSchema += HandleNewSchema;
-      //WaveManager.OnNewWave += HandleNewWave;
-      //WaveManager.OnWaveProgress += HandleWaveProgress;
-      MatchManager.OnVictory += HandleVictory;
-    }
+		void Awake()
+		{
+			//WaveManager.OnNewSchema += HandleNewSchema;
+			//WaveManager.OnNewWave += HandleNewWave;
+			//WaveManager.OnWaveProgress += HandleWaveProgress;
+			MatchManager.OnVictory += HandleVictory;
+		}
 
-    void HandleNewSchema()
-    {
-      waves.ForEach(x => Destroy(x.gameObject));
-      waves.Clear();
+		void HandleNewSchema()
+		{
+			waves.ForEach(x => Destroy(x.gameObject));
+			waves.Clear();
 
-      //var army = WaveManager.Instance.GetCurrentArmy;
-      //for (var i = 0; i < army.MaxRounds; i++)
-      //{
-      //  var wave = Instantiate(waveStatusPrefab, transform);
-      //  waves.Add(wave);
-      //}
-    }
+			//var army = WaveManager.Instance.GetCurrentArmy;
+			//for (var i = 0; i < army.MaxRounds; i++)
+			//{
+			//  var wave = Instantiate(waveStatusPrefab, transform);
+			//  waves.Add(wave);
+			//}
+		}
 
-    void HandleNewWave()
-    {
-      //if (currentWave) currentWave.SetFill(1);
-      //var index = WaveManager.Instance.currentWave - 1;
-      //currentWave = waves[index];
-    }
+		void HandleNewWave()
+		{
+			//if (currentWave) currentWave.SetFill(1);
+			//var index = WaveManager.Instance.currentWave - 1;
+			//currentWave = waves[index];
+		}
 
-    void HandleVictory()
-    {
-      waves.ForEach(x => x.SetFill(1));
-    }
+		void HandleVictory()
+		{
+			waves.ForEach(x => x.SetFill(1));
+		}
 
-    void HandleWaveProgress(float percentage)
-    {
-      currentWave.SetFill(percentage);
-    }
+		void HandleWaveProgress(float percentage)
+		{
+			currentWave.SetFill(percentage);
+		}
 
-    void OnDestroy()
-    {
-      //WaveManager.OnNewSchema -= HandleNewSchema;
-      //WaveManager.OnNewWave -= HandleNewWave;
-      //WaveManager.OnWaveProgress -= HandleWaveProgress;
-      MatchManager.OnVictory -= HandleVictory;
-    }
-  }
+		void OnDestroy()
+		{
+			//WaveManager.OnNewSchema -= HandleNewSchema;
+			//WaveManager.OnNewWave -= HandleNewWave;
+			//WaveManager.OnWaveProgress -= HandleWaveProgress;
+			MatchManager.OnVictory -= HandleVictory;
+		}
+	}
 }
