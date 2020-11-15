@@ -79,6 +79,21 @@ namespace Fralle.AI
 			Death(null, true);
 		}
 
+		public static void Despawn(int count)
+		{
+			if (count == 0)
+				count = TotalCount;
+			var enemies = FindObjectsOfType<Enemy>();
+			foreach (var enemy in enemies)
+			{
+				if (count > 0)
+				{
+					enemy.Death(null, true);
+					count--;
+				}
+			}
+		}
+
 		void HandleDamageTaken(DamageController damageController, DamageData damageData)
 		{
 
@@ -95,7 +110,7 @@ namespace Fralle.AI
 		}
 
 
-		void Death(DamageData damageData, bool destroyImmediately = false)
+		public void Death(DamageData damageData, bool destroyImmediately = false)
 		{
 			if (IsDead)
 				return;

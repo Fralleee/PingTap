@@ -11,6 +11,8 @@ namespace Fralle.Gameplay
 	{
 		public event Action<int> OnSpawnComplete = delegate { };
 
+		[SerializeField] GameObject enemyPrefab;
+
 		public Vector3 spawnCenter = Vector3.zero;
 		public float minRange = 10f;
 		public float maxRange = 10f;
@@ -81,6 +83,30 @@ namespace Fralle.Gameplay
 
 			if (currentSpawnCount == maxSpawnCount)
 				OnSpawnComplete(enemyCount);
+		}
+
+		public void SpawnEnemy(int count)
+		{
+			for (int i = 0; i < count; i++)
+			{
+				PerformSpawn(enemyPrefab);
+			}
+		}
+
+		public void PerformSpawn(GameObject enemy)
+		{
+			Vector3 position = GetSpawnPoint();
+			if (position == Vector3.zero)
+			{
+				Debug.LogError("GetSpawnPoint returned Vector3.zero. THIS NEEDS TO BE FIXED!");
+				return;
+			}
+
+			var spawnedInstance = Instantiate(enemy, position.With(y: 0), Quaternion.identity);
+			spawnedInstance.name = enemy.name;
+			spawnedInstance.GetComponent<AINavigation>().SetDestination(playerHome.Entry);
+			if (spawnedInstance.GetComponent<Enemy>())
+				enemyCount += 1;
 		}
 
 		Vector3 GetSpawnPoint()

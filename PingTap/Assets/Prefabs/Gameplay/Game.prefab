@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26714331063f9694385e391a6c15e000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startGame: 0
   gameState: 0
 --- !u!114 &8256421784121352467
 MonoBehaviour:
@@ -151,6 +152,7 @@ MonoBehaviour:
   totalTimer: 0
   waveTimer: 0
   prepareTime: 5
+  showColliders: 0
 --- !u!114 &8241612155394377501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,9 +331,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc797cdff1cb7634b997e63a1fb05c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnCenter: {x: 0, y: 0, z: 0}
-  minRange: 10
-  maxRange: 10
+  enemyPrefab: {fileID: 2565378040731073697, guid: a5e154b95825cf94aa6977092fa46b6a,
+    type: 3}
+  spawnCenter: {x: -25, y: 0, z: -25}
+  minRange: 75
+  maxRange: 110
 --- !u!114 &8864399082589712303
 MonoBehaviour:
   m_ObjectHideFlags: 0
