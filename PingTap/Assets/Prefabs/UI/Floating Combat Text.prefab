@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8486789596842343983}
   - component: {fileID: 3950464837911373891}
   m_Layer: 0
-  m_Name: Floating Number Spawner
+  m_Name: Floating Combat Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d950991b0d5737c44a759b6c0669f0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 500633813145692955, guid: b8a87906e577dbe46a3b97057785df6b, type: 3}
+  combatTextPrefab: {fileID: 500633813145692955, guid: b8a87906e577dbe46a3b97057785df6b,
+    type: 3}
+  destroyDelay: 0.5
+  randomPosition: {x: 0.5, y: 0.5}
