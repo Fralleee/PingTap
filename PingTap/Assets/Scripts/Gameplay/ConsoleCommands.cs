@@ -6,11 +6,18 @@ namespace Fralle.Gameplay
 {
 	public class ConsoleCommands : MonoBehaviour
 	{
-		[Command()]
-		public static void SpawnEnemies(int count)
+		[Command(aliasOverride: "spawn-enemy", description: "Spawns {x} number of enemies.")]
+		public static void SpawnEnemy(int count)
 		{
 			Debug.Log($"Spawned {count} enemies");
 			Managers.Instance.Enemy.spawner.SpawnEnemy(count);
+		}
+
+		[Command(aliasOverride: "spawn-enemy", description: "Spawns {x} number of enemies of type {y}.")]
+		public static void SpawnEnemy(int count, EnemyType enemyType)
+		{
+			Debug.Log($"Spawned {count} {enemyType.ToString().ToLower()}s");
+			Managers.Instance.Enemy.spawner.SpawnEnemyType(enemyType, count);
 		}
 
 
