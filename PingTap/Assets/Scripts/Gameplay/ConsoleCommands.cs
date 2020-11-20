@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-	public class ConsoleCommands : MonoBehaviour
+	public class ConsoleCommands
 	{
 		[Command(aliasOverride: "spawn-enemy", description: "Spawns {x} number of enemies.")]
 		public static void SpawnEnemy(int count)
