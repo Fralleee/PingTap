@@ -109,9 +109,8 @@
 
             half4 frag (v2f i) : SV_Target
             {
-#if USE_CUTOUT
-                clip(tex2D(_CutoutTexture, i.uv).a - _CutoutThreshold);
-#endif
+				CHECK_CUTOUT
+
                 half3 screenPos = i.screenPos.xyz / i.screenPos.w;
                 
                 half projection = abs(dot(screenPos * _ScreenParams.xy, i.direction));
