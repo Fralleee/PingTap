@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using EPOOutline;
+using UnityEngine;
 
 namespace Fralle.Targeting
 {
@@ -7,7 +8,9 @@ namespace Fralle.Targeting
 		[SerializeField] float hideDelay = 0.5f;
 		[SerializeField] GameObject ui;
 
+		Outlinable outlinable;
 		float hideTimer;
+		bool isShowing;
 
 		public void RaycastHit()
 		{
@@ -25,7 +28,9 @@ namespace Fralle.Targeting
 
 		void Awake()
 		{
-			Hide();
+			outlinable = GetComponentInParent<Outlinable>();
+
+			DelayedHide();
 		}
 
 		void Update()
@@ -36,18 +41,35 @@ namespace Fralle.Targeting
 
 			if (hideTimer <= 0)
 			{
-				Hide();
+				DelayedHide();
 			}
+		}
+
+		void FixedUpdate()
+		{
+			Hide();
 		}
 
 		void Show()
 		{
 			ui.SetActive(true);
+			outlinable.enabled = true;
+			isShowing = true;
+		}
+
+		void DelayedHide()
+		{
+			ui.SetActive(false);
 		}
 
 		void Hide()
 		{
-			ui.SetActive(false);
+			if (isShowing)
+			{
+				isShowing = false;
+				return;
+			}
+			outlinable.enabled = false;
 		}
 
 	}

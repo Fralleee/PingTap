@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 1386371905205327085}
   - component: {fileID: 5774325246502397086}
   - component: {fileID: 4247823576390240103}
+  - component: {fileID: 8302141596592436525}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -222,7 +223,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
+  m_ForceIntoRT: 1
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -281,6 +282,32 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &8302141596592436525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371905205327087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb42831ee5422f409e7f24f9e7488ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderingStrategy: 0
+  renderTargetName: 
+  renderingMode: 1
+  outlineLayerMask: -1
+  scaleIndepented: 0
+  primaryRendererScale: 1
+  blurShift: 1
+  dilateShift: 1
+  dilateIterrations: 2
+  dilateQuality: 1
+  blurIterrations: 1
+  blurType: 0
+  useInfoBuffer: 1
+  infoRendererScale: 1
 --- !u!1 &1386371905833920357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,15 +1187,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: dc96c39583299cf44a581ed7eef011bd, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
---- !u!1 &929980491604592199 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1316981293597076, guid: 2f3e27eecb190e44a9af50723c394274,
-    type: 3}
-  m_PrefabInstance: {fileID: 928684482906343379}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &933124401478912147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274,
+    type: 3}
+  m_PrefabInstance: {fileID: 928684482906343379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &929980491604592199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1316981293597076, guid: 2f3e27eecb190e44a9af50723c394274,
     type: 3}
   m_PrefabInstance: {fileID: 928684482906343379}
   m_PrefabAsset: {fileID: 0}

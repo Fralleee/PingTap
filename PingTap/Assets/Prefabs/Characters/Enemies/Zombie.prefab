@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1169690573668540798}
   - component: {fileID: 8008550077327273441}
   - component: {fileID: 4322944903226680589}
-  - component: {fileID: 4733774723736979095}
+  - component: {fileID: 5870409063492760373}
   m_Layer: 15
   m_Name: Zombie
   m_TagString: Untagged
@@ -252,20 +252,70 @@ MonoBehaviour:
     type: 3}
   gibModel: {fileID: 7965418376291062383, guid: bd66aa31e57425943b609a594c8f1d1b,
     type: 3}
---- !u!114 &4733774723736979095
+--- !u!114 &5870409063492760373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2565378040731073697}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2b186cb0eec7b459251fbdb49842a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideDelay: 0.5
-  ui: {fileID: 346387581}
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 2488145309532234232}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 2488145309541806650}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
 --- !u!1001 &1010610392280711838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -667,6 +717,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2488145309543705176}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &2488145309532234232 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: 2dc7b382d25903545b405802eb2198ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 2488145309543705176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2488145309544100076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400052, guid: 2dc7b382d25903545b405802eb2198ab,
@@ -676,6 +732,12 @@ Transform:
 --- !u!4 &2488145309544100074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400050, guid: 2dc7b382d25903545b405802eb2198ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 2488145309543705176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2488145309541806650 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300002, guid: 2dc7b382d25903545b405802eb2198ab,
     type: 3}
   m_PrefabInstance: {fileID: 2488145309543705176}
   m_PrefabAsset: {fileID: 0}
