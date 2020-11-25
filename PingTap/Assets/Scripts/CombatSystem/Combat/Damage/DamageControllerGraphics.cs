@@ -6,7 +6,7 @@ namespace Fralle
 	[RequireComponent(typeof(DamageController))]
 	public class DamageControllerGraphics : MonoBehaviour
 	{
-		static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
+		static readonly int RendererColor = Shader.PropertyToID("_MainColor");
 
 		[SerializeField] GameObject ragdollModel = null;
 		[SerializeField] GameObject gibModel = null;
@@ -26,7 +26,7 @@ namespace Fralle
 			propBlock = new MaterialPropertyBlock();
 			renderer = GetComponentInChildren<Renderer>();
 			renderer.GetPropertyBlock(propBlock);
-			defaultColor = propBlock.GetColor(RendererColor);
+			defaultColor = renderer.material.GetColor(RendererColor);
 		}
 
 		void Update()
@@ -42,7 +42,7 @@ namespace Fralle
 
 		void HandleDamageTaken(DamageController damageController, DamageData damageData)
 		{
-			if (damageData.hitAngle <= 0)
+			if (!damageData.damageFromHit)
 				return;
 
 			currentColor = Color.white;
