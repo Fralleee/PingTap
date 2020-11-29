@@ -4,48 +4,61 @@ using UnityEngine;
 
 namespace Fralle.Core.Audio
 {
-  public class SpawnSounds : MonoBehaviour
-  {
-    public GameObject prefabSound;
+	public class SpawnSounds : MonoBehaviour
+	{
+		public GameObject prefabSound;
 
-    public int spawnCount = 1;
+		public int spawnCount = 1;
 
-    public float spawnDelay = 1f;
+		public float spawnDelay = 1f;
 
-    public bool destroyWhenDone = true;
+		public bool destroyWhenDone = true;
 
-    [Range(0.01f, 10f)] public float pitchRandomMultiplier = 1f;
+		[Range(0.01f, 10f)] public float pitchRandomMultiplier = 1f;
 
-    public void Spawn()
-    {
-      if (spawnDelay > 0) StartCoroutine(SpawnSingle(spawnDelay));
-      else SpawnSingle();
-    }
+		void Awake()
+		{
+			Spawn();
+		}
 
-    IEnumerator SpawnSingle(float time)
-    {
-      for (var i = 0; i < spawnCount; i++)
-      {
-        SpawnSingle();
-        yield return new WaitForSeconds(time);
-      }
-    }
+		public void Spawn()
+		{
+			if (spawnDelay > 0)
+				StartCoroutine(SpawnSingle(spawnDelay));
+			else
+				SpawnSingle();
+		}
 
-    void SpawnSingle()
-    {
-      var sound = Instantiate(prefabSound, transform.position, Quaternion.identity);
-      var source = sound.GetComponent<AudioSource>();
+		IEnumerator SpawnSingle(float time)
+		{
+			for (var i = 0; i < spawnCount; i++)
+			{
+				SpawnSingle();
+				yield return new WaitForSeconds(time);
+			}
+		}
 
-      if (!pitchRandomMultiplier.EqualsWithTolerance(1f))
-      {
-        if (Random.value < .5) source.pitch *= Random.Range(1 / pitchRandomMultiplier, 1);
-        else source.pitch *= Random.Range(1, pitchRandomMultiplier);
-      }
+		void SpawnSingle()
+		{
+			var sound = Instantiate(prefabSound, transform.position, Quaternion.identity);
+			var source = sound.GetComponent<AudioSource>();
 
-      if (!destroyWhenDone) return;
+			Debug.Log($"Playing sound: {sound}");
+			source.volume = 0.25f;
 
-      var life = source.clip.length / source.pitch;
-      Destroy(sound, life);
-    }
-  }
+			if (!pitchRandomMultiplier.EqualsWithTolerance(1f))
+			{
+				if (Random.value < .5)
+					source.pitch *= Random.Range(1 / pitchRandomMultiplier, 1);
+				else
+					source.pitch *= Random.Range(1, pitchRandomMultiplier);
+			}
+
+			if (!destroyWhenDone)
+				return;
+
+			var life = source.clip.length / source.pitch;
+			Destroy(sound, life);
+		}
+	}
 }
