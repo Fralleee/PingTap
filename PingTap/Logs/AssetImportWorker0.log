@@ -15,11 +15,11 @@ E:/Unity/Projects/PingTap/PingTap
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55949
+49394
 Successfully changed project path to: E:/Unity/Projects/PingTap/PingTap
 E:/Unity/Projects/PingTap/PingTap
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 127.48 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 200.91 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.0b10 (19f63eee530c)
 [Subsystems] Discovering subsystems at path E:/Unity/2020.2.0b10/Editor/Data/Resources/UnitySubsystems
@@ -36,148 +36,660 @@ Initialize mono
 Mono path[0] = 'E:/Unity/2020.2.0b10/Editor/Data/Managed'
 Mono path[1] = 'E:/Unity/2020.2.0b10/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Unity/2020.2.0b10/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56332
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56028
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001249 seconds.
+Registered in 0.002521 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 143.41 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 129.43 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.597 seconds
+- Completed reload, in  2.317 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.011400 seconds.
+Registered in 0.026393 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 141.17 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 159.63 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.163 seconds
+- Completed reload, in  2.545 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 2.71 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3280 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 164.7 MB.
+System memory in use after: 164.9 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 3789.
+Total: 24.224800 ms (FindLiveObjects: 0.651400 ms CreateObjectMapping: 0.175900 ms MarkObjects: 23.225100 ms  DeleteObjects: 0.168700 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Prefabs/Characters/Enemies/EnemyTypes.md
+  artifactKey: Guid(e22e46fde0558ad45a1186d0772736a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/EnemyTypes.md using Guid(e22e46fde0558ad45a1186d0772736a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4918c41f02d8ea237f0527464d1f44b') in 0.043327 seconds
+  Import took 0.052852 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 30.368043 seconds.
+  path: Assets/Prefabs/Characters/Enemies/EnemyTypes.md
+  artifactKey: Guid(e22e46fde0558ad45a1186d0772736a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/EnemyTypes.md using Guid(e22e46fde0558ad45a1186d0772736a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '852ab386c5107ad7121fc2bae5019d9e') in 0.008475 seconds
+  Import took 0.021466 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 54.439654 seconds.
+  path: Assets/Plugins/Trinary Software/Editor/MecIcon.png
+  artifactKey: Guid(a0f854455b10ba44d819f36586b0909b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Trinary Software/Editor/MecIcon.png using Guid(a0f854455b10ba44d819f36586b0909b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53b9f95c7bfcd647d25c0542772cdb0f') in 0.167099 seconds
+  Import took 0.183884 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.372643 seconds.
+  path: Assets/Plugins/Trinary Software/Editor
+  artifactKey: Guid(0d53480b6fb0cb246b44b84ec5156cc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Trinary Software/Editor using Guid(0d53480b6fb0cb246b44b84ec5156cc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4f6e5436b4bdfc8814098c2fdf3b0c1') in 0.007253 seconds
+  Import took 0.022581 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Plugins/Trinary Software/Timing.cs
+  artifactKey: Guid(2d2433f4570c1404da40af9ea0b12741) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Trinary Software/Timing.cs using Guid(2d2433f4570c1404da40af9ea0b12741) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9266a4126721c885a500e0214de622b') in 0.016475 seconds
+  Import took 0.031996 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000210 seconds.
+  path: Assets/Plugins/Trinary Software/Quick Start Guide.pdf
+  artifactKey: Guid(a2df0cfe12cb0d64c9d151d10f8ec206) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Trinary Software/Quick Start Guide.pdf using Guid(a2df0cfe12cb0d64c9d151d10f8ec206) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d6f75770fc7a74daa2aa2604a5bbef0') in 0.014477 seconds
+  Import took 0.029943 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 86.095780 seconds.
+  path: Assets/Plugins/Trinary Software
+  artifactKey: Guid(78018ab10cd0fdf48ba17bb3bc57ed62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Trinary Software using Guid(78018ab10cd0fdf48ba17bb3bc57ed62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c69aa6adc36dced20a0a9adb34d39109') in 0.004746 seconds
+  Import took 0.018027 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.421323 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Brute/Brute.prefab
+  artifactKey: Guid(e25c0abd457a0c04b9d0cb675c11a79b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Brute/Brute.prefab using Guid(e25c0abd457a0c04b9d0cb675c11a79b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b767b3bea6c4354984d9c5d4b9292309') in 0.437640 seconds
+  Import took 0.453527 seconds .
+
+========================================================================
+Received Prepare
+Reloading mono domain
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001259 seconds.
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 150.81 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.049 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.013075 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.72 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.004 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.23 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.4 MB.
+System memory in use after: 109.6 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3853.
+Total: 25.299000 ms (FindLiveObjects: 1.244700 ms CreateObjectMapping: 0.435100 ms MarkObjects: 23.420900 ms  DeleteObjects: 0.195300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 186.027132 seconds.
+  path: Packages/com.coffee.softmask-for-ugui/Scripts/Editor
+  artifactKey: Guid(fd8b4f97015bf4bb3936f3cf874c89a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.coffee.softmask-for-ugui/Scripts/Editor using Guid(fd8b4f97015bf4bb3936f3cf874c89a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e55d9e7391eb5b0d80fb4c897fbaf874') in 0.007560 seconds
+  Import took 0.019765 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Packages/com.coffee.softmask-for-ugui/Scripts/SoftMask.cs
+  artifactKey: Guid(385b7d1277b6c4007a84c065696e0f8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.coffee.softmask-for-ugui/Scripts/SoftMask.cs using Guid(385b7d1277b6c4007a84c065696e0f8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c72c89f77c7149a7520ba725d920a589') in 0.005303 seconds
+  Import took 0.015163 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000739 seconds.
+  path: Packages/com.coffee.softmask-for-ugui/Scripts/Coffee.SoftMaskForUGUI.asmdef
+  artifactKey: Guid(8ef573751495a4f88822a98a88954a0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.coffee.softmask-for-ugui/Scripts/Coffee.SoftMaskForUGUI.asmdef using Guid(8ef573751495a4f88822a98a88954a0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbf7faca10a62c42a03db3f7b8a8e558') in 0.008390 seconds
+  Import took 0.018961 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000274 seconds.
+  path: Packages/com.coffee.softmask-for-ugui/Scripts/SoftMaskable.cs
+  artifactKey: Guid(97bc2ebab6563400c95b036136d26ea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.coffee.softmask-for-ugui/Scripts/SoftMaskable.cs using Guid(97bc2ebab6563400c95b036136d26ea6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3ab3c8dd3375ed86cd5c8c16e63ad9d') in 0.006027 seconds
+  Import took 0.017045 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000327 seconds.
+  path: Packages/com.coffee.softmask-for-ugui/Scripts/MaterialCache.cs
+  artifactKey: Guid(be6c8de8d4ec241fdbfad99aca2497d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.coffee.softmask-for-ugui/Scripts/MaterialCache.cs using Guid(be6c8de8d4ec241fdbfad99aca2497d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad1a88ee0c751241b4a1182a7721db84') in 0.005193 seconds
+  Import took 0.016288 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000254 seconds.
+  path: Packages/com.coffee.softmask-for-ugui/Scripts/GraphicConnector.cs
+  artifactKey: Guid(0e702140c28f4425fac896f9394a31b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Packages/com.coffee.softmask-for-ugui/Scripts/GraphicConnector.cs using Guid(0e702140c28f4425fac896f9394a31b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c19ae0038405ea70fb10cfdb20543a0') in 0.005852 seconds
+  Import took 0.016331 seconds .
+
+========================================================================
+Received Prepare
+Reloading mono domain
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002114 seconds.
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 150.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.362 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.015885 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.95 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.626 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.08 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.4 MB.
+System memory in use after: 109.6 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3861.
+Total: 55.244300 ms (FindLiveObjects: 4.315300 ms CreateObjectMapping: 0.860700 ms MarkObjects: 49.808200 ms  DeleteObjects: 0.251200 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.940388 seconds.
+  path: Assets/Prefabs/UI/HUD/Compass.prefab
+  artifactKey: Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/UI/HUD/Compass.prefab using Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbb3eb24ea427bd0c577f4e72148541d') in 0.293801 seconds
+  Import took 0.316722 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.532603 seconds.
+  path: Assets/Prefabs/UI/HUD/Compass.prefab
+  artifactKey: Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/UI/HUD/Compass.prefab using Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbb3eb24ea427bd0c577f4e72148541d') in 0.054217 seconds
+  Import took 0.066444 seconds .
+
+========================================================================
+Received Prepare
+Reloading mono domain
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001170 seconds.
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 168.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.172 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.012405 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.35 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.402 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.25 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 109.8 MB.
+System memory in use after: 110.0 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3869.
+Total: 33.583400 ms (FindLiveObjects: 2.405300 ms CreateObjectMapping: 0.469300 ms MarkObjects: 30.294100 ms  DeleteObjects: 0.412300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.161409 seconds.
+  path: Assets/Prefabs/UI/HUD/Compass.prefab
+  artifactKey: Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/UI/HUD/Compass.prefab using Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9eca1a548821b6debe1d33da44d993f8') in 0.167973 seconds
+  Import took 0.189364 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.042373 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0000_Death-hero01_001.png.png
+  artifactKey: Guid(bddfc164a0fa0dc419c8583cce28d9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0000_Death-hero01_001.png.png using Guid(bddfc164a0fa0dc419c8583cce28d9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '144ea37ca42769e868bef2dcb321fd6d') in 0.087918 seconds
+  Import took 0.099448 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000342 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0002_Death-hero01_003.png.png
+  artifactKey: Guid(b3c04a5271807c640a03f3fb5ae786d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0002_Death-hero01_003.png.png using Guid(b3c04a5271807c640a03f3fb5ae786d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7af72a4f8bfab7d0c1974d44c7c1640f') in 0.028690 seconds
+  Import took 0.040921 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000476 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0010_Idle-hero01_002.png.png
+  artifactKey: Guid(92396ed923886e5408c067cdeb1dd47c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0010_Idle-hero01_002.png.png using Guid(92396ed923886e5408c067cdeb1dd47c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c28b6ef46e329c139200bcb4819d3cda') in 0.027077 seconds
+  Import took 0.042076 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000228 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0032_Run-hero01_003.png.png
+  artifactKey: Guid(af6ae02fd9c7e21469520e6ef3584512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0032_Run-hero01_003.png.png using Guid(af6ae02fd9c7e21469520e6ef3584512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc7c7fdd5652a671414a7912bf48da34') in 0.034865 seconds
+  Import took 0.048860 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000756 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0028_Jump-hero01_008.png.png
+  artifactKey: Guid(dff624a12dcaf2449bc8a009862a5b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0028_Jump-hero01_008.png.png using Guid(dff624a12dcaf2449bc8a009862a5b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bd23791d1c9a17ec0ae1ee539335aac') in 0.031754 seconds
+  Import took 0.044545 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0027_Jump-hero01_007.png.png
+  artifactKey: Guid(6cf8f8310a7d78c4f82dbfcf7a751722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0027_Jump-hero01_007.png.png using Guid(6cf8f8310a7d78c4f82dbfcf7a751722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd2998266cb7b82df4c95991619e20f6') in 0.024235 seconds
+  Import took 0.034826 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0004_Death-hero01_005.png.png
+  artifactKey: Guid(d95abc955531fc74a8b78a2f38ea2b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0004_Death-hero01_005.png.png using Guid(d95abc955531fc74a8b78a2f38ea2b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afea615381817a4cedd100248d060e62') in 0.024358 seconds
+  Import took 0.035131 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000415 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0005_Death-hero01_006.png.png
+  artifactKey: Guid(9843c9b01348a7d4cb3c532c5dbf2af3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0005_Death-hero01_006.png.png using Guid(9843c9b01348a7d4cb3c532c5dbf2af3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c24b0eb7635fe073c8d660114955f9b') in 0.020881 seconds
+  Import took 0.043120 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000232 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0030_Run-hero01_001.png.png
+  artifactKey: Guid(39e6967630aff0047aabc14c533e713d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0030_Run-hero01_001.png.png using Guid(39e6967630aff0047aabc14c533e713d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6f91e94bc1a74bb2ee4a846dc075eb9') in 0.028798 seconds
+  Import took 0.040972 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000203 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0029_Jump-hero01_009.png.png
+  artifactKey: Guid(b4ec506303401bf4f93bf3b26bfdf6cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0029_Jump-hero01_009.png.png using Guid(b4ec506303401bf4f93bf3b26bfdf6cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c2bc7af909557e08966d2eca7aa5ef2') in 0.018815 seconds
+  Import took 0.031716 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000236 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0012_Idle-hero01_004.png.png
+  artifactKey: Guid(0d143f17689a5284b83cc9432e23fddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0012_Idle-hero01_004.png.png using Guid(0d143f17689a5284b83cc9432e23fddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68d2c744425130f76ba36e65b284b179') in 0.026938 seconds
+  Import took 0.040547 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0001_Death-hero01_002.png.png
+  artifactKey: Guid(93e79b346ab1b1f468151d0f9e934e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0001_Death-hero01_002.png.png using Guid(93e79b346ab1b1f468151d0f9e934e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25e5409ed0c0ce5b25fa64e2aace1d28') in 0.016849 seconds
+  Import took 0.026010 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000301 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0024_Jump-hero01_004.png.png
+  artifactKey: Guid(eb78529d36b8b5542b131d82b0af1add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0024_Jump-hero01_004.png.png using Guid(eb78529d36b8b5542b131d82b0af1add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a156c7660bd41bb3b798e6d1fbeafb0f') in 0.017201 seconds
+  Import took 0.027190 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000409 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0023_Jump-hero01_003.png.png
+  artifactKey: Guid(aa46273beaf9b754796fd5b406354759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0023_Jump-hero01_003.png.png using Guid(aa46273beaf9b754796fd5b406354759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ad16688d90a80ff08bb83034d595d4c') in 0.017061 seconds
+  Import took 0.027197 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0019_Idle-hero01_011.png.png
+  artifactKey: Guid(a15808e57ec0ee0459c65e20e02e5fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0019_Idle-hero01_011.png.png using Guid(a15808e57ec0ee0459c65e20e02e5fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07687b188e53d244d0faa9995fd1c5fd') in 0.017349 seconds
+  Import took 0.025818 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000429 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0009_Idle-hero01_001.png.png
+  artifactKey: Guid(8e9c5d874756b8149a84d8cca1b510a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0009_Idle-hero01_001.png.png using Guid(8e9c5d874756b8149a84d8cca1b510a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7aec9f9602903ea70aa199afb06485b') in 0.038737 seconds
+  Import took 0.050322 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0031_Run-hero01_002.png.png
+  artifactKey: Guid(68c06d8eb3112bd4f816c33ec6981fd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0031_Run-hero01_002.png.png using Guid(68c06d8eb3112bd4f816c33ec6981fd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4210e98e5e2ec30df7b922f2083432dc') in 0.020591 seconds
+  Import took 0.032348 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000269 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0033_Run-hero01_004.png.png
+  artifactKey: Guid(710ce97603adb5b408e12d20e3bf921c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0033_Run-hero01_004.png.png using Guid(710ce97603adb5b408e12d20e3bf921c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba4dcfb7fe7bfe8626ee07e78110488f') in 0.017388 seconds
+  Import took 0.026154 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0011_Idle-hero01_003.png.png
+  artifactKey: Guid(ae404e0d95d797144b496b0dcb9e012e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0011_Idle-hero01_003.png.png using Guid(ae404e0d95d797144b496b0dcb9e012e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81a392c229aca274b5378e0b57c07153') in 0.016440 seconds
+  Import took 0.027009 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000348 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0022_Jump-hero01_002.png.png
+  artifactKey: Guid(633272e61f2f6b749ab2619bb5e9033d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0022_Jump-hero01_002.png.png using Guid(633272e61f2f6b749ab2619bb5e9033d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d2a3e63dda2c03218caa615d5ae0632') in 0.026490 seconds
+  Import took 0.039364 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0025_Jump-hero01_005.png.png
+  artifactKey: Guid(3a017b670e45b7e4b8b352b05fcb342d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0025_Jump-hero01_005.png.png using Guid(3a017b670e45b7e4b8b352b05fcb342d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b2b2082f32298e93a3a83ca10eb878b') in 0.019506 seconds
+  Import took 0.032258 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000453 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0013_Idle-hero01_005.png.png
+  artifactKey: Guid(e14fb8ff893cef141bda873dd21049d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0013_Idle-hero01_005.png.png using Guid(e14fb8ff893cef141bda873dd21049d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b296a9ff04f3cc2c4cf79f6b536ae4c') in 0.029165 seconds
+  Import took 0.039234 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000325 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0014_Idle-hero01_006.png.png
+  artifactKey: Guid(8c3c66fb148ee1e43be87362905ba50f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0014_Idle-hero01_006.png.png using Guid(8c3c66fb148ee1e43be87362905ba50f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51b065db50b3c5a2da161f2a9266dfe7') in 0.021549 seconds
+  Import took 0.040370 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000297 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0015_Idle-hero01_007.png.png
+  artifactKey: Guid(2479ea279bd3abd4d9f8c0cf87a60c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0015_Idle-hero01_007.png.png using Guid(2479ea279bd3abd4d9f8c0cf87a60c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13d95487bcdc6490b2b65cfcf9339718') in 0.023713 seconds
+  Import took 0.033626 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0008_Death-hero01_009.png.png
+  artifactKey: Guid(fd228208198992449b8808986503725e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0008_Death-hero01_009.png.png using Guid(fd228208198992449b8808986503725e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4e6bd0ed237e741af1356538e8aab5a') in 0.022863 seconds
+  Import took 0.036049 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000273 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0016_Idle-hero01_008.png.png
+  artifactKey: Guid(035831451b62b924fa2c79c1b883edd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0016_Idle-hero01_008.png.png using Guid(035831451b62b924fa2c79c1b883edd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd30a83a9bed7387caa6c77d7de4ee842') in 0.020469 seconds
+  Import took 0.031044 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000205 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0003_Death-hero01_004.png.png
+  artifactKey: Guid(b34f02fc22bc1684ca56f028f048bfbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0003_Death-hero01_004.png.png using Guid(b34f02fc22bc1684ca56f028f048bfbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b22f4f810945b10171d7cf190e8a34c') in 0.019613 seconds
+  Import took 0.029558 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0021_Jump-hero01_001.png.png
+  artifactKey: Guid(0d2150a782b4e81478260887565ce4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0021_Jump-hero01_001.png.png using Guid(0d2150a782b4e81478260887565ce4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be47df368d94021d3482d4d7998099f5') in 0.016320 seconds
+  Import took 0.025774 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000218 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0007_Death-hero01_008.png.png
+  artifactKey: Guid(0a5b5513809c15d4ea8f2aa5e651887b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0007_Death-hero01_008.png.png using Guid(0a5b5513809c15d4ea8f2aa5e651887b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '099a335e0904e11c871f8eb1a451ae6f') in 0.016544 seconds
+  Import took 0.027614 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000348 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0006_Death-hero01_007.png.png
+  artifactKey: Guid(e59d0a9cc0c6c3848b3f70d7dd603dc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0006_Death-hero01_007.png.png using Guid(e59d0a9cc0c6c3848b3f70d7dd603dc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '765090b6a9d270d16b676c1b6b5c158d') in 0.025803 seconds
+  Import took 0.047438 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000216 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0026_Jump-hero01_006.png.png
+  artifactKey: Guid(7503f95eb2921744da9462c8cfdcd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0026_Jump-hero01_006.png.png using Guid(7503f95eb2921744da9462c8cfdcd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83c91251fed0c6ea15a481fd19ed0552') in 0.035557 seconds
+  Import took 0.048097 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000309 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0020_Idle-hero01_012.png.png
+  artifactKey: Guid(15088532d7aa5864dad4cf48eebe22ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0020_Idle-hero01_012.png.png using Guid(15088532d7aa5864dad4cf48eebe22ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4120575fb69dc3dea31d9f2f29914aa0') in 0.023066 seconds
+  Import took 0.036476 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000238 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0018_Idle-hero01_010.png.png
+  artifactKey: Guid(80bf18bf3247e6d44a902d101e62a02c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0018_Idle-hero01_010.png.png using Guid(80bf18bf3247e6d44a902d101e62a02c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4f32948a97ec3d31078d5d94e909e06') in 0.021786 seconds
+  Import took 0.037907 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000201 seconds.
+  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0017_Idle-hero01_009.png.png
+  artifactKey: Guid(872f7d64c4cef7148bc8771281480d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0017_Idle-hero01_009.png.png using Guid(872f7d64c4cef7148bc8771281480d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88f5bd5425230f2ad1baa87e1482cbda') in 0.021578 seconds
+  Import took 0.030595 seconds .
+
+========================================================================
+Received Prepare
+Reloading mono domain
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001372 seconds.
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 144.91 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.214 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.008625 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.932 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.17 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.4 MB.
+System memory in use after: 110.6 MB.
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3878.
+Total: 25.983600 ms (FindLiveObjects: 0.828400 ms CreateObjectMapping: 0.455500 ms MarkObjects: 24.465600 ms  DeleteObjects: 0.231600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.878148 seconds.
+  path: Assets/Prefabs/UI/HUD/Compass.prefab
+  artifactKey: Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/UI/HUD/Compass.prefab using Guid(568a6fc9e68029646b426dc47485a172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f1a37595cf27560905b62266c0730c3') in 0.161922 seconds
+  Import took 0.174560 seconds .
+
+========================================================================
+Received Prepare
+Reloading mono domain
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001892 seconds.
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 161.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.524 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.008013 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
+Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 1.04 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3279 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 164.0 MB.
-System memory in use after: 164.1 MB.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.170 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.38 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.4 MB.
+System memory in use after: 110.6 MB.
 
-Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 3788.
-Total: 24.150400 ms (FindLiveObjects: 1.023600 ms CreateObjectMapping: 0.384000 ms MarkObjects: 22.575200 ms  DeleteObjects: 0.163000 ms)
-
-========================================================================
-Received Import Request.
-  path: Assets/Prefabs/Characters/Enemies/Brute.prefab
-  artifactKey: Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Characters/Enemies/Brute.prefab using Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f46e2fe40c27b831dc0b1468a0fd826') in 0.427829 seconds
-  Import took 0.444121 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.074285 seconds.
-  path: Assets/Prefabs/Characters/Enemies/Brute.prefab
-  artifactKey: Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Characters/Enemies/Brute.prefab using Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '164df64fcb2aaf1d8e885c7f89b7f7c4') in 0.068992 seconds
-  Import took 0.084759 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.915211 seconds.
-  path: Assets/Sandbox/Characters/Brute/Brute.controller
-  artifactKey: Guid(3cd2c8200775c9a4cb4039eb7068481a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/Characters/Brute/Brute.controller using Guid(3cd2c8200775c9a4cb4039eb7068481a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8920bfdd7b3f48cc56ab7dddf645f83') in 0.014511 seconds
-  Import took 0.029534 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 208.056108 seconds.
-  path: Assets/Sandbox/Characters/Brute/T-Pose.fbx
-  artifactKey: Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/Characters/Brute/T-Pose.fbx using Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e15608e3dacd03bc7a61b16d159ee8cd') in 0.148158 seconds
-  Import took 0.161809 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 24.323096 seconds.
-  path: Assets/Sandbox/Characters/Brute/T-Pose.fbx
-  artifactKey: Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/Characters/Brute/T-Pose.fbx using Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a252ec86dbecd2aeb0ea89b0ff5c3d8a') in 0.042945 seconds
-  Import took 0.054183 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.004553 seconds.
-  path: Assets/Sandbox/Characters/Brute/T-Pose.fbx
-  artifactKey: Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/Characters/Brute/T-Pose.fbx using Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a252ec86dbecd2aeb0ea89b0ff5c3d8a') in 0.050669 seconds
-  Import took 0.062087 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.212581 seconds.
-  path: Assets/Sandbox/Characters/Brute/T-Pose.fbx
-  artifactKey: Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/Characters/Brute/T-Pose.fbx using Guid(72d25362474398942984d5fd06220be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd0c1b7eead7dc7e2866798fddd21d4c') in 0.047957 seconds
-  Import took 0.059693 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 217.121387 seconds.
-  path: Assets/Prefabs/Characters/Enemies/Brute.prefab
-  artifactKey: Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Characters/Enemies/Brute.prefab using Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b29794092c37b6e0743628f719d634b') in 0.056370 seconds
-  Import took 0.070709 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.253568 seconds.
-  path: Assets/Prefabs/Characters/Enemies/Brute.prefab
-  artifactKey: Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Characters/Enemies/Brute.prefab using Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2e16cfc9c5ee967fa9aef14d4de194e') in 0.068012 seconds
-  Import took 0.083473 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 48.250168 seconds.
-  path: Assets/Prefabs/Characters/Enemies/Brute.prefab
-  artifactKey: Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Characters/Enemies/Brute.prefab using Guid(b55610b41710a9b4baaaeffa3c8e232f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7dce746bb9739f0df67d92611a584ab4') in 0.058158 seconds
-  Import took 0.076137 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 63.458210 seconds.
-  path: Assets/Animations/Controllers/AI Animator Controller.controller
-  artifactKey: Guid(6f1af80fb5273144187ef6e69307a4c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Controllers/AI Animator Controller.controller using Guid(6f1af80fb5273144187ef6e69307a4c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd7e98184397fcbea36dfc8b1fca77c7') in 0.007336 seconds
-  Import took 0.021457 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000252 seconds.
-  path: Assets/Animations/Controllers/Player Animator Controller.controller
-  artifactKey: Guid(794ab802f97efdc4f94f601939b83072) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Controllers/Player Animator Controller.controller using Guid(794ab802f97efdc4f94f601939b83072) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87ff249f0371638d31e72e9b29c3b359') in 0.008381 seconds
-  Import took 0.020425 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.014928 seconds.
-  path: Assets/Animations/Controllers/AI Animator Controller.controller
-  artifactKey: Guid(6f1af80fb5273144187ef6e69307a4c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Controllers/AI Animator Controller.controller using Guid(6f1af80fb5273144187ef6e69307a4c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd7e98184397fcbea36dfc8b1fca77c7') in 0.006428 seconds
-  Import took 0.018113 seconds .
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3886.
+Total: 26.589200 ms (FindLiveObjects: 0.679300 ms CreateObjectMapping: 0.394300 ms MarkObjects: 24.928900 ms  DeleteObjects: 0.582800 ms)
 
 ========================================================================
 Received Prepare
@@ -185,189 +697,37 @@ Reloading mono domain
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001125 seconds.
+Registered in 0.000997 seconds.
 Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 136.67 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 224.32 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.918 seconds
+- Completed reload, in  2.811 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.015558 seconds.
+Registered in 0.007585 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
 Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.97 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.588 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Refreshing native plugins compatible for Editor in 1.11 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.827 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.27 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.7 MB.
-System memory in use after: 109.9 MB.
+System memory in use before: 110.4 MB.
+System memory in use after: 110.6 MB.
 
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3885.
-Total: 31.084500 ms (FindLiveObjects: 0.670100 ms CreateObjectMapping: 0.189100 ms MarkObjects: 30.082200 ms  DeleteObjects: 0.141200 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 28.721495 seconds.
-  path: Assets/Sandbox/Characters/Brute/Brute.controller
-  artifactKey: Guid(3cd2c8200775c9a4cb4039eb7068481a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/Characters/Brute/Brute.controller using Guid(3cd2c8200775c9a4cb4039eb7068481a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ae60f9fcf9987240c30675134d13a2f') in 0.045668 seconds
-  Import took 0.057516 seconds .
-
-========================================================================
-Received Prepare
-Reloading mono domain
-Begin MonoManager ReloadAssembly
-Registering precompiled unity dll's ...
-Register platform support module: E:/Unity/2020.2.0b10/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001281 seconds.
-Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 181.76 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.687 seconds
-Platform modules already initialized, skipping
-Registering precompiled user dll's ...
-Registered in 0.012739 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image E:\Unity\Projects\PingTap\PingTap\Library\PackageCache\com.unity.ext.nunit@1.0.0\net35\unity-custom\nunit.framework.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.34 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.717 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.90 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 20 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 109.7 MB.
-System memory in use after: 109.9 MB.
-
-Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3893.
-Total: 35.449400 ms (FindLiveObjects: 0.718300 ms CreateObjectMapping: 0.455200 ms MarkObjects: 34.119100 ms  DeleteObjects: 0.154000 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 77.963817 seconds.
-  path: Assets/Materials/Toon Colors/Olive.mat
-  artifactKey: Guid(a8d663f4ace20fb4993d44fad6b609d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Olive.mat using Guid(a8d663f4ace20fb4993d44fad6b609d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c33421f14e8466a9d86831f2b6466a6c') in 0.186286 seconds
-  Import took 0.198157 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Materials/Toon Colors/Purple.mat
-  artifactKey: Guid(a26103c6cb2e1b84bb8090d014914a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Purple.mat using Guid(a26103c6cb2e1b84bb8090d014914a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bb6426d0092cff198f6e8c8504678c3') in 0.011091 seconds
-  Import took 0.021745 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000290 seconds.
-  path: Assets/Materials/Toon Colors/Aqua.mat
-  artifactKey: Guid(e06e79ddd316c28458fd702330b17bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Aqua.mat using Guid(e06e79ddd316c28458fd702330b17bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '412fca92046cd7476ab4c59bc98529f0') in 0.013147 seconds
-  Import took 0.025608 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000266 seconds.
-  path: Assets/Materials/Toon Colors/Green.mat
-  artifactKey: Guid(4a953656a5b8a034f97261e107dbc21c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Green.mat using Guid(4a953656a5b8a034f97261e107dbc21c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e527a7e31fdf5f4cc689c0c1d2465ea') in 0.014228 seconds
-  Import took 0.024104 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000256 seconds.
-  path: Assets/Materials/Toon Colors/Violet.mat
-  artifactKey: Guid(49e17416b92cb3140b4a249d711005ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Violet.mat using Guid(49e17416b92cb3140b4a249d711005ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f40009665b120ec047eca1efc000ad9e') in 0.011619 seconds
-  Import took 0.021148 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Materials/Toon Colors/Teal.mat
-  artifactKey: Guid(db75173ea5b673a4087a15a6268179b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Teal.mat using Guid(db75173ea5b673a4087a15a6268179b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0d4526fd0337f51c7ab1704e92afe9e') in 0.010727 seconds
-  Import took 0.019130 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000198 seconds.
-  path: Assets/Materials/Toon Colors/White.mat
-  artifactKey: Guid(905245e4ac9b5704690026e2eb703f9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/White.mat using Guid(905245e4ac9b5704690026e2eb703f9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56dce43593a52f0ad0ab65a82d668be2') in 0.009879 seconds
-  Import took 0.018884 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000257 seconds.
-  path: Assets/Materials/Toon Colors/Red.mat
-  artifactKey: Guid(ff747877fad36ad42987bfc8d2c542bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Red.mat using Guid(ff747877fad36ad42987bfc8d2c542bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd73876741da3b65d93fdcec9f6e91117') in 0.011785 seconds
-  Import took 0.022534 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000245 seconds.
-  path: Assets/Materials/Toon Colors/Blue.mat
-  artifactKey: Guid(44284ac69eb5cfa4c97a89db68f8a97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Blue.mat using Guid(44284ac69eb5cfa4c97a89db68f8a97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56bb2246c9b061d81bc2807129aae8cd') in 0.012683 seconds
-  Import took 0.022630 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000312 seconds.
-  path: Assets/Materials/Toon Colors/Yellow.mat
-  artifactKey: Guid(f6f46fb08907c274a804c6769d252465) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Yellow.mat using Guid(f6f46fb08907c274a804c6769d252465) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22dbda73159ab44cf4f6d5e201cc75a6') in 0.012629 seconds
-  Import took 0.023289 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000292 seconds.
-  path: Assets/Materials/Toon Colors/Black.mat
-  artifactKey: Guid(6351ef7516c32714685a06069d0b1281) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Black.mat using Guid(6351ef7516c32714685a06069d0b1281) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c0f31e06917f55dc96ad3086be6136d') in 0.014437 seconds
-  Import took 0.031229 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000376 seconds.
-  path: Assets/Materials/Toon Colors/Deep Purple.mat
-  artifactKey: Guid(d4b10f50378dc7f4abd25ef691eb5c57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Deep Purple.mat using Guid(d4b10f50378dc7f4abd25ef691eb5c57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b4c9847542ad4fa8aed00621cd73218') in 0.018356 seconds
-  Import took 0.033077 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000287 seconds.
-  path: Assets/Materials/Toon Colors/Orange.mat
-  artifactKey: Guid(82e5941d90fbf604abe8e1ec0d658d68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Toon Colors/Orange.mat using Guid(82e5941d90fbf604abe8e1ec0d658d68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38e75f1b06a345bddea515e1692cc0ff') in 0.011655 seconds
-  Import took 0.024125 seconds .
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 3894.
+Total: 44.692800 ms (FindLiveObjects: 0.804500 ms CreateObjectMapping: 0.250100 ms MarkObjects: 43.357800 ms  DeleteObjects: 0.277500 ms)
 

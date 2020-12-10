@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace Fralle.Core.CameraControls
 {
-  public class CameraFollowTransform : MonoBehaviour
-  {
+	public class CameraFollowTransform : MonoBehaviour
+	{
 
-    public Transform transformToFollow;
+		public Transform transformToFollow;
 
-    void Update()
-    {
-      transform.position = transformToFollow.position;
-    }
-  }
+		void LateUpdate()
+		{
+			transform.position = transformToFollow.position;
+		}
+	}
 }
