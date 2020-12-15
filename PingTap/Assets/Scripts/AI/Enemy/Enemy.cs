@@ -23,9 +23,6 @@ namespace Fralle.AI
 
 		[HideInInspector] public DamageController damageController;
 
-		[Header("UI")]
-		[SerializeField] GameObject infoPrefab;
-
 		[Header("General")]
 		public int damageAmount = 1;
 
@@ -39,8 +36,6 @@ namespace Fralle.AI
 			damageController.OnDeath += HandleDeath;
 			damageController.OnDamageTaken += HandleDamageTaken;
 			MatchManager.OnDefeat += HandleDefeat;
-
-			SetupUI();
 
 			IncrementOnSpawn();
 			AllAliveEnemies.Add(this);
@@ -141,12 +136,6 @@ namespace Fralle.AI
 			gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
 
 			Destroy(gameObject, 3f);
-		}
-
-		void SetupUI()
-		{
-			var uiTransform = transform.Find("UI");
-			Instantiate(infoPrefab, uiTransform);
 		}
 
 		void OnDestroy()
