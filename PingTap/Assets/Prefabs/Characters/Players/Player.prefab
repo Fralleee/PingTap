@@ -645,6 +645,7 @@ MonoBehaviour:
   minimapUi: {fileID: 0}
   compassUi: {fileID: 4506729212011625368, guid: 568a6fc9e68029646b426dc47485a172,
     type: 3}
+  ammoUi: {fileID: 7439019483547225446, guid: a0a85284d4ab74b4e966610fb74859fd, type: 3}
   camera: {fileID: 0}
   combatant: {fileID: 0}
 --- !u!114 &4362771586254688248
@@ -987,6 +988,11 @@ PrefabInstance:
     - target: {fileID: 4849536065285394247, guid: 0d3d5ecb19266fa469e1a3b041555a2d,
         type: 3}
       propertyPath: maxAmmo
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4849536065285394247, guid: 0d3d5ecb19266fa469e1a3b041555a2d,
+        type: 3}
+      propertyPath: currentAmmo
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

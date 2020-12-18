@@ -94,11 +94,11 @@ MonoBehaviour:
   - {fileID: 1696981692264647854}
   - {fileID: 1947564764152864809}
   - {fileID: -5549499571176310594}
+  - {fileID: 5226530478053982904}
+  - {fileID: 6862170017332091491}
   - {fileID: 1768246560618496740}
   - {fileID: -4222617467572480067}
-  - {fileID: 6479076127856510821}
-  - {fileID: 5226530478053982904}
-  m_RendererFeatureMap: ae8cc6addbe38c1729206698d523071bbe78dae28a37fcb2e4c2f8d8e0128a18bd97fb1ec93f66c565c79921694dea59b8022948c75d8848
+  m_RendererFeatureMap: ae8cc6addbe38c1729206698d523071bbe78dae28a37fcb2b8022948c75d8848e4c2f8d8e0128a18bd97fb1ec93f66c5
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
-  m_Name: NewScreenSpaceAmbientOcclusion
+  m_Name: SSAO
   m_EditorClassIdentifier: 
   m_Active: 1
   m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
@@ -233,5 +233,18 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d111dc2a0b22b142804f4d59508b893, type: 3}
   m_Name: URPOutlineFeature
+  m_EditorClassIdentifier: 
+  m_Active: 1
+--- !u!114 &6862170017332091491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b2f25099ada99479afd1cac5f07b6f, type: 3}
+  m_Name: '[SCPE] SunshaftsRenderer'
   m_EditorClassIdentifier: 
   m_Active: 1
