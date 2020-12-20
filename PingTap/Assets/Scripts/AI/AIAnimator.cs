@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CombatSystem.Combat.Damage;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Fralle.AI
@@ -12,6 +13,8 @@ namespace Fralle.AI
 		{
 			animator = GetComponent<Animator>();
 			aiController = GetComponentInParent<AIController>();
+			var damageController = GetComponentInParent<DamageController>();
+			damageController.OnDeath += HandleDeath;
 		}
 
 		void Update()
@@ -23,6 +26,12 @@ namespace Fralle.AI
 		void OnAnimatorMove()
 		{
 			GetComponentInParent<NavMeshAgent>().speed = (animator.deltaPosition / Time.deltaTime).magnitude;
+		}
+
+		void HandleDeath(DamageController damageController, DamageData damageData)
+		{
+			animator.enabled = false;
+			this.enabled = false;
 		}
 	}
 }

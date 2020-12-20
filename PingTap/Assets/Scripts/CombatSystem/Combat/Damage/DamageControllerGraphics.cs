@@ -11,14 +11,18 @@ namespace Fralle
 		[SerializeField] GameObject ragdollModel = null;
 		[SerializeField] GameObject gibModel = null;
 
+		Rigidbody[] rigidbodies;
+		Collider[] colliders;
 		new Renderer renderer;
 		MaterialPropertyBlock propBlock;
 		Color defaultColor;
 		Color currentColor;
 		float colorLerpTime;
 
-		void Start()
+		void Awake()
 		{
+			SetupRagdoll();
+
 			var damageController = GetComponent<DamageController>();
 			damageController.OnDamageTaken += HandleDamageTaken;
 			damageController.OnDeath += HandleDeath;
@@ -40,6 +44,27 @@ namespace Fralle
 			colorLerpTime -= Time.deltaTime * 0.25f;
 		}
 
+		void SetupRagdoll()
+		{
+			rigidbodies = GetComponentsInChildren<Rigidbody>();
+			ToggleRagdoll(false);
+		}
+
+		void ToggleRagdoll(bool enable)
+		{
+			foreach (var collider in GetComponentsInChildren<Collider>())
+			{
+				collider.enabled = !enable;
+			}
+
+			foreach (var rigidBody in rigidbodies)
+			{
+				rigidBody.isKinematic = !enable;
+				rigidBody.GetComponent<Collider>().enabled = enable;
+				rigidBody.velocity = Vector3.zero;
+			}
+		}
+
 		void HandleDamageTaken(DamageController damageController, DamageData damageData)
 		{
 			if (!damageData.damageFromHit)
@@ -53,10 +78,9 @@ namespace Fralle
 
 		void HandleDeath(DamageController damageController, DamageData damageData)
 		{
-			var model = Instantiate(damageData.gib ? gibModel : ragdollModel, transform.position, transform.rotation);
-			Destroy(model, 3f);
-			Destroy(gameObject);
-			foreach (var rigidBody in model.GetComponentsInChildren<Rigidbody>())
+			Destroy(gameObject, 3f);
+			ToggleRagdoll(true);
+			foreach (var rigidBody in rigidbodies)
 			{
 				rigidBody.AddForceAtPosition(damageData.force, damageData.position);
 			}
