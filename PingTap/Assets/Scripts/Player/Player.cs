@@ -14,6 +14,7 @@ namespace Fralle
 		[SerializeField] GameObject minimapUi = null;
 		[SerializeField] GameObject compassUi = null;
 		[SerializeField] GameObject ammoUi = null;
+		[SerializeField] GameObject hitMarkerUi;
 
 		[HideInInspector] public new Camera camera;
 		[HideInInspector] public Combatant combatant;
@@ -48,12 +49,15 @@ namespace Fralle
 			InstantiateUI(minimapUi, ui);
 			InstantiateUI(compassUi, ui);
 			InstantiateUI(ammoUi, ui);
+			InstantiateUI(hitMarkerUi, ui);
 		}
 
 		void InstantiateUI(GameObject prefab, Transform parent)
 		{
 			if (prefab)
+			{
 				Instantiate(prefab, parent);
+			}
 		}
 	}
 }

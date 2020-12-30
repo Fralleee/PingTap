@@ -66,7 +66,7 @@ namespace CombatSystem.Action
 
 			if (damageData != null)
 			{
-				var impactParticle = Instantiate(damageData.impactEffect, hitInfo.point, Quaternion.LookRotation(attacker.aimTransform.forward, Vector3.up));
+				var impactParticle = Instantiate(damageData.impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
 				Destroy(impactParticle, 5f);
 			}
 			else if (impactParticlePrefab)

@@ -1,4 +1,5 @@
 ﻿using CombatSystem.Action;
+using CombatSystem.Combat.Damage;
 using Fralle.Core.Extensions;
 using System;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace CombatSystem.Combat
 	public class Combatant : MonoBehaviour
 	{
 		public event Action<Weapon> OnWeaponSwitch = delegate { };
+		public event Action<DamageData> OnHit = delegate { };
 
 		public CombatStats Stats = new CombatStats();
 		public CombatModifiers Modifiers = new CombatModifiers();
@@ -66,6 +68,11 @@ namespace CombatSystem.Combat
 				primaryAction = attackActions[0];
 				secondaryAction = attackActions.Length == 2 ? attackActions[1] : null;
 			}
+		}
+
+		public void SuccessfulHit(DamageData damageData)
+		{
+			OnHit(damageData);
 		}
 	}
 }

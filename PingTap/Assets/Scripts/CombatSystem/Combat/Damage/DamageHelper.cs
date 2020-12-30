@@ -54,6 +54,7 @@ namespace CombatSystem.Combat.Damage
 				};
 
 				damageController.ReceiveAttack(damageData);
+				raycastAttack.attacker.SuccessfulHit(damageData);
 				return damageData;
 			}
 
@@ -85,6 +86,7 @@ namespace CombatSystem.Combat.Damage
 					damageAmount = hitArea.GetMultiplier() * projectileData.damage
 				};
 				damageController.ReceiveAttack(damageData);
+				projectileData.attacker.SuccessfulHit(damageData);
 			}
 
 		}
@@ -140,6 +142,7 @@ namespace CombatSystem.Combat.Damage
 					damageAmount = damageAmount
 				};
 				damageController.ReceiveAttack(damageData);
+				projectileData.attacker.SuccessfulHit(damageData);
 			}
 		}
 
