@@ -15,6 +15,7 @@ public class HitmarkersUI : MonoBehaviour
 	[SerializeField] int defaultSize = 32;
 	[SerializeField] int maxSize = 96;
 
+	AudioSource audioSource;
 	RectTransform rectTransform;
 	Image image;
 	Color currentColor;
@@ -22,6 +23,7 @@ public class HitmarkersUI : MonoBehaviour
 
 	void Awake()
 	{
+		audioSource = GetComponent<AudioSource>();
 		rectTransform = GetComponent<RectTransform>();
 		image = GetComponent<Image>();
 		var combatant = GetComponentInParent<Combatant>();
@@ -36,7 +38,7 @@ public class HitmarkersUI : MonoBehaviour
 
 	void Combatant_OnHit(DamageData obj)
 	{
-		DisplayHitmarker(obj.hitArea);
+		ActivateHitmarker(obj.hitArea);
 	}
 
 	void Fade()
@@ -63,18 +65,21 @@ public class HitmarkersUI : MonoBehaviour
 		}
 	}
 
-	void DisplayHitmarker(HitArea hitArea)
+	void ActivateHitmarker(HitArea hitArea)
 	{
 		lastHit = Time.time + fadeTimer;
 		if (hitArea == HitArea.MAJOR)
 		{
 			currentColor = majorColor.Alpha(0.8f);
+			audioSource.pitch = 1;
 			AdjustSize(8);
 		}
 		else
 		{
 			currentColor = nerveColor.Alpha(0.8f);
+			audioSource.pitch = 3;
 			AdjustSize(16);
 		}
+		audioSource.Play();
 	}
 }

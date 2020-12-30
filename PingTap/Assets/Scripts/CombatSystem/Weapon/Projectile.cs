@@ -78,9 +78,14 @@ namespace CombatSystem.Offense
 		{
 			AddForce(collision, data.forward);
 
-			DamageHelper.ProjectileHit(data, transform.position, collision);
-
-			if (impactParticlePrefab)
+			var damageData = DamageHelper.ProjectileHit(data, transform.position, collision);
+			if (damageData != null)
+			{
+				var contact = collision.GetContact(0);
+				var impactParticle = Instantiate(damageData.impactEffect, contact.point, Quaternion.LookRotation(contact.normal, Vector3.up));
+				Destroy(impactParticle, 5f);
+			}
+			else if (impactParticlePrefab)
 			{
 				var impactParticle = Instantiate(
 					impactParticlePrefab,

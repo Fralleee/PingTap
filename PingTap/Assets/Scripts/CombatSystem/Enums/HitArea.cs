@@ -31,8 +31,6 @@ namespace CombatSystem.Enums
 		{
 			switch (ha)
 			{
-				case HitArea.MINOR:
-					return damageController.minorImpactEffect;
 				case HitArea.MAJOR:
 					return damageController.majorImpactEffect;
 				case HitArea.NERVE:

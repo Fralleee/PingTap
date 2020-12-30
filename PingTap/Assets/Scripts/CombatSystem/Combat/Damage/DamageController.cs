@@ -32,12 +32,19 @@ namespace CombatSystem.Combat.Damage
 		public Armor armor;
 
 		[Header("Effects")]
-		public GameObject minorImpactEffect;
 		public GameObject majorImpactEffect;
 		public GameObject nerveImpactEffect;
 
+		[Header("Audio")]
+		[SerializeField] AudioClip damageSound;
+		[SerializeField] AudioClip deathSound;
+
+		AudioSource audioSource;
+
 		void Awake()
 		{
+			audioSource = GetComponent<AudioSource>();
+
 			SetupUI();
 		}
 
@@ -119,6 +126,11 @@ namespace CombatSystem.Combat.Damage
 				damageData.gib = currentHealth <= -maxHealth * 0.5f;
 				Death(damageData);
 			}
+			else if (audioSource && damageSound)
+			{
+				audioSource.clip = damageSound;
+				audioSource.Play();
+			}
 
 			damageData.attacker?.Stats.OnSuccessfulAttack(damageData);
 		}
@@ -140,6 +152,11 @@ namespace CombatSystem.Combat.Damage
 			if (isDead)
 				return;
 
+			if (audioSource && deathSound)
+			{
+				audioSource.clip = deathSound;
+				audioSource.Play();
+			}
 			if (immortal)
 			{
 				currentHealth = maxHealth;

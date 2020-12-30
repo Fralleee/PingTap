@@ -61,13 +61,13 @@ namespace CombatSystem.Combat.Damage
 			return null;
 		}
 
-		public static void ProjectileHit(ProjectileData projectileData, Vector3 position, Collision collision)
+		public static DamageData ProjectileHit(ProjectileData projectileData, Vector3 position, Collision collision)
 		{
 			AddForce(projectileData, position, collision);
 
 			bool hitboxHit = collision.collider.gameObject.layer == hitboxLayer;
 			if (!hitboxHit)
-				return;
+				return null;
 
 			var hitbox = collision.collider.transform.GetComponent<Hitbox>();
 			var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
@@ -83,12 +83,15 @@ namespace CombatSystem.Combat.Damage
 					force = projectileData.forward * projectileData.pushForce,
 					position = collision.GetContact(0).point,
 					hitArea = hitArea,
-					damageAmount = hitArea.GetMultiplier() * projectileData.damage
+					damageAmount = hitArea.GetMultiplier() * projectileData.damage,
+					impactEffect = hitArea.GetImpactEffect(damageController)
 				};
 				damageController.ReceiveAttack(damageData);
 				projectileData.attacker.SuccessfulHit(damageData);
-			}
 
+				return damageData;
+			}
+			return null;
 		}
 
 		public static void Explosion(ProjectileData projectileData, Vector3 position, Collision collision = null)
