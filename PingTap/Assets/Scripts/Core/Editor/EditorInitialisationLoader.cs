@@ -14,7 +14,6 @@ namespace Fralle.Core
 
 		void OnEnable()
 		{
-			StartCoroutine(LoadSceneDelayed());
 			for (int i = 0; i < SceneManager.sceneCount; ++i)
 			{
 				Scene scene = SceneManager.GetSceneAt(i);
@@ -23,6 +22,7 @@ namespace Fralle.Core
 					return;
 				}
 			}
+			StartCoroutine(LoadSceneDelayed());
 		}
 
 		IEnumerator LoadSceneDelayed()
