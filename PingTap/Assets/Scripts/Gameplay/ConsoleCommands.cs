@@ -10,14 +10,14 @@ namespace Fralle.Gameplay
 		public static void SpawnEnemy(int count)
 		{
 			Debug.Log($"Spawned {count} enemies");
-			Managers.Instance.Enemy.spawner.SpawnEnemy(count);
+			Managers.Instance.Spawner.SpawnEnemy(count);
 		}
 
 		[Command(aliasOverride: "spawn-enemy", description: "Spawns {x} number of enemies of type {y}.")]
 		public static void SpawnEnemy(int count, EnemyType enemyType)
 		{
 			Debug.Log($"Spawned {count} {enemyType.ToString().ToLower()}s");
-			Managers.Instance.Enemy.spawner.SpawnEnemyType(enemyType, count);
+			Managers.Instance.Spawner.SpawnEnemyType(enemyType, count);
 		}
 
 

@@ -9,26 +9,23 @@ namespace Fralle.Gameplay
 	{
 		public List<SpawnWave> waves;
 
-		[HideInInspector] public Spawner spawner;
-
 		bool spawnComplete = false;
 
-		void Awake()
+		void Start()
 		{
-			spawner = GetComponentInChildren<Spawner>();
-			spawner.OnSpawnComplete += HandleSpawnComplete;
+			Managers.Instance.Spawner.OnSpawnComplete += HandleSpawnComplete;
 			Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
 		}
 
 		public void PrepareSpawner()
 		{
 			var wave = waves.PopAt(0);
-			spawner.SetSpawnDefinition(wave);
+			Managers.Instance.Spawner.SetSpawnDefinition(wave);
 		}
 
 		public void StartSpawner()
 		{
-			spawner.StartSpawning();
+			Managers.Instance.Spawner.StartSpawning();
 			spawnComplete = false;
 		}
 

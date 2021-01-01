@@ -17,7 +17,7 @@ namespace Fralle.Gameplay
 		HeadQuarters headQuarters;
 		bool isHQDead;
 
-		void Awake()
+		public void Setup()
 		{
 			headQuarters = FindObjectOfType<HeadQuarters>();
 			headQuarters.OnDeath += HeadQuarters_OnDeath;

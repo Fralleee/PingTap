@@ -8,11 +8,13 @@ namespace Fralle.AI
 	{
 		Animator animator;
 		AIController aiController;
+		NavMeshAgent navMeshAgent;
 
 		void Awake()
 		{
 			animator = GetComponent<Animator>();
 			aiController = GetComponentInParent<AIController>();
+			navMeshAgent = GetComponentInParent<NavMeshAgent>();
 			var damageController = GetComponentInParent<DamageController>();
 			damageController.OnDeath += HandleDeath;
 		}
@@ -25,7 +27,7 @@ namespace Fralle.AI
 
 		void OnAnimatorMove()
 		{
-			GetComponentInParent<NavMeshAgent>().speed = (animator.deltaPosition / Time.deltaTime).magnitude;
+			navMeshAgent.speed = (animator.deltaPosition / Time.deltaTime).magnitude;
 		}
 
 		void HandleDeath(DamageController damageController, DamageData damageData)

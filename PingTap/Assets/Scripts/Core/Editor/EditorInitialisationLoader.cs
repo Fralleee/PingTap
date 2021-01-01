@@ -1,16 +1,20 @@
-﻿using Fralle.Core.Gameplay;
+﻿#if UNITY_EDITOR
+using Fralle.Core.Gameplay;
+using System.Collections;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Fralle.Core
 {
+	[ExecuteInEditMode]
 	public class EditorInitialisationLoader : MonoBehaviour
 	{
-#if UNITY_EDITOR
 		public GameSceneSO initializationScene;
 
-		void Start()
+		void OnEnable()
 		{
+			StartCoroutine(LoadSceneDelayed());
 			for (int i = 0; i < SceneManager.sceneCount; ++i)
 			{
 				Scene scene = SceneManager.GetSceneAt(i);
@@ -19,8 +23,13 @@ namespace Fralle.Core
 					return;
 				}
 			}
-			SceneManager.LoadSceneAsync(initializationScene.sceneName, LoadSceneMode.Additive);
 		}
-#endif
+
+		IEnumerator LoadSceneDelayed()
+		{
+			yield return new WaitForSecondsRealtime(0.1f);
+			EditorSceneManager.OpenScene("Assets/Scenes/InitScene.unity", OpenSceneMode.Additive);
+		}
 	}
 }
+#endif

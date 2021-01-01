@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 615102588463662592}
-  - component: {fileID: 5201732786537120482}
   - component: {fileID: 2690889022537004099}
+  - component: {fileID: 5201732786537120482}
   - component: {fileID: 3942923564115749215}
   - component: {fileID: 5351482728222260537}
   - component: {fileID: 2998303709824652427}
@@ -45,25 +45,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5201732786537120482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 615102588463662593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c56f69649273ff488355e73ed4fd18e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Audio: {fileID: 0}
-  Camera: {fileID: 0}
-  UiManager: {fileID: 0}
-  State: {fileID: 0}
-  Match: {fileID: 0}
-  Settings: {fileID: 0}
-  Enemy: {fileID: 0}
 --- !u!82 &2690889022537004099
 AudioSource:
   m_ObjectHideFlags: 0
@@ -160,6 +141,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5201732786537120482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615102588463662593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c56f69649273ff488355e73ed4fd18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Camera: {fileID: 0}
+  UiManager: {fileID: 0}
+  State: {fileID: 0}
+  Match: {fileID: 0}
+  Settings: {fileID: 0}
+  Enemy: {fileID: 0}
 --- !u!114 &3942923564115749215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,9 +175,6 @@ MonoBehaviour:
   source: {fileID: 3822862014493582118, guid: 01ef266c354462c46883e26e34ec5147, type: 3}
   musicSource: {fileID: 2690889022537004099}
   Playlist: {fileID: 11400000, guid: b93ed7939ab33224ab811e81934571bf, type: 2}
-  Shuffle: 0
-  Repeat: 0
-  FadeDuration: 2
 --- !u!114 &5351482728222260537
 MonoBehaviour:
   m_ObjectHideFlags: 0

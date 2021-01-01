@@ -6,27 +6,29 @@ namespace Fralle.Gameplay
 {
 	public class Managers : Singleton<Managers>
 	{
+		[HideInInspector] public SettingsManager Settings;
+		[HideInInspector] public StateManager State;
+		[HideInInspector] public UiManager UIManager;
 		[HideInInspector] public AudioManager Audio;
 		[HideInInspector] public CameraManager Camera;
-		[HideInInspector] public UiManager UiManager;
-
-		[HideInInspector] public StateManager State;
 		[HideInInspector] public MatchManager Match;
-		[HideInInspector] public SettingsManager Settings;
 		[HideInInspector] public EnemyManager Enemy;
+		//[HideInInspector] public PoolManager Pool;
+		[HideInInspector] public Spawner Spawner;
 
 		protected override void Awake()
 		{
 			base.Awake();
 
-			Audio = GetComponent<AudioManager>();
-			Camera = GetComponent<CameraManager>();
-			UiManager = GetComponent<UiManager>();
-
-			State = GetComponent<StateManager>();
-			Match = GetComponent<MatchManager>();
-			Settings = GetComponent<SettingsManager>();
-			Enemy = GetComponent<EnemyManager>();
+			Settings = GetComponentInChildren<SettingsManager>();
+			State = GetComponentInChildren<StateManager>();
+			UIManager = GetComponentInChildren<UiManager>();
+			Audio = GetComponentInChildren<AudioManager>();
+			Camera = GetComponentInChildren<CameraManager>();
+			Match = GetComponentInChildren<MatchManager>();
+			Enemy = GetComponentInChildren<EnemyManager>();
+			//Pool = GetComponentInChildren<PoolManager>();
+			Spawner = GetComponentInChildren<Spawner>();
 		}
 
 	}

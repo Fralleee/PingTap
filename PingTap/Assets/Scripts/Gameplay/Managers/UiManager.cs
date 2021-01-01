@@ -8,27 +8,14 @@ namespace Fralle.Gameplay
 		[SerializeField] GameObject prepareUiPrefab = null;
 		[SerializeField] GameObject gameResultUiPrefab = null;
 
-		[Header("Container")]
-		[SerializeField] Transform uiTransform;
-
 		GameObject prepareUi;
 		GameObject gameResultUi;
 
-
 		void Awake()
 		{
-			SetupTransforms();
 			SetupUi();
 
 			MatchManager.OnMatchEnd += HandleGameEnd;
-		}
-
-		void SetupTransforms()
-		{
-			if (uiTransform == null)
-			{
-				uiTransform = transform.Find("Ui");
-			}
 		}
 
 		void SetupUi()
@@ -39,7 +26,14 @@ namespace Fralle.Gameplay
 
 		GameObject SetupUiComponent(GameObject prefab)
 		{
-			var instance = Instantiate(prefab, uiTransform);
+			if (!prefab)
+			{
+				Debug.LogError($"UIManager prefab: {prefab.name} has not been set correctly.");
+				return null;
+			}
+
+
+			var instance = Instantiate(prefab, transform);
 			instance.SetActive(false);
 			return instance;
 		}
