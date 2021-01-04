@@ -39,6 +39,8 @@ namespace Fralle.AI
 
 			IncrementOnSpawn();
 			AllAliveEnemies.Add(this);
+
+			transform.Find("UI").gameObject.SetActive(true);
 		}
 
 		void Update()
