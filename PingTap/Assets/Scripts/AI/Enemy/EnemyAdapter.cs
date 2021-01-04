@@ -11,8 +11,8 @@ namespace Fralle.AI
 
 		void Awake()
 		{
-			targetController = GetComponent<TargetController>();
-			damageController = GetComponent<DamageController>();
+			targetController = GetComponentInChildren<TargetController>();
+			damageController = GetComponentInChildren<DamageController>();
 			damageController.OnReceiveAttack += DamageController_OnReceiveAttack;
 		}
 
@@ -20,7 +20,6 @@ namespace Fralle.AI
 		{
 			targetController.RaycastHit(1.5f);
 		}
-
 
 		void OnDestroy()
 		{

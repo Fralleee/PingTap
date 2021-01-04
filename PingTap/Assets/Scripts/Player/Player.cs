@@ -6,15 +6,7 @@ namespace Fralle
 {
 	public class Player : MonoBehaviour
 	{
-		[SerializeField] Transform ui = null;
 		[SerializeField] LayerMask ignoreLayers;
-
-		[SerializeField] GameObject crosshair = null;
-		[SerializeField] GameObject resourceUi = null;
-		[SerializeField] GameObject minimapUi = null;
-		[SerializeField] GameObject compassUi = null;
-		[SerializeField] GameObject ammoUi = null;
-		[SerializeField] GameObject hitMarkerUi;
 
 		[HideInInspector] public new Camera camera;
 		[HideInInspector] public Combatant combatant;
@@ -31,6 +23,7 @@ namespace Fralle
 		void Awake()
 		{
 			combatant = GetComponent<Combatant>();
+			transform.Find("UI").gameObject.SetActive(true);
 		}
 
 		void Start()
@@ -39,25 +32,7 @@ namespace Fralle
 			gameObject.SetLayerRecursively(layer, ignoreLayers);
 
 			camera = Camera.main;
-			SetupUi();
 		}
 
-		void SetupUi()
-		{
-			InstantiateUI(crosshair, ui);
-			InstantiateUI(resourceUi, ui);
-			InstantiateUI(minimapUi, ui);
-			InstantiateUI(compassUi, ui);
-			InstantiateUI(ammoUi, ui);
-			InstantiateUI(hitMarkerUi, ui);
-		}
-
-		void InstantiateUI(GameObject prefab, Transform parent)
-		{
-			if (prefab)
-			{
-				Instantiate(prefab, parent);
-			}
-		}
 	}
 }
