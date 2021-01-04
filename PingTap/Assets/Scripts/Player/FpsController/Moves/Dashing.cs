@@ -1,97 +1,105 @@
 ﻿using Fralle.Core.CameraControls;
 using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Fralle.FpsController.Moves
 {
-  public class Dashing : MonoBehaviour
-  {
-    public event Action OnDashStart = delegate { };
-    public event Action OnDashEnd = delegate { };
+	public class Dashing : MonoBehaviour
+	{
+		public event Action OnDashStart = delegate { };
+		public event Action OnDashEnd = delegate { };
 
-    [SerializeField] float stopTime = 0.25f;
-    [SerializeField] Transform cameraRig = null;
-    [SerializeField] ShakeTransformEventData cameraShake = null;
-    [SerializeField] ShakeTransform cameraShakeTransform = null;
+		[SerializeField] float stopTime = 0.25f;
+		[SerializeField] Transform cameraRig = null;
+		[SerializeField] ShakeTransformEventData cameraShake = null;
+		[SerializeField] ShakeTransform cameraShakeTransform = null;
+		[SerializeField] Volume postProcess;
 
-    PlayerController controller;
-    InputController input;
+		PlayerController controller;
+		InputController input;
+		Rigidbody rigidBody;
+		Transform orientation;
 
-    Rigidbody rigidBody;
-    Transform orientation;
+		float cooldownTimer;
+		float stopDashTimer;
 
-    float cooldownTimer;
+		bool queueDash;
 
-    bool queueDash;
+		void Awake()
+		{
+			controller = GetComponentInParent<PlayerController>();
+			input = GetComponentInParent<InputController>();
+			rigidBody = GetComponent<Rigidbody>();
+			orientation = transform.Find("Orientation");
+		}
 
-    void Awake()
-    {
-      controller = GetComponentInParent<PlayerController>();
-      input = GetComponentInParent<InputController>();
+		void Update()
+		{
+			if (cooldownTimer > 0)
+				cooldownTimer -= Time.deltaTime;
+			if (input.DashButtonDown && cooldownTimer <= 0)
+				queueDash = true;
+			if (controller.IsDashing)
+				Stopping();
+		}
 
-      rigidBody = GetComponent<Rigidbody>();
-      orientation = transform.Find("Orientation");
-    }
+		public void Dash()
+		{
+			if (!queueDash || controller.IsDashing)
+				return;
 
-    void Update()
-    {
-      if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
-      if (input.DashButtonDown && cooldownTimer <= 0) queueDash = true;
-    }
+			OnDashStart();
+			queueDash = false;
+			controller.IsDashing = true;
+			Perform();
+		}
 
-    public void Dash()
-    {
-      if (!queueDash || controller.IsDashing) return;
+		void Stopping()
+		{
+			stopDashTimer -= Time.deltaTime;
+			if (postProcess)
+				postProcess.weight = Mathf.Lerp(1, 0, 1 - (stopDashTimer / stopTime));
+			if (stopDashTimer < 0)
+				Reset();
+		}
 
-      OnDashStart();
-      queueDash = false;
-      controller.IsDashing = true;
-      Perform();
-    }
+		void Perform()
+		{
+			cooldownTimer = controller.dashCooldown;
+			postProcess.weight = 1;
 
-    void Perform()
-    {
-      cooldownTimer = controller.dashCooldown;
+			var direction =
+				input.Move.y > 0 ? cameraRig.forward :
+				input.Move.y < 0 ? -orientation.forward :
+				input.Move.x > 0 ? orientation.right :
+				input.Move.x < 0 ? -orientation.right :
+				cameraRig.forward;
 
-      var direction =
-        input.Move.y > 0 ? cameraRig.forward :
-        input.Move.y < 0 ? -orientation.forward :
-        input.Move.x > 0 ? orientation.right :
-        input.Move.x < 0 ? -orientation.right :
-        cameraRig.forward;
+			rigidBody.velocity = Vector3.zero;
+			rigidBody.useGravity = false;
+			rigidBody.AddForce(direction * controller.dashPower, ForceMode.VelocityChange);
 
-      rigidBody.velocity = Vector3.zero;
-      rigidBody.useGravity = false;
-      rigidBody.AddForce(direction * controller.dashPower, ForceMode.VelocityChange);
+			if (cameraShakeTransform && cameraShake)
+			{
+				cameraShakeTransform.AddShakeEvent(cameraShake);
+			}
 
-      if (cameraShakeTransform && cameraShake)
-      {
-        cameraShakeTransform.AddShakeEvent(cameraShake);
-      }
+			stopDashTimer = stopTime;
+		}
 
-      StartCoroutine(StopDashing());
-    }
+		public void Abort()
+		{
+			Reset();
+		}
 
-    public void Abort()
-    {
-      StopAllCoroutines();
-      Reset();
-    }
+		void Reset()
+		{
+			rigidBody.velocity = Vector3.zero;
+			rigidBody.useGravity = true;
+			controller.IsDashing = false;
+			OnDashEnd();
+		}
 
-    void Reset()
-    {
-      rigidBody.velocity = Vector3.zero;
-      rigidBody.useGravity = true;
-      controller.IsDashing = false;
-      OnDashEnd();
-    }
-
-    IEnumerator StopDashing()
-    {
-      yield return new WaitForSeconds(stopTime);
-      Reset();
-    }
-
-  }
+	}
 }
