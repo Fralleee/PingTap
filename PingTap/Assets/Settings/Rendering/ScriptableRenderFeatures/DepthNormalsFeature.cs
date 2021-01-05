@@ -1,10 +1,4 @@
-﻿// This code is an adaptation of the open-source work by Alexander Ameye
-// From a tutorial originally posted here:
-// https://alexanderameye.github.io/outlineshader
-// Code also available on his Gist account
-// https://gist.github.com/AlexanderAmeye
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -55,7 +49,7 @@ public class DepthNormalsFeature : ScriptableRendererFeature
 		{
 			CommandBuffer cmd = CommandBufferPool.Get(m_ProfilerTag);
 
-			using (new ProfilingScope(cmd, new ProfilingSampler(m_ProfilerTag)))
+			using (new ProfilingSample(cmd, m_ProfilerTag))
 			{
 				context.ExecuteCommandBuffer(cmd);
 				cmd.Clear();
@@ -67,7 +61,7 @@ public class DepthNormalsFeature : ScriptableRendererFeature
 
 				ref CameraData cameraData = ref renderingData.cameraData;
 				Camera camera = cameraData.camera;
-				if (XRGraphics.enabled)
+				if (cameraData.isStereoEnabled)
 					context.StartMultiEye(camera);
 
 
