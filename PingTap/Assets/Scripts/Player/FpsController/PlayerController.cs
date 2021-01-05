@@ -33,30 +33,32 @@ namespace Fralle.FpsController
 		[HideInInspector] public bool IsDashing;
 		[HideInInspector] public Vector3 groundContactNormal;
 
-		GroundController groundController;
-		StepClimber stepClimber;
-		GravityAdjuster gravityAdjuster;
-		LimitSpeed limitSpeed;
-		Movement movement;
-		AirMovement airMovement;
-		Jumping jumping;
-		Crouching crouching;
-		Dashing dashing;
-
-		public DashingSerialized dash;
-		[SerializeField] TestSerialized test;
+		[HideInInspector] public CameraController Camera;
+		[HideInInspector] public InputController Input;
+		[HideInInspector] public GroundController GroundController;
+		[HideInInspector] public StepClimber StepClimber;
+		[HideInInspector] public GravityAdjuster GravityAdjuster;
+		[HideInInspector] public LimitSpeed LimitSpeed;
+		[HideInInspector] public Movement Movement;
+		[HideInInspector] public AirMovement AirMovement;
+		[HideInInspector] public Jumping Jumping;
+		[HideInInspector] public Crouching Crouching;
+		[HideInInspector] public Dashing Dashing;
 
 		void Awake()
 		{
-			groundController = GetComponentInChildren<GroundController>();
-			stepClimber = GetComponentInChildren<StepClimber>();
-			gravityAdjuster = GetComponentInChildren<GravityAdjuster>();
-			limitSpeed = GetComponentInChildren<LimitSpeed>();
-			movement = GetComponentInChildren<Movement>();
-			airMovement = GetComponentInChildren<AirMovement>();
-			jumping = GetComponentInChildren<Jumping>();
-			crouching = GetComponentInChildren<Crouching>();
-			dashing = GetComponentInChildren<Dashing>();
+			Camera = GetComponent<CameraController>();
+			Input = GetComponent<InputController>();
+
+			GroundController = GetComponentInChildren<GroundController>();
+			StepClimber = GetComponentInChildren<StepClimber>();
+			GravityAdjuster = GetComponentInChildren<GravityAdjuster>();
+			LimitSpeed = GetComponentInChildren<LimitSpeed>();
+			Movement = GetComponentInChildren<Movement>();
+			AirMovement = GetComponentInChildren<AirMovement>();
+			Jumping = GetComponentInChildren<Jumping>();
+			Crouching = GetComponentInChildren<Crouching>();
+			Dashing = GetComponentInChildren<Dashing>();
 		}
 
 		void FixedUpdate()
@@ -64,28 +66,28 @@ namespace Fralle.FpsController
 			if (IsDashing)
 				return;
 
-			groundController.GroundedCheck();
+			GroundController.GroundedCheck();
 
 			if (IsGrounded)
 			{
-				groundController.SlopeControl();
-				stepClimber.ClimbSteps();
-				IsMoving = movement.Move();
+				GroundController.SlopeControl();
+				StepClimber.ClimbSteps();
+				IsMoving = Movement.Move();
 			}
 			else
-				airMovement.Move();
+				AirMovement.Move();
 
-			crouching.ControlledFixedUpdate();
-			jumping.ControlledFixedUpdate();
-			gravityAdjuster.ControlledFixedUpdate();
-			limitSpeed.ControlledFixedUpdate();
+			Crouching.ControlledFixedUpdate();
+			Jumping.ControlledFixedUpdate();
+			GravityAdjuster.ControlledFixedUpdate();
+			LimitSpeed.ControlledFixedUpdate();
 
 			if (PreviouslyGrounded && !IsJumping)
 			{
-				groundController.StickToGroundHelper();
+				GroundController.StickToGroundHelper();
 			}
 
-			dashing.Dash();
+			Dashing.Dash();
 		}
 	}
 }

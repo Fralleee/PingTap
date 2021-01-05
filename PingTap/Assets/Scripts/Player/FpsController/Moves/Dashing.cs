@@ -17,7 +17,6 @@ namespace Fralle.FpsController.Moves
 		[SerializeField] Volume postProcess;
 
 		PlayerController controller;
-		InputController input;
 		Rigidbody rigidBody;
 		Transform orientation;
 
@@ -29,7 +28,6 @@ namespace Fralle.FpsController.Moves
 		void Awake()
 		{
 			controller = GetComponentInParent<PlayerController>();
-			input = GetComponentInParent<InputController>();
 			rigidBody = GetComponent<Rigidbody>();
 			orientation = transform.Find("Orientation");
 		}
@@ -38,7 +36,7 @@ namespace Fralle.FpsController.Moves
 		{
 			if (cooldownTimer > 0)
 				cooldownTimer -= Time.deltaTime;
-			if (input.DashButtonDown && cooldownTimer <= 0)
+			if (controller.Input.DashButtonDown && cooldownTimer <= 0)
 				queueDash = true;
 			if (controller.IsDashing)
 				Stopping();
@@ -61,7 +59,7 @@ namespace Fralle.FpsController.Moves
 			if (postProcess)
 				postProcess.weight = Mathf.SmoothStep(1, 0, 1 - (stopDashTimer / stopTime));
 
-			Camera.main.fieldOfView = Mathf.SmoothStep(70, 60, 1 - (stopDashTimer / stopTime));
+			controller.Camera.camera.fieldOfView = Mathf.SmoothStep(70, 60, 1 - (stopDashTimer / stopTime));
 
 			if (stopDashTimer < 0)
 				Reset();
@@ -73,10 +71,10 @@ namespace Fralle.FpsController.Moves
 			postProcess.weight = 1;
 
 			var direction =
-				input.Move.y > 0 ? cameraRig.forward :
-				input.Move.y < 0 ? -orientation.forward :
-				input.Move.x > 0 ? orientation.right :
-				input.Move.x < 0 ? -orientation.right :
+				controller.Input.Move.y > 0 ? cameraRig.forward :
+				controller.Input.Move.y < 0 ? -orientation.forward :
+				controller.Input.Move.x > 0 ? orientation.right :
+				controller.Input.Move.x < 0 ? -orientation.right :
 				cameraRig.forward;
 
 			rigidBody.velocity = Vector3.zero;

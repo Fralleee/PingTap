@@ -2,40 +2,35 @@
 
 namespace Fralle.FpsController.Moves
 {
-  public class Movement : MonoBehaviour
-  {
-    [SerializeField] float stopTime = 0.05f;
+	public class Movement : MonoBehaviour
+	{
+		[SerializeField] float stopTime = 0.05f;
 
-    PlayerController controller;
-    InputController input;
+		PlayerController controller;
+		Rigidbody rigidBody;
+		Transform orientation;
 
-    Rigidbody rigidBody;
-    Transform orientation;
+		Vector3 damp;
 
-    Vector3 damp;
+		void Awake()
+		{
+			controller = GetComponentInParent<PlayerController>();
+			rigidBody = GetComponent<Rigidbody>();
+			orientation = transform.Find("Orientation");
+		}
 
-    void Awake()
-    {
-      controller = GetComponentInParent<PlayerController>();
-      input = GetComponentInParent<InputController>();
+		public bool Move()
+		{
+			var desiredForce = orientation.right * controller.Input.Move.x + orientation.forward * controller.Input.Move.y;
+			desiredForce = Vector3.ProjectOnPlane(desiredForce, controller.groundContactNormal).normalized;
+			rigidBody.AddForce(desiredForce * controller.forwardSpeed, ForceMode.Impulse);
+			StoppingForces();
+			return desiredForce.magnitude > 0;
+		}
 
-      rigidBody = GetComponent<Rigidbody>();
-
-      orientation = transform.Find("Orientation");
-    }
-
-    public bool Move()
-    {
-      var desiredForce = orientation.right * input.Move.x + orientation.forward * input.Move.y;
-      desiredForce = Vector3.ProjectOnPlane(desiredForce, controller.groundContactNormal).normalized;
-      rigidBody.AddForce(desiredForce * controller.forwardSpeed, ForceMode.Impulse);
-      StoppingForces();
-      return desiredForce.magnitude > 0;
-    }
-
-    void StoppingForces()
-    {
-      rigidBody.velocity = Vector3.SmoothDamp(rigidBody.velocity, Vector3.zero, ref damp, stopTime);
-    }
-  }
+		void StoppingForces()
+		{
+			rigidBody.velocity = Vector3.SmoothDamp(rigidBody.velocity, Vector3.zero, ref damp, stopTime);
+		}
+	}
 }

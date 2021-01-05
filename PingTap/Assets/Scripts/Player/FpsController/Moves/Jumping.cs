@@ -2,51 +2,48 @@
 
 namespace Fralle.FpsController.Moves
 {
-  public class Jumping : MonoBehaviour
-  {
-    PlayerController controller;
-    InputController input;
+	public class Jumping : MonoBehaviour
+	{
+		PlayerController controller;
+		Rigidbody rigidBody;
 
-    Rigidbody rigidBody;
+		bool queueJump;
 
-    bool queueJump;
+		void Awake()
+		{
+			controller = GetComponentInParent<PlayerController>();
+			rigidBody = GetComponent<Rigidbody>();
+		}
 
-    void Awake()
-    {
-      controller = GetComponentInParent<PlayerController>();
-      input = GetComponentInParent<InputController>();
+		void Update()
+		{
+			GatherInput();
+		}
 
-      rigidBody = GetComponent<Rigidbody>();
-    }
+		void GatherInput()
+		{
+			if (controller.IsGrounded && controller.Input.JumpButtonDown)
+			{
+				queueJump = true;
+			}
+		}
 
-    void Update()
-    {
-      GatherInput();
-    }
+		public void ControlledFixedUpdate()
+		{
+			Jump();
+		}
 
-    void GatherInput()
-    {
-      if (controller.IsGrounded && input.JumpButtonDown)
-      {
-        queueJump = true;
-      }
-    }
+		void Jump()
+		{
+			if (!queueJump)
+				return;
 
-    public void ControlledFixedUpdate()
-    {
-      Jump();
-    }
-
-    void Jump()
-    {
-      if (!queueJump) return;
-
-      queueJump = false;
-      controller.IsJumping = true;
-      controller.IsGrounded = false;
-      rigidBody.useGravity = true;
-      rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
-      rigidBody.AddForce(Vector3.up * controller.jumpStrength, ForceMode.VelocityChange);
-    }
-  }
+			queueJump = false;
+			controller.IsJumping = true;
+			controller.IsGrounded = false;
+			rigidBody.useGravity = true;
+			rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
+			rigidBody.AddForce(Vector3.up * controller.jumpStrength, ForceMode.VelocityChange);
+		}
+	}
 }
