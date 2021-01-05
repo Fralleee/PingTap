@@ -5,16 +5,17 @@ using UnityEngine.Rendering;
 
 namespace Fralle.FpsController.Moves
 {
-	public class Dashing : MonoBehaviour
+	[Serializable]
+	public class DashingSerialized
 	{
 		public event Action OnDashStart = delegate { };
 		public event Action OnDashEnd = delegate { };
 
-		[SerializeField] float stopTime = 0.25f;
-		[SerializeField] Transform cameraRig = null;
-		[SerializeField] ShakeTransformEventData cameraShake = null;
-		[SerializeField] ShakeTransform cameraShakeTransform = null;
-		[SerializeField] Volume postProcess;
+		public float stopTime = 0.25f;
+		public Transform cameraRig = null;
+		public ShakeTransformEventData cameraShake = null;
+		public ShakeTransform cameraShakeTransform = null;
+		public Volume postProcess;
 
 		PlayerController controller;
 		InputController input;
@@ -26,15 +27,15 @@ namespace Fralle.FpsController.Moves
 
 		bool queueDash;
 
-		void Awake()
+		public void Setup(PlayerController playerController, InputController inputController, Rigidbody rigidbody, Transform orientationTransform)
 		{
-			controller = GetComponentInParent<PlayerController>();
-			input = GetComponentInParent<InputController>();
-			rigidBody = GetComponent<Rigidbody>();
-			orientation = transform.Find("Orientation");
+			controller = playerController;
+			input = inputController;
+			rigidBody = rigidbody;
+			orientation = orientationTransform;
 		}
 
-		void Update()
+		public void Update()
 		{
 			if (cooldownTimer > 0)
 				cooldownTimer -= Time.deltaTime;
