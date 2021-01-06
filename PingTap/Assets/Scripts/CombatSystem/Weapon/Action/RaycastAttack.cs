@@ -1,6 +1,7 @@
 ﻿using CombatSystem.Combat.Damage;
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
+using Fralle.Core.Infrastructure;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -34,10 +35,7 @@ namespace CombatSystem.Action
 		{
 			var muzzle = GetMuzzle();
 			if (muzzleParticlePrefab)
-			{
-				var muzzleParticle = Instantiate(muzzleParticlePrefab, muzzle.position, attacker.aimTransform.rotation, attacker.aimTransform);
-				Destroy(muzzleParticle, 1.5f);
-			}
+				ObjectPool.Instantiate(muzzleParticlePrefab, muzzle.position, attacker.aimTransform.rotation, attacker.aimTransform);
 
 			for (var i = 0; i < bulletsPerFire; i++)
 				FireBullet(muzzle);
@@ -58,22 +56,19 @@ namespace CombatSystem.Action
 
 			var layerMask = ~LayerMask.GetMask("Corpse", "Enemy Rigidbody", "Target");
 			if (!Physics.Raycast(attacker.aimTransform.position, forward, out var hitInfo, range, layerMask))
+			{
+				BulletTrace(muzzle.position, muzzle.position + forward * range);
 				return;
+			}
 
 			var damageData = DamageHelper.RaycastHit(this, hitInfo);
 
 			BulletTrace(muzzle.position, hitInfo.point);
 
-			if (damageData != null)
-			{
-				var impactParticle = Instantiate(damageData.impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
-				Destroy(impactParticle, 5f);
-			}
+			if (damageData != null && damageData.impactEffect != null)
+				ObjectPool.Instantiate(damageData.impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
 			else if (impactParticlePrefab)
-			{
-				var impactParticle = Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
-				Destroy(impactParticle, 5f);
-			}
+				ObjectPool.Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
 		}
 
 		Vector3 CalculateBulletSpread(float modifier)
@@ -87,8 +82,8 @@ namespace CombatSystem.Action
 		{
 			if (!lineRendererPrefab)
 				return;
-			var lineRendererInstance = Instantiate(lineRendererPrefab);
-			var lineRenderer = lineRendererInstance.GetComponent<LineRenderer>();
+			var instance = ObjectPool.Instantiate(lineRendererPrefab);
+			var lineRenderer = instance.GetComponent<LineRenderer>();
 			lineRenderer.SetPosition(0, origin);
 			lineRenderer.SetPosition(1, target);
 		}

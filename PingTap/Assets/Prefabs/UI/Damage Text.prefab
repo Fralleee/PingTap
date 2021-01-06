@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7015578631412377947}
   - component: {fileID: 6613899271502844842}
   - component: {fileID: 8488261537171016142}
+  - component: {fileID: 506092774149266368}
   m_Layer: 22
   m_Name: Damage Text
   m_TagString: Untagged
@@ -87,6 +88,19 @@ MonoBehaviour:
   maxDistance: 50
   scaleLimits: {x: 0.05, y: 3}
   yOffsetLimits: {x: 1.5, y: 4}
+--- !u!114 &506092774149266368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500633813145692955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7ba5b94fe7d194383386c77f23820a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0.5
 --- !u!1 &626842279568679913
 GameObject:
   m_ObjectHideFlags: 0

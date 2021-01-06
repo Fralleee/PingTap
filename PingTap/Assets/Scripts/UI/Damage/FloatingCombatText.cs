@@ -1,4 +1,5 @@
 ﻿using CombatSystem.Combat.Damage;
+using Fralle.Core.Infrastructure;
 using TMPro;
 using UnityEngine;
 
@@ -23,14 +24,14 @@ namespace Fralle.UI
 
 		void AddFloatingCombatText(DamageData damageData)
 		{
-			var instance = Instantiate(combatTextPrefab, transform.position, Quaternion.identity);
+			var instance = ObjectPool.Instantiate(combatTextPrefab, transform.position, Quaternion.identity);
+
 			SetPosition(instance);
 
 			var text = instance.GetComponentInChildren<TextMeshProUGUI>();
 			SetText(text, Mathf.RoundToInt(damageData.damageAmount));
 			AnimateText(text.gameObject);
 
-			Destroy(instance, destroyDelay);
 		}
 
 		void SetPosition(GameObject go)

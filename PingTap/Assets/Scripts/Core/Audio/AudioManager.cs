@@ -5,9 +5,9 @@ namespace Fralle.Core.Audio
 {
 	public class AudioManager : MonoBehaviour
 	{
-		AudioSourcePool audioSourcePool = null;
 		[SerializeField] AudioSource source = null;
 		[SerializeField] AudioSource musicSource;
+		AudioSourcePool audioSourcePool;
 
 		public float Volume
 		{

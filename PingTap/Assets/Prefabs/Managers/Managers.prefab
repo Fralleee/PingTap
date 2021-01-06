@@ -52,13 +52,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c56f69649273ff488355e73ed4fd18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Settings: {fileID: 0}
+  State: {fileID: 0}
+  UIManager: {fileID: 0}
   Audio: {fileID: 0}
   Camera: {fileID: 0}
-  UiManager: {fileID: 0}
-  State: {fileID: 0}
   Match: {fileID: 0}
-  Settings: {fileID: 0}
   Enemy: {fileID: 0}
+  Spawner: {fileID: 0}
 --- !u!1001 &1072514587589677874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,6 +367,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4869618966376346831}
     m_Modifications:
+    - target: {fileID: 986076477991780002, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: preloadedPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 986076477991780002, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: preloadedPrefabs.Array.data[0].count
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 986076477991780002, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: preloadedPrefabs.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
     - target: {fileID: 986076477991780003, guid: d85af2c5755796647bd5b0e51d84edfb,
         type: 3}
       propertyPath: m_RootOrder
