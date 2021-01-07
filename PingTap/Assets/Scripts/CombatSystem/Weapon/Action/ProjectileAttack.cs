@@ -1,4 +1,5 @@
 ﻿using CombatSystem.Offense;
+using Fralle.Core.Infrastructure;
 using System.Collections;
 using UnityEngine;
 
@@ -45,7 +46,8 @@ namespace CombatSystem.Action
 				var spread = (Random.insideUnitCircle * radiusOnMaxRange) / projectileData.range;
 				projectileData.forward += new Vector3(0, spread.y, spread.x);
 
-				var projectile = Instantiate(projectilePrefab, muzzle.position, transform.rotation);
+				var instance = ObjectPool.Instantiate(projectilePrefab.gameObject, muzzle.position, transform.rotation);
+				var projectile = instance.GetComponent<Projectile>();
 				projectile.Initiate(projectileData);
 
 				yield return new WaitForSeconds(delayTimePerProjectiles);

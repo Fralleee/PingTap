@@ -1,5 +1,6 @@
 ﻿using CombatSystem.Combat.Damage;
 using Fralle.Core.Extensions;
+using Fralle.Core.Infrastructure;
 using UnityEngine;
 
 namespace CombatSystem.Offense
@@ -8,8 +9,8 @@ namespace CombatSystem.Offense
 	[RequireComponent(typeof(Rigidbody))]
 	public class Projectile : MonoBehaviour
 	{
-		[SerializeField] GameObject impactParticlePrefab = null;
-		[SerializeField] GameObject muzzleParticlePrefab = null;
+		[SerializeField] GameObject impactEffectPrefab;
+		[SerializeField] GameObject muzzleParticlePrefab;
 
 		new Rigidbody rigidbody;
 		ProjectileData data;
@@ -17,6 +18,11 @@ namespace CombatSystem.Offense
 		float distanceTraveled;
 		float activeTime;
 		float afterCollisionTime;
+
+		void Awake()
+		{
+			rigidbody = GetComponentInChildren<Rigidbody>();
+		}
 
 		void FixedUpdate()
 		{
@@ -26,7 +32,7 @@ namespace CombatSystem.Offense
 				if (data.explodeOnMaxRange)
 					Explode();
 				else
-					Destroy(gameObject);
+					ObjectPool.Destroy(gameObject);
 			}
 
 			if (data.explodeOnTime > 0)
@@ -43,10 +49,8 @@ namespace CombatSystem.Offense
 				Explode();
 		}
 
-
 		public void Initiate(ProjectileData inputData)
 		{
-			rigidbody = GetComponentInChildren<Rigidbody>();
 			data = inputData;
 
 			rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
@@ -55,23 +59,19 @@ namespace CombatSystem.Offense
 
 			if (!muzzleParticlePrefab)
 				return;
-			var muzzleParticle = Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
-			var layer = LayerMask.NameToLayer("First Person Objects");
-			muzzleParticle.SetLayerRecursively(layer);
-			Destroy(muzzleParticle, 1.5f);
+
+			var muzzleParticle = ObjectPool.Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
+			//var layer = LayerMask.NameToLayer("First Person Objects");
+			//muzzleParticle.SetLayerRecursively(layer);
 		}
 
 		void Explode(Collision collision = null)
 		{
-			if (impactParticlePrefab)
-			{
-				var impactParticle = Instantiate(impactParticlePrefab, transform.position, Quaternion.identity);
-				Destroy(impactParticle, 5f);
-			}
+			if (impactEffectPrefab)
+				ObjectPool.Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
 
 			DamageHelper.Explosion(data, transform.position, collision);
-
-			Destroy(gameObject);
+			ObjectPool.Destroy(gameObject);
 		}
 
 		void Hit(Collision collision)
@@ -82,21 +82,12 @@ namespace CombatSystem.Offense
 			if (damageData != null)
 			{
 				var contact = collision.GetContact(0);
-				var impactParticle = Instantiate(damageData.impactEffect, contact.point, Quaternion.LookRotation(contact.normal, Vector3.up));
-				Destroy(impactParticle, 5f);
+				ObjectPool.Instantiate(damageData.impactEffect, contact.point, Quaternion.LookRotation(contact.normal, Vector3.up));
 			}
-			else if (impactParticlePrefab)
-			{
-				var impactParticle = Instantiate(
-					impactParticlePrefab,
-					transform.position,
-					Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal)
-				);
-				Destroy(impactParticle, 5f);
-			}
+			else if (impactEffectPrefab)
+				ObjectPool.Instantiate(impactEffectPrefab, transform.position, Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal));
 
-
-			Destroy(gameObject);
+			ObjectPool.Destroy(gameObject);
 		}
 
 		void AddForce(Collision collision, Vector3 direction)
@@ -124,6 +115,16 @@ namespace CombatSystem.Offense
 				Explode(collision);
 			else if (data.explosionRadius.EqualsWithTolerance(0f))
 				Hit(collision);
+		}
+
+		void OnDisable()
+		{
+			hasCollision = false;
+			distanceTraveled = 0;
+			activeTime = 0;
+			afterCollisionTime = 0;
+			rigidbody.velocity = Vector3.zero;
+			rigidbody.isKinematic = false;
 		}
 	}
 }

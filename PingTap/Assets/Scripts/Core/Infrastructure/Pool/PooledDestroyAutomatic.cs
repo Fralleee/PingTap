@@ -23,7 +23,11 @@ namespace Fralle.Core.Infrastructure
 				performDestroy = !audioSource.isPlaying;
 
 			if (performDestroy)
+			{
+				Debug.Log(gameObject.name + " is to be destroyed");
 				ObjectPool.Destroy(gameObject);
+			}
+
 		}
 	}
 }
