@@ -133,7 +133,7 @@ LightingSettings:
   m_Name: Settings.lighting
   serializedVersion: 3
   m_GIWorkflowMode: 1
-  m_EnableBakedLightmaps: 0
+  m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 1
   m_RealtimeEnvironmentLighting: 1
   m_BounceScale: 1
@@ -1815,26 +1815,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[3]
       value: 
       objectReference: {fileID: 2100000, guid: 26d0433748003134faa26f4cc42e7202, type: 2}
-    - target: {fileID: 4247823576390240103, guid: 95d44795e3cbb5b45b2f47cfe655d044,
-        type: 3}
-      propertyPath: m_VolumeLayerMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8302141596592436525, guid: 95d44795e3cbb5b45b2f47cfe655d044,
-        type: 3}
-      propertyPath: renderingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8302141596592436525, guid: 95d44795e3cbb5b45b2f47cfe655d044,
-        type: 3}
-      propertyPath: scaleIndepented
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8302141596592436525, guid: 95d44795e3cbb5b45b2f47cfe655d044,
-        type: 3}
-      propertyPath: renderingStrategy
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95d44795e3cbb5b45b2f47cfe655d044, type: 3}
 --- !u!4 &1713983460 stripped
@@ -4829,6 +4809,11 @@ PrefabInstance:
     - target: {fileID: 6214150255767222261, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7251785795507851388, guid: f9e3ff5a1b8f49c4fa8686e68d2dadae,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
