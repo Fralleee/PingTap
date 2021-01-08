@@ -7,78 +7,93 @@ using UnityEngine;
 
 namespace CombatSystem
 {
-  public class Weapon : MonoBehaviour, IWeapon
-  {
-    public event Action<Status> OnActiveWeaponActionChanged = delegate { };
+	public class Weapon : MonoBehaviour, IWeapon
+	{
+		public event Action<Status> OnActiveWeaponActionChanged = delegate { };
 
-    [Header("Weapon")]
-    public string weaponName;
-    [SerializeField] float equipAnimationTime = 0.3f;
-    public Transform[] muzzles;
+		[Header("Weapon")]
+		public string weaponName;
+		[SerializeField] float equipAnimationTime = 0.3f;
+		public Transform[] muzzles;
 
-    public Status ActiveWeaponAction { get; private set; }
+		public Status ActiveWeaponAction { get; private set; }
 
-    [HideInInspector] public Combatant combatant;
-    [HideInInspector] public RecoilAddon recoilAddon;
-    [HideInInspector] public AmmoAddon ammoAddonController;
+		[HideInInspector] public Combatant combatant;
+		[HideInInspector] public RecoilAddon recoilAddon;
+		[HideInInspector] public AmmoAddon ammoAddonController;
 
-    public bool isEquipped { get; private set; }
+		public bool isEquipped { get; private set; }
 
-    float equipTime;
-    bool equipped;
-    Vector3 startPosition;
-    Quaternion startRotation;
+		public float nextAvailableShot;
 
-    void Awake()
-    {
-      if (string.IsNullOrWhiteSpace(weaponName)) weaponName = name;
+		float equipTime;
+		bool equipped;
+		Vector3 startPosition;
+		Quaternion startRotation;
 
-      recoilAddon = GetComponent<RecoilAddon>();
-      ammoAddonController = GetComponent<AmmoAddon>();
-    }
+		void Awake()
+		{
+			if (string.IsNullOrWhiteSpace(weaponName))
+				weaponName = name;
 
-    void Update()
-    {
-      AnimateEquip();
-    }
+			recoilAddon = GetComponent<RecoilAddon>();
+			ammoAddonController = GetComponent<AmmoAddon>();
+		}
 
-    public void Equip(Combatant c)
-    {
-      ActiveWeaponAction = Status.Equipping;
-      equipTime = 0f;
-      equipped = false;
-      combatant = c;
+		void Update()
+		{
+			AnimateEquip();
 
-      startPosition = transform.localPosition;
-      startRotation = transform.localRotation;
+			if (ActiveWeaponAction == Status.Firing)
+			{
+				nextAvailableShot -= Time.deltaTime;
+				if (nextAvailableShot <= 0)
+					ChangeWeaponAction(Status.Ready);
+			}
+			else
+			{
+				nextAvailableShot = 0;
+			}
+		}
 
-      isEquipped = true;
-      c.SetupWeapon(this);
-    }
+		public void Equip(Combatant c)
+		{
+			ActiveWeaponAction = Status.Equipping;
+			equipTime = 0f;
+			equipped = false;
+			combatant = c;
 
-    public void ChangeWeaponAction(Status newActiveWeaponAction)
-    {
-      ActiveWeaponAction = newActiveWeaponAction;
-      OnActiveWeaponActionChanged(newActiveWeaponAction);
-    }
+			startPosition = transform.localPosition;
+			startRotation = transform.localRotation;
 
-    void AnimateEquip()
-    {
-      if (equipped) return;
+			isEquipped = true;
+			c.SetupWeapon(this);
+		}
 
-      var isEquipping = equipTime < equipAnimationTime;
-      if (!isEquipping)
-      {
-        equipped = true;
-        ActiveWeaponAction = Status.Ready;
-        return;
-      }
+		public void ChangeWeaponAction(Status newActiveWeaponAction)
+		{
+			ActiveWeaponAction = newActiveWeaponAction;
+			OnActiveWeaponActionChanged(newActiveWeaponAction);
+		}
 
-      equipTime += Time.deltaTime;
-      equipTime = Mathf.Clamp(equipTime, 0f, equipAnimationTime);
-      var delta = -(Mathf.Cos(Mathf.PI * (equipTime / equipAnimationTime)) - 1f) / 2f;
-      transform.localPosition = Vector3.Lerp(startPosition, Vector3.zero, delta);
-      transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.identity, delta);
-    }
-  }
+		void AnimateEquip()
+		{
+			if (equipped)
+				return;
+
+			var isEquipping = equipTime < equipAnimationTime;
+			if (!isEquipping)
+			{
+				equipped = true;
+				ActiveWeaponAction = Status.Ready;
+				return;
+			}
+
+			equipTime += Time.deltaTime;
+			equipTime = Mathf.Clamp(equipTime, 0f, equipAnimationTime);
+			var delta = -(Mathf.Cos(Mathf.PI * (equipTime / equipAnimationTime)) - 1f) / 2f;
+			transform.localPosition = Vector3.Lerp(startPosition, Vector3.zero, delta);
+			transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.identity, delta);
+		}
+	}
 }

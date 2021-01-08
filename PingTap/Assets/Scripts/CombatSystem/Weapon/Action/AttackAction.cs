@@ -4,7 +4,6 @@ using CombatSystem.Effect;
 using CombatSystem.Enums;
 using CombatSystem.Interfaces;
 using Fralle.Core.Enums;
-using System.Collections;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -30,12 +29,16 @@ namespace CombatSystem.Action
 		internal Combatant attacker;
 		int nextMuzzle;
 
+		float fireRate;
+
 		internal float Damage => Random.Range(minDamage, maxDamage);
 		bool HasAmmo => weapon.ammoAddonController && weapon.ammoAddonController.HasAmmo();
 
 		internal virtual void Awake()
 		{
+
 			hitboxLayer = LayerMask.NameToLayer("Hitbox");
+			fireRate = 1f / shotsPerSecond;
 		}
 
 		internal virtual void Start()
@@ -44,30 +47,50 @@ namespace CombatSystem.Action
 			attacker = weapon.GetComponentInParent<Combatant>();
 		}
 
+		//public void Perform()
+		//{
+		//	if (weapon.ActiveWeaponAction != Status.Ready)
+		//		return;
+
+		//	Fire();
+		//	weapon.nextAvailableShot = fireRate;
+		//	weapon.ammoAddonController?.ChangeAmmo(-ammoPerShot);
+
+		//	if (weapon.recoilAddon)
+		//		weapon.recoilAddon.AddRecoil();
+
+		//	if (HasAmmo)
+		//		weapon.ChangeWeaponAction(Status.Firing);
+		//}
+
+		// Multishot implementation
 		public void Perform()
 		{
 			if (weapon.ActiveWeaponAction != Status.Ready)
 				return;
 
-			Fire();
+			int shotsToFire = Mathf.RoundToInt(-weapon.nextAvailableShot / fireRate);
+			for (int i = 0; i <= shotsToFire; i++)
+			{
+				Fire();
+				weapon.nextAvailableShot += fireRate;
+				weapon.ammoAddonController?.ChangeAmmo(-ammoPerShot);
+
+				if (weapon.recoilAddon)
+					weapon.recoilAddon.AddRecoil();
+
+				if (!HasAmmo)
+					break;
+			}
 
 			if (HasAmmo)
-				weapon.ammoAddonController.ChangeAmmo(-ammoPerShot);
-			if (weapon.recoilAddon)
-				weapon.recoilAddon.AddRecoil();
-			if (HasAmmo)
-				StartCoroutine(ShootingCooldown());
+			{
+				weapon.ChangeWeaponAction(Status.Firing);
+			}
 		}
 
 		public abstract void Fire();
 		public abstract float GetRange();
-
-		internal IEnumerator ShootingCooldown()
-		{
-			weapon.ChangeWeaponAction(Status.Firing);
-			yield return new WaitForSeconds(1f / shotsPerSecond);
-			weapon.ChangeWeaponAction(Status.Ready);
-		}
 
 		internal Transform GetMuzzle()
 		{

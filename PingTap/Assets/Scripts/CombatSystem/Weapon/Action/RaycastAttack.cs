@@ -27,6 +27,7 @@ namespace CombatSystem.Action
 		{
 			if (currentSpread.EqualsWithTolerance(0f))
 				return;
+
 			currentSpread -= Time.deltaTime * recovery;
 			currentSpread = Mathf.Clamp(currentSpread, 0, spreadRadius);
 		}
@@ -42,6 +43,7 @@ namespace CombatSystem.Action
 
 			if (spreadIncreaseEachShot <= 0)
 				return;
+
 			currentSpread += spreadIncreaseEachShot;
 			currentSpread = Mathf.Clamp(currentSpread, 0, spreadRadius);
 		}
