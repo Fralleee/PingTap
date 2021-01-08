@@ -697,6 +697,17 @@ MonoBehaviour:
   IsJumping: 0
   IsDashing: 0
   groundContactNormal: {x: 0, y: 0, z: 0}
+  Camera: {fileID: 0}
+  Input: {fileID: 0}
+  GroundController: {fileID: 0}
+  StepClimber: {fileID: 0}
+  GravityAdjuster: {fileID: 0}
+  LimitSpeed: {fileID: 0}
+  Movement: {fileID: 0}
+  AirMovement: {fileID: 0}
+  Jumping: {fileID: 0}
+  Crouching: {fileID: 0}
+  Dashing: {fileID: 0}
 --- !u!114 &780450220965709962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7bada659cae424bb17a678e09bdffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   orientation: {fileID: 1386371906370868751}
   cameraRig: {fileID: 1386371907097986392}
   smoothTime: 0
@@ -755,6 +767,7 @@ MonoBehaviour:
   - {fileID: -5829858850810243681, guid: f0cbab08ecde95c48a084d666fbd3869, type: 3}
   - {fileID: -5829858850810243681, guid: 7d9a383315ffd934d841dc8a6f78a043, type: 3}
   - {fileID: -5829858850810243681, guid: ecc213c5a062ef348b49c047c50a99c4, type: 3}
+  - {fileID: -5829858850810243681, guid: 421c2edd5bb367c47ae8bd54de794b2d, type: 3}
 --- !u!114 &1588032943
 MonoBehaviour:
   m_ObjectHideFlags: 0
