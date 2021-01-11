@@ -1,11 +1,12 @@
 using UnityEngine;
 
-namespace Fralle.Core.Infrastructure
+namespace Fralle.Core.Pooling
 {
+	[RequireComponent(typeof(PooledObject))]
 	public class PooledDestroyAutomatic : MonoBehaviour
 	{
 		AudioSource audioSource;
-		ParticleSystem particleSystem;
+		new ParticleSystem particleSystem;
 
 		void Awake()
 		{
@@ -23,11 +24,7 @@ namespace Fralle.Core.Infrastructure
 				performDestroy = !audioSource.isPlaying;
 
 			if (performDestroy)
-			{
-				Debug.Log(gameObject.name + " is to be destroyed");
-				ObjectPool.Destroy(gameObject);
-			}
-
+				ObjectPool.Despawn(gameObject);
 		}
 	}
 }

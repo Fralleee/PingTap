@@ -47,26 +47,16 @@ namespace CombatSystem.Action
 			attacker = weapon.GetComponentInParent<Combatant>();
 		}
 
-		//public void Perform()
-		//{
-		//	if (weapon.ActiveWeaponAction != Status.Ready)
-		//		return;
+#if UNITY_EDITOR
+		internal virtual void OnValidate()
+		{
+			fireRate = 1f / shotsPerSecond;
+		}
+#endif
 
-		//	Fire();
-		//	weapon.nextAvailableShot = fireRate;
-		//	weapon.ammoAddonController?.ChangeAmmo(-ammoPerShot);
-
-		//	if (weapon.recoilAddon)
-		//		weapon.recoilAddon.AddRecoil();
-
-		//	if (HasAmmo)
-		//		weapon.ChangeWeaponAction(Status.Firing);
-		//}
-
-		// Multishot implementation
 		public void Perform()
 		{
-			if (weapon.ActiveWeaponAction != Status.Ready)
+			if (!weapon || weapon.ActiveWeaponAction != Status.Ready)
 				return;
 
 			int shotsToFire = Mathf.RoundToInt(-weapon.nextAvailableShot / fireRate);

@@ -41,6 +41,8 @@ namespace Fralle
 
 			equippedWeapon = Instantiate(weapon, combatant.weaponHolder.position.With(y: -0.5f), combatant.weaponHolder.rotation, combatant.weaponHolder);
 			equippedWeapon.Equip(combatant);
+
+			Debug.Log($"Equipped weapon {weapon.weaponName}");
 		}
 
 		void SwapWeapon()

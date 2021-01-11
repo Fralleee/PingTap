@@ -8,8 +8,8 @@ namespace Fralle
 	{
 		static readonly int RendererColor = Shader.PropertyToID("_MainColor");
 
-		[SerializeField] GameObject ragdollModel = null;
-		[SerializeField] GameObject gibModel = null;
+		[SerializeField] GameObject ragdollModel;
+		[SerializeField] GameObject gibModel;
 
 		Rigidbody[] rigidbodies;
 		Collider[] colliders;

@@ -1,6 +1,6 @@
 ﻿using CombatSystem.Combat.Damage;
 using Fralle.Core.Extensions;
-using Fralle.Core.Infrastructure;
+using Fralle.Core.Pooling;
 using UnityEngine;
 
 namespace CombatSystem.Offense
@@ -32,7 +32,7 @@ namespace CombatSystem.Offense
 				if (data.explodeOnMaxRange)
 					Explode();
 				else
-					ObjectPool.Destroy(gameObject);
+					ObjectPool.Despawn(gameObject);
 			}
 
 			if (data.explodeOnTime > 0)
@@ -60,7 +60,7 @@ namespace CombatSystem.Offense
 			if (!muzzleParticlePrefab)
 				return;
 
-			var muzzleParticle = ObjectPool.Instantiate(muzzleParticlePrefab, transform.position, transform.rotation);
+			var muzzleParticle = ObjectPool.Spawn(muzzleParticlePrefab, transform.position, transform.rotation);
 			//var layer = LayerMask.NameToLayer("First Person Objects");
 			//muzzleParticle.SetLayerRecursively(layer);
 		}
@@ -68,10 +68,10 @@ namespace CombatSystem.Offense
 		void Explode(Collision collision = null)
 		{
 			if (impactEffectPrefab)
-				ObjectPool.Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+				ObjectPool.Spawn(impactEffectPrefab, transform.position, Quaternion.identity);
 
 			DamageHelper.Explosion(data, transform.position, collision);
-			ObjectPool.Destroy(gameObject);
+			ObjectPool.Despawn(gameObject);
 		}
 
 		void Hit(Collision collision)
@@ -82,12 +82,12 @@ namespace CombatSystem.Offense
 			if (damageData != null)
 			{
 				var contact = collision.GetContact(0);
-				ObjectPool.Instantiate(damageData.impactEffect, contact.point, Quaternion.LookRotation(contact.normal, Vector3.up));
+				ObjectPool.Spawn(damageData.impactEffect, contact.point, Quaternion.LookRotation(contact.normal, Vector3.up));
 			}
 			else if (impactEffectPrefab)
-				ObjectPool.Instantiate(impactEffectPrefab, transform.position, Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal));
+				ObjectPool.Spawn(impactEffectPrefab, transform.position, Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal));
 
-			ObjectPool.Destroy(gameObject);
+			ObjectPool.Despawn(gameObject);
 		}
 
 		void AddForce(Collision collision, Vector3 direction)

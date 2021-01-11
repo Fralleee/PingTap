@@ -4,87 +4,95 @@ using UnityEngine;
 
 namespace Fralle.UI
 {
-  public class UiTweener : MonoBehaviour
-  {
-    public GameObject objectToAnimate;
+	public class UiTweener : MonoBehaviour
+	{
+		public GameObject objectToAnimate;
 
-    public UiAnimationTypes animationType;
-    public LeanTweenType easeType;
+		public UiAnimationTypes animationType;
+		public LeanTweenType easeType;
 
-    public float duration;
-    public float delay;
+		public float duration;
+		public float delay;
 
-    public bool playOnAwake;
-    public bool loop;
-    public bool pingPong;
+		public bool playOnAwake;
+		public bool loop;
+		public bool pingPong;
 
-    public bool startPositionOffset;
+		public bool startPositionOffset;
 
-    public Vector3 from;
-    public Vector3 to;
+		public Vector3 from;
+		public Vector3 to;
 
-    LTDescr tweenObject;
-    readonly Dictionary<UiAnimationTypes, Action> animationMap = new Dictionary<UiAnimationTypes, Action>();
+		LTDescr tweenObject;
+		RectTransform rectTransform;
+		CanvasGroup canvasGroup;
+		readonly Dictionary<UiAnimationTypes, Action> animationMap = new Dictionary<UiAnimationTypes, Action>();
 
-    void Awake()
-    {
-      animationMap.Add(UiAnimationTypes.Fade, Fade);
-      animationMap.Add(UiAnimationTypes.Move, Move);
-      animationMap.Add(UiAnimationTypes.Scale, Scale);
-      animationMap.Add(UiAnimationTypes.ScaleUpAndDown, ScaleUpAndDown);
-    }
+		void Awake()
+		{
+			animationMap.Add(UiAnimationTypes.Fade, Fade);
+			animationMap.Add(UiAnimationTypes.Move, Move);
+			animationMap.Add(UiAnimationTypes.Scale, Scale);
+			animationMap.Add(UiAnimationTypes.ScaleUpAndDown, ScaleUpAndDown);
 
-    void Start()
-    {
-      if (playOnAwake) HandleTween();
-    }
+			rectTransform = objectToAnimate.GetComponent<RectTransform>();
+			canvasGroup = objectToAnimate.GetComponent<CanvasGroup>();
+		}
 
-    public void HandleTween()
-    {
-      if (objectToAnimate == null) objectToAnimate = gameObject;
+		void Start()
+		{
+			if (playOnAwake)
+				HandleTween();
+		}
 
-      LeanTween.reset();
+		public void HandleTween()
+		{
+			if (objectToAnimate == null)
+				objectToAnimate = gameObject;
 
-      animationMap[animationType]();
+			LeanTween.reset();
 
-      tweenObject.setDelay(delay);
-      tweenObject.setEase(easeType);
+			animationMap[animationType]();
 
-      if (loop) tweenObject.loopCount = int.MaxValue;
-      if (pingPong) tweenObject.setLoopPingPong();
-    }
+			tweenObject.setDelay(delay);
+			tweenObject.setEase(easeType);
 
-    void Fade()
-    {
-      var objectCanvasGroup = objectToAnimate.GetComponent<CanvasGroup>();
-      if (startPositionOffset) objectCanvasGroup.alpha = from.x;
+			if (loop)
+				tweenObject.loopCount = int.MaxValue;
+			if (pingPong)
+				tweenObject.setLoopPingPong();
+		}
 
-      tweenObject = LeanTween.alphaCanvas(objectCanvasGroup, to.x, duration);
-    }
+		void Fade()
+		{
+			if (startPositionOffset)
+				canvasGroup.alpha = from.x;
 
-    void Move()
-    {
-      var rect = objectToAnimate.GetComponent<RectTransform>();
-      rect.anchoredPosition = from;
+			tweenObject = LeanTween.alphaCanvas(canvasGroup, to.x, duration);
+		}
 
-      tweenObject = LeanTween.move(rect, to, duration);
-    }
+		void Move()
+		{
+			rectTransform.anchoredPosition = from;
 
-    void Scale()
-    {
-      if (startPositionOffset) objectToAnimate.GetComponent<RectTransform>().localScale = from;
+			tweenObject = LeanTween.move(rectTransform, to, duration);
+		}
 
+		void Scale()
+		{
+			if (startPositionOffset)
+				rectTransform.localScale = from;
 
-      tweenObject = LeanTween.scale(objectToAnimate, to, duration);
-    }
+			tweenObject = LeanTween.scale(objectToAnimate, to, duration);
+		}
 
-    void ScaleUpAndDown()
-    {
-      if (startPositionOffset) objectToAnimate.GetComponent<RectTransform>().localScale = from;
+		void ScaleUpAndDown()
+		{
+			if (startPositionOffset)
+				rectTransform.localScale = from;
 
-      var actualDuration = duration * 0.5f;
-      tweenObject = LeanTween.scale(objectToAnimate, to, actualDuration)
-        .setOnComplete(() => LeanTween.scale(objectToAnimate, from, actualDuration));
-    }
-  }
+			tweenObject = LeanTween.scale(objectToAnimate, to, duration * 0.5f)
+				.setOnComplete(() => LeanTween.scale(objectToAnimate, from, duration * 0.5f));
+		}
+	}
 }

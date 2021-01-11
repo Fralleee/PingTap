@@ -1,5 +1,5 @@
 ﻿using CombatSystem.Combat.Damage;
-using Fralle.Core.Infrastructure;
+using Fralle.Core.Pooling;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +8,6 @@ namespace Fralle.UI
 	public class FloatingCombatText : MonoBehaviour
 	{
 		[SerializeField] GameObject combatTextPrefab;
-		[SerializeField] float destroyDelay = 0.5f;
 		[SerializeField] Vector2 randomPosition = new Vector2(0.5f, 0.5f);
 
 		void Awake()
@@ -24,14 +23,12 @@ namespace Fralle.UI
 
 		void AddFloatingCombatText(DamageData damageData)
 		{
-			var instance = ObjectPool.Instantiate(combatTextPrefab, transform.position, Quaternion.identity);
+			var instance = ObjectPool.Spawn(combatTextPrefab, transform.position, Quaternion.identity);
 
 			SetPosition(instance);
 
 			var text = instance.GetComponentInChildren<TextMeshProUGUI>();
 			SetText(text, Mathf.RoundToInt(damageData.damageAmount));
-			AnimateText(text.gameObject);
-
 		}
 
 		void SetPosition(GameObject go)
@@ -43,18 +40,6 @@ namespace Fralle.UI
 		void SetText(TextMeshProUGUI text, int number)
 		{
 			text.text = number.ToString();
-		}
-
-		void AnimateText(GameObject textGO)
-		{
-			LTDescr tweenObjectScale;
-			LTDescr tweenObjectMove;
-			var rectTransform = textGO.GetComponent<RectTransform>();
-
-			tweenObjectScale = LeanTween.scale(textGO, Vector3.zero, destroyDelay);
-			tweenObjectMove = LeanTween.move(rectTransform, new Vector3(0, rectTransform.position.y - 4f, 0), destroyDelay);
-			tweenObjectScale.setEase(LeanTweenType.easeInBack);
-			tweenObjectMove.setEase(LeanTweenType.easeInBack);
 		}
 	}
 }

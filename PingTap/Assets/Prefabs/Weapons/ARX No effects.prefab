@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4849536065285394247}
   - component: {fileID: 8780596973138301923}
   m_Layer: 0
-  m_Name: Assault Rifle
+  m_Name: ARX No effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Assault Rifle
+  weaponName: ARX No effects
   equipAnimationTime: 0.3
   muzzles:
   - {fileID: 7401508142080020281}
@@ -71,57 +71,36 @@ MonoBehaviour:
   minDamage: 16
   maxDamage: 18
   ammoPerShot: 1
-  shotsPerSecond: 20
+  shotsPerSecond: 100
   tapable: 0
   element: 2
   damageEffects: []
-  range: 200
+  range: 250
   pushForce: 1000
-  impactParticlePrefab: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
-    type: 3}
-  muzzleParticlePrefab: {fileID: 1670457245891842, guid: a946afce73718d54f85ad6cb3e38705d,
-    type: 3}
-  lineRendererPrefab: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
-    type: 3}
+  impactParticlePrefab: {fileID: 0}
+  muzzleParticlePrefab: {fileID: 0}
+  lineRendererPrefab: {fileID: 0}
   bulletsPerFire: 1
   rangeDamageFalloff:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.00019608438
-      value: 0.99997807
-      inSlope: -0.028003685
-      outSlope: -0.028003685
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.18955247
-    - serializedVersion: 3
-      time: 0.44621825
-      value: 0.7532714
-      inSlope: -1.3211561
-      outSlope: -1.3211561
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.7620521
-      value: 0.116986394
-      inSlope: -1.4372648
-      outSlope: -1.4372648
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.2524893
-      outSlope: -0.2524893
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.43385628
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -182,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bc0cd1540fa4242917d9851d1b712f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 30
+  maxAmmo: 400
   currentAmmo: 0
   infiniteAmmo: 0
   reloadSpeed: 0.75
@@ -343,22 +322,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 465442f82d5a43745a6fc07b8d15fcea, type: 2}
+      objectReference: {fileID: 2100000, guid: 4a953656a5b8a034f97261e107dbc21c, type: 2}
     - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 498aff4ed87b2554b8af91a6056287b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 4a953656a5b8a034f97261e107dbc21c, type: 2}
     - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: c8501910b161a4c42bf0b73c0c374f0a, type: 2}
+      objectReference: {fileID: 2100000, guid: 4a953656a5b8a034f97261e107dbc21c, type: 2}
     - target: {fileID: -1504981713932161579, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: f5fc066f8589f0d4fbaec62977f0b0c3, type: 2}
+      objectReference: {fileID: 2100000, guid: 4a953656a5b8a034f97261e107dbc21c, type: 2}
     - target: {fileID: -927199367670048503, guid: d1fb58e2fd3061741aa9134c3c53441d,
         type: 3}
       propertyPath: m_Name

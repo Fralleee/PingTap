@@ -32,9 +32,9 @@ RectTransform:
   m_Father: {fileID: 8217351570645199931}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 38.14, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 12.28, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &861876759452467066
@@ -316,9 +316,9 @@ RectTransform:
   m_Father: {fileID: 8217351570645199931}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 61.28, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1975999019290579026
@@ -451,9 +451,9 @@ RectTransform:
   m_Father: {fileID: 8217351570645199931}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 30, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8341171377415557051
@@ -565,7 +565,6 @@ GameObject:
   - component: {fileID: 17799235321992177}
   - component: {fileID: 7510949402073747763}
   - component: {fileID: 4984745544428349286}
-  - component: {fileID: 470764846358584645}
   - component: {fileID: 7221602569701057272}
   - component: {fileID: 1331201314550720522}
   m_Layer: 5
@@ -613,7 +612,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -640,29 +639,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &470764846358584645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439019483547225446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 573a82429b3fc434d98905137a65b249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToAnimate: {fileID: 6864399348324137780}
-  animationType: 3
-  easeType: 4
-  duration: 0.15
-  delay: 0
-  playOnAwake: 0
-  loop: 0
-  pingPong: 0
-  startPositionOffset: 0
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 1.15, y: 1.15, z: 1.15}
 --- !u!114 &7221602569701057272
 MonoBehaviour:
   m_ObjectHideFlags: 0

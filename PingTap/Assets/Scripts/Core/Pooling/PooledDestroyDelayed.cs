@@ -1,7 +1,8 @@
 using UnityEngine;
 
-namespace Fralle.Core.Infrastructure
+namespace Fralle.Core.Pooling
 {
+	[RequireComponent(typeof(PooledObject))]
 	public class PooledDestroyDelayed : MonoBehaviour
 	{
 		[SerializeField] float delay;
@@ -17,7 +18,7 @@ namespace Fralle.Core.Infrastructure
 		{
 			timer -= Time.deltaTime;
 			if (timer <= 0)
-				ObjectPool.Destroy(gameObject);
+				ObjectPool.Despawn(gameObject);
 		}
 	}
 }

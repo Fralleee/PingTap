@@ -36,9 +36,9 @@ namespace CombatSystem.Combat.Damage
 			{
 				// this will cause issues if we are for example hitting targets with shotgun
 				// we will receive more hits than shots fired
-
 				var hitbox = hit.collider.transform.GetComponent<Hitbox>();
 				var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
+				var falloffMultiplier = raycastAttack.rangeDamageFalloff.Evaluate(hit.distance / raycastAttack.range);
 				var damageAmount = raycastAttack.Damage;
 				var damageData = new DamageData()
 				{
@@ -49,7 +49,7 @@ namespace CombatSystem.Combat.Damage
 					force = raycastAttack.attacker.aimTransform.forward * raycastAttack.pushForce,
 					position = hit.point,
 					hitArea = hitArea,
-					damageAmount = hitArea.GetMultiplier() * damageAmount,
+					damageAmount = hitArea.GetMultiplier() * damageAmount * falloffMultiplier,
 					impactEffect = hitArea.GetImpactEffect(damageController)
 				};
 

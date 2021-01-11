@@ -1,7 +1,7 @@
 ﻿using CombatSystem.Combat.Damage;
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
-using Fralle.Core.Infrastructure;
+using Fralle.Core.Pooling;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -9,12 +9,13 @@ namespace CombatSystem.Action
 	public class RaycastAttack : AttackAction
 	{
 		[Header("RaycastAttack")]
-		[SerializeField] float range = 50;
+		public float range = 50;
 		public float pushForce = 3.5f;
 		[SerializeField] GameObject impactParticlePrefab = null;
 		[SerializeField] GameObject muzzleParticlePrefab = null;
 		[SerializeField] GameObject lineRendererPrefab = null;
 		[SerializeField] int bulletsPerFire = 1;
+		public AnimationCurve rangeDamageFalloff = new AnimationCurve(new Keyframe[] { new Keyframe(0, 1), new Keyframe(1, 0) });
 
 		[Header("Spread")]
 		[SerializeField] float spreadRadius = 0f;
@@ -36,7 +37,7 @@ namespace CombatSystem.Action
 		{
 			var muzzle = GetMuzzle();
 			if (muzzleParticlePrefab)
-				ObjectPool.Instantiate(muzzleParticlePrefab, muzzle.position, attacker.aimTransform.rotation, attacker.aimTransform);
+				ObjectPool.Spawn(muzzleParticlePrefab, muzzle.position, attacker.aimTransform.rotation, attacker.aimTransform);
 
 			for (var i = 0; i < bulletsPerFire; i++)
 				FireBullet(muzzle);
@@ -68,9 +69,9 @@ namespace CombatSystem.Action
 			BulletTrace(muzzle.position, hitInfo.point);
 
 			if (damageData != null && damageData.impactEffect != null)
-				ObjectPool.Instantiate(damageData.impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
+				ObjectPool.Spawn(damageData.impactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
 			else if (impactParticlePrefab)
-				ObjectPool.Instantiate(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
+				ObjectPool.Spawn(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
 		}
 
 		Vector3 CalculateBulletSpread(float modifier)

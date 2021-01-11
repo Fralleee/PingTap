@@ -71,7 +71,7 @@ MonoBehaviour:
   minDamage: 16
   maxDamage: 18
   ammoPerShot: 1
-  shotsPerSecond: 100
+  shotsPerSecond: 200
   tapable: 0
   element: 2
   damageEffects: []
@@ -84,6 +84,48 @@ MonoBehaviour:
   lineRendererPrefab: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
     type: 3}
   bulletsPerFire: 1
+  rangeDamageFalloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.00019608438
+      value: 0.99997807
+      inSlope: -0.028003685
+      outSlope: -0.028003685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.18955247
+    - serializedVersion: 3
+      time: 0.44621825
+      value: 0.7532714
+      inSlope: -1.3211561
+      outSlope: -1.3211561
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7620521
+      value: 0.116986394
+      inSlope: -1.4372648
+      outSlope: -1.4372648
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.2524893
+      outSlope: -0.2524893
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.43385628
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadRadius: 0.2
   spreadIncreaseEachShot: 0.075
   recovery: 0.5
@@ -180,16 +222,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d273edb5233f74a9bfb385d8ef6d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kickbackForce: 0.15
+  kickbackForce: 0.05
   kickbackRecoverTime: 20
   randomizeRecoil: 0
   recoilSpeed: 16
   recoilRecoverTime: 10
-  randomRecoilConstraints: {x: 3, y: 3, z: 3}
+  randomRecoilConstraints: {x: 1, y: 1, z: 1}
   recoilPattern:
-  - {x: 0, y: -3, z: 0}
-  - {x: 1, y: -3, z: 0}
-  - {x: -1, y: -3, z: 0}
+  - {x: 0, y: -1, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: -1, y: -1, z: 0}
 --- !u!1 &5078208465294758218
 GameObject:
   m_ObjectHideFlags: 0

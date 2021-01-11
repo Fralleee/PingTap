@@ -1,7 +1,6 @@
 using CombatSystem;
 using CombatSystem.Addons;
 using CombatSystem.Combat;
-using Fralle.UI;
 using TMPro;
 using UnityEngine;
 
@@ -10,11 +9,8 @@ public class AmmoUI : MonoBehaviour
 	[SerializeField] TextMeshProUGUI currentAmmoText;
 	[SerializeField] TextMeshProUGUI maxAmmoText;
 
-	UiTweener uiTweener;
-
 	void Awake()
 	{
-		uiTweener = GetComponent<UiTweener>();
 		var combatant = GetComponentInParent<Combatant>();
 		combatant.OnWeaponSwitch += HandleWeaponSwitch;
 
@@ -36,6 +32,5 @@ public class AmmoUI : MonoBehaviour
 	void HandleAmmoChanged(int ammoCount)
 	{
 		currentAmmoText.text = ammoCount.ToString();
-		uiTweener.HandleTween();
 	}
 }

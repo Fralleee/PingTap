@@ -2,23 +2,26 @@
 
 namespace Fralle.Core.CameraControls
 {
-  public class BillboardFaceCamera : MonoBehaviour
-  {
-    new Camera camera;
+	public class BillboardFaceCamera : MonoBehaviour
+	{
+		Camera mainCamera;
 
-    void Awake()
-    {
-      camera = Camera.main;
-    }
+		void Start()
+		{
+			mainCamera = Camera.main;
+		}
 
-    void LateUpdate()
-    {
-      FaceCamera();
-    }
+		void LateUpdate()
+		{
+			if (!mainCamera)
+				return;
 
-    void FaceCamera()
-    {
-      transform.LookAt(transform.position + camera.transform.rotation * Vector3.forward, camera.transform.rotation * Vector3.up);
-    }
-  }
+			FaceCamera();
+		}
+
+		void FaceCamera()
+		{
+			transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward, mainCamera.transform.rotation * Vector3.up);
+		}
+	}
 }

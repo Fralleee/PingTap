@@ -1,5 +1,4 @@
-﻿using Fralle.Core.Infrastructure;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.Core.Animation
 {
@@ -29,9 +28,6 @@ namespace Fralle.Core.Animation
 
 			var newColor = Color.Lerp(currentColor, new Color(1f, 1f, 1f, 0f), 1 - (fadeTimer / fadeoutTime));
 			lineRenderer.material.color = newColor;
-
-			if (fadeTimer <= 0)
-				ObjectPool.Destroy(gameObject);
 		}
 	}
 }
