@@ -32,5 +32,13 @@ namespace Fralle.Gameplay
 		{
 			Managers.Instance.State.SetState(GameState.Prepare);
 		}
+
+
+		[Command(aliasOverride: "limit-fps", description: "Sets the frame rate limit")]
+		public static void LimitFPS(int limit)
+		{
+			Debug.Log($"Frame rate limit set to {limit}");
+			Application.targetFrameRate = limit;
+		}
 	}
 }

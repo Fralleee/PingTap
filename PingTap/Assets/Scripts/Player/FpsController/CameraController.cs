@@ -35,7 +35,6 @@ namespace Fralle.FpsController
 			}
 			else
 			{
-
 				Cursor.visible = true;
 				Cursor.lockState = CursorLockMode.None;
 			}

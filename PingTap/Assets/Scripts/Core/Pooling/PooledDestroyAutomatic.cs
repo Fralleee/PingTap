@@ -6,19 +6,19 @@ namespace Fralle.Core.Pooling
 	public class PooledDestroyAutomatic : MonoBehaviour
 	{
 		AudioSource audioSource;
-		new ParticleSystem particleSystem;
+		ParticleSystem particles;
 
 		void Awake()
 		{
 			audioSource = GetComponent<AudioSource>();
-			particleSystem = GetComponent<ParticleSystem>();
+			particles = GetComponent<ParticleSystem>();
 		}
 
 		void Update()
 		{
 			bool performDestroy = false;
-			if (particleSystem)
-				performDestroy = !particleSystem.IsAlive();
+			if (particles)
+				performDestroy = !particles.IsAlive();
 
 			if (audioSource)
 				performDestroy = !audioSource.isPlaying;
