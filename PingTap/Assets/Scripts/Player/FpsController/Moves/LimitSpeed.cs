@@ -20,12 +20,11 @@ namespace Fralle.FpsController.Moves
 
 		void Limit()
 		{
-			var actualMaxSpeed = maxSpeed;
 			var horizontalMovement = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
-			if (horizontalMovement.magnitude <= actualMaxSpeed)
+			if (horizontalMovement.magnitude <= maxSpeed)
 				return;
 
-			horizontalMovement = horizontalMovement.normalized * actualMaxSpeed;
+			horizontalMovement = horizontalMovement.normalized * maxSpeed;
 			rigidBody.velocity = new Vector3(horizontalMovement.x, rigidBody.velocity.y, horizontalMovement.z);
 		}
 	}

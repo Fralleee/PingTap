@@ -30,7 +30,7 @@ namespace Fralle.Gameplay
 		[Command(aliasOverride: "start-match", description: "Starts match")]
 		public static void StartMatch()
 		{
-			Managers.Instance.State.SetState(GameState.Prepare);
+			Managers.Instance.State.SetState(MatchState.Prepare);
 		}
 
 

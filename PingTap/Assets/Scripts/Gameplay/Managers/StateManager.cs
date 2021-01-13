@@ -1,36 +1,42 @@
 ﻿using Fralle.Core.Infrastructure;
 using Fralle.Core.Interfaces;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Fralle.Gameplay
 {
 	public class StateManager : MonoBehaviour
 	{
+		public static event Action<GameState> OnGamestateChanged = delegate { };
+
 		[SerializeField] bool startGame;
 
-		public GameState gameState;
+		public static GameState gameState = GameState.Playing;
+		public MatchState matchState;
 		public IState currentState;
 
 		StateMachine stateMachine;
-		readonly Dictionary<GameState, IState> States = new Dictionary<GameState, IState>();
+		readonly Dictionary<MatchState, IState> States = new Dictionary<MatchState, IState>();
 
 		void Start()
 		{
 			SetupStateMachine();
+			Debug.Log(gameState);
 		}
 
 		void SetupStateMachine()
 		{
 			stateMachine = new StateMachine();
 
-			States.Add(GameState.Prepare, new MatchStatePrepare());
-			States.Add(GameState.Live, new MatchStateLive());
-			States.Add(GameState.End, new MatchStateEnd());
+			States.Add(MatchState.Prepare, new MatchStatePrepare());
+			States.Add(MatchState.Live, new MatchStateLive());
+			States.Add(MatchState.End, new MatchStateEnd());
 
 			if (startGame)
 			{
-				SetState(GameState.Prepare);
+				SetState(MatchState.Prepare);
 			}
 		}
 
@@ -39,11 +45,47 @@ namespace Fralle.Gameplay
 			stateMachine.Tick();
 		}
 
-		public void SetState(GameState newState)
+		public void SetState(MatchState newState)
 		{
 			stateMachine.SetState(States[newState]);
+			matchState = newState;
+			EventManager.Broadcast(new GameStateChangeEvent(matchState, newState));
+		}
+
+		public static void SetGameState(GameState newState)
+		{
+			OnGamestateChanged(newState);
 			gameState = newState;
-			EventManager.Broadcast(new GameStateChangeEvent(gameState, newState));
+		}
+
+		void OnEnable()
+		{
+			SceneManager.sceneLoaded += OnSceneFinishedLoading;
+			SceneManager.sceneUnloaded += OnSceneFinishedUnloading;
+		}
+
+		void OnDisable()
+		{
+			SceneManager.sceneLoaded -= OnSceneFinishedLoading;
+			SceneManager.sceneUnloaded -= OnSceneFinishedUnloading;
+		}
+
+		static void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
+		{
+			if (scene.name == "Main Menu")
+			{
+				OnGamestateChanged(GameState.MenuActive);
+				gameState = GameState.MenuActive;
+			}
+		}
+
+		static void OnSceneFinishedUnloading(Scene scene)
+		{
+			if (scene.name == "Main Menu")
+			{
+				OnGamestateChanged(GameState.Playing);
+				gameState = GameState.Playing;
+			}
 		}
 
 	}

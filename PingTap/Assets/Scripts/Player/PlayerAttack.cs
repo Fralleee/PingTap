@@ -2,6 +2,7 @@
 using CombatSystem.Combat;
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
+using Fralle.FpsController;
 using UnityEngine;
 
 namespace Fralle
@@ -14,10 +15,12 @@ namespace Fralle
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 
 		Combatant combatant;
+		[HideInInspector] public InputController inputController;
 
 		void Awake()
 		{
 			combatant = GetComponent<Combatant>();
+			inputController = GetComponent<InputController>();
 		}
 
 		void Start()
@@ -41,26 +44,24 @@ namespace Fralle
 
 			equippedWeapon = Instantiate(weapon, combatant.weaponHolder.position.With(y: -0.5f), combatant.weaponHolder.rotation, combatant.weaponHolder);
 			equippedWeapon.Equip(combatant);
-
-			Debug.Log($"Equipped weapon {weapon.weaponName}");
 		}
 
 		void SwapWeapon()
 		{
 			for (var i = 1; i <= weapons.Length; i++)
-				if (Input.GetKeyDown("" + i))
+				if (inputController.GetKeyDown("" + i))
 					EquipWeapon(weapons[i - 1]);
 		}
 
 		void FireInput()
 		{
-			if (Input.GetMouseButtonDown(0))
+			if (inputController.Mouse1ButtonDown)
 				combatant.PrimaryAction(true);
-			else if (Input.GetMouseButton(0))
+			else if (inputController.Mouse1ButtonHold)
 				combatant.PrimaryAction();
-			else if (Input.GetMouseButtonDown(1))
+			else if (inputController.Mouse2ButtonDown)
 				combatant.SecondaryAction(true);
-			else if (Input.GetMouseButton(1))
+			else if (inputController.Mouse2ButtonHold)
 				combatant.SecondaryAction();
 		}
 	}

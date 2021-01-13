@@ -8,6 +8,12 @@
 
 	public enum GameState
 	{
+		MenuActive,
+		Playing
+	}
+
+	public enum MatchState
+	{
 		None,
 		Prepare,
 		Live,

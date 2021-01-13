@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿using Fralle.UI.Menu;
+using QFSW.QC;
+using UnityEngine;
 
 namespace Fralle.Gameplay
 {
 	public class UiManager : MonoBehaviour
 	{
+		[Header("References")]
+		[SerializeField] MainMenu mainMenu;
+
 		[Header("Prefabs")]
-		[SerializeField] GameObject prepareUiPrefab = null;
-		[SerializeField] GameObject gameResultUiPrefab = null;
+		[SerializeField] GameObject prepareUiPrefab;
+		[SerializeField] GameObject gameResultUiPrefab;
 
 		GameObject prepareUi;
 		GameObject gameResultUi;
@@ -16,6 +21,14 @@ namespace Fralle.Gameplay
 			SetupUi();
 
 			MatchManager.OnMatchEnd += HandleGameEnd;
+		}
+
+		void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.Escape) && !QuantumConsole.Instance.IsActive)
+			{
+				mainMenu.ToggleMenu();
+			}
 		}
 
 		void SetupUi()

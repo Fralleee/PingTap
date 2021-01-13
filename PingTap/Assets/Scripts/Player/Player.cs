@@ -1,5 +1,7 @@
 ﻿using CombatSystem.Combat;
 using Fralle.Core.Extensions;
+using Fralle.FpsController;
+using Fralle.Gameplay;
 using UnityEngine;
 
 namespace Fralle
@@ -10,6 +12,8 @@ namespace Fralle
 
 		[HideInInspector] public new Camera camera;
 		[HideInInspector] public Combatant combatant;
+
+		InputController inputController;
 
 		public static void Disable()
 		{
@@ -23,6 +27,7 @@ namespace Fralle
 		void Awake()
 		{
 			combatant = GetComponent<Combatant>();
+			inputController = GetComponent<InputController>();
 			transform.Find("UI").gameObject.SetActive(true);
 		}
 
@@ -32,6 +37,21 @@ namespace Fralle
 			gameObject.SetLayerRecursively(layer, ignoreLayers);
 
 			camera = Camera.main;
+		}
+
+		void OnEnable()
+		{
+			StateManager.OnGamestateChanged += OnGamestateChanged;
+		}
+
+		void OnDisable()
+		{
+			StateManager.OnGamestateChanged -= OnGamestateChanged;
+		}
+
+		void OnGamestateChanged(GameState gameState)
+		{
+			inputController.Lock(gameState == GameState.MenuActive);
 		}
 
 	}

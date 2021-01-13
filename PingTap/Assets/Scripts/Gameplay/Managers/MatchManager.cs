@@ -1,6 +1,7 @@
 ﻿using Fralle.Core.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Fralle.Gameplay
 {
@@ -16,6 +17,8 @@ namespace Fralle.Gameplay
 
 		HeadQuarters headQuarters;
 		bool isHQDead;
+
+		public bool IsPlayingMatch => !SceneManager.GetSceneByName("Main Menu").isLoaded;
 
 		public void Setup()
 		{

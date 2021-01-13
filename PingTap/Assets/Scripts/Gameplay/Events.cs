@@ -25,9 +25,9 @@
 	// Gameflow Events.
 	public class GameStateChangeEvent : GameEvent
 	{
-		public GameState CurrentGameState;
-		public GameState NewGameState;
-		public GameStateChangeEvent(GameState currentState = GameState.None, GameState newState = GameState.None)
+		public MatchState CurrentGameState;
+		public MatchState NewGameState;
+		public GameStateChangeEvent(MatchState currentState = MatchState.None, MatchState newState = MatchState.None)
 		{
 			CurrentGameState = currentState;
 			NewGameState = newState;

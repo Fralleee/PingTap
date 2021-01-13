@@ -9,7 +9,7 @@ namespace Fralle.Gameplay
 
 		public void OnEnter()
 		{
-			Managers.Instance.State.SetState(GameState.Prepare);
+			Managers.Instance.State.SetState(MatchState.Prepare);
 			Managers.Instance.Enemy.PrepareSpawner();
 
 			prepareTime = Managers.Instance.Settings.prepareTimer;
@@ -20,7 +20,7 @@ namespace Fralle.Gameplay
 			prepareTime -= Time.deltaTime;
 			if (prepareTime <= 0)
 			{
-				Managers.Instance.State.SetState(GameState.Live);
+				Managers.Instance.State.SetState(MatchState.Live);
 			}
 		}
 

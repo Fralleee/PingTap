@@ -7,7 +7,7 @@ namespace Fralle.Gameplay
 	{
 		public void OnEnter()
 		{
-			Managers.Instance.State.SetState(GameState.Live);
+			Managers.Instance.State.SetState(MatchState.Live);
 			Managers.Instance.Enemy.StartSpawner();
 
 			EventManager.AddListener<GameOverEvent>(OnGameOver);
@@ -27,7 +27,7 @@ namespace Fralle.Gameplay
 
 		void OnGameOver(GameOverEvent evt)
 		{
-			Managers.Instance.State.SetState(GameState.End);
+			Managers.Instance.State.SetState(MatchState.End);
 		}
 
 	}

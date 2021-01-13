@@ -50,7 +50,7 @@ namespace Fralle.UI.HUD
 
 		void OnGameStateChange(GameStateChangeEvent evt)
 		{
-			canvas.enabled = evt.NewGameState == GameState.Prepare;
+			canvas.enabled = evt.NewGameState == MatchState.Prepare;
 		}
 
 		void OnDestroy()

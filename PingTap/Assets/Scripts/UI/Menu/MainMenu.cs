@@ -1,4 +1,4 @@
-﻿using QFSW.QC;
+﻿using Fralle.Gameplay;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,39 +20,8 @@ namespace Fralle.UI.Menu
 		[SerializeField] GameObject levelSelect = null;
 		[SerializeField] GameObject options = null;
 
-		[Header("Cameras")]
-		[SerializeField] new Camera camera;
-
 		const string MainMenuScene = "Main menu";
 		bool isOpen;
-		bool inGame;
-
-		void Awake()
-		{
-			var currentScene = SceneManager.GetActiveScene();
-			inGame = currentScene.name != MainMenuScene;
-
-			if (inGame)
-				camera.gameObject.SetActive(false);
-
-			levelSelect.SetActive(false);
-			options.SetActive(false);
-
-			background.SetActive(!inGame);
-			playButton.SetActive(!inGame);
-			main.SetActive(!inGame);
-
-			resumeButton.SetActive(inGame);
-			leaveButton.SetActive(inGame);
-		}
-
-		void Update()
-		{
-			if (Input.GetKeyDown(KeyCode.Escape) && inGame && !QuantumConsole.Instance.IsActive)
-			{
-				ToggleMenu();
-			}
-		}
 
 		public static void ToMainMenu()
 		{
@@ -73,7 +42,7 @@ namespace Fralle.UI.Menu
 		public void Options()
 		{
 			options.gameObject.SetActive(true);
-			options.GetComponent<SubMenu>().inGame = inGame;
+			options.GetComponent<SubMenu>().inGame = StateManager.gameState == GameState.Playing;
 			main.SetActive(false);
 		}
 
@@ -82,13 +51,31 @@ namespace Fralle.UI.Menu
 			Application.Quit();
 		}
 
-		void ToggleMenu()
+		public void ToggleMenu()
 		{
 			isOpen = !isOpen;
+
+			gameObject.SetActive(isOpen);
 			main.SetActive(isOpen);
 			background.SetActive(isOpen);
 
+			StateManager.SetGameState(isOpen ? GameState.MenuActive : GameState.Playing);
 			OnMenuToggle(isOpen);
+		}
+
+		void OnEnable()
+		{
+			var inGame = StateManager.gameState == GameState.Playing;
+
+			levelSelect.SetActive(false);
+			options.SetActive(false);
+
+			background.SetActive(!inGame);
+			playButton.SetActive(!inGame);
+			main.SetActive(!inGame);
+
+			resumeButton.SetActive(inGame);
+			leaveButton.SetActive(inGame);
 		}
 	}
 }

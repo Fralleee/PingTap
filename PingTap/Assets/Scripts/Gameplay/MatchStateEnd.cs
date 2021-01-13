@@ -6,7 +6,7 @@ namespace Fralle.Gameplay
 	{
 		public void OnEnter()
 		{
-			Managers.Instance.State.SetState(GameState.End);
+			Managers.Instance.State.SetState(MatchState.End);
 			Managers.Instance.Match.MatchOver();
 		}
 
