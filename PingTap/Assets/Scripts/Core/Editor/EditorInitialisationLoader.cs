@@ -26,7 +26,8 @@ namespace Fralle.Core
 #if UNITY_EDITOR
 			StartCoroutine(LoadSceneDelayed());
 #else
-		SceneManager.LoadSceneAsync(initializationScene.name, LoadSceneMode.Additive);
+		var scenePath = $"Assets/Scenes/InitScene.unity/{initializationScene.name}";
+		SceneManager.LoadSceneAsync(scenePath, LoadSceneMode.Additive);
 #endif
 		}
 
