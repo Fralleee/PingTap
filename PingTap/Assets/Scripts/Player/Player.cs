@@ -2,6 +2,7 @@
 using Fralle.Core.Extensions;
 using Fralle.FpsController;
 using Fralle.Gameplay;
+using QFSW.QC;
 using UnityEngine;
 
 namespace Fralle
@@ -37,6 +38,24 @@ namespace Fralle
 			gameObject.SetLayerRecursively(layer, ignoreLayers);
 
 			camera = Camera.main;
+
+			QuantumConsole.Instance.OnActivate += ConsoleActivated;
+			QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
+		}
+
+		void OnGamestateChanged(GameState gameState)
+		{
+			inputController.Lock(gameState == GameState.PauseMenu);
+		}
+
+		void ConsoleActivated()
+		{
+			inputController.Lock(true);
+		}
+
+		void ConsoleDeactivated()
+		{
+			inputController.Lock(false);
 		}
 
 		void OnEnable()
@@ -49,10 +68,12 @@ namespace Fralle
 			StateManager.OnGamestateChanged -= OnGamestateChanged;
 		}
 
-		void OnGamestateChanged(GameState gameState)
+		void OnDestroy()
 		{
-			inputController.Lock(gameState == GameState.PauseMenu);
+			QuantumConsole.Instance.OnActivate -= ConsoleActivated;
+			QuantumConsole.Instance.OnDeactivate -= ConsoleDeactivated;
 		}
+
 
 	}
 }
