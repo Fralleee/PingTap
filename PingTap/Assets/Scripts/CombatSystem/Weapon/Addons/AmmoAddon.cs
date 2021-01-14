@@ -1,4 +1,5 @@
 ﻿using CombatSystem.Enums;
+using StatsSystem;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -18,11 +19,20 @@ namespace CombatSystem.Addons
 
 		bool isReloading;
 		float rotationTime;
+		float reloadStatMultiplier = 1f;
 		Weapon weapon;
+		Stats stats;
 
 		void Awake()
 		{
 			weapon = GetComponent<Weapon>();
+
+			stats = weapon.GetComponentInParent<Stats>();
+			if (stats)
+			{
+				stats.OnStatisticUpdated += OnStatisticUpdated;
+				reloadStatMultiplier = stats.reloadSpeedMultiplier;
+			}
 		}
 
 		void Start()
@@ -37,8 +47,8 @@ namespace CombatSystem.Addons
 				return;
 			if (isReloading)
 			{
-				var agePercent = rotationTime / reloadSpeed;
-				rotationTime = Mathf.Clamp(rotationTime + Time.deltaTime, 0, reloadSpeed);
+				var agePercent = rotationTime / (reloadSpeed * reloadStatMultiplier);
+				rotationTime = Mathf.Clamp(rotationTime + Time.deltaTime, 0, reloadSpeed * reloadStatMultiplier);
 				var animTime = blendOverLifetime.Evaluate(agePercent);
 				var spinDelta = -(Mathf.Cos(Mathf.PI * animTime) - 1f) / 2f;
 				transform.localRotation = Quaternion.Euler(new Vector3(spinDelta * 360f, 0, 0));
@@ -70,10 +80,22 @@ namespace CombatSystem.Addons
 			weapon.ChangeWeaponAction(Status.Reloading);
 			isReloading = true;
 			rotationTime = 0f;
-			yield return new WaitForSeconds(reloadSpeed);
+			yield return new WaitForSeconds(reloadSpeed * reloadStatMultiplier);
 			ChangeAmmo(maxAmmo, false);
 			weapon.ChangeWeaponAction(Status.Ready);
+			transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
 			isReloading = false;
+		}
+
+		void OnStatisticUpdated(Stats stats)
+		{
+			reloadStatMultiplier = stats.reloadSpeedMultiplier;
+		}
+
+		void OnDestroy()
+		{
+			if (stats)
+				stats.OnStatisticUpdated -= OnStatisticUpdated;
 		}
 	}
 }

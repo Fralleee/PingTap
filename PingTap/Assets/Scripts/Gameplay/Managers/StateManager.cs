@@ -3,7 +3,6 @@ using Fralle.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Fralle.Gameplay
 {
@@ -23,7 +22,6 @@ namespace Fralle.Gameplay
 		void Start()
 		{
 			SetupStateMachine();
-			Debug.Log(gameState);
 		}
 
 		void SetupStateMachine()
@@ -56,36 +54,6 @@ namespace Fralle.Gameplay
 		{
 			OnGamestateChanged(newState);
 			gameState = newState;
-		}
-
-		void OnEnable()
-		{
-			SceneManager.sceneLoaded += OnSceneFinishedLoading;
-			SceneManager.sceneUnloaded += OnSceneFinishedUnloading;
-		}
-
-		void OnDisable()
-		{
-			SceneManager.sceneLoaded -= OnSceneFinishedLoading;
-			SceneManager.sceneUnloaded -= OnSceneFinishedUnloading;
-		}
-
-		static void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
-		{
-			if (scene.name == "Main Menu")
-			{
-				OnGamestateChanged(GameState.MenuActive);
-				gameState = GameState.MenuActive;
-			}
-		}
-
-		static void OnSceneFinishedUnloading(Scene scene)
-		{
-			if (scene.name == "Main Menu")
-			{
-				OnGamestateChanged(GameState.Playing);
-				gameState = GameState.Playing;
-			}
 		}
 
 	}

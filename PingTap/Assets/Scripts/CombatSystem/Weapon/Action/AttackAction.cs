@@ -4,6 +4,7 @@ using CombatSystem.Effect;
 using CombatSystem.Enums;
 using CombatSystem.Interfaces;
 using Fralle.Core.Enums;
+using StatsSystem;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -27,6 +28,7 @@ namespace CombatSystem.Action
 		internal int hitboxLayer;
 		internal Weapon weapon;
 		internal Combatant attacker;
+		internal Stats stats;
 		int nextMuzzle;
 
 		float fireRate;
@@ -36,7 +38,6 @@ namespace CombatSystem.Action
 
 		internal virtual void Awake()
 		{
-
 			hitboxLayer = LayerMask.NameToLayer("Hitbox");
 			fireRate = 1f / shotsPerSecond;
 		}
@@ -45,6 +46,10 @@ namespace CombatSystem.Action
 		{
 			weapon = GetComponent<Weapon>();
 			attacker = weapon.GetComponentInParent<Combatant>();
+
+			stats = weapon.combatant.GetComponent<Stats>();
+			if (stats)
+				stats.OnStatisticUpdated += OnStatisticUpdated;
 		}
 
 #if UNITY_EDITOR
@@ -93,6 +98,14 @@ namespace CombatSystem.Action
 				nextMuzzle = 0;
 
 			return muzzle;
+		}
+
+		internal virtual void OnStatisticUpdated(Stats stats) { }
+
+		internal virtual void OnDestroy()
+		{
+			if (stats)
+				stats.OnStatisticUpdated -= OnStatisticUpdated;
 		}
 	}
 }

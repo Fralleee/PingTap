@@ -6,8 +6,11 @@ namespace Fralle.Gameplay
 {
 	public class UiManager : MonoBehaviour
 	{
+		[Header("Settings")]
+		[SerializeField] bool allowPauseMenu = true;
+
 		[Header("References")]
-		[SerializeField] MainMenu mainMenu;
+		[SerializeField] PauseMenu pauseMenu;
 
 		[Header("Prefabs")]
 		[SerializeField] GameObject prepareUiPrefab;
@@ -21,13 +24,18 @@ namespace Fralle.Gameplay
 			SetupUi();
 
 			MatchManager.OnMatchEnd += HandleGameEnd;
+
+			if (pauseMenu == null)
+				FindObjectOfType<PauseMenu>();
+
+			pauseMenu.gameObject.SetActive(false);
 		}
 
 		void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Escape) && !QuantumConsole.Instance.IsActive)
+			if (Input.GetKeyDown(KeyCode.Escape) && !QuantumConsole.Instance.IsActive && allowPauseMenu)
 			{
-				mainMenu.ToggleMenu();
+				pauseMenu.ToggleMenu();
 			}
 		}
 

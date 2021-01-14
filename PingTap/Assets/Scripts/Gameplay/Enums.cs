@@ -8,7 +8,8 @@
 
 	public enum GameState
 	{
-		MenuActive,
+		MainMenu,
+		PauseMenu,
 		Playing
 	}
 

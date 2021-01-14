@@ -2,6 +2,7 @@
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
 using Fralle.Core.Pooling;
+using StatsSystem;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -24,6 +25,14 @@ namespace CombatSystem.Action
 
 		[Readonly] public float currentSpread;
 
+		float spreadStatMultiplier = 1f;
+
+		internal override void Start()
+		{
+			base.Start();
+			spreadStatMultiplier = stats.spreadReduction;
+		}
+
 		void Update()
 		{
 			if (currentSpread.EqualsWithTolerance(0f))
@@ -45,8 +54,8 @@ namespace CombatSystem.Action
 			if (spreadIncreaseEachShot <= 0)
 				return;
 
-			currentSpread += spreadIncreaseEachShot;
-			currentSpread = Mathf.Clamp(currentSpread, 0, spreadRadius);
+			currentSpread += spreadIncreaseEachShot * spreadStatMultiplier;
+			currentSpread = Mathf.Clamp(currentSpread, 0, spreadRadius * spreadStatMultiplier);
 		}
 
 		public override float GetRange() => range;
@@ -89,6 +98,14 @@ namespace CombatSystem.Action
 			var lineRenderer = instance.GetComponent<LineRenderer>();
 			lineRenderer.SetPosition(0, origin);
 			lineRenderer.SetPosition(1, target);
+		}
+
+
+		internal override void OnStatisticUpdated(Stats stats)
+		{
+			base.OnStatisticUpdated(stats);
+
+			spreadStatMultiplier = stats.spreadReduction;
 		}
 
 	}

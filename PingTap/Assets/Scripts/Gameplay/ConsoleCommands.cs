@@ -1,5 +1,6 @@
 ﻿using Fralle.AI;
 using QFSW.QC;
+using StatsSystem;
 using UnityEngine;
 
 namespace Fralle.Gameplay
@@ -39,6 +40,17 @@ namespace Fralle.Gameplay
 		{
 			Debug.Log($"Frame rate limit set to {limit}");
 			Application.targetFrameRate = limit;
+		}
+
+		[Command(aliasOverride: "upgrade_stats", description: "Upgrades a stat on the player")]
+		public static void UpgradeStat(string name, int count)
+		{
+			var stats = Object.FindObjectOfType<Stats>();
+			for (int i = 0; i < count; i++)
+			{
+				stats.UpgradeStatistic(name);
+			}
+			Debug.Log($"Upgrading {name} to {stats.GetStatisticLevel(name)}");
 		}
 	}
 }

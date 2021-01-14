@@ -51,7 +51,7 @@ namespace Fralle
 
 		void OnGamestateChanged(GameState gameState)
 		{
-			inputController.Lock(gameState == GameState.MenuActive);
+			inputController.Lock(gameState == GameState.PauseMenu);
 		}
 
 	}

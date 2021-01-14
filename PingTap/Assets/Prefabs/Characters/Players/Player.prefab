@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 1821515927939034793}
   - component: {fileID: 1588032943}
   - component: {fileID: 126630795}
+  - component: {fileID: 7658822512113681418}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -707,6 +708,7 @@ MonoBehaviour:
   Jumping: {fileID: 0}
   Crouching: {fileID: 0}
   Dashing: {fileID: 0}
+  Stats: {fileID: 0}
 --- !u!114 &780450220965709962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,6 +766,7 @@ MonoBehaviour:
   - {fileID: -5829858850810243681, guid: 0d3d5ecb19266fa469e1a3b041555a2d, type: 3}
   - {fileID: -5829858850810243681, guid: 421c2edd5bb367c47ae8bd54de794b2d, type: 3}
   - {fileID: -1476022736335663015, guid: ead46b4a43ecabd40a119dc40409703e, type: 3}
+  inputController: {fileID: 0}
 --- !u!114 &1588032943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,6 +808,27 @@ MonoBehaviour:
   cooldown: 1
   throwingForce: 500
   turrentCount: 2
+--- !u!114 &7658822512113681418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0df034fd2a6754597eb31fc355ab1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilReduction: 1
+  spreadReduction: 1
+  runSpeedMultiplier: 1
+  jumpPowerMultiplier: 1
+  reloadSpeedMultiplier: 1
+  meleeRecoveryMultiplier: 1
+  meleePowerMultiplier: 1
+  healthMultiplier: 1
+  regenerationMultiplier: 1
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0
