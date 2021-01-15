@@ -41,7 +41,7 @@ namespace Fralle.Core.Infrastructure
 
 		public void AddTransition(IState from, IState to, Func<bool> predicate)
 		{
-			if (this.transitions.TryGetValue(from.GetType(), out var transitions) == false)
+			if (!this.transitions.TryGetValue(from.GetType(), out var transitions))
 			{
 				transitions = new List<Transition>();
 				this.transitions[from.GetType()] = transitions;
@@ -69,7 +69,8 @@ namespace Fralle.Core.Infrastructure
 
 		Transition GetTransition()
 		{
-			foreach (var transition in anyTransitions.Where(transition => transition.Condition()))
+			Transition transition = anyTransitions.FirstOrDefault(transition => transition.Condition());
+			if (transition != null)
 				return transition;
 
 			return currentTransitions.FirstOrDefault(transition => transition.Condition());
