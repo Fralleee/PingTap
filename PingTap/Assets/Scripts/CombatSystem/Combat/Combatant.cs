@@ -16,14 +16,14 @@ namespace CombatSystem.Combat
 
 		public Transform aimTransform;
 		public Transform weaponHolder;
-		public Weapon weapon;
+		public Weapon equippedWeapon;
 
 		AttackAction primaryAction;
 		AttackAction secondaryAction;
 
 		public void PrimaryAction(bool keyDown = false)
 		{
-			if (!weapon || !primaryAction || primaryAction.tapable && !keyDown)
+			if (!equippedWeapon || !primaryAction || primaryAction.tapable && !keyDown)
 				return;
 
 			primaryAction.Perform();
@@ -31,7 +31,7 @@ namespace CombatSystem.Combat
 
 		public void SecondaryAction(bool keyDown = false)
 		{
-			if (!weapon || !secondaryAction || secondaryAction.tapable && !keyDown)
+			if (!equippedWeapon || !secondaryAction || secondaryAction.tapable && !keyDown)
 				return;
 
 			secondaryAction.Perform();
@@ -40,7 +40,7 @@ namespace CombatSystem.Combat
 		public void SetFPSLayers(string layerName)
 		{
 			var layer = LayerMask.NameToLayer(layerName);
-			weapon.gameObject.SetLayerRecursively(layer);
+			equippedWeapon.gameObject.SetLayerRecursively(layer);
 		}
 
 		void Awake()
@@ -56,13 +56,35 @@ namespace CombatSystem.Combat
 				weaponHolder = transform;
 		}
 
-		public void SetupWeapon(Weapon w)
+		public void ClearWeapons()
 		{
-			OnWeaponSwitch(w);
-			weapon = w;
-			var attackActions = weapon.GetComponentsInChildren<AttackAction>();
+			foreach (Transform child in weaponHolder)
+				DestroyImmediate(child.gameObject);
+
+			equippedWeapon = null;
+		}
+
+		public void EquipWeapon(Weapon weapon, bool animationDistance = true)
+		{
+			if (equippedWeapon != null && equippedWeapon.name == weapon.name)
+				return;
+
+			ClearWeapons();
+
+			var position = animationDistance ? weaponHolder.position.With(y: -0.5f) : weaponHolder.position;
+			equippedWeapon = Instantiate(weapon, position, weaponHolder.rotation, weaponHolder);
+
+			equippedWeapon.Equip(this);
+			SetupWeapon(equippedWeapon);
+		}
+
+		void SetupWeapon(Weapon weapon)
+		{
+			OnWeaponSwitch(weapon);
+			equippedWeapon = weapon;
+			var attackActions = equippedWeapon.GetComponentsInChildren<AttackAction>();
 			if (attackActions.Length > 2)
-				Debug.LogWarning($"Weapon {weapon} has more attack actions than possible (2).");
+				Debug.LogWarning($"Weapon {equippedWeapon} has more attack actions than possible (2).");
 			else if (attackActions.Length > 0)
 			{
 				primaryAction = attackActions[0];

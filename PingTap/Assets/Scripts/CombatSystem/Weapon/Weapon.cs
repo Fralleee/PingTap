@@ -27,7 +27,7 @@ namespace CombatSystem
 		public float nextAvailableShot;
 
 		float equipTime;
-		bool equipped;
+		bool animationComplete;
 		Vector3 startPosition;
 		Quaternion startRotation;
 
@@ -47,17 +47,15 @@ namespace CombatSystem
 			}
 		}
 
-		public void Equip(Combatant c, bool shouldAnimate = true)
+		public void Equip(Combatant combatant, bool shouldAnimate = true)
 		{
-			Debug.Log("Weapon:Equip");
-
 			if (string.IsNullOrWhiteSpace(weaponName))
 				weaponName = name;
 
 			ActiveWeaponAction = Status.Equipping;
 			equipTime = 0f;
-			equipped = !shouldAnimate;
-			combatant = c;
+			animationComplete = !shouldAnimate;
+			this.combatant = combatant;
 
 			startPosition = shouldAnimate ? transform.localPosition : Vector3.zero;
 			startRotation = shouldAnimate ? transform.localRotation : Quaternion.identity;
@@ -66,7 +64,6 @@ namespace CombatSystem
 			ammoAddonController = GetComponent<AmmoAddon>();
 
 			isEquipped = true;
-			c.SetupWeapon(this);
 		}
 
 		public void ChangeWeaponAction(Status newActiveWeaponAction)
@@ -77,14 +74,13 @@ namespace CombatSystem
 
 		void AnimateEquip()
 		{
-			Debug.Log("Weapon:AnimateEquip");
-			if (equipped)
+			if (animationComplete)
 				return;
 
 			var isEquipping = equipTime < equipAnimationTime;
 			if (!isEquipping)
 			{
-				equipped = true;
+				animationComplete = true;
 				ActiveWeaponAction = Status.Ready;
 				return;
 			}

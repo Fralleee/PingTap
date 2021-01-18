@@ -1,4 +1,5 @@
-﻿using Fralle.FpsController;
+﻿using CombatSystem.Combat;
+using Fralle.FpsController;
 using UnityEngine;
 
 namespace Fralle
@@ -9,20 +10,20 @@ namespace Fralle
 		[SerializeField] float swaySmooth = 25f;
 		[SerializeField] float idleSmooth = 1f;
 
-		PlayerAttack playerAttack;
+		Combatant combatant;
 		InputController input;
 
 		Vector3 nextIdlePosition = Vector3.zero;
 
 		void Awake()
 		{
-			playerAttack = GetComponentInParent<PlayerAttack>();
+			combatant = GetComponentInParent<Combatant>();
 			input = GetComponentInParent<InputController>();
 		}
 
 		void LateUpdate()
 		{
-			if (playerAttack.equippedWeapon == null)
+			if (combatant.equippedWeapon == null)
 				return;
 			if (Cursor.visible)
 				return;

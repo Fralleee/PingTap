@@ -2,9 +2,9 @@
 
 namespace CombatSystem.Interfaces
 {
-  public interface IAction
-  {
-    MouseButton Button { get; set; }
-    void Perform();
-  }
+	public interface IAction
+	{
+		MouseButton Button { get; set; }
+		void Perform();
+	}
 }

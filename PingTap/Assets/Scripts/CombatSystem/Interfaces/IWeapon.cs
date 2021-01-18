@@ -5,7 +5,7 @@ namespace CombatSystem.Interfaces
 {
 	public interface IWeapon
 	{
-		void Equip(Combatant combatant, bool shouldAnimate);
+		void Equip(Combatant combatant, bool shouldAnimate = true);
 		void ChangeWeaponAction(Status newActiveWeaponAction);
 	}
 }
