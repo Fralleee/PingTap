@@ -12,78 +12,84 @@ namespace Fralle.UI
 		ProfilerController profilerController;
 		TextMeshProUGUI statsText;
 
-		static bool showDebugStats = true;
-		static bool showFrameTime = false;
-		static bool showFps = true;
-		static bool showGcMemory = false;
-		static bool showSystemMemory = false;
-		static bool showDrawCalls = false;
+		static bool debugStats = false;
+		static bool frameTime = false;
+		static bool fps = true;
+		static bool gcMemory = false;
+		static bool systemMemory = false;
+		static bool drawCalls = false;
 
 		void Awake()
 		{
 			profilerController = GetComponent<ProfilerController>();
 			statsText = GetComponent<TextMeshProUGUI>();
+			ToggleProfiler(debugStats);
 		}
 
 		void Update()
 		{
-			if (!showDebugStats)
-			{
-				statsText.enabled = false;
+			if (!debugStats)
 				return;
-			}
 
 			var sb = new StringBuilder(500);
 
-			if (showFrameTime)
+			if (frameTime)
 				sb.AppendLine($"Frame Time: {profilerController.frameTime:F1} ms");
-			if (showFps)
+			if (fps)
 				sb.AppendLine($"FPS: {profilerController.fps:F1} ms");
-			if (showGcMemory)
+			if (gcMemory)
 				sb.AppendLine($"GC Memory: {profilerController.gcMemory} MB");
-			if (showSystemMemory)
+			if (systemMemory)
 				sb.AppendLine($"System Memory: {profilerController.systemMemory} MB");
-			if (showDrawCalls)
+			if (drawCalls)
 				sb.AppendLine($"Draw Calls: {profilerController.drawCalls}");
 
 			statsText.text = sb.ToString();
 		}
 
-		[Command(aliasOverride: "show_debug_stats", description: "Show debug stats")]
-		public static void ShowDebugStats(int enabled)
+		public void ToggleProfiler(bool enabled)
 		{
-			showDebugStats = Convert.ToBoolean(enabled);
+			profilerController.enabled = enabled;
+			statsText.enabled = enabled;
 		}
 
-		[Command(aliasOverride: "show_frame_time", description: "Show frame time")]
+		#region Commands
+		[Command(aliasOverride: "display_performance", description: "Display performance stats")]
+		public static void DisplayDebugStats(int enabled)
+		{
+			debugStats = Convert.ToBoolean(enabled);
+			FindObjectOfType<DisplayProfilerStats>().ToggleProfiler(debugStats);
+		}
+
+		[Command(aliasOverride: "performance_frame_time", description: "Show frame time")]
 		public static void ShowFrameTime(int enabled)
 		{
-			showFrameTime = Convert.ToBoolean(enabled);
+			frameTime = Convert.ToBoolean(enabled);
 		}
 
-		[Command(aliasOverride: "show_fps", description: "Show fps count")]
+		[Command(aliasOverride: "performance_fps", description: "Show fps count")]
 		public static void ShowFps(int enabled)
 		{
-			showFps = Convert.ToBoolean(enabled);
+			fps = Convert.ToBoolean(enabled);
 		}
 
-		[Command(aliasOverride: "show_gc_memory", description: "Show gc memory")]
+		[Command(aliasOverride: "performance_gc_memory", description: "Show gc memory")]
 		public static void ShowGcMemory(int enabled)
 		{
-			showGcMemory = Convert.ToBoolean(enabled);
+			gcMemory = Convert.ToBoolean(enabled);
 		}
 
-		[Command(aliasOverride: "show_system_memory", description: "Show system memory")]
+		[Command(aliasOverride: "performance_system_memory", description: "Show system memory")]
 		public static void ShowSystemMemory(int enabled)
 		{
-			showSystemMemory = Convert.ToBoolean(enabled);
+			systemMemory = Convert.ToBoolean(enabled);
 		}
 
-		[Command(aliasOverride: "show_draw_calls", description: "Show draw calls")]
+		[Command(aliasOverride: "performance_draw_calls", description: "Show draw calls")]
 		public static void ShowDrawCalls(int enabled)
 		{
-			showDrawCalls = Convert.ToBoolean(enabled);
+			drawCalls = Convert.ToBoolean(enabled);
 		}
-
+		#endregion
 	}
 }
