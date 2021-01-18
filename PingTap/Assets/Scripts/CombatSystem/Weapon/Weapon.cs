@@ -31,15 +31,6 @@ namespace CombatSystem
 		Vector3 startPosition;
 		Quaternion startRotation;
 
-		void Awake()
-		{
-			if (string.IsNullOrWhiteSpace(weaponName))
-				weaponName = name;
-
-			recoilAddon = GetComponent<RecoilAddon>();
-			ammoAddonController = GetComponent<AmmoAddon>();
-		}
-
 		void Update()
 		{
 			AnimateEquip();
@@ -56,15 +47,23 @@ namespace CombatSystem
 			}
 		}
 
-		public void Equip(Combatant c)
+		public void Equip(Combatant c, bool shouldAnimate = true)
 		{
+			Debug.Log("Weapon:Equip");
+
+			if (string.IsNullOrWhiteSpace(weaponName))
+				weaponName = name;
+
 			ActiveWeaponAction = Status.Equipping;
 			equipTime = 0f;
-			equipped = false;
+			equipped = !shouldAnimate;
 			combatant = c;
 
-			startPosition = transform.localPosition;
-			startRotation = transform.localRotation;
+			startPosition = shouldAnimate ? transform.localPosition : Vector3.zero;
+			startRotation = shouldAnimate ? transform.localRotation : Quaternion.identity;
+
+			recoilAddon = GetComponent<RecoilAddon>();
+			ammoAddonController = GetComponent<AmmoAddon>();
 
 			isEquipped = true;
 			c.SetupWeapon(this);
@@ -78,6 +77,7 @@ namespace CombatSystem
 
 		void AnimateEquip()
 		{
+			Debug.Log("Weapon:AnimateEquip");
 			if (equipped)
 				return;
 

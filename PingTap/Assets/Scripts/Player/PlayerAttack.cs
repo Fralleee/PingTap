@@ -1,7 +1,5 @@
 ﻿using CombatSystem;
 using CombatSystem.Combat;
-using Fralle.Core.Attributes;
-using Fralle.Core.Extensions;
 using Fralle.FpsController;
 using UnityEngine;
 
@@ -10,16 +8,18 @@ namespace Fralle
 	[RequireComponent(typeof(Combatant))]
 	public class PlayerAttack : MonoBehaviour
 	{
-		[Readonly] public Weapon equippedWeapon;
+		public Weapon equippedWeapon;
+		[SerializeField] Combatant combatant;
 
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 
-		Combatant combatant;
 		[HideInInspector] public InputController inputController;
 
 		void Awake()
 		{
-			combatant = GetComponent<Combatant>();
+			if (combatant == null)
+				combatant = GetComponent<Combatant>();
+
 			inputController = GetComponent<InputController>();
 		}
 
@@ -42,7 +42,11 @@ namespace Fralle
 			if (equippedWeapon)
 				Destroy(equippedWeapon.gameObject);
 
+#if UNITY_EDITOR
+			equippedWeapon = Instantiate(weapon, combatant.weaponHolder.position, combatant.weaponHolder.rotation, combatant.weaponHolder);
+#else
 			equippedWeapon = Instantiate(weapon, combatant.weaponHolder.position.With(y: -0.5f), combatant.weaponHolder.rotation, combatant.weaponHolder);
+#endif
 			equippedWeapon.Equip(combatant);
 		}
 
@@ -63,6 +67,32 @@ namespace Fralle
 				combatant.SecondaryAction(true);
 			else if (inputController.Mouse2ButtonHold)
 				combatant.SecondaryAction();
+		}
+
+		void ClearWeapons()
+		{
+			if (combatant == null || weapons.Length <= 0)
+			{
+				Debug.LogWarning("Could not equip weapon. Check weapons array and combatant reference.");
+				return;
+			}
+
+			foreach (Transform child in combatant.weaponHolder)
+				DestroyImmediate(child.gameObject);
+		}
+
+		[ContextMenu("Equip Weapon")]
+		public void EquipFirstWeaponInList()
+		{
+			ClearWeapons();
+			EquipWeapon(weapons[0]);
+		}
+
+		[ContextMenu("Remove Weapon")]
+		public void RemoveWeapon()
+		{
+			ClearWeapons();
+			equippedWeapon = null;
 		}
 	}
 }
