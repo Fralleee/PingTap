@@ -118,13 +118,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4190007
   m_DefaultStencilState:
-    overrideStencilState: 1
-    stencilReference: 0
+    overrideStencilState: 0
+    stencilReference: 3
     stencilCompareFunction: 3
     passOperation: 0
     failOperation: 0
     zFailOperation: 0
-  m_ShadowTransparentReceive: 1
+  m_ShadowTransparentReceive: 0
   m_RenderingMode: 0
   m_AccurateGbufferNormals: 0
 --- !u!114 &1696981692264647854
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: FPO Opaques
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     passTag: FPO Opaques
     Event: 250
@@ -164,13 +164,13 @@ MonoBehaviour:
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
-    overrideDepthState: 0
-    depthCompareFunction: 8
-    enableWrite: 0
+    overrideDepthState: 1
+    depthCompareFunction: 4
+    enableWrite: 1
     stencilSettings:
       overrideStencilState: 1
-      stencilReference: 1
-      stencilCompareFunction: 8
+      stencilReference: 0
+      stencilCompareFunction: 3
       passOperation: 2
       failOperation: 0
       zFailOperation: 0

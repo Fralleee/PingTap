@@ -22,7 +22,6 @@ namespace Fralle.AI
 		void Update()
 		{
 			animator.SetBool("IsMoving", aiController.IsMoving);
-
 		}
 
 		void OnAnimatorMove()
