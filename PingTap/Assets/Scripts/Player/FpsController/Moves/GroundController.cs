@@ -80,10 +80,10 @@ namespace Fralle.FpsController.Moves
 			var distance = ((capsule.height / 2f) - capsule.radius) + stickToGroundHelperDistance;
 			if (Physics.SphereCast(transform.position, capsule.radius, Vector3.down, out RaycastHit hitInfo, distance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
 			{
-				if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < maxWalkableSlopeAngle)
-				{
-					rigidBody.velocity = Vector3.ProjectOnPlane(rigidBody.velocity, hitInfo.normal);
-				}
+				if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) >= maxWalkableSlopeAngle)
+					return;
+
+				rigidBody.velocity = Vector3.ProjectOnPlane(rigidBody.velocity, hitInfo.normal);
 			}
 		}
 

@@ -1,5 +1,6 @@
 ﻿using CombatSystem;
 using CombatSystem.Combat;
+using Fralle.Core.Extensions;
 using Fralle.FpsController;
 using UnityEngine;
 
@@ -12,12 +13,23 @@ namespace Fralle
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 		[HideInInspector] public InputController inputController;
 
+		int firstPersonObjectsLayer;
+
 		void Awake()
 		{
+			firstPersonObjectsLayer = LayerMask.NameToLayer("First Person Objects");
+
 			if (combatant == null)
 				combatant = GetComponent<Combatant>();
 
+			combatant.OnWeaponSwitch += Combatant_OnWeaponSwitch;
+
 			inputController = GetComponent<InputController>();
+		}
+
+		void Combatant_OnWeaponSwitch(Weapon obj)
+		{
+			combatant.equippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
 		}
 
 		void Start()
@@ -55,11 +67,14 @@ namespace Fralle
 		public void EquipFirstWeaponInList()
 		{
 			combatant.EquipWeapon(weapons[0], false);
+			combatant.equippedWeapon.gameObject.SetLayerRecursively(LayerMask.NameToLayer("First Person Objects"));
+			Debug.Log($"Equipped: {combatant.equippedWeapon}");
 		}
 
 		[ContextMenu("Remove Weapon")]
 		public void RemoveWeapon()
 		{
+			Debug.Log($"Removed: {combatant.equippedWeapon}");
 			combatant.ClearWeapons();
 		}
 	}

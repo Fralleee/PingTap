@@ -45,6 +45,7 @@ namespace Fralle.FpsController
 		[HideInInspector] public Jumping Jumping;
 		[HideInInspector] public Crouching Crouching;
 		[HideInInspector] public Dashing Dashing;
+		[HideInInspector] public Headbob Headbob;
 
 		[HideInInspector] public Stats Stats;
 
@@ -62,6 +63,7 @@ namespace Fralle.FpsController
 			Jumping = GetComponentInChildren<Jumping>();
 			Crouching = GetComponentInChildren<Crouching>();
 			Dashing = GetComponentInChildren<Dashing>();
+			Headbob = GetComponentInChildren<Headbob>();
 			Stats = GetComponent<Stats>();
 		}
 
@@ -77,9 +79,15 @@ namespace Fralle.FpsController
 				GroundController.SlopeControl();
 				StepClimber.ClimbSteps();
 				IsMoving = Movement.Move();
+				if (IsMoving)
+					Headbob.HandleMovement(Input.Move, 1);
+				Headbob.GroundedTick();
 			}
 			else
+			{
 				AirMovement.Move();
+				Headbob.AirborneTick();
+			}
 
 			Crouching.ControlledFixedUpdate();
 			Jumping.ControlledFixedUpdate();

@@ -34,6 +34,7 @@ namespace Fralle.UI.Menu
 		{
 			isOpen = !isOpen;
 			gameObject.SetActive(isOpen);
+			CameraManager.ConfigureCursor(!isOpen);
 			StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);
 		}
 
