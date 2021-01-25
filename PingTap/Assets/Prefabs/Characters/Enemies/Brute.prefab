@@ -416,7 +416,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 6
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 720
@@ -528,7 +528,7 @@ MonoBehaviour:
     type: 3}
   currentHealth: 0
   maxHealth: 100
-  immortal: 1
+  immortal: 0
   armor:
     armor: 0
     armorElementModifiers: []
@@ -1150,6 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d550e120ef92b45a4bc51e5bb85278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSetSpeed: 1
 --- !u!54 &7689401469366757083
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1756,6 +1757,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.249
       objectReference: {fileID: 0}
+    - target: {fileID: -1578373571446707184, guid: 575cf9c90d2d8cb45837a6c53dfda336,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 887424395ae5a7840bd92e8672a84c36, type: 2}
     - target: {fileID: 919132149155446097, guid: 575cf9c90d2d8cb45837a6c53dfda336,
         type: 3}
       propertyPath: m_Name
@@ -1765,7 +1771,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 3cd2c8200775c9a4cb4039eb7068481a, type: 2}
+      objectReference: {fileID: 9100000, guid: b296dae922a99334597479e7452b3fa8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 575cf9c90d2d8cb45837a6c53dfda336, type: 3}
 --- !u!1 &7948997870871792332 stripped

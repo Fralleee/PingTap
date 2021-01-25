@@ -80,13 +80,13 @@ namespace Fralle.FpsController
 				StepClimber.ClimbSteps();
 				IsMoving = Movement.Move();
 				if (IsMoving)
-					Headbob.HandleMovement(Input.Move, 1);
-				Headbob.GroundedTick();
+					Headbob?.HandleMovement(Input.Move, 1);
+				Headbob?.GroundedTick();
 			}
 			else
 			{
 				AirMovement.Move();
-				Headbob.AirborneTick();
+				Headbob?.AirborneTick();
 			}
 
 			Crouching.ControlledFixedUpdate();

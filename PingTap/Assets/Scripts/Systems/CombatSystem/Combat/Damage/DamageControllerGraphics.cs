@@ -6,7 +6,7 @@ namespace Fralle
 	[RequireComponent(typeof(DamageController))]
 	public class DamageControllerGraphics : MonoBehaviour
 	{
-		static readonly int RendererColor = Shader.PropertyToID("_MainColor");
+		static readonly int RendererColor = Shader.PropertyToID("_BaseColor");
 
 		[SerializeField] GameObject ragdollModel;
 		[SerializeField] GameObject gibModel;

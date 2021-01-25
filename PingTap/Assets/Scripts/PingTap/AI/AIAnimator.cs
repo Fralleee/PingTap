@@ -6,6 +6,8 @@ namespace Fralle.AI
 {
 	public class AIAnimator : MonoBehaviour
 	{
+		[SerializeField] bool useSetSpeed;
+
 		Animator animator;
 		AIController aiController;
 		NavMeshAgent navMeshAgent;
@@ -26,7 +28,8 @@ namespace Fralle.AI
 
 		void OnAnimatorMove()
 		{
-			navMeshAgent.speed = (animator.deltaPosition / Time.deltaTime).magnitude;
+			if (!useSetSpeed)
+				navMeshAgent.speed = (animator.deltaPosition / Time.deltaTime).magnitude;
 		}
 
 		void HandleDeath(DamageController damageController, DamageData damageData)
