@@ -16,15 +16,14 @@ namespace Fralle.Core.Pooling
 
 		void Update()
 		{
-			bool performDestroy = false;
-			if (particles)
-				performDestroy = !particles.IsAlive();
+			if (particles && particles.IsAlive())
+				return;
 
-			if (audioSource)
-				performDestroy = !audioSource.isPlaying;
 
-			if (performDestroy)
-				ObjectPool.Despawn(gameObject);
+			if (audioSource && audioSource.isPlaying)
+				return;
+
+			ObjectPool.Despawn(gameObject);
 		}
 	}
 }
