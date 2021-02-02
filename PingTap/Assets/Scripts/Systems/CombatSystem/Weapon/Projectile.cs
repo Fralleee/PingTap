@@ -11,6 +11,7 @@ namespace CombatSystem.Offense
 	{
 		[SerializeField] GameObject impactEffectPrefab;
 		[SerializeField] GameObject muzzleParticlePrefab;
+		[SerializeField] GameObject explosionField;
 
 		new Rigidbody rigidbody;
 		ProjectileData data;
@@ -69,6 +70,12 @@ namespace CombatSystem.Offense
 		{
 			if (impactEffectPrefab)
 				ObjectPool.Spawn(impactEffectPrefab, transform.position, Quaternion.identity);
+
+			if (explosionField)
+			{
+				var field = ObjectPool.Spawn(explosionField, transform.position, Quaternion.identity);
+				field.GetComponent<ExplosionShockwave>().Setup(data.explosionRadius);
+			}
 
 			DamageHelper.Explosion(data, transform.position, collision);
 			ObjectPool.Despawn(gameObject);

@@ -4884,6 +4884,7 @@ GameObject:
   - component: {fileID: 6899536842832051421}
   - component: {fileID: 3953032659365394613}
   - component: {fileID: 4840401774229393113}
+  - component: {fileID: 7300829593860797418}
   m_Layer: 21
   m_Name: Grenade
   m_TagString: Untagged
@@ -9790,6 +9791,22 @@ MonoBehaviour:
     type: 3}
   muzzleParticlePrefab: {fileID: 1569006322450168, guid: 7c5cf188746812845a5164fee1168288,
     type: 3}
+  explosionField: {fileID: 7644098551254824805, guid: c508e04f8bedcd643a75781f82104d6f,
+    type: 3}
+--- !u!114 &7300829593860797418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232083545825913641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ab692bc4f43644992bc3f3fbac59de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolScript: {fileID: 0}
+  timeSpawned: 0
 --- !u!1 &2232342845531931777
 GameObject:
   m_ObjectHideFlags: 0

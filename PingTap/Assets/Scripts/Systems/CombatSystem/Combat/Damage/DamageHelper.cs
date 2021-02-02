@@ -11,6 +11,7 @@ namespace CombatSystem.Combat.Damage
 	public static class DamageHelper
 	{
 		static readonly int hitboxLayer = LayerMask.NameToLayer("Hitbox");
+		static readonly int projectilesLayer = LayerMask.NameToLayer("Projectile");
 
 		public static DamageEffect[] SetupDamageEffects(DamageEffect[] damageEffects, Combatant combatant, float damageAmount)
 		{
@@ -101,7 +102,8 @@ namespace CombatSystem.Combat.Damage
 				position = collision.GetContact(0).point;
 			}
 
-			var colliders = Physics.OverlapSphere(position, projectileData.explosionRadius);
+			var layerMask = ~(1 << projectilesLayer);
+			var colliders = Physics.OverlapSphere(position, projectileData.explosionRadius, layerMask);
 
 			List<Rigidbody> rigidBodies = new List<Rigidbody>();
 			List<DamageController> targets = new List<DamageController>();

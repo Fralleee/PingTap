@@ -61,10 +61,7 @@ namespace CombatSystem.Combat
 			foreach (Transform child in weaponHolder)
 			{
 				if (child.name != "Weapon Camera")
-				{
-					Debug.Log($"Child name: {child.name}");
 					DestroyImmediate(child.gameObject);
-				}
 			}
 
 			equippedWeapon = null;

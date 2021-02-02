@@ -44,7 +44,7 @@ namespace Fralle.FpsController.Moves
 			var found = false;
 			foreach (ContactPoint cp in allCPs)
 			{
-				if (cp.normal.y > 0.0001f && (found == false || cp.normal.y > groundCP.normal.y))
+				if (cp.normal.y > 0.0001f && (!found || cp.normal.y > groundCP.normal.y))
 				{
 					groundCP = cp;
 					found = true;

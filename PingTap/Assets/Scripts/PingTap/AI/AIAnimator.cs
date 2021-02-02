@@ -28,8 +28,8 @@ namespace Fralle.AI
 
 		void OnAnimatorMove()
 		{
-			if (!useSetSpeed)
-				navMeshAgent.speed = (animator.deltaPosition / Time.deltaTime).magnitude;
+			if(!useSetSpeed)
+			navMeshAgent.speed = (animator.deltaPosition / Time.deltaTime).magnitude;
 		}
 
 		void HandleDeath(DamageController damageController, DamageData damageData)

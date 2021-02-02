@@ -13,19 +13,23 @@ namespace Fralle
 		Combatant combatant;
 		InputController input;
 
+		Vector3 initialSwayPosition;
 		Vector3 nextIdlePosition = Vector3.zero;
+
+		bool shouldSway => combatant.equippedWeapon && !Cursor.visible;
 
 		void Awake()
 		{
+			initialSwayPosition = transform.localPosition;
+			nextIdlePosition = initialSwayPosition;
+
 			combatant = GetComponentInParent<Combatant>();
 			input = GetComponentInParent<InputController>();
 		}
 
 		void LateUpdate()
 		{
-			if (combatant.equippedWeapon == null)
-				return;
-			if (Cursor.visible)
+			if (!shouldSway)
 				return;
 
 			var delta = -input.MouseRaw;
@@ -38,7 +42,7 @@ namespace Fralle
 		void PerformSway(Vector2 delta)
 		{
 			transform.localPosition += (Vector3)delta * swaySize * 0.001f;
-			transform.localPosition = Vector3.Lerp(transform.localPosition, Vector3.zero, swaySmooth * Time.deltaTime);
+			transform.localPosition = Vector3.Lerp(transform.localPosition, initialSwayPosition, swaySmooth * Time.deltaTime);
 		}
 
 		void PerformIdle()
@@ -50,7 +54,7 @@ namespace Fralle
 
 		void NewIdlePosition()
 		{
-			nextIdlePosition = Random.insideUnitCircle * 0.01f;
+			nextIdlePosition = initialSwayPosition + (Vector3)(Random.insideUnitCircle * 0.01f);
 		}
 
 	}

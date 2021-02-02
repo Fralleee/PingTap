@@ -4939,7 +4939,8 @@ GameObject:
   - component: {fileID: 4242503790161724}
   - component: {fileID: 198681268124977086}
   - component: {fileID: 199290676256866222}
-  - component: {fileID: -8909564455843606775}
+  - component: {fileID: 2147116794609277844}
+  - component: {fileID: 5968401998214118703}
   m_Layer: 0
   m_Name: GrenadeMuzzleRed
   m_TagString: Untagged
@@ -9805,7 +9806,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &-8909564455843606775
+--- !u!114 &2147116794609277844
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9814,7 +9815,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1569006322450168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4320a8b4b06dc7e4497be30326f4f9c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 97ab692bc4f43644992bc3f3fbac59de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolScript: {fileID: 0}
+  timeSpawned: 0
+--- !u!114 &5968401998214118703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569006322450168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1542191e2d76d2840ac102b7790acf5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1964594952248622
