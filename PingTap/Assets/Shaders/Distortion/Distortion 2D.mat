@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Distortion Only
-  m_Shader: {fileID: -6465566751694194690, guid: 6ed5a31984f14154cbad4ac2c4544d9b,
+  m_Name: Distortion 2D
+  m_Shader: {fileID: -6465566751694194690, guid: b33bfb62e58f2a2459bd5850641efb04,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,14 +20,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_73bc021e114a4feea3ba9d6a74a6204e:
-        m_Texture: {fileID: 2800000, guid: 40c12e09ffb04254dadbbde9e04f5d5a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_bba399c1eaea4597b8909ea732ffd651:
-        m_Texture: {fileID: 2800000, guid: 40c12e09ffb04254dadbbde9e04f5d5a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -54,6 +46,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -85,13 +81,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - BOOLEAN_903B86CAAAF743A2B068B332C6243B66: 0
-    - Vector1_1b8874ab03804bebadf4bffe64851476: 23
-    - Vector1_57fbebdeb73a481888f96bb0cf90a747: 5
-    - Vector1_76cfdcdc2b8c45349441ec747d244564: 20
-    - Vector1_b9c4882f0bcc4f5db922214d82aa4250: 1
-    - Vector1_ffdd2cef163544359a7ff8c549d57068: 1
-    - _Alpha: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -101,17 +90,18 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
+    - _DistortionSpeed: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HeatDistortion: 0.443
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Size: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -120,18 +110,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_0e8459a50cea4f0e8c3f5d7eed168dc4: {r: 1, g: 0.54825234, b: 0, a: 0}
-    - Color_10ff3eff0b3d40bd927364674568a228: {r: 1, g: 0.30980393, b: 0, a: 0}
-    - Vector2_14193f50c6a14635829159a76556c90f: {r: 0.25, g: 0.25, b: 0, a: 0}
-    - Vector2_ac1fd369ae0d446bae71ccb81452b857: {r: 2, g: 2, b: 0, a: 0}
-    - Vector2_e6ddef587c6e40a4a6c34cb156fbc2c7: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - Vector2_f03279c886d245fe95c57f7c937df619: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DistortionSpeed: {r: 0, g: -0.2, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &185228687051030139
+--- !u!114 &2364928887013310558
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
