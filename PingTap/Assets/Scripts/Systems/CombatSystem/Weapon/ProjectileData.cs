@@ -18,7 +18,7 @@ namespace CombatSystem.Offense
 		public float explodeOnTime;
 		public float explosionRadius;
 		public float pushForce;
-		public float range;
+		[Range(0, 1000f)] public float range;
 
 		[HideInInspector] public Combatant attacker;
 		[HideInInspector] public float damage;

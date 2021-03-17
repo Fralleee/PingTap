@@ -7,6 +7,7 @@ namespace Fralle.Core
 		public void Run()
 		{
 			Action action1 = delegate
+			{ };
 			action1();
 			FunctionWithOnComplete(action1);
 

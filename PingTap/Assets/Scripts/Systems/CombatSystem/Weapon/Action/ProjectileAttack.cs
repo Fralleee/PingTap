@@ -40,13 +40,16 @@ namespace CombatSystem.Action
 				attacker.Stats.OnAttack(1);
 
 				var layerMask = ~LayerMask.GetMask("Corpse");
-				if (Physics.Raycast(weapon.combatant.aimTransform.position, weapon.combatant.aimTransform.forward, out var hitInfo, projectileData.range, layerMask))
+				Ray ray = new Ray(weapon.combatant.aimTransform.position, weapon.combatant.aimTransform.forward);
+				if (Physics.Raycast(ray, out var hitInfo, projectileData.range, layerMask))
 					projectileData.forward = (hitInfo.point - muzzle.position).normalized;
+				else
+					projectileData.forward = (ray.GetPoint(Mathf.Min(projectileData.range, 50f)) - muzzle.position).normalized;
 
 				var spread = (Random.insideUnitCircle * radiusOnMaxRange) / projectileData.range;
 				projectileData.forward += new Vector3(0, spread.y, spread.x);
 
-				var instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, transform.rotation);
+				var instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.forward, transform.up));
 				var projectile = instance.GetComponent<Projectile>();
 				projectile.Initiate(projectileData);
 
