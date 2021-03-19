@@ -1,7 +1,7 @@
 ﻿using Fralle.Core.CameraControls;
 using System;
 using UnityEngine;
-using UnityEngine.Rendering;
+//using UnityEngine.Rendering;
 
 namespace Fralle.FpsController.Moves
 {
@@ -14,7 +14,7 @@ namespace Fralle.FpsController.Moves
 		[SerializeField] Transform cameraRig = null;
 		[SerializeField] ShakeTransformEventData cameraShake = null;
 		[SerializeField] ShakeTransform cameraShakeTransform = null;
-		[SerializeField] Volume postProcess;
+		//[SerializeField] Volume postProcess;
 
 		PlayerController controller;
 		Rigidbody rigidBody;
@@ -56,8 +56,8 @@ namespace Fralle.FpsController.Moves
 		void Stopping()
 		{
 			stopDashTimer -= Time.deltaTime;
-			if (postProcess)
-				postProcess.weight = Mathf.SmoothStep(1, 0, 1 - (stopDashTimer / stopTime));
+			//if (postProcess)
+			//	postProcess.weight = Mathf.SmoothStep(1, 0, 1 - (stopDashTimer / stopTime));
 
 			controller.Camera.camera.fieldOfView = Mathf.SmoothStep(70, 60, 1 - (stopDashTimer / stopTime));
 
@@ -68,7 +68,7 @@ namespace Fralle.FpsController.Moves
 		void Perform()
 		{
 			cooldownTimer = controller.dashCooldown;
-			postProcess.weight = 1;
+			//postProcess.weight = 1;
 
 			var direction =
 				controller.Input.Move.y > 0 ? cameraRig.forward :
