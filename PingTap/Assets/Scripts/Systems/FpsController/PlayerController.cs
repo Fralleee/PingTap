@@ -1,5 +1,4 @@
 ﻿using Fralle.FpsController.Moves;
-using StatsSystem;
 using UnityEngine;
 
 namespace Fralle.FpsController
@@ -47,7 +46,6 @@ namespace Fralle.FpsController
 		[HideInInspector] public Dashing Dashing;
 		[HideInInspector] public Headbob Headbob;
 
-		[HideInInspector] public Stats Stats;
 
 		void Awake()
 		{
@@ -64,7 +62,6 @@ namespace Fralle.FpsController
 			Crouching = GetComponentInChildren<Crouching>();
 			Dashing = GetComponentInChildren<Dashing>();
 			Headbob = GetComponentInChildren<Headbob>();
-			Stats = GetComponent<Stats>();
 		}
 
 		void FixedUpdate()

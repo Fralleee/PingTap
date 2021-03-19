@@ -1,5 +1,4 @@
-﻿using StatsSystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.FpsController.Moves
 {
@@ -17,12 +16,6 @@ namespace Fralle.FpsController.Moves
 			rigidBody = GetComponent<Rigidbody>();
 		}
 
-		void Start()
-		{
-			if (controller.Stats)
-				controller.Stats.OnStatisticUpdated += OnStatisticUpdated;
-		}
-
 		public void ControlledFixedUpdate()
 		{
 			Limit();
@@ -36,17 +29,6 @@ namespace Fralle.FpsController.Moves
 
 			horizontalMovement = horizontalMovement.normalized * maxSpeed * runSpeedStatMultiplier;
 			rigidBody.velocity = new Vector3(horizontalMovement.x, rigidBody.velocity.y, horizontalMovement.z);
-		}
-
-		void OnStatisticUpdated(Stats stats)
-		{
-			runSpeedStatMultiplier = stats.runSpeedMultiplier;
-		}
-
-		void OnDestroy()
-		{
-			if (controller.Stats)
-				controller.Stats.OnStatisticUpdated -= OnStatisticUpdated;
 		}
 	}
 }

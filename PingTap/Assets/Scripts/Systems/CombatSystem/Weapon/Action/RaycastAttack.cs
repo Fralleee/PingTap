@@ -1,8 +1,8 @@
-﻿using CombatSystem.Combat.Damage;
+﻿using CharacterStats;
+using CombatSystem.Combat.Damage;
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
 using Fralle.Core.Pooling;
-using StatsSystem;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -30,7 +30,7 @@ namespace CombatSystem.Action
 		internal override void Start()
 		{
 			base.Start();
-			spreadStatMultiplier = stats.spreadReduction;
+			spreadStatMultiplier = stats.aim.Value;
 		}
 
 		void Update()
@@ -101,11 +101,10 @@ namespace CombatSystem.Action
 		}
 
 
-		internal override void OnStatisticUpdated(Stats stats)
+		internal override void Aim_OnChanged(CharacterStat stat)
 		{
-			base.OnStatisticUpdated(stats);
-
-			spreadStatMultiplier = stats.spreadReduction;
+			base.Aim_OnChanged(stat);
+			spreadStatMultiplier = 1 + (stat.Value / 100f);
 		}
 
 	}

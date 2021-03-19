@@ -24,7 +24,7 @@ namespace Fralle.FpsController.Moves
 		public void Move()
 		{
 			var desiredForce = orientation.right * controller.Input.Move.x + orientation.forward * controller.Input.Move.y;
-			rigidBody.AddForce(desiredForce * controller.forwardSpeed * airControl * controller.Stats.runSpeedMultiplier, ForceMode.Impulse);
+			rigidBody.AddForce(desiredForce * controller.forwardSpeed * airControl, ForceMode.Impulse);
 			StoppingForces();
 		}
 

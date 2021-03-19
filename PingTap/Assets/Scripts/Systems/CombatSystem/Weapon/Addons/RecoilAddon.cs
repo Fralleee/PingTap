@@ -1,4 +1,4 @@
-﻿using StatsSystem;
+﻿using CharacterStats;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -21,7 +21,7 @@ namespace CombatSystem.Addons
 
 		int recoilPatternStep;
 		Weapon weapon;
-		Stats stats;
+		StatsController stats;
 		Vector3[] startPositions;
 		Vector3 recoil;
 		int nextMuzzle;
@@ -30,11 +30,11 @@ namespace CombatSystem.Addons
 		void Awake()
 		{
 			weapon = GetComponent<Weapon>();
-			stats = weapon.GetComponentInParent<Stats>();
+			stats = weapon.GetComponentInParent<StatsController>();
 			if (stats)
 			{
-				stats.OnStatisticUpdated += OnStatisticUpdated;
-				recoilStatMultiplier = stats.recoilReduction;
+				stats.aim.OnChanged += Aim_OnChanged;
+				recoilStatMultiplier = stats.aim.Value;
 			}
 
 			startPositions = weapon.muzzles.Select(x => x.parent.localPosition).ToArray();
@@ -100,15 +100,17 @@ namespace CombatSystem.Addons
 			return muzzle;
 		}
 
-		void OnStatisticUpdated(Stats stats)
+		void Aim_OnChanged(CharacterStat stat)
 		{
-			recoilStatMultiplier = stats.recoilReduction;
+			recoilStatMultiplier = stat.Value;
 		}
 
 		void OnDestroy()
 		{
 			if (stats)
-				stats.OnStatisticUpdated -= OnStatisticUpdated;
+			{
+				stats.aim.OnChanged -= Aim_OnChanged;
+			}
 		}
 	}
 }

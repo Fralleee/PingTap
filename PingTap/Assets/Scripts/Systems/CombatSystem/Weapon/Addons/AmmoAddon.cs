@@ -1,5 +1,5 @@
-﻿using CombatSystem.Enums;
-using StatsSystem;
+﻿using CharacterStats;
+using CombatSystem.Enums;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -21,17 +21,17 @@ namespace CombatSystem.Addons
 		float rotationTime;
 		float reloadStatMultiplier = 1f;
 		Weapon weapon;
-		Stats stats;
+		StatsController stats;
 
 		void Awake()
 		{
 			weapon = GetComponent<Weapon>();
 
-			stats = weapon.GetComponentInParent<Stats>();
+			stats = weapon.GetComponentInParent<StatsController>();
 			if (stats)
 			{
-				stats.OnStatisticUpdated += OnStatisticUpdated;
-				reloadStatMultiplier = stats.reloadSpeedMultiplier;
+				stats.reloadSpeed.OnChanged += ReloadSpeed_OnChanged;
+				reloadStatMultiplier = stats.reloadSpeed.Value;
 			}
 		}
 
@@ -87,15 +87,17 @@ namespace CombatSystem.Addons
 			isReloading = false;
 		}
 
-		void OnStatisticUpdated(Stats stats)
+		void ReloadSpeed_OnChanged(CharacterStat stat)
 		{
-			reloadStatMultiplier = stats.reloadSpeedMultiplier;
+			reloadStatMultiplier = stat.Value;
 		}
 
 		void OnDestroy()
 		{
 			if (stats)
-				stats.OnStatisticUpdated -= OnStatisticUpdated;
+			{
+				stats.reloadSpeed.OnChanged -= ReloadSpeed_OnChanged;
+			}
 		}
 	}
 }

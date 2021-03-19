@@ -1,5 +1,4 @@
-﻿using StatsSystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.FpsController.Moves
 {
@@ -15,12 +14,6 @@ namespace Fralle.FpsController.Moves
 		{
 			controller = GetComponentInParent<PlayerController>();
 			rigidBody = GetComponent<Rigidbody>();
-		}
-
-		void Start()
-		{
-			if (controller.Stats)
-				controller.Stats.OnStatisticUpdated += OnStatisticUpdated;
 		}
 
 		void Update()
@@ -52,17 +45,6 @@ namespace Fralle.FpsController.Moves
 			rigidBody.useGravity = true;
 			rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
 			rigidBody.AddForce(Vector3.up * controller.jumpStrength * jumpPowerStatMultiplier, ForceMode.VelocityChange);
-		}
-
-		void OnStatisticUpdated(Stats stats)
-		{
-			jumpPowerStatMultiplier = stats.jumpPowerMultiplier;
-		}
-
-		void OnDestroy()
-		{
-			if (controller.Stats)
-				controller.Stats.OnStatisticUpdated -= OnStatisticUpdated;
 		}
 	}
 }

@@ -1,10 +1,10 @@
-﻿using CombatSystem.Addons;
+﻿using CharacterStats;
+using CombatSystem.Addons;
 using CombatSystem.Combat;
 using CombatSystem.Effect;
 using CombatSystem.Enums;
 using CombatSystem.Interfaces;
 using Fralle.Core.Enums;
-using StatsSystem;
 using UnityEngine;
 
 namespace CombatSystem.Action
@@ -28,7 +28,7 @@ namespace CombatSystem.Action
 		internal int hitboxLayer;
 		internal Weapon weapon;
 		internal Combatant attacker;
-		internal Stats stats;
+		internal StatsController stats;
 		int nextMuzzle;
 
 		float fireRate;
@@ -47,9 +47,11 @@ namespace CombatSystem.Action
 			weapon = GetComponent<Weapon>();
 			attacker = weapon.GetComponentInParent<Combatant>();
 
-			stats = weapon.combatant.GetComponent<Stats>();
+			stats = weapon.combatant.GetComponent<StatsController>();
 			if (stats)
-				stats.OnStatisticUpdated += OnStatisticUpdated;
+			{
+				stats.aim.OnChanged += Aim_OnChanged;
+			}
 		}
 
 #if UNITY_EDITOR
@@ -100,12 +102,16 @@ namespace CombatSystem.Action
 			return muzzle;
 		}
 
-		internal virtual void OnStatisticUpdated(Stats stats) { }
+		internal virtual void Aim_OnChanged(CharacterStat stat)
+		{
+		}
 
 		internal virtual void OnDestroy()
 		{
 			if (stats)
-				stats.OnStatisticUpdated -= OnStatisticUpdated;
+			{
+				stats.aim.OnChanged -= Aim_OnChanged;
+			}
 		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using StatsSystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.FpsController.Moves
 {
@@ -21,12 +20,6 @@ namespace Fralle.FpsController.Moves
 			orientation = transform.Find("Orientation");
 		}
 
-		void Start()
-		{
-			if (controller.Stats)
-				controller.Stats.OnStatisticUpdated += OnStatisticUpdated;
-		}
-
 		public bool Move()
 		{
 			var desiredForce = orientation.right * controller.Input.Move.x + orientation.forward * controller.Input.Move.y;
@@ -39,17 +32,6 @@ namespace Fralle.FpsController.Moves
 		void StoppingForces()
 		{
 			rigidBody.velocity = Vector3.SmoothDamp(rigidBody.velocity, Vector3.zero, ref damp, stopTime);
-		}
-
-		void OnStatisticUpdated(Stats stats)
-		{
-			runSpeedStatMultiplier = stats.runSpeedMultiplier;
-		}
-
-		void OnDestroy()
-		{
-			if (controller.Stats)
-				controller.Stats.OnStatisticUpdated -= OnStatisticUpdated;
 		}
 	}
 }

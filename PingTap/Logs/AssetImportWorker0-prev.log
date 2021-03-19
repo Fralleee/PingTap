@@ -15,11 +15,11 @@ E:/Unity/Projects/PingTap/PingTap
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59431
+57142
 Successfully changed project path to: E:/Unity/Projects/PingTap/PingTap
 E:/Unity/Projects/PingTap/PingTap
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 151.99 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 388.73 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.0f1 (3721df5a8b28)
 [Subsystems] Discovering subsystems at path E:/Unity/2020.2.0f1/Editor/Data/Resources/UnitySubsystems
@@ -36,31 +36,41 @@ Initialize mono
 Mono path[0] = 'E:/Unity/2020.2.0f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Unity/2020.2.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Unity/2020.2.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56552
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56616
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.2.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002029 seconds.
+Registered in 0.001292 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 137.36 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 175.00 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.996 seconds
+- Completed reload, in  2.293 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.010985 seconds.
+Registered in 0.006219 seconds.
 Begin MonoManager ReloadAssembly
+Error: Could not load signature of CombatSystem.Addons.AmmoAddon:OnStatisticUpdated due to: Could not load file or assembly 'Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+
+Could not load signature of CombatSystem.Action.AttackAction:OnStatisticUpdated due to: Could not load file or assembly 'Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+Could not load signature of CombatSystem.Action.AttackAction:OnStatisticUpdated due to: Could not load file or assembly 'Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+Could not load signature of CombatSystem.Addons.AmmoAddon:OnStatisticUpdated due to: Could not load file or assembly 'Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+Could not load signature of CombatSystem.Action.RaycastAttack:OnStatisticUpdated due to: Could not load file or assembly 'Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+Could not load signature of CombatSystem.Action.AttackAction:OnStatisticUpdated due to: Could not load file or assembly 'Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+Could not load signature of CombatSystem.Addons.RecoilAddon:OnStatisticUpdated due to: Could not load file or assembly 'Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:Fralle.StatSystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+Unloading broken assembly Library/ScriptAssemblies/Fralle.CombatSystem.dll, this assembly can cause crashes in the runtime
+
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 153.88 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 271.46 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.629 seconds
+- Completed reload, in  4.922 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
@@ -68,18 +78,33 @@ Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Ren
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
 Refreshing native plugins compatible for Editor in 2.69 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4663 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 218.5 MB.
-System memory in use after: 218.7 MB.
+Unloading 4667 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 218.8 MB.
+System memory in use after: 219.0 MB.
 
-Unloading 131 unused Assets to reduce memory usage. Loaded Objects now: 5097.
-Total: 114.119800 ms (FindLiveObjects: 1.631100 ms CreateObjectMapping: 1.030700 ms MarkObjects: 108.904300 ms  DeleteObjects: 2.175900 ms)
+Unloading 131 unused Assets to reduce memory usage. Loaded Objects now: 5101.
+Total: 33.777500 ms (FindLiveObjects: 1.933200 ms CreateObjectMapping: 5.044100 ms MarkObjects: 13.530500 ms  DeleteObjects: 13.266600 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scripts/Core/Examples/DelegateExamples.cs
-  artifactKey: Guid(17aa61987c04f5d4b9698f4c0a81c288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Core/Examples/DelegateExamples.cs using Guid(17aa61987c04f5d4b9698f4c0a81c288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8087dfd22e36e7c0c3f977723f79c91e') in 0.239772 seconds
-  Import took 0.258734 seconds .
+  path: Assets/Scripts/Systems/CharacterStats/CharacterStats.asmdef
+  artifactKey: Guid(aa4fe8a7b6bfa9a43bd1ce93d9c2a72a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CharacterStats/CharacterStats.asmdef using Guid(aa4fe8a7b6bfa9a43bd1ce93d9c2a72a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f6a4ba7196dd6df656010be05e0b45d') in 0.120373 seconds
+  Import took 0.140734 seconds .
 
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+========================================================================
+Received Import Request.
+  Time since last request: 32.516141 seconds.
+  path: Assets/Scripts/Systems/FpsController/FpsController.asmdef
+  artifactKey: Guid(e15a06a766e7ed34ea968553fd0c1c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/FpsController/FpsController.asmdef using Guid(e15a06a766e7ed34ea968553fd0c1c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9e8968b4d7198f9c637d860208aef29') in 0.035753 seconds
+  Import took 0.056383 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.009536 seconds.
+  path: Assets/Scripts/Systems/FpsController/FpsController.asmdef
+  artifactKey: Guid(e15a06a766e7ed34ea968553fd0c1c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/FpsController/FpsController.asmdef using Guid(e15a06a766e7ed34ea968553fd0c1c2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9e8968b4d7198f9c637d860208aef29') in 0.008839 seconds
+  Import took 0.027277 seconds .
+
