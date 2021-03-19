@@ -30,7 +30,9 @@ namespace CombatSystem.Action
 		internal override void Start()
 		{
 			base.Start();
-			spreadStatMultiplier = stats.aim.Value;
+
+			if (stats)
+				spreadStatMultiplier = stats.aim.Value;
 		}
 
 		void Update()
