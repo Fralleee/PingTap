@@ -1,8 +1,8 @@
 ﻿using CombatSystem;
 using CombatSystem.Combat;
 using Fralle.Core.Extensions;
-using Fralle.FpsController;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Fralle
 {
@@ -11,7 +11,7 @@ namespace Fralle
 	{
 		[SerializeField] Combatant combatant;
 		[SerializeField] Weapon[] weapons = new Weapon[0];
-		[HideInInspector] public InputController inputController;
+		[HideInInspector] public PlayerInput playerInput;
 
 		int firstPersonObjectsLayer;
 
@@ -24,7 +24,7 @@ namespace Fralle
 
 			combatant.OnWeaponSwitch += Combatant_OnWeaponSwitch;
 
-			inputController = GetComponent<InputController>();
+			playerInput = GetComponent<PlayerInput>();
 		}
 
 		void Combatant_OnWeaponSwitch(Weapon obj)
@@ -46,21 +46,21 @@ namespace Fralle
 
 		void SwapWeapon()
 		{
-			for (var i = 1; i <= weapons.Length; i++)
-				if (inputController.GetKeyDown("" + i))
-					combatant.EquipWeapon(weapons[i - 1]);
+			//for (var i = 1; i <= weapons.Length; i++)
+			//	if (inputController.GetKeyDown("" + i))
+			//		combatant.EquipWeapon(weapons[i - 1]);
 		}
 
 		void FireInput()
 		{
-			if (inputController.Mouse1ButtonDown)
-				combatant.PrimaryAction(true);
-			else if (inputController.Mouse1ButtonHold)
-				combatant.PrimaryAction();
-			else if (inputController.Mouse2ButtonDown)
-				combatant.SecondaryAction(true);
-			else if (inputController.Mouse2ButtonHold)
-				combatant.SecondaryAction();
+			//if (inputController.Mouse1ButtonDown)
+			//	comba tant.PrimaryAction(true);
+			//else if (inputController.Mouse1ButtonHold)
+			//	combatant.PrimaryAction();
+			//else if (inputController.Mouse2ButtonDown)
+			//	combatant.SecondaryAction(true);
+			//else if (inputController.Mouse2ButtonHold)
+			//	combatant.SecondaryAction();
 		}
 
 		[ContextMenu("Equip Weapon")]

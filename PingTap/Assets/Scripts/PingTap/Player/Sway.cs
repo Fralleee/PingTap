@@ -11,7 +11,7 @@ namespace Fralle
 		[SerializeField] float idleSmooth = 1f;
 
 		Combatant combatant;
-		InputController input;
+		PlayerController playerController;
 
 		Vector3 initialSwayPosition;
 		Vector3 nextIdlePosition = Vector3.zero;
@@ -24,7 +24,7 @@ namespace Fralle
 			nextIdlePosition = initialSwayPosition;
 
 			combatant = GetComponentInParent<Combatant>();
-			input = GetComponentInParent<InputController>();
+			playerController = GetComponentInParent<PlayerController>();
 		}
 
 		void LateUpdate()
@@ -32,7 +32,7 @@ namespace Fralle
 			if (!shouldSway)
 				return;
 
-			var delta = -input.MouseRaw;
+			var delta = -playerController.mouseLook;
 			if (delta.magnitude > 0)
 				PerformSway(delta);
 			else

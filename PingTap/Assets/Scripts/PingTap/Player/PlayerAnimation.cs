@@ -17,7 +17,6 @@ namespace Fralle
 		void Update()
 		{
 			animator.SetBool("IsMoving", playerController.IsMoving);
-
 		}
 	}
 }
