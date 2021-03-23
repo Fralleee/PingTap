@@ -11,9 +11,13 @@ namespace Fralle
 	{
 		[SerializeField] Combatant combatant;
 		[SerializeField] Weapon[] weapons = new Weapon[0];
+
 		[HideInInspector] public PlayerInput playerInput;
 
 		int firstPersonObjectsLayer;
+
+		bool primaryFireHold;
+		bool secondaryFireHold;
 
 		void Awake()
 		{
@@ -22,12 +26,46 @@ namespace Fralle
 			if (combatant == null)
 				combatant = GetComponent<Combatant>();
 
-			combatant.OnWeaponSwitch += Combatant_OnWeaponSwitch;
+			combatant.OnWeaponSwitch += OnWeaponSwitch;
 
 			playerInput = GetComponent<PlayerInput>();
+			playerInput.actions["PrimaryFire"].performed += OnPrimaryFire;
+			playerInput.actions["PrimaryFire"].canceled += OnPrimaryFireCancel;
+			playerInput.actions["SecondaryFire"].performed += OnSecondaryFire;
+			playerInput.actions["SecondaryFire"].canceled += OnSecondaryFireCancel;
+			playerInput.actions["ItemSelect"].performed += OnItemSelect;
 		}
 
-		void Combatant_OnWeaponSwitch(Weapon obj)
+		void OnPrimaryFire(InputAction.CallbackContext context)
+		{
+			primaryFireHold = true;
+			if (context.duration <= 0)
+				combatant.PrimaryAction(true);
+		}
+		void OnPrimaryFireCancel(InputAction.CallbackContext context)
+		{
+			primaryFireHold = false;
+		}
+
+		void OnSecondaryFire(InputAction.CallbackContext context)
+		{
+			secondaryFireHold = true;
+			if (context.duration <= 0)
+				combatant.SecondaryAction(true);
+		}
+		void OnSecondaryFireCancel(InputAction.CallbackContext context)
+		{
+			secondaryFireHold = false;
+		}
+
+		void OnItemSelect(InputAction.CallbackContext context)
+		{
+			var number = (int)context.ReadValue<float>();
+			if (weapons.Length >= number + 1)
+				combatant.EquipWeapon(weapons[number]);
+		}
+
+		void OnWeaponSwitch(Weapon weapon)
 		{
 			combatant.equippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
 		}
@@ -40,27 +78,21 @@ namespace Fralle
 
 		void Update()
 		{
-			SwapWeapon();
-			FireInput();
+			if (primaryFireHold)
+			{
+				combatant.PrimaryAction();
+			}
+			else if (secondaryFireHold)
+				combatant.SecondaryAction();
 		}
 
-		void SwapWeapon()
+		void OnDestroy()
 		{
-			//for (var i = 1; i <= weapons.Length; i++)
-			//	if (inputController.GetKeyDown("" + i))
-			//		combatant.EquipWeapon(weapons[i - 1]);
-		}
-
-		void FireInput()
-		{
-			//if (inputController.Mouse1ButtonDown)
-			//	comba tant.PrimaryAction(true);
-			//else if (inputController.Mouse1ButtonHold)
-			//	combatant.PrimaryAction();
-			//else if (inputController.Mouse2ButtonDown)
-			//	combatant.SecondaryAction(true);
-			//else if (inputController.Mouse2ButtonHold)
-			//	combatant.SecondaryAction();
+			playerInput.actions["PrimaryFire"].performed -= OnPrimaryFire;
+			playerInput.actions["PrimaryFire"].canceled -= OnPrimaryFireCancel;
+			playerInput.actions["SecondaryFire"].performed -= OnSecondaryFire;
+			playerInput.actions["SecondaryFire"].canceled -= OnSecondaryFireCancel;
+			playerInput.actions["ItemSelect"].performed -= OnItemSelect;
 		}
 
 		[ContextMenu("Equip Weapon")]
