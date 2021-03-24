@@ -1,4 +1,5 @@
 using Fralle.AbilitySystem;
+using Fralle.Core.Extensions;
 using Fralle.FpsController;
 using System.Collections;
 using UnityEngine;
@@ -10,10 +11,6 @@ namespace Fralle.PingTap
 	{
 		[SerializeField] float stopTime = 0.25f;
 		[SerializeField] float dashPower = 4;
-
-		//[SerializeField] ShakeTransformEventData cameraShake = null;
-		//[SerializeField] ShakeTransform cameraShakeTransform = null;
-		//[SerializeField] Volume postProcess;
 
 		AbilityController abilityController;
 		PlayerController playerController;
@@ -38,21 +35,20 @@ namespace Fralle.PingTap
 		{
 			base.Perform();
 
-
-			// Add post process
-
 			playerController.IsLocked = true;
-			var direction =
-				playerController.movement.y > 0 ? playerController.cameraRig.forward :
-				playerController.movement.y < 0 ? -orientation.forward :
-				playerController.movement.x > 0 ? orientation.right :
-				playerController.movement.x < 0 ? -orientation.right :
-				playerController.cameraRig.forward;
+			Vector3 direction = playerController.cameraRig.forward;
+			if (playerController.movement.magnitude > 0)
+			{
+				direction = orientation.TransformDirection(playerController.movement.ToVector3());
+				if (playerController.movement.y > 0)
+					direction += playerController.cameraRig.forward;
+			}
 
 			rigidBody.velocity = Vector3.zero;
 			rigidBody.useGravity = false;
 			rigidBody.AddForce(direction * dashPower, ForceMode.VelocityChange);
 
+			// Add post process
 			// Camera shake
 
 			abilityController.StartCoroutine(StopDash());
