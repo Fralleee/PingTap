@@ -60,6 +60,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MovementAbility",
+                    "type": "Button",
+                    "id": "f0370002-f76b-4315-837c-731cbf28366a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AttackAbility",
+                    "type": "Button",
+                    "id": "ab3f3cdb-d88b-4c0e-a352-91d450346ac0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UltimateAbility",
+                    "type": "Button",
+                    "id": "2df8054c-ffac-4858-b3a9-1ec58c28d2c2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -379,6 +403,39 @@
                     "processors": "Scale(factor=3)",
                     "groups": "Keyboard&Mouse",
                     "action": "ItemSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69c25f3d-9d36-458c-9720-52aee0209bfc",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "MovementAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6011422-5fd2-4783-8467-38522c8dffaf",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "AttackAbility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1820b786-7c62-4e31-b790-32396af5156a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "UltimateAbility",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

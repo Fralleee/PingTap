@@ -387,6 +387,7 @@ GameObject:
   - component: {fileID: 6817597722629130795}
   - component: {fileID: 1821515927939034793}
   - component: {fileID: 1588032943}
+  - component: {fileID: 407518923109054419}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -460,6 +461,7 @@ MonoBehaviour:
     m_Bits: 266496
   camera: {fileID: 0}
   combatant: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!114 &3678923065428312217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +480,6 @@ MonoBehaviour:
   body: {fileID: 1386371905872086479}
   rigidBody: {fileID: 0}
   capsule: {fileID: 0}
-  IsLocked: 0
   IsGrounded: 0
   IsMoving: 0
   IsJumping: 0
@@ -566,6 +567,19 @@ MonoBehaviour:
   aimTransform: {fileID: 1386371905205327086}
   weaponHolder: {fileID: 217825854}
   equippedWeapon: {fileID: 0}
+--- !u!114 &407518923109054419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2617a7bb268b1594eba3e034f630b9b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities: []
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0
