@@ -1,21 +1,36 @@
 using Fralle.AbilitySystem;
+using Fralle.Core.CameraControls;
 using Fralle.Core.Extensions;
 using Fralle.FpsController;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Fralle.PingTap
 {
 	[CreateAssetMenu(menuName = "Abilities/Dash")]
 	public class DashAbility : ActiveAbility
 	{
+		[Header("Settings")]
 		[SerializeField] float stopTime = 0.25f;
 		[SerializeField] float dashPower = 4;
+
+		[Header("Effects")]
+		[SerializeField] ShakeTransformEventData cameraShake;
+		[SerializeField] VolumeProfile postProcess;
+
+
+		[SerializeField] float addFov = 10f;
 
 		AbilityController abilityController;
 		PlayerController playerController;
 		Rigidbody rigidBody;
 		Transform orientation;
+		ShakeTransform cameraShakeTransform;
+		Volume abilityVolume;
+		GameObject abilityVolumeGo;
+
+		float defaultFov = 60f;
 
 		public override void Setup(AbilityController abilityController)
 		{
@@ -23,11 +38,32 @@ namespace Fralle.PingTap
 			playerController = abilityController.GetComponent<PlayerController>();
 			rigidBody = abilityController.GetComponentInChildren<Rigidbody>();
 			orientation = rigidBody.transform.Find("Orientation");
+
+			abilityVolumeGo = new GameObject("Dash Volume");
+			abilityVolumeGo.transform.SetParent(abilityController.postProcess.transform);
+			abilityVolume = abilityVolumeGo.AddComponent<Volume>();
+			abilityVolume.weight = 0;
+			abilityVolume.profile = postProcess;
+
+			cameraShakeTransform = playerController.camera.GetComponentInParent<ShakeTransform>();
+			defaultFov = playerController.camera.fieldOfView;
 		}
 
 		IEnumerator StopDash()
 		{
-			yield return new WaitForSeconds(stopTime);
+			float elapsedTime = 0f;
+			float waitTime = stopTime;
+			while (elapsedTime < waitTime)
+			{
+				playerController.camera.fieldOfView = Mathf.SmoothStep(defaultFov + addFov, defaultFov, elapsedTime / waitTime);
+				abilityVolume.weight = Mathf.SmoothStep(1, 0, 1 - (elapsedTime / waitTime));
+
+				elapsedTime += Time.deltaTime;
+				yield return null;
+			}
+
+			playerController.camera.fieldOfView = defaultFov;
+
 			Reset();
 		}
 
@@ -48,8 +84,9 @@ namespace Fralle.PingTap
 			rigidBody.useGravity = false;
 			rigidBody.AddForce(direction * dashPower, ForceMode.VelocityChange);
 
-			// Add post process
-			// Camera shake
+			cameraShakeTransform.AddShakeEvent(cameraShake);
+			abilityVolume.weight = 1;
+			playerController.camera.fieldOfView = defaultFov + addFov;
 
 			abilityController.StartCoroutine(StopDash());
 		}
@@ -60,7 +97,8 @@ namespace Fralle.PingTap
 			rigidBody.velocity = Vector3.zero;
 			rigidBody.useGravity = true;
 
-			// Remove post process
+			playerController.camera.fieldOfView = defaultFov;
+			abilityVolume.weight = 0;
 		}
 	}
 }
