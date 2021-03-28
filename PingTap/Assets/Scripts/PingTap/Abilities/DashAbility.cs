@@ -18,8 +18,6 @@ namespace Fralle.PingTap
 		[Header("Effects")]
 		[SerializeField] ShakeTransformEventData cameraShake;
 		[SerializeField] VolumeProfile postProcess;
-
-
 		[SerializeField] float addFov = 10f;
 
 		AbilityController abilityController;
@@ -99,6 +97,11 @@ namespace Fralle.PingTap
 
 			playerController.camera.fieldOfView = defaultFov;
 			abilityVolume.weight = 0;
+		}
+
+		void OnDestroy()
+		{
+			Destroy(abilityVolumeGo);
 		}
 	}
 }
