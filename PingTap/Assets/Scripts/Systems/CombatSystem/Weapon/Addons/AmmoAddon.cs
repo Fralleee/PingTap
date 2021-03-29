@@ -1,5 +1,5 @@
-﻿using CharacterStats;
-using CombatSystem.Enums;
+﻿using CombatSystem.Enums;
+using Fralle.CharacterStats;
 using System;
 using System.Collections;
 using UnityEngine;

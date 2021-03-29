@@ -1,4 +1,4 @@
-﻿using CharacterStats;
+﻿using Fralle.CharacterStats;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;

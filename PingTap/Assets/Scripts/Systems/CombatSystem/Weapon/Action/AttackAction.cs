@@ -1,9 +1,9 @@
-﻿using CharacterStats;
-using CombatSystem.Addons;
+﻿using CombatSystem.Addons;
 using CombatSystem.Combat;
 using CombatSystem.Effect;
 using CombatSystem.Enums;
 using CombatSystem.Interfaces;
+using Fralle.CharacterStats;
 using Fralle.Core.Enums;
 using UnityEngine;
 

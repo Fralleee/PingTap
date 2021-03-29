@@ -1,5 +1,5 @@
-﻿using CharacterStats;
-using CombatSystem.Combat.Damage;
+﻿using CombatSystem.Combat.Damage;
+using Fralle.CharacterStats;
 using Fralle.Core.Attributes;
 using Fralle.Core.Extensions;
 using Fralle.Core.Pooling;
