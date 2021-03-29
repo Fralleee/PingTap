@@ -41,5 +41,11 @@ namespace Fralle.Gameplay
 				EventManager.Broadcast(new GameOverEvent(true));
 			}
 		}
+
+		void OnDestroy()
+		{
+			Managers.Instance.Spawner.OnSpawnComplete -= HandleSpawnComplete;
+			Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
+		}
 	}
 }
