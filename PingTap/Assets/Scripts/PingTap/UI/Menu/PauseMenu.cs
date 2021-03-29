@@ -30,12 +30,13 @@ namespace Fralle.UI.Menu
 			root.SetActive(false);
 		}
 
-		public void ToggleMenu()
+		public bool ToggleMenu()
 		{
 			isOpen = !isOpen;
 			gameObject.SetActive(isOpen);
-			CameraManager.ConfigureCursor(!isOpen);
+			PlayerInputController.ConfigureCursor(!isOpen);
 			StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);
+			return isOpen;
 		}
 
 		void OnEnable()

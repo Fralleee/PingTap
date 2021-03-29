@@ -1,11 +1,14 @@
 ﻿using Fralle.UI.Menu;
 using QFSW.QC;
+using System;
 using UnityEngine;
 
 namespace Fralle.Gameplay
 {
 	public class UiManager : MonoBehaviour
 	{
+		public event Action<bool> OnMenuToggle = delegate { };
+
 		[Header("Settings")]
 		[SerializeField] bool allowPauseMenu = true;
 
@@ -35,7 +38,8 @@ namespace Fralle.Gameplay
 		{
 			if (Input.GetKeyDown(KeyCode.Escape) && !QuantumConsole.Instance.IsActive && allowPauseMenu)
 			{
-				pauseMenu.ToggleMenu();
+				var isOpen = pauseMenu.ToggleMenu();
+				OnMenuToggle(isOpen);
 			}
 		}
 

@@ -6,21 +6,6 @@ namespace Fralle.Gameplay
 	{
 		[SerializeField] Camera sceneCamera;
 
-		public static void ConfigureCursor(bool doLock = true)
-		{
-			if (doLock)
-			{
-				Cursor.visible = false;
-				Cursor.lockState = CursorLockMode.Locked;
-			}
-			else
-			{
-
-				Cursor.visible = true;
-				Cursor.lockState = CursorLockMode.None;
-			}
-		}
-
 		public void ActivateSceneCamera()
 		{
 			Cursor.visible = true;
