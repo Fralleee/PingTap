@@ -8,7 +8,7 @@ namespace Fralle
 	{
 		PlayerInput playerInput;
 
-		void Awake()
+		void Start()
 		{
 			playerInput = GetComponent<PlayerInput>();
 
@@ -41,7 +41,8 @@ namespace Fralle
 
 		void OnDestroy()
 		{
-			Managers.Instance.UIManager.OnMenuToggle -= OnMenuToggle;
+			if (Managers.Instance.UIManager != null)
+				Managers.Instance.UIManager.OnMenuToggle -= OnMenuToggle;
 		}
 	}
 }

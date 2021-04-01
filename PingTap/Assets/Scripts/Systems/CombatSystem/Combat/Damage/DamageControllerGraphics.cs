@@ -8,11 +8,9 @@ namespace Fralle
 	{
 		static readonly int RendererColor = Shader.PropertyToID("_BaseColor");
 
-		[SerializeField] GameObject ragdollModel;
 		[SerializeField] GameObject gibModel;
 
 		Rigidbody[] rigidbodies;
-		Collider[] colliders;
 		new Renderer renderer;
 		MaterialPropertyBlock propBlock;
 		Color defaultColor;
@@ -79,10 +77,18 @@ namespace Fralle
 		void HandleDeath(DamageController damageController, DamageData damageData)
 		{
 			Destroy(gameObject, 3f);
-			ToggleRagdoll(true);
-			foreach (var rigidBody in rigidbodies)
+
+			if (damageData.gib)
 			{
-				rigidBody.AddForceAtPosition(damageData.force, damageData.position);
+				Debug.Log("Spawn gib stuff");
+			}
+			else
+			{
+				ToggleRagdoll(true);
+				foreach (var rigidBody in rigidbodies)
+				{
+					rigidBody.AddForceAtPosition(damageData.force, damageData.position);
+				}
 			}
 		}
 
