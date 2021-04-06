@@ -28,9 +28,6 @@ namespace Fralle
 
 		void UpdateRotation()
 		{
-
-
-
 			if (playerController.IsMoving)
 			{
 				transform.rotation = orientation.rotation;
@@ -39,19 +36,16 @@ namespace Fralle
 			else if (Vector3.Angle(orientation.forward, transform.forward) > rotateOnAngle)
 			{
 				doRotate = true;
-
-				// do rotate
-				//Quaternion.RotateTowards(transform.rotation, orientation.rotation, Time.deltaTime * 10f);
-
-				//transform.rotation = orientation.rotation;
 			}
 
 			if (doRotate)
 			{
-				Debug.Log("Rotate?");
 				transform.rotation = Quaternion.Lerp(transform.rotation, orientation.rotation, Time.deltaTime * 10f);
-				if (Vector3.Angle(orientation.forward, transform.forward) < 1f)
+				if (Vector3.Angle(orientation.forward, transform.forward) < 0.5f)
+				{
+					transform.rotation = orientation.rotation;
 					doRotate = false;
+				}
 			}
 		}
 	}
