@@ -38,8 +38,8 @@ namespace Fralle
 
 			camera = Camera.main;
 
-			QuantumConsole.Instance.OnActivate += ConsoleActivated;
-			QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
+			//QuantumConsole.Instance.OnActivate += ConsoleActivated;
+			//QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
 		}
 
 		void OnGamestateChanged(GameState gameState)
@@ -76,8 +76,8 @@ namespace Fralle
 
 		void OnDestroy()
 		{
-			QuantumConsole.Instance.OnActivate -= ConsoleActivated;
-			QuantumConsole.Instance.OnDeactivate -= ConsoleDeactivated;
+			//QuantumConsole.Instance.OnActivate -= ConsoleActivated;
+			//QuantumConsole.Instance.OnDeactivate -= ConsoleDeactivated;
 		}
 
 
