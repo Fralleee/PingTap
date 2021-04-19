@@ -65,7 +65,7 @@ namespace Fralle
 				combatant.EquipWeapon(weapons[number]);
 		}
 
-		void OnWeaponSwitch(Weapon weapon)
+		void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
 		{
 			combatant.equippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
 		}

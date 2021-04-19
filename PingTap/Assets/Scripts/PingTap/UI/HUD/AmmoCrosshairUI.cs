@@ -26,10 +26,10 @@ namespace Fralle.UI.HUD
 			combatant.OnWeaponSwitch += HandleWeaponSwitch;
 
 			if (combatant.equippedWeapon)
-				HandleWeaponSwitch(combatant.equippedWeapon);
+				HandleWeaponSwitch(combatant.equippedWeapon, null);
 		}
 
-		void HandleWeaponSwitch(Weapon weapon)
+		void HandleWeaponSwitch(Weapon weapon, Weapon oldWeapon)
 		{
 			var ammoAddon = weapon.GetComponent<AmmoAddon>();
 			ammoAddon.OnAmmoChanged += HandleAmmoChanged;

@@ -8,7 +8,7 @@ namespace CombatSystem.Combat
 {
 	public class Combatant : MonoBehaviour
 	{
-		public event Action<Weapon> OnWeaponSwitch = delegate { };
+		public event Action<Weapon, Weapon> OnWeaponSwitch = delegate { };
 		public event Action<DamageData> OnHit = delegate { };
 
 		public CombatStats Stats = new CombatStats();
@@ -83,7 +83,7 @@ namespace CombatSystem.Combat
 
 		void SetupWeapon(Weapon weapon)
 		{
-			OnWeaponSwitch(weapon);
+			OnWeaponSwitch(weapon, equippedWeapon);
 			equippedWeapon = weapon;
 			var attackActions = equippedWeapon.GetComponentsInChildren<AttackAction>();
 			if (attackActions.Length > 2)
