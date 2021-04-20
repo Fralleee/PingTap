@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866909cc88fa60b4988e97d52f4bf774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearWeaponsOnAwake: 0
+  clearWeaponsOnAwake: 1
 --- !u!114 &2125975281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,10 +887,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b94d5d7eda513c4bbf341835a2dafa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
-  CameraRig: {fileID: 0}
-  Orientation: {fileID: 0}
-  Body: {fileID: 0}
+  Camera: {fileID: 1386371905205327084}
+  CameraRig: {fileID: 1386371907097986392}
+  Orientation: {fileID: 1386371906370868750}
+  Body: {fileID: 1386371905872086479}
   RigidBody: {fileID: 0}
   Capsule: {fileID: 0}
   IsLocked: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
   <AttackAbility>k__BackingField: {fileID: 0}
   <UltimateAbility>k__BackingField: {fileID: 0}
   PassiveAbilities: []
-  PostProcess: {fileID: 0}
+  PostProcess: {fileID: 7663585026348080892}
 --- !u!114 &6817597722629130795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,7 +942,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386371906627268470}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45c8a7caa166dfd459ce620ecfa7361e, type: 3}
   m_Name: 
@@ -957,7 +957,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386371906627268470}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c5d62492cbad8b4f8464fae7ee98329, type: 3}
   m_Name: 
@@ -989,8 +989,8 @@ MonoBehaviour:
     AccuracyPercentage: 0
   Modifiers:
     ExtraAccuracy: 1
-  AimTransform: {fileID: 0}
-  WeaponHolder: {fileID: 0}
+  AimTransform: {fileID: 1386371905205327086}
+  WeaponHolder: {fileID: 217825854}
   EquippedWeapon: {fileID: 0}
 --- !u!1 &1386371907097986393
 GameObject:
@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcecf9908dc97840967dded88ec31b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TransformToFollow: {fileID: 0}
+  TransformToFollow: {fileID: 1386371905833920356}
 --- !u!1 &3266641298782563197
 GameObject:
   m_ObjectHideFlags: 0
