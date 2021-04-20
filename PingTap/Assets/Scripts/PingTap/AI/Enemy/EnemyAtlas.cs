@@ -28,8 +28,8 @@ namespace Fralle.AI
 
 		void SetupAtlas()
 		{
-			Atlas.Add(EnemyType.ZOMBIE, zombiePrefab);
-			Atlas.Add(EnemyType.OGRE, ogrePrefab);
+			Atlas.Add(EnemyType.Zombie, zombiePrefab);
+			Atlas.Add(EnemyType.Ogre, ogrePrefab);
 		}
 	}
 }

@@ -39,7 +39,7 @@ namespace Fralle.Abilities.Turret
       if (rigidbody.isKinematic || rigidbody.velocity.magnitude > 0.2f) return;
 
       rigidbody.isKinematic = true;
-      var distance = (collider.size.y / 2f) + 0.1f;
+      float distance = (collider.size.y / 2f) + 0.1f;
 
       if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, distance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
       {

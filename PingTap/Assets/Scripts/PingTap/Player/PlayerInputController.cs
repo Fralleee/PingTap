@@ -12,8 +12,8 @@ namespace Fralle
 		{
 			playerInput = GetComponent<PlayerInput>();
 
-			if (Managers.Instance.UIManager != null)
-				Managers.Instance.UIManager.OnMenuToggle += OnMenuToggle;
+			if (Managers.Instance.UiManager != null)
+				Managers.Instance.UiManager.OnMenuToggle += OnMenuToggle;
 
 			// Console
 		}
@@ -43,8 +43,8 @@ namespace Fralle
 
 		void OnDestroy()
 		{
-			if (Managers.Instance.UIManager != null)
-				Managers.Instance.UIManager.OnMenuToggle -= OnMenuToggle;
+			if (Managers.Instance.UiManager != null)
+				Managers.Instance.UiManager.OnMenuToggle -= OnMenuToggle;
 		}
 	}
 }

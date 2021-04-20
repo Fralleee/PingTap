@@ -14,8 +14,8 @@ public class AmmoUI : MonoBehaviour
 		var combatant = GetComponentInParent<Combatant>();
 		combatant.OnWeaponSwitch += HandleWeaponSwitch;
 
-		if (combatant.equippedWeapon)
-			HandleWeaponSwitch(combatant.equippedWeapon, null);
+		if (combatant.EquippedWeapon)
+			HandleWeaponSwitch(combatant.EquippedWeapon, null);
 	}
 
 
@@ -24,8 +24,8 @@ public class AmmoUI : MonoBehaviour
 		var ammoAddon = weapon.GetComponent<AmmoAddon>();
 		ammoAddon.OnAmmoChanged += HandleAmmoChanged;
 
-		currentAmmoText.text = ammoAddon.currentAmmo.ToString();
-		maxAmmoText.text = ammoAddon.maxAmmo.ToString();
+		currentAmmoText.text = ammoAddon.CurrentAmmo.ToString();
+		maxAmmoText.text = ammoAddon.MaxAmmo.ToString();
 	}
 
 

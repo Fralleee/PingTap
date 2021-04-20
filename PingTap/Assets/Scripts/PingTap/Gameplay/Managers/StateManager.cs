@@ -12,12 +12,12 @@ namespace Fralle.Gameplay
 
 		[SerializeField] bool startGame;
 
-		public static GameState gameState = GameState.Playing;
-		public MatchState matchState;
-		public IState currentState;
+		public static GameState GameState = GameState.Playing;
+		public MatchState MatchState;
+		public IState CurrentState;
 
 		StateMachine stateMachine;
-		readonly Dictionary<MatchState, IState> States = new Dictionary<MatchState, IState>();
+		readonly Dictionary<MatchState, IState> states = new Dictionary<MatchState, IState>();
 
 		void Start()
 		{
@@ -28,9 +28,9 @@ namespace Fralle.Gameplay
 		{
 			stateMachine = new StateMachine();
 
-			States.Add(MatchState.Prepare, new MatchStatePrepare());
-			States.Add(MatchState.Live, new MatchStateLive());
-			States.Add(MatchState.End, new MatchStateEnd());
+			states.Add(MatchState.Prepare, new MatchStatePrepare());
+			states.Add(MatchState.Live, new MatchStateLive());
+			states.Add(MatchState.End, new MatchStateEnd());
 
 			if (startGame)
 			{
@@ -45,15 +45,15 @@ namespace Fralle.Gameplay
 
 		public void SetState(MatchState newState)
 		{
-			stateMachine.SetState(States[newState]);
-			matchState = newState;
-			EventManager.Broadcast(new GameStateChangeEvent(matchState, newState));
+			stateMachine.SetState(states[newState]);
+			MatchState = newState;
+			EventManager.Broadcast(new GameStateChangeEvent(MatchState, newState));
 		}
 
 		public static void SetGameState(GameState newState)
 		{
 			OnGamestateChanged(newState);
-			gameState = newState;
+			GameState = newState;
 		}
 
 	}

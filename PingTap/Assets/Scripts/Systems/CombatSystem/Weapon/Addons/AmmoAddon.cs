@@ -10,8 +10,8 @@ namespace CombatSystem.Addons
 	{
 		public event Action<int> OnAmmoChanged = delegate { };
 
-		public int maxAmmo = 30;
-		public int currentAmmo;
+		public int MaxAmmo = 30;
+		public int CurrentAmmo;
 
 		[SerializeField] bool infiniteAmmo = false;
 		[SerializeField] float reloadSpeed = 0.75f;
@@ -28,17 +28,15 @@ namespace CombatSystem.Addons
 			weapon = GetComponent<Weapon>();
 
 			stats = weapon.GetComponentInParent<StatsController>();
-			if (stats)
-			{
-				stats.reloadSpeed.OnChanged += ReloadSpeed_OnChanged;
-				reloadStatMultiplier = stats.reloadSpeed.Value;
-			}
+			if (!stats) return;
+			stats.ReloadSpeed.OnChanged += ReloadSpeed_OnChanged;
+			reloadStatMultiplier = stats.ReloadSpeed.Value;
 		}
 
 		void Start()
 		{
-			currentAmmo = maxAmmo;
-			OnAmmoChanged(currentAmmo);
+			CurrentAmmo = MaxAmmo;
+			OnAmmoChanged(CurrentAmmo);
 		}
 
 		void Update()
@@ -53,23 +51,23 @@ namespace CombatSystem.Addons
 				var spinDelta = -(Mathf.Cos(Mathf.PI * animTime) - 1f) / 2f;
 				transform.localRotation = Quaternion.Euler(new Vector3(spinDelta * 360f, 0, 0));
 			}
-			else if (Input.GetKeyDown(KeyCode.R) && weapon.ActiveWeaponAction == Status.Ready && currentAmmo < maxAmmo)
+			else if (Input.GetKeyDown(KeyCode.R) && weapon.ActiveWeaponAction == Status.Ready && CurrentAmmo < MaxAmmo)
 				StartCoroutine(ReloadCooldown());
 		}
 
 		public void ChangeAmmo(int change, bool apply = true)
 		{
 			if (apply)
-				currentAmmo += change;
+				CurrentAmmo += change;
 			else
-				currentAmmo = change;
-			currentAmmo = Mathf.Clamp(currentAmmo, 0, maxAmmo);
-			OnAmmoChanged(currentAmmo);
+				CurrentAmmo = change;
+			CurrentAmmo = Mathf.Clamp(CurrentAmmo, 0, MaxAmmo);
+			OnAmmoChanged(CurrentAmmo);
 		}
 
 		public bool HasAmmo(int requiredAmmo = 1)
 		{
-			if (infiniteAmmo || currentAmmo >= requiredAmmo)
+			if (infiniteAmmo || CurrentAmmo >= requiredAmmo)
 				return true;
 			StartCoroutine(ReloadCooldown());
 			return false;
@@ -81,7 +79,7 @@ namespace CombatSystem.Addons
 			isReloading = true;
 			rotationTime = 0f;
 			yield return new WaitForSeconds(reloadSpeed * reloadStatMultiplier);
-			ChangeAmmo(maxAmmo, false);
+			ChangeAmmo(MaxAmmo, false);
 			weapon.ChangeWeaponAction(Status.Ready);
 			transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
 			isReloading = false;
@@ -96,7 +94,7 @@ namespace CombatSystem.Addons
 		{
 			if (stats)
 			{
-				stats.reloadSpeed.OnChanged -= ReloadSpeed_OnChanged;
+				stats.ReloadSpeed.OnChanged -= ReloadSpeed_OnChanged;
 			}
 		}
 	}

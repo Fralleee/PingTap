@@ -43,7 +43,7 @@ namespace Fralle.AI
 
 		void HandleDeath(DamageData damageData)
 		{
-			if (damageData?.attacker)
+			if (damageData?.Attacker)
 			{
 				Reward(enemy);
 				Drop();

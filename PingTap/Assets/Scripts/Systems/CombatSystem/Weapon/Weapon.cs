@@ -12,19 +12,19 @@ namespace CombatSystem
 		public event Action<Status> OnActiveWeaponActionChanged = delegate { };
 
 		[Header("Weapon")]
-		public string weaponName;
+		public string WeaponName;
 		[SerializeField] float equipAnimationTime = 0.3f;
-		public Transform[] muzzles;
+		public Transform[] Muzzles;
 
 		public Status ActiveWeaponAction { get; private set; }
 
-		[HideInInspector] public Combatant combatant;
-		[HideInInspector] public RecoilAddon recoilAddon;
-		[HideInInspector] public AmmoAddon ammoAddonController;
+		[HideInInspector] public Combatant Combatant;
+		[HideInInspector] public RecoilAddon RecoilAddon;
+		[HideInInspector] public AmmoAddon AmmoAddonController;
 
-		public bool isEquipped { get; private set; }
+		public bool IsEquipped { get; private set; }
 
-		public float nextAvailableShot;
+		public float NextAvailableShot;
 
 		float equipTime;
 		bool animationComplete;
@@ -37,33 +37,33 @@ namespace CombatSystem
 
 			if (ActiveWeaponAction == Status.Firing)
 			{
-				nextAvailableShot -= Time.deltaTime;
-				if (nextAvailableShot <= 0)
+				NextAvailableShot -= Time.deltaTime;
+				if (NextAvailableShot <= 0)
 					ChangeWeaponAction(Status.Ready);
 			}
 			else
 			{
-				nextAvailableShot = 0;
+				NextAvailableShot = 0;
 			}
 		}
 
 		public void Equip(Combatant combatant, bool shouldAnimate = true)
 		{
-			if (string.IsNullOrWhiteSpace(weaponName))
-				weaponName = name;
+			if (string.IsNullOrWhiteSpace(WeaponName))
+				WeaponName = name;
 
 			ActiveWeaponAction = Status.Equipping;
 			equipTime = 0f;
 			animationComplete = !shouldAnimate;
-			this.combatant = combatant;
+			this.Combatant = combatant;
 
 			startPosition = shouldAnimate ? transform.localPosition : Vector3.zero;
 			startRotation = shouldAnimate ? transform.localRotation : Quaternion.identity;
 
-			recoilAddon = GetComponent<RecoilAddon>();
-			ammoAddonController = GetComponent<AmmoAddon>();
+			RecoilAddon = GetComponent<RecoilAddon>();
+			AmmoAddonController = GetComponent<AmmoAddon>();
 
-			isEquipped = true;
+			IsEquipped = true;
 		}
 
 		public void ChangeWeaponAction(Status newActiveWeaponAction)

@@ -18,7 +18,7 @@ namespace Fralle.UI
 
 		void HandleDamageControllerChange(float currentHealth, float maxHealth)
 		{
-			var percentage = Mathf.Clamp01(currentHealth / maxHealth);
+			float percentage = Mathf.Clamp01(currentHealth / maxHealth);
 			foregroundImage.fillAmount = percentage;
 		}
 

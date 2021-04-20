@@ -8,8 +8,8 @@ namespace CombatSystem.Action
 	public class ProjectileAttack : AttackAction
 	{
 		[Header("ProjectileAttack")]
-		[SerializeField] Projectile projectilePrefab = null;
-		[SerializeField] ProjectileData projectileData = null;
+		[SerializeField] Projectile projectilePrefab;
+		[SerializeField] ProjectileData projectileData;
 
 		[Space(10)]
 		[SerializeField] int projectilesPerFire = 0;
@@ -20,36 +20,36 @@ namespace CombatSystem.Action
 		{
 			var muzzle = GetMuzzle();
 
-			projectileData.attacker = attacker;
-			projectileData.forward = weapon.combatant.aimTransform.forward;
-			projectileData.damage = Damage;
-			projectileData.element = element;
-			projectileData.damageEffects = damageEffects;
-			projectileData.hitboxLayer = hitboxLayer;
+			projectileData.Attacker = Attacker;
+			projectileData.Forward = Weapon.Combatant.AimTransform.forward;
+			projectileData.Damage = Damage;
+			projectileData.Element = Element;
+			projectileData.DamageEffects = DamageEffects;
+			projectileData.HitboxLayer = HitboxLayer;
 
 
 			StartCoroutine(SpawnProjectiles(muzzle));
 		}
 
-		public override float GetRange() => projectileData.range;
+		public override float GetRange() => projectileData.Range;
 
 		IEnumerator SpawnProjectiles(Transform muzzle)
 		{
-			for (var i = 0; i < projectilesPerFire; i++)
+			for (int i = 0; i < projectilesPerFire; i++)
 			{
-				attacker.Stats.OnAttack(1);
+				Attacker.Stats.OnAttack(1);
 
-				var layerMask = ~LayerMask.GetMask("Corpse");
-				Ray ray = new Ray(weapon.combatant.aimTransform.position, weapon.combatant.aimTransform.forward);
-				if (Physics.Raycast(ray, out var hitInfo, projectileData.range, layerMask))
-					projectileData.forward = (hitInfo.point - muzzle.position).normalized;
+				int layerMask = ~LayerMask.GetMask("Corpse");
+				Ray ray = new Ray(Weapon.Combatant.AimTransform.position, Weapon.Combatant.AimTransform.forward);
+				if (Physics.Raycast(ray, out var hitInfo, projectileData.Range, layerMask))
+					projectileData.Forward = (hitInfo.point - muzzle.position).normalized;
 				else
-					projectileData.forward = (ray.GetPoint(Mathf.Min(projectileData.range, 50f)) - muzzle.position).normalized;
+					projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;
 
-				var spread = (Random.insideUnitCircle * radiusOnMaxRange) / projectileData.range;
-				projectileData.forward += new Vector3(0, spread.y, spread.x);
+				var spread = (Random.insideUnitCircle * radiusOnMaxRange) / projectileData.Range;
+				projectileData.Forward += new Vector3(0, spread.y, spread.x);
 
-				var instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.forward, transform.up));
+				var instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.Forward, transform.up));
 				var projectile = instance.GetComponent<Projectile>();
 				projectile.Initiate(projectileData);
 

@@ -18,7 +18,7 @@ namespace Fralle.UI
 
     public void InitPlayerStats()
     {
-      Debug.Log($"ScoreScreen: Stats are not currently used");
+      Debug.Log("ScoreScreen: Stats are not currently used");
       Debug.Log(killsValue.text);
       Debug.Log(totalDamageValue.text);
       Debug.Log(nerveHitsValue.text);

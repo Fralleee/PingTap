@@ -10,38 +10,35 @@ namespace Fralle.Gameplay
 
 		public static void AddListener<T>(Action<T> evt) where T : GameEvent
 		{
-			if (!EventLookups.ContainsKey(evt))
-			{
-				Action<GameEvent> newAction = (e) => evt((T)e);
-				EventLookups[evt] = newAction;
+			if (EventLookups.ContainsKey(evt)) return;
 
-				if (Events.TryGetValue(typeof(T), out Action<GameEvent> internalAction))
-					Events[typeof(T)] = internalAction += newAction;
-				else
-					Events[typeof(T)] = newAction;
-			}
+			void NewAction(GameEvent e) => evt((T)e);
+			EventLookups[evt] = NewAction;
+
+			if (Events.TryGetValue(typeof(T), out Action<GameEvent> internalAction))
+				Events[typeof(T)] = internalAction + NewAction;
+			else
+				Events[typeof(T)] = NewAction;
 		}
 
 		public static void RemoveListener<T>(Action<T> evt) where T : GameEvent
 		{
-			if (EventLookups.TryGetValue(evt, out var action))
+			if (!EventLookups.TryGetValue(evt, out Action<GameEvent> action)) return;
+			if (Events.TryGetValue(typeof(T), out Action<GameEvent> tempAction))
 			{
-				if (Events.TryGetValue(typeof(T), out var tempAction))
-				{
-					tempAction -= action;
-					if (tempAction == null)
-						Events.Remove(typeof(T));
-					else
-						Events[typeof(T)] = tempAction;
-				}
-
-				EventLookups.Remove(evt);
+				tempAction -= action;
+				if (tempAction == null)
+					Events.Remove(typeof(T));
+				else
+					Events[typeof(T)] = tempAction;
 			}
+
+			EventLookups.Remove(evt);
 		}
 
 		public static void Broadcast(GameEvent evt)
 		{
-			if (Events.TryGetValue(evt.GetType(), out var action))
+			if (Events.TryGetValue(evt.GetType(), out Action<GameEvent> action))
 				action.Invoke(evt);
 		}
 

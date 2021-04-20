@@ -7,7 +7,7 @@ namespace CombatSystem.Effect
   public class SlowEffect : DamageEffect
   {
     [Header("Slow specific")]
-    public float slowModifier = 0.3f;
+    public float SlowModifier = 0.3f;
 
     public override void Enter(DamageController damageController)
     {

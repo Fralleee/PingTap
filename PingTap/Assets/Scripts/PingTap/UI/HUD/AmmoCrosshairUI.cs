@@ -13,8 +13,8 @@ namespace Fralle.UI.HUD
 		[SerializeField] Sprite threeSegments;
 		[SerializeField] Sprite fourSegments;
 
-		[SerializeField] int currentAmmo = 0;
-		[SerializeField] int maxAmmo = 0;
+		[SerializeField] int currentAmmo;
+		[SerializeField] int maxAmmo;
 
 		Image image;
 
@@ -25,8 +25,8 @@ namespace Fralle.UI.HUD
 			var combatant = GetComponentInParent<Combatant>();
 			combatant.OnWeaponSwitch += HandleWeaponSwitch;
 
-			if (combatant.equippedWeapon)
-				HandleWeaponSwitch(combatant.equippedWeapon, null);
+			if (combatant.EquippedWeapon)
+				HandleWeaponSwitch(combatant.EquippedWeapon, null);
 		}
 
 		void HandleWeaponSwitch(Weapon weapon, Weapon oldWeapon)
@@ -34,31 +34,22 @@ namespace Fralle.UI.HUD
 			var ammoAddon = weapon.GetComponent<AmmoAddon>();
 			ammoAddon.OnAmmoChanged += HandleAmmoChanged;
 
-			maxAmmo = ammoAddon.maxAmmo;
-			currentAmmo = ammoAddon.maxAmmo;
+			maxAmmo = ammoAddon.MaxAmmo;
+			currentAmmo = ammoAddon.MaxAmmo;
 
 			SetSpriteBasedOnAmmoCount(maxAmmo);
 			image.fillAmount = 1;
 		}
 
-		void SetSpriteBasedOnAmmoCount(int maxAmmo)
+		void SetSpriteBasedOnAmmoCount(int ammoCount)
 		{
-			if (maxAmmo == 2)
+			image.sprite = ammoCount switch
 			{
-				image.sprite = twoSegments;
-			}
-			else if (maxAmmo == 3)
-			{
-				image.sprite = threeSegments;
-			}
-			else if (maxAmmo == 4)
-			{
-				image.sprite = fourSegments;
-			}
-			else
-			{
-				image.sprite = oneSegment;
-			}
+				2 => twoSegments,
+				3 => threeSegments,
+				4 => fourSegments,
+				_ => oneSegment
+			};
 		}
 
 		void HandleAmmoChanged(int ammoCount)

@@ -6,27 +6,27 @@ namespace CombatSystem.Combat.Damage
 {
 	public class DamageData
 	{
-		public Combatant attacker;
-		public DamageController victim;
-		public GameObject impactEffect;
+		public Combatant Attacker;
+		public DamageController Victim;
+		public GameObject ImpactEffect;
 
-		public HitArea hitArea;
-		public Element element;
-		public DamageEffect[] effects;
+		public HitArea HitArea;
+		public Element Element;
+		public DamageEffect[] Effects;
 
-		public Vector3 position;
-		public Vector3 force;
+		public Vector3 Position;
+		public Vector3 Force;
 
-		public float hitAngle;
-		public float damageAmount;
+		public float HitAngle;
+		public float DamageAmount;
 
-		public bool killingBlow;
-		public bool gib;
-		public bool damageFromHit = true;
+		public bool KillingBlow;
+		public bool Gib;
+		public bool DamageFromHit = true;
 
 		public DamageData()
 		{
-			effects = new DamageEffect[0];
+			Effects = new DamageEffect[0];
 		}
 	}
 }

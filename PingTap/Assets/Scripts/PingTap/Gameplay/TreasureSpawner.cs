@@ -16,7 +16,7 @@ namespace Fralle.Gameplay
 
     public bool Spawn()
     {
-      var doSpawn = Random.value < spawnChance;
+      bool doSpawn = Random.value < spawnChance;
       if (!doSpawn) return false;
 
       var center = terrain.terrainData.bounds.center + terrain.transform.position;

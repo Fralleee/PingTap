@@ -13,9 +13,9 @@ namespace Fralle.Gameplay
 
 		[SerializeField] GameObject enemyPrefab;
 
-		public Vector3 spawnCenter = Vector3.zero;
-		public float minRange = 10f;
-		public float maxRange = 10f;
+		public Vector3 SpawnCenter = Vector3.zero;
+		public float MinRange = 10f;
+		public float MaxRange = 10f;
 
 		SpawnWave currentWave;
 		HeadQuarters playerHome;
@@ -31,13 +31,13 @@ namespace Fralle.Gameplay
 		public void SetSpawnDefinition(SpawnWave wave)
 		{
 			allowedSpawn = false;
-			maxSpawnCount = wave.count;
+			maxSpawnCount = wave.Count;
 			currentWave = Instantiate(wave);
 			currentWave.SetupProbabilityList();
 
 			currentSpawnCount = 0;
 			enemyCount = 0;
-			nextSpawnTime = Time.time + currentWave.spawnRate;
+			nextSpawnTime = Time.time + currentWave.SpawnRate;
 		}
 
 		public void StartSpawning()
@@ -52,14 +52,12 @@ namespace Fralle.Gameplay
 
 		void Update()
 		{
-			if (ShouldSpawnEnemy)
+			if (!ShouldSpawnEnemy) return;
+			float timeDiff = Time.time - nextSpawnTime;
+			float spawnCount = Mathf.Floor(timeDiff / currentWave.SpawnRate);
+			for (int i = 0; i < spawnCount; i++)
 			{
-				var timeDiff = Time.time - nextSpawnTime;
-				var spawnCount = Mathf.Floor(timeDiff / currentWave.spawnRate);
-				for (int i = 0; i < spawnCount; i++)
-				{
-					Spawn();
-				}
+				Spawn();
 			}
 		}
 
@@ -73,12 +71,12 @@ namespace Fralle.Gameplay
 			var spawnedInstance = Instantiate(prefab, position.With(y: 0), Quaternion.identity);
 			spawnedInstance.name = prefab.name;
 
-			spawnedInstance.GetComponent<AINavigation>().SetDestination(playerHome.Entry);
+			spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
 
 			if (spawnedInstance.GetComponent<Enemy>())
 				enemyCount += 1;
 
-			nextSpawnTime += currentWave.spawnRate;
+			nextSpawnTime += currentWave.SpawnRate;
 			currentSpawnCount += 1;
 
 			if (currentSpawnCount == maxSpawnCount)
@@ -112,7 +110,7 @@ namespace Fralle.Gameplay
 
 			var spawnedInstance = Instantiate(enemy, position.With(y: 0), Quaternion.identity);
 			spawnedInstance.name = enemy.name;
-			spawnedInstance.GetComponent<AINavigation>().SetDestination(playerHome.Entry);
+			spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
 			if (spawnedInstance.GetComponent<Enemy>())
 				enemyCount += 1;
 		}
@@ -121,8 +119,8 @@ namespace Fralle.Gameplay
 		{
 			for (int i = 0; i < 30; i++)
 			{
-				Vector3 randomVector = Random.insideUnitSphere.With(y: 0).normalized * Random.Range(minRange, maxRange);
-				if (NavMesh.SamplePosition((spawnCenter + randomVector).With(y: 0), out NavMeshHit hit, 2f, NavMesh.AllAreas))
+				Vector3 randomVector = Random.insideUnitSphere.With(y: 0).normalized * Random.Range(MinRange, MaxRange);
+				if (NavMesh.SamplePosition((SpawnCenter + randomVector).With(y: 0), out NavMeshHit hit, 2f, NavMesh.AllAreas))
 				{
 					return hit.position;
 				}

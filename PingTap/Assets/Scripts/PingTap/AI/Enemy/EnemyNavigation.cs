@@ -5,14 +5,14 @@ namespace Fralle.AI
 {
 	public class EnemyNavigation : MonoBehaviour
 	{
-		AIController aiController;
-		AINavigation aiNavigation;
+		AiController aiController;
+		AiNavigation aiNavigation;
 		Enemy enemy;
 
 		void Awake()
 		{
-			aiController = GetComponent<AIController>();
-			aiNavigation = GetComponent<AINavigation>();
+			aiController = GetComponent<AiController>();
+			aiNavigation = GetComponent<AiNavigation>();
 			aiNavigation.OnFinalDestination += HandleFinalDestination;
 			enemy = GetComponent<Enemy>();
 			enemy.OnDeath += HandleDeath;
@@ -20,7 +20,7 @@ namespace Fralle.AI
 
 		void Start()
 		{
-			if (aiNavigation.hasPurpose)
+			if (aiNavigation.HasPurpose)
 				aiController.IsMoving = true;
 		}
 

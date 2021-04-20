@@ -8,7 +8,7 @@ namespace CombatSystem.Action
 {
   public class MeleeAttack : AttackAction
   {
-    public float meleeRadius = 2f;
+    public float MeleeRadius = 2f;
 
     [SerializeField] float swingTime = 0.25f;
     [SerializeField] float recoveryTime = 1f;
@@ -25,7 +25,7 @@ namespace CombatSystem.Action
       PerformMelee();
     }
 
-    public override float GetRange() => meleeRadius;
+    public override float GetRange() => MeleeRadius;
 
     void LateUpdate()
     {
@@ -48,7 +48,7 @@ namespace CombatSystem.Action
           var delta = -(Mathf.Cos(Mathf.PI * (activeSwingTime / swingTime)) - 1f) / 2f;
           transform.localPosition = Vector3.Lerp(Vector3.zero, swingPosition, delta);
           transform.localRotation = Quaternion.Lerp(Quaternion.identity, swingRotation, delta);
-          if (activeSwingTime <= 0) weapon.ChangeWeaponAction(Status.Ready);
+          if (activeSwingTime <= 0) Weapon.ChangeWeaponAction(Status.Ready);
         }
       }
       else if (activeRecoveryTime > 0)
@@ -64,7 +64,7 @@ namespace CombatSystem.Action
       activeSwingTime = swingTime;
       activeRecoveryTime = recoveryTime;
       swinging = true;
-      weapon.ChangeWeaponAction(Status.Melee);
+      Weapon.ChangeWeaponAction(Status.Melee);
 
       var targets = GetTargets();
       foreach (var target in targets)
@@ -73,13 +73,13 @@ namespace CombatSystem.Action
 
         var damageData = new DamageData()
         {
-          damageAmount = Damage,
-          attacker = attacker,
-          element = element,
-          effects = damageEffects.Select(x => x.Setup(attacker, Damage)).ToArray(),
-          hitAngle = Vector3.Angle((transform.position - target.transform.position).normalized,
+          DamageAmount = Damage,
+          Attacker = Attacker,
+          Element = Element,
+          Effects = DamageEffects.Select(x => x.Setup(Attacker, Damage)).ToArray(),
+          HitAngle = Vector3.Angle((transform.position - target.transform.position).normalized,
             target.transform.forward),
-          position = target.transform.position
+          Position = target.transform.position
         };
         target.ReceiveAttack(damageData);
       }
@@ -93,7 +93,7 @@ namespace CombatSystem.Action
 
     IEnumerable<DamageController> GetTargets()
     {
-      var colliders = Physics.OverlapSphere(transform.position, meleeRadius);
+      var colliders = Physics.OverlapSphere(transform.position, MeleeRadius);
       return colliders.Select(x => x.GetComponentInParent<DamageController>())
         .Where(x => x != null).Distinct();
     }

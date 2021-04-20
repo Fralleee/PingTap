@@ -14,7 +14,7 @@ namespace Fralle.UI
 
 		DamageController damageController;
 
-		float delayTimer = 0;
+		float delayTimer;
 
 		void Awake()
 		{
@@ -25,13 +25,9 @@ namespace Fralle.UI
 		void Update()
 		{
 			delayTimer -= Time.deltaTime;
-			if (delayTimer < 0)
-			{
-				if (actualHealthbar.fillAmount < changeHealthbar.fillAmount)
-				{
-					changeHealthbar.fillAmount -= changeSpeed * Time.deltaTime;
-				}
-			}
+			if (!(delayTimer < 0)) return;
+			if (actualHealthbar.fillAmount < changeHealthbar.fillAmount)
+				changeHealthbar.fillAmount -= changeSpeed * Time.deltaTime;
 		}
 
 		void HandleDamageControllerChange(float currentHealth, float maxHealth)

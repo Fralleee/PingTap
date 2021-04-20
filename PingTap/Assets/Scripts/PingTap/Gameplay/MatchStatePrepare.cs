@@ -12,7 +12,7 @@ namespace Fralle.Gameplay
 			Managers.Instance.State.SetState(MatchState.Prepare);
 			Managers.Instance.Enemy.PrepareSpawner();
 
-			prepareTime = Managers.Instance.Settings.prepareTimer;
+			prepareTime = Managers.Instance.Settings.PrepareTimer;
 		}
 
 		public void Tick()

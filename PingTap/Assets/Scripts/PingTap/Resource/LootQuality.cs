@@ -35,14 +35,14 @@ namespace Fralle.Resource
       {Type.Legendary, Color.yellow}
     };
     public static Color GetQualityColor(Type quality) => QualityColorDict[quality];
-    public static LootQuality.Type RandomQuality()
+    public static Type RandomQuality()
     {
-      var value = Random.value;
-      foreach (var chance in QualityChance)
+      float value = Random.value;
+      foreach (KeyValuePair<Type, float> chance in QualityChance)
       {
         if (value < chance.Value) return chance.Key;
       }
-      return LootQuality.Type.Poor;
+      return Type.Poor;
     }
   }
 }

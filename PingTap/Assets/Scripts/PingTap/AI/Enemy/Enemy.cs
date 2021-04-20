@@ -21,20 +21,20 @@ namespace Fralle.AI
 
 		public static List<Enemy> AllAliveEnemies = new List<Enemy>();
 
-		[HideInInspector] public DamageController damageController;
+		[HideInInspector] public DamageController DamageController;
 
 		[Header("General")]
-		public int damageAmount = 1;
+		public int DamageAmount = 1;
 
 		public bool IsDead { get; private set; }
 		public Combatant KilledByCombatant { get; private set; }
 
 		void Awake()
 		{
-			damageController = GetComponent<DamageController>();
+			DamageController = GetComponent<DamageController>();
 
-			damageController.OnDeath += HandleDeath;
-			damageController.OnDamageTaken += HandleDamageTaken;
+			DamageController.OnDeath += HandleDeath;
+			DamageController.OnDamageTaken += HandleDamageTaken;
 			MatchManager.OnDefeat += HandleDefeat;
 
 			IncrementOnSpawn();
@@ -80,7 +80,7 @@ namespace Fralle.AI
 		{
 			if (count == 0)
 				count = TotalCount;
-			var enemies = FindObjectsOfType<Enemy>();
+			Enemy[] enemies = FindObjectsOfType<Enemy>();
 			foreach (var enemy in enemies)
 			{
 				if (count > 0)
@@ -115,7 +115,7 @@ namespace Fralle.AI
 			DecrementOnDeath();
 			AllAliveEnemies.Remove(this);
 			IsDead = true;
-			KilledByCombatant = damageData?.attacker;
+			KilledByCombatant = damageData?.Attacker;
 
 			DeathEvents(damageData);
 			DeathVisuals(destroyImmediately);
@@ -142,7 +142,7 @@ namespace Fralle.AI
 
 		void OnDestroy()
 		{
-			damageController.OnDeath -= HandleDeath;
+			DamageController.OnDeath -= HandleDeath;
 			MatchManager.OnDefeat -= HandleDefeat;
 		}
 	}

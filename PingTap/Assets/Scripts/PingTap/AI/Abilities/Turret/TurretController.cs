@@ -6,13 +6,13 @@ namespace Fralle.Abilities.Turret
 {
   public class TurretController : MonoBehaviour
   {
-    public DamageController target;
-    public Transform aimRig;
+    public DamageController Target;
+    public Transform AimRig;
 
     public bool IsDeployed;
 
-    public float targetHeight;
-    public float range = 25f;
+    public float TargetHeight;
+    public float Range = 25f;
 
     void Update()
     {
@@ -21,12 +21,12 @@ namespace Fralle.Abilities.Turret
 
     void RotateTowardsTarget()
     {
-      if (!target) return;
+      if (!Target) return;
 
-      var targetPosition = target.transform.position.With(y: targetHeight);
-      var direction = (targetPosition - aimRig.position).normalized;
+      var targetPosition = Target.transform.position.With(y: TargetHeight);
+      var direction = (targetPosition - AimRig.position).normalized;
       var lookRotation = Quaternion.LookRotation(direction);
-      aimRig.rotation = Quaternion.Slerp(aimRig.rotation, lookRotation, Time.deltaTime * 6f);
+      AimRig.rotation = Quaternion.Slerp(AimRig.rotation, lookRotation, Time.deltaTime * 6f);
     }
 
   }

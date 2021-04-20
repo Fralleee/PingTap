@@ -6,8 +6,8 @@ namespace CombatSystem.Effect
   [CreateAssetMenu(menuName = "PlayerAttack/Effect/Stun")]
   public class StunEffect : DamageEffect
   {
-    public float chanceOnHit = 0.25f;
-    public float damage = 10f;
+    public float ChanceOnHit = 0.25f;
+    public float Damage = 10f;
 
     public override void Enter(DamageController damageController)
     {

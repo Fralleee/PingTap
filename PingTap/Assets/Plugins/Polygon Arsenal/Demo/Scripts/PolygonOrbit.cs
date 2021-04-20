@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+
 [AddComponentMenu("Camera-Control/Mouse drag Orbit with zoom")]
 public class PolygonOrbit : MonoBehaviour
 {

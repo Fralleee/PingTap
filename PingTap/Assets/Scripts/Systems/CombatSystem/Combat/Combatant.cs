@@ -14,16 +14,16 @@ namespace CombatSystem.Combat
 		public CombatStats Stats = new CombatStats();
 		public CombatModifiers Modifiers = new CombatModifiers();
 
-		public Transform aimTransform;
-		public Transform weaponHolder;
-		public Weapon equippedWeapon;
+		public Transform AimTransform;
+		public Transform WeaponHolder;
+		public Weapon EquippedWeapon;
 
 		AttackAction primaryAction;
 		AttackAction secondaryAction;
 
 		public void PrimaryAction(bool keyDown = false)
 		{
-			if (!equippedWeapon || !primaryAction || primaryAction.tapable && !keyDown)
+			if (!EquippedWeapon || !primaryAction || primaryAction.Tapable && !keyDown)
 				return;
 
 			primaryAction.Perform();
@@ -31,16 +31,16 @@ namespace CombatSystem.Combat
 
 		public void SecondaryAction(bool keyDown = false)
 		{
-			if (!equippedWeapon || !secondaryAction || secondaryAction.tapable && !keyDown)
+			if (!EquippedWeapon || !secondaryAction || secondaryAction.Tapable && !keyDown)
 				return;
 
 			secondaryAction.Perform();
 		}
 
-		public void SetFPSLayers(string layerName)
+		public void SetFpsLayers(string layerName)
 		{
 			var layer = LayerMask.NameToLayer(layerName);
-			equippedWeapon.gameObject.SetLayerRecursively(layer);
+			EquippedWeapon.gameObject.SetLayerRecursively(layer);
 		}
 
 		void Awake()
@@ -50,44 +50,44 @@ namespace CombatSystem.Combat
 
 		void SetDefaults()
 		{
-			if (aimTransform == null)
-				aimTransform = transform;
-			if (weaponHolder == null)
-				weaponHolder = transform;
+			if (AimTransform == null)
+				AimTransform = transform;
+			if (WeaponHolder == null)
+				WeaponHolder = transform;
 		}
 
 		public void ClearWeapons()
 		{
-			foreach (Transform child in weaponHolder)
+			foreach (Transform child in WeaponHolder)
 			{
 				if (child.name != "Weapon Camera")
 					DestroyImmediate(child.gameObject);
 			}
 
-			equippedWeapon = null;
+			EquippedWeapon = null;
 		}
 
 		public void EquipWeapon(Weapon weapon, bool animationDistance = true)
 		{
-			if (equippedWeapon != null && equippedWeapon.name == weapon.name)
+			if (EquippedWeapon != null && EquippedWeapon.name == weapon.name)
 				return;
 
 			ClearWeapons();
 
-			var position = animationDistance ? weaponHolder.position.With(y: -0.5f) : weaponHolder.position;
-			equippedWeapon = Instantiate(weapon, position, weaponHolder.rotation, weaponHolder);
+			var position = animationDistance ? WeaponHolder.position.With(y: -0.5f) : WeaponHolder.position;
+			EquippedWeapon = Instantiate(weapon, position, WeaponHolder.rotation, WeaponHolder);
 
-			equippedWeapon.Equip(this);
-			SetupWeapon(equippedWeapon);
+			EquippedWeapon.Equip(this);
+			SetupWeapon(EquippedWeapon);
 		}
 
 		void SetupWeapon(Weapon weapon)
 		{
-			OnWeaponSwitch(weapon, equippedWeapon);
-			equippedWeapon = weapon;
-			var attackActions = equippedWeapon.GetComponentsInChildren<AttackAction>();
+			OnWeaponSwitch(weapon, EquippedWeapon);
+			EquippedWeapon = weapon;
+			var attackActions = EquippedWeapon.GetComponentsInChildren<AttackAction>();
 			if (attackActions.Length > 2)
-				Debug.LogWarning($"Weapon {equippedWeapon} has more attack actions than possible (2).");
+				Debug.LogWarning($"Weapon {EquippedWeapon} has more attack actions than possible (2).");
 			else if (attackActions.Length > 0)
 			{
 				primaryAction = attackActions[0];

@@ -24,7 +24,7 @@ namespace EPOOutline
             }
         }
 
-        public struct RenderTextureInfo
+        public readonly struct RenderTextureInfo
         {
             public readonly RenderTextureDescriptor Descriptor;
             public readonly FilterMode FilterMode;

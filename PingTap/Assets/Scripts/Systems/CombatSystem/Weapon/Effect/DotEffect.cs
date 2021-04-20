@@ -6,40 +6,40 @@ namespace CombatSystem.Effect
   [CreateAssetMenu(menuName = "PlayerAttack/Effect/DamageData over time")]
   public class DotEffect : DamageEffect
   {
-    [Header("Dot specific")] public DamageType damageApplication = DamageType.Flat;
-    public float damageModifier = 1f;
-    [HideInInspector] public float lastDamageTimer;
+    [Header("Dot specific")] public DamageType DamageApplication = DamageType.Flat;
+    public float DamageModifier = 1f;
+    [HideInInspector] public float LastDamageTimer;
 
     public override DamageEffect Append(DamageEffect oldEffect = null)
     {
       base.Append(oldEffect);
-      if (oldEffect != null) lastDamageTimer = ((DotEffect)oldEffect).lastDamageTimer;
+      if (oldEffect != null) LastDamageTimer = ((DotEffect)oldEffect).LastDamageTimer;
       return this;
     }
 
     public override void Tick(DamageController damageController)
     {
       base.Tick(damageController);
-      lastDamageTimer += Time.deltaTime;
+      LastDamageTimer += UnityEngine.Time.deltaTime;
 
-      if (!(lastDamageTimer > 1)) return;
+      if (!(LastDamageTimer > 1)) return;
 
-      lastDamageTimer -= 1f;
-      var damage = baseDamageModifier * DamageConverter.AsDamageModifier(damageModifier / time, damageApplication, damageController, weaponDamage);
+      LastDamageTimer -= 1f;
+      var damage = BaseDamageModifier * DamageConverter.AsDamageModifier(DamageModifier / Time, DamageApplication, damageController, WeaponDamage);
       damageController.ReceiveAttack(new DamageData()
       {
-        attacker = attacker,
-        element = element,
-        hitAngle = -1,
-        position = damageController.transform.position,
-        damageFromHit = false,
-        damageAmount = damage * stacks
+        Attacker = Attacker,
+        Element = Element,
+        HitAngle = -1,
+        Position = damageController.transform.position,
+        DamageFromHit = false,
+        DamageAmount = damage * Stacks
       });
     }
 
     public override DamageEffect Recalculate(float modifier)
     {
-      damageModifier *= modifier;
+      DamageModifier *= modifier;
       return this;
     }
   }

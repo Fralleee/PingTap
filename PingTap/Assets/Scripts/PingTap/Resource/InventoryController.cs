@@ -9,9 +9,9 @@ namespace Fralle.Resource
   {
     public event Action<int> OnCreditsUpdate = delegate { };
 
-    public int credits;
+    public int Credits;
 
-    public List<InventoryItem> items = new List<InventoryItem>();
+    public List<InventoryItem> Items = new List<InventoryItem>();
 
     [SerializeField] float animationTime = 0.25f;
 
@@ -38,11 +38,11 @@ namespace Fralle.Resource
     {
       if (droppedCredits > 0)
       {
-        credits += droppedCredits;
-        OnCreditsUpdate(credits);
+        Credits += droppedCredits;
+        OnCreditsUpdate(Credits);
       }
 
-      if (item != null) items.Add(item);
+      if (item != null) Items.Add(item);
 
       currentAnimationTime = animationTime;
       lootPickupVolume.weight = 1;

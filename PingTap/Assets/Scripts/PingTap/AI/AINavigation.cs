@@ -7,11 +7,11 @@ using UnityEngine.AI;
 
 namespace Fralle.AI
 {
-	public class AINavigation : MonoBehaviour
+	public class AiNavigation : MonoBehaviour
 	{
 		public event Action OnFinalDestination = delegate { };
 
-		public float currentMovementModifier = 1f;
+		public float CurrentMovementModifier = 1f;
 
 		NavMeshAgent navMeshAgent;
 		readonly Dictionary<string, float> movementModifiers = new Dictionary<string, float>();
@@ -19,7 +19,7 @@ namespace Fralle.AI
 		float stopTime;
 		float movementSpeed;
 
-		public bool hasPurpose { get; private set; }
+		public bool HasPurpose { get; private set; }
 
 		void Awake()
 		{
@@ -29,7 +29,7 @@ namespace Fralle.AI
 
 		void Update()
 		{
-			if (!hasPurpose)
+			if (!HasPurpose)
 				return;
 
 			if (PathComplete())
@@ -50,7 +50,7 @@ namespace Fralle.AI
 		public void SetDestination(Vector3 position)
 		{
 			navMeshAgent.destination = position;
-			hasPurpose = true;
+			HasPurpose = true;
 		}
 
 		public void AddModifier(string modifierName, float modifier)
@@ -59,9 +59,9 @@ namespace Fralle.AI
 				movementModifiers[modifierName] = modifier;
 			else
 				movementModifiers.Add(modifierName, modifier);
-			currentMovementModifier = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
+			CurrentMovementModifier = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
 
-			SetSpeed(movementSpeed * currentMovementModifier);
+			SetSpeed(movementSpeed * CurrentMovementModifier);
 		}
 
 		public void RemoveModifier(string modifierName)
@@ -69,13 +69,13 @@ namespace Fralle.AI
 			movementModifiers.Remove(modifierName);
 			if (movementModifiers.Count > 0)
 			{
-				var value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
-				currentMovementModifier = value;
+				float value = movementModifiers.OrderBy(x => x.Value).FirstOrDefault().Value;
+				CurrentMovementModifier = value;
 			}
 			else
-				currentMovementModifier = 1f;
+				CurrentMovementModifier = 1f;
 
-			SetSpeed(movementSpeed * currentMovementModifier);
+			SetSpeed(movementSpeed * CurrentMovementModifier);
 		}
 
 		public void SetSpeed(float speed)

@@ -7,9 +7,9 @@ namespace Fralle.Gameplay
 {
 	public class EnemyManager : MonoBehaviour
 	{
-		public List<SpawnWave> waves;
+		public List<SpawnWave> Waves;
 
-		bool spawnComplete = false;
+		bool spawnComplete;
 
 		void Start()
 		{
@@ -19,7 +19,7 @@ namespace Fralle.Gameplay
 
 		public void PrepareSpawner()
 		{
-			var wave = waves.PopAt(0);
+			var wave = Waves.PopAt(0);
 			Managers.Instance.Spawner.SetSpawnDefinition(wave);
 		}
 

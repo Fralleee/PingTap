@@ -8,8 +8,8 @@
       switch (damageApplication)
       {
         case DamageType.Flat: return damageModifier;
-        case DamageType.PercentageOfTargetCurrentHealth: return target.currentHealth * damageModifier;
-        case DamageType.PercentageOfTargetMaxHealth: return target.maxHealth * damageModifier;
+        case DamageType.PercentageOfTargetCurrentHealth: return target.CurrentHealth * damageModifier;
+        case DamageType.PercentageOfTargetMaxHealth: return target.MaxHealth * damageModifier;
         case DamageType.PercentageOfWeaponDamage: return weaponDamage * damageModifier;
         default: return damageModifier;
       }

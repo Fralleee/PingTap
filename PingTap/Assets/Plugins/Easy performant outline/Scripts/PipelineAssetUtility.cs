@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 
 #if UNITY_EDITOR
-using UnityEditor;
+
 #endif
 
 #if URP_OUTLINE && UNITY_2019_1_OR_NEWER

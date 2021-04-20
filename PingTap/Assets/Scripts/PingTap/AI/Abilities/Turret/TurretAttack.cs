@@ -9,7 +9,7 @@ namespace Fralle.Abilities.Turret
 	[RequireComponent(typeof(Combatant))]
 	public class TurretAttack : MonoBehaviour
 	{
-		[Readonly] public Weapon equippedWeapon;
+		[Readonly] public Weapon EquippedWeapon;
 
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 
@@ -36,38 +36,38 @@ namespace Fralle.Abilities.Turret
 
 		void EquipWeapon(Weapon weapon)
 		{
-			if (equippedWeapon && equippedWeapon.weaponName == weapon.weaponName)
+			if (EquippedWeapon && EquippedWeapon.WeaponName == weapon.WeaponName)
 				return;
-			if (equippedWeapon)
-				Destroy(equippedWeapon.gameObject);
+			if (EquippedWeapon)
+				Destroy(EquippedWeapon.gameObject);
 
-			equippedWeapon = Instantiate(weapon, combatant.weaponHolder.position, combatant.weaponHolder.rotation, combatant.weaponHolder);
-			equippedWeapon.Equip(combatant);
+			EquippedWeapon = Instantiate(weapon, combatant.WeaponHolder.position, combatant.WeaponHolder.rotation, combatant.WeaponHolder);
+			EquippedWeapon.Equip(combatant);
 			GetMaxRange();
 		}
 
 		void GetMaxRange()
 		{
-			var attackActions = equippedWeapon.GetComponentsInChildren<AttackAction>();
+			AttackAction[] attackActions = EquippedWeapon.GetComponentsInChildren<AttackAction>();
 			float longestRange = 0f;
 			foreach (var attackAction in attackActions)
 			{
 				if (attackAction.GetRange() > longestRange)
 					longestRange = attackAction.GetRange();
 			}
-			turret.range = Mathf.Min(longestRange, 200);
+			turret.Range = Mathf.Min(longestRange, 200);
 		}
 
 		void SwapWeapon()
 		{
-			for (var i = 1; i <= weapons.Length; i++)
+			for (int i = 1; i <= weapons.Length; i++)
 				if (Input.GetKeyDown("" + i))
 					EquipWeapon(weapons[i - 1]);
 		}
 
 		void FireInput()
 		{
-			if (!turret.target || !turret.IsDeployed)
+			if (!turret.Target || !turret.IsDeployed)
 				return;
 
 			combatant.PrimaryAction(true);

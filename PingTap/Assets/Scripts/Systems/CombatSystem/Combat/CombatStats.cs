@@ -8,11 +8,11 @@ namespace CombatSystem.Combat
   [Serializable]
   public class CombatStats
   {
-    [Readonly] public int killingBlows;
-    [Readonly] public float totalDamage;
-    [Readonly] public float totalShotsFired;
-    [Readonly] public float totalShotsHit;
-    [Readonly] public float accuracyPercentage;
+    [Readonly] public int KillingBlows;
+    [Readonly] public float TotalDamage;
+    [Readonly] public float TotalShotsFired;
+    [Readonly] public float TotalShotsHit;
+    [Readonly] public float AccuracyPercentage;
 
     List<DamageData> combatHistory = new List<DamageData>();
 
@@ -23,19 +23,19 @@ namespace CombatSystem.Combat
 
     public void OnAttack(int shots)
     {
-      totalShotsFired += shots;
+      TotalShotsFired += shots;
     }
 
     public void CalculateStats()
     {
       foreach (var damageData in combatHistory)
       {
-        totalDamage += damageData.damageAmount;
-        totalShotsHit += damageData.damageFromHit ? 1 : 0;
-        killingBlows += damageData.killingBlow ? 1 : 0;
+        TotalDamage += damageData.DamageAmount;
+        TotalShotsHit += damageData.DamageFromHit ? 1 : 0;
+        KillingBlows += damageData.KillingBlow ? 1 : 0;
       }
 
-      accuracyPercentage = totalShotsHit / totalShotsFired;
+      AccuracyPercentage = TotalShotsHit / TotalShotsFired;
     }
   }
 }

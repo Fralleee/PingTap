@@ -17,64 +17,64 @@ namespace CombatSystem.Action
 		public MouseButton Button { get; set; }
 
 		[Header("Shooting")]
-		[SerializeField] internal float minDamage = 1;
-		[SerializeField] internal float maxDamage = 10;
-		[SerializeField] internal int ammoPerShot = 1;
-		[SerializeField] internal int shotsPerSecond = 20;
-		[SerializeField] internal bool tapable = false;
-		[SerializeField] internal Element element = Element.Physical;
-		[SerializeField] internal DamageEffect[] damageEffects = new DamageEffect[0];
+		[SerializeField] internal float MinDamage = 1;
+		[SerializeField] internal float MaxDamage = 10;
+		[SerializeField] internal int AmmoPerShot = 1;
+		[SerializeField] internal int ShotsPerSecond = 20;
+		[SerializeField] internal bool Tapable = false;
+		[SerializeField] internal Element Element = Element.Physical;
+		[SerializeField] internal DamageEffect[] DamageEffects = new DamageEffect[0];
 
-		internal int hitboxLayer;
-		internal Weapon weapon;
-		internal Combatant attacker;
-		internal StatsController stats;
+		internal int HitboxLayer;
+		internal Weapon Weapon;
+		internal Combatant Attacker;
+		internal StatsController Stats;
 		int nextMuzzle;
 
 		float fireRate;
 
-		internal float Damage => Random.Range(minDamage, maxDamage);
-		bool HasAmmo => weapon.ammoAddonController && weapon.ammoAddonController.HasAmmo();
+		internal float Damage => Random.Range(MinDamage, MaxDamage);
+		bool HasAmmo => Weapon.AmmoAddonController && Weapon.AmmoAddonController.HasAmmo();
 
 		internal virtual void Awake()
 		{
-			hitboxLayer = LayerMask.NameToLayer("Hitbox");
-			fireRate = 1f / shotsPerSecond;
+			HitboxLayer = LayerMask.NameToLayer("Hitbox");
+			fireRate = 1f / ShotsPerSecond;
 		}
 
 		internal virtual void Start()
 		{
-			weapon = GetComponent<Weapon>();
-			attacker = weapon.GetComponentInParent<Combatant>();
+			Weapon = GetComponent<Weapon>();
+			Attacker = Weapon.GetComponentInParent<Combatant>();
 
-			stats = weapon.combatant.GetComponent<StatsController>();
-			if (stats)
+			Stats = Weapon.Combatant.GetComponent<StatsController>();
+			if (Stats)
 			{
-				stats.aim.OnChanged += Aim_OnChanged;
+				Stats.Aim.OnChanged += Aim_OnChanged;
 			}
 		}
 
 #if UNITY_EDITOR
 		internal virtual void OnValidate()
 		{
-			fireRate = 1f / shotsPerSecond;
+			fireRate = 1f / ShotsPerSecond;
 		}
 #endif
 
 		public void Perform()
 		{
-			if (!weapon || weapon.ActiveWeaponAction != Status.Ready)
+			if (!Weapon || Weapon.ActiveWeaponAction != Status.Ready)
 				return;
 
-			int shotsToFire = Mathf.RoundToInt(-weapon.nextAvailableShot / fireRate);
+			int shotsToFire = Mathf.RoundToInt(-Weapon.NextAvailableShot / fireRate);
 			for (int i = 0; i <= shotsToFire; i++)
 			{
 				Fire();
-				weapon.nextAvailableShot += fireRate;
-				weapon.ammoAddonController?.ChangeAmmo(-ammoPerShot);
+				Weapon.NextAvailableShot += fireRate;
+				Weapon.AmmoAddonController?.ChangeAmmo(-AmmoPerShot);
 
-				if (weapon.recoilAddon)
-					weapon.recoilAddon.AddRecoil();
+				if (Weapon.RecoilAddon)
+					Weapon.RecoilAddon.AddRecoil();
 
 				if (!HasAmmo)
 					break;
@@ -82,7 +82,7 @@ namespace CombatSystem.Action
 
 			if (HasAmmo)
 			{
-				weapon.ChangeWeaponAction(Status.Firing);
+				Weapon.ChangeWeaponAction(Status.Firing);
 			}
 		}
 
@@ -91,12 +91,12 @@ namespace CombatSystem.Action
 
 		internal Transform GetMuzzle()
 		{
-			var muzzle = weapon.muzzles[nextMuzzle];
-			if (weapon.muzzles.Length <= 1)
+			var muzzle = Weapon.Muzzles[nextMuzzle];
+			if (Weapon.Muzzles.Length <= 1)
 				return muzzle;
 
 			nextMuzzle++;
-			if (nextMuzzle > weapon.muzzles.Length - 1)
+			if (nextMuzzle > Weapon.Muzzles.Length - 1)
 				nextMuzzle = 0;
 
 			return muzzle;
@@ -108,9 +108,9 @@ namespace CombatSystem.Action
 
 		internal virtual void OnDestroy()
 		{
-			if (stats)
+			if (Stats)
 			{
-				stats.aim.OnChanged -= Aim_OnChanged;
+				Stats.Aim.OnChanged -= Aim_OnChanged;
 			}
 		}
 	}

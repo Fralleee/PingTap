@@ -6,7 +6,7 @@ namespace CombatSystem.Defense
   [Serializable]
   public class ArmorElementModifier
   {
-    public Element element;
-    public float modifier = 1;
+    public Element Element;
+    public float Modifier = 1;
   }
 }

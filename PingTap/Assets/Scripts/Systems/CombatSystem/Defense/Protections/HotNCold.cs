@@ -10,14 +10,14 @@ namespace CombatSystem.Defense.Protections
   {
     public override ProtectionResult RunProtection(DamageData damageData, DamageController damageController)
     {
-      var fireToWater = damageData.element == Element.Fire && damageController.damageEffects.Any(x => x.element == Element.Water);
-      if (fireToWater) return new ProtectionResult() { effectProtection = EffectProtection.Ignore, damageData = damageData };
+      var fireToWater = damageData.Element == Element.Fire && damageController.DamageEffects.Any(x => x.Element == Element.Water);
+      if (fireToWater) return new ProtectionResult() { EffectProtection = EffectProtection.Ignore, DamageData = damageData };
 
-      var waterToFire = damageData.element == Element.Water && damageController.damageEffects.Any(x => x.element == Element.Fire);
-      if (waterToFire) return new ProtectionResult() { effectProtection = EffectProtection.Ignore, damageData = damageData };
+      var waterToFire = damageData.Element == Element.Water && damageController.DamageEffects.Any(x => x.Element == Element.Fire);
+      if (waterToFire) return new ProtectionResult() { EffectProtection = EffectProtection.Ignore, DamageData = damageData };
 
-      damageData.damageAmount = 0;
-      return new ProtectionResult() { effectProtection = effectProtection, damageData = damageData };
+      damageData.DamageAmount = 0;
+      return new ProtectionResult() { EffectProtection = EffectProtection, DamageData = damageData };
     }
   }
 }

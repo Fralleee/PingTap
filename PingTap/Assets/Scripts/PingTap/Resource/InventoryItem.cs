@@ -4,6 +4,6 @@ namespace Fralle.Resource
 {
   public class InventoryItem : MonoBehaviour
   {
-    public GameObject dropPrefab;
+    public GameObject DropPrefab;
   }
 }

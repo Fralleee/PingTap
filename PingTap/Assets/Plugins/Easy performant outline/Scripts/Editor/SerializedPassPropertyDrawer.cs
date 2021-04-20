@@ -110,7 +110,7 @@ namespace EPOOutline
 								break;
 						}
 
-						GameObject.DestroyImmediate(tempMaterial);
+						Object.DestroyImmediate(tempMaterial);
 
 						properties.Add(propertyName, currentProperty);
 					}

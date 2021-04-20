@@ -9,10 +9,10 @@ using UnityEditor;
 
 public class NavMeshCleaner : MonoBehaviour
 {
-    public List<Vector3> m_WalkablePoint = new List<Vector3>();
-    public float m_Height = 1.0f;
-    public float m_Offset = 0.0f;
-    public int m_MidLayerCount = 3;
+    public List<Vector3> MWalkablePoint = new List<Vector3>();
+    public float Height = 1.0f;
+    public float Offset = 0.0f;
+    public int MidLayerCount = 3;
 
 #if UNITY_EDITOR
     private void Awake()
@@ -20,35 +20,33 @@ public class NavMeshCleaner : MonoBehaviour
         SetMeshVisible(false);
     }
 
-    List<GameObject> m_Child = new List<GameObject> ();
+    List<GameObject> child = new List<GameObject> ();
 
     void Reset()
     {
         Undo.RecordObject(this, "Reset");
 
-        for (int i = 0; i < m_Child.Count; i++)
+        foreach (var t in child)
         {
-            Undo.DestroyObjectImmediate(m_Child[i]);
+	        Undo.DestroyObjectImmediate(t);
         }
-        m_Child.Clear();
+        child.Clear();
     }
 
     void SetMeshVisible(bool visible)
     {
-        for (int i = 0; i < m_Child.Count; i++)
-            m_Child[i].SetActive(visible);
+	    foreach (var t in child)
+		    t.SetActive(visible);
     }
 
     public bool HasMesh()
     {
-        return m_Child.Count != 0 ? true : false;
+        return child.Count != 0 ? true : false;
     }
 
     public bool MeshVisible()
     {
-        if (m_Child.Count > 0)
-            return m_Child[0].activeSelf;
-        return false;
+	    return child.Count > 0 && child[0].activeSelf;
     }
 
     void Build()
@@ -60,7 +58,7 @@ public class NavMeshCleaner : MonoBehaviour
         for (int i = 0; i < m.Length || i == 0; i++)
         {
             GameObject o;
-            if (i >= m_Child.Count)
+            if (i >= child.Count)
             {
                 o = new GameObject();
 
@@ -77,25 +75,25 @@ public class NavMeshCleaner : MonoBehaviour
                 o.transform.localRotation = Quaternion.identity;
                 GameObjectUtility.SetStaticEditorFlags(o, GameObjectUtility.GetStaticEditorFlags(gameObject) | StaticEditorFlags.NavigationStatic);
                 GameObjectUtility.SetNavMeshArea(o, 1);
-                m_Child.Add(o);
+                child.Add(o);
                 Undo.RegisterCreatedObjectUndo(o, "");
             }
             else
             {
-                o = m_Child[i].gameObject;
+                o = child[i].gameObject;
             }
 
-            o.hideFlags = i == 0 ? (HideFlags.DontSave | HideFlags.HideInHierarchy) : m_Child[0].gameObject.hideFlags;
+            o.hideFlags = i == 0 ? (HideFlags.DontSave | HideFlags.HideInHierarchy) : child[0].gameObject.hideFlags;
 
-            MeshFilter meshfilter = m_Child[i].GetComponent<MeshFilter>();
+            MeshFilter meshfilter = child[i].GetComponent<MeshFilter>();
             Undo.RecordObject(meshfilter, "MeshUpdate");
             meshfilter.sharedMesh = m.Length == 0 ? null : m[i];
         }
 
-        while (m_Child.Count > m.Length)
+        while (child.Count > m.Length)
         {
-            Undo.DestroyObjectImmediate(m_Child[m_Child.Count-1]);
-            m_Child.RemoveAt(m_Child.Count-1);
+            Undo.DestroyObjectImmediate(child[child.Count-1]);
+            child.RemoveAt(child.Count-1);
         }
     }
 
@@ -103,53 +101,45 @@ public class NavMeshCleaner : MonoBehaviour
     {
         int center = (left + right) / 2;
 
-        if (center == left)
+        if (center != left)
+	        return key <= vtx[center].x ? Find(vtx, left, center, v, key) : Find(vtx, center, right, v, key);
+        for (int i = left; i < vtx.Length && vtx[i].x <= key + 0.002f; i++)
         {
-            for (int i = left; i < vtx.Length && vtx[i].x <= key + 0.002f; i++)
-            {
-                if (Vector3.Magnitude(vtx[i] - v) <= 0.01f)
-                    return i;
-            }
-            return -1;
+	        if (Vector3.Magnitude(vtx[i] - v) <= 0.01f)
+		        return i;
         }
+        return -1;
 
-        if (key <= vtx[center].x)
-            return Find(vtx, left, center, v, key);
-        else
-            return Find(vtx, center, right, v, key);
     }
 
     class Tri
     {
-        public Tri(int i1, int i2, int i3) { this.i1 = i1; this.i2 = i2; this.i3 = i3; min = Mathf.Min(i1, i2, i3); max = Mathf.Max(i1, i2, i3); }
-        public int i1, i2, i3;
-        public int min, max;
+        public Tri(int i1, int i2, int i3) { this.I1 = i1; this.I2 = i2; this.I3 = i3; Min = Mathf.Min(i1, i2, i3); Max = Mathf.Max(i1, i2, i3); }
+        public int I1;
+        public int I2 { get; }
+        public int I3;
+        public int Min, Max;
     };
 
     class Edge
     {
-        public Edge(int i1, int i2) { this.i1 = i1; this.i2 = i2; }
-        public int i1, i2;
+        public Edge(int i1, int i2) { this.I1 = i1; this.I2 = i2; }
+        public int I1, I2;
     };
 
     static bool Find(Edge[] edge, int left, int right, int i1, int i2)
     {
         int center = (left + right) / 2;
 
-        if (center == left)
+        if (center != left)
+	        return i1 <= edge[center].I1 ? Find(edge, left, center, i1, i2) : Find(edge, center, right, i1, i2);
+        for (int i = left; i < edge.Length && edge[i].I1 <= i1; i++)
         {
-            for (int i = left; i < edge.Length && edge[i].i1 <= i1; i++)
-            {
-                if (edge[i].i1 == i1 && edge[i].i2 == i2)
-                    return true;
-            }
-            return false;
+	        if (edge[i].I1 == i1 && edge[i].I2 == i2)
+		        return true;
         }
+        return false;
 
-        if (i1 <= edge[center].i1)
-            return Find(edge, left, center, i1, i2);
-        else
-            return Find(edge, center, right, i1, i2);
     }
 
     Mesh[] CreateMesh()
@@ -169,7 +159,7 @@ public class NavMeshCleaner : MonoBehaviour
         {
             table[i] = Find(v, 0, vertices.Count, navVertices[i], navVertices[i].x - 0.001f);
             if ((i % 100) == 0)
-                EditorUtility.DisplayProgressBar(string.Format("Export Nav-Mesh (Phase #1/3) {0}/{1}", i, table.Length), "Weld Vertex", Mathf.InverseLerp(0, table.Length, i));
+                EditorUtility.DisplayProgressBar($"Export Nav-Mesh (Phase #1/3) {i}/{table.Length}", "Weld Vertex", Mathf.InverseLerp(0, table.Length, i));
         }
 
         int[] navTriangles = triangulatedNavMesh.indices;
@@ -177,19 +167,19 @@ public class NavMeshCleaner : MonoBehaviour
         List <Tri> tri = new List <Tri> ();
         for (int i = 0; i < navTriangles.Length; i += 3)
             tri.Add(new Tri(table[navTriangles[i + 0]], table[navTriangles[i + 1]], table[navTriangles[i + 2]]));
-        tri.Sort(delegate (Tri t1, Tri t2) { return t1.min == t2.min ? 0 : t1.min < t2.min ? -1 : 1; });
+        tri.Sort((t1, t2) => t1.Min == t2.Min ? 0 : t1.Min < t2.Min ? -1 : 1);
 
         int[] boundmin = new int[(tri.Count + 127) / 128];
         int[] boundmax = new int[boundmin.Length];
 
         for (int i = 0, c=0; i < tri.Count; i += 128, c++)
         {
-            int min = tri[i].min;
-            int max = tri[i].max;
+            int min = tri[i].Min;
+            int max = tri[i].Max;
             for (int j = 1; j < 128 && i + j < tri.Count; j++)
             {
-                min = Mathf.Min(tri[i + j].min, min);
-                max = Mathf.Max(tri[i + j].max, max);
+                min = Mathf.Min(tri[i + j].Min, min);
+                max = Mathf.Max(tri[i + j].Max, max);
             }
             boundmin[c] = min;
             boundmax[c] = max;
@@ -198,9 +188,9 @@ public class NavMeshCleaner : MonoBehaviour
         int[] triangles = new int[navTriangles.Length];
         for (int i = 0; i < triangles.Length; i += 3)
         {
-            triangles[i+0] = tri[i/3].i1;
-            triangles[i+1] = tri[i/3].i2;
-            triangles[i+2] = tri[i/3].i3;
+            triangles[i+0] = tri[i/3].I1;
+            triangles[i+1] = tri[i/3].I2;
+            triangles[i+2] = tri[i/3].I3;
         }
         
         List<int> groupidx = new List<int>();
@@ -221,10 +211,10 @@ public class NavMeshCleaner : MonoBehaviour
 
                 for (int j=b; j < i && j < b+3*128; j+=3)
                 {
-                    if (tri[j / 3].min > max)
+                    if (tri[j / 3].Min > max)
                         break;
 
-                    if (tri[j / 3].max < min)
+                    if (tri[j / 3].Max < min)
                         continue;
 
                     if (groupidx[group[j / 3]] == groupid)
@@ -233,24 +223,22 @@ public class NavMeshCleaner : MonoBehaviour
                     for (int k = 0; k < 3; k++)
                     {
                         int vi = triangles[j + k];
-                        if (triangles[i] == vi || triangles[i+1] == vi || triangles[i+2] == vi)
+                        if (triangles[i] != vi && triangles[i + 1] != vi && triangles[i + 2] != vi) continue;
+                        if (groupid == -1)
                         {
-                            if (groupid == -1)
-                            {
-                                groupid = groupidx[group[j / 3]];
-                                group[i/3] = groupid;
-                            }
-                            else
-                            {
-                                int curgroup = groupidx[group[j / 3]];
-                                for (int l = 0; l < groupidx.Count; l++)
-                                {
-                                    if (groupidx[l] == curgroup)
-                                        groupidx[l] = groupid;
-                                }
-                            }
-                            break;
+	                        groupid = groupidx[@group[j / 3]];
+	                        @group[i/3] = groupid;
                         }
+                        else
+                        {
+	                        int curgroup = groupidx[@group[j / 3]];
+	                        for (int l = 0; l < groupidx.Count; l++)
+	                        {
+		                        if (groupidx[l] == curgroup)
+			                        groupidx[l] = groupid;
+	                        }
+                        }
+                        break;
                     }
                 }
             }
@@ -282,7 +270,7 @@ public class NavMeshCleaner : MonoBehaviour
         for (int i = 0; i < newtable.Length; i++)
             newtable[i] = -1;
 
-        Vector3[] walkpoint = m_WalkablePoint.ToArray();
+        Vector3[] walkpoint = MWalkablePoint.ToArray();
 
         for (int g = 0; g < groupcount.Count; g++)
         {
@@ -299,11 +287,9 @@ public class NavMeshCleaner : MonoBehaviour
                     for (int j = 0; j < 3; j++)
                     {
                         int idx = triangles[i + j];
-                        if (newtable[idx] == -1)
-                        {
-                            newtable[idx] = isolatevtx.Count;
-                            isolatevtx.Add(transform.InverseTransformPoint(vertices[idx] + Vector3.up * m_Offset));
-                        }
+                        if (newtable[idx] != -1) continue;
+                        newtable[idx] = isolatevtx.Count;
+                        isolatevtx.Add(transform.InverseTransformPoint(vertices[idx] + Vector3.up * Offset));
                     }
                     iolateidx.Add(newtable[triangles[i + 0]]);
                     iolateidx.Add(newtable[triangles[i + 1]]);
@@ -316,20 +302,20 @@ public class NavMeshCleaner : MonoBehaviour
 
             int maxvertex = 32768;
 
-            if (vtx.Count > maxvertex || vtx.Count + isolatevtx.Count*(2+m_MidLayerCount) >= 65536)
+            if (vtx.Count > maxvertex || vtx.Count + isolatevtx.Count*(2+MidLayerCount) >= 65536)
             {
                 result.Add(CreateMesh(vtx.ToArray(), indices.ToArray()));
                 vtx.Clear();
                 indices.Clear();
             }
 
-            Vector3 h = transform.InverseTransformVector(Vector3.up * m_Height);
+            Vector3 h = transform.InverseTransformVector(Vector3.up * Height);
             int vtxoffset = vtx.Count;
-            int layer = 2 + m_MidLayerCount;
-            for (int i = 0; i < isolatevtx.Count; i++)
+            int layer = 2 + MidLayerCount;
+            foreach (var t in isolatevtx)
             {
-                for(int j=0; j<layer; j++)
-                    vtx.Add(isolatevtx[i] + h * ((float)j / (layer-1)));
+	            for(int j=0; j<layer; j++)
+		            vtx.Add(t + h * ((float)j / (layer-1)));
             }
             for (int i = 0; i < iolateidx.Count; i += 3)
             {
@@ -342,7 +328,7 @@ public class NavMeshCleaner : MonoBehaviour
                 }
             }
 
-            if (m_Height > 0)
+            if (Height > 0)
             {
                 List<Edge> edge = new List<Edge>();
                 for (int i = 0; i < iolateidx.Count; i += 3)
@@ -351,7 +337,7 @@ public class NavMeshCleaner : MonoBehaviour
                     edge.Add(new Edge(iolateidx[i+1], iolateidx[i+2]));
                     edge.Add(new Edge(iolateidx[i+2], iolateidx[i+0]));
                 }
-                edge.Sort(delegate (Edge e1, Edge e2) { return e1.i1 == e2.i1 ? 0 : (e1.i1 < e2.i1 ? -1 : 1); });
+                edge.Sort((e1, e2) => e1.I1 == e2.I1 ? 0 : (e1.I1 < e2.I1 ? -1 : 1));
                 Edge[] e = edge.ToArray();
 
                 for (int i = 0; i < iolateidx.Count; i += 3)
@@ -394,10 +380,8 @@ public class NavMeshCleaner : MonoBehaviour
 
     static Mesh CreateMesh(Vector3[] vtx, int[] indices)
     {
-        Mesh m = new Mesh();
-        m.hideFlags = HideFlags.DontSave;
-        m.vertices = vtx;
-        m.SetIndices(indices, MeshTopology.Triangles, 0);
+	    Mesh m = new Mesh {hideFlags = HideFlags.DontSave, vertices = vtx};
+	    m.SetIndices(indices, MeshTopology.Triangles, 0);
         m.RecalculateNormals();
         m.RecalculateBounds();
         return m;
@@ -405,42 +389,38 @@ public class NavMeshCleaner : MonoBehaviour
 
     static bool Contains(Vector3[] vtx, int[] indices, Vector3[] points)
     {
-        for (int j = 0; j < points.Length; j++)
-        {
-            Vector3 p = points[j];
+	    foreach (var p in points)
+	    {
+		    for (int i = 0; i < indices.Length; i += 3)
+		    {
+			    if (indices[i] == indices[i + 1] || indices[i] == indices[i + 2] || indices[i + 1] == indices[i + 2])
+				    continue;
 
-            for (int i = 0; i < indices.Length; i += 3)
-            {
-                if (indices[i] == indices[i + 1] || indices[i] == indices[i + 2] || indices[i + 1] == indices[i + 2])
-                    continue;
+			    if (PointInTriangle(vtx[indices[i]], vtx[indices[i + 2]], vtx[indices[i + 1]], p))
+				    return true;
+		    }
+	    }
 
-                if (PointInTriangle(vtx[indices[i]], vtx[indices[i + 2]], vtx[indices[i + 1]], p))
-                    return true;
-            }
-        }
-        return false;
+	    return false;
     }
 
     static bool PointInTriangle(Vector3 v1, Vector3 v2, Vector3 v3, Vector3 p)
     {
         Vector3 up = Vector3.Cross(v3 - v1, v2 - v1);
 
-        if (Vector3.Dot(Vector3.Cross(p - v1, v2 - v1), up) > 0 &&
-            Vector3.Dot(Vector3.Cross(p - v2, v3 - v2), up) > 0 &&
-            Vector3.Dot(Vector3.Cross(p - v3, v1 - v3), up) > 0)
-            return true;
-
-        return false;
+        return Vector3.Dot(Vector3.Cross(p - v1, v2 - v1), up) > 0 &&
+               Vector3.Dot(Vector3.Cross(p - v2, v3 - v2), up) > 0 &&
+               Vector3.Dot(Vector3.Cross(p - v3, v1 - v3), up) > 0;
     }
 
     [UnityEditor.CustomEditor(typeof(NavMeshCleaner))]
     public class NavMeshCleanerEditor : Editor
     {
-        NavMeshCleaner m_Target;
+        NavMeshCleaner mTarget;
 
         void OnEnable()
         {
-            m_Target = (NavMeshCleaner)target;
+            mTarget = (NavMeshCleaner)target;
 
             Undo.undoRedoPerformed += OnUndoOrRedo;
         }
@@ -457,26 +437,30 @@ public class NavMeshCleaner : MonoBehaviour
 
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.HelpBox(m_OverPoint != -1 ? "Press Control and click to remove the point." : "Press Control and click to add a walkable point.", m_Target.m_WalkablePoint.Count == 0 ? MessageType.Warning : MessageType.Info);
+            EditorGUILayout.HelpBox(overPoint != -1 ? "Press Control and click to remove the point." : "Press Control and click to add a walkable point.", mTarget.MWalkablePoint.Count == 0 ? MessageType.Warning : MessageType.Info);
 
             base.OnInspectorGUI();
 
             NavMeshCleaner t = (NavMeshCleaner)target;
 
-            if (t.m_Child.Count > 0)
+            if (t.child.Count > 0)
             {
                 EditorGUI.BeginChangeCheck();
-                bool hideInHierarchy = EditorGUILayout.Toggle("Hide Temp Mesh Object In Hierarchy", (t.m_Child[0].gameObject.hideFlags & HideFlags.HideInHierarchy) != 0 ? true : false);
+                bool hideInHierarchy = EditorGUILayout.Toggle("Hide Temp Mesh Object In Hierarchy", (t.child[0].gameObject.hideFlags & HideFlags.HideInHierarchy) != 0 ? true : false);
                 if (EditorGUI.EndChangeCheck())
                 {
-                    for (int i = 0; i < t.m_Child.Count; i++)
-                        t.m_Child[i].gameObject.hideFlags = hideInHierarchy ? (t.m_Child[i].gameObject.hideFlags | HideFlags.HideInHierarchy) : (t.m_Child[i].gameObject.hideFlags & (~HideFlags.HideInHierarchy));
-                    try
-                    {
-                        EditorApplication.RepaintHierarchyWindow();
-                        EditorApplication.DirtyHierarchyWindowSorting();
-                    }
-                    catch { }
+	                foreach (var t1 in t.child)
+		                t1.gameObject.hideFlags = hideInHierarchy ? (t1.gameObject.hideFlags | HideFlags.HideInHierarchy) : (t1.gameObject.hideFlags & (~HideFlags.HideInHierarchy));
+
+	                try
+	                {
+		                EditorApplication.RepaintHierarchyWindow();
+		                EditorApplication.DirtyHierarchyWindowSorting();
+	                }
+	                catch
+	                {
+		                // ignored
+	                }
                 }
             }
 
@@ -499,12 +483,11 @@ public class NavMeshCleaner : MonoBehaviour
                 t.Reset();
                 SceneView.RepaintAll();
             }
-            if (t.HasMesh() && GUILayout.Button("Reset WalkablePoints", GUILayout.Height(30.0f)))
-            {
-                Undo.RecordObject(target, "reset");
-                m_Target.m_WalkablePoint.Clear();
-                SceneView.RepaintAll();
-            }
+
+            if (!t.HasMesh() || !GUILayout.Button("Reset WalkablePoints", GUILayout.Height(30.0f))) return;
+            Undo.RecordObject(target, "reset");
+            mTarget.MWalkablePoint.Clear();
+            SceneView.RepaintAll();
 
         }
 
@@ -512,18 +495,15 @@ public class NavMeshCleaner : MonoBehaviour
         {
             public static GUIStyle Get(string id)
             {
-                GUIStyle style;
-                if (!texture.TryGetValue(id, out style))
-                {
-                    style = new GUIStyle(id);
-                    texture.Add(id, style);
-                }
+	            if (texture.TryGetValue(id, out var style)) return style;
+                style = new GUIStyle(id);
+                texture.Add(id, style);
                 return style;
             }
             static Dictionary<string, GUIStyle> texture = new Dictionary<string, GUIStyle>();
         }
 
-        void DrawDisc(Vector3 p, Vector3 n, float radius)
+        static void DrawDisc(Vector3 p, Vector3 n, float radius)
         {
             Vector3[] v = new Vector3[20];
             Matrix4x4 tm = Matrix4x4.TRS(p, Quaternion.LookRotation(n), Vector3.one * radius);
@@ -540,30 +520,34 @@ public class NavMeshCleaner : MonoBehaviour
 
             Event guiEvent = Event.current;
 
-            if (guiEvent.type == EventType.Repaint)
+            switch (guiEvent.type)
             {
-                // draw
-                for (int i = 0; i < m_Target.m_WalkablePoint.Count; i++)
-                {
-                    Vector3 p = m_Target.transform.TransformPoint(m_Target.m_WalkablePoint[i]);
-                    float unitsize = WorldSize(1.0f, sceneview.camera, p);
+	            case EventType.Repaint:
+	            {
+		            // draw
+		            for (int i = 0; i < mTarget.MWalkablePoint.Count; i++)
+		            {
+			            Vector3 p = mTarget.transform.TransformPoint(mTarget.MWalkablePoint[i]);
+			            float unitsize = WorldSize(1.0f, sceneview.camera, p);
 
-                    Handles.color = Color.black;
-                    DrawDisc(p, Vector3.up, unitsize * 15);
+			            Handles.color = Color.black;
+			            DrawDisc(p, Vector3.up, unitsize * 15);
 
-                    Handles.color = i == m_OverPoint ? Color.red : Color.green;
-                    Handles.DrawSolidDisc(p, Vector3.up, unitsize * 10);
-                    Handles.DrawLine(p, p + Vector3.up * (unitsize * 200.0f));
-                }
+			            Handles.color = i == overPoint ? Color.red : Color.green;
+			            Handles.DrawSolidDisc(p, Vector3.up, unitsize * 10);
+			            Handles.DrawLine(p, p + Vector3.up * (unitsize * 200.0f));
+		            }
+
+		            break;
+	            }
+	            case EventType.Layout when guiEvent.control == true:
+		            HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
+		            break;
             }
 
-            if (guiEvent.type == EventType.Layout && guiEvent.control == true)
-            {
-                HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
-            }
             if (guiEvent.control == true)
             {
-                EditorGUIUtility.AddCursorRect(new Rect(0, 0, Screen.width, Screen.height), m_OverPoint == -1 ? MouseCursor.ArrowPlus : MouseCursor.ArrowMinus);
+                EditorGUIUtility.AddCursorRect(new Rect(0, 0, Screen.width, Screen.height), overPoint == -1 ? MouseCursor.ArrowPlus : MouseCursor.ArrowMinus);
             }
 
             if ((guiEvent.type == EventType.MouseDown || guiEvent.type == EventType.MouseDrag || guiEvent.type == EventType.MouseMove || guiEvent.type == EventType.MouseUp) && guiEvent.button == 0)
@@ -572,7 +556,7 @@ public class NavMeshCleaner : MonoBehaviour
             }
         }
 
-        int m_OverPoint = -1;
+        int overPoint = -1;
 
         void MouseEvent(EventType type, Vector2 mouseposition, bool controldown)
         {
@@ -584,62 +568,59 @@ public class NavMeshCleaner : MonoBehaviour
             {
                 int pointindex = -1;
 
-                for (int i = 0; i < m_Target.m_WalkablePoint.Count; i++)
+                for (int i = 0; i < mTarget.MWalkablePoint.Count; i++)
                 {
-                    Vector3 p = m_Target.transform.TransformPoint(m_Target.m_WalkablePoint[i]);
+                    Vector3 p = mTarget.transform.TransformPoint(mTarget.MWalkablePoint[i]);
                     float size = WorldSize(10.0f, sceneview.camera, p) * 1.5f;
-                    if (DistanceRayVsPoint(mouseRay, p) < size)
-                    {
-                        pointindex = i;
-                        break;
-                    }
+                    if (!(DistanceRayVsPoint(mouseRay, p) < size)) continue;
+                    pointindex = i;
+                    break;
                 }
 
-                if (pointindex != m_OverPoint)
+                if (pointindex != overPoint)
                 {
-                    m_OverPoint = pointindex;
+                    overPoint = pointindex;
                     HandleUtility.Repaint();
                 }
             }
 
-            if (type == EventType.MouseDown && controldown == true)
+            if (type != EventType.MouseDown || controldown != true) return;
             {
-                if (m_OverPoint != -1)
-                {
-                    Undo.RecordObject(m_Target, "Remove Point");
-                    m_Target.m_WalkablePoint.RemoveAt(m_OverPoint);
-                    m_OverPoint = -1;
-                }
-                else
-                {
-                    float mint = 1000.0f;
-                    RaycastHit hit;
+	            if (overPoint != -1)
+	            {
+		            Undo.RecordObject(mTarget, "Remove Point");
+		            mTarget.MWalkablePoint.RemoveAt(overPoint);
+		            overPoint = -1;
+	            }
+	            else
+	            {
+		            float mint = 1000.0f;
 
-                    if (Physics.Raycast(mouseRay, out hit, mint))
-                    {
-                        Undo.RecordObject(m_Target, "Add Point");
-                        m_Target.m_WalkablePoint.Add(m_Target.transform.InverseTransformPoint(hit.point));
-                    }
-                    else
-                    {
-                        NavMeshTriangulation triangulatedNavMesh = NavMesh.CalculateTriangulation();
+		            if (Physics.Raycast(mouseRay, out var hit, mint))
+		            {
+			            Undo.RecordObject(mTarget, "Add Point");
+			            mTarget.MWalkablePoint.Add(mTarget.transform.InverseTransformPoint(hit.point));
+		            }
+		            else
+		            {
+			            NavMeshTriangulation triangulatedNavMesh = NavMesh.CalculateTriangulation();
 
-                        Vector3[] navVertices = triangulatedNavMesh.vertices;
-                        int[] indices = triangulatedNavMesh.indices;
+			            Vector3[] navVertices = triangulatedNavMesh.vertices;
+			            int[] indices = triangulatedNavMesh.indices;
 
-                        Vector3 outNormal = Vector3.up;
-                        for (int i = 0; i < indices.Length; i += 3)
-                            mint = IntersectTest(mouseRay, navVertices[indices[i]], navVertices[indices[i + 1]], navVertices[indices[i + 2]], mint, ref outNormal);
+			            Vector3 outNormal = Vector3.up;
+			            for (int i = 0; i < indices.Length; i += 3)
+				            mint = IntersectTest(mouseRay, navVertices[indices[i]], navVertices[indices[i + 1]], navVertices[indices[i + 2]], mint, ref outNormal);
 
-                        if (mint < 1000.0f)
-                        {
-                            Undo.RecordObject(m_Target, "Add Point");
-                            Vector3 point = mouseRay.origin + mouseRay.direction * mint;
-                            m_Target.m_WalkablePoint.Add(m_Target.transform.InverseTransformPoint(point));
-                        }
-                    }
-                }
-                HandleUtility.Repaint();
+			            if (mint < 1000.0f)
+			            {
+				            Undo.RecordObject(mTarget, "Add Point");
+				            Vector3 point = mouseRay.origin + mouseRay.direction * mint;
+				            mTarget.MWalkablePoint.Add(mTarget.transform.InverseTransformPoint(point));
+			            }
+		            }
+	            }
+	            HandleUtility.Repaint();
             }
         }
 

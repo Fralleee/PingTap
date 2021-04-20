@@ -8,10 +8,10 @@ namespace Fralle
 {
 	public class Headbob : MonoBehaviour
 	{
-		[Range(0.01f, 1f)] public float bobbingSpeed = 0.08f;
-		[Range(0.01f, 1f)] public float bobbingAmount = 0.05f;
-		[Range(0f, 3f)] public float bobbingRotationAmount = 1.75f;
-		[Range(0.1f, 3f)] public float vertBobbingAmount = 1.25f;
+		[Range(0.01f, 1f)] public float BobbingSpeed = 0.08f;
+		[Range(0.01f, 1f)] public float BobbingAmount = 0.05f;
+		[Range(0f, 3f)] public float BobbingRotationAmount = 1.75f;
+		[Range(0.1f, 3f)] public float VertBobbingAmount = 1.25f;
 
 		PlayerController playerController;
 		Combatant combatant;
@@ -29,8 +29,8 @@ namespace Fralle
 			combatant = GetComponentInParent<Combatant>();
 
 			combatant.OnWeaponSwitch += OnWeaponSwitch;
-			if (combatant.equippedWeapon != null)
-				OnWeaponSwitch(combatant.equippedWeapon, null);
+			if (combatant.EquippedWeapon != null)
+				OnWeaponSwitch(combatant.EquippedWeapon, null);
 		}
 
 		void OnWeaponSwitch(Weapon newWeapon, Weapon oldWeapon)
@@ -49,7 +49,7 @@ namespace Fralle
 		{
 			initPos = transform.localPosition;
 			initRot = transform.localRotation;
-			yNormalizer = (bobbingAmount * vertBobbingAmount);
+			yNormalizer = (BobbingAmount * VertBobbingAmount);
 		}
 
 		void Update()
@@ -73,7 +73,7 @@ namespace Fralle
 				curvePosition = Mathf.Sin(timer);
 				bob = -Mathf.Abs(Mathf.Abs(curvePosition) - 1);
 
-				timer += bobbingSpeed;
+				timer += BobbingSpeed;
 
 				if (timer > Mathf.PI * 2)
 					timer = timer - (Mathf.PI * 2);
@@ -81,14 +81,14 @@ namespace Fralle
 
 			if (bob != 0)
 			{
-				bob *= playerController.modifiedMovementSpeed;
-				calcPosition.y = initPos.y + yNormalizer + bob * bobbingAmount * vertBobbingAmount;
+				bob *= playerController.ModifiedMovementSpeed;
+				calcPosition.y = initPos.y + yNormalizer + bob * BobbingAmount * VertBobbingAmount;
 			}
 			else
 				calcPosition.y = initPos.y;
 
 			if (curvePosition != 0)
-				angleChanges = initRot.eulerAngles.y + curvePosition * playerController.modifiedMovementSpeed * bobbingRotationAmount;
+				angleChanges = initRot.eulerAngles.y + curvePosition * playerController.ModifiedMovementSpeed * BobbingRotationAmount;
 			else
 				angleChanges = Mathf.LerpAngle(angleChanges, 0, Time.deltaTime * 6f);
 
@@ -103,7 +103,7 @@ namespace Fralle
 
 		void OnValidate()
 		{
-			yNormalizer = (bobbingAmount * vertBobbingAmount);
+			yNormalizer = (BobbingAmount * VertBobbingAmount);
 		}
 	}
 

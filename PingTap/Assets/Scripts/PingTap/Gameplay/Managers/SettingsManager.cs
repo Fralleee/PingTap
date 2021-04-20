@@ -8,12 +8,12 @@ namespace Fralle.Gameplay
 	public class SettingsManager : MonoBehaviour
 	{
 		[Space(10)]
-		[Readonly] public int enemiesSpawned;
-		[Readonly] public int enemiesKilled;
-		[Readonly] public int totalEnemies;
-		[Readonly] public float prepareTimer;
-		[Readonly] public float totalTimer;
-		[Readonly] public float waveTimer;
+		[Readonly] public int EnemiesSpawned;
+		[Readonly] public int EnemiesKilled;
+		[Readonly] public int TotalEnemies;
+		[Readonly] public float PrepareTimer;
+		[Readonly] public float TotalTimer;
+		[Readonly] public float WaveTimer;
 
 		[SerializeField] float prepareTime = 5f;
 		[SerializeField] bool showColliders = true;
@@ -26,12 +26,12 @@ namespace Fralle.Gameplay
 
 		void Update()
 		{
-			totalTimer += Time.deltaTime;
+			TotalTimer += Time.deltaTime;
 		}
 
 		public void ResetPreparationTimer()
 		{
-			prepareTime = prepareTimer;
+			prepareTime = PrepareTimer;
 		}
 
 	}

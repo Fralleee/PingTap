@@ -26,7 +26,7 @@ namespace Fralle.UI.Menu
 		public void Options()
 		{
 			options.gameObject.SetActive(true);
-			options.GetComponent<SubMenu>().inGame = StateManager.gameState == GameState.Playing;
+			options.GetComponent<SubMenu>().InGame = StateManager.GameState == GameState.Playing;
 			root.SetActive(false);
 		}
 

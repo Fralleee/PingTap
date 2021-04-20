@@ -37,20 +37,20 @@ namespace Fralle.Abilities.Turret
 
 		void LookForTarget()
 		{
-			if (turret.target || currentScanTime > 0)
+			if (turret.Target || currentScanTime > 0)
 				return;
 
 			currentScanTime = scanRate;
-			var colliders = Physics.OverlapSphere(transform.position, turret.range, layerMask);
+			Collider[] colliders = Physics.OverlapSphere(transform.position, turret.Range, layerMask);
 			if (colliders.Length > 0)
 			{
 				foreach (var col in colliders.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude))
 				{
-					if (Physics.Raycast(transform.position, col.transform.position - transform.position, out RaycastHit hitInfo, turret.range, layerMask))
+					if (Physics.Raycast(transform.position, col.transform.position - transform.position, out RaycastHit hitInfo, turret.Range, layerMask))
 					{
 						var target = hitInfo.transform.gameObject;
-						turret.target = target.GetComponent<DamageController>();
-						turret.targetHeight = target.GetComponent<Collider>().bounds.center.y;
+						turret.Target = target.GetComponent<DamageController>();
+						turret.TargetHeight = target.GetComponent<Collider>().bounds.center.y;
 						currentScanTime = 0;
 						break;
 					}
@@ -60,19 +60,19 @@ namespace Fralle.Abilities.Turret
 
 		void RaycastTarget()
 		{
-			if (!turret.target)
+			if (!turret.Target)
 				return;
 			if (currentRayCastTime > 0)
 				return;
 
 			currentRayCastTime = rayCastRate;
-			if (Physics.Raycast(turret.aimRig.position, turret.target.transform.position - turret.aimRig.position, out RaycastHit hitInfo, turret.range))
+			if (Physics.Raycast(turret.AimRig.position, turret.Target.transform.position - turret.AimRig.position, out RaycastHit hitInfo, turret.Range))
 			{
-				if (hitInfo.transform != turret.target.transform)
-					turret.target = null;
+				if (hitInfo.transform != turret.Target.transform)
+					turret.Target = null;
 			}
 			else
-				turret.target = null;
+				turret.Target = null;
 		}
 
 	}

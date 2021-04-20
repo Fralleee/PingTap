@@ -17,7 +17,7 @@ namespace Fralle.Gameplay
 			Vector3 newTargetPosition = Handles.PositionHandle(playerHome.Entry, Quaternion.identity);
 			if (EditorGUI.EndChangeCheck())
 			{
-				playerHome.entryCoordinates = newTargetPosition - playerHome.transform.position;
+				playerHome.EntryCoordinates = newTargetPosition - playerHome.transform.position;
 			}
 		}
 	}

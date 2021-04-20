@@ -18,22 +18,22 @@ namespace CombatSystem.Combat.Damage
 		public event Action<DamageController, DamageData> OnReceiveAttack = delegate { };
 		public event Action<float, float> OnHealthChange = delegate { };
 
-		[HideInInspector] public List<DamageEffect> damageEffects = new List<DamageEffect>();
-		[HideInInspector] public bool isDead;
+		[HideInInspector] public List<DamageEffect> DamageEffects = new List<DamageEffect>();
+		[HideInInspector] public bool IsDead;
 
 		[Header("UI")]
 		[SerializeField] GameObject healthbarPrefab;
 		[SerializeField] GameObject floatingNumbersPrefab;
 
 		[Header("Stats")]
-		public float currentHealth;
-		public float maxHealth = 100f;
-		public bool immortal;
-		public Armor armor;
+		public float CurrentHealth;
+		public float MaxHealth = 100f;
+		public bool Immortal;
+		public Armor Armor;
 
 		[Header("Effects")]
-		public GameObject majorImpactEffect;
-		public GameObject nerveImpactEffect;
+		public GameObject MajorImpactEffect;
+		public GameObject NerveImpactEffect;
 
 		[Header("Audio")]
 		[SerializeField] AudioClip damageSound;
@@ -45,85 +45,85 @@ namespace CombatSystem.Combat.Damage
 		{
 			audioSource = GetComponent<AudioSource>();
 
-			SetupUI();
+			SetupUi();
 		}
 
 		void Start()
 		{
-			if (currentHealth.EqualsWithTolerance(0f))
-				currentHealth = maxHealth;
+			if (CurrentHealth.EqualsWithTolerance(0f))
+				CurrentHealth = MaxHealth;
 		}
 
 		void Update()
 		{
-			if (isDead)
+			if (IsDead)
 				return;
-			for (var i = 0; i < damageEffects.Count; i++)
+			for (var i = 0; i < DamageEffects.Count; i++)
 			{
-				damageEffects[i].Tick(this);
-				if (damageEffects[i].timer <= damageEffects[i].time)
+				DamageEffects[i].Tick(this);
+				if (DamageEffects[i].Timer <= DamageEffects[i].Time)
 					continue;
-				damageEffects[i].Exit(this);
-				damageEffects.RemoveAt(i);
+				DamageEffects[i].Exit(this);
+				DamageEffects.RemoveAt(i);
 			}
 		}
 
 		public void ReceiveAttack(DamageData damageData)
 		{
-			if (isDead)
+			if (IsDead)
 				return;
 
 			OnReceiveAttack(this, damageData);
-			damageData = armor.Protect(damageData, this);
+			damageData = Armor.Protect(damageData, this);
 			TakeDamage(damageData);
 			ApplyEffects(damageData);
 		}
 
 		public void ReceiveAttack(RaycastAttack raycastAttack, RaycastHit hit)
 		{
-			if (isDead)
+			if (IsDead)
 				return;
 
 			var hitbox = hit.transform.GetComponent<Hitbox>();
-			var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
+			var hitArea = hitbox ? hitbox.HitArea : HitArea.Major;
 			var damageData = new DamageData()
 			{
-				attacker = raycastAttack.attacker,
-				element = raycastAttack.element,
-				effects = damageEffects.Select(x => x.Setup(raycastAttack.attacker, raycastAttack.Damage)).ToArray(),
-				hitAngle = Vector3.Angle((raycastAttack.weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
-				force = raycastAttack.attacker.aimTransform.forward * raycastAttack.pushForce,
-				position = hit.point,
-				hitArea = hitArea,
-				damageAmount = hitArea.GetMultiplier() * raycastAttack.Damage
+				Attacker = raycastAttack.Attacker,
+				Element = raycastAttack.Element,
+				Effects = DamageEffects.Select(x => x.Setup(raycastAttack.Attacker, raycastAttack.Damage)).ToArray(),
+				HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
+				Force = raycastAttack.Attacker.AimTransform.forward * raycastAttack.PushForce,
+				Position = hit.point,
+				HitArea = hitArea,
+				DamageAmount = hitArea.GetMultiplier() * raycastAttack.Damage
 			};
 
 			OnReceiveAttack(this, damageData);
-			damageData = armor.Protect(damageData, this);
+			damageData = Armor.Protect(damageData, this);
 			TakeDamage(damageData);
 			ApplyEffects(damageData);
 		}
 
 		public void TakeDamage(DamageData damageData)
 		{
-			if (isDead)
+			if (IsDead)
 				return;
 
-			damageData.victim = this;
+			damageData.Victim = this;
 
-			if (damageData.damageAmount <= 0)
+			if (damageData.DamageAmount <= 0)
 			{
-				damageData.attacker?.Stats.OnSuccessfulAttack(damageData);
+				damageData.Attacker?.Stats.OnSuccessfulAttack(damageData);
 				return;
 			}
 
-			currentHealth -= damageData.damageAmount;
-			OnHealthChange(currentHealth, maxHealth);
+			CurrentHealth -= damageData.DamageAmount;
+			OnHealthChange(CurrentHealth, MaxHealth);
 			OnDamageTaken(this, damageData);
-			if (currentHealth <= 0)
+			if (CurrentHealth <= 0)
 			{
-				damageData.killingBlow = true;
-				damageData.gib = currentHealth <= -maxHealth * 0.5f;
+				damageData.KillingBlow = true;
+				damageData.Gib = CurrentHealth <= -MaxHealth * 0.5f;
 				Death(damageData);
 			}
 			else if (audioSource && damageSound)
@@ -132,24 +132,24 @@ namespace CombatSystem.Combat.Damage
 				audioSource.Play();
 			}
 
-			damageData.attacker?.Stats.OnSuccessfulAttack(damageData);
+			damageData.Attacker?.Stats.OnSuccessfulAttack(damageData);
 		}
 
 		void ApplyEffects(DamageData damageData)
 		{
-			foreach (var t in damageData.effects)
+			foreach (var t in damageData.Effects)
 			{
 				var effect = t;
-				var oldEffect = damageEffects.FirstOrDefault(x => x.name == effect.name);
+				var oldEffect = DamageEffects.FirstOrDefault(x => x.name == effect.name);
 				effect = effect.Append(oldEffect);
 				effect.Enter(this);
-				damageEffects.Upsert(oldEffect, effect);
+				DamageEffects.Upsert(oldEffect, effect);
 			}
 		}
 
 		void Death(DamageData damageData)
 		{
-			if (isDead)
+			if (IsDead)
 				return;
 
 			if (audioSource && deathSound)
@@ -157,19 +157,19 @@ namespace CombatSystem.Combat.Damage
 				audioSource.clip = deathSound;
 				audioSource.Play();
 			}
-			if (immortal)
+			if (Immortal)
 			{
-				currentHealth = maxHealth;
-				OnHealthChange(currentHealth, maxHealth);
+				CurrentHealth = MaxHealth;
+				OnHealthChange(CurrentHealth, MaxHealth);
 			}
 			else
 			{
-				isDead = true;
+				IsDead = true;
 				OnDeath(this, damageData);
 			}
 		}
 
-		void SetupUI()
+		void SetupUi()
 		{
 			var uiTransform = transform.Find("UI");
 			if (healthbarPrefab)

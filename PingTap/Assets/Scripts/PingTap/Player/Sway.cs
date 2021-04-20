@@ -16,7 +16,7 @@ namespace Fralle
 		Vector3 initialSwayPosition;
 		Vector3 nextIdlePosition = Vector3.zero;
 
-		bool shouldSway => combatant.equippedWeapon && !Cursor.visible;
+		bool ShouldSway => combatant.EquippedWeapon && !Cursor.visible;
 
 		void Awake()
 		{
@@ -29,10 +29,10 @@ namespace Fralle
 
 		void LateUpdate()
 		{
-			if (!shouldSway)
+			if (!ShouldSway)
 				return;
 
-			var delta = -playerController.mouseLook;
+			var delta = -playerController.MouseLook;
 			if (delta.magnitude > 0)
 				PerformSway(delta);
 			else

@@ -10,35 +10,35 @@ namespace Fralle.Gameplay
 	{
 		public event Action<HeadQuarters> OnDeath = delegate { };
 
-		public DamageController damageController;
-		public Vector3 entryCoordinates = Vector3.zero;
-		public Vector3 Entry => transform.position + entryCoordinates;
+		public DamageController DamageController;
+		public Vector3 EntryCoordinates = Vector3.zero;
+		public Vector3 Entry => transform.position + EntryCoordinates;
 
 		void Awake()
 		{
-			damageController = GetComponent<DamageController>();
-			damageController.OnDeath += HandleDeath;
+			DamageController = GetComponent<DamageController>();
+			DamageController.OnDeath += HandleDeath;
 			Enemy.OnEnemyReachedPowerStone += HandleEnemyReachedPowerStone;
 		}
 
 		void HandleDeath(DamageController damageController, DamageData damageData)
 		{
 			OnDeath(this);
-			EventManager.Broadcast(new GameOverEvent(false));
+			EventManager.Broadcast(new GameOverEvent());
 			Destroy(gameObject);
 		}
 
 		void HandleEnemyReachedPowerStone(Enemy enemy)
 		{
-			damageController.TakeDamage(new DamageData()
+			DamageController.TakeDamage(new DamageData()
 			{
-				damageAmount = enemy.damageAmount
+				DamageAmount = enemy.DamageAmount
 			});
 		}
 
 		void OnDestroy()
 		{
-			damageController.OnDeath -= HandleDeath;
+			DamageController.OnDeath -= HandleDeath;
 			Enemy.OnEnemyReachedPowerStone -= HandleEnemyReachedPowerStone;
 		}
 	}

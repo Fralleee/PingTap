@@ -1,5 +1,4 @@
 ﻿using Fralle.UI.Menu;
-using QFSW.QC;
 using System;
 using UnityEngine;
 
@@ -36,11 +35,10 @@ namespace Fralle.Gameplay
 
 		void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Escape) && !QuantumConsole.Instance.IsActive && allowPauseMenu)
-			{
-				var isOpen = pauseMenu.ToggleMenu();
-				OnMenuToggle(isOpen);
-			}
+			if (!Input.GetKeyDown(KeyCode.Escape) || !allowPauseMenu) return;
+
+			bool isOpen = pauseMenu.ToggleMenu();
+			OnMenuToggle(isOpen);
 		}
 
 		void SetupUi()

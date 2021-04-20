@@ -5,6 +5,6 @@ namespace CombatSystem.Combat
   [Serializable]
   public class CombatModifiers
   {
-    public float extraAccuracy = 1f;
+    public float ExtraAccuracy = 1f;
   }
 }

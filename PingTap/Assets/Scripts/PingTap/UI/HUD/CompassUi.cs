@@ -36,10 +36,10 @@ namespace Fralle.UI.HUD
       compassImage.uvRect = new Rect(playerOrientation.localEulerAngles.y / 360, 0, 1, 1);
 
       var forward = playerOrientation.forward.With(y: 0);
-      var headingAngle = Quaternion.LookRotation(forward).eulerAngles.y;
-      var displayAngle = 5 * (Mathf.RoundToInt(headingAngle / 5f));
+      float headingAngle = Quaternion.LookRotation(forward).eulerAngles.y;
+      int displayAngle = 5 * (Mathf.RoundToInt(headingAngle / 5f));
 
-      compassDirectionText.text = directionOverride.TryGetValue(displayAngle, out var textValue) ? textValue : displayAngle.ToString();
+      compassDirectionText.text = directionOverride.TryGetValue(displayAngle, out string textValue) ? textValue : displayAngle.ToString();
     }
   }
 

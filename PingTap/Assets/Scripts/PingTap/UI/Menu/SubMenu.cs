@@ -6,7 +6,7 @@ namespace Fralle.UI.Menu
   {
     [SerializeField] GameObject parentMenu = null;
 
-    public bool inGame;
+    public bool InGame;
 
     void Update()
     {
@@ -22,7 +22,7 @@ namespace Fralle.UI.Menu
     public void ParentMenu()
     {
       gameObject.SetActive(false);
-      if (!inGame) parentMenu.gameObject.SetActive(true);
+      if (!InGame) parentMenu.gameObject.SetActive(true);
     }
   }
 }

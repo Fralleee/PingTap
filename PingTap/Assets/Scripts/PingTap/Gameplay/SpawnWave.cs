@@ -10,32 +10,32 @@ namespace Fralle.Gameplay
 	[CreateAssetMenu(menuName = "Spawn/Wave")]
 	public class SpawnWave : ScriptableObject
 	{
-		public List<SpawnProbability> spawnProbabilities = new List<SpawnProbability>();
-		public int count;
-		public float spawnOverTimeInSeconds;
-		[HideInInspector] public float spawnRate;
+		public List<SpawnProbability> SpawnProbabilities = new List<SpawnProbability>();
+		public int Count;
+		public float SpawnOverTimeInSeconds;
+		[HideInInspector] public float SpawnRate;
 
 		public void SetupProbabilityList()
 		{
-			spawnRate = spawnOverTimeInSeconds / count;
+			SpawnRate = SpawnOverTimeInSeconds / Count;
 
-			var chanceSum = spawnProbabilities.Sum(x => x.chance);
-			spawnProbabilities.ForEach(x => x.chance /= chanceSum);
+			float chanceSum = SpawnProbabilities.Sum(x => x.Chance);
+			SpawnProbabilities.ForEach(x => x.Chance /= chanceSum);
 
 			float oldValue = 0;
-			foreach (var spawnProbability in spawnProbabilities.OrderBy(x => x.chance))
+			foreach (var spawnProbability in SpawnProbabilities.OrderBy(x => x.Chance))
 			{
-				spawnProbability.chance += oldValue;
-				oldValue = spawnProbability.chance;
+				spawnProbability.Chance += oldValue;
+				oldValue = spawnProbability.Chance;
 			}
 		}
 
 		public GameObject GetPrefab()
 		{
-			var random = Random.Range(0f, 1f);
-			var probability = spawnProbabilities.FirstOrDefault(x => random <= x.chance);
+			float random = Random.Range(0f, 1f);
+			var probability = SpawnProbabilities.FirstOrDefault(x => random <= x.Chance);
 
-			return probability.prefab;
+			return probability.Prefab;
 		}
 	}
 }

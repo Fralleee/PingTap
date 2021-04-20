@@ -16,7 +16,7 @@ namespace Fralle.Gameplay
 		[SerializeField] AudioEvent defeatSound;
 
 		HeadQuarters headQuarters;
-		bool isHQDead;
+		bool isHqDead;
 
 		public bool IsPlayingMatch => !SceneManager.GetSceneByName("Main Menu").isLoaded;
 
@@ -28,7 +28,7 @@ namespace Fralle.Gameplay
 
 		public void MatchOver()
 		{
-			if (isHQDead)
+			if (isHqDead)
 			{
 				Victory();
 			}
@@ -57,7 +57,7 @@ namespace Fralle.Gameplay
 
 		void HeadQuarters_OnDeath(HeadQuarters obj)
 		{
-			isHQDead = true;
+			isHqDead = true;
 		}
 	}
 }

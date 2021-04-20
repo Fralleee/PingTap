@@ -6,7 +6,7 @@ namespace Fralle.Gameplay
 	[Serializable]
 	public class SpawnProbability
 	{
-		public float chance;
-		public GameObject prefab;
+		public float Chance;
+		public GameObject Prefab;
 	}
 }

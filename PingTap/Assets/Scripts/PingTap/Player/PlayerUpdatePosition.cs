@@ -38,15 +38,13 @@ namespace Fralle
 				doRotate = true;
 			}
 
-			if (doRotate)
-			{
-				transform.rotation = Quaternion.Lerp(transform.rotation, orientation.rotation, Time.deltaTime * 10f);
-				if (Vector3.Angle(orientation.forward, transform.forward) < 0.5f)
-				{
-					transform.rotation = orientation.rotation;
-					doRotate = false;
-				}
-			}
+			if (!doRotate) return;
+
+			transform.rotation = Quaternion.Lerp(transform.rotation, orientation.rotation, Time.deltaTime * 10f);
+			if (!(Vector3.Angle(orientation.forward, transform.forward) < 0.5f)) return;
+
+			transform.rotation = orientation.rotation;
+			doRotate = false;
 		}
 	}
 }

@@ -33,27 +33,27 @@ namespace CombatSystem.Addons
 			stats = weapon.GetComponentInParent<StatsController>();
 			if (stats)
 			{
-				stats.aim.OnChanged += Aim_OnChanged;
-				recoilStatMultiplier = stats.aim.Value;
+				stats.Aim.OnChanged += Aim_OnChanged;
+				recoilStatMultiplier = stats.Aim.Value;
 			}
 
-			startPositions = weapon.muzzles.Select(x => x.parent.localPosition).ToArray();
+			startPositions = weapon.Muzzles.Select(x => x.parent.localPosition).ToArray();
 		}
 
 		void Update()
 		{
-			if (!weapon.isEquipped)
+			if (!weapon.IsEquipped)
 				return;
 			if (kickbackForce <= 0)
 				return;
 
 			for (var i = 0; i < startPositions.Length; i++)
 			{
-				weapon.muzzles[i].parent.localPosition = Vector3.Lerp(weapon.muzzles[i].parent.localPosition, startPositions[i], kickbackRecoverTime * Time.deltaTime);
+				weapon.Muzzles[i].parent.localPosition = Vector3.Lerp(weapon.Muzzles[i].parent.localPosition, startPositions[i], kickbackRecoverTime * Time.deltaTime);
 			}
 
 			var toRotation = Quaternion.Euler(recoil.y, recoil.x, recoil.z);
-			weapon.combatant.aimTransform.localRotation = Quaternion.RotateTowards(weapon.combatant.aimTransform.localRotation, toRotation, recoilSpeed * Time.deltaTime);
+			weapon.Combatant.AimTransform.localRotation = Quaternion.RotateTowards(weapon.Combatant.AimTransform.localRotation, toRotation, recoilSpeed * Time.deltaTime);
 			recoil = Vector3.Lerp(recoil, Vector3.zero, recoilRecoverTime * Time.deltaTime);
 		}
 
@@ -89,12 +89,12 @@ namespace CombatSystem.Addons
 
 		Transform GetMuzzle()
 		{
-			var muzzle = weapon.muzzles[nextMuzzle];
-			if (weapon.muzzles.Length <= 1)
+			var muzzle = weapon.Muzzles[nextMuzzle];
+			if (weapon.Muzzles.Length <= 1)
 				return muzzle;
 
 			nextMuzzle++;
-			if (nextMuzzle > weapon.muzzles.Length - 1)
+			if (nextMuzzle > weapon.Muzzles.Length - 1)
 				nextMuzzle = 0;
 
 			return muzzle;
@@ -109,7 +109,7 @@ namespace CombatSystem.Addons
 		{
 			if (stats)
 			{
-				stats.aim.OnChanged -= Aim_OnChanged;
+				stats.Aim.OnChanged -= Aim_OnChanged;
 			}
 		}
 	}

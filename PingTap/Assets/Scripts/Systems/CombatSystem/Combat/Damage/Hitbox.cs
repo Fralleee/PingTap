@@ -6,21 +6,21 @@ namespace CombatSystem.Combat.Damage
 {
 	public class Hitbox : MonoBehaviour
 	{
-		public HitArea hitArea = HitArea.MAJOR;
-		public GameObject activeColliderVisualizer;
+		public HitArea HitArea = HitArea.Major;
+		public GameObject ActiveColliderVisualizer;
 
 		void OnEnable()
 		{
 			bool showColliders = Convert.ToBoolean(PlayerPrefs.GetInt("showColliders"));
-			activeColliderVisualizer.gameObject.SetActive(showColliders);
+			ActiveColliderVisualizer.gameObject.SetActive(showColliders);
 		}
 
 		public static void ToggleColliders(bool show)
 		{
-			var hitboxes = FindObjectsOfType<Hitbox>();
+			Hitbox[] hitboxes = FindObjectsOfType<Hitbox>();
 			foreach (var hitbox in hitboxes)
 			{
-				hitbox.activeColliderVisualizer.gameObject.SetActive(show);
+				hitbox.ActiveColliderVisualizer.gameObject.SetActive(show);
 			}
 		}
 	}

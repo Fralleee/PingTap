@@ -6,7 +6,7 @@ namespace CombatSystem.Defense
 {
   public abstract class Protection : ScriptableObject
   {
-    public EffectProtection effectProtection;
+    public EffectProtection EffectProtection;
     public abstract ProtectionResult RunProtection(DamageData damageData, DamageController damageController);
   }
 }

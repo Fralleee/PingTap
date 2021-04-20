@@ -4,18 +4,18 @@ using UnityEngine.AI;
 
 namespace Fralle.AI
 {
-	public class AIAnimator : MonoBehaviour
+	public class AiAnimator : MonoBehaviour
 	{
 		[SerializeField] bool useSetSpeed;
 
 		Animator animator;
-		AIController aiController;
+		AiController aiController;
 		NavMeshAgent navMeshAgent;
 
 		void Awake()
 		{
 			animator = GetComponent<Animator>();
-			aiController = GetComponentInParent<AIController>();
+			aiController = GetComponentInParent<AiController>();
 			navMeshAgent = GetComponentInParent<NavMeshAgent>();
 			var damageController = GetComponentInParent<DamageController>();
 			damageController.OnDeath += HandleDeath;
@@ -28,8 +28,8 @@ namespace Fralle.AI
 
 		void OnAnimatorMove()
 		{
-			if(!useSetSpeed)
-			navMeshAgent.speed = (animator.deltaPosition / Time.deltaTime).magnitude;
+			if (!useSetSpeed)
+				navMeshAgent.speed = (animator.deltaPosition / Time.deltaTime).magnitude;
 		}
 
 		void HandleDeath(DamageController damageController, DamageData damageData)

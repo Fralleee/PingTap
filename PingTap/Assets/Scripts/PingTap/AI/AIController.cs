@@ -2,7 +2,7 @@
 
 namespace Fralle.AI
 {
-	public class AIController : MonoBehaviour
+	public class AiController : MonoBehaviour
 	{
 		public bool IsMoving;
 	}

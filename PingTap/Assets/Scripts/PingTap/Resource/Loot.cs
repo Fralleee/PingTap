@@ -1,5 +1,4 @@
-﻿using Fralle.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.Resource
 {
@@ -7,8 +6,7 @@ namespace Fralle.Resource
   public class Loot : MonoBehaviour
   {
     static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
-
-    UiTweener uiTweener;
+		
     new SphereCollider collider;
 
     [SerializeField] LootQuality.Type quality = LootQuality.Type.Poor;
@@ -26,9 +24,7 @@ namespace Fralle.Resource
 
     void Awake()
     {
-      uiTweener = GetComponent<UiTweener>();
-
-      collider = GetComponent<SphereCollider>();
+	    collider = GetComponent<SphereCollider>();
       collider.radius = PickupRange;
       collider.isTrigger = true;
 
@@ -54,8 +50,7 @@ namespace Fralle.Resource
 
     void DeSpawn()
     {
-      uiTweener.HandleTween();
-      Destroy(gameObject, uiTweener.duration);
+      Destroy(gameObject, 1f);
     }
 
     void OnTriggerEnter(Component component)

@@ -6,16 +6,16 @@ namespace Fralle.Gameplay
 {
   public class SceneLoader : MonoBehaviour
   {
-    [Scene] public string menuScene;
-    [Scene] public string masterScene;
+    [Scene] public string MenuScene;
+    [Scene] public string MasterScene;
 
     void Awake()
     {
-      var menu = SceneManager.GetSceneByName(menuScene);
-      if (!menu.isLoaded) SceneManager.LoadScene(menuScene, LoadSceneMode.Additive);
+      var menu = SceneManager.GetSceneByName(MenuScene);
+      if (!menu.isLoaded) SceneManager.LoadScene(MenuScene, LoadSceneMode.Additive);
 
-      var master = SceneManager.GetSceneByName(masterScene);
-      if (!master.isLoaded) SceneManager.LoadScene(masterScene, LoadSceneMode.Additive);
+      var master = SceneManager.GetSceneByName(MasterScene);
+      if (!master.isLoaded) SceneManager.LoadScene(MasterScene, LoadSceneMode.Additive);
     }
   }
 }

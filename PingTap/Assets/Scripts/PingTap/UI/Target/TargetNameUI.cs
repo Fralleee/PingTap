@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Fralle.UI
 {
-	public class TargetNameUI : MonoBehaviour
+	public class TargetNameUi : MonoBehaviour
 	{
 		TextMeshProUGUI nameText;
 

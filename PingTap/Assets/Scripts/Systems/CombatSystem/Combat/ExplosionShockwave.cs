@@ -10,7 +10,7 @@ public class ExplosionShockwave : MonoBehaviour
 
 	float dissipationTime;
 	float radius;
-	float dissipationPercentage => Mathf.Max(dissipateSpeed - dissipationTime, 0) / dissipateSpeed;
+	float DissipationPercentage => Mathf.Max(dissipateSpeed - dissipationTime, 0) / dissipateSpeed;
 
 	new Renderer renderer;
 	MaterialPropertyBlock propBlock;
@@ -37,8 +37,8 @@ public class ExplosionShockwave : MonoBehaviour
 		if (dissipationTime > 0)
 		{
 			dissipationTime -= Time.deltaTime;
-			propBlock.SetFloat(Size, radius * dissipationPercentage);
-			propBlock.SetFloat(Alpha, 1f - dissipationPercentage);
+			propBlock.SetFloat(Size, radius * DissipationPercentage);
+			propBlock.SetFloat(Alpha, 1f - DissipationPercentage);
 			renderer.SetPropertyBlock(propBlock);
 		}
 		else

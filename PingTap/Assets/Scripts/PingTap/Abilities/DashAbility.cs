@@ -30,21 +30,21 @@ namespace Fralle.PingTap
 
 		float defaultFov = 60f;
 
-		public override void Setup(AbilityController abilityController)
+		public override void Setup(AbilityController ac)
 		{
-			this.abilityController = abilityController;
-			playerController = abilityController.GetComponent<PlayerController>();
-			rigidBody = abilityController.GetComponentInChildren<Rigidbody>();
+			abilityController = ac;
+			playerController = ac.GetComponent<PlayerController>();
+			rigidBody = ac.GetComponentInChildren<Rigidbody>();
 			orientation = rigidBody.transform.Find("Orientation");
 
 			abilityVolumeGo = new GameObject("Dash Volume");
-			abilityVolumeGo.transform.SetParent(abilityController.postProcess.transform);
+			abilityVolumeGo.transform.SetParent(ac.PostProcess.transform);
 			abilityVolume = abilityVolumeGo.AddComponent<Volume>();
 			abilityVolume.weight = 0;
 			abilityVolume.profile = postProcess;
 
-			cameraShakeTransform = playerController.camera.GetComponentInParent<ShakeTransform>();
-			defaultFov = playerController.camera.fieldOfView;
+			cameraShakeTransform = playerController.Camera.GetComponentInParent<ShakeTransform>();
+			defaultFov = playerController.Camera.fieldOfView;
 		}
 
 		IEnumerator StopDash()
@@ -53,14 +53,14 @@ namespace Fralle.PingTap
 			float waitTime = stopTime;
 			while (elapsedTime < waitTime)
 			{
-				playerController.camera.fieldOfView = Mathf.SmoothStep(defaultFov + addFov, defaultFov, elapsedTime / waitTime);
+				playerController.Camera.fieldOfView = Mathf.SmoothStep(defaultFov + addFov, defaultFov, elapsedTime / waitTime);
 				abilityVolume.weight = Mathf.SmoothStep(1, 0, 1 - (elapsedTime / waitTime));
 
 				elapsedTime += Time.deltaTime;
 				yield return null;
 			}
 
-			playerController.camera.fieldOfView = defaultFov;
+			playerController.Camera.fieldOfView = defaultFov;
 
 			Reset();
 		}
@@ -70,12 +70,12 @@ namespace Fralle.PingTap
 			base.Perform();
 
 			playerController.IsLocked = true;
-			Vector3 direction = playerController.cameraRig.forward;
-			if (playerController.movement.magnitude > 0)
+			Vector3 direction = playerController.CameraRig.forward;
+			if (playerController.Movement.magnitude > 0)
 			{
-				direction = orientation.TransformDirection(playerController.movement.ToVector3());
-				if (playerController.movement.y > 0)
-					direction += playerController.cameraRig.forward;
+				direction = orientation.TransformDirection(playerController.Movement.ToVector3());
+				if (playerController.Movement.y > 0)
+					direction += playerController.CameraRig.forward;
 			}
 
 			rigidBody.velocity = Vector3.zero;
@@ -84,7 +84,7 @@ namespace Fralle.PingTap
 
 			cameraShakeTransform.AddShakeEvent(cameraShake);
 			abilityVolume.weight = 1;
-			playerController.camera.fieldOfView = defaultFov + addFov;
+			playerController.Camera.fieldOfView = defaultFov + addFov;
 
 			abilityController.StartCoroutine(StopDash());
 		}
@@ -95,7 +95,7 @@ namespace Fralle.PingTap
 			rigidBody.velocity = Vector3.zero;
 			rigidBody.useGravity = true;
 
-			playerController.camera.fieldOfView = defaultFov;
+			playerController.Camera.fieldOfView = defaultFov;
 			abilityVolume.weight = 0;
 		}
 

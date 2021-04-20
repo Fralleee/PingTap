@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Rendering;
-using EPOOutline;
-using System;
-
-#if URP_OUTLINE && UNITY_2019_1_OR_NEWER
+﻿#if URP_OUTLINE && UNITY_2019_1_OR_NEWER
 #if UNITY_2019_3_OR_NEWER
 using UnityEngine.Rendering.Universal;
 #else

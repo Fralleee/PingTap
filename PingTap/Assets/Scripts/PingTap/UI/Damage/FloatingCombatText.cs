@@ -28,7 +28,7 @@ namespace Fralle.UI
 			SetPosition(instance);
 
 			var text = instance.GetComponentInChildren<TextMeshPro>();
-			SetText(text, Mathf.RoundToInt(damageData.damageAmount));
+			SetText(text, Mathf.RoundToInt(damageData.DamageAmount));
 		}
 
 		void SetPosition(GameObject go)
@@ -37,7 +37,7 @@ namespace Fralle.UI
 			go.transform.position = transform.position + position;
 		}
 
-		void SetText(TextMeshPro text, int number)
+		static void SetText(TextMeshPro text, int number)
 		{
 			text.text = number.ToString();
 		}

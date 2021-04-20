@@ -9,11 +9,11 @@ namespace CombatSystem.Defense.Protections
   {
     public override ProtectionResult RunProtection(DamageData damageData, DamageController damageController)
     {
-      if (damageData.hitAngle < 0 || !(damageData.hitAngle < 90) && !(damageData.hitAngle > 270))
-        return new ProtectionResult() { effectProtection = EffectProtection.Ignore, damageData = damageData };
+      if (damageData.HitAngle < 0 || !(damageData.HitAngle < 90) && !(damageData.HitAngle > 270))
+        return new ProtectionResult() { EffectProtection = EffectProtection.Ignore, DamageData = damageData };
 
-      damageData.damageAmount = 0;
-      return new ProtectionResult() { effectProtection = effectProtection, damageData = damageData };
+      damageData.DamageAmount = 0;
+      return new ProtectionResult() { EffectProtection = EffectProtection, DamageData = damageData };
     }
   }
 }

@@ -5,7 +5,7 @@ namespace CombatSystem.Defense
 {
   public class ProtectionResult
   {
-    public EffectProtection effectProtection;
-    public DamageData damageData;
+    public EffectProtection EffectProtection;
+    public DamageData DamageData;
   }
 }

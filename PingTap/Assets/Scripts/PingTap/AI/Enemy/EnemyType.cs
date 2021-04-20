@@ -2,7 +2,7 @@
 {
 	public enum EnemyType
 	{
-		ZOMBIE,
-		OGRE
+		Zombie,
+		Ogre
 	}
 }

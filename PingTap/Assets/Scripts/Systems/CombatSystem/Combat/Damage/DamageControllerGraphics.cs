@@ -50,9 +50,9 @@ namespace Fralle
 
 		void ToggleRagdoll(bool enable)
 		{
-			foreach (var collider in GetComponentsInChildren<Collider>())
+			foreach (var coll in GetComponentsInChildren<Collider>())
 			{
-				collider.enabled = !enable;
+				coll.enabled = !enable;
 			}
 
 			foreach (var rigidBody in rigidbodies)
@@ -65,7 +65,7 @@ namespace Fralle
 
 		void HandleDamageTaken(DamageController damageController, DamageData damageData)
 		{
-			if (!damageData.damageFromHit)
+			if (!damageData.DamageFromHit)
 				return;
 
 			currentColor = Color.white;
@@ -78,7 +78,7 @@ namespace Fralle
 		{
 			Destroy(gameObject, 3f);
 
-			if (damageData.gib)
+			if (damageData.Gib)
 			{
 				Debug.Log("Spawn gib stuff");
 			}
@@ -87,7 +87,7 @@ namespace Fralle
 				ToggleRagdoll(true);
 				foreach (var rigidBody in rigidbodies)
 				{
-					rigidBody.AddForceAtPosition(damageData.force, damageData.position);
+					rigidBody.AddForceAtPosition(damageData.Force, damageData.Position);
 				}
 			}
 		}

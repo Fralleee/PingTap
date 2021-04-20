@@ -5,9 +5,9 @@ namespace CombatSystem.Enums
 {
 	public enum HitArea
 	{
-		MINOR,
-		MAJOR,
-		NERVE
+		Minor,
+		Major,
+		Nerve
 	}
 
 	public static class HitAreaMethods
@@ -16,11 +16,11 @@ namespace CombatSystem.Enums
 		{
 			switch (ha)
 			{
-				case HitArea.MINOR:
+				case HitArea.Minor:
 					return 0.5f;
-				case HitArea.MAJOR:
+				case HitArea.Major:
 					return 1.0f;
-				case HitArea.NERVE:
+				case HitArea.Nerve:
 					return 2.0f;
 				default:
 					return 1.0f;
@@ -31,12 +31,12 @@ namespace CombatSystem.Enums
 		{
 			switch (ha)
 			{
-				case HitArea.MAJOR:
-					return damageController.majorImpactEffect;
-				case HitArea.NERVE:
-					return damageController.nerveImpactEffect;
+				case HitArea.Major:
+					return damageController.MajorImpactEffect;
+				case HitArea.Nerve:
+					return damageController.NerveImpactEffect;
 				default:
-					return damageController.majorImpactEffect;
+					return damageController.MajorImpactEffect;
 			}
 		}
 	}

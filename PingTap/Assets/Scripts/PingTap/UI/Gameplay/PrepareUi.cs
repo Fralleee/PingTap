@@ -9,14 +9,10 @@ namespace Fralle.UI.HUD
 		[SerializeField] TextMeshProUGUI prepareTimer = null;
 
 		Canvas canvas;
-		UiTweener uiTweener;
-
-		float oldTimer;
 
 		void Awake()
 		{
 			canvas = GetComponent<Canvas>();
-			uiTweener = GetComponent<UiTweener>();
 
 			EventManager.AddListener<GameStateChangeEvent>(OnGameStateChange);
 		}
@@ -37,13 +33,12 @@ namespace Fralle.UI.HUD
 		void SetExplicitText(string text)
 		{
 			prepareTimer.text = text;
-			uiTweener.HandleTween();
 		}
 
 		void SetText(float num)
 		{
-			var minutes = Mathf.Floor(num / 60).ToString("00");
-			var seconds = Mathf.Floor(num % 60).ToString("00");
+			string minutes = Mathf.Floor(num / 60).ToString("00");
+			string seconds = Mathf.Floor(num % 60).ToString("00");
 			prepareTimer.text = $"{minutes}:{seconds}";
 
 		}

@@ -1,7 +1,6 @@
 ﻿using CombatSystem.Combat;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
-using QFSW.QC;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,13 +10,13 @@ namespace Fralle
 	{
 		[SerializeField] LayerMask ignoreLayers;
 
-		[HideInInspector] public new Camera camera;
-		[HideInInspector] public Combatant combatant;
-		[HideInInspector] public PlayerInput playerInput;
+		[HideInInspector] public Camera Camera;
+		[HideInInspector] public Combatant Combatant;
+		[HideInInspector] public PlayerInput PlayerInput;
 
 		public static void Disable()
 		{
-			var players = FindObjectsOfType<Player>();
+			Player[] players = FindObjectsOfType<Player>();
 			foreach (var player in players)
 			{
 				player.gameObject.SetActive(false);
@@ -26,17 +25,17 @@ namespace Fralle
 
 		void Awake()
 		{
-			combatant = GetComponent<Combatant>();
-			playerInput = GetComponent<PlayerInput>();
+			Combatant = GetComponent<Combatant>();
+			PlayerInput = GetComponent<PlayerInput>();
 			transform.Find("UI").gameObject.SetActive(true);
 		}
 
 		void Start()
 		{
-			var layer = LayerMask.NameToLayer("Player");
+			int layer = LayerMask.NameToLayer("Player");
 			gameObject.SetLayerRecursively(layer, ignoreLayers);
 
-			camera = Camera.main;
+			Camera = Camera.main;
 
 			//QuantumConsole.Instance.OnActivate += ConsoleActivated;
 			//QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
@@ -46,22 +45,22 @@ namespace Fralle
 		{
 			if (gameState == GameState.PauseMenu)
 			{
-				playerInput.DeactivateInput();
+				PlayerInput.DeactivateInput();
 			}
 			else
 			{
-				playerInput.ActivateInput();
+				PlayerInput.ActivateInput();
 			}
 		}
 
 		void ConsoleActivated()
 		{
-			playerInput.DeactivateInput();
+			PlayerInput.DeactivateInput();
 		}
 
 		void ConsoleDeactivated()
 		{
-			playerInput.ActivateInput();
+			PlayerInput.ActivateInput();
 		}
 
 		void OnEnable()

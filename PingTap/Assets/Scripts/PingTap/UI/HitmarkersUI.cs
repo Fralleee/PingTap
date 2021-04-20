@@ -38,7 +38,7 @@ public class HitmarkersUI : MonoBehaviour
 
 	void Combatant_OnHit(DamageData obj)
 	{
-		ActivateHitmarker(obj.hitArea);
+		ActivateHitmarker(obj.HitArea);
 	}
 
 	void Fade()
@@ -68,7 +68,7 @@ public class HitmarkersUI : MonoBehaviour
 	void ActivateHitmarker(HitArea hitArea)
 	{
 		lastHit = Time.time + fadeTimer;
-		if (hitArea == HitArea.MAJOR)
+		if (hitArea == HitArea.Major)
 		{
 			currentColor = majorColor.Alpha(0.8f);
 			audioSource.pitch = 1;

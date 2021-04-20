@@ -55,7 +55,7 @@ namespace Fralle.UI.Menu
 
     void InputValueChanged(string value)
     {
-      var floatValue = float.Parse(value);
+      float floatValue = float.Parse(value);
       floatValue = Mathf.Clamp(floatValue, min, max);
 
       PlayerPrefs.SetFloat(key, floatValue);

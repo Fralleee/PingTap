@@ -7,25 +7,25 @@ namespace CombatSystem.Effect
 {
   public abstract class DamageEffect : ScriptableObject
   {
-    [HideInInspector] public Combatant attacker;
+    [HideInInspector] public Combatant Attacker;
 
-    [Header("General")] public int level = 1;
-    public Element element;
-    public float baseDamageModifier = 1f;
+    [Header("General")] public int Level = 1;
+    public Element Element;
+    public float BaseDamageModifier = 1f;
 
-    [Header("Stacking")] public int maxStacks = 1;
-    public int stacks = 1;
+    [Header("Stacking")] public int MaxStacks = 1;
+    public int Stacks = 1;
 
-    [Header("Timers")] public float timer;
-    public float time = 3f;
+    [Header("Timers")] public float Timer;
+    public float Time = 3f;
 
-    [HideInInspector] public float weaponDamage;
+    [HideInInspector] public float WeaponDamage;
 
     public virtual DamageEffect Setup(Combatant attacker, float weaponDamageAmount)
     {
       var instance = Instantiate(this);
-      instance.attacker = attacker;
-      instance.weaponDamage = weaponDamageAmount;
+      instance.Attacker = attacker;
+      instance.WeaponDamage = weaponDamageAmount;
       instance.name = name;
       return instance;
     }
@@ -35,17 +35,17 @@ namespace CombatSystem.Effect
       if (oldEffect == null) return this;
 
       // Always run Append on the effect with highest level
-      if (oldEffect.level > level) oldEffect.Append(this);
+      if (oldEffect.Level > Level) oldEffect.Append(this);
 
-      if (oldEffect.stacks < maxStacks) stacks += oldEffect.stacks;
-      else stacks = oldEffect.stacks;
+      if (oldEffect.Stacks < MaxStacks) Stacks += oldEffect.Stacks;
+      else Stacks = oldEffect.Stacks;
 
       return this;
     }
 
     public virtual void Tick(DamageController damageController)
     {
-      timer += Time.deltaTime;
+      Timer += UnityEngine.Time.deltaTime;
     }
 
     public virtual void Enter(DamageController damageController)

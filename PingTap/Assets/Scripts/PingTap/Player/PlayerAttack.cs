@@ -12,7 +12,7 @@ namespace Fralle
 		[SerializeField] Combatant combatant;
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 
-		[HideInInspector] public PlayerInput playerInput;
+		[HideInInspector] public PlayerInput PlayerInput;
 
 		int firstPersonObjectsLayer;
 
@@ -28,12 +28,12 @@ namespace Fralle
 
 			combatant.OnWeaponSwitch += OnWeaponSwitch;
 
-			playerInput = GetComponent<PlayerInput>();
-			playerInput.actions["PrimaryFire"].performed += OnPrimaryFire;
-			playerInput.actions["PrimaryFire"].canceled += OnPrimaryFireCancel;
-			playerInput.actions["SecondaryFire"].performed += OnSecondaryFire;
-			playerInput.actions["SecondaryFire"].canceled += OnSecondaryFireCancel;
-			playerInput.actions["ItemSelect"].performed += OnItemSelect;
+			PlayerInput = GetComponent<PlayerInput>();
+			PlayerInput.actions["PrimaryFire"].performed += OnPrimaryFire;
+			PlayerInput.actions["PrimaryFire"].canceled += OnPrimaryFireCancel;
+			PlayerInput.actions["SecondaryFire"].performed += OnSecondaryFire;
+			PlayerInput.actions["SecondaryFire"].canceled += OnSecondaryFireCancel;
+			PlayerInput.actions["ItemSelect"].performed += OnItemSelect;
 		}
 
 		void OnPrimaryFire(InputAction.CallbackContext context)
@@ -60,19 +60,19 @@ namespace Fralle
 
 		void OnItemSelect(InputAction.CallbackContext context)
 		{
-			var number = (int)context.ReadValue<float>();
+			int number = (int)context.ReadValue<float>();
 			if (weapons.Length >= number + 1)
 				combatant.EquipWeapon(weapons[number]);
 		}
 
 		void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
 		{
-			combatant.equippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
 		}
 
 		void Start()
 		{
-			if (combatant.equippedWeapon == null)
+			if (combatant.EquippedWeapon == null)
 				combatant.EquipWeapon(weapons[0]);
 		}
 
@@ -88,25 +88,25 @@ namespace Fralle
 
 		void OnDestroy()
 		{
-			playerInput.actions["PrimaryFire"].performed -= OnPrimaryFire;
-			playerInput.actions["PrimaryFire"].canceled -= OnPrimaryFireCancel;
-			playerInput.actions["SecondaryFire"].performed -= OnSecondaryFire;
-			playerInput.actions["SecondaryFire"].canceled -= OnSecondaryFireCancel;
-			playerInput.actions["ItemSelect"].performed -= OnItemSelect;
+			PlayerInput.actions["PrimaryFire"].performed -= OnPrimaryFire;
+			PlayerInput.actions["PrimaryFire"].canceled -= OnPrimaryFireCancel;
+			PlayerInput.actions["SecondaryFire"].performed -= OnSecondaryFire;
+			PlayerInput.actions["SecondaryFire"].canceled -= OnSecondaryFireCancel;
+			PlayerInput.actions["ItemSelect"].performed -= OnItemSelect;
 		}
 
 		[ContextMenu("Equip Weapon")]
 		public void EquipFirstWeaponInList()
 		{
 			combatant.EquipWeapon(weapons[0], false);
-			combatant.equippedWeapon.gameObject.SetLayerRecursively(LayerMask.NameToLayer("First Person Objects"));
-			Debug.Log($"Equipped: {combatant.equippedWeapon}");
+			combatant.EquippedWeapon.gameObject.SetLayerRecursively(LayerMask.NameToLayer("First Person Objects"));
+			Debug.Log($"Equipped: {combatant.EquippedWeapon}");
 		}
 
 		[ContextMenu("Remove Weapon")]
 		public void RemoveWeapon()
 		{
-			Debug.Log($"Removed: {combatant.equippedWeapon}");
+			Debug.Log($"Removed: {combatant.EquippedWeapon}");
 			combatant.ClearWeapons();
 		}
 	}

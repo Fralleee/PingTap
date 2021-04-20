@@ -10,38 +10,38 @@ namespace CombatSystem.Defense
   [Serializable]
   public class Armor
   {
-    public float DamageMultiplier => 1 - 0.06f * armor / (1 + 0.06f * armor);
+    public float DamageMultiplier => 1 - 0.06f * ArmorValue / (1 + 0.06f * ArmorValue);
 
-    public int armor;
-    public List<ArmorElementModifier> armorElementModifiers = new List<ArmorElementModifier>();
-    public Protection protection;
+    public int ArmorValue;
+    public List<ArmorElementModifier> ArmorElementModifiers = new List<ArmorElementModifier>();
+    public Protection Protection;
 
     public DamageData Protect(DamageData damageData, DamageController damageController)
     {
       var result = RunProtection(damageData, damageController);
-      result.damageData.damageAmount = CalculateDamage(result.damageData);
-      if (result.effectProtection == EffectProtection.Block) result.damageData.effects = new DamageEffect[0];
-      else damageData.effects = damageData.effects.Select(CalculateEffect).ToArray();
-      return result.damageData;
+      result.DamageData.DamageAmount = CalculateDamage(result.DamageData);
+      if (result.EffectProtection == EffectProtection.Block) result.DamageData.Effects = new DamageEffect[0];
+      else damageData.Effects = damageData.Effects.Select(CalculateEffect).ToArray();
+      return result.DamageData;
     }
 
     float CalculateDamage(DamageData damageData)
     {
-      var armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == damageData.element);
-      var modifier = armorElementModifier?.modifier ?? 1;
-      var damageAmount = damageData.damageAmount * modifier * DamageMultiplier;
+      var armorElementModifier = ArmorElementModifiers.FirstOrDefault(x => x.Element == damageData.Element);
+      float modifier = armorElementModifier?.Modifier ?? 1;
+      float damageAmount = damageData.DamageAmount * modifier * DamageMultiplier;
       return damageAmount;
     }
 
     DamageEffect CalculateEffect(DamageEffect effect)
     {
-      var armorElementModifier = armorElementModifiers.FirstOrDefault(x => x.element == effect.element);
-      return armorElementModifier != null ? effect.Recalculate(armorElementModifier.modifier) : effect;
+      var armorElementModifier = ArmorElementModifiers.FirstOrDefault(x => x.Element == effect.Element);
+      return armorElementModifier != null ? effect.Recalculate(armorElementModifier.Modifier) : effect;
     }
 
     ProtectionResult RunProtection(DamageData damageData, DamageController damageController)
     {
-      return !protection ? new ProtectionResult() { effectProtection = EffectProtection.Ignore, damageData = damageData } : protection.RunProtection(damageData, damageController);
+      return !Protection ? new ProtectionResult() { EffectProtection = EffectProtection.Ignore, DamageData = damageData } : Protection.RunProtection(damageData, damageController);
     }
   }
 }

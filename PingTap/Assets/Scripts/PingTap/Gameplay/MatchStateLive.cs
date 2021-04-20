@@ -15,12 +15,12 @@ namespace Fralle.Gameplay
 
 		public void Tick()
 		{
-			Managers.Instance.Settings.waveTimer += Time.deltaTime;
+			Managers.Instance.Settings.WaveTimer += Time.deltaTime;
 		}
 
 		public void OnExit()
 		{
-			Managers.Instance.Settings.waveTimer = 0;
+			Managers.Instance.Settings.WaveTimer = 0;
 
 			EventManager.RemoveListener<GameOverEvent>(OnGameOver);
 		}

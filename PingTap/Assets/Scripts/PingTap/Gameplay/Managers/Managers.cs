@@ -8,7 +8,7 @@ namespace Fralle.Gameplay
 	{
 		[HideInInspector] public SettingsManager Settings;
 		[HideInInspector] public StateManager State;
-		[HideInInspector] public UiManager UIManager;
+		[HideInInspector] public UiManager UiManager;
 		[HideInInspector] public AudioManager Audio;
 		[HideInInspector] public CameraManager Camera;
 		[HideInInspector] public MatchManager Match;
@@ -22,7 +22,7 @@ namespace Fralle.Gameplay
 
 			Settings = GetComponentInChildren<SettingsManager>();
 			State = GetComponentInChildren<StateManager>();
-			UIManager = GetComponentInChildren<UiManager>();
+			UiManager = GetComponentInChildren<UiManager>();
 			Audio = GetComponentInChildren<AudioManager>();
 			Camera = GetComponentInChildren<CameraManager>();
 			Match = GetComponentInChildren<MatchManager>();

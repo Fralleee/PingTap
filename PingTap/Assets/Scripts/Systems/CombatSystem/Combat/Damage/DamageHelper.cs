@@ -10,8 +10,8 @@ namespace CombatSystem.Combat.Damage
 {
 	public static class DamageHelper
 	{
-		static readonly int hitboxLayer = LayerMask.NameToLayer("Hitbox");
-		static readonly int projectilesLayer = LayerMask.NameToLayer("Projectile");
+		static readonly int HitboxLayer = LayerMask.NameToLayer("Hitbox");
+		static readonly int ProjectilesLayer = LayerMask.NameToLayer("Projectile");
 
 		public static DamageEffect[] SetupDamageEffects(DamageEffect[] damageEffects, Combatant combatant, float damageAmount)
 		{
@@ -28,7 +28,7 @@ namespace CombatSystem.Combat.Damage
 
 			AddForce(raycastAttack, hit);
 
-			bool hitboxHit = hit.collider.gameObject.layer == hitboxLayer;
+			bool hitboxHit = hit.collider.gameObject.layer == HitboxLayer;
 			if (!hitboxHit)
 				return null;
 
@@ -38,24 +38,24 @@ namespace CombatSystem.Combat.Damage
 				// this will cause issues if we are for example hitting targets with shotgun
 				// we will receive more hits than shots fired
 				var hitbox = hit.collider.transform.GetComponent<Hitbox>();
-				var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
-				var falloffMultiplier = raycastAttack.rangeDamageFalloff.Evaluate(hit.distance / raycastAttack.range);
+				var hitArea = hitbox ? hitbox.HitArea : HitArea.Major;
+				var falloffMultiplier = raycastAttack.RangeDamageFalloff.Evaluate(hit.distance / raycastAttack.Range);
 				var damageAmount = raycastAttack.Damage;
 				var damageData = new DamageData()
 				{
-					attacker = raycastAttack.attacker,
-					element = raycastAttack.element,
-					effects = SetupDamageEffects(raycastAttack.damageEffects, raycastAttack.attacker, damageAmount),
-					hitAngle = Vector3.Angle((raycastAttack.weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
-					force = raycastAttack.attacker.aimTransform.forward * raycastAttack.pushForce,
-					position = hit.point,
-					hitArea = hitArea,
-					damageAmount = hitArea.GetMultiplier() * damageAmount * falloffMultiplier,
-					impactEffect = hitArea.GetImpactEffect(damageController)
+					Attacker = raycastAttack.Attacker,
+					Element = raycastAttack.Element,
+					Effects = SetupDamageEffects(raycastAttack.DamageEffects, raycastAttack.Attacker, damageAmount),
+					HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
+					Force = raycastAttack.Attacker.AimTransform.forward * raycastAttack.PushForce,
+					Position = hit.point,
+					HitArea = hitArea,
+					DamageAmount = hitArea.GetMultiplier() * damageAmount * falloffMultiplier,
+					ImpactEffect = hitArea.GetImpactEffect(damageController)
 				};
 
 				damageController.ReceiveAttack(damageData);
-				raycastAttack.attacker.SuccessfulHit(damageData);
+				raycastAttack.Attacker.SuccessfulHit(damageData);
 				return damageData;
 			}
 
@@ -66,29 +66,29 @@ namespace CombatSystem.Combat.Damage
 		{
 			AddForce(projectileData, position, collision);
 
-			bool hitboxHit = collision.collider.gameObject.layer == hitboxLayer;
+			bool hitboxHit = collision.collider.gameObject.layer == HitboxLayer;
 			if (!hitboxHit)
 				return null;
 
 			var hitbox = collision.collider.transform.GetComponent<Hitbox>();
-			var hitArea = hitbox ? hitbox.hitArea : HitArea.MAJOR;
+			var hitArea = hitbox ? hitbox.HitArea : HitArea.Major;
 			var damageController = collision.transform.GetComponentInParent<DamageController>();
 			if (damageController != null)
 			{
 				var damageData = new DamageData()
 				{
-					attacker = projectileData.attacker,
-					element = projectileData.element,
-					hitAngle = Vector3.Angle((position - collision.transform.position).normalized, collision.transform.forward),
-					effects = SetupDamageEffects(projectileData.damageEffects, projectileData.attacker, projectileData.damage),
-					force = projectileData.forward * projectileData.pushForce,
-					position = collision.GetContact(0).point,
-					hitArea = hitArea,
-					damageAmount = hitArea.GetMultiplier() * projectileData.damage,
-					impactEffect = hitArea.GetImpactEffect(damageController)
+					Attacker = projectileData.Attacker,
+					Element = projectileData.Element,
+					HitAngle = Vector3.Angle((position - collision.transform.position).normalized, collision.transform.forward),
+					Effects = SetupDamageEffects(projectileData.DamageEffects, projectileData.Attacker, projectileData.Damage),
+					Force = projectileData.Forward * projectileData.PushForce,
+					Position = collision.GetContact(0).point,
+					HitArea = hitArea,
+					DamageAmount = hitArea.GetMultiplier() * projectileData.Damage,
+					ImpactEffect = hitArea.GetImpactEffect(damageController)
 				};
 				damageController.ReceiveAttack(damageData);
-				projectileData.attacker.SuccessfulHit(damageData);
+				projectileData.Attacker.SuccessfulHit(damageData);
 
 				return damageData;
 			}
@@ -102,8 +102,8 @@ namespace CombatSystem.Combat.Damage
 				position = collision.GetContact(0).point;
 			}
 
-			var layerMask = ~(1 << projectilesLayer);
-			var colliders = Physics.OverlapSphere(position, projectileData.explosionRadius, layerMask);
+			var layerMask = ~(1 << ProjectilesLayer);
+			var colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, layerMask);
 
 			List<Rigidbody> rigidBodies = new List<Rigidbody>();
 			List<DamageController> targets = new List<DamageController>();
@@ -123,44 +123,44 @@ namespace CombatSystem.Combat.Damage
 
 			foreach (var rigidbody in rigidBodies)
 			{
-				rigidbody.AddExplosionForce(projectileData.pushForce, position, projectileData.explosionRadius + 1, 0.5f);
+				rigidbody.AddExplosionForce(projectileData.PushForce, position, projectileData.ExplosionRadius + 1, 0.5f);
 			}
 
 			foreach (var damageController in targets)
 			{
 				var distance = Vector3.Distance(damageController.transform.position, position);
-				if (distance > projectileData.explosionRadius + 1)
+				if (distance > projectileData.ExplosionRadius + 1)
 					continue;
 
-				var distanceMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (projectileData.explosionRadius + 1), 2));
+				var distanceMultiplier = Mathf.Clamp01(1 - Mathf.Pow(distance / (projectileData.ExplosionRadius + 1), 2));
 
-				var damageAmount = projectileData.damage * distanceMultiplier;
+				var damageAmount = projectileData.Damage * distanceMultiplier;
 				var targetPosition = damageController.transform.position;
 				var damageData = new DamageData()
 				{
-					attacker = projectileData.attacker,
-					element = projectileData.element,
-					effects = SetupDamageEffects(projectileData.damageEffects, projectileData.attacker, projectileData.damage),
-					hitAngle = Vector3.Angle((position - targetPosition).normalized, damageController.transform.forward),
-					force = (targetPosition - position).normalized.With(y: 0.5f) * projectileData.pushForce * distanceMultiplier,
-					position = position,
-					damageAmount = damageAmount
+					Attacker = projectileData.Attacker,
+					Element = projectileData.Element,
+					Effects = SetupDamageEffects(projectileData.DamageEffects, projectileData.Attacker, projectileData.Damage),
+					HitAngle = Vector3.Angle((position - targetPosition).normalized, damageController.transform.forward),
+					Force = (targetPosition - position).normalized.With(y: 0.5f) * projectileData.PushForce * distanceMultiplier,
+					Position = position,
+					DamageAmount = damageAmount
 				};
 				damageController.ReceiveAttack(damageData);
-				projectileData.attacker.SuccessfulHit(damageData);
+				projectileData.Attacker.SuccessfulHit(damageData);
 			}
 		}
 
 		static void AddForce(ProjectileData projectileData, Vector3 position, Collision collision)
 		{
-			var direction = projectileData.forward;
+			var direction = projectileData.Forward;
 			var rigidBody = collision.transform.GetComponent<Rigidbody>();
 			if (rigidBody == null)
 				return;
 
 			if (direction == Vector3.zero)
 				direction = -(position - collision.collider.transform.position).normalized;
-			rigidBody.AddForce(direction * projectileData.pushForce);
+			rigidBody.AddForce(direction * projectileData.PushForce);
 		}
 
 		static void AddForce(RaycastAttack raycastAttack, RaycastHit hit)
@@ -168,7 +168,7 @@ namespace CombatSystem.Combat.Damage
 			var rigidBody = hit.transform.GetComponent<Rigidbody>();
 			if (rigidBody != null)
 			{
-				rigidBody.AddForce(raycastAttack.attacker.aimTransform.forward * raycastAttack.pushForce);
+				rigidBody.AddForce(raycastAttack.Attacker.AimTransform.forward * raycastAttack.PushForce);
 			}
 		}
 	}

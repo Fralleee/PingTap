@@ -35,35 +35,35 @@ namespace Fralle.Resource
 
     public GameObject GetQualityPrefab(LootQuality.Type quality)
     {
-      switch (quality)
-      {
-        case LootQuality.Type.Poor: return poorPrefab;
-        case LootQuality.Type.Common: return commonPrefab;
-        case LootQuality.Type.Uncommon: return uncommonPrefab;
-        case LootQuality.Type.Rare: return rarePrefab;
-        case LootQuality.Type.Epic: return epicPrefab;
-        case LootQuality.Type.Legendary: return legendaryPrefab;
-        default: return poorPrefab;
-      };
+	    return quality switch
+	    {
+		    LootQuality.Type.Poor => poorPrefab,
+		    LootQuality.Type.Common => commonPrefab,
+		    LootQuality.Type.Uncommon => uncommonPrefab,
+		    LootQuality.Type.Rare => rarePrefab,
+		    LootQuality.Type.Epic => epicPrefab,
+		    LootQuality.Type.Legendary => legendaryPrefab,
+		    _ => poorPrefab
+	    };
     }
     public int GetQualityCredits(LootQuality.Type quality)
     {
-      switch (quality)
-      {
-        case LootQuality.Type.Poor: return GetRandomRange(poorCreditsDropped);
-        case LootQuality.Type.Common: return GetRandomRange(commonCreditsDropped);
-        case LootQuality.Type.Uncommon: return GetRandomRange(uncommonCreditsDropped);
-        case LootQuality.Type.Rare: return GetRandomRange(rareCreditsDropped);
-        case LootQuality.Type.Epic: return GetRandomRange(epicCreditsDropped);
-        case LootQuality.Type.Legendary: return GetRandomRange(legendaryCreditsDropped);
-        default: return GetRandomRange(poorCreditsDropped);
-      };
+	    return quality switch
+	    {
+		    LootQuality.Type.Poor => GetRandomRange(poorCreditsDropped),
+		    LootQuality.Type.Common => GetRandomRange(commonCreditsDropped),
+		    LootQuality.Type.Uncommon => GetRandomRange(uncommonCreditsDropped),
+		    LootQuality.Type.Rare => GetRandomRange(rareCreditsDropped),
+		    LootQuality.Type.Epic => GetRandomRange(epicCreditsDropped),
+		    LootQuality.Type.Legendary => GetRandomRange(legendaryCreditsDropped),
+		    _ => GetRandomRange(poorCreditsDropped)
+	    };
     }
 
     public void DropLoot(Vector3 position)
     {
       var quality = LootQuality.RandomQuality();
-      var credits = GetQualityCredits(quality);
+      int credits = GetQualityCredits(quality);
       var prefab = GetQualityPrefab(quality);
 
       var instance = Instantiate(prefab, position, Quaternion.identity);
