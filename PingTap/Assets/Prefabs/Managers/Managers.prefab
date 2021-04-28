@@ -43,14 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30da2580b61866e4dbc07861d379e1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolBlock:
-    size: 10
-    emptyBehavior: 0
-    maxSize: 100
-    maxEmptyBehavior: 1
-    prefab: {fileID: 1569006322450168, guid: 7c5cf188746812845a5164fee1168288, type: 3}
-    printLogOnQuit: 0
-  masterPool: []
+  PoolBlock:
+    Size: 0
+    EmptyBehavior: 0
+    MaxSize: 0
+    MaxEmptyBehavior: 0
+    Prefab: {fileID: 0}
+    PrintLogOnQuit: 0
+  MasterPool: []
 --- !u!1 &4869618966376346817
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings: {fileID: 0}
   State: {fileID: 0}
-  UIManager: {fileID: 0}
+  UiManager: {fileID: 0}
   Audio: {fileID: 0}
   Camera: {fileID: 0}
   Match: {fileID: 0}
@@ -154,15 +154,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30da2580b61866e4dbc07861d379e1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolBlock:
-    size: 10
-    emptyBehavior: 0
-    maxSize: 100
-    maxEmptyBehavior: 1
-    prefab: {fileID: 2232083545825913641, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
+  PoolBlock:
+    Size: 10
+    EmptyBehavior: 0
+    MaxSize: 20
+    MaxEmptyBehavior: 1
+    Prefab: {fileID: 2232083545825913641, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
       type: 3}
-    printLogOnQuit: 0
-  masterPool: []
+    PrintLogOnQuit: 0
+  MasterPool: []
 --- !u!1 &8332790106671998273
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,15 +206,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30da2580b61866e4dbc07861d379e1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolBlock:
-    size: 10
-    emptyBehavior: 0
-    maxSize: 100
-    maxEmptyBehavior: 1
-    prefab: {fileID: 7644098551254824805, guid: c508e04f8bedcd643a75781f82104d6f,
+  PoolBlock:
+    Size: 10
+    EmptyBehavior: 0
+    MaxSize: 20
+    MaxEmptyBehavior: 1
+    Prefab: {fileID: 7644098551254824805, guid: c508e04f8bedcd643a75781f82104d6f,
       type: 3}
-    printLogOnQuit: 0
-  masterPool: []
+    PrintLogOnQuit: 0
+  MasterPool: []
 --- !u!1 &8577675430359129317
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,14 +258,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30da2580b61866e4dbc07861d379e1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolBlock:
-    size: 10
-    emptyBehavior: 0
-    maxSize: 100
-    maxEmptyBehavior: 1
-    prefab: {fileID: 1822773341328252, guid: ee5df827e331f52429f52026c2f8cfbb, type: 3}
-    printLogOnQuit: 0
-  masterPool: []
+  PoolBlock:
+    Size: 0
+    EmptyBehavior: 0
+    MaxSize: 0
+    MaxEmptyBehavior: 0
+    Prefab: {fileID: 0}
+    PrintLogOnQuit: 0
+  MasterPool: []
 --- !u!1001 &1072514587589677874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,6 +333,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5581660829914889295, guid: 917cd95083995014894d4c4b39aa9ff3,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 3370093824658376819, guid: e6e9972b2ef61404d9ad3115bca869ae,
+        type: 3}
     - target: {fileID: 5581660829914889295, guid: 917cd95083995014894d4c4b39aa9ff3,
         type: 3}
       propertyPath: allowPauseMenu
@@ -578,6 +584,48 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4869618966376346831}
     m_Modifications:
+    - target: {fileID: 28298253954736069, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 28298253954736069, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Prefab
+      value: 
+      objectReference: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
+        type: 3}
+    - target: {fileID: 28298253954736069, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 28298253954736069, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxEmptyBehavior
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 144759614928509125, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 144759614928509125, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Prefab
+      value: 
+      objectReference: {fileID: 1670457245891842, guid: a946afce73718d54f85ad6cb3e38705d,
+        type: 3}
+    - target: {fileID: 144759614928509125, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 144759614928509125, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxEmptyBehavior
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 986076477991780002, guid: d85af2c5755796647bd5b0e51d84edfb,
         type: 3}
       propertyPath: preloadedPrefabs.Array.size
@@ -668,6 +716,27 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4891090505559054239, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891090505559054239, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Prefab
+      value: 
+      objectReference: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
+        type: 3}
+    - target: {fileID: 4891090505559054239, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4891090505559054239, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxEmptyBehavior
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5906982131957214140, guid: d85af2c5755796647bd5b0e51d84edfb,
         type: 3}
       propertyPath: m_RootOrder
@@ -675,8 +744,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6267748210353290890, guid: d85af2c5755796647bd5b0e51d84edfb,
         type: 3}
+      propertyPath: PoolBlock.Size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267748210353290890, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Prefab
+      value: 
+      objectReference: {fileID: 5897532311842932952, guid: 2175eafedca3d8744be51a55ce89d940,
+        type: 3}
+    - target: {fileID: 6267748210353290890, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267748210353290890, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
       propertyPath: poolBlock.maxSize
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267748210353290890, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxEmptyBehavior
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6543689193784048027, guid: d85af2c5755796647bd5b0e51d84edfb,
         type: 3}
@@ -685,8 +775,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7530233028923153338, guid: d85af2c5755796647bd5b0e51d84edfb,
         type: 3}
+      propertyPath: PoolBlock.Size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530233028923153338, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.Prefab
+      value: 
+      objectReference: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+    - target: {fileID: 7530233028923153338, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530233028923153338, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
       propertyPath: poolBlock.emptyBehavior
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530233028923153338, guid: d85af2c5755796647bd5b0e51d84edfb,
+        type: 3}
+      propertyPath: PoolBlock.MaxEmptyBehavior
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 986076477991780002, guid: d85af2c5755796647bd5b0e51d84edfb, type: 3}

@@ -14,7 +14,7 @@ namespace CombatSystem.Action
 		[Space(10)]
 		[SerializeField] int projectilesPerFire = 0;
 		[SerializeField] float delayTimePerProjectiles = 0f;
-		[SerializeField] float radiusOnMaxRange = 0f;
+		[SerializeField] float spreadRadiusOnMaxRange = 0f;
 
 		public override void Fire()
 		{
@@ -46,7 +46,7 @@ namespace CombatSystem.Action
 				else
 					projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;
 
-				var spread = (Random.insideUnitCircle * radiusOnMaxRange) / projectileData.Range;
+				var spread = (Random.insideUnitCircle * spreadRadiusOnMaxRange) / projectileData.Range;
 				projectileData.Forward += new Vector3(0, spread.y, spread.x);
 
 				var instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.Forward, transform.up));

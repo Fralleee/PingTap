@@ -6,6 +6,8 @@ namespace Fralle.Gameplay
 {
 	public class Managers : Singleton<Managers>
 	{
+		public static bool Destroyed;
+
 		[HideInInspector] public SettingsManager Settings;
 		[HideInInspector] public StateManager State;
 		[HideInInspector] public UiManager UiManager;
@@ -31,5 +33,10 @@ namespace Fralle.Gameplay
 			Spawner = GetComponentInChildren<Spawner>();
 		}
 
+		protected override void OnDestroy()
+		{
+			Destroyed = true;
+			base.OnDestroy();
+		}
 	}
 }

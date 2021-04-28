@@ -48,14 +48,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21a9db952d702a4aa5585a93a7c306f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: The Rascal
+  WeaponName: 
   equipAnimationTime: 0.3
-  muzzles:
+  Muzzles:
   - {fileID: 1550447713957137121}
-  combatant: {fileID: 0}
-  recoilAddon: {fileID: 0}
-  ammoAddonController: {fileID: 0}
-  nextAvailableShot: 0
+  Combatant: {fileID: 0}
+  RecoilAddon: {fileID: 0}
+  AmmoAddonController: {fileID: 0}
+  NextAvailableShot: 0
 --- !u!114 &1923125321600534695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,15 +68,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41e729f40f6e38f4e95d030b2b8a6676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDamage: 16
-  maxDamage: 18
-  ammoPerShot: 1
-  shotsPerSecond: 20
-  tapable: 0
-  element: 2
-  damageEffects: []
-  range: 200
-  pushForce: 1000
+  MinDamage: 1
+  MaxDamage: 10
+  AmmoPerShot: 1
+  ShotsPerSecond: 20
+  Tapable: 0
+  Element: 0
+  DamageEffects: []
+  Range: 50
+  PushForce: 3.5
   impactParticlePrefab: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
     type: 3}
   muzzleParticlePrefab: {fileID: 1670457245891842, guid: a946afce73718d54f85ad6cb3e38705d,
@@ -84,44 +84,26 @@ MonoBehaviour:
   lineRendererPrefab: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
     type: 3}
   bulletsPerFire: 1
-  rangeDamageFalloff:
+  RangeDamageFalloff:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.00019608438
-      value: 0.99997807
-      inSlope: -0.028003685
-      outSlope: -0.028003685
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.18955247
-    - serializedVersion: 3
-      time: 0.44621825
-      value: 0.7532714
-      inSlope: -1.3211561
-      outSlope: -1.3211561
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.7620521
-      value: 0.116986394
-      inSlope: -1.4372648
-      outSlope: -1.4372648
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.2524893
-      outSlope: -0.2524893
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.43385628
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -129,7 +111,7 @@ MonoBehaviour:
   spreadRadius: 0.2
   spreadIncreaseEachShot: 0.075
   recovery: 0.5
-  currentSpread: 0
+  CurrentSpread: 0
 --- !u!114 &-193412882233909061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,31 +124,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDamage: 80
-  maxDamage: 90
-  ammoPerShot: 10
-  shotsPerSecond: 20
-  tapable: 1
-  element: 0
-  damageEffects: []
+  MinDamage: 1
+  MaxDamage: 10
+  AmmoPerShot: 1
+  ShotsPerSecond: 20
+  Tapable: 1
+  Element: 0
+  DamageEffects: []
   projectilePrefab: {fileID: 4840401774229393113, guid: 9e0dfaf9e07abfb48b74a9ed1c5055a2,
     type: 3}
   projectileData:
-    force: 30
-    useGravity: 0
-    kinematicOnImpact: 0
-    explodeOnMaxRange: 0
-    explodeOnImpactTime: 0
-    explodeOnTime: 20
-    explosionRadius: 25
-    pushForce: 4000
-    range: 1000
-    attacker: {fileID: 0}
-    damage: 0
-    forward: {x: 0, y: 0, z: 0}
-    element: 0
-    damageEffects: []
-    hitboxLayer: 0
+    Force: 100
+    UseGravity: 1
+    KinematicOnImpact: 0
+    ExplodeOnMaxRange: 0
+    ExplodeOnImpactTime: 0
+    ExplodeOnTime: 5
+    ExplosionRadius: 10
+    PushForce: 200
+    Range: 100
+    Attacker: {fileID: 0}
+    Damage: 0
+    Forward: {x: 0, y: 0, z: 0}
+    Element: 0
+    DamageEffects: []
+    HitboxLayer: 0
   projectilesPerFire: 1
   delayTimePerProjectiles: 0
   radiusOnMaxRange: 0
@@ -182,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bc0cd1540fa4242917d9851d1b712f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 30
-  currentAmmo: 0
+  MaxAmmo: 30
+  CurrentAmmo: 0
   infiniteAmmo: 0
   reloadSpeed: 0.75
   blendOverLifetime:

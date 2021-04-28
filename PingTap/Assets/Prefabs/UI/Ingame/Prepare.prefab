@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 8847006089157585126}
   - component: {fileID: 8847006089157585127}
   - component: {fileID: 8847006089157585120}
-  - component: {fileID: 5172160048129549462}
   - component: {fileID: 4277591210484512559}
   m_Layer: 5
   m_Name: Prepare
@@ -237,29 +236,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 8388407
---- !u!114 &5172160048129549462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8847006089157585122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 573a82429b3fc434d98905137a65b249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToAnimate: {fileID: 8847006088584858447}
-  animationType: 2
-  easeType: 7
-  duration: 0.5
-  delay: 0
-  playOnAwake: 0
-  loop: 0
-  pingPong: 0
-  startPositionOffset: 1
-  from: {x: 1, y: 1, z: 1}
-  to: {x: 5, y: 5, z: 5}
 --- !u!114 &4277591210484512559
 MonoBehaviour:
   m_ObjectHideFlags: 0

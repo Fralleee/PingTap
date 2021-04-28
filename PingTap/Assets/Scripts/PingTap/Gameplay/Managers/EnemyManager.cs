@@ -44,7 +44,9 @@ namespace Fralle.Gameplay
 
 		void OnDestroy()
 		{
-			Managers.Instance.Spawner.OnSpawnComplete -= HandleSpawnComplete;
+			if (!Managers.Destroyed)
+				Managers.Instance.Spawner.OnSpawnComplete -= HandleSpawnComplete;
+
 			Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
 		}
 	}
