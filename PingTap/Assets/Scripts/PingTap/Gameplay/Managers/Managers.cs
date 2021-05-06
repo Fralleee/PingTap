@@ -35,6 +35,7 @@ namespace Fralle.Gameplay
 
 		protected override void OnDestroy()
 		{
+			Debug.Log($"{name}:OnDestroy");
 			Destroyed = true;
 			base.OnDestroy();
 		}
