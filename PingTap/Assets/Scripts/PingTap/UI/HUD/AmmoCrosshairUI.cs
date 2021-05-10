@@ -31,11 +31,19 @@ namespace Fralle.UI.HUD
 
 		void HandleWeaponSwitch(Weapon weapon, Weapon oldWeapon)
 		{
-			var ammoAddon = weapon.GetComponent<AmmoAddon>();
-			ammoAddon.OnAmmoChanged += HandleAmmoChanged;
+			if (weapon != null)
+			{
+				var ammoAddon = weapon.GetComponent<AmmoAddon>();
+				ammoAddon.OnAmmoChanged += HandleAmmoChanged;
 
-			maxAmmo = ammoAddon.MaxAmmo;
-			currentAmmo = ammoAddon.MaxAmmo;
+				maxAmmo = ammoAddon.MaxAmmo;
+				currentAmmo = ammoAddon.MaxAmmo;
+			}
+			else
+			{
+				maxAmmo = 0;
+				currentAmmo = 0;
+			}
 
 			SetSpriteBasedOnAmmoCount(maxAmmo);
 			image.fillAmount = 1;

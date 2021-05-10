@@ -6,8 +6,6 @@ namespace Fralle.Gameplay
 {
 	public class Managers : Singleton<Managers>
 	{
-		public static bool Destroyed;
-
 		[HideInInspector] public SettingsManager Settings;
 		[HideInInspector] public StateManager State;
 		[HideInInspector] public UiManager UiManager;
@@ -31,13 +29,6 @@ namespace Fralle.Gameplay
 			Enemy = GetComponentInChildren<EnemyManager>();
 			//Pool = GetComponentInChildren<PoolManager>();
 			Spawner = GetComponentInChildren<Spawner>();
-		}
-
-		protected override void OnDestroy()
-		{
-			Debug.Log($"{name}:OnDestroy");
-			Destroyed = true;
-			base.OnDestroy();
 		}
 	}
 }

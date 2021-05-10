@@ -37,7 +37,9 @@ namespace Fralle
 		{
 			if (oldWeapon != null)
 				oldWeapon.OnActiveWeaponActionChanged -= OnWeaponActionChanged;
-			newWeapon.OnActiveWeaponActionChanged += OnWeaponActionChanged;
+
+			if (newWeapon != null)
+				newWeapon.OnActiveWeaponActionChanged += OnWeaponActionChanged;
 		}
 
 		void OnWeaponActionChanged(Status status)

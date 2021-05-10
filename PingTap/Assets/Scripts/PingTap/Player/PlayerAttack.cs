@@ -63,11 +63,14 @@ namespace Fralle
 			int number = (int)context.ReadValue<float>();
 			if (weapons.Length >= number + 1)
 				combatant.EquipWeapon(weapons[number]);
+			else
+				combatant.EquipWeapon(null);
 		}
 
 		void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
 		{
-			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+			if (combatant.EquippedWeapon != null)
+				combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
 		}
 
 		void Start()

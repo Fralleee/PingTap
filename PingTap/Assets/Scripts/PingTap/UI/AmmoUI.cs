@@ -21,11 +21,18 @@ public class AmmoUI : MonoBehaviour
 
 	void HandleWeaponSwitch(Weapon weapon, Weapon oldWeapon)
 	{
-		var ammoAddon = weapon.GetComponent<AmmoAddon>();
-		ammoAddon.OnAmmoChanged += HandleAmmoChanged;
-
-		currentAmmoText.text = ammoAddon.CurrentAmmo.ToString();
-		maxAmmoText.text = ammoAddon.MaxAmmo.ToString();
+		if (weapon != null)
+		{
+			var ammoAddon = weapon.GetComponent<AmmoAddon>();
+			ammoAddon.OnAmmoChanged += HandleAmmoChanged;
+			currentAmmoText.text = ammoAddon.CurrentAmmo.ToString();
+			maxAmmoText.text = ammoAddon.MaxAmmo.ToString();
+		}
+		else
+		{
+			currentAmmoText.text = "0";
+			maxAmmoText.text = "0";
+		}
 	}
 
 

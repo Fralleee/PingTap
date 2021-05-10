@@ -16,6 +16,9 @@ namespace CombatSystem
 		[SerializeField] float equipAnimationTime = 0.3f;
 		public Transform[] Muzzles;
 
+		public Transform leftHandGrip;
+		public Transform rightHandGrip;
+
 		public Status ActiveWeaponAction { get; private set; }
 
 		[HideInInspector] public Combatant Combatant;

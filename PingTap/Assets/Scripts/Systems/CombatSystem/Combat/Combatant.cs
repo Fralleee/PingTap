@@ -1,5 +1,6 @@
 ﻿using CombatSystem.Action;
 using CombatSystem.Combat.Damage;
+using Fralle.Core.Basics;
 using Fralle.Core.Extensions;
 using System;
 using UnityEngine;
@@ -17,6 +18,14 @@ namespace CombatSystem.Combat
 		public Transform AimTransform;
 		public Transform WeaponHolder;
 		public Weapon EquippedWeapon;
+
+		[Header("Left Hand IK")]
+		[SerializeField] FollowTransform leftHandIkTarget;
+		[SerializeField] ToggleIK leftHandToggleIK;
+
+		[Header("Right Hand IK")]
+		[SerializeField] FollowTransform rightHandIkTarget;
+		[SerializeField] ToggleIK rightHandToggleIK;
 
 		AttackAction primaryAction;
 		AttackAction secondaryAction;
@@ -56,6 +65,7 @@ namespace CombatSystem.Combat
 				WeaponHolder = transform;
 		}
 
+
 		public void ClearWeapons()
 		{
 			foreach (Transform child in WeaponHolder)
@@ -69,22 +79,36 @@ namespace CombatSystem.Combat
 
 		public void EquipWeapon(Weapon weapon, bool animationDistance = true)
 		{
-			if (EquippedWeapon != null && EquippedWeapon.name == weapon.name)
+			if (EquippedWeapon != null && weapon != null && EquippedWeapon.name == weapon.name)
 				return;
 
 			ClearWeapons();
 
-			var position = animationDistance ? WeaponHolder.position.With(y: -0.5f) : WeaponHolder.position;
-			EquippedWeapon = Instantiate(weapon, position, WeaponHolder.rotation, WeaponHolder);
+			var oldWeapon = EquippedWeapon;
+			var position = animationDistance ? WeaponHolder.position.With(y: -0.15f) : WeaponHolder.position;
 
-			EquippedWeapon.Equip(this);
-			SetupWeapon(EquippedWeapon);
+			if (weapon != null)
+			{
+				EquippedWeapon = Instantiate(weapon, position, WeaponHolder.rotation, WeaponHolder);
+				EquippedWeapon.Equip(this);
+
+				SetupAttackActions();
+				SetupIK();
+			}
+			else
+			{
+				EquippedWeapon = null;
+				primaryAction = null;
+				secondaryAction = null;
+				rightHandToggleIK.Toggle(false);
+				leftHandToggleIK.Toggle(false);
+			}
+
+			OnWeaponSwitch(EquippedWeapon, oldWeapon);
 		}
 
-		void SetupWeapon(Weapon weapon)
+		void SetupAttackActions()
 		{
-			OnWeaponSwitch(weapon, EquippedWeapon);
-			EquippedWeapon = weapon;
 			var attackActions = EquippedWeapon.GetComponentsInChildren<AttackAction>();
 			if (attackActions.Length > 2)
 				Debug.LogWarning($"Weapon {EquippedWeapon} has more attack actions than possible (2).");
@@ -92,6 +116,21 @@ namespace CombatSystem.Combat
 			{
 				primaryAction = attackActions[0];
 				secondaryAction = attackActions.Length == 2 ? attackActions[1] : null;
+			}
+		}
+
+		void SetupIK()
+		{
+			if (EquippedWeapon.rightHandGrip)
+			{
+				rightHandIkTarget.transformToFollow = EquippedWeapon.rightHandGrip;
+				rightHandToggleIK.Toggle();
+			}
+
+			if (EquippedWeapon.leftHandGrip)
+			{
+				leftHandIkTarget.transformToFollow = EquippedWeapon.leftHandGrip;
+				leftHandToggleIK.Toggle();
 			}
 		}
 
