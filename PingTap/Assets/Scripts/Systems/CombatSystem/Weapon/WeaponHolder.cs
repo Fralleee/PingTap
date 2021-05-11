@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace CombatSystem
@@ -10,9 +11,13 @@ namespace CombatSystem
 		{
 			if (clearWeaponsOnAwake)
 			{
+				string[] stringArray = { "Weapon Camera", "FPS" };
 				foreach (Transform child in transform)
 				{
-					Destroy(child.gameObject);
+					if (!stringArray.Any(child.name.Contains))
+					{
+						Destroy(child.gameObject);
+					}
 				}
 			}
 		}

@@ -11,6 +11,7 @@ namespace Fralle
 	{
 		[SerializeField] Combatant combatant;
 		[SerializeField] Weapon[] weapons = new Weapon[0];
+		[SerializeField] Transform weaponCamera;
 
 		[HideInInspector] public PlayerInput PlayerInput;
 
@@ -18,6 +19,9 @@ namespace Fralle
 
 		bool primaryFireHold;
 		bool secondaryFireHold;
+
+		Vector3 defaultWeaponCameraPosition;
+		Quaternion defaultWeaponCameraRotation;
 
 		void Awake()
 		{
@@ -34,6 +38,9 @@ namespace Fralle
 			PlayerInput.actions["SecondaryFire"].performed += OnSecondaryFire;
 			PlayerInput.actions["SecondaryFire"].canceled += OnSecondaryFireCancel;
 			PlayerInput.actions["ItemSelect"].performed += OnItemSelect;
+
+			defaultWeaponCameraPosition = weaponCamera.transform.localPosition;
+			defaultWeaponCameraRotation = weaponCamera.transform.localRotation;
 		}
 
 		void OnPrimaryFire(InputAction.CallbackContext context)
@@ -69,8 +76,16 @@ namespace Fralle
 
 		void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
 		{
-			if (combatant.EquippedWeapon != null)
-				combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+			if (combatant.EquippedWeapon == null)
+			{
+				weaponCamera.localPosition = defaultWeaponCameraPosition;
+				weaponCamera.localRotation = defaultWeaponCameraRotation;
+				return;
+			}
+
+			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+			weaponCamera.localPosition = combatant.EquippedWeapon.weaponCameraTransform.localPosition;
+			weaponCamera.localRotation = combatant.EquippedWeapon.weaponCameraTransform.localRotation;
 		}
 
 		void Start()

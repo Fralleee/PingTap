@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1923125321600534695}
   - component: {fileID: 4849536065285394247}
   - component: {fileID: 8780596973138301923}
+  - component: {fileID: -3682598321081610597}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -32,6 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6343120984642069326}
+  - {fileID: 7774576615114151491}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53,6 +55,7 @@ MonoBehaviour:
   - {fileID: 1208704213795220663}
   leftHandGrip: {fileID: 8063365078453462000}
   rightHandGrip: {fileID: 3609378851149558724}
+  weaponCameraTransform: {fileID: 7774576615114151491}
   Combatant: {fileID: 0}
   RecoilAddon: {fileID: 0}
   AmmoAddonController: {fileID: 0}
@@ -175,6 +178,49 @@ MonoBehaviour:
   - {x: 0, y: -3, z: 0}
   - {x: 1, y: -3, z: 0}
   - {x: -1, y: -3, z: 0}
+--- !u!114 &-3682598321081610597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943643353794196974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e071344bd6f00f458252e88dfdd8e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configuration: {fileID: 11400000, guid: 2e980b6dd3fe0b94193f50cf8b83153f, type: 2}
+--- !u!1 &4850362187615264221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7774576615114151491}
+  m_Layer: 0
+  m_Name: Weapon Camera Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7774576615114151491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4850362187615264221}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.025, y: 0.2, z: -0.05}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1574042133890056261}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 1.5, y: 0, z: 0}
 --- !u!1 &5961272946899523573
 GameObject:
   m_ObjectHideFlags: 0

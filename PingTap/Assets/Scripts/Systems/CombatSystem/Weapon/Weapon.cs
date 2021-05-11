@@ -14,10 +14,11 @@ namespace CombatSystem
 		[Header("Weapon")]
 		public string WeaponName;
 		[SerializeField] float equipAnimationTime = 0.3f;
-		public Transform[] Muzzles;
 
+		public Transform[] Muzzles;
 		public Transform leftHandGrip;
 		public Transform rightHandGrip;
+		public Transform weaponCameraTransform;
 
 		public Status ActiveWeaponAction { get; private set; }
 

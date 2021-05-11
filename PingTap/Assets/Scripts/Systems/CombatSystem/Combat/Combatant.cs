@@ -3,6 +3,7 @@ using CombatSystem.Combat.Damage;
 using Fralle.Core.Basics;
 using Fralle.Core.Extensions;
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace CombatSystem.Combat
@@ -22,10 +23,14 @@ namespace CombatSystem.Combat
 		[Header("Left Hand IK")]
 		[SerializeField] FollowTransform leftHandIkTarget;
 		[SerializeField] ToggleIK leftHandToggleIK;
+		[SerializeField] FollowTransform fpsLeftHandIkTarget;
+		[SerializeField] ToggleIK fpsLeftHandToggleIK;
 
 		[Header("Right Hand IK")]
 		[SerializeField] FollowTransform rightHandIkTarget;
 		[SerializeField] ToggleIK rightHandToggleIK;
+		[SerializeField] FollowTransform fpsRightHandIkTarget;
+		[SerializeField] ToggleIK fpsRightHandToggleIK;
 
 		AttackAction primaryAction;
 		AttackAction secondaryAction;
@@ -68,13 +73,15 @@ namespace CombatSystem.Combat
 
 		public void ClearWeapons()
 		{
+			string[] stringArray = { "Weapon Camera", "FPS" };
 			foreach (Transform child in WeaponHolder)
 			{
-				if (child.name != "Weapon Camera")
+				if (!stringArray.Any(child.name.Contains))
 					DestroyImmediate(child.gameObject);
 			}
 
-			EquippedWeapon = null;
+			if (EquippedWeapon)
+				EquippedWeapon = null;
 		}
 
 		public void EquipWeapon(Weapon weapon, bool animationDistance = true)
@@ -102,6 +109,8 @@ namespace CombatSystem.Combat
 				secondaryAction = null;
 				rightHandToggleIK.Toggle(false);
 				leftHandToggleIK.Toggle(false);
+				fpsRightHandToggleIK?.Toggle(false);
+				fpsLeftHandToggleIK?.Toggle(false);
 			}
 
 			OnWeaponSwitch(EquippedWeapon, oldWeapon);
@@ -125,12 +134,22 @@ namespace CombatSystem.Combat
 			{
 				rightHandIkTarget.transformToFollow = EquippedWeapon.rightHandGrip;
 				rightHandToggleIK.Toggle();
+				if (fpsRightHandIkTarget && fpsRightHandToggleIK)
+				{
+					fpsRightHandIkTarget.transformToFollow = EquippedWeapon.rightHandGrip;
+					fpsRightHandToggleIK.Toggle();
+				}
 			}
 
 			if (EquippedWeapon.leftHandGrip)
 			{
 				leftHandIkTarget.transformToFollow = EquippedWeapon.leftHandGrip;
 				leftHandToggleIK.Toggle();
+				if (fpsLeftHandIkTarget && fpsLeftHandToggleIK)
+				{
+					fpsLeftHandIkTarget.transformToFollow = EquippedWeapon.leftHandGrip;
+					fpsLeftHandToggleIK?.Toggle();
+				}
 			}
 		}
 
