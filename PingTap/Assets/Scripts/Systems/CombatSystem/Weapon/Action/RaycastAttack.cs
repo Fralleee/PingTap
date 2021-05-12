@@ -47,9 +47,11 @@ namespace CombatSystem.Action
 		public override void Fire()
 		{
 			var muzzle = GetMuzzle();
-			if (muzzleParticlePrefab)
-				ObjectPool.Spawn(muzzleParticlePrefab, muzzle.position, Attacker.AimTransform.rotation, Attacker.AimTransform);				
-
+			if (muzzleParticlePrefab) {
+				var instance = ObjectPool.Spawn(muzzleParticlePrefab, muzzle.position, Attacker.AimTransform.rotation, Attacker.AimTransform);
+				instance.SetLayerRecursively(LayerMask.NameToLayer("First Person Objects")); // this should only be performed on localplayer
+			}
+				
 			for (int i = 0; i < bulletsPerFire; i++)
 				FireBullet(muzzle);
 

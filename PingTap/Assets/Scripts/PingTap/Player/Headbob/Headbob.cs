@@ -75,7 +75,7 @@ namespace Fralle.PingTap
 				curvePosition = Mathf.Sin(timer);
 				bob = -Mathf.Abs(Mathf.Abs(curvePosition) - 1);
 
-				timer += configuration.BobbingSpeed;
+				timer += configuration.BobbingSpeed * Time.deltaTime;
 
 				if (timer > Mathf.PI * 2)
 					timer -= (Mathf.PI * 2);
