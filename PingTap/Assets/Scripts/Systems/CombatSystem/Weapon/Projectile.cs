@@ -110,6 +110,7 @@ namespace CombatSystem.Offense
 
 		void OnCollisionEnter(Collision collision)
 		{
+			Debug.Log($"{gameObject.name} collided with {collision.collider.name}");
 			if (data.KinematicOnImpact)
 			{
 				rigidbody.isKinematic = true;
