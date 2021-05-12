@@ -76,19 +76,18 @@ MonoBehaviour:
   MinDamage: 1
   MaxDamage: 10
   AmmoPerShot: 1
-  ShotsPerSecond: 20
-  Tapable: 0
+  ShotsPerSecond: 2
+  Tapable: 1
   Element: 0
   DamageEffects: []
   Range: 50
   PushForce: 3.5
   impactParticlePrefab: {fileID: 1469201857544070, guid: e9f55cd29784fe741b38e74c81f42a27,
     type: 3}
-  muzzleParticlePrefab: {fileID: 1670457245891842, guid: a946afce73718d54f85ad6cb3e38705d,
+  muzzleParticlePrefab: {fileID: 8136334730752116704, guid: 7a3c17ee08a50ec488e3aeee1b4ce7a6,
     type: 3}
-  lineRendererPrefab: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
-    type: 3}
-  bulletsPerFire: 1
+  lineRendererPrefab: {fileID: 0}
+  bulletsPerFire: 5
   RangeDamageFalloff:
     serializedVersion: 2
     m_Curve:
@@ -113,7 +112,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spreadRadius: 0.2
+  spreadRadius: 0.5
   spreadIncreaseEachShot: 0.075
   recovery: 0.5
   CurrentSpread: 0
@@ -140,7 +139,7 @@ MonoBehaviour:
     type: 3}
   projectileData:
     Force: 100
-    UseGravity: 1
+    UseGravity: 0
     KinematicOnImpact: 0
     ExplodeOnMaxRange: 0
     ExplodeOnImpactTime: 0
@@ -255,13 +254,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2965335579164342978}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.043604456, y: 0.026152011, z: -0.0011418217, w: 0.9987059}
   m_LocalPosition: {x: -0.25, y: 0.3, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1574042133890056261}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 1.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5, y: 3, z: 0}
 --- !u!1 &5961272946899523573
 GameObject:
   m_ObjectHideFlags: 0

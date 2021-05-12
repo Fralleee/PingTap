@@ -48,7 +48,7 @@ namespace CombatSystem.Action
 		{
 			var muzzle = GetMuzzle();
 			if (muzzleParticlePrefab)
-				ObjectPool.Spawn(muzzleParticlePrefab, muzzle.position, Attacker.AimTransform.rotation, Attacker.AimTransform);
+				ObjectPool.Spawn(muzzleParticlePrefab, muzzle.position, Attacker.AimTransform.rotation, Attacker.AimTransform);				
 
 			for (int i = 0; i < bulletsPerFire; i++)
 				FireBullet(muzzle);

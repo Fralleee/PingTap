@@ -14745,6 +14745,7 @@ GameObject:
   - component: {fileID: -3654419696064623405}
   - component: {fileID: 6314319653978127406}
   - component: {fileID: 140313268155634539}
+  - component: {fileID: -2692313926089178627}
   m_Layer: 0
   m_Name: MuzzleEffect
   m_TagString: Untagged
@@ -19760,9 +19761,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ab692bc4f43644992bc3f3fbac59de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolScript: {fileID: 0}
-  timeSpawned: 0
+  PoolScript: {fileID: 0}
+  TimeSpawned: 0
 --- !u!114 &140313268155634539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670457245891842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1542191e2d76d2840ac102b7790acf5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2692313926089178627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
