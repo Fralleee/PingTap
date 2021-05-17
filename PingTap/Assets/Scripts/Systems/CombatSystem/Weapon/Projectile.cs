@@ -1,4 +1,5 @@
-﻿using CombatSystem.Combat.Damage;
+﻿using CombatSystem.Combat;
+using CombatSystem.Combat.Damage;
 using Fralle.Core.Extensions;
 using Fralle.Core.Pooling;
 using UnityEngine;

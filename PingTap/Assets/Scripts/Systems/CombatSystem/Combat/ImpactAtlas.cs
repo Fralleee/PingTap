@@ -2,34 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Combat/Impact Atlas")]
-public class ImpactAtlas : ScriptableObject
+namespace CombatSystem.Combat
 {
-	[SerializeField] List<GameObject> impactEffects;
-	[SerializeField] GameObject fallback;
-
-	Dictionary<string, GameObject> dictionary = new Dictionary<string, GameObject>();
-
-	public GameObject GetImpactEffectFromTag(string tag) => dictionary.ContainsKey(tag) ? dictionary[tag] : fallback;
-
-	void MapToDictionary()
+	[CreateAssetMenu(menuName = "Combat/Impact Atlas")]
+	public class ImpactAtlas : ScriptableObject
 	{
-		foreach (var effect in impactEffects)
+		[SerializeField] List<GameObject> impactEffects;
+		[SerializeField] GameObject fallback;
+
+		Dictionary<string, GameObject> dictionary = new Dictionary<string, GameObject>();
+
+		public GameObject GetImpactEffectFromTag(string tag) => dictionary.ContainsKey(tag) ? dictionary[tag] : fallback;
+
+		void MapToDictionary()
 		{
-			if (dictionary.ContainsKey(effect.tag))
-				Debug.LogWarning($"Dictionary alread contains effect for tag: {effect.tag}");
-			else
-				dictionary.Add(effect.tag, effect);
+			foreach (var effect in impactEffects)
+			{
+				if (dictionary.ContainsKey(effect.tag))
+					Debug.LogWarning($"Dictionary alread contains effect for tag: {effect.tag}");
+				else
+					dictionary.Add(effect.tag, effect);
+			}
 		}
-	}
 
-	void Awake()
-	{
-		MapToDictionary();
-	}
+		void Awake()
+		{
+			MapToDictionary();
+		}
 
-	void OnValidate()
-	{
-		MapToDictionary();
+		void OnValidate()
+		{
+			MapToDictionary();
+		}
 	}
 }
