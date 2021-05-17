@@ -20,7 +20,7 @@ namespace CombatSystem.Action
 		{
 			var muzzle = GetMuzzle();
 
-			projectileData.Attacker = Attacker;
+			projectileData.Attacker = Combatant;
 			projectileData.Forward = Weapon.Combatant.AimTransform.forward;
 			projectileData.Damage = Damage;
 			projectileData.Element = Element;
@@ -37,7 +37,7 @@ namespace CombatSystem.Action
 		{
 			for (int i = 0; i < projectilesPerFire; i++)
 			{
-				Attacker.Stats.OnAttack(1);
+				Combatant.Stats.OnAttack(1);
 
 				int layerMask = ~LayerMask.GetMask("Corpse");
 				Ray ray = new Ray(Weapon.Combatant.AimTransform.position, Weapon.Combatant.AimTransform.forward);

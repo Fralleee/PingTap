@@ -74,9 +74,9 @@ namespace CombatSystem.Action
         var damageData = new DamageData()
         {
           DamageAmount = Damage,
-          Attacker = Attacker,
+          Attacker = Combatant,
           Element = Element,
-          Effects = DamageEffects.Select(x => x.Setup(Attacker, Damage)).ToArray(),
+          Effects = DamageEffects.Select(x => x.Setup(Combatant, Damage)).ToArray(),
           HitAngle = Vector3.Angle((transform.position - target.transform.position).normalized,
             target.transform.forward),
           Position = target.transform.position

@@ -27,7 +27,7 @@ namespace CombatSystem.Action
 
 		internal int HitboxLayer;
 		internal Weapon Weapon;
-		internal Combatant Attacker;
+		internal Combatant Combatant;
 		internal StatsController Stats;
 		int nextMuzzle;
 
@@ -45,7 +45,7 @@ namespace CombatSystem.Action
 		internal virtual void Start()
 		{
 			Weapon = GetComponent<Weapon>();
-			Attacker = Weapon.GetComponentInParent<Combatant>();
+			Combatant = Weapon.GetComponentInParent<Combatant>();
 
 			Stats = Weapon.Combatant.GetComponent<StatsController>();
 			if (Stats)

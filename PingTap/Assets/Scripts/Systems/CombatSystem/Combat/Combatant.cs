@@ -32,6 +32,9 @@ namespace CombatSystem.Combat
 		[SerializeField] FollowTransform fpsRightHandIkTarget;
 		[SerializeField] ToggleIK fpsRightHandToggleIK;
 
+		[Header("Settings")]
+		public ImpactAtlas impactAtlas;
+
 		AttackAction primaryAction;
 		AttackAction secondaryAction;
 

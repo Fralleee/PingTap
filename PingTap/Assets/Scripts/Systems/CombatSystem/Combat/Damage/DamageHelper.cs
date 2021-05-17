@@ -43,11 +43,11 @@ namespace CombatSystem.Combat.Damage
 				var damageAmount = raycastAttack.Damage;
 				var damageData = new DamageData()
 				{
-					Attacker = raycastAttack.Attacker,
+					Attacker = raycastAttack.Combatant,
 					Element = raycastAttack.Element,
-					Effects = SetupDamageEffects(raycastAttack.DamageEffects, raycastAttack.Attacker, damageAmount),
+					Effects = SetupDamageEffects(raycastAttack.DamageEffects, raycastAttack.Combatant, damageAmount),
 					HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
-					Force = raycastAttack.Attacker.AimTransform.forward * raycastAttack.PushForce,
+					Force = raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce,
 					Position = hit.point,
 					HitArea = hitArea,
 					DamageAmount = hitArea.GetMultiplier() * damageAmount * falloffMultiplier,
@@ -55,7 +55,7 @@ namespace CombatSystem.Combat.Damage
 				};
 
 				damageController.ReceiveAttack(damageData);
-				raycastAttack.Attacker.SuccessfulHit(damageData);
+				raycastAttack.Combatant.SuccessfulHit(damageData);
 				return damageData;
 			}
 
@@ -168,7 +168,7 @@ namespace CombatSystem.Combat.Damage
 			var rigidBody = hit.transform.GetComponent<Rigidbody>();
 			if (rigidBody != null)
 			{
-				rigidBody.AddForce(raycastAttack.Attacker.AimTransform.forward * raycastAttack.PushForce);
+				rigidBody.AddForce(raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce);
 			}
 		}
 	}

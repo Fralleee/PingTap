@@ -22,6 +22,7 @@ namespace CombatSystem.Action
 		[SerializeField] float spreadRadius = 0f;
 		[SerializeField] float spreadIncreaseEachShot = 0f;
 		[SerializeField] float recovery = 1f;
+		[SerializeField] bool spreadOnFirstShot;
 
 		[Readonly] public float CurrentSpread;
 
@@ -33,22 +34,21 @@ namespace CombatSystem.Action
 
 			if (Stats)
 				spreadStatMultiplier = Stats.Aim.Value;
+
+			float lowestCurrentSpread = spreadOnFirstShot ? spreadIncreaseEachShot : 0f;
+			CurrentSpread = lowestCurrentSpread;
 		}
 
 		void Update()
 		{
-			if (CurrentSpread.EqualsWithTolerance(0f))
-				return;
-
-			CurrentSpread -= Time.deltaTime * recovery;
-			CurrentSpread = Mathf.Clamp(CurrentSpread, 0, spreadRadius);
+			ModifyCurrentSpread();
 		}
 
 		public override void Fire()
 		{
 			var muzzle = GetMuzzle();
 			if (muzzleParticlePrefab) {
-				var instance = ObjectPool.Spawn(muzzleParticlePrefab, muzzle.position, Attacker.AimTransform.rotation, Attacker.AimTransform);
+				var instance = ObjectPool.Spawn(muzzleParticlePrefab, muzzle.position, Combatant.AimTransform.rotation, Combatant.AimTransform);
 				instance.SetLayerRecursively(LayerMask.NameToLayer("First Person Objects")); // this should only be performed on localplayer
 			}
 				
@@ -66,12 +66,12 @@ namespace CombatSystem.Action
 
 		void FireBullet(Transform muzzle)
 		{
-			Attacker.Stats.OnAttack(1);
+			Combatant.Stats.OnAttack(1);
 
-			Vector3 forward = CalculateBulletSpread(1 / Attacker.Modifiers.ExtraAccuracy);
+			Vector3 forward = CalculateBulletSpread(1 / Combatant.Modifiers.ExtraAccuracy);
 
 			int layerMask = ~LayerMask.GetMask("Corpse", "Enemy Rigidbody", "Target");
-			if (!Physics.Raycast(Attacker.AimTransform.position, forward, out var hitInfo, Range, layerMask))
+			if (!Physics.Raycast(Combatant.AimTransform.position, forward, out var hitInfo, Range, layerMask))
 			{
 				BulletTrace(muzzle.position, muzzle.position + forward * Range);
 				return;
@@ -83,15 +83,25 @@ namespace CombatSystem.Action
 
 			if (damageData != null && damageData.ImpactEffect != null)
 				ObjectPool.Spawn(damageData.ImpactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
-			else if (impactParticlePrefab)
-				ObjectPool.Spawn(impactParticlePrefab, hitInfo.point, Quaternion.FromToRotation(Vector3.up, hitInfo.normal));
+			else
+				ObjectPool.Spawn(Combatant.impactAtlas.GetImpactEffectFromTag(hitInfo.collider.tag), hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
+		}
+
+		void ModifyCurrentSpread()
+		{
+			float lowestCurrentSpread = spreadOnFirstShot ? spreadIncreaseEachShot : 0f;
+			if (CurrentSpread.EqualsWithTolerance(lowestCurrentSpread))
+				return;
+
+			CurrentSpread -= Time.deltaTime * recovery;
+			CurrentSpread = Mathf.Clamp(CurrentSpread, lowestCurrentSpread, spreadRadius);
 		}
 
 		Vector3 CalculateBulletSpread(float modifier)
 		{
 			float spreadPercent = spreadIncreaseEachShot > 0 ? CurrentSpread : 1;
 			Vector2 spread = spreadPercent * modifier * Random.insideUnitCircle * spreadRadius;
-			return Attacker.AimTransform.forward + new Vector3(0, spread.y, spread.x);
+			return Combatant.AimTransform.forward + new Vector3(0, spread.y, spread.x);
 		}
 
 		void BulletTrace(Vector3 origin, Vector3 target)
@@ -104,12 +114,19 @@ namespace CombatSystem.Action
 			lineRenderer.SetPosition(1, target);
 		}
 
-
 		internal override void Aim_OnChanged(CharacterStat stat)
 		{
 			base.Aim_OnChanged(stat);
 			spreadStatMultiplier = 1 + (stat.Value / 100f);
 		}
 
+#if UNITY_EDITOR
+		internal override void OnValidate()
+		{
+			base.OnValidate();
+			float lowestCurrentSpread = spreadOnFirstShot ? spreadIncreaseEachShot : 0f;
+			CurrentSpread = lowestCurrentSpread;
+		}
+#endif
 	}
 }

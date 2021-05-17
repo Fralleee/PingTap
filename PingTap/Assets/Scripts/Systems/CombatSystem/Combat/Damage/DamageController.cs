@@ -88,11 +88,11 @@ namespace CombatSystem.Combat.Damage
 			var hitArea = hitbox ? hitbox.HitArea : HitArea.Major;
 			var damageData = new DamageData()
 			{
-				Attacker = raycastAttack.Attacker,
+				Attacker = raycastAttack.Combatant,
 				Element = raycastAttack.Element,
-				Effects = DamageEffects.Select(x => x.Setup(raycastAttack.Attacker, raycastAttack.Damage)).ToArray(),
+				Effects = DamageEffects.Select(x => x.Setup(raycastAttack.Combatant, raycastAttack.Damage)).ToArray(),
 				HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
-				Force = raycastAttack.Attacker.AimTransform.forward * raycastAttack.PushForce,
+				Force = raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce,
 				Position = hit.point,
 				HitArea = hitArea,
 				DamageAmount = hitArea.GetMultiplier() * raycastAttack.Damage
