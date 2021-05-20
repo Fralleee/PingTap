@@ -14,14 +14,16 @@ namespace Fralle.PingTap
 		[SerializeField] Transform cameraTransform;
 		[SerializeField] Transform weaponTransform;
 
+		[SerializeField] float smoothSpeed = 10f;
+
 		PlayerController playerController;
 		Combatant combatant;
 		HeadbobConfiguration configuration => overrideConfguration ?? defaultConfiguration;
 		Vector3 localAxis = new Vector3(0, 1, 0);
-		Vector3 initPos;
+		Vector3 cameraInitPos;
+		Vector3 weaponInitPos;
 		Quaternion initRot;
 		float timer;
-		float angleChanges;
 		bool pause;
 
 		void Awake()
@@ -50,57 +52,59 @@ namespace Fralle.PingTap
 
 		void Start()
 		{
-			initPos = cameraTransform.localPosition;
+			weaponInitPos = cameraTransform.localPosition;
 			initRot = weaponTransform.localRotation;
 		}
 
 		void Update()
 		{
-			if (pause)
+			if (pause || !playerController.IsMoving)
 			{
-				cameraTransform.localPosition = initPos;
-				angleChanges = 0;
-				timer = 0;
+				Reset();
 				return;
 			}
 
-			float bob = 0f;
-			float curvePosition = 0f;
-			Vector3 calcPosition = cameraTransform.localPosition;
+			float curvePosition = Mathf.Sin(timer);
+			float bob = Mathf.Abs(curvePosition);
 
-			if (!playerController.IsMoving)
-				timer = 0;
-			else
-			{
-				curvePosition = Mathf.Sin(timer);
-				bob = -Mathf.Abs(Mathf.Abs(curvePosition) - 1);
+			ApplyModifiers(curvePosition, bob, out Vector3 cameraCalcPosition, out Vector3 weaponCalcPosition, out float angleChanges);
+			ApplyMotion(cameraCalcPosition, weaponCalcPosition, angleChanges);
 
-				timer += configuration.BobbingSpeed * Time.deltaTime;
-
-				if (timer > Mathf.PI * 2)
-					timer -= (Mathf.PI * 2);
-			}
-
-			if (bob != 0)
-			{
-				bob *= playerController.ModifiedMovementSpeed;
-				calcPosition.y = initPos.y + configuration.CameraBobbingAmount + bob * configuration.CameraBobbingAmount;
-			}
-			else
-				calcPosition.y = initPos.y;
-
-			if (curvePosition != 0)
-				angleChanges = initRot.eulerAngles.y + curvePosition * playerController.ModifiedMovementSpeed * configuration.WeaponRotationAmount;
-			else
-				angleChanges = Mathf.LerpAngle(angleChanges, 0, Time.deltaTime * 6f);
-
-			cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, calcPosition, Time.deltaTime * 6f);
+			UpdateTimer();
 		}
 
-		void LateUpdate()
+		void ApplyModifiers(float curvePosition, float bob, out Vector3 cameraCalcPosition, out Vector3 weaponCalcPosition, out float angleChanges)
 		{
-			Quaternion change = Quaternion.AngleAxis(angleChanges, localAxis);
-			weaponTransform.localRotation = initRot * change;
+			cameraCalcPosition = Vector3.zero;
+			weaponCalcPosition = Vector3.zero;
+
+			bob *= playerController.ModifiedMovementSpeed * 0.1f;
+			cameraCalcPosition.y = bob * configuration.CameraBobbingAmount;
+			weaponCalcPosition.y = bob * configuration.WeaponBobbingAmount;
+
+			angleChanges = initRot.eulerAngles.y + curvePosition * playerController.ModifiedMovementSpeed * 0.1f * configuration.WeaponRotationAmount;
+		}
+
+		void ApplyMotion(Vector3 cameraCalcPosition, Vector3 weaponCalcPosition, float angleChanges)
+		{
+			cameraTransform.localPosition = cameraCalcPosition;
+			weaponTransform.localPosition = weaponCalcPosition;
+			weaponTransform.localRotation = initRot * Quaternion.AngleAxis(angleChanges, localAxis);
+		}
+
+		void Reset()
+		{
+			timer = 0;
+			weaponTransform.localRotation = Quaternion.Lerp(weaponTransform.localRotation, initRot, Time.deltaTime * smoothSpeed);
+			cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, cameraInitPos, Time.deltaTime * smoothSpeed);
+			weaponTransform.localPosition = Vector3.Lerp(weaponTransform.localPosition, weaponInitPos, Time.deltaTime * smoothSpeed);
+		}
+
+		void UpdateTimer()
+		{
+			timer += configuration.BobbingSpeed * Time.deltaTime;
+			if (timer > Mathf.PI * 2)
+				timer -= (Mathf.PI * 2);
 		}
 	}
 
