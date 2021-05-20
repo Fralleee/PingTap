@@ -903,6 +903,8 @@ MonoBehaviour:
   cameraTransform: {fileID: 1116185426302602772}
   weaponTransform: {fileID: 217825854}
   smoothSpeed: 10
+  strafeRotationAmount: 2.5
+  maxStrafeRotation: 5
 --- !u!1 &1647619089039069551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,10 +1343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothRotation: 10
-  strafeRotationAmount: 7
-  maxStrafeRotation: 10
-  lookRotationAmount: 0.6
-  maxLookRotation: 3
+  lookRotationAmount: 0.75
+  maxLookRotation: 2
 --- !u!1 &4752379842244952492
 GameObject:
   m_ObjectHideFlags: 0
