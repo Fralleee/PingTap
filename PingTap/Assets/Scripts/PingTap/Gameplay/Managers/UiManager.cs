@@ -35,7 +35,8 @@ namespace Fralle.Gameplay
 
 		void Update()
 		{
-			if (!Input.GetKeyDown(KeyCode.Escape) || !allowPauseMenu) return;
+			if (!Input.GetKeyDown(KeyCode.Escape) || !allowPauseMenu)
+				return;
 
 			bool isOpen = pauseMenu.ToggleMenu();
 			OnMenuToggle(isOpen);

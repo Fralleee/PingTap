@@ -87,7 +87,8 @@ public class DepthNormalsFeature : ScriptableRendererFeature
 		/// Cleanup any allocated resources that were created during the execution of this render pass.
 		public override void FrameCleanup(CommandBuffer cmd)
 		{
-			if (DepthAttachmentHandle == RenderTargetHandle.CameraTarget) return;
+			if (DepthAttachmentHandle == RenderTargetHandle.CameraTarget)
+				return;
 			cmd.ReleaseTemporaryRT(DepthAttachmentHandle.id);
 			DepthAttachmentHandle = RenderTargetHandle.CameraTarget;
 		}

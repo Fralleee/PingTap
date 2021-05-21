@@ -21,25 +21,25 @@ using UnityEngine.Experimental.Rendering.HDPipeline;
 
 namespace EPOOutline
 {
-    public static class CameraUtility
-    {
-        public static int GetMSAA(Camera camera)
-        {
-            var antialiasing = GetRenderPipelineMSAA();
+	public static class CameraUtility
+	{
+		public static int GetMSAA(Camera camera)
+		{
+			var antialiasing = GetRenderPipelineMSAA();
 
-            var msaa = Mathf.Max(antialiasing, 1);
-            if (!camera.allowMSAA)
-                msaa = 1;
+			var msaa = Mathf.Max(antialiasing, 1);
+			if (!camera.allowMSAA)
+				msaa = 1;
 
-            if (camera.actualRenderingPath != RenderingPath.Forward &&
-                camera.actualRenderingPath != RenderingPath.VertexLit)
-                msaa = 1;
+			if (camera.actualRenderingPath != RenderingPath.Forward &&
+					camera.actualRenderingPath != RenderingPath.VertexLit)
+				msaa = 1;
 
-            return msaa;
-        }
-        
-        private static int GetRenderPipelineMSAA()
-        {
+			return msaa;
+		}
+
+		private static int GetRenderPipelineMSAA()
+		{
 #if URP_OUTLINE && UNITY_2019_1_OR_NEWER
             if (PipelineFetcher.CurrentAsset is
 #if UNITY_2019_3_OR_NEWER
@@ -63,7 +63,7 @@ namespace EPOOutline
                 return 1;
 #endif
 
-            return QualitySettings.antiAliasing;
-        }
-    }
+			return QualitySettings.antiAliasing;
+		}
+	}
 }

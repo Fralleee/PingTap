@@ -15,26 +15,26 @@ using UnityEngine.Rendering.LWRP;
 
 namespace EPOOutline
 {
-    public static class PipelineFetcher
-    {
+	public static class PipelineFetcher
+	{
 #if UNITY_2019_1_OR_NEWER
-        public static RenderPipelineAsset CurrentAsset
-        {
-            get
-            {
+		public static RenderPipelineAsset CurrentAsset
+		{
+			get
+			{
 #if UNITY_2019_3_OR_NEWER
-                var pipeline = QualitySettings.renderPipeline;
-                if (pipeline == null)
-                    pipeline = GraphicsSettings.renderPipelineAsset;
+				var pipeline = QualitySettings.renderPipeline;
+				if (pipeline == null)
+					pipeline = GraphicsSettings.renderPipelineAsset;
 #else
                     var pipeline = GraphicsSettings.renderPipelineAsset;
 #endif
 
-                return pipeline;
-            }
-        }
+				return pipeline;
+			}
+		}
 #endif
-    }
+	}
 
 #if (URP_OUTLINE || HDRP_OUTLINE) && UNITY_EDITOR && UNITY_2019_1_OR_NEWER
     public static class PipelineAssetUtility

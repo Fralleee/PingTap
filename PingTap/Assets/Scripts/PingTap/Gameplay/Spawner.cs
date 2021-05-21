@@ -52,7 +52,8 @@ namespace Fralle.Gameplay
 
 		void Update()
 		{
-			if (!ShouldSpawnEnemy) return;
+			if (!ShouldSpawnEnemy)
+				return;
 			float timeDiff = Time.time - nextSpawnTime;
 			float spawnCount = Mathf.Floor(timeDiff / currentWave.SpawnRate);
 			for (int i = 0; i < spawnCount; i++)

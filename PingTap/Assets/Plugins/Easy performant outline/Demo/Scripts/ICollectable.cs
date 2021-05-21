@@ -2,8 +2,8 @@
 
 namespace EPOOutline.Demo
 {
-    public interface ICollectable
-    {
-        void Collect(GameObject collector);
-    }
+	public interface ICollectable
+	{
+		void Collect(GameObject collector);
+	}
 }

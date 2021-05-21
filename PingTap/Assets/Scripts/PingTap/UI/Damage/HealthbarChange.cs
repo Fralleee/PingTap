@@ -25,7 +25,8 @@ namespace Fralle.UI
 		void Update()
 		{
 			delayTimer -= Time.deltaTime;
-			if (!(delayTimer < 0)) return;
+			if (!(delayTimer < 0))
+				return;
 			if (actualHealthbar.fillAmount < changeHealthbar.fillAmount)
 				changeHealthbar.fillAmount -= changeSpeed * Time.deltaTime;
 		}

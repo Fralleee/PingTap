@@ -44,7 +44,7 @@ namespace Fralle
 		void OnDestroy()
 		{
 			if (!Managers.Destroyed)
-				Managers.Instance.UiManager.OnMenuToggle -= OnMenuToggle;				
+				Managers.Instance.UiManager.OnMenuToggle -= OnMenuToggle;
 		}
 	}
 }

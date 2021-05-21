@@ -2,26 +2,27 @@
 
 namespace Fralle.UI.Menu
 {
-  public class Options : MonoBehaviour
-  {
-    [SerializeField] GameObject backButton;
+	public class Options : MonoBehaviour
+	{
+		[SerializeField] GameObject backButton;
 
-    MainMenu menu;
+		MainMenu menu;
 
-    void Awake()
-    {
-      menu = FindObjectOfType<MainMenu>();
-    }
+		void Awake()
+		{
+			menu = FindObjectOfType<MainMenu>();
+		}
 
-    void Update()
-    {
-      if (Input.GetKeyDown(KeyCode.Escape)) OpenMainMenu();
-    }
+		void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+				OpenMainMenu();
+		}
 
-    public void OpenMainMenu()
-    {
-      menu.gameObject.SetActive(true);
-      gameObject.SetActive(false);
-    }
-  }
+		public void OpenMainMenu()
+		{
+			menu.gameObject.SetActive(true);
+			gameObject.SetActive(false);
+		}
+	}
 }

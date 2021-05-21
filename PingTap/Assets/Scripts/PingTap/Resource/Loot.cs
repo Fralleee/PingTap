@@ -2,68 +2,72 @@
 
 namespace Fralle.Resource
 {
-  [RequireComponent(typeof(SphereCollider))]
-  public class Loot : MonoBehaviour
-  {
-    static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
-		
-    new SphereCollider collider;
+	[RequireComponent(typeof(SphereCollider))]
+	public class Loot : MonoBehaviour
+	{
+		static readonly int RendererColor = Shader.PropertyToID("_EmissionColor");
 
-    [SerializeField] LootQuality.Type quality = LootQuality.Type.Poor;
+		new SphereCollider collider;
 
-    const float PickupRange = 3f;
+		[SerializeField] LootQuality.Type quality = LootQuality.Type.Poor;
 
-    int credits;
-    float lifeTime = 60f;
-    bool pickedUp;
+		const float PickupRange = 3f;
 
-    public void Setup(int startCredits)
-    {
-      credits = startCredits;
-    }
+		int credits;
+		float lifeTime = 60f;
+		bool pickedUp;
 
-    void Awake()
-    {
-	    collider = GetComponent<SphereCollider>();
-      collider.radius = PickupRange;
-      collider.isTrigger = true;
+		public void Setup(int startCredits)
+		{
+			credits = startCredits;
+		}
 
-      var rendererComponent = GetComponentInChildren<Renderer>();
-      SetRendererColor(rendererComponent, quality);
-    }
+		void Awake()
+		{
+			collider = GetComponent<SphereCollider>();
+			collider.radius = PickupRange;
+			collider.isTrigger = true;
 
-    void Update()
-    {
-      lifeTime -= Time.deltaTime;
-      if (lifeTime <= 0) DeSpawn();
-    }
+			var rendererComponent = GetComponentInChildren<Renderer>();
+			SetRendererColor(rendererComponent, quality);
+		}
 
-    static void SetRendererColor(Renderer rendererP, LootQuality.Type qualityP)
-    {
-      if (!rendererP) return;
+		void Update()
+		{
+			lifeTime -= Time.deltaTime;
+			if (lifeTime <= 0)
+				DeSpawn();
+		}
 
-      var propBlock = new MaterialPropertyBlock();
-      rendererP.GetPropertyBlock(propBlock);
-      propBlock.SetColor(RendererColor, LootQuality.GetQualityColor(qualityP));
-      rendererP.SetPropertyBlock(propBlock);
-    }
+		static void SetRendererColor(Renderer rendererP, LootQuality.Type qualityP)
+		{
+			if (!rendererP)
+				return;
 
-    void DeSpawn()
-    {
-      Destroy(gameObject, 1f);
-    }
+			var propBlock = new MaterialPropertyBlock();
+			rendererP.GetPropertyBlock(propBlock);
+			propBlock.SetColor(RendererColor, LootQuality.GetQualityColor(qualityP));
+			rendererP.SetPropertyBlock(propBlock);
+		}
 
-    void OnTriggerEnter(Component component)
-    {
-      if (pickedUp) return;
+		void DeSpawn()
+		{
+			Destroy(gameObject, 1f);
+		}
 
-      var inventoryController = component.GetComponentInParent<InventoryController>();
-      if (!inventoryController) return;
+		void OnTriggerEnter(Component component)
+		{
+			if (pickedUp)
+				return;
 
-      inventoryController.Receive(credits);
-      pickedUp = true;
-      DeSpawn();
-    }
+			var inventoryController = component.GetComponentInParent<InventoryController>();
+			if (!inventoryController)
+				return;
 
-  }
+			inventoryController.Receive(credits);
+			pickedUp = true;
+			DeSpawn();
+		}
+
+	}
 }

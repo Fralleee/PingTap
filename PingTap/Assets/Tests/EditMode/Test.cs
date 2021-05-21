@@ -2,12 +2,12 @@
 
 namespace Tests
 {
-  public class Test
-  {
-    [Test]
-    public void TestSimplePasses()
-    {
+	public class Test
+	{
+		[Test]
+		public void TestSimplePasses()
+		{
 
-    }
-  }
+		}
+	}
 }

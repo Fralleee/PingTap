@@ -2,27 +2,29 @@
 
 namespace Fralle.UI.Menu
 {
-  public class SubMenu : MonoBehaviour
-  {
-    [SerializeField] GameObject parentMenu = null;
+	public class SubMenu : MonoBehaviour
+	{
+		[SerializeField] GameObject parentMenu = null;
 
-    public bool InGame;
+		public bool InGame;
 
-    void Update()
-    {
-      if (Input.GetKeyDown(KeyCode.Escape)) ParentMenu();
-    }
+		void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+				ParentMenu();
+		}
 
-    public void Back()
-    {
-      gameObject.SetActive(false);
-      parentMenu.gameObject.SetActive(true);
-    }
+		public void Back()
+		{
+			gameObject.SetActive(false);
+			parentMenu.gameObject.SetActive(true);
+		}
 
-    public void ParentMenu()
-    {
-      gameObject.SetActive(false);
-      if (!InGame) parentMenu.gameObject.SetActive(true);
-    }
-  }
+		public void ParentMenu()
+		{
+			gameObject.SetActive(false);
+			if (!InGame)
+				parentMenu.gameObject.SetActive(true);
+		}
+	}
 }

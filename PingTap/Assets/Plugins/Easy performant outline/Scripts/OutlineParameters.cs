@@ -4,90 +4,90 @@ using UnityEngine.Rendering;
 
 namespace EPOOutline
 {
-    public class MeshPool
-    {
-        private Queue<Mesh> freeMeshes = new Queue<Mesh>();
+	public class MeshPool
+	{
+		private Queue<Mesh> freeMeshes = new Queue<Mesh>();
 
-        private List<Mesh> allMeshes = new List<Mesh>();
+		private List<Mesh> allMeshes = new List<Mesh>();
 
-        public Mesh AllocateMesh()
-        {
-            while (freeMeshes.Count > 0 && freeMeshes.Peek() == null)
-                freeMeshes.Dequeue();
+		public Mesh AllocateMesh()
+		{
+			while (freeMeshes.Count > 0 && freeMeshes.Peek() == null)
+				freeMeshes.Dequeue();
 
-            if (freeMeshes.Count == 0)
-            {
-                var mesh = new Mesh();
-                mesh.MarkDynamic();
-                allMeshes.Add(mesh);
-                freeMeshes.Enqueue(mesh);
-            }
+			if (freeMeshes.Count == 0)
+			{
+				var mesh = new Mesh();
+				mesh.MarkDynamic();
+				allMeshes.Add(mesh);
+				freeMeshes.Enqueue(mesh);
+			}
 
-            return freeMeshes.Dequeue();
-        }
+			return freeMeshes.Dequeue();
+		}
 
-        public void ReleaseAllMeshes()
-        {
-            freeMeshes.Clear();
-            foreach (var mesh in allMeshes)
-                freeMeshes.Enqueue(mesh);
-        }
-    }
+		public void ReleaseAllMeshes()
+		{
+			freeMeshes.Clear();
+			foreach (var mesh in allMeshes)
+				freeMeshes.Enqueue(mesh);
+		}
+	}
 
-    public class OutlineParameters
-    {
-        public readonly MeshPool MeshPool = new MeshPool();
+	public class OutlineParameters
+	{
+		public readonly MeshPool MeshPool = new MeshPool();
 
-        public Camera Camera;
-        public RenderTargetIdentifier Target;
-        public RenderTargetIdentifier DepthTarget;
-        public CommandBuffer Buffer;
-        public DilateQuality DilateQuality = DilateQuality.Base;
-        public int DilateIterrations = 2;
-        public int BlurIterrantions = 5;
-        
-        public long OutlineLayerMask = -1;
+		public Camera Camera;
+		public RenderTargetIdentifier Target;
+		public RenderTargetIdentifier DepthTarget;
+		public CommandBuffer Buffer;
+		public DilateQuality DilateQuality = DilateQuality.Base;
+		public int DilateIterrations = 2;
+		public int BlurIterrantions = 5;
 
-        public int TargetWidth;
-        public int TargetHeight;
+		public long OutlineLayerMask = -1;
 
-        public float BlurShift = 1.0f;
+		public int TargetWidth;
+		public int TargetHeight;
 
-        public float DilateShift = 1.0f;
+		public float BlurShift = 1.0f;
 
-        public bool UseHDR;
+		public float DilateShift = 1.0f;
 
-        public bool UseInfoBuffer = false;
+		public bool UseHDR;
 
-        public bool IsEditorCamera;
+		public bool UseInfoBuffer = false;
 
-        public float PrimaryBufferScale = 0.1f;
-        public float InfoBufferScale = 0.2f;
+		public bool IsEditorCamera;
 
-        public bool ScaleIndependent = true;
+		public float PrimaryBufferScale = 0.1f;
+		public float InfoBufferScale = 0.2f;
 
-        public StereoTargetEyeMask EyeMask;
+		public bool ScaleIndependent = true;
 
-        public int Antialiasing = 1;
+		public StereoTargetEyeMask EyeMask;
 
-        public BlurType BlurType = BlurType.Gaussian13x13;
+		public int Antialiasing = 1;
 
-        public LayerMask Mask = -1;
+		public BlurType BlurType = BlurType.Gaussian13x13;
 
-        public Mesh BlitMesh;
+		public LayerMask Mask = -1;
 
-        public List<Outlinable> OutlinablesToRender = new List<Outlinable>();
+		public Mesh BlitMesh;
 
-        private bool isInitialized = false;
+		public List<Outlinable> OutlinablesToRender = new List<Outlinable>();
 
-        public void CheckInitialization()
-        {
-            if (isInitialized)
-                return;
+		private bool isInitialized = false;
 
-            Buffer = new CommandBuffer();
+		public void CheckInitialization()
+		{
+			if (isInitialized)
+				return;
 
-            isInitialized = true;
-        }
-    }
+			Buffer = new CommandBuffer();
+
+			isInitialized = true;
+		}
+	}
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Fralle.PingTap
@@ -7,13 +5,13 @@ namespace Fralle.PingTap
 	public class HeadbobAdjuster : MonoBehaviour
 	{
 		[SerializeField] HeadbobConfiguration configuration;
-		Headbob headbob;
+		HeadbobMaster headbob;
 
 		void Start()
 		{
 			if (configuration)
 			{
-				headbob = GetComponentInParent<Headbob>();
+				headbob = GetComponentInParent<HeadbobMaster>();
 				headbob.overrideConfguration = configuration;
 			}
 

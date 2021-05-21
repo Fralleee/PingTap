@@ -48,18 +48,18 @@ namespace EPOOutline
 							{
 								menu.AddItem(new GUIContent("Add all"), false, () =>
 														{
-													(target as Outlinable).AddAllChildRenderersToRenderingList();
+															(target as Outlinable).AddAllChildRenderersToRenderingList();
 
-													EditorUtility.SetDirty(target);
-												});
+															EditorUtility.SetDirty(target);
+														});
 							}
 
 							menu.AddItem(new GUIContent("Empty"), false, () =>
 													{
-											(target as Outlinable).OutlineTargets.Add(new OutlineTarget());
+														(target as Outlinable).OutlineTargets.Add(new OutlineTarget());
 
-											EditorUtility.SetDirty(target);
-										});
+														EditorUtility.SetDirty(target);
+													});
 
 							foreach (var item in items)
 							{
@@ -95,15 +95,15 @@ namespace EPOOutline
 
 								GenericMenu.MenuFunction function = () =>
 														{
-													var index = targets.arraySize;
-													targets.InsertArrayElementAtIndex(index);
-													var arrayItem = targets.GetArrayElementAtIndex(index);
-													var renderer = arrayItem.FindPropertyRelative("Renderer");
-													arrayItem.FindPropertyRelative("CutoutThreshold").floatValue = 0.5f;
-													renderer.objectReferenceValue = item;
+															var index = targets.arraySize;
+															targets.InsertArrayElementAtIndex(index);
+															var arrayItem = targets.GetArrayElementAtIndex(index);
+															var renderer = arrayItem.FindPropertyRelative("Renderer");
+															arrayItem.FindPropertyRelative("CutoutThreshold").floatValue = 0.5f;
+															renderer.objectReferenceValue = item;
 
-													serializedObject.ApplyModifiedProperties();
-												};
+															serializedObject.ApplyModifiedProperties();
+														};
 
 								if (found)
 									function = null;

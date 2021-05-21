@@ -10,7 +10,8 @@ namespace Fralle.Gameplay
 
 		public static void AddListener<T>(Action<T> evt) where T : GameEvent
 		{
-			if (EventLookups.ContainsKey(evt)) return;
+			if (EventLookups.ContainsKey(evt))
+				return;
 
 			void NewAction(GameEvent e) => evt((T)e);
 			EventLookups[evt] = NewAction;
@@ -23,7 +24,8 @@ namespace Fralle.Gameplay
 
 		public static void RemoveListener<T>(Action<T> evt) where T : GameEvent
 		{
-			if (!EventLookups.TryGetValue(evt, out Action<GameEvent> action)) return;
+			if (!EventLookups.TryGetValue(evt, out Action<GameEvent> action))
+				return;
 			if (Events.TryGetValue(typeof(T), out Action<GameEvent> tempAction))
 			{
 				tempAction -= action;
