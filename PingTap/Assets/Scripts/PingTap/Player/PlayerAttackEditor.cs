@@ -9,7 +9,7 @@ namespace Fralle
 	{
 		public override void OnInspectorGUI()
 		{
-			var playerAttack = (PlayerAttack)target;
+			PlayerAttack playerAttack = (PlayerAttack)target;
 
 			if (GUILayout.Button("Equip Weapon"))
 				playerAttack.EquipFirstWeaponInList();

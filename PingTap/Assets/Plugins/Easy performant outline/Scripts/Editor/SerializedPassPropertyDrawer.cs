@@ -10,20 +10,20 @@ namespace EPOOutline
 	{
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
-			var drawingPosition = position;
+			Rect drawingPosition = position;
 			drawingPosition.height = EditorGUIUtility.singleLineHeight;
 
-			var shaderProperty = property.FindPropertyRelative("shader");
+			SerializedProperty shaderProperty = property.FindPropertyRelative("shader");
 
-			var currentShaderReference = shaderProperty.objectReferenceValue as Shader;
-			var prefix = "Hidden/EPO/Fill/";
-			var fillLabel = currentShaderReference == null ? "none" : currentShaderReference.name.Substring(prefix.Length);
+			Shader currentShaderReference = shaderProperty.objectReferenceValue as Shader;
+			string prefix = "Hidden/EPO/Fill/";
+			string fillLabel = currentShaderReference == null ? "none" : currentShaderReference.name.Substring(prefix.Length);
 			if (shaderProperty.hasMultipleDifferentValues)
 				fillLabel = "-";
 
 			if (EditorGUI.DropdownButton(position, new GUIContent("Fill type: " + fillLabel), FocusType.Passive))
 			{
-				var menu = new GenericMenu();
+				GenericMenu menu = new GenericMenu();
 
 				menu.AddItem(new GUIContent("none"), currentShaderReference == null && !shaderProperty.hasMultipleDifferentValues, () =>
 						{
@@ -31,10 +31,10 @@ namespace EPOOutline
 							shaderProperty.serializedObject.ApplyModifiedProperties();
 						});
 
-				var shaders = AssetDatabase.FindAssets("t:Shader");
-				foreach (var shader in shaders)
+				string[] shaders = AssetDatabase.FindAssets("t:Shader");
+				foreach (string shader in shaders)
 				{
-					var loadedShader = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(shader), typeof(Shader)) as Shader;
+					Shader loadedShader = AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(shader), typeof(Shader)) as Shader;
 					if (!loadedShader.name.StartsWith(prefix))
 						continue;
 
@@ -55,16 +55,16 @@ namespace EPOOutline
 			{
 				position.x += EditorGUIUtility.singleLineHeight;
 				position.width -= EditorGUIUtility.singleLineHeight;
-				var properties = new Dictionary<string, SerializedProperty>();
+				Dictionary<string, SerializedProperty> properties = new Dictionary<string, SerializedProperty>();
 
-				var serializedProperties = property.FindPropertyRelative("serializedProperties");
+				SerializedProperty serializedProperties = property.FindPropertyRelative("serializedProperties");
 
-				for (var index = 0; index < serializedProperties.arraySize; index++)
+				for (int index = 0; index < serializedProperties.arraySize; index++)
 				{
-					var subProperty = serializedProperties.GetArrayElementAtIndex(index);
+					SerializedProperty subProperty = serializedProperties.GetArrayElementAtIndex(index);
 
-					var propertyName = subProperty.FindPropertyRelative("PropertyName");
-					var propertyValue = subProperty.FindPropertyRelative("Property");
+					SerializedProperty propertyName = subProperty.FindPropertyRelative("PropertyName");
+					SerializedProperty propertyValue = subProperty.FindPropertyRelative("Property");
 
 					if (propertyName == null || propertyValue == null)
 						break;
@@ -72,10 +72,10 @@ namespace EPOOutline
 					properties.Add(propertyName.stringValue, propertyValue);
 				}
 
-				var fillParametersPosition = position;
-				for (var index = 0; index < ShaderUtil.GetPropertyCount(currentShaderReference); index++)
+				Rect fillParametersPosition = position;
+				for (int index = 0; index < ShaderUtil.GetPropertyCount(currentShaderReference); index++)
 				{
-					var propertyName = ShaderUtil.GetPropertyName(currentShaderReference, index);
+					string propertyName = ShaderUtil.GetPropertyName(currentShaderReference, index);
 					if (!propertyName.StartsWith("_Public"))
 						continue;
 
@@ -89,7 +89,7 @@ namespace EPOOutline
 						currentProperty.FindPropertyRelative("PropertyName").stringValue = propertyName;
 						currentProperty = currentProperty.FindPropertyRelative("Property");
 
-						var tempMaterial = new Material(currentShaderReference);
+						Material tempMaterial = new Material(currentShaderReference);
 
 						switch (ShaderUtil.GetPropertyType(currentShaderReference, index))
 						{
@@ -118,23 +118,23 @@ namespace EPOOutline
 					if (currentProperty == null)
 						continue;
 
-					var content = new GUIContent(ShaderUtil.GetPropertyDescription(currentShaderReference, index));
+					GUIContent content = new GUIContent(ShaderUtil.GetPropertyDescription(currentShaderReference, index));
 
 					switch (ShaderUtil.GetPropertyType(currentShaderReference, index))
 					{
 						case ShaderUtil.ShaderPropertyType.Color:
-							var colorProperty = currentProperty.FindPropertyRelative("ColorValue");
+							SerializedProperty colorProperty = currentProperty.FindPropertyRelative("ColorValue");
 							colorProperty.colorValue = EditorGUI.ColorField(fillParametersPosition, content, colorProperty.colorValue, true, true, true);
 							break;
 						case ShaderUtil.ShaderPropertyType.Vector:
-							var vectorProperty = currentProperty.FindPropertyRelative("VectorValue");
+							SerializedProperty vectorProperty = currentProperty.FindPropertyRelative("VectorValue");
 							vectorProperty.vector4Value = EditorGUI.Vector4Field(fillParametersPosition, content, vectorProperty.vector4Value);
 							break;
 						case ShaderUtil.ShaderPropertyType.Float:
 							EditorGUI.PropertyField(fillParametersPosition, currentProperty.FindPropertyRelative("FloatValue"), content);
 							break;
 						case ShaderUtil.ShaderPropertyType.Range:
-							var floatProperty = currentProperty.FindPropertyRelative("FloatValue");
+							SerializedProperty floatProperty = currentProperty.FindPropertyRelative("FloatValue");
 							floatProperty.floatValue = EditorGUI.Slider(fillParametersPosition, content, floatProperty.floatValue,
 									ShaderUtil.GetRangeLimits(currentShaderReference, index, 1),
 									ShaderUtil.GetRangeLimits(currentShaderReference, index, 2));
@@ -154,15 +154,15 @@ namespace EPOOutline
 			if (property.FindPropertyRelative("shader").hasMultipleDifferentValues)
 				return EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 
-			var shaderProperty = property.FindPropertyRelative("shader");
-			var currentShaderReference = shaderProperty.objectReferenceValue as Shader;
+			SerializedProperty shaderProperty = property.FindPropertyRelative("shader");
+			Shader currentShaderReference = shaderProperty.objectReferenceValue as Shader;
 
-			var additionalCount = 0;
+			int additionalCount = 0;
 			if (currentShaderReference != null)
 			{
-				for (var index = 0; index < ShaderUtil.GetPropertyCount(currentShaderReference); index++)
+				for (int index = 0; index < ShaderUtil.GetPropertyCount(currentShaderReference); index++)
 				{
-					var propertyName = ShaderUtil.GetPropertyName(currentShaderReference, index);
+					string propertyName = ShaderUtil.GetPropertyName(currentShaderReference, index);
 					if (!propertyName.StartsWith("_Public"))
 						continue;
 

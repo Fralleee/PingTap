@@ -11,11 +11,11 @@ namespace Fralle.Gameplay
 
 		void Awake()
 		{
-			var menu = SceneManager.GetSceneByName(MenuScene);
+			Scene menu = SceneManager.GetSceneByName(MenuScene);
 			if (!menu.isLoaded)
 				SceneManager.LoadScene(MenuScene, LoadSceneMode.Additive);
 
-			var master = SceneManager.GetSceneByName(MasterScene);
+			Scene master = SceneManager.GetSceneByName(MasterScene);
 			if (!master.isLoaded)
 				SceneManager.LoadScene(MasterScene, LoadSceneMode.Additive);
 		}

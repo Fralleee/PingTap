@@ -10,14 +10,14 @@ namespace EPOOutline
 		{
 			filteredOutlinables.Clear();
 
-			var mask = parameters.Mask.value & parameters.Camera.cullingMask;
+			int mask = parameters.Mask.value & parameters.Camera.cullingMask;
 
-			foreach (var outlinable in parameters.OutlinablesToRender)
+			foreach (Outlinable outlinable in parameters.OutlinablesToRender)
 			{
 				if ((parameters.OutlineLayerMask & (1L << outlinable.OutlineLayer)) == 0)
 					continue;
 
-				var go = outlinable.gameObject;
+				UnityEngine.GameObject go = outlinable.gameObject;
 
 				if (!go.activeInHierarchy)
 					continue;
@@ -26,7 +26,7 @@ namespace EPOOutline
 					continue;
 
 #if UNITY_EDITOR
-				var stage = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
+				UnityEditor.Experimental.SceneManagement.PrefabStage stage = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
 
 				if (stage != null && !stage.IsPartOfPrefabContents(outlinable.gameObject))
 					continue;

@@ -9,13 +9,13 @@ namespace EPOOutline
 	{
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
-			var labelPosition = position;
+			Rect labelPosition = position;
 			labelPosition.height = EditorGUIUtility.singleLineHeight;
 
-			var enabledProperty = property.FindPropertyRelative("enabled");
+			SerializedProperty enabledProperty = property.FindPropertyRelative("enabled");
 			enabledProperty.boolValue = EditorGUI.ToggleLeft(labelPosition, label, enabledProperty.boolValue);
 
-			var drawingPosition = position;
+			Rect drawingPosition = position;
 			drawingPosition.width -= EditorGUIUtility.singleLineHeight * 1.5f;
 			drawingPosition.x += EditorGUIUtility.singleLineHeight;
 			drawingPosition.height = EditorGUIUtility.singleLineHeight;
@@ -26,14 +26,14 @@ namespace EPOOutline
 
 			NewLine(ref drawingPosition);
 
-			var colorPosition = drawingPosition;
+			Rect colorPosition = drawingPosition;
 			colorPosition.width = 46;
 
-			var colorProperty = property.FindPropertyRelative("color");
+			SerializedProperty colorProperty = property.FindPropertyRelative("color");
 			colorProperty.colorValue = EditorGUI.ColorField(colorPosition, GUIContent.none, colorProperty.colorValue, true, true, true);
 
 			float width = 45;
-			var shiftPropertiesPositions = drawingPosition;
+			Rect shiftPropertiesPositions = drawingPosition;
 			shiftPropertiesPositions.x += colorPosition.width + EditorGUIUtility.standardVerticalSpacing;
 			shiftPropertiesPositions.width -= colorPosition.width + EditorGUIUtility.standardVerticalSpacing;
 			shiftPropertiesPositions.width /= 2;
@@ -41,7 +41,7 @@ namespace EPOOutline
 
 			shiftPropertiesPositions.x += width;
 
-			var labelRect = shiftPropertiesPositions;
+			Rect labelRect = shiftPropertiesPositions;
 			labelRect.x -= width - EditorGUIUtility.singleLineHeight * 0.25f;
 			labelRect.width = width - EditorGUIUtility.singleLineHeight * 0.5f;
 

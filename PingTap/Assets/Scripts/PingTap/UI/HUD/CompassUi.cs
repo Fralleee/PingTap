@@ -27,7 +27,7 @@ namespace Fralle.UI.HUD
 
 		void Start()
 		{
-			var playerMain = GetComponentInParent<Player>();
+			Player playerMain = GetComponentInParent<Player>();
 			playerOrientation = playerMain.transform.FindRecursively("Orientation");
 		}
 
@@ -35,7 +35,7 @@ namespace Fralle.UI.HUD
 		{
 			compassImage.uvRect = new Rect(playerOrientation.localEulerAngles.y / 360, 0, 1, 1);
 
-			var forward = playerOrientation.forward.With(y: 0);
+			Vector3 forward = playerOrientation.forward.With(y: 0);
 			float headingAngle = Quaternion.LookRotation(forward).eulerAngles.y;
 			int displayAngle = 5 * (Mathf.RoundToInt(headingAngle / 5f));
 

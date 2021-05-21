@@ -13,7 +13,7 @@ namespace Fralle.Targeting
 			int hits = Physics.RaycastNonAlloc(transform.position, transform.forward, results, 100f, layerMask);
 			for (int i = 0; i < hits; i++)
 			{
-				var targetController = results[i].transform.gameObject.GetComponent<TargetController>();
+				TargetController targetController = results[i].transform.gameObject.GetComponent<TargetController>();
 				if (targetController)
 				{
 					targetController.RaycastHit();

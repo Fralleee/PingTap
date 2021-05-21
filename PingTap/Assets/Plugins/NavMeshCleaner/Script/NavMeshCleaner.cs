@@ -26,7 +26,7 @@ public class NavMeshCleaner : MonoBehaviour
 	{
 		Undo.RecordObject(this, "Reset");
 
-		foreach (var t in child)
+		foreach (GameObject t in child)
 		{
 			Undo.DestroyObjectImmediate(t);
 		}
@@ -35,7 +35,7 @@ public class NavMeshCleaner : MonoBehaviour
 
 	void SetMeshVisible(bool visible)
 	{
-		foreach (var t in child)
+		foreach (GameObject t in child)
 			t.SetActive(visible);
 	}
 
@@ -315,7 +315,7 @@ public class NavMeshCleaner : MonoBehaviour
 			Vector3 h = transform.InverseTransformVector(Vector3.up * Height);
 			int vtxoffset = vtx.Count;
 			int layer = 2 + MidLayerCount;
-			foreach (var t in isolatevtx)
+			foreach (Vector3 t in isolatevtx)
 			{
 				for (int j = 0; j < layer; j++)
 					vtx.Add(t + h * ((float)j / (layer - 1)));
@@ -392,7 +392,7 @@ public class NavMeshCleaner : MonoBehaviour
 
 	static bool Contains(Vector3[] vtx, int[] indices, Vector3[] points)
 	{
-		foreach (var p in points)
+		foreach (Vector3 p in points)
 		{
 			for (int i = 0; i < indices.Length; i += 3)
 			{
@@ -452,7 +452,7 @@ public class NavMeshCleaner : MonoBehaviour
 				bool hideInHierarchy = EditorGUILayout.Toggle("Hide Temp Mesh Object In Hierarchy", (t.child[0].gameObject.hideFlags & HideFlags.HideInHierarchy) != 0 ? true : false);
 				if (EditorGUI.EndChangeCheck())
 				{
-					foreach (var t1 in t.child)
+					foreach (GameObject t1 in t.child)
 						t1.gameObject.hideFlags = hideInHierarchy ? (t1.gameObject.hideFlags | HideFlags.HideInHierarchy) : (t1.gameObject.hideFlags & (~HideFlags.HideInHierarchy));
 
 					try
@@ -499,7 +499,7 @@ public class NavMeshCleaner : MonoBehaviour
 		{
 			public static GUIStyle Get(string id)
 			{
-				if (texture.TryGetValue(id, out var style))
+				if (texture.TryGetValue(id, out GUIStyle style))
 					return style;
 				style = new GUIStyle(id);
 				texture.Add(id, style);
@@ -603,7 +603,7 @@ public class NavMeshCleaner : MonoBehaviour
 				{
 					float mint = 1000.0f;
 
-					if (Physics.Raycast(mouseRay, out var hit, mint))
+					if (Physics.Raycast(mouseRay, out RaycastHit hit, mint))
 					{
 						Undo.RecordObject(mTarget, "Add Point");
 						mTarget.MWalkablePoint.Add(mTarget.transform.InverseTransformPoint(hit.point));

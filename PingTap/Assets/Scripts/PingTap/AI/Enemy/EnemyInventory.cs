@@ -27,7 +27,7 @@ namespace Fralle.AI
 			if (!enemyP.KilledByCombatant)
 				return;
 
-			var inventoryController = enemyP.KilledByCombatant.GetComponentInParent<InventoryController>();
+			InventoryController inventoryController = enemyP.KilledByCombatant.GetComponentInParent<InventoryController>();
 			if (inventoryController != null)
 				inventoryController.Receive(Random.Range(minCredits, maxCredits));
 		}

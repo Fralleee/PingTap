@@ -56,18 +56,18 @@ namespace EPOOutline.Demo
 		{
 			AudioSource.PlayClipAtPoint(eatSound, transform.position, 10);
 
-			var duration = 0.2f;
-			var collectionRadius = 1.5f;
-			var collectionAngle = Random.Range(0.0f, 360.0f);
-			var timeLeft = duration;
+			float duration = 0.2f;
+			float collectionRadius = 1.5f;
+			float collectionAngle = Random.Range(0.0f, 360.0f);
+			float timeLeft = duration;
 
 			while (collector != null && timeLeft > 0.0f)
 			{
 				timeLeft -= Time.smoothDeltaTime;
 
-				var collectionShift = Quaternion.Euler(0, collectionAngle, 0) * Vector3.right;
+				Vector3 collectionShift = Quaternion.Euler(0, collectionAngle, 0) * Vector3.right;
 
-				var targetPosition = collector.transform.position + collectionShift + Vector3.up * 4.5f;
+				Vector3 targetPosition = collector.transform.position + collectionShift + Vector3.up * 4.5f;
 
 				transform.position = Vector3.Lerp(transform.position, targetPosition, Time.smoothDeltaTime * 5.0f);
 
@@ -79,7 +79,7 @@ namespace EPOOutline.Demo
 
 			timeLeft = duration;
 
-			var initialScale = transform.localScale;
+			Vector3 initialScale = transform.localScale;
 			while (timeLeft >= 0.0f)
 			{
 				timeLeft -= Time.smoothDeltaTime;

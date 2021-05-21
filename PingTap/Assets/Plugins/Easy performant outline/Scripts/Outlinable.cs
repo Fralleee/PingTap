@@ -206,8 +206,8 @@ namespace EPOOutline
 
 		private bool IsVisible(Plane[] planes)
 		{
-			var visibleCount = 0;
-			foreach (var target in outlineTargets)
+			int visibleCount = 0;
+			foreach (OutlineTarget target in outlineTargets)
 			{
 				if (target.Renderer != null && GeometryUtility.TestPlanesAABB(planes, target.Renderer.bounds))
 					visibleCount++;
@@ -240,7 +240,7 @@ namespace EPOOutline
 		{
 			outlinablesList.Clear();
 			GeometryUtility.CalculateFrustumPlanes(camera, frustrumPlanes);
-			foreach (var outlinable in outlinables)
+			foreach (Outlinable outlinable in outlinables)
 				if (outlinable.IsVisible(frustrumPlanes))
 					outlinablesList.Add(outlinable);
 		}
@@ -258,11 +258,11 @@ namespace EPOOutline
 		public void AddAllChildRenderersToRenderingList()
 		{
 			outlineTargets.Clear();
-			var renderers = GetComponentsInChildren<Renderer>(true);
-			foreach (var renderer in renderers)
+			Renderer[] renderers = GetComponentsInChildren<Renderer>(true);
+			foreach (Renderer renderer in renderers)
 			{
-				var submeshesCount = GetSubmeshCount(renderer);
-				for (var index = 0; index < submeshesCount; index++)
+				int submeshesCount = GetSubmeshCount(renderer);
+				for (int index = 0; index < submeshesCount; index++)
 					outlineTargets.Add(new OutlineTarget(renderer, index));
 			}
 		}

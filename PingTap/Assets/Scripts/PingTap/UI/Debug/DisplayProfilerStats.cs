@@ -29,7 +29,7 @@ namespace Fralle.UI
 			if (!debugStats)
 				return;
 
-			var sb = new StringBuilder(500);
+			StringBuilder sb = new StringBuilder(500);
 
 			if (frameTime)
 				sb.AppendLine($"Frame Time: {profilerController.FrameTime:F1} ms");

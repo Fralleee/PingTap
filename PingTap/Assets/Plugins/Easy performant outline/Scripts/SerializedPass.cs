@@ -83,7 +83,7 @@ namespace EPOOutline
 					material = new Material(shader);
 				}
 
-				foreach (var property in propertiesById)
+				foreach (KeyValuePair<int, SerializedPassProperty> property in propertiesById)
 				{
 					switch (property.Value.PropertyType)
 					{
@@ -341,9 +341,9 @@ namespace EPOOutline
 		{
 			serializedProperties.Clear();
 
-			foreach (var property in propertiesByName)
+			foreach (KeyValuePair<string, SerializedPassProperty> property in propertiesByName)
 			{
-				var pair = new SerializedPropertyKeyValuePair();
+				SerializedPropertyKeyValuePair pair = new SerializedPropertyKeyValuePair();
 				pair.Property = property.Value;
 				pair.PropertyName = property.Key;
 
@@ -355,7 +355,7 @@ namespace EPOOutline
 		{
 			propertiesById.Clear();
 			propertiesByName.Clear();
-			foreach (var serialized in serializedProperties)
+			foreach (SerializedPropertyKeyValuePair serialized in serializedProperties)
 			{
 				if (propertiesByName.ContainsKey(serialized.PropertyName))
 					continue;

@@ -43,22 +43,22 @@ namespace EPOOutline
 				return;
 
 			EditorPrefs.SetString("Models checked", "true");
-			var models = AssetDatabase.FindAssets("t:Model");
+			string[] models = AssetDatabase.FindAssets("t:Model");
 
 			try
 			{
-				var index = 0;
-				foreach (var modelGUID in models)
+				int index = 0;
+				foreach (string modelGUID in models)
 				{
-					var model = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(modelGUID));
+					GameObject model = AssetDatabase.LoadAssetAtPath<GameObject>(AssetDatabase.GUIDToAssetPath(modelGUID));
 
-					var title = "Checking models for easy performant outlines";
-					var info = "Some model postprocessing will be applied. Checked {0}/{1}";
+					string title = "Checking models for easy performant outlines";
+					string info = "Some model postprocessing will be applied. Checked {0}/{1}";
 
-					EditorUtility.DisplayProgressBar(title, string.Format(info, index, models.Length), (float)index / (float)models.Length);
+					EditorUtility.DisplayProgressBar(title, string.Format(info, index, models.Length), index / (float)models.Length);
 					index++;
 
-					var mesh = GetMesh(model);
+					Mesh mesh = GetMesh(model);
 					if (mesh == null)
 						continue;
 
@@ -76,7 +76,7 @@ namespace EPOOutline
 		private static Mesh GetMesh(GameObject model)
 		{
 			Mesh mesh = null;
-			var renderer = model.GetComponent<Renderer>();
+			Renderer renderer = model.GetComponent<Renderer>();
 			if (renderer is MeshRenderer)
 				mesh = renderer.GetComponent<MeshFilter>().sharedMesh;
 			else if (renderer is SkinnedMeshRenderer)
@@ -87,7 +87,7 @@ namespace EPOOutline
 
 		public void OnPostprocessModel(GameObject model)
 		{
-			var mesh = GetMesh(model);
+			Mesh mesh = GetMesh(model);
 			if (mesh == null)
 				return;
 
@@ -103,30 +103,30 @@ namespace EPOOutline
 
 		private static void PostprocessModel(GameObject model, Mesh mesh)
 		{
-			var meshCopy = new Mesh();
+			Mesh meshCopy = new Mesh();
 			meshCopy.vertices = mesh.vertices;
 			meshCopy.triangles = mesh.triangles;
 
 			meshCopy.RecalculateNormals();
 
-			var vertices = meshCopy.vertices;
-			var normals = meshCopy.normals;
+			Vector3[] vertices = meshCopy.vertices;
+			Vector3[] normals = meshCopy.normals;
 
-			var uvs = new List<Vector3>(new Vector3[vertices.Length]);
+			List<Vector3> uvs = new List<Vector3>(new Vector3[vertices.Length]);
 
-			for (var submesh = 0; submesh < mesh.subMeshCount; submesh++)
+			for (int submesh = 0; submesh < mesh.subMeshCount; submesh++)
 			{
-				var verticesOfTheSubmesh = new HashSet<int>();
-				var triangles = mesh.GetTriangles(submesh);
+				HashSet<int> verticesOfTheSubmesh = new HashSet<int>();
+				int[] triangles = mesh.GetTriangles(submesh);
 
-				foreach (var index in triangles)
+				foreach (int index in triangles)
 					verticesOfTheSubmesh.Add(index);
 
-				var similarVertices = new List<VertexGroup>();
-				foreach (var vertex in verticesOfTheSubmesh)
+				List<VertexGroup> similarVertices = new List<VertexGroup>();
+				foreach (int vertex in verticesOfTheSubmesh)
 				{
-					var vertexPosition = vertices[vertex];
-					var similar = similarVertices.Find(x => Vector3.Distance(x.Position, vertexPosition) < MinVertexDistance);
+					Vector3 vertexPosition = vertices[vertex];
+					VertexGroup similar = similarVertices.Find(x => Vector3.Distance(x.Position, vertexPosition) < MinVertexDistance);
 					if (similar == null)
 					{
 						similar = new VertexGroup() { Position = vertexPosition };
@@ -137,10 +137,10 @@ namespace EPOOutline
 					similar.Others.Add(vertex);
 				}
 
-				foreach (var group in similarVertices)
+				foreach (VertexGroup group in similarVertices)
 				{
-					var normal = (group.Normal / group.Others.Count).normalized;
-					foreach (var other in group.Others)
+					Vector3 normal = (group.Normal / group.Others.Count).normalized;
+					foreach (int other in group.Others)
 						uvs[other] = normal;
 				}
 			}

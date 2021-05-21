@@ -19,7 +19,7 @@ namespace Fralle.Gameplay
 
 		public void PrepareSpawner()
 		{
-			var wave = Waves.PopAt(0);
+			SpawnWave wave = Waves.PopAt(0);
 			Managers.Instance.Spawner.SetSpawnDefinition(wave);
 		}
 

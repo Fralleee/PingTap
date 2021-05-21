@@ -23,7 +23,7 @@ namespace EPOOutline
 			get
 			{
 #if UNITY_2019_3_OR_NEWER
-				var pipeline = QualitySettings.renderPipeline;
+				RenderPipelineAsset pipeline = QualitySettings.renderPipeline;
 				if (pipeline == null)
 					pipeline = GraphicsSettings.renderPipelineAsset;
 #else

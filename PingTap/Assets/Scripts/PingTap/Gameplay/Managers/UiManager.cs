@@ -57,7 +57,7 @@ namespace Fralle.Gameplay
 			}
 
 
-			var instance = Instantiate(prefab, transform);
+			GameObject instance = Instantiate(prefab, transform);
 			instance.SetActive(false);
 			return instance;
 		}

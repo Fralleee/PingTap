@@ -105,15 +105,15 @@ namespace EPOOutline
 			if (iterrations <= 0)
 				return;
 
-			var scalingFactor = scaleIndependent ? bufferScale : 1.0f;
+			float scalingFactor = scaleIndependent ? bufferScale : 1.0f;
 
 			parameters.Buffer.SetGlobalInt(ComparisonHash, (int)CompareFunction.Always); // TODO: make proper
 
-			for (var index = 1; index <= iterrations; index++)
+			for (int index = 1; index <= iterrations; index++)
 			{
 				parameters.Buffer.SetGlobalInt(RefHash, stencil);
 
-				var shift = (additionalShift ? (float)index : 1.0f) * scalingFactor;
+				float shift = (additionalShift ? index : 1.0f) * scalingFactor;
 
 				parameters.Buffer.SetGlobalVector(ShiftHash, new Vector4(shift * shiftScale, 0));
 				Blit(parameters, RenderTargetUtility.ComposeTarget(parameters, first), RenderTargetUtility.ComposeTarget(parameters, second), RenderTargetUtility.ComposeTarget(parameters, second), material, shiftValue, null);
@@ -151,7 +151,7 @@ namespace EPOOutline
 
 		private static float ComputeEffectShift(OutlineParameters parameters)
 		{
-			var effectShift = GetBlurShift(parameters.BlurType, parameters.BlurIterrantions) * parameters.BlurShift + parameters.DilateIterrations * 4.0f * parameters.DilateShift;
+			float effectShift = GetBlurShift(parameters.BlurType, parameters.BlurIterrantions) * parameters.BlurShift + parameters.DilateIterrations * 4.0f * parameters.DilateShift;
 			if (!parameters.ScaleIndependent)
 				effectShift /= parameters.PrimaryBufferScale;
 
@@ -166,26 +166,26 @@ namespace EPOOutline
 			InitMaterials();
 			Profiler.EndSample();
 
-			var effectShift = ComputeEffectShift(parameters);
-			var targetWidth = parameters.TargetWidth;
-			var targetHeight = parameters.TargetHeight;
+			float effectShift = ComputeEffectShift(parameters);
+			int targetWidth = parameters.TargetWidth;
+			int targetHeight = parameters.TargetHeight;
 
 			parameters.Camera.forceIntoRenderTexture = parameters.EyeMask == StereoTargetEyeMask.None || !UnityEngine.XR.XRSettings.enabled || parameters.IsEditorCamera;
 
 			parameters.Buffer.SetGlobalInt(SrcBlendHash, (int)BlendMode.One);
 			parameters.Buffer.SetGlobalInt(DstBlendHash, (int)BlendMode.Zero);
 
-			var outlineRef = 1;
+			int outlineRef = 1;
 			parameters.Buffer.SetGlobalInt(OutlineRefHash, outlineRef);
 
 			SetupDilateKeyword(parameters);
 
 			RenderTargetUtility.GetTemporaryRT(parameters, TargetHash, targetWidth, targetHeight, 24, true, false, false);
-			var scaledWidth = (int)(targetWidth * parameters.PrimaryBufferScale);
+			int scaledWidth = (int)(targetWidth * parameters.PrimaryBufferScale);
 			if (scaledWidth % 2 != 0)
 				scaledWidth++;
 
-			var scaledHeight = (int)(targetHeight * parameters.PrimaryBufferScale);
+			int scaledHeight = (int)(targetHeight * parameters.PrimaryBufferScale);
 			if (scaledHeight % 2 != 0)
 				scaledHeight++;
 
@@ -194,11 +194,11 @@ namespace EPOOutline
 
 			if (parameters.UseInfoBuffer)
 			{
-				var scaledInfoWidth = (int)(targetWidth * Mathf.Min(parameters.PrimaryBufferScale, parameters.InfoBufferScale));
+				int scaledInfoWidth = (int)(targetWidth * Mathf.Min(parameters.PrimaryBufferScale, parameters.InfoBufferScale));
 				if (scaledInfoWidth % 2 != 0)
 					scaledInfoWidth++;
 
-				var scaledInfoHeight = (int)(targetHeight * Mathf.Min(parameters.PrimaryBufferScale, parameters.InfoBufferScale));
+				int scaledInfoHeight = (int)(targetHeight * Mathf.Min(parameters.PrimaryBufferScale, parameters.InfoBufferScale));
 				if (scaledInfoHeight % 2 != 0)
 					scaledInfoHeight++;
 
@@ -217,7 +217,7 @@ namespace EPOOutline
 
 			parameters.Buffer.ClearRenderTarget(false, true, Color.clear);
 
-			var drawnOutlinablesCount = 0;
+			int drawnOutlinablesCount = 0;
 			drawnOutlinablesCount += DrawOutlineables(parameters, CompareFunction.Always, false, 0.0f, x => x.OutlineParameters.Enabled, x => x.OutlineParameters.Color, OutlineMaterial, RenderStyle.Single, OutlinableDrawingMode.Normal);
 			drawnOutlinablesCount += DrawOutlineables(parameters, CompareFunction.NotEqual, false, 0.0f, x => x.BackParameters.Enabled, x => x.BackParameters.Color, OutlineMaterial, RenderStyle.FrontBack, OutlinableDrawingMode.Normal);
 			drawnOutlinablesCount += DrawOutlineables(parameters, CompareFunction.LessEqual, false, 0.0f, x => x.FrontParameters.Enabled, x => x.FrontParameters.Color, OutlineMaterial, RenderStyle.FrontBack, OutlinableDrawingMode.Normal);
@@ -238,9 +238,9 @@ namespace EPOOutline
 				parameters.Buffer.SetGlobalInt(RefHash, 0);
 				Blit(parameters, RenderTargetUtility.ComposeTarget(parameters, InfoTargetHash), RenderTargetUtility.ComposeTarget(parameters, PrimaryInfoBufferHash), RenderTargetUtility.ComposeTarget(parameters, PrimaryInfoBufferHash), BasicBlitMaterial, effectShift, null);
 
-				var infoRef = 0;
-				var bufferScale = parameters.PrimaryBufferScale * parameters.InfoBufferScale;
-				var scaleRatio = bufferScale / parameters.PrimaryBufferScale;
+				int infoRef = 0;
+				float bufferScale = parameters.PrimaryBufferScale * parameters.InfoBufferScale;
+				float scaleRatio = bufferScale / parameters.PrimaryBufferScale;
 				Postprocess(parameters, bufferScale, false, bufferScale, PrimaryInfoBufferHash, HelperInfoBufferHash, DilateMaterial,
 						parameters.DilateIterrations + parameters.BlurIterrantions, false,
 						effectShift, ref infoRef);
@@ -260,7 +260,7 @@ namespace EPOOutline
 
 			parameters.Buffer.SetGlobalInt(ComparisonHash, (int)CompareFunction.Always);
 
-			var postProcessingRef = 0;
+			int postProcessingRef = 0;
 			if (drawnOutlinablesCount > 0)
 			{
 				Blit(parameters, RenderTargetUtility.ComposeTarget(parameters, TargetHash),
@@ -276,7 +276,7 @@ namespace EPOOutline
 			if (drawnOutlinablesCount > 0)
 				parameters.Buffer.ClearRenderTarget(false, true, Color.clear);
 
-			var drawnSimpleEdgeDilateOutlinesCount = DrawOutlineables(parameters, CompareFunction.Always, true, -1, x => x.OutlineParameters.Enabled, x => x.OutlineParameters.Color, EdgeDilateMaterial, RenderStyle.Single);
+			int drawnSimpleEdgeDilateOutlinesCount = DrawOutlineables(parameters, CompareFunction.Always, true, -1, x => x.OutlineParameters.Enabled, x => x.OutlineParameters.Color, EdgeDilateMaterial, RenderStyle.Single);
 			drawnSimpleEdgeDilateOutlinesCount += DrawOutlineables(parameters, CompareFunction.NotEqual, true, -1, x => x.BackParameters.Enabled, x => x.BackParameters.Color, EdgeDilateMaterial, RenderStyle.FrontBack);
 			drawnSimpleEdgeDilateOutlinesCount += DrawOutlineables(parameters, CompareFunction.LessEqual, true, -1, x => x.FrontParameters.Enabled, x => x.FrontParameters.Color, EdgeDilateMaterial, RenderStyle.FrontBack);
 
@@ -317,7 +317,7 @@ namespace EPOOutline
 		private static void SetupDilateKeyword(OutlineParameters parameters)
 		{
 			KeywordsUtility.GetAllDilateKeywords(keywords);
-			foreach (var keyword in keywords)
+			foreach (string keyword in keywords)
 				parameters.Buffer.DisableShaderKeyword(keyword);
 
 			parameters.Buffer.EnableShaderKeyword(KeywordsUtility.GetDilateQualityKeyword(parameters.DilateQuality));
@@ -326,7 +326,7 @@ namespace EPOOutline
 		private static void SetupBlurKeyword(OutlineParameters parameters)
 		{
 			KeywordsUtility.GetAllBlurKeywords(keywords);
-			foreach (var keyword in keywords)
+			foreach (string keyword in keywords)
 				parameters.Buffer.DisableShaderKeyword(keyword);
 
 			parameters.Buffer.EnableShaderKeyword(KeywordsUtility.GetBlurKeyword(parameters.BlurType));
@@ -334,34 +334,34 @@ namespace EPOOutline
 
 		private static int DrawOutlineables(OutlineParameters parameters, CompareFunction function, bool edgeShiftOnly, float shift, Func<Outlinable, bool> shouldRender, Func<Outlinable, Color> colorProvider, Material material, RenderStyle styleMask, OutlinableDrawingMode modeMask = OutlinableDrawingMode.Normal)
 		{
-			var drawnCount = 0;
+			int drawnCount = 0;
 			parameters.Buffer.SetGlobalInt(ZTestHash, (int)function);
 
-			foreach (var outlinable in parameters.OutlinablesToRender)
+			foreach (Outlinable outlinable in parameters.OutlinablesToRender)
 			{
-				if ((int)(outlinable.RenderStyle & styleMask) == 0)
+				if ((outlinable.RenderStyle & styleMask) == 0)
 					continue;
 
-				if ((int)(outlinable.DrawingMode & modeMask) == 0)
+				if ((outlinable.DrawingMode & modeMask) == 0)
 					continue;
 
-				var color = shouldRender(outlinable) ? colorProvider(outlinable) : Color.clear;
+				Color color = shouldRender(outlinable) ? colorProvider(outlinable) : Color.clear;
 
 				parameters.Buffer.SetGlobalColor(ColorHash, color);
-				foreach (var target in outlinable.OutlineTargets)
+				foreach (OutlineTarget target in outlinable.OutlineTargets)
 				{
-					var postProcessing = !target.CanUseEdgeDilateShift || target.DilateRenderingMode == DilateRenderMode.PostProcessing;
+					bool postProcessing = !target.CanUseEdgeDilateShift || target.DilateRenderingMode == DilateRenderMode.PostProcessing;
 					if (edgeShiftOnly && postProcessing)
 						continue;
 
-					var renderer = target.Renderer;
+					Renderer renderer = target.Renderer;
 
 					if (renderer == null || !renderer.gameObject.activeInHierarchy || !renderer.enabled)
 						continue;
 
 					if (!postProcessing)
 					{
-						var dilateShift = 0.0f;
+						float dilateShift = 0.0f;
 						switch (function)
 						{
 							case CompareFunction.Always:
@@ -397,11 +397,11 @@ namespace EPOOutline
 		{
 			parameters.Buffer.SetRenderTarget(targetSurfance, parameters.DepthTarget);
 
-			var singleMask = 1;
-			var frontMask = 2;
-			var backMask = 3;
+			int singleMask = 1;
+			int frontMask = 2;
+			int backMask = 3;
 
-			foreach (var outlinable in parameters.OutlinablesToRender)
+			foreach (Outlinable outlinable in parameters.OutlinablesToRender)
 			{
 				if (outlinable.RenderStyle == RenderStyle.FrontBack)
 				{
@@ -410,12 +410,12 @@ namespace EPOOutline
 						continue;
 
 					parameters.Buffer.SetGlobalInt(ZTestHash, (int)CompareFunction.Greater);
-					foreach (var target in outlinable.OutlineTargets)
+					foreach (OutlineTarget target in outlinable.OutlineTargets)
 					{
 						if (target.Renderer == null)
 							continue;
 
-						var renderer = target.Renderer;
+						Renderer renderer = target.Renderer;
 						if (!renderer.gameObject.activeInHierarchy || !renderer.enabled)
 							continue;
 
@@ -427,12 +427,12 @@ namespace EPOOutline
 					}
 
 					parameters.Buffer.SetGlobalInt(ZTestHash, (int)CompareFunction.LessEqual);
-					foreach (var target in outlinable.OutlineTargets)
+					foreach (OutlineTarget target in outlinable.OutlineTargets)
 					{
 						if (target.Renderer == null)
 							continue;
 
-						var renderer = target.Renderer;
+						Renderer renderer = target.Renderer;
 						if (!renderer.gameObject.activeInHierarchy || !renderer.enabled)
 							continue;
 
@@ -443,16 +443,16 @@ namespace EPOOutline
 						parameters.Buffer.DrawRenderer(renderer, FillMaskMaterial, target.ShiftedSubmeshIndex);
 					}
 
-					var frontMaterial = outlinable.FrontParameters.FillPass.Material;
+					Material frontMaterial = outlinable.FrontParameters.FillPass.Material;
 					parameters.Buffer.SetGlobalInt(FillRefHash, frontMask);
 					if (frontMaterial != null && outlinable.FrontParameters.Enabled)
 					{
-						foreach (var target in outlinable.OutlineTargets)
+						foreach (OutlineTarget target in outlinable.OutlineTargets)
 						{
 							if (target.Renderer == null)
 								continue;
 
-							var renderer = target.Renderer;
+							Renderer renderer = target.Renderer;
 							if (!renderer.gameObject.activeInHierarchy || !renderer.enabled)
 								continue;
 
@@ -463,16 +463,16 @@ namespace EPOOutline
 						}
 					}
 
-					var backMaterial = outlinable.BackParameters.FillPass.Material;
+					Material backMaterial = outlinable.BackParameters.FillPass.Material;
 					parameters.Buffer.SetGlobalInt(FillRefHash, backMask);
 					if (backMaterial != null && outlinable.BackParameters.Enabled)
 					{
-						foreach (var target in outlinable.OutlineTargets)
+						foreach (OutlineTarget target in outlinable.OutlineTargets)
 						{
 							if (target.Renderer == null)
 								continue;
 
-							var renderer = target.Renderer;
+							Renderer renderer = target.Renderer;
 							if (!renderer.gameObject.activeInHierarchy || !renderer.enabled)
 								continue;
 
@@ -494,12 +494,12 @@ namespace EPOOutline
 					parameters.Buffer.SetGlobalInt(FillRefHash, singleMask);
 					parameters.Buffer.SetGlobalInt(ZTestHash, (int)CompareFunction.Always);
 
-					foreach (var target in outlinable.OutlineTargets)
+					foreach (OutlineTarget target in outlinable.OutlineTargets)
 					{
 						if (target.Renderer == null)
 							continue;
 
-						var renderer = target.Renderer;
+						Renderer renderer = target.Renderer;
 						if (!renderer.gameObject.activeInHierarchy || !renderer.enabled)
 							continue;
 
@@ -510,15 +510,15 @@ namespace EPOOutline
 					}
 
 					parameters.Buffer.SetGlobalInt(FillRefHash, singleMask);
-					var fillMaterial = outlinable.OutlineParameters.FillPass.Material;
+					Material fillMaterial = outlinable.OutlineParameters.FillPass.Material;
 					if (FillMaskMaterial != null)
 					{
-						foreach (var target in outlinable.OutlineTargets)
+						foreach (OutlineTarget target in outlinable.OutlineTargets)
 						{
 							if (target.Renderer == null)
 								continue;
 
-							var renderer = target.Renderer;
+							Renderer renderer = target.Renderer;
 							if (!renderer.gameObject.activeInHierarchy || !renderer.enabled)
 								continue;
 
@@ -539,8 +539,8 @@ namespace EPOOutline
 
 			if (target.Renderer is SpriteRenderer)
 			{
-				var spriteRenderer = target.Renderer as SpriteRenderer;
-				var sprite = spriteRenderer.sprite;
+				SpriteRenderer spriteRenderer = target.Renderer as SpriteRenderer;
+				Sprite sprite = spriteRenderer.sprite;
 				if (sprite == null)
 				{
 					parameters.Buffer.DisableShaderKeyword(KeywordsUtility.GetCutoutKeyword());
@@ -554,7 +554,7 @@ namespace EPOOutline
 				return;
 			}
 
-			var materialToGetTextureFrom = target.Renderer.sharedMaterial;
+			Material materialToGetTextureFrom = target.Renderer.sharedMaterial;
 
 			if (target.CutoutDescriptionType != CutoutDescriptionType.None &&
 					materialToGetTextureFrom != null &&
@@ -563,12 +563,12 @@ namespace EPOOutline
 				parameters.Buffer.EnableShaderKeyword(KeywordsUtility.GetCutoutKeyword());
 				parameters.Buffer.SetGlobalFloat(CutoutThresholdHash, target.CutoutThreshold);
 
-				var offset = materialToGetTextureFrom.GetTextureOffset(target.CutoutTextureId);
-				var scale = materialToGetTextureFrom.GetTextureScale(target.CutoutTextureId);
+				Vector2 offset = materialToGetTextureFrom.GetTextureOffset(target.CutoutTextureId);
+				Vector2 scale = materialToGetTextureFrom.GetTextureScale(target.CutoutTextureId);
 
 				parameters.Buffer.SetGlobalVector(CutoutTextureSTHash, new Vector4(scale.x, scale.y, offset.x, offset.y));
 
-				var texture = materialToGetTextureFrom.GetTexture(target.CutoutTextureId);
+				Texture texture = materialToGetTextureFrom.GetTexture(target.CutoutTextureId);
 				if (texture == null || texture.dimension != TextureDimension.Tex2DArray)
 					parameters.Buffer.DisableShaderKeyword(KeywordsUtility.GetTextureArrayCutoutKeyword());
 				else

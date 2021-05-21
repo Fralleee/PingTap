@@ -68,13 +68,13 @@ namespace EPOOutline.Demo
 
 		private IEnumerator UpdateChicken()
 		{
-			var path = new NavMeshPath();
+			NavMeshPath path = new NavMeshPath();
 			while (true)
 			{
 				animator.CrossFade("Walk In Place", 0.1f);
 
-				var point = Random.insideUnitCircle;
-				var shift = new Vector3(point.x, 0, point.y) * searchRadius;
+				Vector2 point = Random.insideUnitCircle;
+				Vector3 shift = new Vector3(point.x, 0, point.y) * searchRadius;
 
 				NavMeshHit hit;
 				if (!NavMesh.SamplePosition(transform.position + shift, out hit, searchRadius, -1))
@@ -96,7 +96,7 @@ namespace EPOOutline.Demo
 				while (agent.pathStatus != NavMeshPathStatus.PathComplete)
 					yield return null;
 
-				var timeToWait = (agent.remainingDistance / agent.speed) * 1.5f;
+				float timeToWait = (agent.remainingDistance / agent.speed) * 1.5f;
 				while (agent.remainingDistance > agent.stoppingDistance && timeToWait > 0.0f)
 				{
 					timeToWait -= Time.deltaTime;

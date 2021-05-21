@@ -24,9 +24,9 @@ namespace Fralle.Abilities.Turret
 			if (!Target)
 				return;
 
-			var targetPosition = Target.transform.position.With(y: TargetHeight);
-			var direction = (targetPosition - AimRig.position).normalized;
-			var lookRotation = Quaternion.LookRotation(direction);
+			Vector3 targetPosition = Target.transform.position.With(y: TargetHeight);
+			Vector3 direction = (targetPosition - AimRig.position).normalized;
+			Quaternion lookRotation = Quaternion.LookRotation(direction);
 			AimRig.rotation = Quaternion.Slerp(AimRig.rotation, lookRotation, Time.deltaTime * 6f);
 		}
 

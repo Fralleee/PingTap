@@ -52,7 +52,7 @@ namespace EPOOutline
 
 		private IEnumerator Blit()
 		{
-			var waitForEndOfFrame = new WaitForEndOfFrame();
+			WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
 
 			if (buffer == null)
 			{
@@ -66,7 +66,7 @@ namespace EPOOutline
 
 				yield return waitForEndOfFrame;
 
-				var target = TargetsHolder.Instance.GetAllocatedTarget(customTargetName);
+				RenderTexture target = TargetsHolder.Instance.GetAllocatedTarget(customTargetName);
 				if (target == null)
 					continue;
 

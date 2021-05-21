@@ -11,7 +11,7 @@ namespace Fralle.UI
 		void Awake()
 		{
 			nameText = GetComponent<TextMeshProUGUI>();
-			var damageController = GetComponentInParent<DamageController>();
+			DamageController damageController = GetComponentInParent<DamageController>();
 			nameText.text = damageController.name;
 		}
 	}

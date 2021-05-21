@@ -23,7 +23,7 @@ namespace Fralle.Gameplay
 			SpawnProbabilities.ForEach(x => x.Chance /= chanceSum);
 
 			float oldValue = 0;
-			foreach (var spawnProbability in SpawnProbabilities.OrderBy(x => x.Chance))
+			foreach (SpawnProbability spawnProbability in SpawnProbabilities.OrderBy(x => x.Chance))
 			{
 				spawnProbability.Chance += oldValue;
 				oldValue = spawnProbability.Chance;
@@ -33,7 +33,7 @@ namespace Fralle.Gameplay
 		public GameObject GetPrefab()
 		{
 			float random = Random.Range(0f, 1f);
-			var probability = SpawnProbabilities.FirstOrDefault(x => random <= x.Chance);
+			SpawnProbability probability = SpawnProbabilities.FirstOrDefault(x => random <= x.Chance);
 
 			return probability.Prefab;
 		}

@@ -50,7 +50,7 @@ namespace Fralle.Abilities.Turret
 		{
 			AttackAction[] attackActions = EquippedWeapon.GetComponentsInChildren<AttackAction>();
 			float longestRange = 0f;
-			foreach (var attackAction in attackActions)
+			foreach (AttackAction attackAction in attackActions)
 			{
 				if (attackAction.GetRange() > longestRange)
 					longestRange = attackAction.GetRange();

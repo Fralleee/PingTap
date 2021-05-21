@@ -9,10 +9,10 @@ namespace EPOOutline
 	{
 		public override void OnInspectorGUI()
 		{
-			var maskProperty = serializedObject.FindProperty("outlineLayerMask");
-			var currentMask = maskProperty.longValue;
+			SerializedProperty maskProperty = serializedObject.FindProperty("outlineLayerMask");
+			long currentMask = maskProperty.longValue;
 
-			var maskValue = "Mask: none";
+			string maskValue = "Mask: none";
 			if (currentMask == -1 || currentMask == long.MaxValue)
 				maskValue = "Mask: all";
 			else if (currentMask != 0)
@@ -20,7 +20,7 @@ namespace EPOOutline
 
 			if (GUILayout.Button(maskValue, EditorStyles.layerMaskField))
 			{
-				var maskMenu = new GenericMenu();
+				GenericMenu maskMenu = new GenericMenu();
 
 				maskMenu.AddItem(new GUIContent("none"), currentMask == 0, () =>
 						{
@@ -34,15 +34,15 @@ namespace EPOOutline
 							serializedObject.ApplyModifiedProperties();
 						});
 
-				for (var index = 0; index < sizeof(long) * 8; index++)
+				for (int index = 0; index < sizeof(long) * 8; index++)
 				{
-					var capturedIndex = index;
+					int capturedIndex = index;
 
 					if (index >= 20)
 					{
-						var decima = index / 10;
-						var lowerDecima = decima * 10;
-						var higherDecima = (decima + 1) * 10;
+						int decima = index / 10;
+						int lowerDecima = decima * 10;
+						int higherDecima = (decima + 1) * 10;
 						if (higherDecima > 63)
 							higherDecima = 63;
 

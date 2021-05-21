@@ -3,52 +3,55 @@ using Fralle.UI.Menu;
 using TMPro;
 using UnityEngine;
 
-public class GameResultUi : MonoBehaviour
+namespace Fralle.UI
 {
-	[SerializeField] TextMeshProUGUI statusText = null;
-	[SerializeField] GameObject statusScreen = null;
-	[SerializeField] GameObject scoreScreen = null;
-
-	void Awake()
+	public class GameResultUi : MonoBehaviour
 	{
-		statusText.gameObject.SetActive(false);
-		statusScreen.SetActive(false);
-		scoreScreen.SetActive(false);
+		[SerializeField] TextMeshProUGUI statusText = null;
+		[SerializeField] GameObject statusScreen = null;
+		[SerializeField] GameObject scoreScreen = null;
 
-		//MatchManager.OnDefeat += HandleDefeat;
-		//MatchManager.OnVictory += HandleVictory;
-	}
+		void Awake()
+		{
+			statusText.gameObject.SetActive(false);
+			statusScreen.SetActive(false);
+			scoreScreen.SetActive(false);
 
-	public void ScoreScreen()
-	{
-		statusScreen.SetActive(false);
-		scoreScreen.SetActive(true);
-		//var scoreScreenComponent = scoreScreen.GetComponent<ScoreScreen>();
-		//scoreScreenComponent.InitPlayerStats(stats);
-	}
+			//MatchManager.OnDefeat += HandleDefeat;
+			//MatchManager.OnVictory += HandleVictory;
+		}
 
-	public void BackToMenu()
-	{
-		PauseMenu.ToMainMenu();
-	}
+		public void ScoreScreen()
+		{
+			statusScreen.SetActive(false);
+			scoreScreen.SetActive(true);
+			//var scoreScreenComponent = scoreScreen.GetComponent<ScoreScreen>();
+			//scoreScreenComponent.InitPlayerStats(stats);
+		}
 
-	void HandleDefeat()
-	{
-		statusText.gameObject.SetActive(true);
-		statusScreen.SetActive(true);
-		statusText.text = "DEFEAT";
-	}
+		public void BackToMenu()
+		{
+			PauseMenu.ToMainMenu();
+		}
 
-	void HandleVictory()
-	{
-		statusText.gameObject.SetActive(true);
-		statusScreen.SetActive(true);
-		statusText.text = "VICTORY";
-	}
+		void HandleDefeat()
+		{
+			statusText.gameObject.SetActive(true);
+			statusScreen.SetActive(true);
+			statusText.text = "DEFEAT";
+		}
 
-	void OnDestroy()
-	{
-		MatchManager.OnDefeat -= HandleDefeat;
-		MatchManager.OnVictory -= HandleVictory;
+		void HandleVictory()
+		{
+			statusText.gameObject.SetActive(true);
+			statusScreen.SetActive(true);
+			statusText.text = "VICTORY";
+		}
+
+		void OnDestroy()
+		{
+			MatchManager.OnDefeat -= HandleDefeat;
+			MatchManager.OnVictory -= HandleVictory;
+		}
 	}
 }

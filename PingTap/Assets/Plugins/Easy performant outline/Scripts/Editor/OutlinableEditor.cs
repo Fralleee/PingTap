@@ -21,10 +21,10 @@ namespace EPOOutline
 
 				targetsList.drawElementCallback = (position, item, isActive, isFocused) =>
 						{
-							var renderPosition = position;
-							var element = targets.GetArrayElementAtIndex(item);
-							var rendererItem = element.FindPropertyRelative("Renderer");
-							var reference = rendererItem.objectReferenceValue;
+							Rect renderPosition = position;
+							SerializedProperty element = targets.GetArrayElementAtIndex(item);
+							SerializedProperty rendererItem = element.FindPropertyRelative("Renderer");
+							Object reference = rendererItem.objectReferenceValue;
 
 							EditorGUI.PropertyField(renderPosition, element, new GUIContent(reference == null ? "Null" : reference.name), true);
 						};
@@ -33,16 +33,16 @@ namespace EPOOutline
 
 				targetsList.onRemoveCallback = (list) =>
 						{
-							var index = list.index;
+							int index = list.index;
 							targets.DeleteArrayElementAtIndex(index);
 							targets.serializedObject.ApplyModifiedProperties();
 						};
 
 				targetsList.onAddDropdownCallback = (buttonRect, targetList) =>
 						{
-							var outlinable = target as Outlinable;
-							var items = outlinable.gameObject.GetComponentsInChildren<Renderer>(true);
-							var menu = new GenericMenu();
+							Outlinable outlinable = target as Outlinable;
+							Renderer[] items = outlinable.gameObject.GetComponentsInChildren<Renderer>(true);
+							GenericMenu menu = new GenericMenu();
 
 							if (!Application.isPlaying)
 							{
@@ -61,13 +61,13 @@ namespace EPOOutline
 														EditorUtility.SetDirty(target);
 													});
 
-							foreach (var item in items)
+							foreach (Renderer item in items)
 							{
-								var found = false;
-								for (var index = 0; index < targets.arraySize; index++)
+								bool found = false;
+								for (int index = 0; index < targets.arraySize; index++)
 								{
-									var element = targets.GetArrayElementAtIndex(index);
-									var elementRenderer = element.FindPropertyRelative("Renderer");
+									SerializedProperty element = targets.GetArrayElementAtIndex(index);
+									SerializedProperty elementRenderer = element.FindPropertyRelative("Renderer");
 									if (elementRenderer.objectReferenceValue == item)
 									{
 										found = true;
@@ -75,10 +75,10 @@ namespace EPOOutline
 									}
 								}
 
-								var path = string.Empty;
+								string path = string.Empty;
 								if (item.transform != outlinable.transform)
 								{
-									var parent = item.transform;
+									Transform parent = item.transform;
 									do
 									{
 										path = string.Format("{0}/{1}", parent.ToString(), path);
@@ -95,10 +95,10 @@ namespace EPOOutline
 
 								GenericMenu.MenuFunction function = () =>
 														{
-															var index = targets.arraySize;
+															int index = targets.arraySize;
 															targets.InsertArrayElementAtIndex(index);
-															var arrayItem = targets.GetArrayElementAtIndex(index);
-															var renderer = arrayItem.FindPropertyRelative("Renderer");
+															SerializedProperty arrayItem = targets.GetArrayElementAtIndex(index);
+															SerializedProperty renderer = arrayItem.FindPropertyRelative("Renderer");
 															arrayItem.FindPropertyRelative("CutoutThreshold").floatValue = 0.5f;
 															renderer.objectReferenceValue = item;
 
@@ -150,7 +150,7 @@ namespace EPOOutline
 
 			serializedObject.ApplyModifiedProperties();
 
-			var renderers = serializedObject.FindProperty("outlineTargets");
+			SerializedProperty renderers = serializedObject.FindProperty("outlineTargets");
 
 			CheckList(renderers);
 

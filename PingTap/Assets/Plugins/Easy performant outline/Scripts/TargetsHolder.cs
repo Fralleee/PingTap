@@ -16,7 +16,7 @@ namespace EPOOutline
 			{
 				if (instance == null)
 				{
-					var go = new GameObject("TargetsHolder");
+					GameObject go = new GameObject("TargetsHolder");
 					instance = go.AddComponent<TargetsHolder>();
 					go.hideFlags = HideFlags.HideAndDontSave;
 				}
@@ -44,7 +44,7 @@ namespace EPOOutline
 			RenderTexture result = null;
 			if (!targets.TryGetValue(name, out result))
 			{
-				var info = RenderTargetUtility.GetTargetInfo(parameters, parameters.TargetWidth, parameters.TargetHeight, 24, false, false);
+				RenderTargetUtility.RenderTextureInfo info = RenderTargetUtility.GetTargetInfo(parameters, parameters.TargetWidth, parameters.TargetHeight, 24, false, false);
 				result = RenderTexture.GetTemporary(info.Descriptor);
 				result.filterMode = info.FilterMode;
 
@@ -61,7 +61,7 @@ namespace EPOOutline
 		{
 			RenderTexture.active = null;
 
-			foreach (var target in targets)
+			foreach (KeyValuePair<string, RenderTexture> target in targets)
 			{
 				if (target.Value == null)
 					continue;

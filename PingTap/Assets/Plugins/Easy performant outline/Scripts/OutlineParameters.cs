@@ -17,7 +17,7 @@ namespace EPOOutline
 
 			if (freeMeshes.Count == 0)
 			{
-				var mesh = new Mesh();
+				Mesh mesh = new Mesh();
 				mesh.MarkDynamic();
 				allMeshes.Add(mesh);
 				freeMeshes.Enqueue(mesh);
@@ -29,7 +29,7 @@ namespace EPOOutline
 		public void ReleaseAllMeshes()
 		{
 			freeMeshes.Clear();
-			foreach (var mesh in allMeshes)
+			foreach (Mesh mesh in allMeshes)
 				freeMeshes.Enqueue(mesh);
 		}
 	}

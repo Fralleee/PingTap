@@ -20,19 +20,19 @@ namespace Fralle.UI.General
 		{
 			if (!enabled)
 				return;
-			var rect = graphic.rectTransform.rect;
-			var dir = UiGradientUtils.RotationDir(MAngle);
+			Rect rect = graphic.rectTransform.rect;
+			Vector2 dir = UiGradientUtils.RotationDir(MAngle);
 
 			if (!MIgnoreRatio)
 				dir = UiGradientUtils.CompensateAspectRatio(rect, dir);
 
-			var localPositionMatrix = UiGradientUtils.LocalPositionMatrix(rect, dir);
+			UiGradientUtils.Matrix2X3 localPositionMatrix = UiGradientUtils.LocalPositionMatrix(rect, dir);
 
-			var vertex = default(UIVertex);
+			UIVertex vertex = default(UIVertex);
 			for (int i = 0; i < vh.currentVertCount; i++)
 			{
 				vh.PopulateUIVertex(ref vertex, i);
-				var localPosition = localPositionMatrix * vertex.position;
+				Vector2 localPosition = localPositionMatrix * vertex.position;
 				vertex.color *= Color.Lerp(MColor2, MColor1, localPosition.y);
 				vh.SetUIVertex(vertex, i);
 			}

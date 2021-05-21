@@ -62,11 +62,11 @@ namespace Fralle.Resource
 
 		public void DropLoot(Vector3 position)
 		{
-			var quality = LootQuality.RandomQuality();
+			LootQuality.Type quality = LootQuality.RandomQuality();
 			int credits = GetQualityCredits(quality);
-			var prefab = GetQualityPrefab(quality);
+			GameObject prefab = GetQualityPrefab(quality);
 
-			var instance = Instantiate(prefab, position, Quaternion.identity);
+			GameObject instance = Instantiate(prefab, position, Quaternion.identity);
 			instance.GetComponent<Loot>().Setup(credits);
 		}
 	}

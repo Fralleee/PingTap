@@ -28,7 +28,7 @@ namespace Fralle.Resource
 			collider.radius = PickupRange;
 			collider.isTrigger = true;
 
-			var rendererComponent = GetComponentInChildren<Renderer>();
+			Renderer rendererComponent = GetComponentInChildren<Renderer>();
 			SetRendererColor(rendererComponent, quality);
 		}
 
@@ -44,7 +44,7 @@ namespace Fralle.Resource
 			if (!rendererP)
 				return;
 
-			var propBlock = new MaterialPropertyBlock();
+			MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
 			rendererP.GetPropertyBlock(propBlock);
 			propBlock.SetColor(RendererColor, LootQuality.GetQualityColor(qualityP));
 			rendererP.SetPropertyBlock(propBlock);
@@ -60,7 +60,7 @@ namespace Fralle.Resource
 			if (pickedUp)
 				return;
 
-			var inventoryController = component.GetComponentInParent<InventoryController>();
+			InventoryController inventoryController = component.GetComponentInParent<InventoryController>();
 			if (!inventoryController)
 				return;
 

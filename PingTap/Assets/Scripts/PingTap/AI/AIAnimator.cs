@@ -17,7 +17,7 @@ namespace Fralle.AI
 			animator = GetComponent<Animator>();
 			aiController = GetComponentInParent<AiController>();
 			navMeshAgent = GetComponentInParent<NavMeshAgent>();
-			var damageController = GetComponentInParent<DamageController>();
+			DamageController damageController = GetComponentInParent<DamageController>();
 			damageController.OnDeath += HandleDeath;
 		}
 

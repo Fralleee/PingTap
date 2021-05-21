@@ -31,8 +31,8 @@ namespace Fralle.UI.General
 		{
 			float cos = dir.x;
 			float sin = dir.y;
-			var rectMin = rect.min;
-			var rectSize = rect.size;
+			Vector2 rectMin = rect.min;
+			Vector2 rectSize = rect.size;
 			const float c = 0.5f;
 			float ax = rectMin.x / rectSize.x + c;
 			float ay = rectMin.y / rectSize.y + c;
@@ -69,8 +69,8 @@ namespace Fralle.UI.General
 
 		public static Color Bilerp(Color a1, Color a2, Color b1, Color b2, Vector2 t)
 		{
-			var a = Color.LerpUnclamped(a1, a2, t.x);
-			var b = Color.LerpUnclamped(b1, b2, t.x);
+			Color a = Color.LerpUnclamped(a1, a2, t.x);
+			Color b = Color.LerpUnclamped(b1, b2, t.x);
 			return Color.LerpUnclamped(a, b, t.y);
 		}
 

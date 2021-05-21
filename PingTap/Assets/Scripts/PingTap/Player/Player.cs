@@ -17,7 +17,7 @@ namespace Fralle
 		public static void Disable()
 		{
 			Player[] players = FindObjectsOfType<Player>();
-			foreach (var player in players)
+			foreach (Player player in players)
 			{
 				player.gameObject.SetActive(false);
 			}

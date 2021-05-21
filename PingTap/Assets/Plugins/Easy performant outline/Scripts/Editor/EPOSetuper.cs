@@ -36,9 +36,9 @@ namespace EPOOutline
 
 		private static bool CheckHasDefinition(string definition)
 		{
-			var group = EditorUserBuildSettings.selectedBuildTargetGroup;
-			var definitions = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
-			var splited = definitions.Split(';');
+			BuildTargetGroup group = EditorUserBuildSettings.selectedBuildTargetGroup;
+			string definitions = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+			string[] splited = definitions.Split(';');
 
 			return Array.Find(splited, x => x == definition) != null;
 		}
@@ -86,14 +86,14 @@ namespace EPOOutline
 			if (!check())
 				return;
 
-			var group = EditorUserBuildSettings.selectedBuildTargetGroup;
-			var definitions = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
-			var splited = definitions.Split(';');
+			BuildTargetGroup group = EditorUserBuildSettings.selectedBuildTargetGroup;
+			string definitions = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+			string[] splited = definitions.Split(';');
 
-			var builder = new StringBuilder();
+			StringBuilder builder = new StringBuilder();
 
-			var addedCount = 0;
-			foreach (var item in splited)
+			int addedCount = 0;
+			foreach (string item in splited)
 			{
 				if (item == definition)
 					continue;
@@ -134,8 +134,8 @@ namespace EPOOutline
 			if (check())
 				return;
 
-			var group = EditorUserBuildSettings.selectedBuildTargetGroup;
-			var definitions = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+			BuildTargetGroup group = EditorUserBuildSettings.selectedBuildTargetGroup;
+			string definitions = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
 			PlayerSettings.SetScriptingDefineSymbolsForGroup(group, definitions + ";" + definition);
 		}
 
@@ -184,14 +184,14 @@ namespace EPOOutline
 			if (result == null)
 				return false;
 
-			var found = false;
-			var name =
+			bool found = false;
+			string name =
 #if UNITY_2019_3_OR_NEWER
 										"com.unity.render-pipelines.universal";
 #else
 										"com.unity.render-pipelines.lightweight";
 #endif
-			foreach (var item in result)
+			foreach (UnityEditor.PackageManager.PackageInfo item in result)
 			{
 				if (item.name == name)
 				{
@@ -215,7 +215,7 @@ namespace EPOOutline
 			if (!ShouldShow)
 				return;
 
-			var window = EditorWindow.GetWindow<EPOSetuper>(true, "EPO Setuper", false);
+			EPOSetuper window = EditorWindow.GetWindow<EPOSetuper>(true, "EPO Setuper", false);
 			window.maxSize = new Vector2(500, 500);
 			window.minSize = new Vector2(500, 500);
 		}
@@ -225,10 +225,10 @@ namespace EPOOutline
 			if (logoImage == null)
 				logoImage = Resources.Load<Texture2D>("Easy performant outline/EP Outline logo");
 
-			var height = 180;
+			int height = 180;
 			GUILayout.Space(height);
 
-			var imagePosition = new Rect(Vector2.zero, new Vector2(position.width, height));
+			Rect imagePosition = new Rect(Vector2.zero, new Vector2(position.width, height));
 
 			GUI.DrawTexture(imagePosition, logoImage, ScaleMode.ScaleAndCrop, true);
 
@@ -256,7 +256,7 @@ namespace EPOOutline
 
 			EditorGUI.indentLevel = 1;
 
-			var shouldAddDotween = EditorGUILayout.Toggle(new GUIContent("DOTween support"), CheckHasEPODotween());
+			bool shouldAddDotween = EditorGUILayout.Toggle(new GUIContent("DOTween support"), CheckHasEPODotween());
 			if (shouldAddDotween)
 				AddDOTweenDefinition();
 			else
@@ -276,7 +276,7 @@ namespace EPOOutline
 				return;
 			}
 
-			var packageName =
+			string packageName =
 #if UNITY_2019_3_OR_NEWER
 										"com.unity.render-pipelines.universal";
 #else

@@ -22,7 +22,7 @@ namespace Fralle.UI.HUD
 		{
 			image = GetComponent<Image>();
 
-			var combatant = GetComponentInParent<Combatant>();
+			Combatant combatant = GetComponentInParent<Combatant>();
 			combatant.OnWeaponSwitch += HandleWeaponSwitch;
 
 			if (combatant.EquippedWeapon)
@@ -33,7 +33,7 @@ namespace Fralle.UI.HUD
 		{
 			if (weapon != null)
 			{
-				var ammoAddon = weapon.GetComponent<AmmoAddon>();
+				AmmoAddon ammoAddon = weapon.GetComponent<AmmoAddon>();
 				ammoAddon.OnAmmoChanged += HandleAmmoChanged;
 
 				maxAmmo = ammoAddon.MaxAmmo;

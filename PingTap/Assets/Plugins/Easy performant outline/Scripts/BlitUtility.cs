@@ -62,13 +62,13 @@ namespace EPOOutline
 		{
 			if (renderer is MeshRenderer)
 			{
-				var meshFilter = renderer.GetComponent<MeshFilter>();
+				MeshFilter meshFilter = renderer.GetComponent<MeshFilter>();
 				if (meshFilter.sharedMesh != null)
 					meshFilter.sharedMesh.RecalculateBounds();
 			}
 			else if (renderer is SkinnedMeshRenderer)
 			{
-				var skinedMeshRenderer = renderer as SkinnedMeshRenderer;
+				SkinnedMeshRenderer skinedMeshRenderer = renderer as SkinnedMeshRenderer;
 				if (skinedMeshRenderer.sharedMesh != null)
 					skinedMeshRenderer.sharedMesh.RecalculateBounds();
 			}
@@ -85,10 +85,10 @@ namespace EPOOutline
 			addedVertices.Clear();
 			addedTriangles.Clear();
 
-			var otherStages = new Vector4(1, 0, 0);
-			var dilateStage = new Vector4(0, 1, 0);
-			var blurStage = new Vector4(0, 0, 1);
-			var allStages = dilateStage + blurStage + otherStages;
+			Vector4 otherStages = new Vector4(1, 0, 0);
+			Vector4 dilateStage = new Vector4(0, 1, 0);
+			Vector4 blurStage = new Vector4(0, 0, 1);
+			Vector4 allStages = dilateStage + blurStage + otherStages;
 
 			firstUV.Clear();
 			secondUV.Clear();
@@ -99,12 +99,12 @@ namespace EPOOutline
 			stages.Clear();
 			additionalScale.Clear();
 
-			var minusBoundsX = -1;
-			var plusBoundsX = 1;
-			var minusBoundsY = -1;
-			var plusBoundsY = 1;
-			var minusBoundsZ = -1;
-			var plusBoundsZ = 1;
+			int minusBoundsX = -1;
+			int plusBoundsX = 1;
+			int minusBoundsY = -1;
+			int plusBoundsY = 1;
+			int minusBoundsZ = -1;
+			int plusBoundsZ = 1;
 
 			vertices[0] = new Vector3(minusBoundsX, minusBoundsY, minusBoundsZ);
 			vertices[1] = new Vector3(plusBoundsX, minusBoundsY, minusBoundsZ);
@@ -115,23 +115,23 @@ namespace EPOOutline
 			vertices[6] = new Vector3(plusBoundsX, minusBoundsY, plusBoundsZ);
 			vertices[7] = new Vector3(minusBoundsX, minusBoundsY, plusBoundsZ);
 
-			var currentIndex = 0;
+			int currentIndex = 0;
 			const int numberOfVertices = 8;
-			var addedCount = 0;
-			foreach (var outlinable in parameters.OutlinablesToRender)
+			int addedCount = 0;
+			foreach (Outlinable outlinable in parameters.OutlinablesToRender)
 			{
 				if (outlinable.DrawingMode != OutlinableDrawingMode.Normal)
 					continue;
 
-				var frontParameters = outlinable.RenderStyle == RenderStyle.FrontBack ? outlinable.FrontParameters : outlinable.OutlineParameters;
-				var backParameters = outlinable.RenderStyle == RenderStyle.FrontBack ? outlinable.BackParameters : outlinable.OutlineParameters;
+				Outlinable.OutlineProperties frontParameters = outlinable.RenderStyle == RenderStyle.FrontBack ? outlinable.FrontParameters : outlinable.OutlineParameters;
+				Outlinable.OutlineProperties backParameters = outlinable.RenderStyle == RenderStyle.FrontBack ? outlinable.BackParameters : outlinable.OutlineParameters;
 
-				var useDilateDueToSettings = parameters.UseInfoBuffer && (frontParameters.DilateShift > 0.01f || backParameters.DilateShift > 0.01f) || !parameters.UseInfoBuffer;
-				var useBlurDueToSettings = parameters.UseInfoBuffer && (frontParameters.BlurShift > 0.01f || backParameters.BlurShift > 0.01f) || !parameters.UseInfoBuffer;
+				bool useDilateDueToSettings = parameters.UseInfoBuffer && (frontParameters.DilateShift > 0.01f || backParameters.DilateShift > 0.01f) || !parameters.UseInfoBuffer;
+				bool useBlurDueToSettings = parameters.UseInfoBuffer && (frontParameters.BlurShift > 0.01f || backParameters.BlurShift > 0.01f) || !parameters.UseInfoBuffer;
 
-				foreach (var target in outlinable.OutlineTargets)
+				foreach (OutlineTarget target in outlinable.OutlineTargets)
 				{
-					var renderer = target.Renderer;
+					Renderer renderer = target.Renderer;
 					if (renderer == null || !renderer.enabled || !renderer.gameObject.activeInHierarchy)
 						continue;
 
@@ -141,12 +141,12 @@ namespace EPOOutline
 						UpdateBounds(target.Renderer);
 
 #if UNITY_2019_3_OR_NEWER
-					var meshRenderer = renderer as MeshRenderer;
-					var index = meshRenderer == null ? 0 : meshRenderer.subMeshStartIndex + target.SubmeshIndex;
-					var filter = meshRenderer == null ? null : meshRenderer.GetComponent<MeshFilter>();
-					var mesh = filter == null ? null : filter.sharedMesh;
+					MeshRenderer meshRenderer = renderer as MeshRenderer;
+					int index = meshRenderer == null ? 0 : meshRenderer.subMeshStartIndex + target.SubmeshIndex;
+					MeshFilter filter = meshRenderer == null ? null : meshRenderer.GetComponent<MeshFilter>();
+					Mesh mesh = filter == null ? null : filter.sharedMesh;
 
-					var bounds = new Bounds();
+					Bounds bounds = new Bounds();
 					if (meshRenderer != null && mesh != null && mesh.subMeshCount > index)
 						bounds = mesh.GetSubMesh(index).bounds;
 					else if (renderer != null)
@@ -157,18 +157,18 @@ namespace EPOOutline
 
 					Profiler.EndSample();
 
-					var scale = 0.5f;
-					var boundsSize = bounds.size * scale;
-					var boundsCenter = bounds.center;
+					float scale = 0.5f;
+					Vector3 boundsSize = bounds.size * scale;
+					Vector3 boundsCenter = bounds.center;
 
-					var stagesToSet = otherStages;
+					Vector4 stagesToSet = otherStages;
 					if ((!target.CanUseEdgeDilateShift || target.DilateRenderingMode == DilateRenderMode.PostProcessing) && useDilateDueToSettings)
 						stagesToSet += dilateStage;
 
 					if (useBlurDueToSettings)
 						stagesToSet += blurStage;
 
-					var additionalScaleToSet = Vector2.zero;
+					Vector2 additionalScaleToSet = Vector2.zero;
 					if (target.CanUseEdgeDilateShift && target.DilateRenderingMode == DilateRenderMode.EdgeShift)
 						additionalScaleToSet.x = Mathf.Max(target.BackEdgeDilateAmount, target.FrontEdgeDilateAmount);
 
@@ -177,7 +177,7 @@ namespace EPOOutline
 #if UNITY_2019_3_OR_NEWER
 					if (meshRenderer != null && !meshRenderer.isPartOfStaticBatch)
 					{
-						var transformMatrix = meshRenderer.transform.localToWorldMatrix;
+						Matrix4x4 transformMatrix = meshRenderer.transform.localToWorldMatrix;
 
 						matrix[0] = matrix[1] = matrix[2] = matrix[3] = matrix[4] = matrix[5] = matrix[6] = matrix[7] = transformMatrix.GetColumn(0);
 						firstUV.AddRange(matrix);
@@ -306,7 +306,7 @@ namespace EPOOutline
 
 		public static void Blit(OutlineParameters parameters, RenderTargetIdentifier source, RenderTargetIdentifier destination, RenderTargetIdentifier destinationDepth, Material material, CommandBuffer targetBuffer, int pass = -1)
 		{
-			var buffer = targetBuffer == null ? parameters.Buffer : targetBuffer;
+			CommandBuffer buffer = targetBuffer == null ? parameters.Buffer : targetBuffer;
 			buffer.SetRenderTarget(destination, destinationDepth);
 
 			buffer.SetGlobalTexture(MainTexHash, source);

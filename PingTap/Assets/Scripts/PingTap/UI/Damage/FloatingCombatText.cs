@@ -12,7 +12,7 @@ namespace Fralle.UI
 
 		void Awake()
 		{
-			var damageController = GetComponentInParent<DamageController>();
+			DamageController damageController = GetComponentInParent<DamageController>();
 			damageController.OnDamageTaken += HandleDamageTaken;
 		}
 
@@ -23,17 +23,17 @@ namespace Fralle.UI
 
 		void AddFloatingCombatText(DamageData damageData)
 		{
-			var instance = ObjectPool.Spawn(combatTextPrefab, transform.position, Quaternion.identity);
+			GameObject instance = ObjectPool.Spawn(combatTextPrefab, transform.position, Quaternion.identity);
 
 			SetPosition(instance);
 
-			var text = instance.GetComponentInChildren<TextMeshPro>();
+			TextMeshPro text = instance.GetComponentInChildren<TextMeshPro>();
 			SetText(text, Mathf.RoundToInt(damageData.DamageAmount));
 		}
 
 		void SetPosition(GameObject go)
 		{
-			var position = new Vector3(Random.Range(-randomPosition.x, randomPosition.x), Random.Range(0, randomPosition.y), 0);
+			Vector3 position = new Vector3(Random.Range(-randomPosition.x, randomPosition.x), Random.Range(0, randomPosition.y), 0);
 			go.transform.position = transform.position + position;
 		}
 

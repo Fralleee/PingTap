@@ -81,7 +81,7 @@ namespace Fralle.AI
 			if (count == 0)
 				count = TotalCount;
 			Enemy[] enemies = FindObjectsOfType<Enemy>();
-			foreach (var enemy in enemies)
+			foreach (Enemy enemy in enemies)
 			{
 				if (count > 0)
 				{

@@ -50,26 +50,26 @@ namespace EPOOutline
 
 		public static RenderTextureInfo GetTargetInfo(OutlineParameters parameters, int width, int height, int depthBuffer, bool forceNoAA, bool noFiltering)
 		{
-			var filterType = noFiltering ? FilterMode.Point : FilterMode.Bilinear;
-			var rtFormat = parameters.UseHDR ? GetHDRFormat() : RenderTextureFormat.ARGB32;
+			FilterMode filterType = noFiltering ? FilterMode.Point : FilterMode.Bilinear;
+			RenderTextureFormat rtFormat = parameters.UseHDR ? GetHDRFormat() : RenderTextureFormat.ARGB32;
 
 			if (IsUsingVR(parameters))
 			{
-				var descriptor = UnityEngine.XR.XRSettings.eyeTextureDesc;
+				RenderTextureDescriptor descriptor = UnityEngine.XR.XRSettings.eyeTextureDesc;
 				descriptor.colorFormat = rtFormat;
 				descriptor.width = width;
 				descriptor.height = height;
 				descriptor.depthBufferBits = depthBuffer;
 				descriptor.msaaSamples = forceNoAA ? 1 : Mathf.Max(parameters.Antialiasing, 1);
 
-				var eyesCount = parameters.EyeMask == StereoTargetEyeMask.Both ? VRTextureUsage.TwoEyes : VRTextureUsage.OneEye;
+				VRTextureUsage eyesCount = parameters.EyeMask == StereoTargetEyeMask.Both ? VRTextureUsage.TwoEyes : VRTextureUsage.OneEye;
 				descriptor.vrUsage = eyesCount;
 
 				return new RenderTextureInfo(descriptor, filterType);
 			}
 			else
 			{
-				var descriptor = new RenderTextureDescriptor(width, height, rtFormat, depthBuffer);
+				RenderTextureDescriptor descriptor = new RenderTextureDescriptor(width, height, rtFormat, depthBuffer);
 				descriptor.dimension = TextureDimension.Tex2D;
 				descriptor.msaaSamples = forceNoAA ? 1 : Mathf.Max(parameters.Antialiasing, 1);
 
@@ -79,7 +79,7 @@ namespace EPOOutline
 
 		public static void GetTemporaryRT(OutlineParameters parameters, int id, int width, int height, int depthBuffer, bool clear, bool forceNoAA, bool noFiltering)
 		{
-			var info = GetTargetInfo(parameters, width, height, depthBuffer, forceNoAA, noFiltering);
+			RenderTextureInfo info = GetTargetInfo(parameters, width, height, depthBuffer, forceNoAA, noFiltering);
 
 			parameters.Buffer.GetTemporaryRT(id, info.Descriptor, info.FilterMode);
 			parameters.Buffer.SetRenderTarget(RenderTargetUtility.ComposeTarget(parameters, id));

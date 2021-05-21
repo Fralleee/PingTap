@@ -480,7 +480,7 @@ namespace MEC
 
 		private void RemoveUnused()
 		{
-			var waitTrigsEnum = _waitingTriggers.GetEnumerator();
+			Dictionary<CoroutineHandle, HashSet<CoroutineHandle>>.Enumerator waitTrigsEnum = _waitingTriggers.GetEnumerator();
 			while (waitTrigsEnum.MoveNext())
 			{
 				if (waitTrigsEnum.Current.Value.Count == 0)
@@ -1141,7 +1141,7 @@ namespace MEC
 
 			while (_taggedProcesses.ContainsKey(tag))
 			{
-				var matchEnum = _taggedProcesses[tag].GetEnumerator();
+				HashSet<CoroutineHandle>.Enumerator matchEnum = _taggedProcesses[tag].GetEnumerator();
 				matchEnum.MoveNext();
 
 				if (Nullify(_handleToIndex[matchEnum.Current]))
@@ -1277,7 +1277,7 @@ namespace MEC
 				return 0;
 
 			int count = 0;
-			var matchesEnum = _taggedProcesses[tag].GetEnumerator();
+			HashSet<CoroutineHandle>.Enumerator matchesEnum = _taggedProcesses[tag].GetEnumerator();
 
 			while (matchesEnum.MoveNext())
 				if (!CoindexIsNull(_handleToIndex[matchesEnum.Current]) && !SetPause(_handleToIndex[matchesEnum.Current], true))
@@ -1386,7 +1386,7 @@ namespace MEC
 				return 0;
 			int count = 0;
 
-			var indexesEnum = _taggedProcesses[tag].GetEnumerator();
+			HashSet<CoroutineHandle>.Enumerator indexesEnum = _taggedProcesses[tag].GetEnumerator();
 			while (indexesEnum.MoveNext())
 			{
 				if (!CoindexIsNull(_handleToIndex[indexesEnum.Current]) && SetPause(_handleToIndex[indexesEnum.Current], false))
@@ -1893,17 +1893,17 @@ namespace MEC
 
 			if (_waitingTriggers.ContainsKey(lastHandle))
 			{
-				var trigsEnum = _waitingTriggers[lastHandle].GetEnumerator();
+				HashSet<CoroutineHandle>.Enumerator trigsEnum = _waitingTriggers[lastHandle].GetEnumerator();
 				while (trigsEnum.MoveNext())
 					SwapToLast(lastHandle, trigsEnum.Current);
 			}
 
 			if (_allWaiting.Contains(firstHandle))
 			{
-				var keyEnum = _waitingTriggers.GetEnumerator();
+				Dictionary<CoroutineHandle, HashSet<CoroutineHandle>>.Enumerator keyEnum = _waitingTriggers.GetEnumerator();
 				while (keyEnum.MoveNext())
 				{
-					var valueEnum = keyEnum.Current.Value.GetEnumerator();
+					HashSet<CoroutineHandle>.Enumerator valueEnum = keyEnum.Current.Value.GetEnumerator();
 					while (valueEnum.MoveNext())
 						if (valueEnum.Current == firstHandle)
 							SwapToLast(keyEnum.Current.Key, firstHandle);
@@ -1916,7 +1916,7 @@ namespace MEC
 			if (!_waitingTriggers.ContainsKey(handle))
 				return;
 
-			var tasksEnum = _waitingTriggers[handle].GetEnumerator();
+			HashSet<CoroutineHandle>.Enumerator tasksEnum = _waitingTriggers[handle].GetEnumerator();
 			_waitingTriggers.Remove(handle);
 
 			while (tasksEnum.MoveNext())
@@ -1931,7 +1931,7 @@ namespace MEC
 
 		private bool HandleIsInWaitingList(CoroutineHandle handle)
 		{
-			var triggersEnum = _waitingTriggers.GetEnumerator();
+			Dictionary<CoroutineHandle, HashSet<CoroutineHandle>>.Enumerator triggersEnum = _waitingTriggers.GetEnumerator();
 			while (triggersEnum.MoveNext())
 				if (triggersEnum.Current.Value.Contains(handle))
 					return true;

@@ -83,7 +83,7 @@ public class KawaseBlur : ScriptableRendererFeature
 				cmd.Blit(tmpRt1, tmpRt2, BlurMaterial);
 
 				// pingpong
-				var rttmp = tmpRt1;
+				RenderTargetIdentifier rttmp = tmpRt1;
 				tmpRt1 = tmpRt2;
 				tmpRt2 = rttmp;
 			}
@@ -112,8 +112,8 @@ public class KawaseBlur : ScriptableRendererFeature
 
 		public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
 		{
-			var renderer = renderingData.cameraData.renderer;
-			var src = renderer.cameraColorTarget;
+			ScriptableRenderer renderer = renderingData.cameraData.renderer;
+			RenderTargetIdentifier src = renderer.cameraColorTarget;
 			Setup(src);
 		}
 	}

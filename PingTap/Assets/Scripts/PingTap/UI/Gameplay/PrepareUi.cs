@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Fralle.UI.HUD
+namespace Fralle.UI
 {
 	public class PrepareUi : MonoBehaviour
 	{

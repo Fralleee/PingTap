@@ -43,7 +43,7 @@ namespace Fralle.Abilities
 				turrets.RemoveAt(0);
 			}
 
-			var turretInstance = Instantiate(turretPrefab, cameraRig.position + cameraRig.forward, Quaternion.identity);
+			GameObject turretInstance = Instantiate(turretPrefab, cameraRig.position + cameraRig.forward, Quaternion.identity);
 			turretInstance.GetComponent<Rigidbody>().AddForce(cameraRig.forward * throwingForce);
 
 			turrets.Add(turretInstance);

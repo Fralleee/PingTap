@@ -60,8 +60,8 @@ public class DepthNormalsFeature : ScriptableRendererFeature
 				context.ExecuteCommandBuffer(cmd);
 				cmd.Clear();
 
-				var sortFlags = renderingData.cameraData.defaultOpaqueSortFlags;
-				var drawSettings = CreateDrawingSettings(shaderTagId, ref renderingData, sortFlags);
+				SortingCriteria sortFlags = renderingData.cameraData.defaultOpaqueSortFlags;
+				DrawingSettings drawSettings = CreateDrawingSettings(shaderTagId, ref renderingData, sortFlags);
 				drawSettings.perObjectData = PerObjectData.None;
 
 

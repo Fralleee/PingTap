@@ -63,14 +63,14 @@ namespace EPOOutline
 		public static void GetAllBlurKeywords(List<string> list)
 		{
 			list.Clear();
-			foreach (var item in BlurTypes)
+			foreach (KeyValuePair<BlurType, string> item in BlurTypes)
 				list.Add(item.Value);
 		}
 
 		public static void GetAllDilateKeywords(List<string> list)
 		{
 			list.Clear();
-			foreach (var item in DilateQualityKeywords)
+			foreach (KeyValuePair<DilateQuality, string> item in DilateQualityKeywords)
 				list.Add(item.Value);
 		}
 	}

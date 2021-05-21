@@ -328,9 +328,9 @@ namespace EPOOutline
 #endif
 
 #if UNITY_EDITOR
-			foreach (var view in UnityEditor.SceneView.sceneViews)
+			foreach (object view in UnityEditor.SceneView.sceneViews)
 			{
-				var viewToUpdate = (UnityEditor.SceneView)view;
+				UnityEditor.SceneView viewToUpdate = (UnityEditor.SceneView)view;
 
 				viewToUpdate.camera.RemoveCommandBuffer(CameraEvent.BeforeImageEffects, editorPreviewParameters.Buffer);
 			}
@@ -374,7 +374,7 @@ namespace EPOOutline
 				parametersToUse.OutlinablesToRender.Clear();
 				parametersToUse.OutlinablesToRender.Add(null);
 
-				foreach (var outlinable in temporaryOutlinables)
+				foreach (Outlinable outlinable in temporaryOutlinables)
 				{
 					parametersToUse.OutlinablesToRender[0] = outlinable;
 					OutlineEffect.SetupOutline(parametersToUse);
@@ -388,10 +388,10 @@ namespace EPOOutline
 #if UNITY_EDITOR
 		private void RemoveFromAllSceneViews()
 		{
-			foreach (var view in UnityEditor.SceneView.sceneViews)
+			foreach (object view in UnityEditor.SceneView.sceneViews)
 			{
-				var viewToUpdate = (UnityEditor.SceneView)view;
-				var eventTransferer = viewToUpdate.camera.GetComponent<OnPreRenderEventTransferer>();
+				UnityEditor.SceneView viewToUpdate = (UnityEditor.SceneView)view;
+				OnPreRenderEventTransferer eventTransferer = viewToUpdate.camera.GetComponent<OnPreRenderEventTransferer>();
 				if (eventTransferer != null)
 					eventTransferer.OnPreRenderEvent -= UpdateEditorCamera;
 
@@ -404,14 +404,14 @@ namespace EPOOutline
 			if (lastSelectedOutliner == null && outliners.Count > 0)
 				lastSelectedOutliner = outliners[0].gameObject;
 
-			var isSelected = Array.Find(UnityEditor.Selection.gameObjects, x => x == gameObject) ?? lastSelectedOutliner != null;
+			bool isSelected = Array.Find(UnityEditor.Selection.gameObjects, x => x == gameObject) ?? lastSelectedOutliner != null;
 			if (isSelected)
 				lastSelectedOutliner = gameObject;
 
-			foreach (var view in UnityEditor.SceneView.sceneViews)
+			foreach (object view in UnityEditor.SceneView.sceneViews)
 			{
-				var viewToUpdate = (UnityEditor.SceneView)view;
-				var eventTransferer = viewToUpdate.camera.GetComponent<OnPreRenderEventTransferer>();
+				UnityEditor.SceneView viewToUpdate = (UnityEditor.SceneView)view;
+				OnPreRenderEventTransferer eventTransferer = viewToUpdate.camera.GetComponent<OnPreRenderEventTransferer>();
 				if (eventTransferer != null)
 					eventTransferer.OnPreRenderEvent -= UpdateEditorCamera;
 
@@ -421,13 +421,13 @@ namespace EPOOutline
 			if (!isSelected)
 				return;
 
-			foreach (var view in UnityEditor.SceneView.sceneViews)
+			foreach (object view in UnityEditor.SceneView.sceneViews)
 			{
-				var viewToUpdate = (UnityEditor.SceneView)view;
+				UnityEditor.SceneView viewToUpdate = (UnityEditor.SceneView)view;
 				if (!viewToUpdate.sceneViewState.showImageEffects)
 					continue;
 
-				var eventTransferer = viewToUpdate.camera.GetComponent<OnPreRenderEventTransferer>();
+				OnPreRenderEventTransferer eventTransferer = viewToUpdate.camera.GetComponent<OnPreRenderEventTransferer>();
 				if (eventTransferer == null)
 					eventTransferer = viewToUpdate.camera.gameObject.AddComponent<OnPreRenderEventTransferer>();
 
@@ -466,13 +466,13 @@ namespace EPOOutline
 
 			parameters.DepthTarget = RenderTargetUtility.ComposeTarget(parameters, BuiltinRenderTextureType.CameraTarget);
 
-			var targetTexture = camera.targetTexture == null ? camera.activeTexture : camera.targetTexture;
+			RenderTexture targetTexture = camera.targetTexture == null ? camera.activeTexture : camera.targetTexture;
 
 			if (UnityEngine.XR.XRSettings.enabled
 					&& !parameters.IsEditorCamera
 					&& parameters.EyeMask != StereoTargetEyeMask.None)
 			{
-				var descriptor = UnityEngine.XR.XRSettings.eyeTextureDesc;
+				RenderTextureDescriptor descriptor = UnityEngine.XR.XRSettings.eyeTextureDesc;
 				parameters.TargetWidth = descriptor.width;
 				parameters.TargetHeight = descriptor.height;
 			}

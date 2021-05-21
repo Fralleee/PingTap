@@ -28,15 +28,15 @@ namespace EPOOutline.Demo
 
 		private void Update()
 		{
-			var forward = mainCamera.transform.forward;
+			Vector3 forward = mainCamera.transform.forward;
 			forward.y = 0;
 			forward.Normalize();
 
-			var right = mainCamera.transform.right;
+			Vector3 right = mainCamera.transform.right;
 			right.y = 0;
 			right.Normalize();
 
-			var direction = forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal");
+			Vector3 direction = forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal");
 
 			if (direction.magnitude > 0.1f)
 				transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * agent.angularSpeed);
@@ -50,7 +50,7 @@ namespace EPOOutline.Demo
 
 		private void OnTriggerEnter(Collider other)
 		{
-			var collectable = other.GetComponent<ICollectable>();
+			ICollectable collectable = other.GetComponent<ICollectable>();
 			if (collectable == null)
 				return;
 

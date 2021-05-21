@@ -69,7 +69,7 @@ namespace Fralle.Gameplay
 			if (position == Vector3.zero)
 				return;
 
-			var spawnedInstance = Instantiate(prefab, position.With(y: 0), Quaternion.identity);
+			GameObject spawnedInstance = Instantiate(prefab, position.With(y: 0), Quaternion.identity);
 			spawnedInstance.name = prefab.name;
 
 			spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
@@ -109,7 +109,7 @@ namespace Fralle.Gameplay
 				return;
 			}
 
-			var spawnedInstance = Instantiate(enemy, position.With(y: 0), Quaternion.identity);
+			GameObject spawnedInstance = Instantiate(enemy, position.With(y: 0), Quaternion.identity);
 			spawnedInstance.name = enemy.name;
 			spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
 			if (spawnedInstance.GetComponent<Enemy>())
