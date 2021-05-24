@@ -12,11 +12,13 @@ namespace Fralle
 		[SerializeField] Transform orientation;
 
 		PlayerController playerController;
+		Animator animator;
 		bool doRotate;
 
 		void Awake()
 		{
 			playerController = GetComponentInParent<PlayerController>();
+			animator = GetComponent<Animator>();
 		}
 
 		void Update()

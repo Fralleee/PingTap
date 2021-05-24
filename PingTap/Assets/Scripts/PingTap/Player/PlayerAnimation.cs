@@ -17,6 +17,10 @@ namespace Fralle
 		void Update()
 		{
 			animator.SetBool("IsMoving", playerController.IsMoving);
+			if (playerController.IsMoving) {
+				animator.SetFloat("Horizontal", playerController.Movement.x);
+				animator.SetFloat("Vertical", playerController.Movement.y);
+			}
 		}
 	}
 }
