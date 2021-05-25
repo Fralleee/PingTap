@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1353859140911905368}
   - component: {fileID: 8996435323641634898}
   - component: {fileID: 3441442550045044669}
+  - component: {fileID: 77712244}
   m_Layer: 0
   m_Name: Weapon Holder
   m_TagString: Untagged
@@ -106,6 +107,19 @@ MonoBehaviour:
   smoothSpeed: 10
   strafeRotationAmount: 1.6
   maxStrafeRotation: 5
+--- !u!114 &77712244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217825853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94b75f9414c7bc4ab6ddf6282c9a99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftHandIk: {fileID: 4794293440021960442}
 --- !u!1 &408842875
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +898,9 @@ MonoBehaviour:
   - {fileID: -5829858850810243681, guid: 37ada61b0fe792445b9ab0c38fea62c2, type: 3}
   weaponCamera: {fileID: 8196372973592497818}
   PlayerInput: {fileID: 0}
+  ignoreFirstPersonObjects:
+    serializedVersion: 2
+    m_Bits: 2
 --- !u!114 &1588032943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2972,7 +2989,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 66a34f01d541ea047a349628ce6cf2f5, type: 2}
+      objectReference: {fileID: 9100000, guid: 9b455d5f6bcc65440827e14a19db4cac, type: 2}
     - target: {fileID: 3040071031360261534, guid: 403a5ba6a2ca4094d9f0c3942e0f19cc,
         type: 3}
       propertyPath: m_ApplyRootMotion

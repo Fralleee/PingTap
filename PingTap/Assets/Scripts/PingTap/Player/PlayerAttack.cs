@@ -15,6 +15,8 @@ namespace Fralle
 
 		[HideInInspector] public PlayerInput PlayerInput;
 
+		[SerializeField] LayerMask ignoreFirstPersonObjects;
+
 		int firstPersonObjectsLayer;
 
 		bool primaryFireHold;
@@ -83,7 +85,7 @@ namespace Fralle
 				return;
 			}
 
-			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer, ignoreFirstPersonObjects);
 			weaponCamera.localPosition = combatant.EquippedWeapon.weaponCameraTransform.localPosition;
 			weaponCamera.localRotation = combatant.EquippedWeapon.weaponCameraTransform.localRotation;
 		}
