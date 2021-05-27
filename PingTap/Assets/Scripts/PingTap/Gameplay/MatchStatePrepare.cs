@@ -1,4 +1,4 @@
-﻿using Fralle.Core.Interfaces;
+﻿using Fralle.Core.HFSM;
 using UnityEngine;
 
 namespace Fralle.Gameplay
@@ -15,7 +15,7 @@ namespace Fralle.Gameplay
 			prepareTime = Managers.Instance.Settings.PrepareTimer;
 		}
 
-		public void Tick()
+		public void OnLogic()
 		{
 			prepareTime -= Time.deltaTime;
 			if (prepareTime <= 0)

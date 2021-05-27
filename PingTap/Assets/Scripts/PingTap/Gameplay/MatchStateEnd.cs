@@ -1,4 +1,4 @@
-﻿using Fralle.Core.Interfaces;
+﻿using Fralle.Core.HFSM;
 
 namespace Fralle.Gameplay
 {
@@ -10,7 +10,7 @@ namespace Fralle.Gameplay
 			Managers.Instance.Match.MatchOver();
 		}
 
-		public void Tick()
+		public void OnLogic()
 		{
 		}
 

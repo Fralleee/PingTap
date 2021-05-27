@@ -1,5 +1,4 @@
 using CombatSystem.Combat.Damage;
-using Fralle.Core.Extensions;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
@@ -38,8 +37,8 @@ public class DamageIK : MonoBehaviour
 		if (resetTimer > 0)
 			return;
 
-		Vector3 direction = dd.Force.normalized;
-		target.position = body.position + direction.With(y: -1.5f);
+		Vector3 direction = dd.Force.normalized * 2f;
+		target.position = body.position + direction; // .With(y: -1.5f);
 		chainIKConstraint.weight = maxWeight;
 		resetTimer = resetTime;
 	}

@@ -1,4 +1,4 @@
-﻿using Fralle.Core.Interfaces;
+﻿using Fralle.Core.HFSM;
 using UnityEngine;
 
 namespace Fralle.Gameplay
@@ -13,7 +13,7 @@ namespace Fralle.Gameplay
 			EventManager.AddListener<GameOverEvent>(OnGameOver);
 		}
 
-		public void Tick()
+		public void OnLogic()
 		{
 			Managers.Instance.Settings.WaveTimer += Time.deltaTime;
 		}
