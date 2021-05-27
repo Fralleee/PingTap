@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1574042133890056261}
   - component: {fileID: -5829858850810243681}
   - component: {fileID: 1923125321600534695}
+  - component: {fileID: 8577162246664948816}
   - component: {fileID: 4849536065285394247}
   - component: {fileID: 8780596973138301923}
   - component: {fileID: -3682598321081610597}
@@ -85,8 +86,7 @@ MonoBehaviour:
     type: 3}
   muzzleParticlePrefab: {fileID: 1277314995582460547, guid: a1af3095c408ed84c8e5fb46dde0af6d,
     type: 3}
-  lineRendererPrefab: {fileID: 5778922870757418504, guid: 9b2a9e2f3ec8c9a4aa2ee7ad0336681a,
-    type: 3}
+  bulletTraceController: {fileID: 0}
   bulletsPerFire: 1
   RangeDamageFalloff:
     serializedVersion: 2
@@ -115,7 +115,48 @@ MonoBehaviour:
   spreadRadius: 0.2
   spreadIncreaseEachShot: 0.075
   recovery: 0.5
+  spreadOnFirstShot: 0
   CurrentSpread: 0
+--- !u!114 &8577162246664948816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943643353794196974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22cdbf074d1c3b4488e0bef079219a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinDamage: 1
+  MaxDamage: 10
+  AmmoPerShot: 1
+  ShotsPerSecond: 20
+  Tapable: 1
+  Element: 0
+  DamageEffects: []
+  projectilePrefab: {fileID: 4536426464832425250, guid: 584a8f6471170db4fa1801fbbf0cc6a1,
+    type: 3}
+  projectileData:
+    Force: 20
+    UseGravity: 1
+    KinematicOnImpact: 0
+    ExplodeOnMaxRange: 0
+    ExplodeOnImpactTime: 0
+    ExplodeOnTime: 0
+    ExplosionRadius: 0
+    PushForce: 0
+    Range: 50
+    Attacker: {fileID: 0}
+    Damage: 0
+    Forward: {x: 0, y: 0, z: 0}
+    Element: 0
+    DamageEffects: []
+    HitboxLayer: 0
+  projectilesPerFire: 5
+  delayTimePerProjectiles: 0.1
+  spreadRadiusOnMaxRange: 10
 --- !u!114 &4849536065285394247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +197,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ReloadPercentage: 0
 --- !u!114 &8780596973138301923
 MonoBehaviour:
   m_ObjectHideFlags: 0
