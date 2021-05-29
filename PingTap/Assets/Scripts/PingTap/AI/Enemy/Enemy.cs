@@ -22,6 +22,7 @@ namespace Fralle.AI
 		public static List<Enemy> AllAliveEnemies = new List<Enemy>();
 
 		[HideInInspector] public DamageController DamageController;
+		[HideInInspector] public Combatant Combatant;
 
 		[Header("General")]
 		public int DamageAmount = 1;
@@ -32,6 +33,7 @@ namespace Fralle.AI
 		void Awake()
 		{
 			DamageController = GetComponent<DamageController>();
+			Combatant = GetComponent<Combatant>();
 
 			DamageController.OnDeath += HandleDeath;
 			DamageController.OnDamageTaken += HandleDamageTaken;

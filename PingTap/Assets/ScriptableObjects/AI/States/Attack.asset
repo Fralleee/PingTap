@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27faf85a7af722149b9443829a1cf999, type: 3}
-  m_Name: Wander
+  m_Name: Attack
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: 1f5064d07ecdd0a499c6020c96beac58, type: 2}
-  - {fileID: 11400000, guid: c1b4a30118c8e2348b743a0bf4318d71, type: 2}
+  actions: []
   transitions:
-  - changeIfFalse: 0
+  - changeIfFalse: 1
     decision: {fileID: 11400000, guid: b417a4b179c4f7c43955b60368850f70, type: 2}
+    state: {fileID: 11400000, guid: 2dd62dad3d9c65e41a88f7a12b3e2783, type: 2}
+  - changeIfFalse: 1
+    decision: {fileID: 11400000, guid: 64d2594e328bf4549bea707ac95a02b0, type: 2}
     state: {fileID: 11400000, guid: bb1b3f62bab86d44aa37d648c5fa58bd, type: 2}
-  sceneGizmoColor: {r: 0.12230313, g: 1, b: 0, a: 1}
+  sceneGizmoColor: {r: 1, g: 0, b: 0, a: 1}

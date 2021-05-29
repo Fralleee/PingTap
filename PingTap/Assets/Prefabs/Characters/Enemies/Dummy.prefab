@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageController: {fileID: 0}
+  Combatant: {fileID: 0}
   DamageAmount: 1
 --- !u!114 &4859456599272585035
 MonoBehaviour:
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageEffects: []
   IsDead: 0
+  LayerMap: {fileID: 0}
   healthbarPrefab: {fileID: 7818646480127840689, guid: b9be49762ca387c468181b4c791ad9c5,
     type: 3}
   floatingNumbersPrefab: {fileID: 2575742046452647322, guid: a7c0509aee3e91647baf5f39cd4ce9aa,
@@ -445,6 +447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110318940207460102, guid: 276d7c2f208a16943b24b28b63e2072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2059028589517967984, guid: 276d7c2f208a16943b24b28b63e2072f,
         type: 3}
@@ -919,6 +926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 1110318940207460102, guid: 276d7c2f208a16943b24b28b63e2072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 2112426097198978925, guid: 276d7c2f208a16943b24b28b63e2072f,
         type: 3}
       propertyPath: m_IsActive
@@ -1084,6 +1096,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Target Information
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476178161365250379, guid: 5366d2ea56fa35c4382d2048e0f6431d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5366d2ea56fa35c4382d2048e0f6431d, type: 3}

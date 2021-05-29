@@ -7,18 +7,29 @@ namespace Fralle.PingTap
 	[CreateAssetMenu(menuName = "AI/Actions/Wander")]
 	public class Wander : Action
 	{
-		[SerializeField] float wanderDistance = 10f;
+		[SerializeField] float wanderDistance = 5f;
 		[SerializeField] LayerMask layerMask;
 
-		public override void Act(IStateController ctrl)
+		EnemyStateController controller;
+
+		public override void OnEnter(IStateController ctrl)
 		{
-			EnemyStateController controller = (EnemyStateController)ctrl;
+			controller = (EnemyStateController)ctrl;
+		}
+
+		public override void Tick(IStateController ctrl)
+		{
 			if (controller.navMeshAgent.remainingDistance > 0.5f)
 				return;
 
-			Debug.Log("WANDERING");
 			Vector3 newPos = RandomNavSphere(controller.transform.position);
 			controller.navMeshAgent.SetDestination(newPos);
+		}
+
+		public override void OnExit(IStateController ctrl)
+		{
+			controller.navMeshAgent.isStopped = true;
+			controller.navMeshAgent.ResetPath();
 		}
 
 		Vector3 RandomNavSphere(Vector3 origin)

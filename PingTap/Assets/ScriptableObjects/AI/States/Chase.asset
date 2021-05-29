@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27faf85a7af722149b9443829a1cf999, type: 3}
   m_Name: Chase
   m_EditorClassIdentifier: 
-  actions: []
-  transitions: []
+  actions:
+  - {fileID: 11400000, guid: d43d5785e44602e40b80d116ad2ee039, type: 2}
+  transitions:
+  - changeIfFalse: 1
+    decision: {fileID: 11400000, guid: b417a4b179c4f7c43955b60368850f70, type: 2}
+    state: {fileID: 11400000, guid: 2dd62dad3d9c65e41a88f7a12b3e2783, type: 2}
+  - changeIfFalse: 0
+    decision: {fileID: 11400000, guid: 64d2594e328bf4549bea707ac95a02b0, type: 2}
+    state: {fileID: 11400000, guid: c7fb31d9ae00e43419c032bae1c68dc0, type: 2}
   sceneGizmoColor: {r: 1, g: 0.6415999, b: 0, a: 1}

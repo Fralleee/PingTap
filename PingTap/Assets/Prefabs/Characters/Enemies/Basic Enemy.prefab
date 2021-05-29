@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 3262975734102625350}
   - component: {fileID: 1859294474}
   - component: {fileID: 7108080804469347768}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Basic Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageController: {fileID: 0}
+  Combatant: {fileID: 0}
   DamageAmount: 1
 --- !u!114 &4859456599272585035
 MonoBehaviour:
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageEffects: []
   IsDead: 0
+  LayerMap: {fileID: 11400000, guid: f57ccc6c10f1b09478cd5d40ff76448c, type: 2}
   healthbarPrefab: {fileID: 7818646480127840689, guid: b9be49762ca387c468181b4c791ad9c5,
     type: 3}
   floatingNumbersPrefab: {fileID: 2575742046452647322, guid: a7c0509aee3e91647baf5f39cd4ce9aa,
@@ -368,9 +370,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711c4e621668f1c4cb71a8637fc7e521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateTimeElapsed: 0
+  Combatant: {fileID: 0}
+  DamageController: {fileID: 0}
+  Enemy: {fileID: 0}
+  target: {fileID: 0}
+  HostileLayerMask:
+    serializedVersion: 2
+    m_Bits: 8388608
+  AttackRange: 10
   currentState: {fileID: 11400000, guid: 2dd62dad3d9c65e41a88f7a12b3e2783, type: 2}
-  remainState: {fileID: 11400000, guid: 2dd62dad3d9c65e41a88f7a12b3e2783, type: 2}
   navMeshAgent: {fileID: 0}
 --- !u!114 &1945660455
 MonoBehaviour:
@@ -497,6 +505,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110318940207460102, guid: 276d7c2f208a16943b24b28b63e2072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2059028589517967984, guid: 276d7c2f208a16943b24b28b63e2072f,
         type: 3}
@@ -971,6 +984,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 1110318940207460102, guid: 276d7c2f208a16943b24b28b63e2072f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 2112426097198978925, guid: 276d7c2f208a16943b24b28b63e2072f,
         type: 3}
       propertyPath: m_IsActive
@@ -1136,6 +1154,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Target Information
+      objectReference: {fileID: 0}
+    - target: {fileID: 8476178161365250379, guid: 5366d2ea56fa35c4382d2048e0f6431d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5366d2ea56fa35c4382d2048e0f6431d, type: 3}

@@ -32,13 +32,18 @@ namespace Fralle
 
 		void Start()
 		{
-			int layer = LayerMask.NameToLayer("Player");
-			gameObject.SetLayerRecursively(layer, ignoreLayers);
-
+			SetupLayers();
 			Camera = Camera.main;
 
 			//QuantumConsole.Instance.OnActivate += ConsoleActivated;
 			//QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
+		}
+
+		void SetupLayers()
+		{
+			int layer = LayerMask.NameToLayer("Ignored FPS Model");
+			int ignoreLayer = LayerMask.NameToLayer("First Person Objects");
+			gameObject.SetLayerRecursively(layer, 1 << ignoreLayer);
 		}
 
 		void OnGamestateChanged(GameState gameState)
@@ -78,7 +83,6 @@ namespace Fralle
 			//QuantumConsole.Instance.OnActivate -= ConsoleActivated;
 			//QuantumConsole.Instance.OnDeactivate -= ConsoleDeactivated;
 		}
-
 
 	}
 }
