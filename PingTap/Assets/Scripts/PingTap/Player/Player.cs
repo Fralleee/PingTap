@@ -8,8 +8,6 @@ namespace Fralle
 {
 	public class Player : MonoBehaviour
 	{
-		[SerializeField] LayerMask ignoreLayers;
-
 		[HideInInspector] public Camera Camera;
 		[HideInInspector] public Combatant Combatant;
 		[HideInInspector] public PlayerInput PlayerInput;
@@ -32,18 +30,10 @@ namespace Fralle
 
 		void Start()
 		{
-			SetupLayers();
 			Camera = Camera.main;
 
 			//QuantumConsole.Instance.OnActivate += ConsoleActivated;
 			//QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
-		}
-
-		void SetupLayers()
-		{
-			int layer = LayerMask.NameToLayer("Ignored FPS Model");
-			int ignoreLayer = LayerMask.NameToLayer("First Person Objects");
-			gameObject.SetLayerRecursively(layer, 1 << ignoreLayer);
 		}
 
 		void OnGamestateChanged(GameState gameState)
