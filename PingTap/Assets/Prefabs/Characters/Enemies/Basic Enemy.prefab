@@ -110,7 +110,7 @@ MonoBehaviour:
       size: 0.1
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0}
-    m_Visible: 1
+    m_Visible: 0
 --- !u!1 &4859456597923751351
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,14 +179,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4859456599272585037}
-  - component: {fileID: 4859456599272585036}
+  - component: {fileID: 1859294474}
+  - component: {fileID: 3262975734102625350}
+  - component: {fileID: 953206866}
+  - component: {fileID: 4025061100841511208}
   - component: {fileID: 4859456599272585035}
   - component: {fileID: 4859456599272585034}
   - component: {fileID: 645429337}
-  - component: {fileID: 3262975734102625350}
-  - component: {fileID: 1859294474}
+  - component: {fileID: 4859456599272585036}
   - component: {fileID: 7108080804469347768}
-  - component: {fileID: 953206866}
   m_Layer: 9
   m_Name: Basic Enemy
   m_TagString: Untagged
@@ -211,7 +212,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 203.64, z: 0}
---- !u!114 &4859456599272585036
+--- !u!195 &1859294474
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859456599272585033}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 2
+  m_Acceleration: 100
+  avoidancePriority: 50
+  m_AngularSpeed: 400
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3262975734102625350
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,12 +243,90 @@ MonoBehaviour:
   m_GameObject: {fileID: 4859456599272585033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1adb17b8cec3d4342b7a6a64f7ed02be, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageController: {fileID: 0}
-  Combatant: {fileID: 0}
-  DamageAmount: 1
+  drawingMode: 1
+  outlineLayer: 0
+  outlineTargets:
+  - edgeDilateAmount: 5
+    frontEdgeDilateAmount: 5
+    backEdgeDilateAmount: 5
+    Renderer: {fileID: 2649892021482396170}
+    SubmeshIndex: 0
+    ForceRecalculateBounds: 0
+    CutoutDescriptionType: 0
+    CutoutThreshold: 0.5
+    CullMode: 2
+    cutoutTextureName: 
+    DilateRenderingMode: 0
+    cutoutTextureIndex: 0
+  renderStyle: 1
+  outlineParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  backParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+  frontParameters:
+    enabled: 1
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    dilateShift: 1
+    blurShift: 1
+    fillPass:
+      shader: {fileID: 0}
+      serializedProperties: []
+--- !u!114 &953206866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859456599272585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04432d3c09603514a933c4fad2bfde54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 15
+  Angle: 60
+  Height: 2
+  scanFrequency: 10
+  layers:
+    serializedVersion: 2
+    m_Bits: 64
+  occlusionLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  sensorColor: {r: 0.015686274, g: 1, b: 0.57066166, a: 0.19607843}
+  inSightColor: {r: 0, g: 1, b: 0.28873992, a: 0.60784316}
+  DebugSensor: 1
+  DebugTargets: 1
+--- !u!114 &4025061100841511208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859456599272585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859ebf0cb64065d49b9876003ec384a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  memorySpan: 4
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  Debug: 1
 --- !u!114 &4859456599272585035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +386,7 @@ MonoBehaviour:
   target: {fileID: 8970487726704469927}
   resetTime: 0.25
   maxWeight: 0.15
---- !u!114 &3262975734102625350
+--- !u!114 &4859456599272585036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,71 +395,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4859456599272585033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe91dc294731a9428c0941ea7579110, type: 3}
+  m_Script: {fileID: 11500000, guid: 1adb17b8cec3d4342b7a6a64f7ed02be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawingMode: 1
-  outlineLayer: 0
-  outlineTargets:
-  - edgeDilateAmount: 5
-    frontEdgeDilateAmount: 5
-    backEdgeDilateAmount: 5
-    Renderer: {fileID: 2649892021482396170}
-    SubmeshIndex: 0
-    ForceRecalculateBounds: 0
-    CutoutDescriptionType: 0
-    CutoutThreshold: 0.5
-    CullMode: 2
-    cutoutTextureName: 
-    DilateRenderingMode: 0
-    cutoutTextureIndex: 0
-  renderStyle: 1
-  outlineParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  backParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
-  frontParameters:
-    enabled: 1
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-    dilateShift: 1
-    blurShift: 1
-    fillPass:
-      shader: {fileID: 0}
-      serializedProperties: []
---- !u!195 &1859294474
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4859456599272585033}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 2
-  m_Acceleration: 100
-  avoidancePriority: 50
-  m_AngularSpeed: 400
-  m_StoppingDistance: 0.5
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  DamageController: {fileID: 0}
+  Combatant: {fileID: 0}
+  DamageAmount: 1
 --- !u!114 &7108080804469347768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,32 +423,6 @@ MonoBehaviour:
   AttackRange: 10
   currentState: {fileID: 11400000, guid: 2dd62dad3d9c65e41a88f7a12b3e2783, type: 2}
   navMeshAgent: {fileID: 0}
---- !u!114 &953206866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4859456599272585033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04432d3c09603514a933c4fad2bfde54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Distance: 10
-  Angle: 45
-  Height: 2
-  sensorColor: {r: 1, g: 0.3810123, b: 0.015686274, a: 0.60784316}
-  inRangeColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0.60784316}
-  inSightColor: {r: 0, g: 1, b: 0.28873992, a: 0.60784316}
-  scanFrequency: 30
-  layers:
-    serializedVersion: 2
-    m_Bits: 64
-  occlusionLayers:
-    serializedVersion: 2
-    m_Bits: 1
-  Objects: []
 --- !u!114 &1945660455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +430,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5742419199319115311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2d8418b0b9634b1892b0268dd9c2743, type: 3}
   m_Name: 

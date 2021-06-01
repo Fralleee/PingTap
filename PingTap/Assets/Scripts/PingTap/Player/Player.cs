@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Fralle
 {
+	[SelectionBase]
 	public class Player : MonoBehaviour
 	{
 		[HideInInspector] public Camera Camera;

@@ -9,6 +9,7 @@ using UnityEngine;
 namespace Fralle.AI
 {
 	[RequireComponent(typeof(DamageController))]
+	[SelectionBase]
 	public class Enemy : MonoBehaviour
 	{
 		public static event Action<Enemy> OnEnemyReachedPowerStone = delegate { };
