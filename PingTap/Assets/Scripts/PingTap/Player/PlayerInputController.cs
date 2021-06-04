@@ -12,7 +12,7 @@ namespace Fralle
 		{
 			playerInput = GetComponent<PlayerInput>();
 
-			if (Managers.Instance.UiManager != null)
+			if (Managers.Instance && Managers.Instance.UiManager)
 				Managers.Instance.UiManager.OnMenuToggle += OnMenuToggle;
 
 			// Console

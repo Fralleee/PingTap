@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-	public class MatchStateLive : IState
+	public class MatchStateLive : IState<MatchState>
 	{
+		public MatchState identifier => MatchState.Live;
 		public void OnEnter()
 		{
 			Managers.Instance.State.SetState(MatchState.Live);

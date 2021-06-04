@@ -1,6 +1,7 @@
 ﻿using Fralle.Core.HFSM;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Fralle.Gameplay
@@ -13,10 +14,10 @@ namespace Fralle.Gameplay
 
 		public static GameState GameState = GameState.Playing;
 		public MatchState MatchState;
-		public IState CurrentState;
+		public IState<MatchState> CurrentState;
 
-		StateMachine stateMachine;
-		readonly Dictionary<MatchState, IState> states = new Dictionary<MatchState, IState>();
+		StateMachine<MatchState> stateMachine;
+		readonly HashSet<IState<MatchState>> states = new HashSet<IState<MatchState>>();
 
 		void Start()
 		{
@@ -25,11 +26,11 @@ namespace Fralle.Gameplay
 
 		void SetupStateMachine()
 		{
-			stateMachine = new StateMachine();
+			stateMachine = new StateMachine<MatchState>();
 
-			states.Add(MatchState.Prepare, new MatchStatePrepare());
-			states.Add(MatchState.Live, new MatchStateLive());
-			states.Add(MatchState.End, new MatchStateEnd());
+			states.Add(new MatchStatePrepare());
+			states.Add(new MatchStateLive());
+			states.Add(new MatchStateEnd());
 
 			if (startGame)
 			{
@@ -39,13 +40,14 @@ namespace Fralle.Gameplay
 
 		void Update()
 		{
-			stateMachine.Tick();
+			stateMachine.OnLogic();
 		}
 
 		public void SetState(MatchState newState)
 		{
-			stateMachine.SetState(states[newState]);
-			MatchState = newState;
+			var state = states.FirstOrDefault(x => x.identifier == newState);
+			stateMachine.SetState(state);
+			MatchState = state.identifier;
 			EventManager.Broadcast(new GameStateChangeEvent(MatchState, newState));
 		}
 

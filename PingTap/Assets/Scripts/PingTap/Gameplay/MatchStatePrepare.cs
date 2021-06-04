@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-	public class MatchStatePrepare : IState
+	public class MatchStatePrepare : IState<MatchState>
 	{
+		public MatchState identifier => MatchState.Prepare;
 		float prepareTime;
 
 		public void OnEnter()

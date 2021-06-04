@@ -13,7 +13,8 @@ namespace Fralle.Gameplay
 
 		void Start()
 		{
-			Managers.Instance.Spawner.OnSpawnComplete += HandleSpawnComplete;
+			if (Managers.Instance && Managers.Instance.Spawner)
+				Managers.Instance.Spawner.OnSpawnComplete += HandleSpawnComplete;
 			Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
 		}
 

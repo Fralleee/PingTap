@@ -12,14 +12,15 @@ namespace Fralle.PingTap
 			if (configuration)
 			{
 				headbob = GetComponentInParent<HeadbobMaster>();
-				headbob.overrideConfguration = configuration;
+				if (headbob)
+					headbob.overrideConfguration = configuration;
 			}
 
 		}
 
 		void OnDestroy()
 		{
-			if (configuration)
+			if (headbob)
 				headbob.overrideConfguration = null;
 		}
 	}
