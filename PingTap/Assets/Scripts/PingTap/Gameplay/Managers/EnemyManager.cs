@@ -15,7 +15,7 @@ namespace Fralle.Gameplay
 		{
 			if (Managers.Instance && Managers.Instance.Spawner)
 				Managers.Instance.Spawner.OnSpawnComplete += HandleSpawnComplete;
-			Enemy.OnAnyEnemyDeath += HandleEnemyDeath;
+			Unit.OnAnyUnitDeath += HandleEnemyDeath;
 		}
 
 		public void PrepareSpawner()
@@ -35,9 +35,9 @@ namespace Fralle.Gameplay
 			spawnComplete = true;
 		}
 
-		void HandleEnemyDeath(Enemy enemy)
+		void HandleEnemyDeath(Unit enemy)
 		{
-			if (spawnComplete && Enemy.AliveCount == 0)
+			if (spawnComplete && Unit.AliveCount == 0)
 			{
 				EventManager.Broadcast(new GameOverEvent(true));
 			}
@@ -48,7 +48,7 @@ namespace Fralle.Gameplay
 			if (!Managers.Destroyed)
 				Managers.Instance.Spawner.OnSpawnComplete -= HandleSpawnComplete;
 
-			Enemy.OnAnyEnemyDeath -= HandleEnemyDeath;
+			Unit.OnAnyUnitDeath -= HandleEnemyDeath;
 		}
 	}
 }

@@ -1,46 +1,39 @@
-using CombatSystem.Combat.Damage;
 using CombatSystem.Targeting;
-using Fralle.Core.HFSM;
-using Fralle.PingTap.AI;
+using Fralle.Core.AI;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Fralle.PingTap
+namespace Fralle.PingTap.AI
 {
 	public class WanderState : IState<AIState>
 	{
 		public AIState identifier => _identifier;
 		AIState _identifier;
 
-		int scanFrequency = 1;
-		float wanderDistance = 5f;
-		float wanderSpeed = 2f;
-
-		int defaultScanFrequency;
-		float defaultSpeed;
-
+		AIBrain aiBrain;
 		AISensor aiSensor;
 		NavMeshAgent navMeshAgent;
 
+		bool searchState;
+		float wanderDistance = 10f;
 
-		public WanderState(AISensor aiSensor, NavMeshAgent navMeshAgent, bool searching = false)
+
+		public WanderState(AIBrain aiBrain, AISensor aiSensor, NavMeshAgent navMeshAgent, bool searching = false)
 		{
+			this.aiBrain = aiBrain;
 			this.aiSensor = aiSensor;
 			this.navMeshAgent = navMeshAgent;
 			_identifier = AIState.Wandering;
+			searchState = searching;
 
-			if (searching)
-			{
+			if (searchState)
 				_identifier = AIState.Searching;
-				scanFrequency = 3;
-				wanderSpeed = 5f;
-			}
 		}
 
 		public void OnEnter()
 		{
-			navMeshAgent.speed = wanderSpeed;
-			aiSensor.scanFrequency = scanFrequency;
+			navMeshAgent.speed = searchState ? aiBrain.runSpeed : aiBrain.walkSpeed;
+			aiSensor.scanFrequency = searchState ? aiBrain.searchScanFrequency : aiBrain.idleScanFrequency;
 		}
 
 		public void OnLogic()
@@ -54,8 +47,8 @@ namespace Fralle.PingTap
 
 		public void OnExit()
 		{
-			aiSensor.scanFrequency = defaultScanFrequency;
-			navMeshAgent.speed = defaultSpeed;
+			aiSensor.scanFrequency = aiBrain.idleScanFrequency;
+			navMeshAgent.speed = aiBrain.walkSpeed;
 			navMeshAgent.isStopped = true;
 			navMeshAgent.ResetPath();
 		}

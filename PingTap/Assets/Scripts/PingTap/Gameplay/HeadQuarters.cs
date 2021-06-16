@@ -18,7 +18,7 @@ namespace Fralle.Gameplay
 		{
 			DamageController = GetComponent<DamageController>();
 			DamageController.OnDeath += HandleDeath;
-			Enemy.OnEnemyReachedPowerStone += HandleEnemyReachedPowerStone;
+			Unit.OnUnitReachedDestination += HandleEnemyReachedPowerStone;
 		}
 
 		void HandleDeath(DamageController damageController, DamageData damageData)
@@ -28,7 +28,7 @@ namespace Fralle.Gameplay
 			Destroy(gameObject);
 		}
 
-		void HandleEnemyReachedPowerStone(Enemy enemy)
+		void HandleEnemyReachedPowerStone(Unit enemy)
 		{
 			DamageController.TakeDamage(new DamageData()
 			{
@@ -39,7 +39,7 @@ namespace Fralle.Gameplay
 		void OnDestroy()
 		{
 			DamageController.OnDeath -= HandleDeath;
-			Enemy.OnEnemyReachedPowerStone -= HandleEnemyReachedPowerStone;
+			Unit.OnUnitReachedDestination -= HandleEnemyReachedPowerStone;
 		}
 	}
 }

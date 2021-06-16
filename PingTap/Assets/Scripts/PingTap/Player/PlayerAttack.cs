@@ -15,8 +15,6 @@ namespace Fralle
 
 		[HideInInspector] public PlayerInput PlayerInput;
 
-		[SerializeField] LayerMask ignoreFirstPersonObjects;
-
 		int firstPersonObjectsLayer;
 
 		bool primaryFireHold;
@@ -27,7 +25,7 @@ namespace Fralle
 
 		void Awake()
 		{
-			firstPersonObjectsLayer = LayerMask.NameToLayer("First Person Objects");
+			firstPersonObjectsLayer = LayerMask.NameToLayer("FPO");
 
 			if (combatant == null)
 				combatant = GetComponent<Combatant>();
@@ -85,7 +83,7 @@ namespace Fralle
 				return;
 			}
 
-			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer, ignoreFirstPersonObjects);
+			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
 			weaponCamera.localPosition = combatant.EquippedWeapon.weaponCameraTransform.localPosition;
 			weaponCamera.localRotation = combatant.EquippedWeapon.weaponCameraTransform.localRotation;
 		}
@@ -119,7 +117,7 @@ namespace Fralle
 		public void EquipFirstWeaponInList()
 		{
 			combatant.EquipWeapon(weapons[0], false);
-			combatant.EquippedWeapon.gameObject.SetLayerRecursively(LayerMask.NameToLayer("First Person Objects"));
+			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
 			Debug.Log($"Equipped: {combatant.EquippedWeapon}");
 		}
 

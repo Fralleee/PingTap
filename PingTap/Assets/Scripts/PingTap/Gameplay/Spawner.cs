@@ -72,9 +72,9 @@ namespace Fralle.Gameplay
 			GameObject spawnedInstance = Instantiate(prefab, position.With(y: 0), Quaternion.identity);
 			spawnedInstance.name = prefab.name;
 
-			spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
+			//spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
 
-			if (spawnedInstance.GetComponent<Enemy>())
+			if (spawnedInstance.GetComponent<Unit>())
 				enemyCount += 1;
 
 			nextSpawnTime += currentWave.SpawnRate;
@@ -111,8 +111,8 @@ namespace Fralle.Gameplay
 
 			GameObject spawnedInstance = Instantiate(enemy, position.With(y: 0), Quaternion.identity);
 			spawnedInstance.name = enemy.name;
-			spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
-			if (spawnedInstance.GetComponent<Enemy>())
+			//spawnedInstance.GetComponent<AiNavigation>().SetDestination(playerHome.Entry);
+			if (spawnedInstance.GetComponent<Unit>())
 				enemyCount += 1;
 		}
 

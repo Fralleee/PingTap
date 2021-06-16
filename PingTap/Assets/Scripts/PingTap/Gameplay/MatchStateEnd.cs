@@ -1,4 +1,4 @@
-﻿using Fralle.Core.HFSM;
+﻿using Fralle.Core.AI;
 
 namespace Fralle.Gameplay
 {

@@ -1,35 +1,27 @@
-
 using CombatSystem.Targeting;
-using Fralle.Core.HFSM;
-using Fralle.PingTap.AI;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Fralle.Core.AI;
 using UnityEngine.AI;
 
-namespace Fralle.PingTap
+namespace Fralle.PingTap.AI
 {
 	public class ChaseState : IState<AIState>
 	{
 		public AIState identifier => AIState.Chasing;
 
-		public Vector3 position;
-
+		AIBrain aiBrain;
 		AITargetingSystem aiTargetingSystem;
 		NavMeshAgent navMeshAgent;
 
-		float speed = 6f;
-		float defaultSpeed;
-
-		public ChaseState(AITargetingSystem aiTargetingSystem, NavMeshAgent navMeshAgent)
+		public ChaseState(AIBrain aiBrain, AITargetingSystem aiTargetingSystem, NavMeshAgent navMeshAgent)
 		{
+			this.aiBrain = aiBrain;
 			this.aiTargetingSystem = aiTargetingSystem;
 			this.navMeshAgent = navMeshAgent;
 		}
 
 		public void OnEnter()
 		{
-			navMeshAgent.speed = speed;
+			navMeshAgent.speed = aiBrain.runSpeed;
 		}
 
 		public void OnLogic()
@@ -39,7 +31,7 @@ namespace Fralle.PingTap
 
 		public void OnExit()
 		{
-			navMeshAgent.speed = defaultSpeed;
+			navMeshAgent.speed = aiBrain.walkSpeed;
 			navMeshAgent.isStopped = true;
 			navMeshAgent.ResetPath();
 		}
