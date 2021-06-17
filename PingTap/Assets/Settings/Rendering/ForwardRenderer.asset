@@ -20,7 +20,7 @@ MonoBehaviour:
       RenderQueueType: 1
       LayerMask:
         serializedVersion: 2
-        m_Bits: 4194304
+        m_Bits: 32
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -71,10 +71,10 @@ MonoBehaviour:
     materialErrorPS: {fileID: 4800000, guid: 5fd9a8feb75a4b5894c241777f519d4e, type: 3}
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 4194103
+    m_Bits: 4294967295
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 4194103
+    m_Bits: 4294967295
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 3
@@ -111,13 +111,13 @@ MonoBehaviour:
   m_Name: KawaseBlur
   m_EditorClassIdentifier: 
   m_Active: 1
-  settings:
-    renderPassEvent: 450
-    blurMaterial: {fileID: 2100000, guid: a00afda211f274f6ca6cce958e4e13a5, type: 2}
-    blurPasses: 8
-    downsample: 2
-    copyToFramebuffer: 0
-    targetName: _blurTexture
+  Settings:
+    RenderPassEvent: 500
+    BlurMaterial: {fileID: 0}
+    BlurPasses: 1
+    Downsample: 1
+    CopyToFramebuffer: 0
+    TargetName: _blurTexture
 --- !u!114 &5226530478053982904
 MonoBehaviour:
   m_ObjectHideFlags: 0
