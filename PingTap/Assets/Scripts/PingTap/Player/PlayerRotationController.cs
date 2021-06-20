@@ -37,7 +37,7 @@ namespace Fralle
 				return;
 
 			transform.rotation = Quaternion.Lerp(transform.rotation, orientation.rotation, Time.deltaTime * 10f);
-			if (!(Vector3.Angle(orientation.forward, transform.forward) < 0.5f))
+			if (Vector3.Angle(orientation.forward, transform.forward) > 3f)
 				return;
 
 			transform.rotation = orientation.rotation;

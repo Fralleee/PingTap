@@ -10,8 +10,17 @@ namespace Fralle.PingTap.AI
 
 		[Header("Configuration")]
 		[SerializeField] AIPersonality personality;
+
+		[Header("Range - Distance")]
+		public float attackRange = 10f;
+		public float attackStoppingDistance = 5f;
+
+		[Header("Movement")]
 		public float walkSpeed = 2f;
 		public float runSpeed = 6f;
+		public float rotateOnAngle = 35;
+
+		[Header("Scanning")]
 		public int idleScanFrequency = 1;
 		public int searchScanFrequency = 4;
 
