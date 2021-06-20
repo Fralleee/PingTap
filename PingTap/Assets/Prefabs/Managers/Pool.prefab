@@ -82,9 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb9684a6b3a6874e93822bf346edeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCreate: 1
-  AllowModify: 1
-  PrintAllLogsOnQuit: 0
 --- !u!1 &1940261902115436816
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3489380957838968782
 Transform:
   m_ObjectHideFlags: 0
@@ -439,9 +436,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoolBlock:
-    Size: 10
+    Size: 5
     EmptyBehavior: 0
-    MaxSize: 20
+    MaxSize: 10
     MaxEmptyBehavior: 1
     Prefab: {fileID: 5426031798781912364, guid: 12a91f77ed72e8d4388cd5a419e6e464,
       type: 3}
