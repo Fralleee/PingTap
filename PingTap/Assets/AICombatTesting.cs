@@ -27,7 +27,11 @@ public class AICombatTesting : BenchmarkEvent
 	IEnumerator Wave1()
 	{
 		Debug.Log("--- Wave 1 ---");
-		SpawnEnemies(wave1EnemyCount);
+		for (int i = 0; i < wave1EnemyCount; i++)
+		{
+			yield return new WaitForEndOfFrame();
+			SpawnEnemy(i);
+		}
 		yield return new WaitForSeconds(timeBetweenWaves);
 		Unit.Despawn(0);
 		Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
@@ -36,7 +40,11 @@ public class AICombatTesting : BenchmarkEvent
 	IEnumerator Wave2()
 	{
 		Debug.Log("--- Wave 2 ---");
-		SpawnEnemies(wave2EnemyCount);
+		for (int i = 0; i < wave2EnemyCount; i++)
+		{
+			yield return new WaitForEndOfFrame();
+			SpawnEnemy(i);
+		}
 		yield return new WaitForSeconds(timeBetweenWaves);
 		Unit.Despawn(0);
 		Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
@@ -45,7 +53,11 @@ public class AICombatTesting : BenchmarkEvent
 	IEnumerator Wave3()
 	{
 		Debug.Log("--- Wave 3 ---");
-		SpawnEnemies(wave3EnemyCount);
+		for (int i = 0; i < wave3EnemyCount; i++)
+		{
+			yield return new WaitForEndOfFrame();
+			SpawnEnemy(i);
+		}
 		yield return new WaitForSeconds(timeBetweenWaves);
 		Unit.Despawn(0);
 		Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
@@ -54,7 +66,12 @@ public class AICombatTesting : BenchmarkEvent
 	IEnumerator Wave4()
 	{
 		Debug.Log("--- Wave 4 ---");
-		SpawnEnemies(wave4EnemyCount);
+		for (int i = 0; i < wave4EnemyCount; i++)
+		{
+			yield return new WaitForEndOfFrame();
+			SpawnEnemy(i);
+		}
+		//SpawnEnemies(wave4EnemyCount);
 		yield return new WaitForSeconds(timeBetweenWaves);
 		Unit.Despawn(0);
 		Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
@@ -66,17 +83,14 @@ public class AICombatTesting : BenchmarkEvent
 		Debug.Log("--- Finished running AI Combat Testing ---");
 	}
 
-	void SpawnEnemies(int count)
+	void SpawnEnemy(int i)
 	{
-		for (int i = 0; i < count; i++)
-		{
-			RandomPoint(out Vector3 position);
-			var instance = Instantiate(enemyPrefab, position, Quaternion.identity);
-			instance.name = (i % 2) == 0 ? "Team 1 Soldier" : "Team 2 Soldier";
-			var teamController = instance.GetComponent<TeamController>();
-			teamController.team = (i % 2) == 0 ? Team.Team1 : Team.Team2;
-			teamController.Setup();
-		}
+		RandomPoint(out Vector3 position);
+		var instance = Instantiate(enemyPrefab, position, Quaternion.identity);
+		instance.name = (i % 2) == 0 ? "Team 1 Soldier" : "Team 2 Soldier";
+		var teamController = instance.GetComponent<TeamController>();
+		teamController.team = (i % 2) == 0 ? Team.Team1 : Team.Team2;
+		teamController.Setup();
 	}
 
 	bool RandomPoint(out Vector3 result)
