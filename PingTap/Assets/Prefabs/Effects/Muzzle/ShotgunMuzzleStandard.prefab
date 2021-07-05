@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8140679669186986080}
   - component: {fileID: 8226220461854914326}
   - component: {fileID: 8227113558151782388}
-  - component: {fileID: 3114944569995681238}
-  - component: {fileID: 2076694092239146040}
   m_Layer: 0
   m_Name: ShotgunMuzzleStandard
   m_TagString: Untagged
@@ -52,7 +50,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -4905,32 +4903,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &3114944569995681238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8136334730752116704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97ab692bc4f43644992bc3f3fbac59de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PoolScript: {fileID: 0}
-  TimeSpawned: 0
---- !u!114 &2076694092239146040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8136334730752116704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1542191e2d76d2840ac102b7790acf5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8136340877105049668
 GameObject:
   m_ObjectHideFlags: 0
@@ -4979,7 +4951,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9907,7 +9879,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

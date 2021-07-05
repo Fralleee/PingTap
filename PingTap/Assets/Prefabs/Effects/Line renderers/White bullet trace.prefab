@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2358260240444374544}
   - component: {fileID: 7580903268398148691}
-  - component: {fileID: 1426698479927815099}
-  - component: {fileID: -1699953379042756471}
-  - component: {fileID: -6691878918080269260}
+  - component: {fileID: 911189144358922059}
   m_Layer: 0
   m_Name: White bullet trace
   m_TagString: Untagged
@@ -53,7 +51,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 624ae67ce3106c74fb02fc63ad7ca80d, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,7 +139,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &1426698479927815099
+--- !u!114 &911189144358922059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,34 +148,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5778922870757418504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a744bdc75c7734e98664d999859a5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 09126f1b73eae29499a8f566f87dda11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeoutTime: 0.5
---- !u!114 &-1699953379042756471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5778922870757418504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97ab692bc4f43644992bc3f3fbac59de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolScript: {fileID: 0}
-  timeSpawned: 0
---- !u!114 &-6691878918080269260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5778922870757418504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5da62843ecbc5e44817cf55166844b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0.5
+  fadeoutTime: 0.2

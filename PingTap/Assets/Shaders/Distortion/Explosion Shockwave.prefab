@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 7644098551254824809}
   - component: {fileID: 7644098551254824808}
   - component: {fileID: 7644098551254824811}
-  - component: {fileID: -3710586184363951853}
-  - component: {fileID: -162268729563081489}
+  - component: {fileID: -6138878255860253326}
   m_Layer: 0
   m_Name: Explosion Shockwave
   m_TagString: Untagged
@@ -83,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-3710586184363951853
+--- !u!114 &-6138878255860253326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,21 +91,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7644098551254824805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db82bbbea5fbe9b439aadc99abc843df, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a2c92946a0289b439afea8adb530c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissipateSpeed: 0.3
---- !u!114 &-162268729563081489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7644098551254824805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97ab692bc4f43644992bc3f3fbac59de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolScript: {fileID: 0}
-  timeSpawned: 0
+  dissipateSpeed: 0.25

@@ -27,13 +27,6 @@ namespace Fralle.PingTap.AI
 		[Header("Debug")]
 		[SerializeField] bool debugTransitions;
 
-		[Header("Gizmo meshes")]
-		[SerializeField] Mesh wanderingMesh;
-		[SerializeField] Mesh searchingMesh;
-		[SerializeField] Mesh startledMesh;
-		[SerializeField] Mesh chasingMesh;
-		[SerializeField] Mesh battlingMesh;
-
 		StateMachine<AIState> stateMachine;
 
 		void Awake()
@@ -64,24 +57,7 @@ namespace Fralle.PingTap.AI
 		void OnDrawGizmos()
 		{
 			Gizmos.color = currentState.Color();
-			switch (currentState)
-			{
-				case AIState.Wandering:
-					Gizmos.DrawMesh(wanderingMesh, transform.position + Vector3.up * 2.5f, transform.rotation);
-					break;
-				case AIState.Searching:
-					Gizmos.DrawMesh(searchingMesh, transform.position + Vector3.up * 2.5f, transform.rotation);
-					break;
-				case AIState.Startled:
-					Gizmos.DrawMesh(startledMesh, transform.position + Vector3.up * 2.5f, transform.rotation);
-					break;
-				case AIState.Chasing:
-					Gizmos.DrawMesh(chasingMesh, transform.position + Vector3.up * 2.5f, transform.rotation);
-					break;
-				case AIState.Battling:
-					Gizmos.DrawMesh(battlingMesh, transform.position + Vector3.up * 2.5f, transform.rotation);
-					break;
-			}
+			Gizmos.DrawSphere(transform.position + Vector3.up * 2.5f, 0.25f);
 		}
 	}
 }
