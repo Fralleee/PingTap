@@ -29,6 +29,8 @@ namespace Fralle.UI
 
 			TextMeshPro text = instance.GetComponentInChildren<TextMeshPro>();
 			SetText(text, Mathf.RoundToInt(damageData.DamageAmount));
+
+			instance.transform.LookAt(instance.transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
 		}
 
 		void SetPosition(GameObject go)

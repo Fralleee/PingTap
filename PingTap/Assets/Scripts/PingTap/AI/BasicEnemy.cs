@@ -44,9 +44,8 @@ namespace Fralle.PingTap
 			aiSensor = aiBrain.GetComponent<AISensor>();
 			aiAttack = aiBrain.GetComponent<AIAttack>();
 			aiTargetingSystem = aiBrain.GetComponent<AITargetingSystem>();
-			damageController = aiBrain.GetComponent<DamageController>();
 			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();
-
+			damageController = aiBrain.GetComponent<DamageController>();
 			damageController.OnReceiveAttack += OnReceiveAttack;
 		}
 
@@ -88,7 +87,8 @@ namespace Fralle.PingTap
 
 		void OnDestroy()
 		{
-			damageController.OnReceiveAttack -= OnReceiveAttack;
+			if (damageController != null)
+				damageController.OnReceiveAttack -= OnReceiveAttack;
 		}
 
 	}
