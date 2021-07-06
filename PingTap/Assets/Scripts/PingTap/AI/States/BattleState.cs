@@ -36,7 +36,7 @@ namespace Fralle.PingTap
 		public void OnLogic()
 		{
 			navMeshAgent.SetDestination(aiTargetingSystem.TargetPosition);
-			aiAttack.AimAt(aiTargetingSystem.TargetPosition + Vector3.up * 1.5f);
+			aiAttack.AimAt(aiTargetingSystem.TargetPosition);
 			UpdateRotation();
 			aiAttack.Attack();
 		}

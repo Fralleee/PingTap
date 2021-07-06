@@ -1,15 +1,17 @@
+using CombatSystem.AI;
 using Fralle.Core.AI;
 using Fralle.Core.Attributes;
 using UnityEngine;
 
 namespace Fralle.PingTap.AI
 {
-	public class AIBrain : MonoBehaviour
+	public partial class AIBrain : MonoBehaviour
 	{
 		[Readonly] public AIState currentState;
 
 		[Header("Configuration")]
 		[SerializeField] AIPersonality personality;
+		public AIDifficulty difficulty;
 
 		[Header("Range - Distance")]
 		public float attackRange = 10f;
@@ -29,8 +31,12 @@ namespace Fralle.PingTap.AI
 
 		StateMachine<AIState> stateMachine;
 
+		AIAttack aiAttack;
+
 		void Awake()
 		{
+			aiAttack = GetComponent<AIAttack>();
+
 			personality = personality.CreateInstance();
 		}
 
@@ -39,6 +45,13 @@ namespace Fralle.PingTap.AI
 			stateMachine = new StateMachine<AIState>();
 			stateMachine.OnTransition += OnTransition;
 			personality.Load(this, stateMachine);
+			AdjustDifficulty();
+		}
+
+		void AdjustDifficulty()
+		{
+			aiAttack.AdjustOffset(difficulty.GetAimOffset());
+			aiAttack.AdjustAccuracy(difficulty.GetAccuracy());
 		}
 
 		void Update()

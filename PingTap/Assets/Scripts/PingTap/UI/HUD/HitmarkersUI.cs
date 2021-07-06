@@ -70,7 +70,7 @@ namespace Fralle.UI.HUD
 		void ActivateHitmarker(HitArea hitArea)
 		{
 			lastHit = Time.time + fadeTimer;
-			if (hitArea == HitArea.Major)
+			if (hitArea == HitArea.Chest)
 			{
 				currentColor = majorColor.Alpha(0.8f);
 				audioSource.pitch = 1;
