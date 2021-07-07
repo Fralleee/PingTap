@@ -18,7 +18,8 @@ namespace Fralle.UI
 
 		void HandleDamageTaken(DamageController dc, DamageData damageData)
 		{
-			AddFloatingCombatText(damageData);
+			if (damageData.Attacker.hasActiveCamera)
+				AddFloatingCombatText(damageData);
 		}
 
 		void AddFloatingCombatText(DamageData damageData)

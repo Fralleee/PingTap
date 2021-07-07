@@ -92,13 +92,13 @@ namespace Fralle.Gameplay
 			}
 		}
 
-		public void SpawnEnemyType(EnemyType enemyType, int count)
-		{
-			for (int i = 0; i < count; i++)
-			{
-				PerformSpawn(EnemyAtlas.Instance.GetPrefab(enemyType));
-			}
-		}
+		//public void SpawnEnemyType(EnemyType enemyType, int count)
+		//{
+		//	for (int i = 0; i < count; i++)
+		//	{
+		//		PerformSpawn(EnemyAtlas.Instance.GetPrefab(enemyType));
+		//	}
+		//}
 
 		public void PerformSpawn(GameObject enemy)
 		{

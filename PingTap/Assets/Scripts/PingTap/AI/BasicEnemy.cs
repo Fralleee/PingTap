@@ -21,11 +21,11 @@ namespace Fralle.PingTap
 		AISensor aiSensor;
 		AITargetingSystem aiTargetingSystem;
 
-		WanderState wanderState;
-		WanderState searchState;
-		StartledState startledState;
-		ChaseState chaseState;
-		BattleState battleState;
+		[SerializeField] WanderState wanderState;
+		[SerializeField] SearchState searchState;
+		[SerializeField] StartledState startledState;
+		[SerializeField] ChaseState chaseState;
+		[SerializeField] BattleState battleState;
 
 		public override AIPersonality CreateInstance() => Instantiate(this);
 		public override void Load(AIBrain aiBrain, StateMachine<AIState> stateMachine)
@@ -51,11 +51,20 @@ namespace Fralle.PingTap
 
 		void SetupStates()
 		{
-			wanderState = new WanderState(aiBrain, aiSensor, navMeshAgent);
-			searchState = new WanderState(aiBrain, aiSensor, navMeshAgent, true);
-			startledState = new StartledState(aiBrain, aiSensor, navMeshAgent);
-			chaseState = new ChaseState(aiBrain, aiTargetingSystem, navMeshAgent);
-			battleState = new BattleState(aiBrain, aiAttack, aiTargetingSystem, navMeshAgent);
+			wanderState = wanderState.CreateInstance();
+			wanderState.Setup(aiBrain);
+
+			searchState = searchState.CreateInstance();
+			searchState.Setup(aiBrain);
+
+			startledState = startledState.CreateInstance();
+			startledState.Setup(aiBrain);
+
+			chaseState = chaseState.CreateInstance();
+			chaseState.Setup(aiBrain);
+
+			battleState = battleState.CreateInstance();
+			battleState.Setup(aiBrain);
 		}
 
 		void SetupTransitions()
@@ -80,7 +89,7 @@ namespace Fralle.PingTap
 		{
 			if (stateMachine.CurrentState.identifier == AIState.Wandering || stateMachine.CurrentState.identifier == AIState.Searching)
 			{
-				startledState.position = damageData.Attacker.AimTransform.position;
+				startledState.origin = damageData.Attacker.AimTransform.position;
 				stateMachine.SetState(startledState);
 			}
 		}
