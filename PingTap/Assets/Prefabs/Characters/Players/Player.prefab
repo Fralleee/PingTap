@@ -910,6 +910,7 @@ MonoBehaviour:
   fpsRightHandIkTarget: {fileID: 6013523810284080970}
   fpsRightHandToggleIK: {fileID: 2938232824607119139}
   impactAtlas: {fileID: 11400000, guid: 14acf483234855144b8944b204c9ac79, type: 2}
+  hasActiveCamera: 0
 --- !u!114 &5786470415341109824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,6 +967,8 @@ MonoBehaviour:
   team: 1
   targetCollider: {fileID: 5610149746880375397}
   hitboxParent: {fileID: 5125723672553178342}
+  team1Color: {r: 1, g: 0.5, b: 0.5, a: 1}
+  team2Color: {r: 0.5, g: 0.5, b: 1, a: 1}
   Self: 6
   Hitbox: 8
   AllyProjectiles: 7
@@ -1017,7 +1020,7 @@ MonoBehaviour:
   DamageEffects: []
   IsDead: 0
   healthbarPrefab: {fileID: 0}
-  floatingNumbersPrefab: {fileID: 0}
+  floatingCombatText: {fileID: 0}
   CurrentHealth: 0
   MaxHealth: 100
   Immortal: 0
