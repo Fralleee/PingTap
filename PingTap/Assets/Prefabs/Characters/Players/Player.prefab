@@ -910,7 +910,7 @@ MonoBehaviour:
   fpsRightHandIkTarget: {fileID: 6013523810284080970}
   fpsRightHandToggleIK: {fileID: 2938232824607119139}
   impactAtlas: {fileID: 11400000, guid: 14acf483234855144b8944b204c9ac79, type: 2}
-  hasActiveCamera: 0
+  hasActiveCamera: 1
 --- !u!114 &5786470415341109824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,12 +1028,21 @@ MonoBehaviour:
     ArmorValue: 0
     ArmorElementModifiers: []
     Protection: {fileID: 0}
-  MajorImpactEffect: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
-  NerveImpactEffect: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  impactEffect: {fileID: 0}
   damageSound: {fileID: 0}
   deathSound: {fileID: 0}
   behaviours: []
   disableAllBehaviours: 1
+  damageIK:
+    enabled: 0
+    body: {fileID: 0}
+    target: {fileID: 0}
+    resetTime: 0.25
+    maxWeight: 0.15
+  damageGraphics:
+    ragdollParent: {fileID: 5125723672553178342}
+    model: {fileID: 4292757102238897272}
+    gibModel: {fileID: 0}
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0
