@@ -82,7 +82,7 @@ namespace Fralle.UI.HUD
 				audioSource.pitch = 3;
 				AdjustSize(16);
 			}
-			audioSource.Play();
+			//audioSource.Play();
 		}
 	}
 }

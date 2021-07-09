@@ -2,7 +2,9 @@ using CombatSystem.AI;
 using CombatSystem.Combat.Damage;
 using CombatSystem.Targeting;
 using Fralle.Core.AI;
+using Fralle.Core.Extensions;
 using Fralle.PingTap.AI;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,10 +17,10 @@ namespace Fralle.PingTap
 
 		StateMachine<AIState> stateMachine;
 		AIBrain aiBrain;
+		AISensor aiSensor;
 		AIAttack aiAttack;
 		NavMeshAgent navMeshAgent;
 		DamageController damageController;
-		AISensor aiSensor;
 		AITargetingSystem aiTargetingSystem;
 
 		[SerializeField] WanderState wanderState;
@@ -36,6 +38,21 @@ namespace Fralle.PingTap
 			SetupTransitions();
 
 			this.stateMachine.SetState(wanderState);
+		}
+
+		public override void Alert(Vector3 position, AIState statePriority)
+		{
+			if (stateMachine.CurrentState.identifier < statePriority)
+				aiBrain.StartCoroutine(SetStartledState(position));
+			else
+				aiBrain.ResetAlertTimer();
+		}
+
+		IEnumerator SetStartledState(Vector3 position)
+		{
+			yield return new WaitForSeconds(aiBrain.reactionTimeRange.GetValueBetween());
+			startledState.origin = position;
+			stateMachine.SetState(startledState);
 		}
 
 		void ResolveDependencies(AIBrain aiBrain)
@@ -87,11 +104,7 @@ namespace Fralle.PingTap
 
 		void OnReceiveAttack(DamageController damageController, DamageData damageData)
 		{
-			if (stateMachine.CurrentState.identifier == AIState.Wandering || stateMachine.CurrentState.identifier == AIState.Searching)
-			{
-				startledState.origin = damageData.Attacker.AimTransform.position;
-				stateMachine.SetState(startledState);
-			}
+			Alert(damageData.Attacker.AimTransform.position, AIState.Startled);
 		}
 
 		void OnDestroy()

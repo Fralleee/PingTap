@@ -29,6 +29,8 @@ namespace Fralle.PingTap
 		{
 			navMeshAgent.speed = aiBrain.walkSpeed;
 			navMeshAgent.stoppingDistance = aiBrain.attackStoppingDistance;
+
+			aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
 		}
 
 		public override void OnLogic()
@@ -37,6 +39,9 @@ namespace Fralle.PingTap
 			aiAttack.AimAt(aiTargetingSystem.TargetPosition);
 			UpdateRotation();
 			aiAttack.Attack();
+
+			if (Time.time > aiBrain.lastAlert)
+				aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
 		}
 
 		public override void OnExit()

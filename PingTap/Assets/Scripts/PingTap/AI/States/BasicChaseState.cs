@@ -21,11 +21,16 @@ namespace Fralle.PingTap.AI
 		public override void OnEnter()
 		{
 			navMeshAgent.speed = aiBrain.runSpeed;
+
+			aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
 		}
 
 		public override void OnLogic()
 		{
 			navMeshAgent.SetDestination(aiTargetingSystem.TargetPosition);
+
+			if (Time.time > aiBrain.lastAlert)
+				aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
 		}
 
 		public override void OnExit()

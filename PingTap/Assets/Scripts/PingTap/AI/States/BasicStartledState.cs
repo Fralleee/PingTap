@@ -25,6 +25,8 @@ namespace Fralle.PingTap.AI
 
 			if (NavMesh.SamplePosition(origin, out NavMeshHit navMeshHit, 5f, -1))
 				navMeshAgent.SetDestination(navMeshHit.position);
+
+			aiBrain.AlertOthers(origin, AIState.Startled);
 		}
 
 		public override void OnLogic()
