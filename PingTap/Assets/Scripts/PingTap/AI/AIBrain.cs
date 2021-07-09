@@ -18,7 +18,7 @@ namespace Fralle.PingTap.AI
 		public AIDifficulty difficulty;
 
 		[Header("Range - Distance")]
-		public float attackRange = 10f;
+		public float attackRange = 15f;
 		public float attackStoppingDistance = 5f;
 		public float alertDistance = 4f;
 

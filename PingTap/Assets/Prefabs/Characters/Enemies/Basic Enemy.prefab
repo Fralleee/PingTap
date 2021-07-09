@@ -1352,15 +1352,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamController: {fileID: 0}
+  lastAlert: 0
   currentState: 0
   personality: {fileID: 11400000, guid: b10903eaa0c40be419b63fe89380ce53, type: 2}
   difficulty: 0
-  attackRange: 15
-  attackStoppingDistance: 10
+  attackRange: 20
+  attackStoppingDistance: 18
   alertDistance: 4
   walkSpeed: 2
   runSpeed: 6
   rotateOnAngle: 35
+  reactionTimeRange: {x: 0.25, y: 0.5}
+  alertFrequency: 1
   idleScanFrequency: 1
   searchScanFrequency: 4
   debugTransitions: 0
@@ -1420,8 +1423,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1177116524294566963, guid: 04551ec085e015c48a8873097e3fd4ec, type: 3}
   aim: {fileID: 4654943396054571264}
-  TimeBetweenAttacks: {x: 0.25, y: 0.75}
-  BulletsPerAttack: {x: 1, y: 5}
+  tap:
+    TimeBetweenAttacks: {x: 0.4, y: 0.6}
+    BulletsPerAttack: {x: 1, y: 1}
+  burst:
+    TimeBetweenAttacks: {x: 0.5, y: 0.9}
+    BulletsPerAttack: {x: 2, y: 4}
+  spray:
+    TimeBetweenAttacks: {x: 0, y: 0}
+    BulletsPerAttack: {x: 10, y: 15}
 --- !u!114 &821477217250295957
 MonoBehaviour:
   m_ObjectHideFlags: 0

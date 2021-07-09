@@ -38,7 +38,7 @@ namespace Fralle.PingTap
 			navMeshAgent.SetDestination(aiTargetingSystem.TargetPosition);
 			aiAttack.AimAt(aiTargetingSystem.TargetPosition);
 			UpdateRotation();
-			aiAttack.Attack();
+			aiAttack.Attack(aiTargetingSystem.TargetPosition, aiBrain.attackRange);
 
 			if (Time.time > aiBrain.lastAlert)
 				aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
