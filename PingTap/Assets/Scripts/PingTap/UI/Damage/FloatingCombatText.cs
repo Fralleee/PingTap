@@ -1,4 +1,4 @@
-﻿using CombatSystem.Combat.Damage;
+﻿using CombatSystem;
 using Fralle.Core.Pooling;
 using TMPro;
 using UnityEngine;

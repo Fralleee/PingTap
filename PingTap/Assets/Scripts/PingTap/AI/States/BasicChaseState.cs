@@ -1,4 +1,4 @@
-using CombatSystem.Targeting;
+using CombatSystem;
 using UnityEngine;
 using UnityEngine.AI;
 

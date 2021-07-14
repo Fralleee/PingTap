@@ -1,4 +1,4 @@
-﻿using CombatSystem.Combat.Damage;
+﻿using CombatSystem;
 using TMPro;
 using UnityEngine;
 

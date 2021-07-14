@@ -1,6 +1,4 @@
-using CombatSystem.AI;
-using CombatSystem.Combat.Damage;
-using CombatSystem.Targeting;
+using CombatSystem;
 using Fralle.Core.AI;
 using Fralle.Core.Extensions;
 using Fralle.PingTap.AI;
@@ -51,8 +49,10 @@ namespace Fralle.PingTap
 		IEnumerator SetStartledState(Vector3 position)
 		{
 			yield return new WaitForSeconds(aiBrain.reactionTimeRange.GetValueBetween());
-			startledState.origin = position;
-			stateMachine.SetState(startledState);
+			if (stateMachine.CurrentState.identifier != AIState.Startled)
+				stateMachine.SetState(startledState);
+
+			startledState.NewOrigin(position);
 		}
 
 		void ResolveDependencies(AIBrain aiBrain)
@@ -104,7 +104,7 @@ namespace Fralle.PingTap
 
 		void OnReceiveAttack(DamageController damageController, DamageData damageData)
 		{
-			Alert(damageData.Attacker.AimTransform.position, AIState.Startled);
+			Alert(damageData.Attacker.AimTransform.position, AIState.Chasing);
 		}
 
 		void OnDestroy()

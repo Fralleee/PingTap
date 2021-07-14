@@ -15,8 +15,8 @@ namespace Fralle.PingTap.AI
 
 		public abstract void Setup(AIBrain aiBrain);
 
-		public StartledState CreateInstance() => Instantiate(this);
+		public abstract void NewOrigin(Vector3 origin);
 
-		public Vector3 origin;
+		public StartledState CreateInstance() => Instantiate(this);
 	}
 }

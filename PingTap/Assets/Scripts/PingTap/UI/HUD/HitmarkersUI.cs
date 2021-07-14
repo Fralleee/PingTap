@@ -1,6 +1,4 @@
-using CombatSystem.Combat;
-using CombatSystem.Combat.Damage;
-using CombatSystem.Enums;
+using CombatSystem;
 using Fralle.Core.Extensions;
 using UnityEngine;
 using UnityEngine.UI;

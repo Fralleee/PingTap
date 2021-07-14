@@ -1,6 +1,4 @@
 using CombatSystem;
-using CombatSystem.Combat;
-using CombatSystem.Enums;
 using Fralle.FpsController;
 using UnityEngine;
 

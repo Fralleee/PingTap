@@ -1,4 +1,4 @@
-﻿using CombatSystem.Targeting;
+﻿using CombatSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +11,8 @@ namespace Fralle.PingTap.AI
 		AISensor aiSensor;
 		NavMeshAgent navMeshAgent;
 
+		Vector3 origin;
+
 		public BasicStartledState(AIBrain aiBrain, AISensor aiSensor, NavMeshAgent navMeshAgent)
 		{
 			this.aiBrain = aiBrain;
@@ -22,11 +24,6 @@ namespace Fralle.PingTap.AI
 		{
 			aiSensor.scanFrequency = aiBrain.searchScanFrequency;
 			navMeshAgent.speed = aiBrain.runSpeed;
-
-			if (NavMesh.SamplePosition(origin, out NavMeshHit navMeshHit, 5f, -1))
-				navMeshAgent.SetDestination(navMeshHit.position);
-
-			aiBrain.AlertOthers(origin, AIState.Startled);
 		}
 
 		public override void OnLogic()
@@ -46,6 +43,15 @@ namespace Fralle.PingTap.AI
 			this.aiBrain = aiBrain;
 			aiSensor = aiBrain.GetComponent<AISensor>();
 			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();
+		}
+
+		public override void NewOrigin(Vector3 origin)
+		{
+			this.origin = origin;
+			if (NavMesh.SamplePosition(origin, out NavMeshHit navMeshHit, 5f, -1))
+				navMeshAgent.SetDestination(navMeshHit.position);
+
+			aiBrain.AlertOthers(origin, AIState.Startled);
 		}
 	}
 }

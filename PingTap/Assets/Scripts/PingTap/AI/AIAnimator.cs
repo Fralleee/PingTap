@@ -1,4 +1,4 @@
-﻿using CombatSystem.Combat.Damage;
+﻿using CombatSystem;
 using Fralle.PingTap.AI;
 using UnityEngine;
 using UnityEngine.AI;

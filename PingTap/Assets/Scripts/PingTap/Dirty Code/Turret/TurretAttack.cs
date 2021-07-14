@@ -1,6 +1,4 @@
 ﻿using CombatSystem;
-using CombatSystem.Action;
-using CombatSystem.Combat;
 using Fralle.Core.Attributes;
 using UnityEngine;
 

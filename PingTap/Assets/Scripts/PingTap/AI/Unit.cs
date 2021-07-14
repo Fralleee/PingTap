@@ -1,5 +1,4 @@
-﻿using CombatSystem.Combat;
-using CombatSystem.Combat.Damage;
+﻿using CombatSystem;
 using Fralle.Core.Extensions;
 using Fralle.Gameplay;
 using System;
@@ -42,8 +41,6 @@ namespace Fralle.AI
 
 			IncrementOnSpawn();
 			AllAliveUnits.Add(this);
-
-			transform.Find("UI").gameObject.SetActive(true);
 		}
 
 		void Update()

@@ -1,4 +1,4 @@
-using CombatSystem.AI;
+using CombatSystem;
 using Fralle.Core;
 using Fralle.Core.AI;
 using Fralle.Core.Attributes;

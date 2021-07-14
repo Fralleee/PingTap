@@ -1,6 +1,4 @@
 ﻿using CombatSystem;
-using CombatSystem.Addons;
-using CombatSystem.Combat;
 using UnityEngine;
 using UnityEngine.UI;
 
