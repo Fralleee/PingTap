@@ -1265,10 +1265,6 @@ MonoBehaviour:
   CurrentHealth: 0
   MaxHealth: 100
   Immortal: 0
-  healthbarPrefab: {fileID: 7818646480127840689, guid: b9be49762ca387c468181b4c791ad9c5,
-    type: 3}
-  floatingCombatText: {fileID: 2575742046452647322, guid: a7c0509aee3e91647baf5f39cd4ce9aa,
-    type: 3}
   impactEffect: {fileID: 0}
   Armor:
     ArmorValue: 10
@@ -1286,8 +1282,19 @@ MonoBehaviour:
       Element: 4
       Modifier: 1
   deathHandler:
-    behaviours: []
-    disableAllBehaviours: 1
+    behaviours:
+    - {fileID: 8481549415250245631}
+    - {fileID: 3039772366684300436}
+    - {fileID: 6358026109765661827}
+    - {fileID: 5784202919468758000}
+    - {fileID: 1859294474}
+    - {fileID: 5536612324639668136}
+    disableAllBehaviours: 0
+  uiHandler:
+    healthbarPrefab: {fileID: 7818646480127840689, guid: b9be49762ca387c468181b4c791ad9c5,
+      type: 3}
+    floatingCombatText: {fileID: 2575742046452647322, guid: a7c0509aee3e91647baf5f39cd4ce9aa,
+      type: 3}
   ikHandler:
     enabled: 0
     body: {fileID: 0}

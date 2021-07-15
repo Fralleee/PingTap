@@ -11,8 +11,6 @@ namespace Fralle.PingTap.AI
 		AISensor aiSensor;
 		NavMeshAgent navMeshAgent;
 
-		Vector3 origin;
-
 		public BasicStartledState(AIBrain aiBrain, AISensor aiSensor, NavMeshAgent navMeshAgent)
 		{
 			this.aiBrain = aiBrain;
@@ -47,7 +45,6 @@ namespace Fralle.PingTap.AI
 
 		public override void NewOrigin(Vector3 origin)
 		{
-			this.origin = origin;
 			if (NavMesh.SamplePosition(origin, out NavMeshHit navMeshHit, 5f, -1))
 				navMeshAgent.SetDestination(navMeshHit.position);
 
