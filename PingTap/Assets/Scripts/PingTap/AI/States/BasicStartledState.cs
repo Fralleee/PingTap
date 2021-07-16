@@ -1,5 +1,4 @@
-﻿using CombatSystem;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Fralle.PingTap.AI
@@ -8,19 +7,16 @@ namespace Fralle.PingTap.AI
 	public class BasicStartledState : StartledState
 	{
 		AIBrain aiBrain;
-		AISensor aiSensor;
 		NavMeshAgent navMeshAgent;
 
-		public BasicStartledState(AIBrain aiBrain, AISensor aiSensor, NavMeshAgent navMeshAgent)
+		public BasicStartledState(AIBrain aiBrain, NavMeshAgent navMeshAgent)
 		{
 			this.aiBrain = aiBrain;
-			this.aiSensor = aiSensor;
 			this.navMeshAgent = navMeshAgent;
 		}
 
 		public override void OnEnter()
 		{
-			aiSensor.scanFrequency = aiBrain.searchScanFrequency;
 			navMeshAgent.speed = aiBrain.runSpeed;
 		}
 
@@ -30,7 +26,6 @@ namespace Fralle.PingTap.AI
 
 		public override void OnExit()
 		{
-			aiSensor.scanFrequency = aiBrain.idleScanFrequency;
 			navMeshAgent.speed = aiBrain.walkSpeed;
 			navMeshAgent.isStopped = true;
 			navMeshAgent.ResetPath();
@@ -39,7 +34,6 @@ namespace Fralle.PingTap.AI
 		public override void Setup(AIBrain aiBrain)
 		{
 			this.aiBrain = aiBrain;
-			aiSensor = aiBrain.GetComponent<AISensor>();
 			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();
 		}
 

@@ -45,7 +45,7 @@ namespace Fralle.PingTap.AI
 		public void AlertOthers(Vector3 position, AIState priorityState)
 		{
 			ResetAlertTimer();
-			var colliders = Physics.OverlapSphere(transform.position, alertDistance, 1 << teamController.Self);
+			var colliders = Physics.OverlapSphere(transform.position, alertDistance, 1 << teamController.AllyTeam);
 			foreach (var item in colliders)
 			{
 				var allyBrain = item.GetComponent<AIBrain>();

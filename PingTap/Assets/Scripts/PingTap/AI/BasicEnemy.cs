@@ -15,7 +15,6 @@ namespace Fralle.PingTap
 
 		StateMachine<AIState> stateMachine;
 		AIBrain aiBrain;
-		AISensor aiSensor;
 		AIAttack aiAttack;
 		NavMeshAgent navMeshAgent;
 		DamageController damageController;
@@ -58,7 +57,6 @@ namespace Fralle.PingTap
 		void ResolveDependencies(AIBrain aiBrain)
 		{
 			this.aiBrain = aiBrain;
-			aiSensor = aiBrain.GetComponent<AISensor>();
 			aiAttack = aiBrain.GetComponent<AIAttack>();
 			aiTargetingSystem = aiBrain.GetComponent<AITargetingSystem>();
 			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();

@@ -1,4 +1,3 @@
-using CombatSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +7,6 @@ namespace Fralle.PingTap.AI
 	public class BasicWanderState : WanderState
 	{
 		AIBrain aiBrain;
-		AISensor aiSensor;
 		NavMeshAgent navMeshAgent;
 
 		float wanderDistance = 10f;
@@ -16,7 +14,6 @@ namespace Fralle.PingTap.AI
 		public override void OnEnter()
 		{
 			navMeshAgent.speed = aiBrain.walkSpeed;
-			aiSensor.scanFrequency = aiBrain.idleScanFrequency;
 		}
 
 		public override void OnLogic()
@@ -30,7 +27,6 @@ namespace Fralle.PingTap.AI
 
 		public override void OnExit()
 		{
-			aiSensor.scanFrequency = aiBrain.idleScanFrequency;
 			navMeshAgent.speed = aiBrain.walkSpeed;
 			navMeshAgent.isStopped = true;
 			navMeshAgent.ResetPath();
@@ -39,7 +35,6 @@ namespace Fralle.PingTap.AI
 		public override void Setup(AIBrain aiBrain)
 		{
 			this.aiBrain = aiBrain;
-			aiSensor = aiBrain.GetComponent<AISensor>();
 			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();
 		}
 
