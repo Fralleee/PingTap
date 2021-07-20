@@ -14,6 +14,9 @@ namespace Fralle.AI
 		Animator animator;
 		NavMeshAgent navMeshAgent;
 
+		int animIsMoving;
+		int animVelocity;
+
 		void Awake()
 		{
 			aiBrain = GetComponentInParent<AIBrain>();
@@ -22,6 +25,9 @@ namespace Fralle.AI
 			navMeshAgent = GetComponentInParent<NavMeshAgent>();
 			DamageController damageController = GetComponentInParent<DamageController>();
 			damageController.OnDeath += HandleDeath;
+
+			animIsMoving = Animator.StringToHash("IsMoving");
+			animVelocity = Animator.StringToHash("Velocity");
 		}
 
 		void Update()
@@ -29,8 +35,8 @@ namespace Fralle.AI
 			if (dummy)
 				return;
 
-			animator.SetBool("IsMoving", navMeshAgent.velocity.magnitude > 0.1f);
-			animator.SetFloat("Velocity", navMeshAgent.velocity.magnitude / aiBrain.runSpeed);
+			animator.SetBool(animIsMoving, navMeshAgent.velocity.magnitude > 0.1f);
+			animator.SetFloat(animVelocity, navMeshAgent.velocity.magnitude / aiBrain.runSpeed);
 		}
 
 		void OnAnimatorMove()
