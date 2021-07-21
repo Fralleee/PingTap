@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Fralle.FpsController;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Fralle.PingTap.AI
@@ -7,17 +8,11 @@ namespace Fralle.PingTap.AI
 	public class BasicStartledState : StartledState
 	{
 		AIBrain aiBrain;
-		NavMeshAgent navMeshAgent;
-
-		public BasicStartledState(AIBrain aiBrain, NavMeshAgent navMeshAgent)
-		{
-			this.aiBrain = aiBrain;
-			this.navMeshAgent = navMeshAgent;
-		}
+		AIController controller;
 
 		public override void OnEnter()
 		{
-			navMeshAgent.speed = aiBrain.runSpeed;
+			controller.speed = controller.runSpeed;
 		}
 
 		public override void OnLogic()
@@ -26,21 +21,19 @@ namespace Fralle.PingTap.AI
 
 		public override void OnExit()
 		{
-			navMeshAgent.speed = aiBrain.walkSpeed;
-			navMeshAgent.isStopped = true;
-			navMeshAgent.ResetPath();
+			controller.Stop(controller.walkSpeed);
 		}
 
 		public override void Setup(AIBrain aiBrain)
 		{
 			this.aiBrain = aiBrain;
-			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();
+			controller = aiBrain.GetComponent<AIController>();
 		}
 
 		public override void NewOrigin(Vector3 origin)
 		{
 			if (NavMesh.SamplePosition(origin, out NavMeshHit navMeshHit, 5f, -1))
-				navMeshAgent.SetDestination(navMeshHit.position);
+				controller.SetDestination(navMeshHit.position);
 
 			aiBrain.AlertOthers(origin, AIState.Startled);
 		}

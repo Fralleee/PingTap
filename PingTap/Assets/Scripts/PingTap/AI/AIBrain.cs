@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Fralle.PingTap.AI
 {
-	public partial class AIBrain : MonoBehaviour
+	public partial class AIBrain : MonoBehaviour, IDisableOnDeath
 	{
 		[HideInInspector] public TeamController teamController;
 		[HideInInspector] public float lastAlert;
@@ -21,11 +21,6 @@ namespace Fralle.PingTap.AI
 		public float attackRange = 15f;
 		public float attackStoppingDistance = 5f;
 		public float alertDistance = 4f;
-
-		[Header("Movement")]
-		public float walkSpeed = 2f;
-		public float runSpeed = 6f;
-		public float rotateOnAngle = 35;
 
 		[Header("Timers")]
 		public Vector2 reactionTimeRange = new Vector2(0.25f, 0.5f);

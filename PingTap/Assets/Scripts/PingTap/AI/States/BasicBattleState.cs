@@ -1,7 +1,7 @@
 using CombatSystem;
+using Fralle.FpsController;
 using Fralle.PingTap.AI;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Fralle.PingTap
 {
@@ -11,30 +11,23 @@ namespace Fralle.PingTap
 		AIBrain aiBrain;
 		AIAttack aiAttack;
 		AITargetingSystem aiTargetingSystem;
-		NavMeshAgent navMeshAgent;
+		AIController controller;
 
 		bool doRotate;
+		float rotateOnAngle = 35;
 		float defaultStoppingDistance = 0.5f;
-
-		public BasicBattleState(AIBrain aiBrain, AIAttack aiAttack, AITargetingSystem aiTargetingSystem, NavMeshAgent navMeshAgent)
-		{
-			this.aiBrain = aiBrain;
-			this.aiAttack = aiAttack;
-			this.aiTargetingSystem = aiTargetingSystem;
-			this.navMeshAgent = navMeshAgent;
-		}
 
 		public override void OnEnter()
 		{
-			navMeshAgent.speed = aiBrain.walkSpeed;
-			navMeshAgent.stoppingDistance = aiBrain.attackStoppingDistance;
+			controller.speed = controller.walkSpeed;
+			controller.stoppingDistance = aiBrain.attackStoppingDistance;
 
 			aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
 		}
 
 		public override void OnLogic()
 		{
-			navMeshAgent.SetDestination(aiTargetingSystem.TargetPosition);
+			controller.SetDestination(aiTargetingSystem.TargetPosition);
 			aiAttack.AimAt(aiTargetingSystem.TargetPosition);
 			UpdateRotation();
 			aiAttack.Attack(aiTargetingSystem.TargetPosition, aiBrain.attackRange);
@@ -45,9 +38,8 @@ namespace Fralle.PingTap
 
 		public override void OnExit()
 		{
-			navMeshAgent.stoppingDistance = defaultStoppingDistance;
-			navMeshAgent.isStopped = true;
-			navMeshAgent.ResetPath();
+			controller.stoppingDistance = defaultStoppingDistance;
+			controller.Stop();
 		}
 
 		public override void Setup(AIBrain aiBrain)
@@ -55,23 +47,23 @@ namespace Fralle.PingTap
 			this.aiBrain = aiBrain;
 			aiAttack = aiBrain.GetComponent<AIAttack>();
 			aiTargetingSystem = aiBrain.GetComponent<AITargetingSystem>();
-			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();
+			controller = aiBrain.GetComponent<AIController>();
 		}
 
 		void UpdateRotation()
 		{
-			if (navMeshAgent.velocity.magnitude > 0.1f)
+			if (controller.velocity.magnitude > 0.1f)
 				doRotate = false;
-			else if (Vector3.Angle(navMeshAgent.transform.forward, aiAttack.aim.forward) > aiBrain.rotateOnAngle)
+			else if (Vector3.Angle(controller.transform.forward, aiAttack.aim.forward) > rotateOnAngle)
 				doRotate = true;
 
 			if (doRotate)
 			{
-				navMeshAgent.transform.rotation = Quaternion.Lerp(navMeshAgent.transform.rotation, aiAttack.aim.rotation, Time.deltaTime * 10f);
-				if (Vector3.Angle(navMeshAgent.transform.forward, aiAttack.aim.forward) > 3f)
+				controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, aiAttack.aim.rotation, Time.deltaTime * 10f);
+				if (Vector3.Angle(controller.transform.forward, aiAttack.aim.forward) > 3f)
 					return;
 
-				navMeshAgent.transform.rotation = aiAttack.aim.rotation;
+				controller.transform.rotation = aiAttack.aim.rotation;
 				doRotate = false;
 			}
 		}

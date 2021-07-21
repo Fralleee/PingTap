@@ -1,6 +1,6 @@
 using CombatSystem;
+using Fralle.FpsController;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Fralle.PingTap.AI
 {
@@ -9,25 +9,18 @@ namespace Fralle.PingTap.AI
 	{
 		AIBrain aiBrain;
 		AITargetingSystem aiTargetingSystem;
-		NavMeshAgent navMeshAgent;
-
-		public BasicChaseState(AIBrain aiBrain, AITargetingSystem aiTargetingSystem, NavMeshAgent navMeshAgent)
-		{
-			this.aiBrain = aiBrain;
-			this.aiTargetingSystem = aiTargetingSystem;
-			this.navMeshAgent = navMeshAgent;
-		}
+		AIController controller;
 
 		public override void OnEnter()
 		{
-			navMeshAgent.speed = aiBrain.runSpeed;
+			controller.speed = controller.runSpeed;
 
 			aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
 		}
 
 		public override void OnLogic()
 		{
-			navMeshAgent.SetDestination(aiTargetingSystem.TargetPosition);
+			controller.SetDestination(aiTargetingSystem.TargetPosition);
 
 			if (Time.time > aiBrain.lastAlert)
 				aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
@@ -35,16 +28,14 @@ namespace Fralle.PingTap.AI
 
 		public override void OnExit()
 		{
-			navMeshAgent.speed = aiBrain.walkSpeed;
-			navMeshAgent.isStopped = true;
-			navMeshAgent.ResetPath();
+			controller.Stop(controller.walkSpeed);
 		}
 
 		public override void Setup(AIBrain aiBrain)
 		{
 			this.aiBrain = aiBrain;
 			aiTargetingSystem = aiBrain.GetComponent<AITargetingSystem>();
-			navMeshAgent = aiBrain.GetComponent<NavMeshAgent>();
+			controller = aiBrain.GetComponent<AIController>();
 		}
 	}
 }

@@ -1007,6 +1007,7 @@ GameObject:
   - component: {fileID: 528117005174283110}
   - component: {fileID: 821477217250295957}
   - component: {fileID: 8481549415250245631}
+  - component: {fileID: 3419345225857961809}
   - component: {fileID: 7464796668427422271}
   - component: {fileID: 2207658041099517612}
   - component: {fileID: 5784202919468758000}
@@ -1239,14 +1240,25 @@ MonoBehaviour:
   attackRange: 20
   attackStoppingDistance: 18
   alertDistance: 4
-  walkSpeed: 2
-  runSpeed: 6
-  rotateOnAngle: 35
   reactionTimeRange: {x: 0.25, y: 0.5}
   alertFrequency: 1
   idleScanFrequency: 1
   searchScanFrequency: 4
   debugTransitions: 0
+--- !u!114 &3419345225857961809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859456599272585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7b2092b6a2e074a97cee3e2ed41baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2
+  runSpeed: 6
 --- !u!114 &7464796668427422271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1281,15 +1293,6 @@ MonoBehaviour:
     Lightning:
       Element: 4
       Modifier: 1
-  deathHandler:
-    behaviours:
-    - {fileID: 8481549415250245631}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 5784202919468758000}
-    - {fileID: 1859294474}
-    - {fileID: 5536612324639668136}
-    disableAllBehaviours: 0
   uiHandler:
     healthbarPrefab: {fileID: 7818646480127840689, guid: b9be49762ca387c468181b4c791ad9c5,
       type: 3}
@@ -1563,20 +1566,6 @@ MonoBehaviour:
   - {fileID: 4821781272755567415}
   - {fileID: 2793441922506706088}
   - {fileID: 4756879721890089865}
---- !u!114 &5473251561849651082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5742419199319115311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d550e120ef92b45a4bc51e5bb85278, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useSetSpeed: 1
-  dummy: 0
 --- !u!114 &5536612324639668136
 MonoBehaviour:
   m_ObjectHideFlags: 0
