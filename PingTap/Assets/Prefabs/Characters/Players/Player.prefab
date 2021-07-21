@@ -730,13 +730,13 @@ GameObject:
   - component: {fileID: 4353705345602122618}
   - component: {fileID: 1089889711}
   - component: {fileID: 1825153499}
+  - component: {fileID: 8695899812694590851}
   - component: {fileID: 833356114275833103}
+  - component: {fileID: 1554100150}
   - component: {fileID: 1821515927939034793}
   - component: {fileID: 2719306716182126083}
   - component: {fileID: 5786470415341109824}
-  - component: {fileID: 8695899812694590851}
   - component: {fileID: 3167768356713284050}
-  - component: {fileID: 1554100150}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -819,6 +819,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788acabc6cc6470449de36a7696da080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8695899812694590851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cdcccc393894ef46b6af1628afdeee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
+  targetCollider: {fileID: 5610149746880375397}
+  hitboxParent: {fileID: 5125723672553178342}
+  team1Color: {r: 1, g: 0.5, b: 0.5, a: 1}
+  team2Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+  AllyTeam: 0
+  AllySensor: 0
+  Hitbox: 9
+  AllyProjectiles: 8
+  Hostiles:
+    serializedVersion: 2
+    m_Bits: 4096
+  Neutrals:
+    serializedVersion: 2
+    m_Bits: 262144
+  HostileProjectiles:
+    serializedVersion: 2
+    m_Bits: 1064960
+  Hitboxes:
+    serializedVersion: 2
+    m_Bits: 2129920
+  AttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 2129921
 --- !u!114 &833356114275833103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +897,57 @@ MonoBehaviour:
   crouchingSpeed: 8
   crouchHeight: 1
   SlopeAngle: 0
+--- !u!114 &1554100150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8651d39e3168f0b4c8c85eb33e7aea36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsDead: 0
+  effectHandler:
+    DamageEffects: []
+  CurrentHealth: 0
+  MaxHealth: 100
+  Immortal: 0
+  impactEffect: {fileID: 0}
+  Armor:
+    ArmorValue: 0
+    Protection: {fileID: 0}
+    Fire:
+      Element: 1
+      Modifier: 1
+    Water:
+      Element: 2
+      Modifier: 1
+    Earth:
+      Element: 3
+      Modifier: 1
+    Lightning:
+      Element: 4
+      Modifier: 1
+  deathHandler:
+    behaviours: []
+    disableAllBehaviours: 0
+  uiHandler:
+    healthbarPrefab: {fileID: 0}
+    floatingCombatText: {fileID: 0}
+  ikHandler:
+    enabled: 0
+    body: {fileID: 0}
+    target: {fileID: 0}
+    resetTime: 0.25
+    maxWeight: 0.15
+  audioHandler:
+    damageSound: {fileID: 0}
+    deathSound: {fileID: 0}
+  graphicsHandler:
+    gibModel: {fileID: 0}
 --- !u!114 &1821515927939034793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,41 +1036,6 @@ MonoBehaviour:
     _value: 0
     ParentAttribute: 1
     parentStatFactor: 1
---- !u!114 &8695899812694590851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386371906627268470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cdcccc393894ef46b6af1628afdeee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team: 1
-  targetCollider: {fileID: 5610149746880375397}
-  hitboxParent: {fileID: 5125723672553178342}
-  team1Color: {r: 1, g: 0.5, b: 0.5, a: 1}
-  team2Color: {r: 0.5, g: 0.5, b: 1, a: 1}
-  Self: 6
-  Hitbox: 9
-  AllyProjectiles: 8
-  Hostiles:
-    serializedVersion: 2
-    m_Bits: 4096
-  Neutrals:
-    serializedVersion: 2
-    m_Bits: 262144
-  HostileProjectiles:
-    serializedVersion: 2
-    m_Bits: 1064960
-  Hitboxes:
-    serializedVersion: 2
-    m_Bits: 2129920
-  AttackLayerMask:
-    serializedVersion: 2
-    m_Bits: 2129921
 --- !u!114 &3167768356713284050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,57 +1054,6 @@ MonoBehaviour:
   <UltimateAbility>k__BackingField: {fileID: 0}
   PassiveAbilities: []
   PostProcess: {fileID: 7663585026348080892}
---- !u!114 &1554100150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386371906627268470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8651d39e3168f0b4c8c85eb33e7aea36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDead: 0
-  effectHandler:
-    DamageEffects: []
-  CurrentHealth: 0
-  MaxHealth: 100
-  Immortal: 0
-  impactEffect: {fileID: 0}
-  Armor:
-    ArmorValue: 0
-    Protection: {fileID: 0}
-    Fire:
-      Element: 1
-      Modifier: 1
-    Water:
-      Element: 2
-      Modifier: 1
-    Earth:
-      Element: 3
-      Modifier: 1
-    Lightning:
-      Element: 4
-      Modifier: 1
-  deathHandler:
-    behaviours: []
-    disableAllBehaviours: 0
-  uiHandler:
-    healthbarPrefab: {fileID: 0}
-    floatingCombatText: {fileID: 0}
-  ikHandler:
-    enabled: 0
-    body: {fileID: 0}
-    target: {fileID: 0}
-    resetTime: 0.25
-    maxWeight: 0.15
-  audioHandler:
-    damageSound: {fileID: 0}
-    deathSound: {fileID: 0}
-  graphicsHandler:
-    gibModel: {fileID: 0}
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0

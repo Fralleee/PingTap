@@ -1006,13 +1006,13 @@ GameObject:
   - component: {fileID: 898686357290624339}
   - component: {fileID: 528117005174283110}
   - component: {fileID: 821477217250295957}
-  - component: {fileID: 2207658041099517612}
-  - component: {fileID: 7464796668427422271}
   - component: {fileID: 8481549415250245631}
+  - component: {fileID: 7464796668427422271}
+  - component: {fileID: 2207658041099517612}
   - component: {fileID: 5784202919468758000}
   - component: {fileID: 7850832518083663071}
   m_Layer: 10
-  m_Name: Basic Enemy Sensor
+  m_Name: Basic Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,7 +1200,8 @@ MonoBehaviour:
   hitboxParent: {fileID: 4056105164318641163}
   team1Color: {r: 1, g: 0.5019608, b: 0.82587963, a: 1}
   team2Color: {r: 0.5019608, g: 0.9543615, b: 1, a: 1}
-  Self: 0
+  AllyTeam: 0
+  AllySensor: 0
   Hitbox: 0
   AllyProjectiles: 0
   Hostiles:
@@ -1218,7 +1219,7 @@ MonoBehaviour:
   AttackLayerMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &2207658041099517612
+--- !u!114 &8481549415250245631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1227,25 +1228,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4859456599272585033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3051cb9152622f144a3e1324e3220025, type: 3}
+  m_Script: {fileID: 11500000, guid: ad0f2848210c26e4cbc29e84d8322066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   teamController: {fileID: 0}
-  Stats:
-    KillingBlows: 0
-    TotalDamage: 0
-    TotalShotsFired: 0
-    TotalShotsHit: 0
-    AccuracyPercentage: 0
-  Modifiers:
-    ExtraAccuracy: 1
-  AimTransform: {fileID: 4654943396054571264}
-  WeaponHolder: {fileID: 7897416860490320145}
-  EquippedWeapon: {fileID: 0}
-  impactAtlas: {fileID: 11400000, guid: 14acf483234855144b8944b204c9ac79, type: 2}
-  hasActiveCamera: 0
-  ikHandler:
-    enabled: 1
+  lastAlert: 0
+  currentState: 0
+  personality: {fileID: 11400000, guid: b10903eaa0c40be419b63fe89380ce53, type: 2}
+  difficulty: 0
+  attackRange: 20
+  attackStoppingDistance: 18
+  alertDistance: 4
+  walkSpeed: 2
+  runSpeed: 6
+  rotateOnAngle: 35
+  reactionTimeRange: {x: 0.25, y: 0.5}
+  alertFrequency: 1
+  idleScanFrequency: 1
+  searchScanFrequency: 4
+  debugTransitions: 0
 --- !u!114 &7464796668427422271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,7 +1306,7 @@ MonoBehaviour:
     deathSound: {fileID: 8300000, guid: 384fb62780425f54d8338e8e9e9477cc, type: 3}
   graphicsHandler:
     gibModel: {fileID: 0}
---- !u!114 &8481549415250245631
+--- !u!114 &2207658041099517612
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1314,25 +1315,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4859456599272585033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad0f2848210c26e4cbc29e84d8322066, type: 3}
+  m_Script: {fileID: 11500000, guid: 3051cb9152622f144a3e1324e3220025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   teamController: {fileID: 0}
-  lastAlert: 0
-  currentState: 0
-  personality: {fileID: 11400000, guid: b10903eaa0c40be419b63fe89380ce53, type: 2}
-  difficulty: 0
-  attackRange: 20
-  attackStoppingDistance: 18
-  alertDistance: 4
-  walkSpeed: 2
-  runSpeed: 6
-  rotateOnAngle: 35
-  reactionTimeRange: {x: 0.25, y: 0.5}
-  alertFrequency: 1
-  idleScanFrequency: 1
-  searchScanFrequency: 4
-  debugTransitions: 0
+  Stats:
+    KillingBlows: 0
+    TotalDamage: 0
+    TotalShotsFired: 0
+    TotalShotsHit: 0
+    AccuracyPercentage: 0
+  Modifiers:
+    ExtraAccuracy: 1
+  AimTransform: {fileID: 4654943396054571264}
+  WeaponHolder: {fileID: 7897416860490320145}
+  EquippedWeapon: {fileID: 0}
+  impactAtlas: {fileID: 11400000, guid: 14acf483234855144b8944b204c9ac79, type: 2}
+  hasActiveCamera: 0
+  ikHandler:
+    enabled: 1
 --- !u!114 &5784202919468758000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,7 +1375,7 @@ MonoBehaviour:
   ageWeight: 1
   bestMemoryColor: {r: 1, g: 0, b: 0, a: 1}
   memoryColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  Debug: 0
+  debug: 0
 --- !u!54 &2806792778355993781
 Rigidbody:
   m_ObjectHideFlags: 0
