@@ -1,6 +1,4 @@
-﻿using CombatSystem;
-using Fralle.Core.Attributes;
-using System;
+﻿using Fralle.Core.Attributes;
 using UnityEngine;
 
 namespace Fralle.Gameplay
@@ -20,8 +18,6 @@ namespace Fralle.Gameplay
 
 		void Awake()
 		{
-			PlayerPrefs.SetInt("showColliders", Convert.ToInt32(showColliders));
-			Hitbox.ToggleColliders(showColliders);
 		}
 
 		void Update()

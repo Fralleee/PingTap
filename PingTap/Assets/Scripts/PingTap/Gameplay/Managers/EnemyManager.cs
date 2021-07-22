@@ -9,13 +9,13 @@ namespace Fralle.Gameplay
 	{
 		public List<SpawnWave> Waves;
 
-		bool spawnComplete;
+		//bool spawnComplete;
 
 		void Start()
 		{
 			if (Managers.Instance && Managers.Instance.Spawner)
-				Managers.Instance.Spawner.OnSpawnComplete += HandleSpawnComplete;
-			Unit.OnAnyUnitDeath += HandleEnemyDeath;
+				//Managers.Instance.Spawner.OnSpawnComplete += HandleSpawnComplete;
+				ScoreController.OnAnyUnitDeath += HandleEnemyDeath;
 		}
 
 		public void PrepareSpawner()
@@ -27,28 +27,28 @@ namespace Fralle.Gameplay
 		public void StartSpawner()
 		{
 			Managers.Instance.Spawner.StartSpawning();
-			spawnComplete = false;
+			//spawnComplete = false;
 		}
 
-		void HandleSpawnComplete(int enemyCount)
-		{
-			spawnComplete = true;
-		}
+		//void HandleSpawnComplete(int enemyCount)
+		//{
+		//	spawnComplete = true;
+		//}
 
-		void HandleEnemyDeath(Unit enemy)
+		void HandleEnemyDeath(ScoreController enemy)
 		{
-			if (spawnComplete && Unit.AliveCount == 0)
-			{
-				EventManager.Broadcast(new GameOverEvent(true));
-			}
+			//if (spawnComplete && ScoreController.AliveCount == 0)
+			//{
+			EventManager.Broadcast(new GameOverEvent(true));
+			//}
 		}
 
 		void OnDestroy()
 		{
-			if (!Managers.Destroyed)
-				Managers.Instance.Spawner.OnSpawnComplete -= HandleSpawnComplete;
+			//if (!Managers.Destroyed)
+			//	Managers.Instance.Spawner.OnSpawnComplete -= HandleSpawnComplete;
 
-			Unit.OnAnyUnitDeath -= HandleEnemyDeath;
+			ScoreController.OnAnyUnitDeath -= HandleEnemyDeath;
 		}
 	}
 }

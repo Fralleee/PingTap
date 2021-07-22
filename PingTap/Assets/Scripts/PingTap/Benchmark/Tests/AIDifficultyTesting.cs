@@ -1,4 +1,3 @@
-using Fralle.AI;
 using Fralle.Core;
 using Fralle.PingTap.AI;
 using System.Collections;
@@ -29,7 +28,7 @@ namespace Fralle.PingTap.Benchmark
 				SpawnEnemy(i, AIDifficulty.Easy, AIDifficulty.Easy);
 			}
 			yield return new WaitForSeconds(25);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed ---");
 		}
 
@@ -42,7 +41,7 @@ namespace Fralle.PingTap.Benchmark
 				SpawnEnemy(i, AIDifficulty.Easy, AIDifficulty.Normal);
 			}
 			yield return new WaitForSeconds(20);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed ---");
 		}
 
@@ -55,7 +54,7 @@ namespace Fralle.PingTap.Benchmark
 				SpawnEnemy(i, AIDifficulty.Easy, AIDifficulty.Hard);
 			}
 			yield return new WaitForSeconds(15);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed ---");
 		}
 
@@ -68,7 +67,7 @@ namespace Fralle.PingTap.Benchmark
 				SpawnEnemy(i, AIDifficulty.Easy, AIDifficulty.Impossible);
 			}
 			yield return new WaitForSeconds(10);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed ---");
 			End();
 		}

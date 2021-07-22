@@ -1,4 +1,3 @@
-using Fralle.AI;
 using Fralle.Core;
 using System.Collections;
 using UnityEngine;
@@ -35,7 +34,7 @@ namespace Fralle.PingTap.Benchmark
 				SpawnEnemy(i);
 			}
 			yield return new WaitForSeconds(timeBetweenWaves);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
 		}
 
@@ -48,7 +47,7 @@ namespace Fralle.PingTap.Benchmark
 				SpawnEnemy(i);
 			}
 			yield return new WaitForSeconds(timeBetweenWaves);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
 		}
 
@@ -61,7 +60,7 @@ namespace Fralle.PingTap.Benchmark
 				SpawnEnemy(i);
 			}
 			yield return new WaitForSeconds(timeBetweenWaves);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
 		}
 
@@ -75,7 +74,7 @@ namespace Fralle.PingTap.Benchmark
 			}
 			//SpawnEnemies(wave4EnemyCount);
 			yield return new WaitForSeconds(timeBetweenWaves);
-			Unit.Despawn(0);
+			// Despawns enemies
 			Debug.Log($"--- Wave completed with avg fps of {benchmarkController.CurrentFps} ---");
 			End();
 		}

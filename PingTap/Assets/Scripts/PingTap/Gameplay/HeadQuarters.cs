@@ -1,5 +1,4 @@
 ﻿using CombatSystem;
-using Fralle.AI;
 using System;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ namespace Fralle.Gameplay
 		{
 			DamageController = GetComponent<DamageController>();
 			DamageController.OnDeath += HandleDeath;
-			Unit.OnUnitReachedDestination += HandleEnemyReachedPowerStone;
+			//ScoreController.OnUnitReachedDestination += HandleEnemyReachedPowerStone;
 		}
 
 		void HandleDeath(DamageController damageController, DamageData damageData)
@@ -28,18 +27,18 @@ namespace Fralle.Gameplay
 			Destroy(gameObject);
 		}
 
-		void HandleEnemyReachedPowerStone(Unit enemy)
-		{
-			DamageController.TakeDamage(new DamageData()
-			{
-				DamageAmount = enemy.DamageAmount
-			});
-		}
+		//void HandleEnemyReachedPowerStone(ScoreController enemy)
+		//{
+		//	DamageController.TakeDamage(new DamageData()
+		//	{
+		//		DamageAmount = enemy.DamageAmount
+		//	});
+		//}
 
 		void OnDestroy()
 		{
 			DamageController.OnDeath -= HandleDeath;
-			Unit.OnUnitReachedDestination -= HandleEnemyReachedPowerStone;
+			//ScoreController.OnUnitReachedDestination -= HandleEnemyReachedPowerStone;
 		}
 	}
 }
