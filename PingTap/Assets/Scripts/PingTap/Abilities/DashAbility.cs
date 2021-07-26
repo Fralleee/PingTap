@@ -1,4 +1,4 @@
-using AbilitySystem;
+using Fralle.AbilitySystem;
 using Fralle.Core;
 using Fralle.Core.CameraControls;
 using Fralle.Core.Extensions;
