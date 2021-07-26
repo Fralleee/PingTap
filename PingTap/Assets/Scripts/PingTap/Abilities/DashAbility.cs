@@ -19,6 +19,7 @@ namespace Fralle.PingTap
 		[Header("Effects")]
 		[SerializeField] ShakeTransformEventData cameraShake;
 		[SerializeField] VolumeProfile postProcess;
+		[SerializeField] GameObject speedlines;
 		[SerializeField] float addFov = 10f;
 
 		AbilityController abilityController;
@@ -28,6 +29,7 @@ namespace Fralle.PingTap
 		ShakeTransform cameraShakeTransform;
 		Volume abilityVolume;
 		GameObject abilityVolumeGo;
+		ParticleSystem speedLinesEffect;
 
 		float defaultFov = 60f;
 
@@ -43,6 +45,9 @@ namespace Fralle.PingTap
 			abilityVolume = abilityVolumeGo.AddComponent<Volume>();
 			abilityVolume.weight = 0;
 			abilityVolume.profile = postProcess;
+
+			speedlines = Instantiate(speedlines, ac.PostProcess.transform);
+			speedLinesEffect = speedlines.GetComponent<ParticleSystem>();
 
 			cameraShakeTransform = playerController.Camera.GetComponentInParent<ShakeTransform>();
 			defaultFov = playerController.Camera.fieldOfView;
@@ -85,6 +90,7 @@ namespace Fralle.PingTap
 
 			cameraShakeTransform.AddShakeEvent(cameraShake);
 			abilityVolume.weight = 1;
+			speedLinesEffect.Emit(100);
 			playerController.Camera.fieldOfView = defaultFov + addFov;
 
 			abilityController.StartCoroutine(StopDash());

@@ -14,7 +14,6 @@ namespace Fralle.Gameplay
 		[Readonly] public float WaveTimer;
 
 		[SerializeField] float prepareTime = 5f;
-		[SerializeField] bool showColliders = true;
 
 		void Awake()
 		{
