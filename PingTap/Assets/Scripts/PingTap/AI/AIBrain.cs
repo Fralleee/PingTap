@@ -1,4 +1,4 @@
-using CombatSystem;
+using Fralle.Pingtap;
 using Fralle.Core;
 using Fralle.Core.AI;
 using Fralle.Core.Attributes;

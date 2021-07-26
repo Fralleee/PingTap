@@ -15,11 +15,11 @@ E:/Unity/Projects/PingTap/PingTap
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57403
+63600
 Successfully changed project path to: E:/Unity/Projects/PingTap/PingTap
 E:/Unity/Projects/PingTap/PingTap
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 119.16 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 105.28 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.3f1 (76626098c1c4)
 [Subsystems] Discovering subsystems at path E:/Unity/2020.3.3f1/Editor/Data/Resources/UnitySubsystems
@@ -36,19 +36,469 @@ Initialize mono
 Mono path[0] = 'E:/Unity/2020.3.3f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56928
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56880
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.3.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000981 seconds.
+Registered in 0.001394 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 141.05 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 108.04 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.162 seconds
+- Completed reload, in  1.118 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003346 seconds.
+Registered in 0.002670 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 99.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+ForwardRenderer is missing RendererFeatures
+This could be due to missing scripts or compile error.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:135)
+UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:59)
+UnityEngine.Rendering.GraphicsSettings:get_currentRenderPipeline ()
+UnityEditor.CustomEditorAttributes:FindCustomEditorTypeByType (System.Type,bool)
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:591)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.673 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 1.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4608 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 209.7 MB.
+System memory in use after: 209.9 MB.
+
+Unloading 143 unused Assets to reduce memory usage. Loaded Objects now: 5025.
+Total: 5.945000 ms (FindLiveObjects: 0.867600 ms CreateObjectMapping: 0.549100 ms MarkObjects: 4.175100 ms  DeleteObjects: 0.351700 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Settings/Rendering/ForwardRenderer.asset
+  artifactKey: Guid(b08be626ba53a754689999d23ea6dbf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Settings/Rendering/ForwardRenderer.asset using Guid(b08be626ba53a754689999d23ea6dbf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) ForwardRenderer is missing RendererFeatures
+This could be due to missing scripts or compile error.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:135)
+UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:59)
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
+
+ -> (artifact id: '7155b854c26c01f2c32da498e344a1b3') in 0.056268 seconds
+  Import took 0.065774 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.367819 seconds.
+  path: Assets/Scripts/PingTap/Abilities/DashAbility.cs
+  artifactKey: Guid(d039627c71c304c4aad14b691800db09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Abilities/DashAbility.cs using Guid(d039627c71c304c4aad14b691800db09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1701b5a6e7653cb3debee8bf474ff0f') in 0.012676 seconds
+  Import took 0.023024 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.045431 seconds.
+  path: Assets/Scripts/PingTap/Abilities/StatsController.cs
+  artifactKey: Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Abilities/StatsController.cs using Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aca31410605885bf36449438ce47e05') in 0.008571 seconds
+  Import took 0.018766 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 24.107739 seconds.
+  path: Assets/Scripts/PingTap/CombatStatsSubscriber.cs
+  artifactKey: Guid(63596fa2805ddf14eb3882241beea517) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/CombatStatsSubscriber.cs using Guid(63596fa2805ddf14eb3882241beea517) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ede0693a4052ce1203b35d1acb0e2e91') in 0.007490 seconds
+  Import took 0.018920 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004345 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.88 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+ForwardRenderer is missing RendererFeatures
+This could be due to missing scripts or compile error.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:135)
+UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:59)
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  2.521 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.00 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4396 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 194.5 MB.
+System memory in use after: 194.7 MB.
+
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 5027.
+Total: 6.230900 ms (FindLiveObjects: 1.091000 ms CreateObjectMapping: 0.590700 ms MarkObjects: 4.412000 ms  DeleteObjects: 0.134900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 197.564249 seconds.
+  path: Assets/Scripts/PingTap/AI/AIDifficulty.cs
+  artifactKey: Guid(e0390db19ac003e43b46bbac9f9b6893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/AI/AIDifficulty.cs using Guid(e0390db19ac003e43b46bbac9f9b6893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8724fe3f2a5c80ed0b15a8d02c6c08e') in 0.017337 seconds
+  Import took 0.028358 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.650655 seconds.
+  path: Assets/Scripts/PingTap/AI/AIPersonality.cs
+  artifactKey: Guid(2d5204564cea0c14391ba9b18dde38ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/AI/AIPersonality.cs using Guid(2d5204564cea0c14391ba9b18dde38ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '980a8074b8a0782dbf0b914722953fcf') in 0.010485 seconds
+  Import took 0.020827 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.096168 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Monobehaviours/AI
+  artifactKey: Guid(ddc73b7eacd98a24d805a5dc97e3d5b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Monobehaviours/AI using Guid(ddc73b7eacd98a24d805a5dc97e3d5b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ed9378b752de1d9b4b6b1ac1e198f85') in 0.009421 seconds
+  Import took 0.018788 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.616492 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Monobehaviours/AI/AIAttack.cs
+  artifactKey: Guid(12cb206ebb9c54f42a44a2a4e07dc415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Monobehaviours/AI/AIAttack.cs using Guid(12cb206ebb9c54f42a44a2a4e07dc415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e9cafbc3334eb5729da1db5b6015d23') in 0.008287 seconds
+  Import took 0.018737 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.888965 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Monobehaviours/AI/AITargetingSystem.cs
+  artifactKey: Guid(287a57bef9c935f40bf72cd29ee702a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Monobehaviours/AI/AITargetingSystem.cs using Guid(287a57bef9c935f40bf72cd29ee702a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f253625c62574495515a0886aca0a2f9') in 0.009434 seconds
+  Import took 0.021179 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.255954 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Models/AI
+  artifactKey: Guid(32c03ee64227059449e841bf77634e30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Models/AI using Guid(32c03ee64227059449e841bf77634e30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd756705904d9416c8d387d3458b44fa4') in 0.009947 seconds
+  Import took 0.036030 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.664272 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Models/AI/AISensoryMemory.cs
+  artifactKey: Guid(83cbaceb0887fdc4493ee7224c4259f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Models/AI/AISensoryMemory.cs using Guid(83cbaceb0887fdc4493ee7224c4259f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '313588637e91a264c6b5d3e438f1d2eb') in 0.007698 seconds
+  Import took 0.019972 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.424551 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Models/AI/AIMemory.cs
+  artifactKey: Guid(7afd4a34d1c16d94688b9eb7a05515f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Models/AI/AIMemory.cs using Guid(7afd4a34d1c16d94688b9eb7a05515f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee0d8dd31852a353bc36cc3a0611cef9') in 0.010857 seconds
+  Import took 0.020372 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.527672 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Models/Data
+  artifactKey: Guid(770f0cf68095e7a42b7238b333a13f5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Models/Data using Guid(770f0cf68095e7a42b7238b333a13f5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd581312f5ce49152ea6204aff6d89f27') in 0.013991 seconds
+  Import took 0.066702 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.122725 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Models/Armor
+  artifactKey: Guid(060f171cb5f38ec4bac5e55180c0a0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Models/Armor using Guid(060f171cb5f38ec4bac5e55180c0a0ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75350903c8d9dfead4e1c405a1a5ce08') in 0.007408 seconds
+  Import took 0.016816 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.610554 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Models/Armor/Armor.cs
+  artifactKey: Guid(63ed78a1818403c499024044f374171a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Models/Armor/Armor.cs using Guid(63ed78a1818403c499024044f374171a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '300675283e2ac99f6f7142d2dbacef8c') in 0.002763 seconds
+  Import took 0.014023 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 42.115626 seconds.
+  path: Assets/Scripts/PingTap/Combat
+  artifactKey: Guid(a64aeb9759d4e76418c3c46dec0cea0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat using Guid(a64aeb9759d4e76418c3c46dec0cea0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '789c626a158132bb1fabc87394c98b71') in 0.009002 seconds
+  Import took 0.022455 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.725705 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/Scripts/Utils
+  artifactKey: Guid(3e5318c44fb49ca44856e05b5fe9311b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/Scripts/Utils using Guid(3e5318c44fb49ca44856e05b5fe9311b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41462ec4f937cc6d77d1b2dd83d9fcb7') in 0.010457 seconds
+  Import took 0.025767 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.693211 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/CombatSystem.asmdef
+  artifactKey: Guid(aba45c3ebeea0ce4fb48dbcbfd964471) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/CombatSystem.asmdef using Guid(aba45c3ebeea0ce4fb48dbcbfd964471) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb20b52d9250964c21c64e9768449e79') in 0.011289 seconds
+  Import took 0.026947 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.713153 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/package.json
+  artifactKey: Guid(a345f45c6f3b3b04893c826772f69552) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/package.json using Guid(a345f45c6f3b3b04893c826772f69552) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd04d66c9c9032f3a369c5440fce1fded') in 0.012060 seconds
+  Import took 0.023518 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.631185 seconds.
+  path: Assets/Scripts/Systems/CombatSystem/README.md
+  artifactKey: Guid(916da2c747d698643a2c1eb5c39ee9f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Systems/CombatSystem/README.md using Guid(916da2c747d698643a2c1eb5c39ee9f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '720b226102c77a119886ec1123741526') in 0.010399 seconds
+  Import took 0.019539 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.171067 seconds.
+  path: Assets/Scripts/PingTap/AI/AIAttackPattern.cs
+  artifactKey: Guid(215604da8950a724690eaf1b84557097) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/AI/AIAttackPattern.cs using Guid(215604da8950a724690eaf1b84557097) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6135f8ff46b010e91b45311f15e96440') in 0.011867 seconds
+  Import took 0.027906 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.426771 seconds.
+  path: Assets/Scripts/PingTap/Combat/Enums/DamageType.cs
+  artifactKey: Guid(24df040500382ff4e805e384d2e34a26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Enums/DamageType.cs using Guid(24df040500382ff4e805e384d2e34a26) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3aca7c1ed3db1be544136261a05fce1') in 0.008854 seconds
+  Import took 0.017746 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.569070 seconds.
+  path: Assets/Scripts/PingTap/Combat/Enums/EffectProtection.cs
+  artifactKey: Guid(a2d8bb121f8c60848961a80c18450626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Enums/EffectProtection.cs using Guid(a2d8bb121f8c60848961a80c18450626) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e5ad8cba07627e2aad6d0757d0f9f65') in 0.009038 seconds
+  Import took 0.019311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.711357 seconds.
+  path: Assets/Scripts/PingTap/Combat/Enums/Element.cs
+  artifactKey: Guid(785c5f9e832bbea46ba1d9814db747b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Enums/Element.cs using Guid(785c5f9e832bbea46ba1d9814db747b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58c05aefbb32b5ec7258538e190a7360') in 0.010045 seconds
+  Import took 0.020054 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.040996 seconds.
+  path: Assets/Scripts/PingTap/Combat/Enums/HitArea.cs
+  artifactKey: Guid(acb98220e203b8348b68f04e51dbe1b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Enums/HitArea.cs using Guid(acb98220e203b8348b68f04e51dbe1b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15cc9b0cd6185c1046e8989bb12f2934') in 0.008062 seconds
+  Import took 0.019175 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.595966 seconds.
+  path: Assets/Scripts/PingTap/Combat/Handlers/Damage
+  artifactKey: Guid(175e93e08a7996b4d8882502cabfbcb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Handlers/Damage using Guid(175e93e08a7996b4d8882502cabfbcb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc03451f1391c1d54fed2b4a8e5212d3') in 0.014576 seconds
+  Import took 0.033755 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.363210 seconds.
+  path: Assets/Scripts/PingTap/Combat/Handlers/Combat
+  artifactKey: Guid(23322e045961cd346a7e2fdb8f1c4185) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Handlers/Combat using Guid(23322e045961cd346a7e2fdb8f1c4185) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fd79570ada021fddd4357203e89dba1') in 0.002847 seconds
+  Import took 0.015601 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.414431 seconds.
+  path: Assets/Scripts/PingTap/Combat/Handlers/Combat/CombatIKHandler.cs
+  artifactKey: Guid(301411179b560924fa183625695b2efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Handlers/Combat/CombatIKHandler.cs using Guid(301411179b560924fa183625695b2efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bc330659b5f9539c55841c748ee3c3a') in 0.009174 seconds
+  Import took 0.018648 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.569353 seconds.
+  path: Assets/Scripts/PingTap/Combat/Handlers/Combat/CombatTargetHandler.cs
+  artifactKey: Guid(df74623be58956240a5bcc8d36044f67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Handlers/Combat/CombatTargetHandler.cs using Guid(df74623be58956240a5bcc8d36044f67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47d361521167b25a2b91d5d52b5eb5e7') in 0.008266 seconds
+  Import took 0.017330 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.657278 seconds.
+  path: Assets/Scripts/PingTap/Combat/Handlers/Damage/DamageUIHandler.cs
+  artifactKey: Guid(b006bd178d6001141bafc1a42719c96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Handlers/Damage/DamageUIHandler.cs using Guid(b006bd178d6001141bafc1a42719c96c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcf63f17c660569e393ce971487d45f0') in 0.009132 seconds
+  Import took 0.019293 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.625182 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/ArmorElementModifier.cs
+  artifactKey: Guid(f4785035d603fc8459c82480e050e672) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/ArmorElementModifier.cs using Guid(f4785035d603fc8459c82480e050e672) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9a0fe1b379c6f6119bf0094b8d53f13') in 0.009831 seconds
+  Import took 0.020186 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.782702 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/CombatScoreData.cs
+  artifactKey: Guid(bebc22b6bb4699f4fb08be329e24e95c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/CombatScoreData.cs using Guid(bebc22b6bb4699f4fb08be329e24e95c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78d3a56cc6689c37fcf6c254d2ea1d11') in 0.010390 seconds
+  Import took 0.019430 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.164152 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/ProjectileData.cs
+  artifactKey: Guid(8fdb731ff74f39c45b28f68eeb72d5a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/ProjectileData.cs using Guid(8fdb731ff74f39c45b28f68eeb72d5a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f25d579afe8b214886fbe6f29d5fd11') in 0.010205 seconds
+  Import took 0.020188 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.791674 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/ProtectionResult.cs
+  artifactKey: Guid(7aec9ca42d63fe641ae5bb4d84c6fad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/ProtectionResult.cs using Guid(7aec9ca42d63fe641ae5bb4d84c6fad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccc05e89f22b001fd6f0cc14e8355184') in 0.010019 seconds
+  Import took 0.021785 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 50.579201 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/CombatUpgrades.cs
+  artifactKey: Guid(8ef359a9d7c748d4e8a15c4ff9cd36fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/CombatUpgrades.cs using Guid(8ef359a9d7c748d4e8a15c4ff9cd36fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de31c0f0278573166f514610c7b31e42') in 0.008457 seconds
+  Import took 0.020013 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.500393 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/CombatScoreData.cs
+  artifactKey: Guid(bebc22b6bb4699f4fb08be329e24e95c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/CombatScoreData.cs using Guid(bebc22b6bb4699f4fb08be329e24e95c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51d6d6c252a67d7d26f3bc1f83006298') in 0.002995 seconds
+  Import took 0.014569 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.104545 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/ArmorElementModifier.cs
+  artifactKey: Guid(f4785035d603fc8459c82480e050e672) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/ArmorElementModifier.cs using Guid(f4785035d603fc8459c82480e050e672) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec165e49a9f8f7ab6bd4423fba1f97ce') in 0.005411 seconds
+  Import took 0.027400 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.135444 seconds.
+  path: Assets/Scripts/PingTap/Combat/Models/Armor.cs
+  artifactKey: Guid(63ed78a1818403c499024044f374171a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Combat/Models/Armor.cs using Guid(63ed78a1818403c499024044f374171a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'badc90a3e44cca9f4020c6aef0401727') in 0.006862 seconds
+  Import took 0.015795 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 40.177564 seconds.
+  path: Assets/Scripts/PingTap/Fralle.asmdef
+  artifactKey: Guid(b76b7bfd2ac8c694ebd4a227713cef33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PingTap/Fralle.asmdef using Guid(b76b7bfd2ac8c694ebd4a227713cef33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df7dc0cc0b74199ee130291e807e6f14') in 0.015535 seconds
+  Import took 0.031440 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003292 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.00 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Warning: Annotation not found!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs:593)
+UnityEditor.ProBuilder.HierarchyListener:.cctor () (at Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/HierarchyListener.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+[Library/PackageCache/com.unity.probuilder@4.4.0/Editor/EditorCore/EditorUtility.cs line 593]
+
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+ForwardRenderer is missing RendererFeatures
+This could be due to missing scripts or compile error.
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogError (object,UnityEngine.Object)
+UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:135)
+UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:59)
+
+(Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.795 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 1.43 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4393 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 194.6 MB.
+System memory in use after: 194.8 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 5027.
+Total: 5.710200 ms (FindLiveObjects: 0.735200 ms CreateObjectMapping: 0.529700 ms MarkObjects: 4.309800 ms  DeleteObjects: 0.133000 ms)
+

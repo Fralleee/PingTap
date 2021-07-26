@@ -1,4 +1,4 @@
-﻿using CombatSystem;
+﻿using Fralle.Pingtap;
 using UnityEngine;
 using UnityEngine.UI;
 

@@ -1,4 +1,4 @@
-using CombatSystem;
+using Fralle.Pingtap;
 using Fralle.FpsController;
 using Fralle.PingTap.AI;
 using UnityEngine;

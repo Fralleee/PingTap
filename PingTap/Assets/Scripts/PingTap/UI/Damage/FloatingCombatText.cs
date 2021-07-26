@@ -1,4 +1,4 @@
-﻿using CombatSystem;
+﻿using Fralle.Pingtap;
 using Fralle.Core.Pooling;
 using TMPro;
 using UnityEngine;
