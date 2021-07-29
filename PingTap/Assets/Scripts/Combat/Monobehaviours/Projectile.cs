@@ -94,7 +94,7 @@ namespace Fralle.Pingtap
 
 			if (direction == Vector3.zero)
 				direction = -(transform.position - collision.collider.transform.position).normalized;
-			rigidBody.AddForce(direction * data.PushForce);
+			rigidBody.AddForce(direction * data.PushForce, ForceMode.Impulse);
 		}
 
 		void OnCollisionEnter(Collision collision)

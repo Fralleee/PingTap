@@ -75,7 +75,7 @@ namespace Fralle.Pingtap
 					Element = projectileData.Element,
 					HitAngle = Vector3.Angle((position - collision.transform.position).normalized, collision.transform.forward),
 					Effects = SetupDamageEffects(projectileData.DamageEffects, projectileData.Attacker, projectileData.Damage),
-					Force = projectileData.Forward * projectileData.PushForce,
+					Force = projectileData.Forward * projectileData.Force,
 					Position = collision.GetContact(0).point,
 					Normal = collision.GetContact(0).normal,
 					HitArea = hitArea,
@@ -98,7 +98,7 @@ namespace Fralle.Pingtap
 			}
 
 			var teamController = projectileData.Attacker.teamController;
-			var colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, teamController.Hostiles);
+			var colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, teamController.Hostiles | 1 << 0);
 
 			List<Rigidbody> rigidBodies = new List<Rigidbody>();
 			HashSet<DamageController> targets = new HashSet<DamageController>();
@@ -113,7 +113,7 @@ namespace Fralle.Pingtap
 			}
 
 			foreach (var rigidbody in rigidBodies)
-				rigidbody.AddExplosionForce(projectileData.PushForce, position, projectileData.ExplosionRadius + 1, 0.5f);
+				rigidbody.AddExplosionForce(projectileData.PushForce, position, projectileData.ExplosionRadius + 1, 0.5f, ForceMode.Impulse);
 
 			foreach (var damageController in targets)
 			{
@@ -149,7 +149,7 @@ namespace Fralle.Pingtap
 
 			if (direction == Vector3.zero)
 				direction = -(position - collision.collider.transform.position).normalized;
-			rigidBody.AddForce(direction * projectileData.PushForce);
+			rigidBody.AddForce(direction * projectileData.PushForce, ForceMode.Impulse);
 		}
 
 		static void AddForce(RaycastAttack raycastAttack, RaycastHit hit)
@@ -157,7 +157,7 @@ namespace Fralle.Pingtap
 			var rigidBody = hit.transform.GetComponent<Rigidbody>();
 			if (rigidBody != null)
 			{
-				rigidBody.AddForce(raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce, ForceMode.Acceleration);
+				rigidBody.AddForce(raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce, ForceMode.Impulse);
 			}
 		}
 	}
