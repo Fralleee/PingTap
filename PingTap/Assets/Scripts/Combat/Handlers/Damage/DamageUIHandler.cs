@@ -12,7 +12,7 @@ namespace Fralle.Pingtap
 		[SerializeField] GameObject floatingCombatText;
 
 		DamageController damageController;
-		GameObject ui;
+		Transform ui;
 		Outlinable outlinable;
 
 		float delay = 0.5f;
@@ -28,10 +28,10 @@ namespace Fralle.Pingtap
 			if (outlinable)
 				outlinable.enabled = false;
 
-			ui = this.damageController.transform.Find("UI").gameObject;
+			ui = this.damageController.transform.Find("UI");
 			if (ui)
 			{
-				ui.SetActive(false);
+				ui.gameObject.SetActive(false);
 				SetupUi();
 			}
 		}
@@ -57,7 +57,7 @@ namespace Fralle.Pingtap
 			timer = customDelay.HasValue ? customDelay.Value : delay;
 
 			if (ui)
-				ui.SetActive(show);
+				ui.gameObject.SetActive(show);
 
 			if (outlinable)
 				outlinable.enabled = show;
