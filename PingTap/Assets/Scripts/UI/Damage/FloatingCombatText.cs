@@ -1,5 +1,5 @@
-﻿using Fralle.Pingtap;
-using Fralle.Core.Pooling;
+﻿using Fralle.Core.Pooling;
+using Fralle.PingTap;
 using TMPro;
 using UnityEngine;
 

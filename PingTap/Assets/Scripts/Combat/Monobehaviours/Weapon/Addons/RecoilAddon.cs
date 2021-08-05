@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[RequireComponent(typeof(Weapon))]
 	public class RecoilAddon : MonoBehaviour

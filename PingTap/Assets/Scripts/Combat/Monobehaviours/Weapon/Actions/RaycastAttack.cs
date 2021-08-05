@@ -1,9 +1,9 @@
-﻿using Fralle.Core.Attributes;
+﻿using Fralle.Core;
 using Fralle.Core.Extensions;
 using Fralle.Core.Pooling;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class RaycastAttack : AttackAction
 	{

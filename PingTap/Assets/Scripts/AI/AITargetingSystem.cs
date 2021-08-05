@@ -3,7 +3,7 @@ using SensorToolkit;
 using System.Linq;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class AITargetingSystem : MonoBehaviour
 	{

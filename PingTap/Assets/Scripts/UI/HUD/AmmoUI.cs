@@ -1,4 +1,4 @@
-using Fralle.Pingtap;
+using Fralle.PingTap;
 using TMPro;
 using UnityEngine;
 

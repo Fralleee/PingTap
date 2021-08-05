@@ -1,8 +1,8 @@
-﻿using Fralle.Core.Attributes;
+﻿using Fralle.Core;
 using System;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class Weapon : MonoBehaviour
 	{

@@ -3,7 +3,7 @@ using SensorToolkit;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class AISensoryMemory
 	{

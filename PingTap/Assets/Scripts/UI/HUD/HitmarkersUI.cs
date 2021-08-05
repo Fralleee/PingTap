@@ -1,5 +1,5 @@
-using Fralle.Pingtap;
 using Fralle.Core.Extensions;
+using Fralle.PingTap;
 using UnityEngine;
 using UnityEngine.UI;
 

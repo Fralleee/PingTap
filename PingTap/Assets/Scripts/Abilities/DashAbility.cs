@@ -40,13 +40,10 @@ namespace Fralle.PingTap
 			rigidBody = ac.GetComponentInChildren<Rigidbody>();
 			orientation = rigidBody.transform.Find("Orientation");
 
-			abilityVolumeGo = new GameObject("Dash Volume");
-			abilityVolumeGo.transform.SetParent(ac.PostProcess.transform);
-			abilityVolume = abilityVolumeGo.AddComponent<Volume>();
-			abilityVolume.weight = 0;
-			abilityVolume.profile = postProcess;
+			if (ac.postProcessController)
+				abilityVolume = ac.postProcessController.AddProfile(postProcess);
 
-			speedlines = Instantiate(speedlines, ac.PostProcess.transform);
+			speedlines = Instantiate(speedlines, ac.postProcessController.transform);
 			speedLinesEffect = speedlines.GetComponent<ParticleSystem>();
 
 			cameraShakeTransform = playerController.Camera.GetComponentInParent<ShakeTransform>();

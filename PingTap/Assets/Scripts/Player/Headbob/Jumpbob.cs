@@ -1,4 +1,3 @@
-using Fralle.Pingtap;
 using Fralle.Core.Extensions;
 using Fralle.FpsController;
 using UnityEngine;

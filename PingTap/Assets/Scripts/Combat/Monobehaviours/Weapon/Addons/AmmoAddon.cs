@@ -1,9 +1,9 @@
-﻿using Fralle.Core.Attributes;
+﻿using Fralle.Core;
 using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class AmmoAddon : MonoBehaviour
 	{

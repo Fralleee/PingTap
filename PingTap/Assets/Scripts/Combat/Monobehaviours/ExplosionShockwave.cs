@@ -1,7 +1,7 @@
 using Fralle.Core.Pooling;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class ExplosionShockwave : MonoBehaviour
 	{

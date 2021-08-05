@@ -1,4 +1,4 @@
-﻿using Fralle.Pingtap;
+﻿using Fralle.PingTap;
 using System.Linq;
 using UnityEngine;
 

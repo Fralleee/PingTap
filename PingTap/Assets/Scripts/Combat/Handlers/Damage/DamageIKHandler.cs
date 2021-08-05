@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[Serializable]
 	public class DamageIKHandler

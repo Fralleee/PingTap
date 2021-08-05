@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public abstract class Protection : ScriptableObject
 	{

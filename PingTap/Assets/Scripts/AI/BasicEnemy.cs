@@ -1,4 +1,3 @@
-using Fralle.Pingtap;
 using Fralle.Core.AI;
 using Fralle.Core.Extensions;
 using Fralle.PingTap.AI;

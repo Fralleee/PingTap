@@ -3,7 +3,7 @@ using Fralle.Core.Pooling;
 using System.Collections;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class ProjectileAttack : AttackAction
 	{
@@ -60,9 +60,8 @@ namespace Fralle.Pingtap
 			{
 				Combatant.Stats.OnAttack(1);
 
-				int layerMask = ~LayerMask.GetMask("Corpse", "Target Information");
 				Ray ray = new Ray(Weapon.Combatant.AimTransform.position, Weapon.Combatant.AimTransform.forward);
-				if (Physics.Raycast(ray, out var hitInfo, projectileData.Range, layerMask))
+				if (Physics.Raycast(ray, out var hitInfo, projectileData.Range, Weapon.Combatant.teamController.AttackLayerMask))
 					projectileData.Forward = (hitInfo.point - muzzle.position).normalized;
 				else
 					projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;

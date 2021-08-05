@@ -1,4 +1,3 @@
-using Fralle.Pingtap;
 using Fralle.CharacterStats;
 using UnityEngine;
 

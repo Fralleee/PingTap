@@ -2,12 +2,13 @@ using Fralle.Core;
 using System;
 using System.Linq;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[Serializable]
 	public class CombatIKHandler
 	{
 		public bool enabled;
+		public bool useLeftHand = true;
 
 		Combatant combatant;
 		HandIK[] leftHandIks;
@@ -44,7 +45,7 @@ namespace Fralle.Pingtap
 
 		void SetupIK()
 		{
-			if (combatant.EquippedWeapon.leftHandGrip)
+			if (useLeftHand && combatant.EquippedWeapon.leftHandGrip)
 			{
 				foreach (var ik in leftHandIks)
 					ik.Toggle();

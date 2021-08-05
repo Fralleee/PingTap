@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[Serializable]
 	public class CombatUpgrades

@@ -1,8 +1,9 @@
-﻿using Fralle.Core.Extensions;
+﻿using Fralle.Core;
+using Fralle.Core.Extensions;
 using System;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class DamageController : MonoBehaviour
 	{
@@ -15,9 +16,11 @@ namespace Fralle.Pingtap
 		[HideInInspector] public DamageEffectHandler effectHandler;
 
 		[Header("Stats")]
-		public float CurrentHealth;
-		public float MaxHealth = 100f;
 		public bool Immortal;
+
+		[ProgressBar("Health", "MaxHealth", EColor.Red)]
+		public float CurrentHealth;
+		public float MaxHealth = 200f;
 
 		[Header("Effects")]
 		public GameObject impactEffect;
@@ -29,9 +32,14 @@ namespace Fralle.Pingtap
 		[SerializeField] DamageIKHandler ikHandler;
 		[SerializeField] DamageAudioHandler audioHandler;
 		[SerializeField] DamageGraphicsHandler graphicsHandler;
+		[SerializeField] DamageIndicatorHandler indicatorHandler;
+
+		PostProcessController postProcessController;
 
 		void Awake()
 		{
+			postProcessController = GetComponentInChildren<PostProcessController>();
+
 			if (ikHandler.enabled)
 				ikHandler.Setup(this);
 
@@ -40,6 +48,7 @@ namespace Fralle.Pingtap
 			uiHandler.Setup(this);
 			audioHandler.Setup(this);
 			graphicsHandler.Setup(this);
+			indicatorHandler.Setup(this, postProcessController);
 		}
 
 		void Start()
@@ -130,6 +139,7 @@ namespace Fralle.Pingtap
 			uiHandler.Clean();
 			graphicsHandler.Clean();
 			audioHandler.Clean();
+			indicatorHandler.Clean();
 		}
 	}
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[CreateAssetMenu(menuName = "Combat/Impact Atlas")]
 	public class ImpactAtlas : ScriptableObject

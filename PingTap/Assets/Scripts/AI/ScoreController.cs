@@ -1,5 +1,5 @@
-﻿using Fralle.Pingtap;
-using Fralle.Core.Attributes;
+﻿using Fralle.Core;
+using Fralle.PingTap;
 using System;
 using UnityEngine;
 

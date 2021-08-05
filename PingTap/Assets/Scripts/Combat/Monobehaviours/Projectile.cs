@@ -2,7 +2,7 @@
 using Fralle.Core.Pooling;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[RequireComponent(typeof(SphereCollider))]
 	[RequireComponent(typeof(Rigidbody))]
@@ -99,6 +99,7 @@ namespace Fralle.Pingtap
 
 		void OnCollisionEnter(Collision collision)
 		{
+			Debug.Log(collision.collider.name);
 			if (data.KinematicOnImpact)
 			{
 				rigidbody.isKinematic = true;

@@ -1,7 +1,5 @@
-using Fralle.Pingtap;
 using Fralle.Core;
 using Fralle.Core.AI;
-using Fralle.Core.Attributes;
 using UnityEngine;
 
 namespace Fralle.PingTap.AI

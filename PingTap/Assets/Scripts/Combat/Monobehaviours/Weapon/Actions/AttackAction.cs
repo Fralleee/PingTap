@@ -1,7 +1,7 @@
 ﻿using Fralle.Core.Enums;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[RequireComponent(typeof(Weapon))]
 	[RequireComponent(typeof(AmmoAddon))]

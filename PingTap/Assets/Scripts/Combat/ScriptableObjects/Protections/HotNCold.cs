@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[CreateAssetMenu(menuName = "PlayerAttack/Protection/Hot and cold")]
 	public class HotNCold : Protection

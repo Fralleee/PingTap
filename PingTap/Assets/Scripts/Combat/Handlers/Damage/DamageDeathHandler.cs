@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[Serializable]
 	public class DamageDeathHandler

@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	public class Combatant : MonoBehaviour
 	{
@@ -18,9 +18,10 @@ namespace Fralle.Pingtap
 
 		public Transform AimTransform;
 		public Transform WeaponHolder;
-		public Weapon EquippedWeapon;
+		[Readonly] public Weapon EquippedWeapon;
 
 		[Header("Settings")]
+		[Expandable]
 		public ImpactAtlas impactAtlas;
 
 		[Header("Flags")]
@@ -99,7 +100,8 @@ namespace Fralle.Pingtap
 				secondaryAction = null;
 			}
 
-			OnWeaponSwitch(EquippedWeapon, oldWeapon);
+			if (EquippedWeapon != null || oldWeapon != null)
+				OnWeaponSwitch(EquippedWeapon, oldWeapon);
 		}
 
 		void Awake()

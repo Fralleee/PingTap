@@ -1,4 +1,4 @@
-﻿namespace Fralle.Pingtap
+﻿namespace Fralle.PingTap
 {
 	public enum EffectProtection
 	{

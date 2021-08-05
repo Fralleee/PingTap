@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[CreateAssetMenu(menuName = "PlayerAttack/Effect/DamageData over time")]
 	public class DotEffect : DamageEffect

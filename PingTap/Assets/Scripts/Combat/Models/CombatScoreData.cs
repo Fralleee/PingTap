@@ -1,8 +1,8 @@
-﻿using Fralle.Core.Attributes;
+﻿using Fralle.Core;
 using System;
 using System.Collections.Generic;
 
-namespace Fralle.Pingtap
+namespace Fralle.PingTap
 {
 	[Serializable]
 	public class CombatScoreData
