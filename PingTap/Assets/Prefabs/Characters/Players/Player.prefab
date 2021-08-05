@@ -691,12 +691,12 @@ GameObject:
   - component: {fileID: 1825153499}
   - component: {fileID: 8695899812694590851}
   - component: {fileID: 4910702748399881733}
+  - component: {fileID: 2139313407611311001}
   - component: {fileID: 833356114275833103}
+  - component: {fileID: 3167768356713284050}
   - component: {fileID: 1554100150}
   - component: {fileID: 1821515927939034793}
   - component: {fileID: 2719306716182126083}
-  - component: {fileID: 3167768356713284050}
-  - component: {fileID: 2139313407611311001}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -830,6 +830,47 @@ MonoBehaviour:
   Combatant: {fileID: 0}
   startingScoreValue: 1
   scoreValue: 0
+--- !u!114 &2139313407611311001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2474c5551585a4fa723362163f7eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Agility:
+    BaseValue: 0
+    _value: 0
+  Dexterity:
+    BaseValue: 0
+    _value: 0
+  Strength:
+    BaseValue: 0
+    _value: 0
+  Aim:
+    BaseValue: 0
+    _value: 0
+    ParentAttribute: 2
+    parentStatFactor: 1
+  JumpPower:
+    BaseValue: 0
+    _value: 0
+    ParentAttribute: 1
+    parentStatFactor: 1
+  ReloadSpeed:
+    BaseValue: 0
+    _value: 0
+    ParentAttribute: 2
+    parentStatFactor: 1
+  RunSpeed:
+    BaseValue: 0
+    _value: 0
+    ParentAttribute: 1
+    parentStatFactor: 1
 --- !u!114 &833356114275833103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,6 +914,24 @@ MonoBehaviour:
   crouchingSpeed: 8
   crouchHeight: 1
   SlopeAngle: 0
+--- !u!114 &3167768356713284050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386371906627268470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3edde1b6fcc46c4a838c21ac1f52de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MovementAbility>k__BackingField: {fileID: 11400000, guid: e9341b171f7a74345b6a5e58e3aa8b41,
+    type: 2}
+  <AttackAbility>k__BackingField: {fileID: 0}
+  <UltimateAbility>k__BackingField: {fileID: 0}
+  PassiveAbilities: []
+  postProcessController: {fileID: 0}
 --- !u!114 &1554100150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,65 +1032,6 @@ MonoBehaviour:
   ikHandler:
     enabled: 1
     useLeftHand: 0
---- !u!114 &3167768356713284050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386371906627268470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3edde1b6fcc46c4a838c21ac1f52de0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MovementAbility>k__BackingField: {fileID: 11400000, guid: e9341b171f7a74345b6a5e58e3aa8b41,
-    type: 2}
-  <AttackAbility>k__BackingField: {fileID: 0}
-  <UltimateAbility>k__BackingField: {fileID: 0}
-  PassiveAbilities: []
-  postProcessController: {fileID: 0}
---- !u!114 &2139313407611311001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1386371906627268470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2474c5551585a4fa723362163f7eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Agility:
-    BaseValue: 0
-    _value: 0
-  Dexterity:
-    BaseValue: 0
-    _value: 0
-  Strength:
-    BaseValue: 0
-    _value: 0
-  Aim:
-    BaseValue: 0
-    _value: 0
-    ParentAttribute: 2
-    parentStatFactor: 1
-  JumpPower:
-    BaseValue: 0
-    _value: 0
-    ParentAttribute: 1
-    parentStatFactor: 1
-  ReloadSpeed:
-    BaseValue: 0
-    _value: 0
-    ParentAttribute: 2
-    parentStatFactor: 1
-  RunSpeed:
-    BaseValue: 0
-    _value: 0
-    ParentAttribute: 1
-    parentStatFactor: 1
 --- !u!1 &1386371907097986393
 GameObject:
   m_ObjectHideFlags: 0
