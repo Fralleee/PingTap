@@ -27,6 +27,8 @@ namespace Fralle.PingTap
 		void Awake()
 		{
 			MapToDictionary();
+
+
 		}
 	}
 }
