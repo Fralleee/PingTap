@@ -10,6 +10,7 @@ namespace Fralle.PingTap
 		[Header("UI")]
 		[SerializeField] GameObject healthbarPrefab;
 		[SerializeField] GameObject floatingCombatText;
+		[SerializeField] bool useOutlinable;
 
 		DamageController damageController;
 		Transform ui;
@@ -59,7 +60,7 @@ namespace Fralle.PingTap
 			if (ui)
 				ui.gameObject.SetActive(show);
 
-			if (outlinable)
+			if (outlinable && useOutlinable)
 				outlinable.enabled = show;
 
 			isShowing = show;

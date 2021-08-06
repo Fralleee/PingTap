@@ -15,11 +15,11 @@ E:/Unity/Projects/PingTap/PingTap
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53913
+55090
 Successfully changed project path to: E:/Unity/Projects/PingTap/PingTap
 E:/Unity/Projects/PingTap/PingTap
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 116.57 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 129.02 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.3f1 (76626098c1c4)
 [Subsystems] Discovering subsystems at path E:/Unity/2020.3.3f1/Editor/Data/Resources/UnitySubsystems
@@ -36,1017 +36,251 @@ Initialize mono
 Mono path[0] = 'E:/Unity/2020.3.3f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Unity/2020.3.3f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56760
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56276
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.3.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001063 seconds.
+Registered in 0.001657 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 113.17 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 123.86 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.458 seconds
+- Completed reload, in  1.288 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003921 seconds.
+Registered in 0.003778 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 118.09 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 134.42 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.459 seconds
+- Completed reload, in  2.764 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 1.21 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 1.84 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4694 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 204.6 MB.
-System memory in use after: 204.8 MB.
-
-Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 5142.
-Total: 4.492400 ms (FindLiveObjects: 0.535600 ms CreateObjectMapping: 0.214200 ms MarkObjects: 3.590700 ms  DeleteObjects: 0.150300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003372 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-ForwardRenderer is missing RendererFeatures
-This could be due to missing scripts or compile error.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
-UnityEngine.Debug:LogError (object,UnityEngine.Object)
-UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:135)
-UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:59)
-
-(Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.723 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.41 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4514 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 190.8 MB.
-System memory in use after: 191.0 MB.
+Unloading 4695 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 205.6 MB.
+System memory in use after: 205.9 MB.
 
 Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 5144.
-Total: 7.029700 ms (FindLiveObjects: 0.948100 ms CreateObjectMapping: 0.567700 ms MarkObjects: 5.017100 ms  DeleteObjects: 0.490500 ms)
+Total: 6.538200 ms (FindLiveObjects: 1.373400 ms CreateObjectMapping: 0.641800 ms MarkObjects: 4.349200 ms  DeleteObjects: 0.169900 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Materials/Weapons/Crosshairs/5.png
-  artifactKey: Guid(04114384f0001264bba5ce8b2e36b6b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/5.png using Guid(04114384f0001264bba5ce8b2e36b6b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc2bccb3e0bbd5708e38702ae1c2739c') in 0.167544 seconds
-  Import took 0.180592 seconds .
+  path: Assets/ScriptableObjects/Impact Atlas.asset
+  artifactKey: Guid(14acf483234855144b8944b204c9ac79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Impact Atlas.asset using Guid(14acf483234855144b8944b204c9ac79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '840aa499978edc4865b0634789abcb49') in 0.091735 seconds
+  Import took 0.106367 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000434 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/61.png
-  artifactKey: Guid(c7d1ffe214d4bef45aa80e960ab3ee2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/61.png using Guid(c7d1ffe214d4bef45aa80e960ab3ee2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70aa0484c026b4fc3f194cd07cd7b637') in 0.027249 seconds
-  Import took 0.038492 seconds .
+  Time since last request: 81.405357 seconds.
+  path: Assets/Materials/Grid
+  artifactKey: Guid(2ae8f924a25fd2b47b015fa3648d1f3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Grid using Guid(2ae8f924a25fd2b47b015fa3648d1f3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d014e1aace1e4824d005f4476277b98') in 0.007132 seconds
+  Import took 0.017697 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000320 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0004_Death-hero01_005.png.png
-  artifactKey: Guid(d95abc955531fc74a8b78a2f38ea2b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0004_Death-hero01_005.png.png using Guid(d95abc955531fc74a8b78a2f38ea2b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e67330c3b09518d51d8e87a09f52d947') in 0.029134 seconds
-  Import took 0.040962 seconds .
+  Time since last request: 145.682138 seconds.
+  path: Assets/Plugins/SensorToolkit/Examples/common/Materials/Magenta.mat
+  artifactKey: Guid(aecf3cf83556df2449c796b9772b6bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/SensorToolkit/Examples/common/Materials/Magenta.mat using Guid(aecf3cf83556df2449c796b9772b6bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '248706d336d39834fc3f647bdf4c8318') in 0.243561 seconds
+  Import took 0.253872 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000271 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/13.png
-  artifactKey: Guid(b7f88853031a3c941a2b66eaa4648f95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/13.png using Guid(b7f88853031a3c941a2b66eaa4648f95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54d57d65fc05e0e5efe6f69c047ca20f') in 0.028921 seconds
-  Import took 0.040863 seconds .
+  Time since last request: 0.000269 seconds.
+  path: Assets/Plugins/SensorToolkit/Examples/common/Materials/MagentaGround.mat
+  artifactKey: Guid(27b62da181c2f524596beef2936d29b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/SensorToolkit/Examples/common/Materials/MagentaGround.mat using Guid(27b62da181c2f524596beef2936d29b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96b0a09130c702e399a8aa27e15dbd23') in 0.025967 seconds
+  Import took 0.036740 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/42.png
-  artifactKey: Guid(cb7dd5b5fcabd3a4d83e8efac2d4797a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/42.png using Guid(cb7dd5b5fcabd3a4d83e8efac2d4797a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b4cb10a1979bda5046bbe0321d75c5c') in 0.023605 seconds
-  Import took 0.033988 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/46.png
-  artifactKey: Guid(2ec7d6abeda53ab47baab6a46f02f9d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/46.png using Guid(2ec7d6abeda53ab47baab6a46f02f9d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f23758608eb3cf97ec5cc4d186ed868c') in 0.023861 seconds
-  Import took 0.034173 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000206 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0029_Jump-hero01_009.png.png
-  artifactKey: Guid(b4ec506303401bf4f93bf3b26bfdf6cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0029_Jump-hero01_009.png.png using Guid(b4ec506303401bf4f93bf3b26bfdf6cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dc0c1a2c66c13c2c2bf2374e7f620ca') in 0.023297 seconds
-  Import took 0.033583 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/44.png
-  artifactKey: Guid(e4ab6407b69632140840ea5abb66caea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/44.png using Guid(e4ab6407b69632140840ea5abb66caea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1669eda02080a9a280068bfda5640a6c') in 0.022837 seconds
-  Import took 0.034300 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000248 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0009_Idle-hero01_001.png.png
-  artifactKey: Guid(8e9c5d874756b8149a84d8cca1b510a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0009_Idle-hero01_001.png.png using Guid(8e9c5d874756b8149a84d8cca1b510a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8577285d33d63f33d1a9967506980bf9') in 0.023262 seconds
-  Import took 0.034034 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/1.png
-  artifactKey: Guid(2755606113ecc9b49b3e0fe0a55ce0b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/1.png using Guid(2755606113ecc9b49b3e0fe0a55ce0b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bf8d494619331c40df39a2c61ee38c1') in 0.023247 seconds
-  Import took 0.034393 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/39.png
-  artifactKey: Guid(fed43a0e901a1334eae1890953bd00ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/39.png using Guid(fed43a0e901a1334eae1890953bd00ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60511410e0223b152d7377ee1a3b5af1') in 0.022571 seconds
-  Import took 0.032880 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/2.png
-  artifactKey: Guid(503260af2ac00e84fa1a8dd01a34d10b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/2.png using Guid(503260af2ac00e84fa1a8dd01a34d10b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9af2c937c1c4ec90115fe638d03c680') in 0.023142 seconds
-  Import took 0.033873 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000340 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0025_Jump-hero01_005.png.png
-  artifactKey: Guid(3a017b670e45b7e4b8b352b05fcb342d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0025_Jump-hero01_005.png.png using Guid(3a017b670e45b7e4b8b352b05fcb342d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c630fd6889b3bf835f694c3f147b7fc') in 0.027691 seconds
-  Import took 0.039651 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000256 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0013_Idle-hero01_005.png.png
-  artifactKey: Guid(e14fb8ff893cef141bda873dd21049d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0013_Idle-hero01_005.png.png using Guid(e14fb8ff893cef141bda873dd21049d4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bf0e14ce3f1d3cd1c9a1cb55f4e357b') in 0.027659 seconds
-  Import took 0.040437 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000284 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/37.png
-  artifactKey: Guid(198b2616718425249a5e447a2cbedb51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/37.png using Guid(198b2616718425249a5e447a2cbedb51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd92f5be669084d04c9216ea0db85cce3') in 0.024116 seconds
-  Import took 0.037149 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000230 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/50.png
-  artifactKey: Guid(300ab71307b4ce045baecc91eff08480) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/50.png using Guid(300ab71307b4ce045baecc91eff08480) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42395ac3bb4c608de6a27ab2896c868f') in 0.026673 seconds
-  Import took 0.036468 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000214 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/36.png
-  artifactKey: Guid(9caa362575d20c846bffc68bb214d19f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/36.png using Guid(9caa362575d20c846bffc68bb214d19f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebac3b2f3b9a8a43ad6fc71c761f1390') in 0.020468 seconds
-  Import took 0.029249 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0003_Death-hero01_004.png.png
-  artifactKey: Guid(b34f02fc22bc1684ca56f028f048bfbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0003_Death-hero01_004.png.png using Guid(b34f02fc22bc1684ca56f028f048bfbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b62ed00c6cd8217ade0d7de7cc69199f') in 0.025055 seconds
-  Import took 0.035754 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000288 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/54.png
-  artifactKey: Guid(a938f719d2efa5b4cbc432a671c9ea71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/54.png using Guid(a938f719d2efa5b4cbc432a671c9ea71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d85f8afc047ba948301f5c561c68c94') in 0.029429 seconds
-  Import took 0.042703 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000454 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/6.png
-  artifactKey: Guid(c9b6a779bc91fdd418c3440bb00e6eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/6.png using Guid(c9b6a779bc91fdd418c3440bb00e6eff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11870acfa37bd406392892a3f4cd96c4') in 0.030578 seconds
-  Import took 0.042524 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000221 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0017_Idle-hero01_009.png.png
-  artifactKey: Guid(872f7d64c4cef7148bc8771281480d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0017_Idle-hero01_009.png.png using Guid(872f7d64c4cef7148bc8771281480d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '970f707158c9698b0a76b675ba8ae78f') in 0.024818 seconds
-  Import took 0.034436 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000232 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/30.png
-  artifactKey: Guid(3acd872c44249e244905ff7d3a65ca5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/30.png using Guid(3acd872c44249e244905ff7d3a65ca5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4269a37b066ec301cc78f4ad6612d149') in 0.023078 seconds
-  Import took 0.033699 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000465 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0010_Idle-hero01_002.png.png
-  artifactKey: Guid(92396ed923886e5408c067cdeb1dd47c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0010_Idle-hero01_002.png.png using Guid(92396ed923886e5408c067cdeb1dd47c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6f29f299b2e9bcef557482e338734b3') in 0.030928 seconds
-  Import took 0.046492 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000325 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0000_Death-hero01_001.png.png
-  artifactKey: Guid(bddfc164a0fa0dc419c8583cce28d9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0000_Death-hero01_001.png.png using Guid(bddfc164a0fa0dc419c8583cce28d9b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1013d52f08b2937ef845a60bb12e48f2') in 0.026918 seconds
-  Import took 0.037467 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/4.png
-  artifactKey: Guid(af6a4f49c27a225468f4110dfd05904b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/4.png using Guid(af6a4f49c27a225468f4110dfd05904b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c04f53d60c0565060c31bb06ee332ee') in 0.023315 seconds
-  Import took 0.033757 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000229 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/31.png
-  artifactKey: Guid(b79be6c06a60bdb4784342beb2007afc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/31.png using Guid(b79be6c06a60bdb4784342beb2007afc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e588052156b6108a807fc85f3b24029') in 0.022116 seconds
-  Import took 0.032994 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.695858 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Hitbox.cs
-  artifactKey: Guid(67ef1bcbe1324ad419a55756736a93bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Hitbox.cs using Guid(67ef1bcbe1324ad419a55756736a93bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae604474ef979601e9a34d195bf031e1') in 0.010877 seconds
-  Import took 0.022061 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.045378 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Projectile.cs
-  artifactKey: Guid(3a99efd22746f8340982c812cef3e647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Projectile.cs using Guid(3a99efd22746f8340982c812cef3e647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74a889564368f5df99709a69e53dbc33') in 0.025593 seconds
-  Import took 0.040231 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.019703 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Projectile.cs
-  artifactKey: Guid(3a99efd22746f8340982c812cef3e647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Projectile.cs using Guid(3a99efd22746f8340982c812cef3e647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74a889564368f5df99709a69e53dbc33') in 0.002415 seconds
-  Import took 0.013390 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003059 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.01 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-ForwardRenderer is missing RendererFeatures
-This could be due to missing scripts or compile error.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
-UnityEngine.Debug:LogError (object,UnityEngine.Object)
-UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:135)
-UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:59)
-
-(Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.790 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 4.16 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4514 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 194.1 MB.
-System memory in use after: 194.3 MB.
-
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 5153.
-Total: 10.937700 ms (FindLiveObjects: 1.574500 ms CreateObjectMapping: 0.960700 ms MarkObjects: 6.312000 ms  DeleteObjects: 2.022300 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.191881 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/3.png
-  artifactKey: Guid(34972a72c612b2544a27103772922ec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/3.png using Guid(34972a72c612b2544a27103772922ec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59c0ca87e2e601adadbd54406422f2fb') in 0.091679 seconds
-  Import took 0.107060 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000241 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0040_Sit-down01-hero01_001.png.png
-  artifactKey: Guid(f7f61cdf286167d4881a9a11aeb11959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0040_Sit-down01-hero01_001.png.png using Guid(f7f61cdf286167d4881a9a11aeb11959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7001e0a4ffbdbbd7707a138c9c216a82') in 0.026032 seconds
-  Import took 0.037035 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000346 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/33.png
-  artifactKey: Guid(1f260066e2873a04a9f94588a41d434a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/33.png using Guid(1f260066e2873a04a9f94588a41d434a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1c1fa0d7c801dc4a851b92c138facd3') in 0.022286 seconds
-  Import took 0.034640 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000424 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/53.png
-  artifactKey: Guid(91ccd58b193b7314b9c745d0f70ec565) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/53.png using Guid(91ccd58b193b7314b9c745d0f70ec565) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfd67af6a5618cd425ff946c121b69b1') in 0.022794 seconds
-  Import took 0.036044 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0024_Jump-hero01_004.png.png
-  artifactKey: Guid(eb78529d36b8b5542b131d82b0af1add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0024_Jump-hero01_004.png.png using Guid(eb78529d36b8b5542b131d82b0af1add) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85ba4f854d832c382c9eea05e7545831') in 0.025143 seconds
-  Import took 0.035742 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/34.png
-  artifactKey: Guid(e1c0a3e2e61226042900132a852f7ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/34.png using Guid(e1c0a3e2e61226042900132a852f7ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a63ec05a5b721a2654a50aaf0a6d44e8') in 0.024009 seconds
-  Import took 0.034425 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000280 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0019_Idle-hero01_011.png.png
-  artifactKey: Guid(a15808e57ec0ee0459c65e20e02e5fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0019_Idle-hero01_011.png.png using Guid(a15808e57ec0ee0459c65e20e02e5fe6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8abbe717e226ea66c74c33ab424c3b7c') in 0.028813 seconds
-  Import took 0.038334 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000257 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/48.png
-  artifactKey: Guid(f1afcca3822443c4ea2b56c23b0b59fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/48.png using Guid(f1afcca3822443c4ea2b56c23b0b59fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '796f74e7b0c109c2edbc9152cada537f') in 0.021950 seconds
-  Import took 0.033085 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000245 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0031_Run-hero01_002.png.png
-  artifactKey: Guid(68c06d8eb3112bd4f816c33ec6981fd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0031_Run-hero01_002.png.png using Guid(68c06d8eb3112bd4f816c33ec6981fd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0754d41522eae6044982382a5450b31d') in 0.024820 seconds
-  Import took 0.038761 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000364 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/49.png
-  artifactKey: Guid(6d1b7699949d7934282541e368b074de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/49.png using Guid(6d1b7699949d7934282541e368b074de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c54922a4f24675ffe9eb4b596476e046') in 0.028349 seconds
-  Import took 0.041633 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000263 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/40.png
-  artifactKey: Guid(2bd0c2e633391b14d95c798ff677b9ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/40.png using Guid(2bd0c2e633391b14d95c798ff677b9ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '467ceeb6f776646bee49c1b7a94775f1') in 0.021065 seconds
-  Import took 0.031142 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/17.png
-  artifactKey: Guid(b2041a8d5a6779745bcddbe27a786efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/17.png using Guid(b2041a8d5a6779745bcddbe27a786efb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b52371657132ee3993f13247ff371aca') in 0.023118 seconds
-  Import took 0.035910 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000313 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/45.png
-  artifactKey: Guid(1f098d173fe4c4b4581fcead02dd79bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/45.png using Guid(1f098d173fe4c4b4581fcead02dd79bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9821eb135840be54d7ddf232f870c44') in 0.027017 seconds
-  Import took 0.040387 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000296 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0014_Idle-hero01_006.png.png
-  artifactKey: Guid(8c3c66fb148ee1e43be87362905ba50f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0014_Idle-hero01_006.png.png using Guid(8c3c66fb148ee1e43be87362905ba50f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '218d2eb6d733ffe30d46e1729a2816c2') in 0.022514 seconds
-  Import took 0.033519 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000243 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/14.png
-  artifactKey: Guid(fe02df49f62086847a84a228bf8a3f0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/14.png using Guid(fe02df49f62086847a84a228bf8a3f0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc595bf13438f7949f228029e24d5b85') in 0.026219 seconds
-  Import took 0.038343 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000241 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/55.png
-  artifactKey: Guid(21f585ebcc34d7d4a9c520ca8d95efc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/55.png using Guid(21f585ebcc34d7d4a9c520ca8d95efc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3709add51a4a2232dd03ef6fdc6a3a00') in 0.024319 seconds
-  Import took 0.035331 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000278 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0036_Run-hero01_007.png.png
-  artifactKey: Guid(fe1b54c3e5a3ced40a21d5922f73dd5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0036_Run-hero01_007.png.png using Guid(fe1b54c3e5a3ced40a21d5922f73dd5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0eaaedc70e6bf169368985764efdcce0') in 0.027764 seconds
-  Import took 0.039116 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000278 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0008_Death-hero01_009.png.png
-  artifactKey: Guid(fd228208198992449b8808986503725e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0008_Death-hero01_009.png.png using Guid(fd228208198992449b8808986503725e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88f3238f2c997a2827c108a8bcc893c2') in 0.030564 seconds
-  Import took 0.041875 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/19.png
-  artifactKey: Guid(5eadf29a0cb6a204aa4309b3ee640952) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/19.png using Guid(5eadf29a0cb6a204aa4309b3ee640952) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3a858db3cb582567612c72343f6643c') in 0.029156 seconds
-  Import took 0.039834 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000318 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0016_Idle-hero01_008.png.png
-  artifactKey: Guid(035831451b62b924fa2c79c1b883edd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0016_Idle-hero01_008.png.png using Guid(035831451b62b924fa2c79c1b883edd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e98103305ad31ac1e6950d4d6c80df9') in 0.022269 seconds
-  Import took 0.032791 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000206 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/29.png
-  artifactKey: Guid(06594da09b23b534ab6f1f51bc59843e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/29.png using Guid(06594da09b23b534ab6f1f51bc59843e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '844d5aa8096a871acfb4001471a3a912') in 0.024340 seconds
-  Import took 0.035608 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/41.png
-  artifactKey: Guid(1152420850c9d6641b0b84c27db002c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/41.png using Guid(1152420850c9d6641b0b84c27db002c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55b2e5a7fc77a544a02cc4b2306704ec') in 0.023991 seconds
-  Import took 0.033531 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000215 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/24.png
-  artifactKey: Guid(25ff16e490d35a241af324f87ad3905d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/24.png using Guid(25ff16e490d35a241af324f87ad3905d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '691f31cea2c418395dc281981fda2423') in 0.021087 seconds
-  Import took 0.030987 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/7.png
-  artifactKey: Guid(8425b0cfd2520064181ec42e3d22cf56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/7.png using Guid(8425b0cfd2520064181ec42e3d22cf56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9247595b00457758925486b7c54d91e') in 0.018923 seconds
-  Import took 0.029943 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000306 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/63.png
-  artifactKey: Guid(f62dbff2682d9ae4d96daa4c410cbf39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/63.png using Guid(f62dbff2682d9ae4d96daa4c410cbf39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdb8bec392b6da385bff1c1a246354dc') in 0.024644 seconds
-  Import took 0.035572 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000318 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/11.png
-  artifactKey: Guid(6403fa6efe1c97f44a48939d0828efc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/11.png using Guid(6403fa6efe1c97f44a48939d0828efc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a30563c7e50a8161504c7762f479f51') in 0.021347 seconds
-  Import took 0.032424 seconds .
+  Time since last request: 0.000194 seconds.
+  path: Assets/Plugins/SensorToolkit/Examples/common/Materials/Magenta.mat
+  artifactKey: Guid(aecf3cf83556df2449c796b9772b6bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/SensorToolkit/Examples/common/Materials/Magenta.mat using Guid(aecf3cf83556df2449c796b9772b6bf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '248706d336d39834fc3f647bdf4c8318') in 0.014755 seconds
+  Import took 0.024436 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000189 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/59.png
-  artifactKey: Guid(574fc8b35d427e54fb3c8d57cb262468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/59.png using Guid(574fc8b35d427e54fb3c8d57cb262468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d8542fafbb6c03748f2e27422ead95b') in 0.025983 seconds
-  Import took 0.038896 seconds .
+  path: Assets/Plugins/SensorToolkit/Examples/common/Materials/Metal.mat
+  artifactKey: Guid(fc4afe0f20d07414d97777b1b7daaa7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/SensorToolkit/Examples/common/Materials/Metal.mat using Guid(fc4afe0f20d07414d97777b1b7daaa7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20a7426c2bee56ea49fd86b9dd45af2d') in 0.022016 seconds
+  Import took 0.033065 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0032_Run-hero01_003.png.png
-  artifactKey: Guid(af6ae02fd9c7e21469520e6ef3584512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0032_Run-hero01_003.png.png using Guid(af6ae02fd9c7e21469520e6ef3584512) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a0ebf4bbbcd182d531b8a199b629479') in 0.026245 seconds
-  Import took 0.037110 seconds .
+  Time since last request: 0.013253 seconds.
+  path: Assets/Plugins/SensorToolkit/Examples/common/Materials/MagentaGround.mat
+  artifactKey: Guid(27b62da181c2f524596beef2936d29b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/SensorToolkit/Examples/common/Materials/MagentaGround.mat using Guid(27b62da181c2f524596beef2936d29b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96b0a09130c702e399a8aa27e15dbd23') in 0.016904 seconds
+  Import took 0.026198 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0002_Death-hero01_003.png.png
-  artifactKey: Guid(b3c04a5271807c640a03f3fb5ae786d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0002_Death-hero01_003.png.png using Guid(b3c04a5271807c640a03f3fb5ae786d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50371ad3b15b39ff620d308965e9a539') in 0.022077 seconds
-  Import took 0.033716 seconds .
+  Time since last request: 30.330194 seconds.
+  path: Assets/Materials
+  artifactKey: Guid(40c5421fa1a05ec438434eb42c5965d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials using Guid(40c5421fa1a05ec438434eb42c5965d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13ff597f5d39bab04a04bf8591877395') in 0.010290 seconds
+  Import took 0.021636 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0028_Jump-hero01_008.png.png
-  artifactKey: Guid(dff624a12dcaf2449bc8a009862a5b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0028_Jump-hero01_008.png.png using Guid(dff624a12dcaf2449bc8a009862a5b5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e419ab7c3b7e6e8d21f76e4ec71eea55') in 0.021988 seconds
-  Import took 0.033077 seconds .
+  Time since last request: 3.048803 seconds.
+  path: Assets/Materials/ProBuilderDefault.mat
+  artifactKey: Guid(b3275b48d4b366a459cd44aa06cc2521) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/ProBuilderDefault.mat using Guid(b3275b48d4b366a459cd44aa06cc2521) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8dc8f01ba9c4760694753e2fb3f75de6') in 0.015696 seconds
+  Import took 0.028539 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000320 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0027_Jump-hero01_007.png.png
-  artifactKey: Guid(6cf8f8310a7d78c4f82dbfcf7a751722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0027_Jump-hero01_007.png.png using Guid(6cf8f8310a7d78c4f82dbfcf7a751722) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbb3fc6a95c8cf18cd936661a0d68d6f') in 0.021708 seconds
-  Import took 0.033487 seconds .
+  Time since last request: 139.469493 seconds.
+  path: Assets/Samples/ProBuilder
+  artifactKey: Guid(eded039d89fdad044ad689d0bd20f0e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/ProBuilder using Guid(eded039d89fdad044ad689d0bd20f0e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1118c7c232f80b97f8b06738eeaeece1') in 0.008111 seconds
+  Import took 0.020039 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/12.png
-  artifactKey: Guid(6480463b81b4340439c9440fe8a48fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/12.png using Guid(6480463b81b4340439c9440fe8a48fb0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57bd745efec60b9dc77953ea3df0e7aa') in 0.030771 seconds
-  Import took 0.041410 seconds .
+  Time since last request: 0.641820 seconds.
+  path: Assets/Samples/ProBuilder/4.5.2
+  artifactKey: Guid(98f6ab2717da74a42899de2ecefa1e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/ProBuilder/4.5.2 using Guid(98f6ab2717da74a42899de2ecefa1e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '509327402b9a1019b04b6a712fc64043') in 0.008841 seconds
+  Import took 0.022900 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000211 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/32.png
-  artifactKey: Guid(9d1b4f2d619a7ae41af56337c506643f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/32.png using Guid(9d1b4f2d619a7ae41af56337c506643f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a465d0ab608e55351add64c88849a4ba') in 0.023473 seconds
-  Import took 0.034372 seconds .
+  Time since last request: 0.500785 seconds.
+  path: Assets/Samples/ProBuilder/4.5.2/Universal Render Pipeline Support
+  artifactKey: Guid(945b4baa06eeefe44b915f9af9de3b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/ProBuilder/4.5.2/Universal Render Pipeline Support using Guid(945b4baa06eeefe44b915f9af9de3b46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c120340dbc49cada580c872a5b6e684f') in 0.007839 seconds
+  Import took 0.019187 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000335 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/25.png
-  artifactKey: Guid(5f4ea5a188be9b44ca88ec2475e37911) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/25.png using Guid(5f4ea5a188be9b44ca88ec2475e37911) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e484d11f4f337ebe9ec44a0a38ad3854') in 0.021049 seconds
-  Import took 0.033602 seconds .
+  Time since last request: 1.118838 seconds.
+  path: Assets/Samples/ProBuilder/4.5.2/Universal Render Pipeline Support/Material
+  artifactKey: Guid(a87ab085704cc400587af8e4ae0899db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/ProBuilder/4.5.2/Universal Render Pipeline Support/Material using Guid(a87ab085704cc400587af8e4ae0899db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40898255c46378789ee059f7d5d5be60') in 0.008177 seconds
+  Import took 0.019622 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000365 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0012_Idle-hero01_004.png.png
-  artifactKey: Guid(0d143f17689a5284b83cc9432e23fddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0012_Idle-hero01_004.png.png using Guid(0d143f17689a5284b83cc9432e23fddf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90c1c60ae373b5e9ad161c2898d5b8f6') in 0.025405 seconds
-  Import took 0.039883 seconds .
+  Time since last request: 0.110762 seconds.
+  path: Assets/Samples/ProBuilder/4.5.2/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat
+  artifactKey: Guid(25a9fb42d361f46ad89221f6d301e96e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Samples/ProBuilder/4.5.2/Universal Render Pipeline Support/Material/ProBuilder Default URP.mat using Guid(25a9fb42d361f46ad89221f6d301e96e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a99d83be40c36a97757ac1d5af311777') in 0.984543 seconds
+  Import took 0.995658 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000286 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/58.png
-  artifactKey: Guid(b530143549a287f419b82724ac831a40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/58.png using Guid(b530143549a287f419b82724ac831a40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ac11ac75dd2ea9e6b4ab484c60a886c') in 0.023972 seconds
-  Import took 0.033681 seconds .
+  Time since last request: 79.837712 seconds.
+  path: Assets/Assets.index
+  artifactKey: Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets.index using Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f63b66b23d7ac8891c54caf24ffb9a03') in 0.048986 seconds
+  Import took 0.061280 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0001_Death-hero01_002.png.png
-  artifactKey: Guid(93e79b346ab1b1f468151d0f9e934e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0001_Death-hero01_002.png.png using Guid(93e79b346ab1b1f468151d0f9e934e1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8321c7822159fc2f846d8d2a2e629096') in 0.025227 seconds
-  Import took 0.035412 seconds .
+  Time since last request: 0.012618 seconds.
+  path: Assets/Assets.index
+  artifactKey: Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets.index using Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f63b66b23d7ac8891c54caf24ffb9a03') in 0.009570 seconds
+  Import took 0.020571 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0023_Jump-hero01_003.png.png
-  artifactKey: Guid(aa46273beaf9b754796fd5b406354759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0023_Jump-hero01_003.png.png using Guid(aa46273beaf9b754796fd5b406354759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bba0c7970a6986c26646af10618031de') in 0.031029 seconds
-  Import took 0.045670 seconds .
+  Time since last request: 26.243563 seconds.
+  path: Assets/Assets.index
+  artifactKey: Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets.index using Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2a5d04c6326ecb648ee93acbab8e8f3') in 0.010576 seconds
+  Import took 0.023902 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000403 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/15.png
-  artifactKey: Guid(046214afe39946c419aed132344c6e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/15.png using Guid(046214afe39946c419aed132344c6e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '399f46979e79b70c83dd5cb520ab9d06') in 0.020807 seconds
-  Import took 0.036957 seconds .
+  Time since last request: 1675.262421 seconds.
+  path: Assets/Assets.index
+  artifactKey: Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets.index using Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69de0b36ebaddd7b173269a760f4b03c') in 0.009556 seconds
+  Import took 0.021079 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000235 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0033_Run-hero01_004.png.png
-  artifactKey: Guid(710ce97603adb5b408e12d20e3bf921c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0033_Run-hero01_004.png.png using Guid(710ce97603adb5b408e12d20e3bf921c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ffb40831a96768b62e2fe8a886564c9') in 0.023092 seconds
-  Import took 0.034659 seconds .
+  Time since last request: 705.619080 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab
+  artifactKey: Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab using Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7783b6c7844f2ca4e1213d9730425770') in 0.351387 seconds
+  Import took 0.373947 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000226 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/26.png
-  artifactKey: Guid(65299d1129cafeb4a8661ec67777d61d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/26.png using Guid(65299d1129cafeb4a8661ec67777d61d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a74895138a22a116d3d870f3e7a25c6c') in 0.021984 seconds
-  Import took 0.031587 seconds .
+  Time since last request: 0.000283 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Enemy Base.prefab
+  artifactKey: Guid(ea857da78e67f4848aa9f176fa03df74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Enemy Base.prefab using Guid(ea857da78e67f4848aa9f176fa03df74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '12da303b6609fecf49fe071aa19d18e5') in 0.044716 seconds
+  Import took 0.062631 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/8.png
-  artifactKey: Guid(fad16981b1365c440a6c5712938d574c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/8.png using Guid(fad16981b1365c440a6c5712938d574c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70a74122d361225b27ab5bcd6005a327') in 0.024405 seconds
-  Import took 0.034492 seconds .
+  Time since last request: 308.549230 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab
+  artifactKey: Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab using Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '693a55402c0f23d75fcb6fa8952c5bc9') in 0.066814 seconds
+  Import took 0.083946 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/21.png
-  artifactKey: Guid(e931d70cf43df604e90d3ede0556733d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/21.png using Guid(e931d70cf43df604e90d3ede0556733d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '608c8e16f9f75a8474c25cc159c7b3da') in 0.027138 seconds
-  Import took 0.039793 seconds .
+  Time since last request: 7.187230 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab
+  artifactKey: Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab using Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a51893690ec94bd69675a2dee867b234') in 0.072647 seconds
+  Import took 0.091167 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000309 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0037_Sit-down00-hero01_001.png.png
-  artifactKey: Guid(0db3c1c1b6548b348bc41528f221dc2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0037_Sit-down00-hero01_001.png.png using Guid(0db3c1c1b6548b348bc41528f221dc2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd522c21e257dbd03a1d096ba9558dc7a') in 0.028420 seconds
-  Import took 0.042271 seconds .
+  Time since last request: 19.157380 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab
+  artifactKey: Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab using Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abc177f743fec33c5ae1493d3c2f6e5f') in 0.070630 seconds
+  Import took 0.087931 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000232 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/9.png
-  artifactKey: Guid(69a4c0ccbd30a5d458d4a40957c7c43a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/9.png using Guid(69a4c0ccbd30a5d458d4a40957c7c43a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '564ac5a665eefcb0a4aae564e5d9e7c0') in 0.022378 seconds
-  Import took 0.035035 seconds .
+  Time since last request: 4.259932 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab
+  artifactKey: Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab using Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a996d821de62a667ab2ee3f7f51b704') in 0.062333 seconds
+  Import took 0.080375 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000293 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/16.png
-  artifactKey: Guid(e76d5814ebbb3cc48802c87c4f1a1867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/16.png using Guid(e76d5814ebbb3cc48802c87c4f1a1867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc418828dc96edacf4a75edba3b6669f') in 0.019639 seconds
-  Import took 0.031050 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000200 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0021_Jump-hero01_001.png.png
-  artifactKey: Guid(0d2150a782b4e81478260887565ce4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0021_Jump-hero01_001.png.png using Guid(0d2150a782b4e81478260887565ce4f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edb1748509fd0845a870aaf327b713bd') in 0.023037 seconds
-  Import took 0.033640 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000214 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0026_Jump-hero01_006.png.png
-  artifactKey: Guid(7503f95eb2921744da9462c8cfdcd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0026_Jump-hero01_006.png.png using Guid(7503f95eb2921744da9462c8cfdcd1f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d9e9c078de29329d35607d67b6d3f67') in 0.022295 seconds
-  Import took 0.031530 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0007_Death-hero01_008.png.png
-  artifactKey: Guid(0a5b5513809c15d4ea8f2aa5e651887b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0007_Death-hero01_008.png.png using Guid(0a5b5513809c15d4ea8f2aa5e651887b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ece5d76d355421d85052cfd0218ad6d') in 0.023068 seconds
-  Import took 0.032276 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000190 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/62.png
-  artifactKey: Guid(017b3550accd58e4f878953203ed0062) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/62.png using Guid(017b3550accd58e4f878953203ed0062) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c4828978257b98cd36793d355ff2588') in 0.022650 seconds
-  Import took 0.032555 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0018_Idle-hero01_010.png.png
-  artifactKey: Guid(80bf18bf3247e6d44a902d101e62a02c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0018_Idle-hero01_010.png.png using Guid(80bf18bf3247e6d44a902d101e62a02c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc85532f30672600cfa74c76a2c71553') in 0.022676 seconds
-  Import took 0.033400 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0035_Run-hero01_006.png.png
-  artifactKey: Guid(6695f55c133c1a6468fd5244811f2133) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0035_Run-hero01_006.png.png using Guid(6695f55c133c1a6468fd5244811f2133) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '114277de41000b0ac55cdaab43dd92cf') in 0.025106 seconds
-  Import took 0.036488 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000209 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/43.png
-  artifactKey: Guid(62af91bddbbcd4c4a985c043524325ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/43.png using Guid(62af91bddbbcd4c4a985c043524325ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74353ec87738e82e37856e0d52d87a3a') in 0.022775 seconds
-  Import took 0.033317 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000220 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/51.png
-  artifactKey: Guid(0463a14f4c166e2428500222f1c4e3df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/51.png using Guid(0463a14f4c166e2428500222f1c4e3df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c1abff32454d77f8a79855995b0e385') in 0.022932 seconds
-  Import took 0.033091 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000232 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/23.png
-  artifactKey: Guid(8fa10edf8f108a746a12cf618f61373d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/23.png using Guid(8fa10edf8f108a746a12cf618f61373d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd7c8382bb85776c1defc4cccba05936') in 0.023856 seconds
-  Import took 0.033669 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0005_Death-hero01_006.png.png
-  artifactKey: Guid(9843c9b01348a7d4cb3c532c5dbf2af3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0005_Death-hero01_006.png.png using Guid(9843c9b01348a7d4cb3c532c5dbf2af3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a3cc2c605207ae1a8a4e969cc8dab2b') in 0.023513 seconds
-  Import took 0.036964 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000417 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/10.png
-  artifactKey: Guid(a5990d4253f6e25429e1676ebd1ebe0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/10.png using Guid(a5990d4253f6e25429e1676ebd1ebe0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e81f0c4aa0dc48b0f5307d8d521a1de0') in 0.019919 seconds
-  Import took 0.032317 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/47.png
-  artifactKey: Guid(505c4d50cac8dee42acea557e02290d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/47.png using Guid(505c4d50cac8dee42acea557e02290d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca80261c06ed1be720b21251e1f20b17') in 0.021475 seconds
-  Import took 0.032051 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000351 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/38.png
-  artifactKey: Guid(0193709a4836a9d439bf5c54f2cb4dda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/38.png using Guid(0193709a4836a9d439bf5c54f2cb4dda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29a044f5071e9e17384fc129a603d03b') in 0.020644 seconds
-  Import took 0.031488 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000245 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/27.png
-  artifactKey: Guid(0cafa4a6c234b934ab338267305ec98d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/27.png using Guid(0cafa4a6c234b934ab338267305ec98d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ccd654fcb63bce301024e79532e3db1') in 0.025454 seconds
-  Import took 0.038649 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000358 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0039_Sit-down00-hero01_003.png.png
-  artifactKey: Guid(e2ba667f804b218448b28fec73726f6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0039_Sit-down00-hero01_003.png.png using Guid(e2ba667f804b218448b28fec73726f6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '301adf312ce88e00e437d62e6336ca80') in 0.024888 seconds
-  Import took 0.037565 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000206 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0030_Run-hero01_001.png.png
-  artifactKey: Guid(39e6967630aff0047aabc14c533e713d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0030_Run-hero01_001.png.png using Guid(39e6967630aff0047aabc14c533e713d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e96a017f48e225867917f7327f135b98') in 0.026947 seconds
-  Import took 0.037624 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000334 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/18.png
-  artifactKey: Guid(3cdcadbb234f8a2408eb5eead85e6221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/18.png using Guid(3cdcadbb234f8a2408eb5eead85e6221) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43fa27566e589d86c10977742976cff8') in 0.019655 seconds
-  Import took 0.030372 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/52.png
-  artifactKey: Guid(2e987c94b5be93445a47133064b100cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/52.png using Guid(2e987c94b5be93445a47133064b100cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5af4fe51f42ba8dc4a01657be39ce4bb') in 0.022195 seconds
-  Import took 0.034658 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000303 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/56.png
-  artifactKey: Guid(4512cbfcb9de28241bc4ed473e14d6e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/56.png using Guid(4512cbfcb9de28241bc4ed473e14d6e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5273d3b0937559ded56ca37fe8e5c4f8') in 0.022112 seconds
-  Import took 0.042041 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000289 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/20.png
-  artifactKey: Guid(f9ab1f201ed87f148aef9a56e6f3190e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/20.png using Guid(f9ab1f201ed87f148aef9a56e6f3190e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2875d849c4913a8d950081e344f4ff37') in 0.024023 seconds
-  Import took 0.035625 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/22.png
-  artifactKey: Guid(b18a008c66c7c694d9d58065ef04df86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/22.png using Guid(b18a008c66c7c694d9d58065ef04df86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28831c6e8fa72e566b2687d5d19a8ec7') in 0.023714 seconds
-  Import took 0.032600 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/57.png
-  artifactKey: Guid(659b10b813d012d49a4bffa1a6a0885c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/57.png using Guid(659b10b813d012d49a4bffa1a6a0885c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c456e5cb2f365968663e3006e9d0285b') in 0.023933 seconds
-  Import took 0.035721 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000199 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0022_Jump-hero01_002.png.png
-  artifactKey: Guid(633272e61f2f6b749ab2619bb5e9033d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0022_Jump-hero01_002.png.png using Guid(633272e61f2f6b749ab2619bb5e9033d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e5ca735bf4fda0b8758884b5444e014') in 0.026432 seconds
-  Import took 0.037764 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000273 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0011_Idle-hero01_003.png.png
-  artifactKey: Guid(ae404e0d95d797144b496b0dcb9e012e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0011_Idle-hero01_003.png.png using Guid(ae404e0d95d797144b496b0dcb9e012e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8807fc4b1a3f8081e34c739adda800bf') in 0.029597 seconds
-  Import took 0.043324 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0034_Run-hero01_005.png.png
-  artifactKey: Guid(dde19be22410c9c4f961e9f8bf86bb25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0034_Run-hero01_005.png.png using Guid(dde19be22410c9c4f961e9f8bf86bb25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '128c5dc3f33e6d4ce089de6347ad34df') in 0.021353 seconds
-  Import took 0.032299 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000259 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/28.png
-  artifactKey: Guid(f8678e60236bdd441898ec484094f50d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/28.png using Guid(f8678e60236bdd441898ec484094f50d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c8059b4310da6ef5f32f35d310dd2bf') in 0.023232 seconds
-  Import took 0.039305 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000278 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/60.png
-  artifactKey: Guid(55f5b8e1777e69c41902e02697d512c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/60.png using Guid(55f5b8e1777e69c41902e02697d512c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67bf5daf4bb8e2d3601d72fca59f1423') in 0.037657 seconds
-  Import took 0.052112 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000295 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0015_Idle-hero01_007.png.png
-  artifactKey: Guid(2479ea279bd3abd4d9f8c0cf87a60c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0015_Idle-hero01_007.png.png using Guid(2479ea279bd3abd4d9f8c0cf87a60c3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2889ee7ddf880b1a3d5b047fe1259185') in 0.028325 seconds
-  Import took 0.041458 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Materials/Weapons/Crosshairs/35.png
-  artifactKey: Guid(a856fad3e51aa944bbb3a093ddbf61bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Weapons/Crosshairs/35.png using Guid(a856fad3e51aa944bbb3a093ddbf61bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5310c25e1fd4ede338900922d314da27') in 0.019671 seconds
-  Import took 0.030323 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000212 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0038_Sit-down00-hero01_002.png.png
-  artifactKey: Guid(69168719f7f63bb42882710b843c2bed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0038_Sit-down00-hero01_002.png.png using Guid(69168719f7f63bb42882710b843c2bed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '700ede3db930722e78fc0c0d511b910e') in 0.021552 seconds
-  Import took 0.032284 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000209 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0006_Death-hero01_007.png.png
-  artifactKey: Guid(e59d0a9cc0c6c3848b3f70d7dd603dc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0006_Death-hero01_007.png.png using Guid(e59d0a9cc0c6c3848b3f70d7dd603dc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '403358d20d4a13ed6914119daa674053') in 0.022871 seconds
-  Import took 0.032530 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000200 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0020_Idle-hero01_012.png.png
-  artifactKey: Guid(15088532d7aa5864dad4cf48eebe22ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0020_Idle-hero01_012.png.png using Guid(15088532d7aa5864dad4cf48eebe22ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a5f7f07e9d827d931aa831a2096affa') in 0.023775 seconds
-  Import took 0.033687 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.636190 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Weapon
-  artifactKey: Guid(736782000de6f234db2ddd52e83d9300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Weapon using Guid(736782000de6f234db2ddd52e83d9300) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95c51de79b153f23dfdb988e50cd9a40') in 0.007626 seconds
-  Import took 0.017883 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.764150 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Weapon/Actions
-  artifactKey: Guid(7056e8209a003e64eb753accf8a933a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Weapon/Actions using Guid(7056e8209a003e64eb753accf8a933a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ded223eb7279c3fa5b41ab0f91f79b1') in 0.007986 seconds
-  Import took 0.019614 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.008268 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Weapon/Actions
-  artifactKey: Guid(7056e8209a003e64eb753accf8a933a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Weapon/Actions using Guid(7056e8209a003e64eb753accf8a933a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ded223eb7279c3fa5b41ab0f91f79b1') in 0.002310 seconds
-  Import took 0.013043 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.922028 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Weapon/Actions/AttackAction.cs
-  artifactKey: Guid(2842f90f3ba8b0d4095afe14295c417e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Weapon/Actions/AttackAction.cs using Guid(2842f90f3ba8b0d4095afe14295c417e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28eb04f6594a358fa41697d7f00e5018') in 0.009023 seconds
-  Import took 0.020153 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.004391 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/Weapon/Actions/AttackAction.cs
-  artifactKey: Guid(2842f90f3ba8b0d4095afe14295c417e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/Weapon/Actions/AttackAction.cs using Guid(2842f90f3ba8b0d4095afe14295c417e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28eb04f6594a358fa41697d7f00e5018') in 0.002766 seconds
-  Import took 0.012916 seconds .
+  Time since last request: 7.602142 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab
+  artifactKey: Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab using Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a63bd6466c44a5207eceb094e2bb557b') in 0.064467 seconds
+  Import took 0.079620 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003193 seconds.
+Registered in 0.002976 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.16 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.41 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -1063,581 +297,26 @@ UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library
 (Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.735 seconds
+- Completed reload, in  1.845 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.47 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.02 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 4514 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 194.3 MB.
-System memory in use after: 194.5 MB.
+System memory in use before: 211.9 MB.
+System memory in use after: 212.1 MB.
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 5157.
-Total: 8.078200 ms (FindLiveObjects: 1.137200 ms CreateObjectMapping: 0.690900 ms MarkObjects: 6.047900 ms  DeleteObjects: 0.198700 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 234.300780 seconds.
-  path: Assets/Scripts/Icons/ability.png
-  artifactKey: Guid(909f16a31876f7740aafd85ed50a9d49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Icons/ability.png using Guid(909f16a31876f7740aafd85ed50a9d49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '998c6509a51f71424946ee6274de665f') in 0.050575 seconds
-  Import took 0.063928 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.045859 seconds.
-  path: Assets/Scripts/Icons/ability.png
-  artifactKey: Guid(909f16a31876f7740aafd85ed50a9d49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Icons/ability.png using Guid(909f16a31876f7740aafd85ed50a9d49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '998c6509a51f71424946ee6274de665f') in 0.007206 seconds
-  Import took 0.018183 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.219332 seconds.
-  path: Assets/Scripts/Icons/shockwave.png
-  artifactKey: Guid(73897c7cd5a53b549897b90a271ec353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Icons/shockwave.png using Guid(73897c7cd5a53b549897b90a271ec353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd394bc0763535445501cb844e0f1e5e') in 0.017064 seconds
-  Import took 0.027986 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.008320 seconds.
-  path: Assets/Scripts/Icons/shockwave.png
-  artifactKey: Guid(73897c7cd5a53b549897b90a271ec353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Icons/shockwave.png using Guid(73897c7cd5a53b549897b90a271ec353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd394bc0763535445501cb844e0f1e5e') in 0.006390 seconds
-  Import took 0.015741 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.311037 seconds.
-  path: Assets/Scripts/Icons/shockwave.png
-  artifactKey: Guid(73897c7cd5a53b549897b90a271ec353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Icons/shockwave.png using Guid(73897c7cd5a53b549897b90a271ec353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b75e794ea7cfd499d9fef3b79142cca6') in 0.033490 seconds
-  Import took 0.044617 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 64.690462 seconds.
-  path: Assets/Scripts/Abilities/StatsController.cs
-  artifactKey: Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Abilities/StatsController.cs using Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27cc18e81089ce362980f405dbb804a9') in 0.009650 seconds
-  Import took 0.023877 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.008285 seconds.
-  path: Assets/Scripts/Abilities/StatsController.cs
-  artifactKey: Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Abilities/StatsController.cs using Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27cc18e81089ce362980f405dbb804a9') in 0.002218 seconds
-  Import took 0.013212 seconds .
+Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 5232.
+Total: 4.424700 ms (FindLiveObjects: 0.733000 ms CreateObjectMapping: 0.326200 ms MarkObjects: 3.233900 ms  DeleteObjects: 0.129300 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.006291 seconds.
+Registered in 0.006032 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-ForwardRenderer is missing RendererFeatures
-This could be due to missing scripts or compile error.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
-UnityEngine.Debug:LogError (object,UnityEngine.Object)
-UnityEngine.Rendering.Universal.ScriptableRendererData:ValidateRendererFeatures () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:135)
-UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs:59)
-
-(Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
-
-Mono: successfully reloaded assembly
-- Completed reload, in  1.692 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Refreshing native plugins compatible for Editor in 1.06 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4514 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 194.3 MB.
-System memory in use after: 194.5 MB.
-
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 5161.
-Total: 7.412300 ms (FindLiveObjects: 0.966100 ms CreateObjectMapping: 0.854000 ms MarkObjects: 5.421000 ms  DeleteObjects: 0.168700 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.741197 seconds.
-  path: Assets/Scripts/Abilities/StatsController.cs
-  artifactKey: Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Abilities/StatsController.cs using Guid(bb2474c5551585a4fa723362163f7eeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b812193005ccd0e5dfed4d110d8836a6') in 0.009231 seconds
-  Import took 0.021108 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 15.884011 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/ExplosionShockwave.cs
-  artifactKey: Guid(5a2c92946a0289b439afea8adb530c83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/ExplosionShockwave.cs using Guid(5a2c92946a0289b439afea8adb530c83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13dc15fd4d1d40b0249a4ce07a6f698a') in 0.013036 seconds
-  Import took 0.025130 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.010042 seconds.
-  path: Assets/Scripts/Combat/Monobehaviours/ExplosionShockwave.cs
-  artifactKey: Guid(5a2c92946a0289b439afea8adb530c83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Combat/Monobehaviours/ExplosionShockwave.cs using Guid(5a2c92946a0289b439afea8adb530c83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13dc15fd4d1d40b0249a4ce07a6f698a') in 0.002398 seconds
-  Import took 0.012520 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.239197 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0041_Sit-down01-hero01_002.png.png
-  artifactKey: Guid(356dcc270961224439f7f9820701de8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0041_Sit-down01-hero01_002.png.png using Guid(356dcc270961224439f7f9820701de8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27788a406d441e44060636f65ca113cd') in 0.087515 seconds
-  Import took 0.101875 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000354 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0063_Sneaking-hero01_007.png.png
-  artifactKey: Guid(05a853b08f06b7f43b7b633a25e26824) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0063_Sneaking-hero01_007.png.png using Guid(05a853b08f06b7f43b7b633a25e26824) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa1824240bd00694666d4fd615424bfe') in 0.024511 seconds
-  Import took 0.035568 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0051_Sit-down01-hero01_012.png.png
-  artifactKey: Guid(ca6c13ce0b952e641b50b1db44019e47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0051_Sit-down01-hero01_012.png.png using Guid(ca6c13ce0b952e641b50b1db44019e47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c84597cf62cc97d667d2f183e3a401c4') in 0.024057 seconds
-  Import took 0.036086 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000241 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue.tga
-  artifactKey: Guid(091530486f1654a529e2a78342e2498d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue.tga using Guid(091530486f1654a529e2a78342e2498d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc630d77ad18114cdbe5fa8dc4bd5c69') in 0.027044 seconds
-  Import took 0.037695 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0082_Walk-hero01_007.png.png
-  artifactKey: Guid(d4b6816da57fdf14885d832343a13a3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0082_Walk-hero01_007.png.png using Guid(d4b6816da57fdf14885d832343a13a3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffb69247998f2cab64cfcba40243e8e9') in 0.024845 seconds
-  Import took 0.036745 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0057_Sneaking-hero01_001.png.png
-  artifactKey: Guid(ad3b2630950258048ad16e1d5ca29945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0057_Sneaking-hero01_001.png.png using Guid(ad3b2630950258048ad16e1d5ca29945) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f9300d3b95b8f6115ce438d1353fa35') in 0.023772 seconds
-  Import took 0.034580 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0050_Sit-down01-hero01_011.png.png
-  artifactKey: Guid(2039624fa77f67147adb63586bf78d7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0050_Sit-down01-hero01_011.png.png using Guid(2039624fa77f67147adb63586bf78d7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3ad82bfd36f10d14c9d628c6a4633db') in 0.027441 seconds
-  Import took 0.038459 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000302 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0058_Sneaking-hero01_002.png.png
-  artifactKey: Guid(1697877e30e563944b64e5f3f5d85b19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0058_Sneaking-hero01_002.png.png using Guid(1697877e30e563944b64e5f3f5d85b19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e0f96041ecc5ab9674c3ecd9504e6f9') in 0.027549 seconds
-  Import took 0.048809 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000447 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0066_Sneaking-hero01_010.png.png
-  artifactKey: Guid(00f11936e8d3464448a8e3794e604e41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0066_Sneaking-hero01_010.png.png using Guid(00f11936e8d3464448a8e3794e604e41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9fdbb0c4c35728213d21051952991fe') in 0.021365 seconds
-  Import took 0.031941 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000217 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0078_Walk-hero01_003.png.png
-  artifactKey: Guid(a633d9117f0da0a46afd495caa56480b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0078_Walk-hero01_003.png.png using Guid(a633d9117f0da0a46afd495caa56480b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38b1fd215a215e8135ba3c92ba7e1246') in 0.025786 seconds
-  Import took 0.036817 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000199 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0054_Slide-hero01_002.png.png
-  artifactKey: Guid(57f74d9c59d3b68479eb441ad23e9162) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0054_Slide-hero01_002.png.png using Guid(57f74d9c59d3b68479eb441ad23e9162) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83a8320caf00264c32a9e75d9fd80c65') in 0.031073 seconds
-  Import took 0.042176 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000287 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0044_Sit-down01-hero01_005.png.png
-  artifactKey: Guid(7ffcde817a975df41baf94db8b2902a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0044_Sit-down01-hero01_005.png.png using Guid(7ffcde817a975df41baf94db8b2902a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '640707810b925241e7a24d3355376b65') in 0.022069 seconds
-  Import took 0.031746 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0065_Sneaking-hero01_009.png.png
-  artifactKey: Guid(bc53d19021019a646b47ae852bc8a60d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0065_Sneaking-hero01_009.png.png using Guid(bc53d19021019a646b47ae852bc8a60d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8dc316b396a39cd5735c4aa4f2255f38') in 0.022004 seconds
-  Import took 0.031536 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000237 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0046_Sit-down01-hero01_007.png.png
-  artifactKey: Guid(980767095bc4d5247bb32788f6df59a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0046_Sit-down01-hero01_007.png.png using Guid(980767095bc4d5247bb32788f6df59a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e80d9fc05142848cb255cca0c3234bd0') in 0.024394 seconds
-  Import took 0.034063 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000230 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0081_Walk-hero01_006.png.png
-  artifactKey: Guid(0165c22192061224492cf27d2dd04612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0081_Walk-hero01_006.png.png using Guid(0165c22192061224492cf27d2dd04612) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36dee4705661ddc4d44ad760e7f4fb32') in 0.023745 seconds
-  Import took 0.035215 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0071_Sneaking-hero01_015.png.png
-  artifactKey: Guid(ad59e1568ae3c8b409c91e126395cdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0071_Sneaking-hero01_015.png.png using Guid(ad59e1568ae3c8b409c91e126395cdd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aec01460d660108e080369b3456ea9e2') in 0.022035 seconds
-  Import took 0.032587 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000206 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_002.png
-  artifactKey: Guid(87669ef3a4865a44581b0654d0825893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_002.png using Guid(87669ef3a4865a44581b0654d0825893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a580700397013bfd115ed5bc3c919ec6') in 0.024884 seconds
-  Import took 0.035895 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000236 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue_metal_unity.tga
-  artifactKey: Guid(934d9276fc3644b739c3c633dfbe73d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/BitGem/Police_Officer_SC/Textures/cop_blue_metal_unity.tga using Guid(934d9276fc3644b739c3c633dfbe73d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6c103988d845f1c66f6175c59c41f7f') in 0.023225 seconds
-  Import took 0.033874 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000223 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0067_Sneaking-hero01_011.png.png
-  artifactKey: Guid(b809fc6efd8eaba42bbfb31231ac2f43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0067_Sneaking-hero01_011.png.png using Guid(b809fc6efd8eaba42bbfb31231ac2f43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5dd27d3d1c16e6bad364e62abca1c5c') in 0.022821 seconds
-  Import took 0.033140 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000279 seconds.
-  path: Assets/Materials/Effects/Textures/Circle_Texture.png
-  artifactKey: Guid(76cf7b0acc6a5a3468eaed2490c1424a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Effects/Textures/Circle_Texture.png using Guid(76cf7b0acc6a5a3468eaed2490c1424a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c75e94ee2f1ccea9bfd38aeac4c45d19') in 0.023666 seconds
-  Import took 0.036132 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000386 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0049_Sit-down01-hero01_010.png.png
-  artifactKey: Guid(e069257304625904d8ebd49b16941557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0049_Sit-down01-hero01_010.png.png using Guid(e069257304625904d8ebd49b16941557) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '235cdce9c23533ee9d1620d431d37bf4') in 0.036621 seconds
-  Import took 0.050395 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0073_Sneaking-hero01_017.png.png
-  artifactKey: Guid(30fe4cf1f7aef944bae9a58cb985297a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0073_Sneaking-hero01_017.png.png using Guid(30fe4cf1f7aef944bae9a58cb985297a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '653eb1234a33a512dfce633e05aaabc1') in 0.021975 seconds
-  Import took 0.033031 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000214 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0074_Sneaking-hero01_018.png.png
-  artifactKey: Guid(89979e4aebbe875458d3a3c4e3cd9fd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0074_Sneaking-hero01_018.png.png using Guid(89979e4aebbe875458d3a3c4e3cd9fd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59c3910f187f68a5704d031a1dc9f084') in 0.022656 seconds
-  Import took 0.033030 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000311 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0048_Sit-down01-hero01_009.png.png
-  artifactKey: Guid(9d402b03d9c400040b0c0f3a1b65bc30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0048_Sit-down01-hero01_009.png.png using Guid(9d402b03d9c400040b0c0f3a1b65bc30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffe4ef9139764d012a9be665585c36d4') in 0.023566 seconds
-  Import took 0.033894 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000208 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0041_Sit-down01-hero01_002.png.png
-  artifactKey: Guid(356dcc270961224439f7f9820701de8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0041_Sit-down01-hero01_002.png.png using Guid(356dcc270961224439f7f9820701de8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27788a406d441e44060636f65ca113cd') in 0.015695 seconds
-  Import took 0.024428 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000254 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_006.png
-  artifactKey: Guid(c33e96f4715aac841a74b98d2056396b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_006.png using Guid(c33e96f4715aac841a74b98d2056396b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ac3e73cb20cb00ff67eaef8ca7c7634') in 0.026240 seconds
-  Import took 0.038425 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000306 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0055_Slide-hero01_003.png.png
-  artifactKey: Guid(b90f3ed7b0bcfbf409933d7610efacff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0055_Slide-hero01_003.png.png using Guid(b90f3ed7b0bcfbf409933d7610efacff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6220ff497df4ec241ec30d285959648') in 0.021505 seconds
-  Import took 0.033188 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0070_Sneaking-hero01_014.png.png
-  artifactKey: Guid(c86e786bb0285d74d95878aa884c5547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0070_Sneaking-hero01_014.png.png using Guid(c86e786bb0285d74d95878aa884c5547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd283c22f74da7c867d3b3f378ac28b94') in 0.023088 seconds
-  Import took 0.033994 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000230 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0076_Walk-hero01_001.png.png
-  artifactKey: Guid(1c8813d31ffd98a479e46073593bb548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0076_Walk-hero01_001.png.png using Guid(1c8813d31ffd98a479e46073593bb548) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c048009da240e1fa3c2ca6395d347b3') in 0.027436 seconds
-  Import took 0.039936 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000312 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0068_Sneaking-hero01_012.png.png
-  artifactKey: Guid(21f046eb0c3498f4f9fd14558adf7fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0068_Sneaking-hero01_012.png.png using Guid(21f046eb0c3498f4f9fd14558adf7fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4693c72bc3741c5968c7624bb2118f7a') in 0.035852 seconds
-  Import took 0.046441 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000296 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_004.png
-  artifactKey: Guid(14f1a5b583f73314d8585057ec9a4cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_004.png using Guid(14f1a5b583f73314d8585057ec9a4cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7fb2d208b45cb98a514fa86ea69068f') in 0.033894 seconds
-  Import took 0.044269 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000195 seconds.
-  path: Assets/Materials/UI/Script Icons/DamageEffect icon.png
-  artifactKey: Guid(c8183c47ea73f894b9e3619fa0e02b2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/UI/Script Icons/DamageEffect icon.png using Guid(c8183c47ea73f894b9e3619fa0e02b2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4af719f8b4a0ff2c14896e22f640b481') in 0.036316 seconds
-  Import took 0.050355 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000345 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0053_Slide-hero01_001.png.png
-  artifactKey: Guid(b21d32133a9db444685ed5d3309fcab8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0053_Slide-hero01_001.png.png using Guid(b21d32133a9db444685ed5d3309fcab8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2e42b01e1406845d623e49d7290334a') in 0.029995 seconds
-  Import took 0.040550 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000185 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0064_Sneaking-hero01_008.png.png
-  artifactKey: Guid(d83f9a86a1a19e6449b55557feeaa2fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0064_Sneaking-hero01_008.png.png using Guid(d83f9a86a1a19e6449b55557feeaa2fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85389f84fcd9640e2ce8c18b4ce134e5') in 0.027809 seconds
-  Import took 0.039303 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0077_Walk-hero01_002.png.png
-  artifactKey: Guid(ffdabf894642609439a83cae41ebe5f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0077_Walk-hero01_002.png.png using Guid(ffdabf894642609439a83cae41ebe5f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f0e90d861d9dae33da6f243e679c552') in 0.047181 seconds
-  Import took 0.061921 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000236 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0069_Sneaking-hero01_013.png.png
-  artifactKey: Guid(536c8fe91e140f247902234f4907df10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0069_Sneaking-hero01_013.png.png using Guid(536c8fe91e140f247902234f4907df10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd756771be26414d580bab46cc6a0eb75') in 0.024023 seconds
-  Import took 0.036118 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0042_Sit-down01-hero01_003.png.png
-  artifactKey: Guid(ce70e300a5d46ac448094915bfcdea83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0042_Sit-down01-hero01_003.png.png using Guid(ce70e300a5d46ac448094915bfcdea83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '274a8c58cce561008e3def1dc78c7253') in 0.023215 seconds
-  Import took 0.035577 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000307 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0047_Sit-down01-hero01_008.png.png
-  artifactKey: Guid(e3b9c72bbfe1fa64888b763ef7bf8364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0047_Sit-down01-hero01_008.png.png using Guid(e3b9c72bbfe1fa64888b763ef7bf8364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba1a9bfae195975b4223cf89bc1be8ff') in 0.028222 seconds
-  Import took 0.039741 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_003.png
-  artifactKey: Guid(efe5f9357594a4a4689bae0c97916384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_003.png using Guid(efe5f9357594a4a4689bae0c97916384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '793aafc8549f541d821f30af8c74d8a6') in 0.022472 seconds
-  Import took 0.034027 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000256 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0052_Sit-down01-hero01_013.png.png
-  artifactKey: Guid(d371a56aaef2e3f49ade2888eac07d5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0052_Sit-down01-hero01_013.png.png using Guid(d371a56aaef2e3f49ade2888eac07d5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c382da0f9ccb6b18c66c79bafb27507') in 0.019884 seconds
-  Import took 0.030044 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000215 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0062_Sneaking-hero01_006.png.png
-  artifactKey: Guid(0417c81f66cbc224ba6dfa00197fc8e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0062_Sneaking-hero01_006.png.png using Guid(0417c81f66cbc224ba6dfa00197fc8e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4910da8133ae2be8b6ae6dbe3b898672') in 0.019636 seconds
-  Import took 0.028500 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0056_Slide-hero01_004.png.png
-  artifactKey: Guid(c9831b01c23dbaa4ea005595e0cd2ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0056_Slide-hero01_004.png.png using Guid(c9831b01c23dbaa4ea005595e0cd2ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'edb01e5b03263fff742e66245df297ed') in 0.022680 seconds
-  Import took 0.032202 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000306 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_005.png
-  artifactKey: Guid(7044fda8a0b0f294599b79c9ec7ccf06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_005.png using Guid(7044fda8a0b0f294599b79c9ec7ccf06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64395646097904dc1660fb9df9b43bed') in 0.024950 seconds
-  Import took 0.034743 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0043_Sit-down01-hero01_004.png.png
-  artifactKey: Guid(2e80bbabf0571ba4884b075f306ace91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0043_Sit-down01-hero01_004.png.png using Guid(2e80bbabf0571ba4884b075f306ace91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '656ac91f7c0ac714ae189b2b590ebd63') in 0.023583 seconds
-  Import took 0.035539 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000270 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0045_Sit-down01-hero01_006.png.png
-  artifactKey: Guid(df8ceb8cee776b240906fa15aaee5806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0045_Sit-down01-hero01_006.png.png using Guid(df8ceb8cee776b240906fa15aaee5806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd32a50b39419ef6fbc28cbdba9aac681') in 0.022727 seconds
-  Import took 0.034100 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000229 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0084_Walk-hero01_009.png.png
-  artifactKey: Guid(4a85fbe9584179d438ce5debcf3ee6e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0084_Walk-hero01_009.png.png using Guid(4a85fbe9584179d438ce5debcf3ee6e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b4b88dfce803e834b52c1ede7080340') in 0.023453 seconds
-  Import took 0.034847 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0060_Sneaking-hero01_004.png.png
-  artifactKey: Guid(7043219c6f19af34ebd15b49dcdc6f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0060_Sneaking-hero01_004.png.png using Guid(7043219c6f19af34ebd15b49dcdc6f07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b66632f2241867628d6604b7d340600') in 0.030091 seconds
-  Import took 0.041666 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000226 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0079_Walk-hero01_004.png.png
-  artifactKey: Guid(b39cc9afe8b1158488e79f9437dd54c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0079_Walk-hero01_004.png.png using Guid(b39cc9afe8b1158488e79f9437dd54c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6421bd3b73fca8c90d9648d8f7fe4ecb') in 0.023419 seconds
-  Import took 0.035999 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000294 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0080_Walk-hero01_005.png.png
-  artifactKey: Guid(aae21f2829497a544a1abf7a5d1d3611) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0080_Walk-hero01_005.png.png using Guid(aae21f2829497a544a1abf7a5d1d3611) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf51d0429419d82724042d2918b7ed72') in 0.022762 seconds
-  Import took 0.034242 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000328 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0059_Sneaking-hero01_003.png.png
-  artifactKey: Guid(fcbd62b3c863f0a49b21ea5182f828c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0059_Sneaking-hero01_003.png.png using Guid(fcbd62b3c863f0a49b21ea5182f828c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1432576d3f815815488507eefb47940d') in 0.019797 seconds
-  Import took 0.030134 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000183 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0083_Walk-hero01_008.png.png
-  artifactKey: Guid(df3c0100ab1b29749bfece931bd4cde7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0083_Walk-hero01_008.png.png using Guid(df3c0100ab1b29749bfece931bd4cde7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faa20aa993c8ac28493c6f92d61e99c6') in 0.019805 seconds
-  Import took 0.029659 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000260 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0072_Sneaking-hero01_016.png.png
-  artifactKey: Guid(c4b144be086330c409f95c61897fbd71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0072_Sneaking-hero01_016.png.png using Guid(c4b144be086330c409f95c61897fbd71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f87871f18db948aaa99f0ea74d0f832') in 0.021253 seconds
-  Import took 0.031992 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000191 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0075_Sneaking-hero01_019.png.png
-  artifactKey: Guid(5bb7f989b5c588d4d9b4a242c58e036f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0075_Sneaking-hero01_019.png.png using Guid(5bb7f989b5c588d4d9b4a242c58e036f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8de968fa97924a43973f8b7279670db') in 0.021666 seconds
-  Import took 0.032426 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0061_Sneaking-hero01_005.png.png
-  artifactKey: Guid(4b9ab9ca4844762458e5eff72a98fb93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/_0061_Sneaking-hero01_005.png.png using Guid(4b9ab9ca4844762458e5eff72a98fb93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40ad8f94e430ce8d841511c5b5605a89') in 0.020285 seconds
-  Import took 0.031044 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000240 seconds.
-  path: Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_001.png
-  artifactKey: Guid(deefcdf17c97ac04dba64790fb2ace4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Easy performant outline/Demo/Models for Demo scene/Free 2D Demo Character sprite sheet/Sprite sheet/Death-hero01_001.png using Guid(deefcdf17c97ac04dba64790fb2ace4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71db312d4533e5c5f8d2cfbc8ed7d64b') in 0.022770 seconds
-  Import took 0.032412 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003504 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.96 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
@@ -1653,31 +332,32 @@ UnityEngine.Rendering.Universal.ScriptableRendererData:OnValidate () (at Library
 (Filename: Library/PackageCache/com.unity.render-pipelines.universal@10.4.0/Runtime/ScriptableRendererData.cs Line: 135)
 
 Mono: successfully reloaded assembly
-- Completed reload, in  1.658 seconds
+- Completed reload, in  1.728 seconds
 Platform modules already initialized, skipping
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.00 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.05 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4514 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 194.4 MB.
-System memory in use after: 194.7 MB.
+Unloading 4513 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 211.7 MB.
+System memory in use after: 212.0 MB.
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 5179.
-Total: 7.616400 ms (FindLiveObjects: 0.751400 ms CreateObjectMapping: 0.434100 ms MarkObjects: 6.190300 ms  DeleteObjects: 0.238100 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.385204 seconds.
-  path: Assets/Scripts/Icons/score.png
-  artifactKey: Guid(557587a5d9ee97446bec73547e932bc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Icons/score.png using Guid(557587a5d9ee97446bec73547e932bc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90beb385d505c07dfe564faecb4070fc') in 0.072320 seconds
-  Import took 0.085413 seconds .
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 5235.
+Total: 5.168300 ms (FindLiveObjects: 0.818500 ms CreateObjectMapping: 0.251200 ms MarkObjects: 4.065300 ms  DeleteObjects: 0.031400 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.016544 seconds.
-  path: Assets/Scripts/Icons/score.png
-  artifactKey: Guid(557587a5d9ee97446bec73547e932bc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/Icons/score.png using Guid(557587a5d9ee97446bec73547e932bc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90beb385d505c07dfe564faecb4070fc') in 0.017064 seconds
-  Import took 0.026845 seconds .
+  Time since last request: 220.115377 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Enemy Base.prefab
+  artifactKey: Guid(ea857da78e67f4848aa9f176fa03df74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Enemy Base.prefab using Guid(ea857da78e67f4848aa9f176fa03df74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f75d3b73e18532c1895bc66badb0efc4') in 0.166510 seconds
+  Import took 0.182605 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000285 seconds.
+  path: Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab
+  artifactKey: Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Characters/Enemies/Basic Enemy.prefab using Guid(7e7f79870cb735f48acfa528faf8a4a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ff92b9ed397101fffcfe6331d9cab6') in 0.243704 seconds
+  Import took 0.260372 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

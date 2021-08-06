@@ -85,7 +85,7 @@ namespace Fralle.PingTap
 			foreach (Renderer renderer in renderers)
 				renderer.SetPropertyBlock(propBlock);
 
-			if (damageData.Gib)
+			if (damageData.Gib && gibModel != null)
 			{
 				Debug.Log("Spawn gib stuff");
 			}

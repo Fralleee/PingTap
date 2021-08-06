@@ -9,9 +9,20 @@ namespace Fralle.PingTap
 		[SerializeField] List<GameObject> impactEffects;
 		[SerializeField] GameObject fallback;
 
+		[SerializeField] bool debug;
+
 		Dictionary<string, GameObject> dictionary = new Dictionary<string, GameObject>();
 
-		public GameObject GetImpactEffectFromTag(string tag) => dictionary.ContainsKey(tag) ? dictionary[tag] : fallback;
+		public GameObject GetImpactEffectFromTag(string tag)
+		{
+			if (debug)
+				DebugLog(tag);
+
+			if (dictionary.TryGetValue(tag, out GameObject effect))
+				return effect;
+
+			return fallback;
+		}
 
 		void MapToDictionary()
 		{
@@ -24,11 +35,19 @@ namespace Fralle.PingTap
 			}
 		}
 
-		void Awake()
+		void DebugLog(string tag)
+		{
+			foreach (KeyValuePair<string, GameObject> kvp in dictionary)
+			{
+				Debug.Log($"{kvp.Key}: {kvp.Value.name}");
+			}
+
+			Debug.Log($"Tag: {tag}. Dictionary.ContainsKey: {dictionary.ContainsKey(tag)}");
+		}
+
+		void OnEnable()
 		{
 			MapToDictionary();
-
-
 		}
 	}
 }
