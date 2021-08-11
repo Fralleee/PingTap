@@ -30,10 +30,10 @@ namespace Fralle
 
 		public static void ConfigureInput(bool disable = true)
 		{
-			if (disable)
-				playerInput.DeactivateInput();
-			else
-				playerInput.ActivateInput();
+			//if (disable)
+			//	playerInput.DeactivateInput();
+			//else
+			//	playerInput.ActivateInput();
 		}
 	}
 }

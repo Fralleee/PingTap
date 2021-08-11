@@ -2,17 +2,18 @@
 using Fralle.PingTap;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static PlayerControls;
 
 namespace Fralle
 {
 	[RequireComponent(typeof(Combatant))]
-	public class PlayerAttack : MonoBehaviour
+	public class PlayerAttack : MonoBehaviour, IWeaponActions
 	{
 		[SerializeField] Combatant combatant;
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 		[SerializeField] Transform weaponCamera;
 
-		[HideInInspector] public PlayerInput PlayerInput;
+		PlayerControls controls;
 
 		int firstPersonObjectsLayer;
 
@@ -24,6 +25,10 @@ namespace Fralle
 
 		void Awake()
 		{
+			controls = new PlayerControls();
+			controls.Weapon.SetCallbacks(this);
+			controls.Weapon.Enable();
+
 			firstPersonObjectsLayer = LayerMask.NameToLayer("FPO");
 
 			if (combatant == null)
@@ -31,46 +36,8 @@ namespace Fralle
 
 			combatant.OnWeaponSwitch += OnWeaponSwitch;
 
-			PlayerInput = GetComponent<PlayerInput>();
-			PlayerInput.actions["PrimaryFire"].performed += OnPrimaryFire;
-			PlayerInput.actions["PrimaryFire"].canceled += OnPrimaryFireCancel;
-			PlayerInput.actions["SecondaryFire"].performed += OnSecondaryFire;
-			PlayerInput.actions["SecondaryFire"].canceled += OnSecondaryFireCancel;
-			PlayerInput.actions["ItemSelect"].performed += OnItemSelect;
-
 			defaultWeaponCameraPosition = weaponCamera.transform.localPosition;
 			defaultWeaponCameraRotation = weaponCamera.transform.localRotation;
-		}
-
-		void OnPrimaryFire(InputAction.CallbackContext context)
-		{
-			primaryFireHold = true;
-			if (context.duration <= 0)
-				combatant.PrimaryAction(true);
-		}
-		void OnPrimaryFireCancel(InputAction.CallbackContext context)
-		{
-			primaryFireHold = false;
-		}
-
-		void OnSecondaryFire(InputAction.CallbackContext context)
-		{
-			secondaryFireHold = true;
-			if (context.duration <= 0)
-				combatant.SecondaryAction(true);
-		}
-		void OnSecondaryFireCancel(InputAction.CallbackContext context)
-		{
-			secondaryFireHold = false;
-		}
-
-		void OnItemSelect(InputAction.CallbackContext context)
-		{
-			int number = (int)context.ReadValue<float>();
-			if (weapons.Length >= number + 1)
-				combatant.EquipWeapon(weapons[number]);
-			else
-				combatant.EquipWeapon(null);
 		}
 
 		void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
@@ -103,15 +70,6 @@ namespace Fralle
 				combatant.SecondaryAction();
 		}
 
-		void OnDestroy()
-		{
-			PlayerInput.actions["PrimaryFire"].performed -= OnPrimaryFire;
-			PlayerInput.actions["PrimaryFire"].canceled -= OnPrimaryFireCancel;
-			PlayerInput.actions["SecondaryFire"].performed -= OnSecondaryFire;
-			PlayerInput.actions["SecondaryFire"].canceled -= OnSecondaryFireCancel;
-			PlayerInput.actions["ItemSelect"].performed -= OnItemSelect;
-		}
-
 		[ContextMenu("Equip Weapon")]
 		public void EquipFirstWeaponInList()
 		{
@@ -125,6 +83,39 @@ namespace Fralle
 		{
 			Debug.Log($"Removed: {combatant.EquippedWeapon}");
 			combatant.ClearWeapons();
+		}
+
+		void IWeaponActions.OnItemSelect(InputAction.CallbackContext context)
+		{
+			int number = (int)context.ReadValue<float>();
+			if (weapons.Length >= number + 1)
+				combatant.EquipWeapon(weapons[number]);
+			else
+				combatant.EquipWeapon(null);
+		}
+
+		void IWeaponActions.OnPrimaryFire(InputAction.CallbackContext context)
+		{
+			if (context.performed)
+			{
+				primaryFireHold = true;
+				if (context.duration <= 0)
+					combatant.PrimaryAction(true);
+			}
+			else if (context.canceled)
+				primaryFireHold = false;
+		}
+
+		void IWeaponActions.OnSecondaryFire(InputAction.CallbackContext context)
+		{
+			if (context.performed)
+			{
+				secondaryFireHold = true;
+				if (context.duration <= 0)
+					combatant.SecondaryAction(true);
+			}
+			else if (context.canceled)
+				secondaryFireHold = false;
 		}
 	}
 }

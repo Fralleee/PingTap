@@ -8,12 +8,12 @@ namespace Fralle
 		[SerializeField] float rotateOnAngle = 35;
 		[SerializeField] Transform orientation;
 
-		PlayerController playerController;
+		RigidbodyController playerController;
 		bool doRotate;
 
 		void Awake()
 		{
-			playerController = GetComponentInParent<PlayerController>();
+			playerController = GetComponentInParent<RigidbodyController>();
 		}
 
 		void Update()

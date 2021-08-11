@@ -24,7 +24,7 @@ namespace Fralle
 		void Awake()
 		{
 			Combatant = GetComponent<Combatant>();
-			PlayerInput = GetComponent<PlayerInput>();
+			//PlayerInput = GetComponent<PlayerInput>();
 			transform.Find("UI").gameObject.SetActive(true);
 		}
 
@@ -38,24 +38,24 @@ namespace Fralle
 
 		void OnGamestateChanged(GameState gameState)
 		{
-			if (gameState == GameState.PauseMenu)
-			{
-				PlayerInput.DeactivateInput();
-			}
-			else
-			{
-				PlayerInput.ActivateInput();
-			}
+			//if (gameState == GameState.PauseMenu)
+			//{
+			//	PlayerInput.DeactivateInput();
+			//}
+			//else
+			//{
+			//	PlayerInput.ActivateInput();
+			//}
 		}
 
 		void ConsoleActivated()
 		{
-			PlayerInput.DeactivateInput();
+			//PlayerInput.DeactivateInput();
 		}
 
 		void ConsoleDeactivated()
 		{
-			PlayerInput.ActivateInput();
+			//PlayerInput.ActivateInput();
 		}
 
 		void OnEnable()

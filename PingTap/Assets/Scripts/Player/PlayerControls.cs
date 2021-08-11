@@ -15,7 +15,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Movement"",
             ""id"": ""8b9f40ee-32f5-46c6-b828-c0b7dfd95cae"",
             ""actions"": [
                 {
@@ -49,54 +49,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""PrimaryFire"",
-                    ""type"": ""Button"",
-                    ""id"": ""7862d216-b339-48de-9c9f-48704c9213b9"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""SecondaryFire"",
-                    ""type"": ""Button"",
-                    ""id"": ""9d230795-dbc8-4f1a-bbd3-361e0b5b058e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""ItemSelect"",
-                    ""type"": ""Button"",
-                    ""id"": ""378581c4-17ed-421d-9104-de45a0292db8"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""MovementAbility"",
-                    ""type"": ""Button"",
-                    ""id"": ""f0370002-f76b-4315-837c-731cbf28366a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""AttackAbility"",
-                    ""type"": ""Button"",
-                    ""id"": ""ab3f3cdb-d88b-4c0e-a352-91d450346ac0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""UltimateAbility"",
-                    ""type"": ""Button"",
-                    ""id"": ""2df8054c-ffac-4858-b3a9-1ec58c28d2c2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -286,142 +238,42 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""Ability"",
+            ""id"": ""9e9077ab-2130-4320-b562-9c65c2768921"",
+            ""actions"": [
                 {
-                    ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
+                    ""name"": ""MovementAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""dc8b2785-8ee7-4656-9cce-1611a61757b3"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""PrimaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""interactions"": """"
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""name"": ""AttackAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a69ca19-3885-46e4-ac8d-188f1615a4d2"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""PrimaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""interactions"": """"
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
+                    ""name"": ""UltimateAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9ba7e49-4688-440e-a5ef-27a22c169a9f"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""PrimaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""PrimaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8255d333-5683-4943-a58a-ccb207ff1dce"",
-                    ""path"": ""<XRController>/{PrimaryAction}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""PrimaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d2f91504-a617-467b-99de-c5cb11c81a3d"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""SecondaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f0ebccc0-d039-4116-a76d-6123d49d2491"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""SecondaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e2331fd2-db36-4340-bc00-ed7ee551fcfe"",
-                    ""path"": ""*/{SecondaryAction}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XR"",
-                    ""action"": ""SecondaryFire"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d683543c-e661-4c17-bc2b-2d3613afc74d"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale(factor=0)"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ItemSelect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5189a07e-ddf7-4164-81c9-c11ea7b279fc"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ItemSelect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""29f9f5bc-0fb6-4755-9b86-735351593401"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale(factor=2)"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ItemSelect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0da8dd5b-e6a0-44be-84c9-a939508eccac"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": ""Scale(factor=3)"",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""ItemSelect"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""69c25f3d-9d36-458c-9720-52aee0209bfc"",
+                    ""id"": ""9023af69-f19a-4f48-9909-291e8d7948b1"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -432,7 +284,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e6011422-5fd2-4783-8467-38522c8dffaf"",
+                    ""id"": ""527f8631-3705-4430-8363-07700730d612"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -443,12 +295,203 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1820b786-7c62-4e31-b790-32396af5156a"",
+                    ""id"": ""8ed54672-0968-4427-a8b8-d4d9342b8899"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""UltimateAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Weapon"",
+            ""id"": ""985322ca-af67-46f9-a7d7-eeea1e3cbf74"",
+            ""actions"": [
+                {
+                    ""name"": ""ItemSelect"",
+                    ""type"": ""Button"",
+                    ""id"": ""81e1af72-f0f5-4802-88eb-fbb08966cb3a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PrimaryFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""f06df7fc-f4b6-481e-b390-2e5adb98fb39"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""SecondaryFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""6dc9cf06-b217-452d-8812-817915bb4b49"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""320af9e6-84ab-4b01-80db-6caf6683a8ae"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=0)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ItemSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c71a3c6b-c2a9-4951-b9c3-6d9d8728d1b5"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ItemSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fddb4854-aa9b-4808-b8bc-3b78d034b48b"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ItemSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74ef64a9-9b54-4aa2-bbdc-0c30b7033c17"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ItemSelect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3bb7f144-485c-41ae-a83a-f1f885b9b5a8"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""PrimaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8db21efa-7d37-451b-9ff5-d76d4d948615"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""PrimaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44924489-801b-4889-a041-6614e3ff9679"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Touch"",
+                    ""action"": ""PrimaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16d0f66f-7fa9-49e3-ac9e-a71ce1c33c72"",
+                    ""path"": ""<Joystick>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""PrimaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26ad0480-c1b6-42df-8b3f-b429be9bca3e"",
+                    ""path"": ""<XRController>/{PrimaryAction}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XR"",
+                    ""action"": ""PrimaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a15af270-e303-414a-8385-ad8243c0e736"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8fb745a8-883f-43f7-a5ec-512cb6b3badd"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71f1cd6f-fff2-48dd-8291-de68a32e4c82"",
+                    ""path"": ""*/{SecondaryAction}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""XR"",
+                    ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""7c8ed8cb-44ce-40c8-bfa5-9de62693026c"",
+            ""actions"": [
+                {
+                    ""name"": ""Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""b56aa7b5-a2bb-429a-a9d9-af0e01723c5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""8b4301e2-b389-477e-a294-3caeac1a5713"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Toggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -948,33 +991,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Menu"",
-            ""id"": ""7c8ed8cb-44ce-40c8-bfa5-9de62693026c"",
-            ""actions"": [
-                {
-                    ""name"": ""Toggle"",
-                    ""type"": ""Button"",
-                    ""id"": ""b56aa7b5-a2bb-429a-a9d9-af0e01723c5c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""8b4301e2-b389-477e-a294-3caeac1a5713"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Toggle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": [
@@ -1040,18 +1056,25 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
-        m_Player_PrimaryFire = m_Player.FindAction("PrimaryFire", throwIfNotFound: true);
-        m_Player_SecondaryFire = m_Player.FindAction("SecondaryFire", throwIfNotFound: true);
-        m_Player_ItemSelect = m_Player.FindAction("ItemSelect", throwIfNotFound: true);
-        m_Player_MovementAbility = m_Player.FindAction("MovementAbility", throwIfNotFound: true);
-        m_Player_AttackAbility = m_Player.FindAction("AttackAbility", throwIfNotFound: true);
-        m_Player_UltimateAbility = m_Player.FindAction("UltimateAbility", throwIfNotFound: true);
+        // Movement
+        m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
+        m_Movement_Movement = m_Movement.FindAction("Movement", throwIfNotFound: true);
+        m_Movement_Look = m_Movement.FindAction("Look", throwIfNotFound: true);
+        m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
+        m_Movement_Crouch = m_Movement.FindAction("Crouch", throwIfNotFound: true);
+        // Ability
+        m_Ability = asset.FindActionMap("Ability", throwIfNotFound: true);
+        m_Ability_MovementAbility = m_Ability.FindAction("MovementAbility", throwIfNotFound: true);
+        m_Ability_AttackAbility = m_Ability.FindAction("AttackAbility", throwIfNotFound: true);
+        m_Ability_UltimateAbility = m_Ability.FindAction("UltimateAbility", throwIfNotFound: true);
+        // Weapon
+        m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
+        m_Weapon_ItemSelect = m_Weapon.FindAction("ItemSelect", throwIfNotFound: true);
+        m_Weapon_PrimaryFire = m_Weapon.FindAction("PrimaryFire", throwIfNotFound: true);
+        m_Weapon_SecondaryFire = m_Weapon.FindAction("SecondaryFire", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Toggle = m_Menu.FindAction("Toggle", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1064,9 +1087,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
-        // Menu
-        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_Toggle = m_Menu.FindAction("Toggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1113,74 +1133,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Crouch;
-    private readonly InputAction m_Player_PrimaryFire;
-    private readonly InputAction m_Player_SecondaryFire;
-    private readonly InputAction m_Player_ItemSelect;
-    private readonly InputAction m_Player_MovementAbility;
-    private readonly InputAction m_Player_AttackAbility;
-    private readonly InputAction m_Player_UltimateAbility;
-    public struct PlayerActions
+    // Movement
+    private readonly InputActionMap m_Movement;
+    private IMovementActions m_MovementActionsCallbackInterface;
+    private readonly InputAction m_Movement_Movement;
+    private readonly InputAction m_Movement_Look;
+    private readonly InputAction m_Movement_Jump;
+    private readonly InputAction m_Movement_Crouch;
+    public struct MovementActions
     {
         private @PlayerControls m_Wrapper;
-        public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
-        public InputAction @PrimaryFire => m_Wrapper.m_Player_PrimaryFire;
-        public InputAction @SecondaryFire => m_Wrapper.m_Player_SecondaryFire;
-        public InputAction @ItemSelect => m_Wrapper.m_Player_ItemSelect;
-        public InputAction @MovementAbility => m_Wrapper.m_Player_MovementAbility;
-        public InputAction @AttackAbility => m_Wrapper.m_Player_AttackAbility;
-        public InputAction @UltimateAbility => m_Wrapper.m_Player_UltimateAbility;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        public MovementActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Movement_Movement;
+        public InputAction @Look => m_Wrapper.m_Movement_Look;
+        public InputAction @Jump => m_Wrapper.m_Movement_Jump;
+        public InputAction @Crouch => m_Wrapper.m_Movement_Crouch;
+        public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(MovementActions set) { return set.Get(); }
+        public void SetCallbacks(IMovementActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_MovementActionsCallbackInterface != null)
             {
-                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Crouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
-                @Crouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
-                @Crouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
-                @PrimaryFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryFire;
-                @PrimaryFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryFire;
-                @PrimaryFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPrimaryFire;
-                @SecondaryFire.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryFire;
-                @SecondaryFire.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryFire;
-                @SecondaryFire.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSecondaryFire;
-                @ItemSelect.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnItemSelect;
-                @ItemSelect.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnItemSelect;
-                @ItemSelect.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnItemSelect;
-                @MovementAbility.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementAbility;
-                @MovementAbility.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementAbility;
-                @MovementAbility.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovementAbility;
-                @AttackAbility.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackAbility;
-                @AttackAbility.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackAbility;
-                @AttackAbility.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackAbility;
-                @UltimateAbility.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimateAbility;
-                @UltimateAbility.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimateAbility;
-                @UltimateAbility.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUltimateAbility;
+                @Movement.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMovement;
+                @Look.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnLook;
+                @Jump.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
+                @Crouch.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnCrouch;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Movement.started += instance.OnMovement;
@@ -1195,15 +1185,46 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
-                @PrimaryFire.started += instance.OnPrimaryFire;
-                @PrimaryFire.performed += instance.OnPrimaryFire;
-                @PrimaryFire.canceled += instance.OnPrimaryFire;
-                @SecondaryFire.started += instance.OnSecondaryFire;
-                @SecondaryFire.performed += instance.OnSecondaryFire;
-                @SecondaryFire.canceled += instance.OnSecondaryFire;
-                @ItemSelect.started += instance.OnItemSelect;
-                @ItemSelect.performed += instance.OnItemSelect;
-                @ItemSelect.canceled += instance.OnItemSelect;
+            }
+        }
+    }
+    public MovementActions @Movement => new MovementActions(this);
+
+    // Ability
+    private readonly InputActionMap m_Ability;
+    private IAbilityActions m_AbilityActionsCallbackInterface;
+    private readonly InputAction m_Ability_MovementAbility;
+    private readonly InputAction m_Ability_AttackAbility;
+    private readonly InputAction m_Ability_UltimateAbility;
+    public struct AbilityActions
+    {
+        private @PlayerControls m_Wrapper;
+        public AbilityActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MovementAbility => m_Wrapper.m_Ability_MovementAbility;
+        public InputAction @AttackAbility => m_Wrapper.m_Ability_AttackAbility;
+        public InputAction @UltimateAbility => m_Wrapper.m_Ability_UltimateAbility;
+        public InputActionMap Get() { return m_Wrapper.m_Ability; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AbilityActions set) { return set.Get(); }
+        public void SetCallbacks(IAbilityActions instance)
+        {
+            if (m_Wrapper.m_AbilityActionsCallbackInterface != null)
+            {
+                @MovementAbility.started -= m_Wrapper.m_AbilityActionsCallbackInterface.OnMovementAbility;
+                @MovementAbility.performed -= m_Wrapper.m_AbilityActionsCallbackInterface.OnMovementAbility;
+                @MovementAbility.canceled -= m_Wrapper.m_AbilityActionsCallbackInterface.OnMovementAbility;
+                @AttackAbility.started -= m_Wrapper.m_AbilityActionsCallbackInterface.OnAttackAbility;
+                @AttackAbility.performed -= m_Wrapper.m_AbilityActionsCallbackInterface.OnAttackAbility;
+                @AttackAbility.canceled -= m_Wrapper.m_AbilityActionsCallbackInterface.OnAttackAbility;
+                @UltimateAbility.started -= m_Wrapper.m_AbilityActionsCallbackInterface.OnUltimateAbility;
+                @UltimateAbility.performed -= m_Wrapper.m_AbilityActionsCallbackInterface.OnUltimateAbility;
+                @UltimateAbility.canceled -= m_Wrapper.m_AbilityActionsCallbackInterface.OnUltimateAbility;
+            }
+            m_Wrapper.m_AbilityActionsCallbackInterface = instance;
+            if (instance != null)
+            {
                 @MovementAbility.started += instance.OnMovementAbility;
                 @MovementAbility.performed += instance.OnMovementAbility;
                 @MovementAbility.canceled += instance.OnMovementAbility;
@@ -1216,7 +1237,89 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public AbilityActions @Ability => new AbilityActions(this);
+
+    // Weapon
+    private readonly InputActionMap m_Weapon;
+    private IWeaponActions m_WeaponActionsCallbackInterface;
+    private readonly InputAction m_Weapon_ItemSelect;
+    private readonly InputAction m_Weapon_PrimaryFire;
+    private readonly InputAction m_Weapon_SecondaryFire;
+    public struct WeaponActions
+    {
+        private @PlayerControls m_Wrapper;
+        public WeaponActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ItemSelect => m_Wrapper.m_Weapon_ItemSelect;
+        public InputAction @PrimaryFire => m_Wrapper.m_Weapon_PrimaryFire;
+        public InputAction @SecondaryFire => m_Wrapper.m_Weapon_SecondaryFire;
+        public InputActionMap Get() { return m_Wrapper.m_Weapon; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(WeaponActions set) { return set.Get(); }
+        public void SetCallbacks(IWeaponActions instance)
+        {
+            if (m_Wrapper.m_WeaponActionsCallbackInterface != null)
+            {
+                @ItemSelect.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnItemSelect;
+                @ItemSelect.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnItemSelect;
+                @ItemSelect.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnItemSelect;
+                @PrimaryFire.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnPrimaryFire;
+                @PrimaryFire.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnPrimaryFire;
+                @PrimaryFire.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnPrimaryFire;
+                @SecondaryFire.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSecondaryFire;
+                @SecondaryFire.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSecondaryFire;
+                @SecondaryFire.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSecondaryFire;
+            }
+            m_Wrapper.m_WeaponActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ItemSelect.started += instance.OnItemSelect;
+                @ItemSelect.performed += instance.OnItemSelect;
+                @ItemSelect.canceled += instance.OnItemSelect;
+                @PrimaryFire.started += instance.OnPrimaryFire;
+                @PrimaryFire.performed += instance.OnPrimaryFire;
+                @PrimaryFire.canceled += instance.OnPrimaryFire;
+                @SecondaryFire.started += instance.OnSecondaryFire;
+                @SecondaryFire.performed += instance.OnSecondaryFire;
+                @SecondaryFire.canceled += instance.OnSecondaryFire;
+            }
+        }
+    }
+    public WeaponActions @Weapon => new WeaponActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Toggle;
+    public struct MenuActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Toggle => m_Wrapper.m_Menu_Toggle;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Toggle.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggle;
+                @Toggle.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggle;
+                @Toggle.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggle;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Toggle.started += instance.OnToggle;
+                @Toggle.performed += instance.OnToggle;
+                @Toggle.canceled += instance.OnToggle;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -1322,39 +1425,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
-
-    // Menu
-    private readonly InputActionMap m_Menu;
-    private IMenuActions m_MenuActionsCallbackInterface;
-    private readonly InputAction m_Menu_Toggle;
-    public struct MenuActions
-    {
-        private @PlayerControls m_Wrapper;
-        public MenuActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Toggle => m_Wrapper.m_Menu_Toggle;
-        public InputActionMap Get() { return m_Wrapper.m_Menu; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
-        public void SetCallbacks(IMenuActions instance)
-        {
-            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
-            {
-                @Toggle.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggle;
-                @Toggle.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggle;
-                @Toggle.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnToggle;
-            }
-            m_Wrapper.m_MenuActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Toggle.started += instance.OnToggle;
-                @Toggle.performed += instance.OnToggle;
-                @Toggle.canceled += instance.OnToggle;
-            }
-        }
-    }
-    public MenuActions @Menu => new MenuActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -1400,18 +1470,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IMovementActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
-        void OnPrimaryFire(InputAction.CallbackContext context);
-        void OnSecondaryFire(InputAction.CallbackContext context);
-        void OnItemSelect(InputAction.CallbackContext context);
+    }
+    public interface IAbilityActions
+    {
         void OnMovementAbility(InputAction.CallbackContext context);
         void OnAttackAbility(InputAction.CallbackContext context);
         void OnUltimateAbility(InputAction.CallbackContext context);
+    }
+    public interface IWeaponActions
+    {
+        void OnItemSelect(InputAction.CallbackContext context);
+        void OnPrimaryFire(InputAction.CallbackContext context);
+        void OnSecondaryFire(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnToggle(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
@@ -1425,9 +1505,5 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
-    }
-    public interface IMenuActions
-    {
-        void OnToggle(InputAction.CallbackContext context);
     }
 }

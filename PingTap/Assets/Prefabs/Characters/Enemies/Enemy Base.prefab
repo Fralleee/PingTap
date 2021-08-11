@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4859456597923751352}
-  - component: {fileID: 838773129522978847}
-  - component: {fileID: 3947916866758233116}
+  - component: {fileID: 9076939780586722735}
+  - component: {fileID: 6760449503466247764}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 4859456599272585037}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &838773129522978847
+--- !u!114 &9076939780586722735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4859456597923751351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5e6472a74ba66469ddb6a43ce94c8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ff91542f55e8664aac9c7aca35d67c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3947916866758233116
+--- !u!114 &6760449503466247764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,12 +53,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4859456597923751351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8cc5aca4125bb47badc2e00c1b3442, type: 3}
+  m_Script: {fileID: 11500000, guid: 2781a7e8f69e4ad4c8da19ebe8cb363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 50
   scaleLimits: {x: 0.5, y: 1.5}
-  yOffsetLimits: {x: 2, y: 3}
+  yOffsetLimits: {x: 0.5, y: 1.5}
 --- !u!1 &4859456599272585033
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,13 +72,13 @@ GameObject:
   - component: {fileID: 1859294474}
   - component: {fileID: 898686357290624339}
   - component: {fileID: 528117005174283110}
-  - component: {fileID: 821477217250295957}
   - component: {fileID: 8481549415250245631}
-  - component: {fileID: 3419345225857961809}
+  - component: {fileID: 7910121066534976072}
   - component: {fileID: 7850832518083663071}
   - component: {fileID: 7464796668427422271}
   - component: {fileID: 2207658041099517612}
   - component: {fileID: 5784202919468758000}
+  - component: {fileID: 9152720476114960901}
   m_Layer: 10
   m_Name: Enemy Base
   m_TagString: Untagged
@@ -251,41 +251,6 @@ MonoBehaviour:
   Combatant: {fileID: 0}
   startingScoreValue: 1
   scoreValue: 0
---- !u!114 &821477217250295957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4859456599272585033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cdcccc393894ef46b6af1628afdeee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  team: 1
-  targetCollider: {fileID: 4917314127846094341}
-  hitboxParent: {fileID: 0}
-  team1Color: {r: 1, g: 0.5019608, b: 0.82587963, a: 1}
-  team2Color: {r: 0.5019608, g: 0.9543615, b: 1, a: 1}
-  AllyTeam: 0
-  Hitbox: 0
-  AllyProjectiles: 0
-  Hostiles:
-    serializedVersion: 2
-    m_Bits: 0
-  Neutrals:
-    serializedVersion: 2
-    m_Bits: 0
-  HostileProjectiles:
-    serializedVersion: 2
-    m_Bits: 0
-  Hitboxes:
-    serializedVersion: 2
-    m_Bits: 0
-  AttackLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &8481549415250245631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +276,7 @@ MonoBehaviour:
   idleScanFrequency: 1
   searchScanFrequency: 4
   debugTransitions: 0
---- !u!114 &3419345225857961809
+--- !u!114 &7910121066534976072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,7 +285,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4859456599272585033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7b2092b6a2e074a97cee3e2ed41baa, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f406bd6a6b5abf4ba94593ed5ee6d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 2
@@ -359,9 +324,9 @@ MonoBehaviour:
   IsDead: 0
   effectHandler:
     DamageEffects: []
+  Immortal: 0
   CurrentHealth: 0
   MaxHealth: 100
-  Immortal: 0
   impactEffect: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
   Armor:
     ArmorValue: 0
@@ -383,6 +348,7 @@ MonoBehaviour:
       type: 3}
     floatingCombatText: {fileID: 2575742046452647322, guid: a7c0509aee3e91647baf5f39cd4ce9aa,
       type: 3}
+    useOutlinable: 0
   ikHandler:
     enabled: 0
     body: {fileID: 0}
@@ -394,6 +360,10 @@ MonoBehaviour:
     deathSound: {fileID: 8300000, guid: 384fb62780425f54d8338e8e9e9477cc, type: 3}
   graphicsHandler:
     gibModel: {fileID: 0}
+  indicatorHandler:
+    postProcess: {fileID: 0}
+    bodyshotShake: {fileID: 0}
+    headshotShake: {fileID: 0}
 --- !u!114 &2207658041099517612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +416,41 @@ MonoBehaviour:
   spray:
     TimeBetweenAttacks: {x: 0, y: 0}
     BulletsPerAttack: {x: 10, y: 15}
+--- !u!114 &9152720476114960901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859456599272585033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e9716db29463d4a943bc998fabf197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
+  targetCollider: {fileID: 0}
+  hitboxParent: {fileID: 0}
+  team1Color: {r: 1, g: 0.5, b: 0.5, a: 1}
+  team2Color: {r: 0.5, g: 0.5, b: 1, a: 1}
+  AllyTeam: 0
+  Hitbox: 0
+  AllyProjectiles: 0
+  Hostiles:
+    serializedVersion: 2
+    m_Bits: 0
+  Neutrals:
+    serializedVersion: 2
+    m_Bits: 0
+  HostileProjectiles:
+    serializedVersion: 2
+    m_Bits: 0
+  Hitboxes:
+    serializedVersion: 2
+    m_Bits: 0
+  AttackLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &6807958833789683531
 PrefabInstance:
   m_ObjectHideFlags: 0

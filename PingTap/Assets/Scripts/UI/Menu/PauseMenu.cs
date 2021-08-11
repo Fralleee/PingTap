@@ -29,8 +29,6 @@ namespace Fralle.UI.Menu
 
 		void ToggleMenu()
 		{
-			Debug.Log($"ToggleMenu: isOpen:{!isOpen}");
-
 			isOpen = !isOpen;
 			PlayerInputController.ConfigureCursor(!isOpen);
 			StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);

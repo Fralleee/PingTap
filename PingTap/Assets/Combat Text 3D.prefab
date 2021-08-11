@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1189908144640513989}
   - component: {fileID: 3639122228133587964}
   - component: {fileID: 4400184237309622872}
-  - component: {fileID: 1986956721340412300}
-  - component: {fileID: 1521321757313886251}
-  - component: {fileID: -5727368088104510937}
+  - component: {fileID: 4545470924943906482}
+  - component: {fileID: 5648825976357922615}
   m_Layer: 21
   m_Name: Combat Text 3D
   m_TagString: Untagged
@@ -176,7 +175,7 @@ MonoBehaviour:
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
---- !u!114 &1986956721340412300
+--- !u!114 &4545470924943906482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -185,12 +184,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6316897722388691668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e6cc8bdacf7ba40978e8bae1b6de7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ff91542f55e8664aac9c7aca35d67c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PoolScript: {fileID: 0}
-  TimeSpawned: 0
---- !u!114 &1521321757313886251
+--- !u!114 &5648825976357922615
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,22 +196,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6316897722388691668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61feb4465a6f7aa4389037dc8a69d851, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0.4
---- !u!114 &-5727368088104510937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6316897722388691668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8cc5aca4125bb47badc2e00c1b3442, type: 3}
+  m_Script: {fileID: 11500000, guid: 2781a7e8f69e4ad4c8da19ebe8cb363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 50
-  scaleLimits: {x: 0.5, y: 4}
-  yOffsetLimits: {x: 2, y: 3}
+  scaleLimits: {x: 0.5, y: 1.5}
+  yOffsetLimits: {x: 0.5, y: 1.5}

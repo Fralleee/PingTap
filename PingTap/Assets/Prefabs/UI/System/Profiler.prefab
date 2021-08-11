@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2120917630116908035}
   - component: {fileID: 2611701670140672387}
-  - component: {fileID: 4271062815012340650}
   - component: {fileID: -2131122227511551307}
   - component: {fileID: 114792966100491517}
+  - component: {fileID: 7292244583040898236}
   m_Layer: 5
   m_Name: Profiler
   m_TagString: Untagged
@@ -47,23 +47,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3489198100526568548}
   m_CullTransparentMesh: 1
---- !u!114 &4271062815012340650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3489198100526568548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dbf681517c10454d92709ba62e8071c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FrameTime: 0
-  Fps: 0
-  GcMemory: 0
-  SystemMemory: 0
-  DrawCalls: 0
 --- !u!114 &-2131122227511551307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +149,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7292244583040898236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489198100526568548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce3ecd35e60cb945a38a4b31073d0e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FrameTime: 0
+  Fps: 0
+  GcMemory: 0
+  SystemMemory: 0
+  DrawCalls: 0
