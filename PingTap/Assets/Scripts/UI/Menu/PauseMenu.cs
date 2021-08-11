@@ -1,21 +1,53 @@
 ﻿using Fralle.Gameplay;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Fralle.UI.Menu
 {
-	public class PauseMenu : MonoBehaviour
+	public class PauseMenu : MonoBehaviour, PlayerControls.IMenuActions
 	{
+		const string MainMenuScene = "Main menu";
+
+		[SerializeField] bool showMenuCanvas;
+		[SerializeField] GameObject canvas;
+
 		[Header("Other")]
 		[SerializeField] GameObject root = null;
 		[SerializeField] GameObject options = null;
 
-		const string MainMenuScene = "Main menu";
+		PlayerControls controls;
+
 		bool isOpen;
 
-		public void Resume()
+		void Awake()
 		{
-			ToggleMenu();
+			controls = new PlayerControls();
+			controls.Menu.SetCallbacks(this);
+			controls.Menu.Enable();
+		}
+
+		void ToggleMenu()
+		{
+			Debug.Log($"ToggleMenu: isOpen:{!isOpen}");
+
+			isOpen = !isOpen;
+			PlayerInputController.ConfigureCursor(!isOpen);
+			StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);
+
+			if (showMenuCanvas)
+				canvas.SetActive(isOpen);
+		}
+
+		void OnEnable()
+		{
+			options.SetActive(false);
+		}
+
+		public void OnToggle(InputAction.CallbackContext context)
+		{
+			if (context.performed)
+				ToggleMenu();
 		}
 
 		public static void ToMainMenu()
@@ -28,20 +60,6 @@ namespace Fralle.UI.Menu
 			options.gameObject.SetActive(true);
 			options.GetComponent<SubMenu>().InGame = StateManager.GameState == GameState.Playing;
 			root.SetActive(false);
-		}
-
-		public bool ToggleMenu()
-		{
-			isOpen = !isOpen;
-			gameObject.SetActive(isOpen);
-			PlayerInputController.ConfigureCursor(!isOpen);
-			StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);
-			return isOpen;
-		}
-
-		void OnEnable()
-		{
-			options.SetActive(false);
 		}
 	}
 }

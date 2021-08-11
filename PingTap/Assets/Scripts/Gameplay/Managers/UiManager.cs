@@ -1,5 +1,4 @@
-﻿using Fralle.UI.Menu;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Fralle.Gameplay
@@ -11,8 +10,8 @@ namespace Fralle.Gameplay
 		[Header("Settings")]
 		[SerializeField] bool allowPauseMenu = true;
 
-		[Header("References")]
-		[SerializeField] PauseMenu pauseMenu;
+		//[Header("References")]
+		//[SerializeField] PauseMenu pauseMenu;
 
 		[Header("Prefabs")]
 		[SerializeField] GameObject prepareUiPrefab;
@@ -27,19 +26,19 @@ namespace Fralle.Gameplay
 
 			MatchManager.OnMatchEnd += HandleGameEnd;
 
-			if (pauseMenu == null)
-				FindObjectOfType<PauseMenu>();
+			//if (pauseMenu == null)
+			//	FindObjectOfType<PauseMenu>();
 
-			pauseMenu.gameObject.SetActive(false);
+			//pauseMenu.gameObject.SetActive(false);
 		}
 
 		void Update()
 		{
-			if (!Input.GetKeyDown(KeyCode.Escape) || !allowPauseMenu)
-				return;
+			//if (!Input.GetKeyDown(KeyCode.Escape))
+			//	return;
 
-			bool isOpen = pauseMenu.ToggleMenu();
-			OnMenuToggle(isOpen);
+			//bool isOpen = pauseMenu.ToggleMenu(allowPauseMenu);
+			//OnMenuToggle(isOpen);
 		}
 
 		void SetupUi()

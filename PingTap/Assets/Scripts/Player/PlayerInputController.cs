@@ -1,4 +1,3 @@
-using Fralle.Gameplay;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +10,6 @@ namespace Fralle
 		void Start()
 		{
 			playerInput = GetComponent<PlayerInput>();
-
-			if (Managers.Instance && Managers.Instance.UiManager)
-				Managers.Instance.UiManager.OnMenuToggle += OnMenuToggle;
 
 			// Console
 		}
@@ -32,19 +28,12 @@ namespace Fralle
 			}
 		}
 
-		void OnMenuToggle(bool isOpen)
+		public static void ConfigureInput(bool disable = true)
 		{
-			if (isOpen)
+			if (disable)
 				playerInput.DeactivateInput();
 			else
 				playerInput.ActivateInput();
-			ConfigureCursor(!isOpen);
-		}
-
-		void OnDestroy()
-		{
-			if (!Managers.Destroyed)
-				Managers.Instance.UiManager.OnMenuToggle -= OnMenuToggle;
 		}
 	}
 }

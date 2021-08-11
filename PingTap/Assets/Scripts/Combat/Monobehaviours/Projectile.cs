@@ -99,7 +99,6 @@ namespace Fralle.PingTap
 
 		void OnCollisionEnter(Collision collision)
 		{
-			Debug.Log(collision.collider.name);
 			if (data.KinematicOnImpact)
 			{
 				rigidbody.isKinematic = true;
