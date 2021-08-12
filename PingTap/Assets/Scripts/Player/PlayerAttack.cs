@@ -13,10 +13,6 @@ namespace Fralle
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 		[SerializeField] Transform weaponCamera;
 
-		[HideInInspector] public PlayerControls controls;
-
-		static PlayerAttack activeController;
-
 		int firstPersonObjectsLayer;
 
 		bool primaryFireHold;
@@ -25,22 +21,8 @@ namespace Fralle
 		Vector3 defaultWeaponCameraPosition;
 		Quaternion defaultWeaponCameraRotation;
 
-		public static void Toggle(bool enabled)
-		{
-			if (enabled)
-				activeController?.controls.Enable();
-			else
-				activeController?.controls.Disable();
-		}
-
 		void Awake()
 		{
-			controls = new PlayerControls();
-			controls.Weapon.SetCallbacks(this);
-			controls.Weapon.Enable();
-
-			activeController = this;
-
 			firstPersonObjectsLayer = LayerMask.NameToLayer("FPO");
 
 			if (combatant == null)
@@ -52,22 +34,11 @@ namespace Fralle
 			defaultWeaponCameraRotation = weaponCamera.transform.localRotation;
 		}
 
-		void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
-		{
-			if (combatant.EquippedWeapon == null)
-			{
-				weaponCamera.localPosition = defaultWeaponCameraPosition;
-				weaponCamera.localRotation = defaultWeaponCameraRotation;
-				return;
-			}
-
-			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
-			weaponCamera.localPosition = combatant.EquippedWeapon.weaponCameraTransform.localPosition;
-			weaponCamera.localRotation = combatant.EquippedWeapon.weaponCameraTransform.localRotation;
-		}
-
 		void Start()
 		{
+			Player.controls.Weapon.SetCallbacks(this);
+			Player.controls.Weapon.Enable();
+
 			if (combatant.EquippedWeapon == null)
 				combatant.EquipWeapon(weapons[0]);
 		}
@@ -95,6 +66,20 @@ namespace Fralle
 		{
 			Debug.Log($"Removed: {combatant.EquippedWeapon}");
 			combatant.ClearWeapons();
+		}
+
+		void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
+		{
+			if (combatant.EquippedWeapon == null)
+			{
+				weaponCamera.localPosition = defaultWeaponCameraPosition;
+				weaponCamera.localRotation = defaultWeaponCameraRotation;
+				return;
+			}
+
+			combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+			weaponCamera.localPosition = combatant.EquippedWeapon.weaponCameraTransform.localPosition;
+			weaponCamera.localRotation = combatant.EquippedWeapon.weaponCameraTransform.localRotation;
 		}
 
 		void IWeaponActions.OnItemSelect(InputAction.CallbackContext context)

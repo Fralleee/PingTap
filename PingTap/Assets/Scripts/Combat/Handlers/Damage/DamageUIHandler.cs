@@ -29,7 +29,7 @@ namespace Fralle.PingTap
 			if (outlinable)
 				outlinable.enabled = false;
 
-			ui = this.damageController.transform.Find("UI");
+			ui = this.damageController.transform.Find("TargetUI");
 			if (ui)
 			{
 				ui.gameObject.SetActive(false);

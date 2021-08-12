@@ -20,6 +20,14 @@ namespace Fralle
 			}
 		}
 
+		public static void Toggle(bool enabled)
+		{
+			if (enabled)
+				controls.Enable();
+			else
+				controls.Disable();
+		}
+
 		void Awake()
 		{
 			controls = new PlayerControls();
@@ -29,11 +37,14 @@ namespace Fralle
 
 			Combatant = GetComponent<Combatant>();
 			transform.Find("UI").gameObject.SetActive(true);
+
+
 		}
 
 		void Start()
 		{
 			Camera = Camera.main;
+			transform.Find("UI").gameObject.SetActive(true);
 
 			//QuantumConsole.Instance.OnActivate += ConsoleActivated;
 			//QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;

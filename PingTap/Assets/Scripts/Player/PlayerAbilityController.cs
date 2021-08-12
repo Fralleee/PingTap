@@ -1,32 +1,14 @@
+using Fralle;
 using Fralle.AbilitySystem;
-using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerControls;
 
 public class PlayerAbilityController : AbilityController, IAbilityActions
 {
-	[HideInInspector] public PlayerControls controls;
-
-	static PlayerAbilityController activeController;
-
-	public static void Toggle(bool enabled)
+	void Start()
 	{
-		if (enabled)
-			activeController?.controls.Enable();
-		else
-			activeController?.controls.Disable();
-	}
-
-	protected override void Awake()
-	{
-		controls = new PlayerControls();
-		controls.Ability.SetCallbacks(this);
-		controls.Ability.Enable();
-
-		activeController = this;
-		//Player.controls.Ability
-
-		base.Awake();
+		Player.controls.Ability.SetCallbacks(this);
+		Player.controls.Ability.Enable();
 	}
 
 	public void OnAttackAbility(InputAction.CallbackContext context)

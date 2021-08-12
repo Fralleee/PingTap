@@ -1,5 +1,4 @@
 ﻿using Fralle.Gameplay;
-using Fralle.PingTap;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -31,10 +30,11 @@ namespace Fralle.UI.Menu
 		void ToggleMenu()
 		{
 			isOpen = !isOpen;
-			PlayerController.ConfigureCursor(!isOpen);
-			PlayerController.Toggle(!isOpen);
-			PlayerAttack.Toggle(!isOpen);
-			PlayerAbilityController.Toggle(!isOpen);
+			//PlayerController.ConfigureCursor(!isOpen);
+			//PlayerController.Toggle(!isOpen);
+			//PlayerAttack.Toggle(!isOpen);
+			//PlayerAbilityController.Toggle(!isOpen);
+			Player.Toggle(!isOpen);
 			StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);
 
 			if (showMenuCanvas)
