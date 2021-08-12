@@ -7,13 +7,39 @@ namespace Fralle.PingTap
 {
 	public class PlayerController : RigidbodyController, IMovementActions
 	{
-		PlayerControls controls;
+		[HideInInspector] public PlayerControls controls;
+
+		static PlayerController activeController;
+
+		public static void Toggle(bool enabled)
+		{
+			if (enabled)
+				activeController?.controls.Enable();
+			else
+				activeController?.controls.Disable();
+		}
+
+		public static void ConfigureCursor(bool doLock = true)
+		{
+			if (doLock)
+			{
+				Cursor.visible = false;
+				Cursor.lockState = CursorLockMode.Locked;
+			}
+			else
+			{
+				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.Confined;
+			}
+		}
 
 		protected override void Awake()
 		{
 			controls = new PlayerControls();
 			controls.Movement.SetCallbacks(this);
 			controls.Movement.Enable();
+
+			activeController = this;
 
 			base.Awake();
 		}

@@ -1,7 +1,6 @@
 ﻿using Fralle.Gameplay;
 using Fralle.PingTap;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Fralle
 {
@@ -10,7 +9,7 @@ namespace Fralle
 	{
 		[HideInInspector] public Camera Camera;
 		[HideInInspector] public Combatant Combatant;
-		[HideInInspector] public PlayerInput PlayerInput;
+		[HideInInspector] public static PlayerControls controls;
 
 		public static void Disable()
 		{
@@ -23,8 +22,12 @@ namespace Fralle
 
 		void Awake()
 		{
+			controls = new PlayerControls();
+			controls.Movement.Enable();
+			controls.Ability.Enable();
+			controls.Weapon.Enable();
+
 			Combatant = GetComponent<Combatant>();
-			//PlayerInput = GetComponent<PlayerInput>();
 			transform.Find("UI").gameObject.SetActive(true);
 		}
 
@@ -38,14 +41,6 @@ namespace Fralle
 
 		void OnGamestateChanged(GameState gameState)
 		{
-			//if (gameState == GameState.PauseMenu)
-			//{
-			//	PlayerInput.DeactivateInput();
-			//}
-			//else
-			//{
-			//	PlayerInput.ActivateInput();
-			//}
 		}
 
 		void ConsoleActivated()

@@ -13,7 +13,9 @@ namespace Fralle
 		[SerializeField] Weapon[] weapons = new Weapon[0];
 		[SerializeField] Transform weaponCamera;
 
-		PlayerControls controls;
+		[HideInInspector] public PlayerControls controls;
+
+		static PlayerAttack activeController;
 
 		int firstPersonObjectsLayer;
 
@@ -23,11 +25,21 @@ namespace Fralle
 		Vector3 defaultWeaponCameraPosition;
 		Quaternion defaultWeaponCameraRotation;
 
+		public static void Toggle(bool enabled)
+		{
+			if (enabled)
+				activeController?.controls.Enable();
+			else
+				activeController?.controls.Disable();
+		}
+
 		void Awake()
 		{
 			controls = new PlayerControls();
 			controls.Weapon.SetCallbacks(this);
 			controls.Weapon.Enable();
+
+			activeController = this;
 
 			firstPersonObjectsLayer = LayerMask.NameToLayer("FPO");
 
