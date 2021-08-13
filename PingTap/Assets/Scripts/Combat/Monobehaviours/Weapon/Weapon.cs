@@ -36,7 +36,8 @@ namespace Fralle.PingTap
 
 		void Update()
 		{
-			AnimateEquip();
+			if (!animationComplete)
+				AnimateEquip();
 
 			if (ActiveWeaponAction == Status.Firing)
 			{
@@ -77,22 +78,18 @@ namespace Fralle.PingTap
 
 		void AnimateEquip()
 		{
-			if (animationComplete)
-				return;
-
-			var isEquipping = equipTime < equipAnimationTime;
-			if (!isEquipping)
-			{
-				animationComplete = true;
-				ActiveWeaponAction = Status.Ready;
-				return;
-			}
-
 			equipTime += Time.deltaTime;
 			equipTime = Mathf.Clamp(equipTime, 0f, equipAnimationTime);
 			var delta = -(Mathf.Cos(Mathf.PI * (equipTime / equipAnimationTime)) - 1f) / 2f;
 			transform.localPosition = Vector3.Lerp(startPosition, Vector3.zero, delta);
 			transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.identity, delta);
+
+			if (equipTime >= equipAnimationTime)
+			{
+				animationComplete = true;
+				ActiveWeaponAction = Status.Ready;
+				return;
+			}
 		}
 	}
 }
