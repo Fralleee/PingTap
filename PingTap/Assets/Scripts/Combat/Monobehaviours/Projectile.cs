@@ -72,8 +72,6 @@ namespace Fralle.PingTap
 
 		void Hit(Collision collision)
 		{
-			AddForce(collision, data.Forward);
-
 			DamageData damageData = DamageHelper.ProjectileHit(data, transform.position, collision);
 			if (damageData != null)
 			{
@@ -84,17 +82,6 @@ namespace Fralle.PingTap
 				ObjectPool.Spawn(impactEffectPrefab, transform.position, Quaternion.FromToRotation(Vector3.up, collision.GetContact(0).normal));
 
 			ObjectPool.Despawn(gameObject);
-		}
-
-		void AddForce(Collision collision, Vector3 direction)
-		{
-			Rigidbody rigidBody = collision.transform.GetComponent<Rigidbody>();
-			if (rigidBody == null)
-				return;
-
-			if (direction == Vector3.zero)
-				direction = -(transform.position - collision.collider.transform.position).normalized;
-			rigidBody.AddForce(direction * data.PushForce, ForceMode.Impulse);
 		}
 
 		void OnCollisionEnter(Collision collision)

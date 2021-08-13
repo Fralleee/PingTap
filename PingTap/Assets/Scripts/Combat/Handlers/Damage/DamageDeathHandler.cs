@@ -38,10 +38,10 @@ namespace Fralle.PingTap
 				disableOnDeath.enabled = false;
 
 			if (dc.gameObject.TryGetComponent(out CapsuleCollider targetCollider))
-				UnityEngine.Object.Destroy(targetCollider);
+				GameObject.Destroy(targetCollider);
 
 			dc.gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
-			UnityEngine.Object.Destroy(dc.gameObject, 3f);
+			GameObject.Destroy(dc.gameObject, 3f);
 		}
 	}
 }

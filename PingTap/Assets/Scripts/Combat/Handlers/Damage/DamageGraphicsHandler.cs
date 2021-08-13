@@ -94,7 +94,7 @@ namespace Fralle.PingTap
 				ToggleRagdoll(true);
 				foreach (var rigidBody in rigidbodies)
 				{
-					rigidBody.AddForceAtPosition(damageData.Force, damageData.Position);
+					rigidBody.AddForceAtPosition(damageData.Force, damageData.Position, ForceMode.Impulse);
 				}
 			}
 		}
