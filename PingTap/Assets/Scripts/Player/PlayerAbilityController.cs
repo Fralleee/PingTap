@@ -13,19 +13,25 @@ public class PlayerAbilityController : AbilityController, IAbilityActions
 
 	public void OnAttackAbility(InputAction.CallbackContext context)
 	{
-		if (AttackAbility != null && AttackAbility.IsReady)
+		if (context.performed && AttackAbility != null && AttackAbility.IsReady)
+		{
 			AttackAbility.Perform();
+		}
 	}
 
 	public void OnMovementAbility(InputAction.CallbackContext context)
 	{
-		if (MovementAbility != null && MovementAbility.IsReady)
+		if (context.performed && MovementAbility != null && MovementAbility.IsReady)
+		{
 			MovementAbility.Perform();
+		}
 	}
 
 	public void OnUltimateAbility(InputAction.CallbackContext context)
 	{
-		if (UltimateAbility != null && UltimateAbility.IsReady)
+		if (context.performed && UltimateAbility != null && UltimateAbility.IsReady)
+		{
 			UltimateAbility.Perform();
+		}
 	}
 }

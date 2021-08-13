@@ -2,7 +2,6 @@ using Fralle.AbilitySystem;
 using Fralle.Core;
 using Fralle.Core.CameraControls;
 using Fralle.Core.Extensions;
-using Fralle.FpsController;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -14,7 +13,7 @@ namespace Fralle.PingTap
 	{
 		[Header("Settings")]
 		[SerializeField] float stopTime = 0.25f;
-		[SerializeField] float dashPower = 4;
+		[SerializeField] float dashPower = 35;
 
 		[Header("Effects")]
 		[SerializeField] ShakeTransformEventData cameraShake;
@@ -72,6 +71,7 @@ namespace Fralle.PingTap
 		{
 			base.Perform();
 
+			IsActive = true;
 			playerController.IsLocked = true;
 			Vector3 direction = playerController.CameraRig.forward;
 			if (playerController.Movement.magnitude > 0)
@@ -101,6 +101,12 @@ namespace Fralle.PingTap
 
 			playerController.Camera.fieldOfView = defaultFov;
 			abilityVolume.weight = 0;
+			IsActive = false;
+		}
+
+		public override void Abort()
+		{
+			Reset();
 		}
 
 		void OnDestroy()
