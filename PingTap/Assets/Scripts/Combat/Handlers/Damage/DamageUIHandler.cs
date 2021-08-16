@@ -76,7 +76,7 @@ namespace Fralle.PingTap
 
 		void HandleReceiveAttack(DamageController dc, DamageData dd)
 		{
-			if (dd.Attacker.hasActiveCamera)
+			if (dd.Attacker && dd.Attacker.hasActiveCamera)
 				Toggle(true, 1f);
 		}
 	}

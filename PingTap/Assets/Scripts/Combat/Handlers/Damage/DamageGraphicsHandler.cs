@@ -92,6 +92,17 @@ namespace Fralle.PingTap
 			else
 			{
 				ToggleRagdoll(true);
+
+				if (damageData.Collider)
+				{
+					if (damageData.Collider.TryGetComponent<Rigidbody>(out Rigidbody rigidBody))
+					{
+						rigidBody.AddForce(damageData.Force * 10f, ForceMode.Impulse);
+						return;
+					}
+				}
+
+
 				foreach (var rigidBody in rigidbodies)
 				{
 					rigidBody.AddForceAtPosition(damageData.Force, damageData.Position, ForceMode.Impulse);

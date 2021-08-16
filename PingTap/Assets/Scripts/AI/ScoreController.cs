@@ -53,9 +53,12 @@ namespace Fralle.AI
 
 			isDead = true;
 
-			var attackerScore = damageData.Attacker.GetComponent<ScoreController>();
-			if (attackerScore)
-				attackerScore.ReceiveScore(scoreValue);
+			if (damageData.Attacker)
+			{
+				var attackerScore = damageData.Attacker.GetComponent<ScoreController>();
+				if (attackerScore)
+					attackerScore.ReceiveScore(scoreValue);
+			}
 
 			DeathEvents(damageData);
 		}

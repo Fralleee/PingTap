@@ -18,6 +18,8 @@ namespace Fralle.PingTap
 
 		public static DamageData RaycastHit(RaycastAttack raycastAttack, RaycastHit hit)
 		{
+			AddForce(raycastAttack, hit);
+
 			bool hitboxHit = raycastAttack.Combatant.teamController.Hitboxes.IsInLayerMask(hit.collider.gameObject.layer);
 			if (!hitboxHit)
 				return null;
@@ -35,6 +37,7 @@ namespace Fralle.PingTap
 				{
 					Attacker = raycastAttack.Combatant,
 					Element = raycastAttack.Element,
+					Collider = hit.collider,
 					Effects = SetupDamageEffects(raycastAttack.DamageEffects, raycastAttack.Combatant, damageAmount),
 					HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
 					Force = raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce,
@@ -55,6 +58,8 @@ namespace Fralle.PingTap
 
 		public static DamageData ProjectileHit(ProjectileData projectileData, Vector3 position, Collision collision)
 		{
+			AddForce(projectileData, position, collision);
+
 			bool hitboxHit = projectileData.Attacker.teamController.Hitboxes.IsInLayerMask(collision.collider.gameObject.layer);
 			if (!hitboxHit)
 				return null;
@@ -85,6 +90,32 @@ namespace Fralle.PingTap
 			return null;
 		}
 
+		public static DamageData CollisionHit(Hitbox hitbox, Collision collision)
+		{
+			var hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
+			var damageController = hitbox.GetComponentInParent<DamageController>();
+			var damage = collision.impulse.magnitude;
+			if (damageController != null)
+			{
+				var damageData = new DamageData()
+				{
+					Attacker = null,
+					Element = Element.None,
+					HitAngle = Vector3.Angle((collision.GetContact(0).point - collision.transform.position).normalized, collision.transform.forward),
+					Force = -collision.impulse,
+					Position = collision.GetContact(0).point,
+					Normal = collision.GetContact(0).normal,
+					HitArea = hitArea,
+					DamageAmount = hitArea.GetMultiplier() * damage,
+					ImpactEffect = hitArea.GetImpactEffect(damageController)
+				};
+				damageController.ReceiveAttack(damageData);
+
+				return damageData;
+			}
+			return null;
+		}
+
 		public static void Explosion(ProjectileData projectileData, Vector3 position, Collision collision = null)
 		{
 			if (collision != null)
@@ -95,13 +126,21 @@ namespace Fralle.PingTap
 			var teamController = projectileData.Attacker.teamController;
 			var colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, teamController.Hostiles | 1 << 0);
 
+			List<Rigidbody> rigidBodies = new List<Rigidbody>();
 			HashSet<DamageController> targets = new HashSet<DamageController>();
 			foreach (var col in colliders)
 			{
+				if (col.TryGetComponent(out Rigidbody rigidbody) && !rigidBodies.Contains(rigidbody))
+					rigidBodies.Add(rigidbody);
+
 				var damageController = col.GetComponentInParent<DamageController>();
 				if (damageController != null)
 					targets.Add(damageController);
 			}
+
+
+			foreach (var rigidbody in rigidBodies)
+				rigidbody.AddExplosionForce(projectileData.PushForce, position, projectileData.ExplosionRadius + 1, 0.5f, ForceMode.Impulse);
 
 			foreach (var damageController in targets)
 			{
@@ -125,6 +164,27 @@ namespace Fralle.PingTap
 				};
 				damageController.ReceiveAttack(damageData);
 				projectileData.Attacker.SuccessfulHit(damageData);
+			}
+		}
+
+		static void AddForce(ProjectileData projectileData, Vector3 position, Collision collision)
+		{
+			var direction = projectileData.Forward;
+			var rigidBody = collision.transform.GetComponent<Rigidbody>();
+			if (rigidBody == null)
+				return;
+
+			if (direction == Vector3.zero)
+				direction = -(position - collision.collider.transform.position).normalized;
+			rigidBody.AddForce(direction * projectileData.PushForce, ForceMode.Impulse);
+		}
+
+		static void AddForce(RaycastAttack raycastAttack, RaycastHit hit)
+		{
+			var rigidBody = hit.transform.GetComponent<Rigidbody>();
+			if (rigidBody != null)
+			{
+				rigidBody.AddForce(raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce, ForceMode.Impulse);
 			}
 		}
 	}
