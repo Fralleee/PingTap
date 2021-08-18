@@ -65,6 +65,7 @@ namespace Fralle.PingTap
       startRotation = shouldAnimate ? transform.localRotation : Quaternion.identity;
 
       RecoilAddon = GetComponent<RecoilAddon>();
+      RecoilAddon.Activate();
       AmmoAddonController = GetComponent<AmmoAddon>();
 
       IsEquipped = true;

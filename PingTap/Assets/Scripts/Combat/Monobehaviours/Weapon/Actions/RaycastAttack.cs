@@ -110,7 +110,7 @@ namespace Fralle.PingTap
     {
       float spreadPercent = spreadIncreaseEachShot > 0 ? CurrentSpread : 1;
       Vector2 spread = spreadPercent * modifier * Random.insideUnitCircle * spreadRadius;
-      return Combatant.AimTransform.forward + new Vector3(spread.x, spread.y, 0);
+      return Combatant.AimTransform.forward + new Vector3(0, spread.x, spread.y);
     }
 
     void BulletTrace(Vector3 origin, Vector3 target)

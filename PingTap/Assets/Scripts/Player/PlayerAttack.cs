@@ -84,11 +84,14 @@ namespace Fralle
 
     void IWeaponActions.OnItemSelect(InputAction.CallbackContext context)
     {
-      int number = (int)context.ReadValue<float>();
-      if (weapons.Length >= number + 1)
-        combatant.EquipWeapon(weapons[number]);
-      else
-        combatant.EquipWeapon(null);
+      if (context.performed)
+      {
+        int number = (int)context.ReadValue<float>();
+        if (weapons.Length >= number + 1)
+          combatant.EquipWeapon(weapons[number]);
+        else
+          combatant.EquipWeapon(null);
+      }
     }
 
     void IWeaponActions.OnPrimaryFire(InputAction.CallbackContext context)

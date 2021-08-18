@@ -28,6 +28,7 @@ namespace Fralle.PingTap
     {
       controller.SetDestination(aiTargetingSystem.TargetPosition);
       aiAttack.AimAt(aiTargetingSystem.TargetPosition);
+
       UpdateRotation();
       aiAttack.Attack(aiTargetingSystem.TargetPosition, aiBrain.attackRange);
 

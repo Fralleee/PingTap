@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Fralle.PingTap
 {
-  public partial class Jumpbob : Transformer
+  public class JumpbobTransformer : LocalTransformer, IPositioner, IRotator
   {
     [Header("Clamp")]
     [SerializeField] float clampMomentum = 0.2f;
@@ -39,8 +39,8 @@ namespace Fralle.PingTap
     }
 
 
-    public override Vector3 GetPosition() => currentPosition;
-    public override Quaternion GetRotation() => currentRotation;
+    public Vector3 GetPosition() => currentPosition;
+    public Quaternion GetRotation() => currentRotation;
     public override void Calculate()
     {
       if (pause)

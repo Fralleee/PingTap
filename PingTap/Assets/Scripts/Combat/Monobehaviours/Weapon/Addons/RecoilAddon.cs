@@ -18,10 +18,13 @@ namespace Fralle.PingTap
     [SerializeField] Vector3 randomRecoilConstraints = Vector3.zero;
     [SerializeField] Vector3[] recoilPattern = new Vector3[0];
 
-    int recoilPatternStep;
     Weapon weapon;
+    RecoilTransformer recoilTransformer;
+
     Vector3[] startPositions;
     Vector3 recoil;
+
+    int recoilPatternStep;
     int nextMuzzle;
     float recoilStatMultiplier = 1f;
 
@@ -43,10 +46,14 @@ namespace Fralle.PingTap
       {
         weapon.Muzzles[i].parent.localPosition = Vector3.Lerp(weapon.Muzzles[i].parent.localPosition, startPositions[i], kickbackRecoverTime * Time.deltaTime);
       }
-
-      Quaternion toRotation = Quaternion.Euler(recoil.y, recoil.x, recoil.z);
-      weapon.Combatant.AimTransform.localRotation = Quaternion.RotateTowards(weapon.Combatant.AimTransform.localRotation, toRotation, recoilSpeed * Time.deltaTime);
-      recoil = Vector3.Lerp(recoil, Vector3.zero, recoilRecoverTime * Time.deltaTime);
+    }
+    public void Activate()
+    {
+      recoilTransformer = weapon.Combatant.AimTransform.GetComponentInChildren<RecoilTransformer>();
+      if (recoilTransformer != null)
+        recoilTransformer.Setup(recoilSpeed, recoilRecoverTime);
+      else
+        Debug.Log($"{weapon.Combatant.name} does not have RecoilTransformer behaviour on AimTransform");
     }
 
     public void AddRecoil()
@@ -59,14 +66,14 @@ namespace Fralle.PingTap
         float xRecoil = Random.Range(-randomRecoilConstraints.x, randomRecoilConstraints.x);
         float yRecoil = Random.Range(-randomRecoilConstraints.y, randomRecoilConstraints.y);
         float zRecoil = Random.Range(-randomRecoilConstraints.z, randomRecoilConstraints.z);
-        recoil += new Vector3(xRecoil, yRecoil, zRecoil) * recoilStatMultiplier;
+        recoilTransformer.AddRecoil(new Vector3(xRecoil, yRecoil, zRecoil) * recoilStatMultiplier);
       }
       else if (recoilPattern.Length > 0)
       {
+        recoilTransformer.AddRecoil(recoilPattern[recoilPatternStep] * recoilStatMultiplier);
+        recoilPatternStep++;
         if (recoilPatternStep > recoilPattern.Length - 1)
           recoilPatternStep = 0;
-        recoil += recoilPattern[recoilPatternStep] * recoilStatMultiplier;
-        recoilPatternStep++;
       }
     }
 

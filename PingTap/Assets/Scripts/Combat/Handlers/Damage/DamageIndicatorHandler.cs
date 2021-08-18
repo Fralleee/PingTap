@@ -14,7 +14,7 @@ namespace Fralle.PingTap
     [SerializeField] ShakeTransformEventData headshotShake;
 
     DamageController damageController;
-    ShakeTransform cameraShakeTransform;
+    ShakeTransformer cameraShakeTransform;
     Volume damageVolume;
 
     bool invalidConfiguration => postProcess == null || bodyshotShake == null || headshotShake == null;
@@ -30,7 +30,7 @@ namespace Fralle.PingTap
 
       damageVolume = postProcessController.AddProfile(postProcess);
 
-      cameraShakeTransform = damageController.GetComponentInChildren<ShakeTransform>();
+      cameraShakeTransform = damageController.GetComponentInChildren<ShakeTransformer>();
     }
 
     public void Clean()

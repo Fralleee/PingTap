@@ -1,8 +1,9 @@
+using Fralle.Core;
 using UnityEngine;
 
 namespace Fralle.PingTap
 {
-  public class HeadbobMaster : Transformer
+  public class HeadbobCameraTransformer : LocalTransformer, IPositioner, IRotator
   {
     [Header("Configurations")]
     [SerializeField] HeadbobConfiguration defaultConfiguration;
@@ -27,8 +28,8 @@ namespace Fralle.PingTap
       playerController = GetComponentInParent<PlayerController>();
     }
 
-    public override Vector3 GetPosition() => currentPosition;
-    public override Quaternion GetRotation() => Quaternion.identity;
+    public Vector3 GetPosition() => currentPosition;
+    public Quaternion GetRotation() => Quaternion.identity;
     public override void Calculate()
     {
       if (Pause || !playerController.IsMoving)

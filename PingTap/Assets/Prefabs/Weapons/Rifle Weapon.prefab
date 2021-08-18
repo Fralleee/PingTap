@@ -231,8 +231,13 @@ MonoBehaviour:
   randomizeRecoil: 0
   recoilSpeed: 15
   recoilRecoverTime: 10
-  randomRecoilConstraints: {x: 0, y: 0, z: 0}
-  recoilPattern: []
+  randomRecoilConstraints: {x: 5, y: 5, z: 5}
+  recoilPattern:
+  - {x: 0.25, y: -1, z: 0}
+  - {x: 0.5, y: -2, z: 0}
+  - {x: 1, y: -3, z: 0}
+  - {x: 0.5, y: -3.5, z: 0}
+  - {x: 1, y: -4, z: 0}
 --- !u!114 &6794595956756188334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +261,7 @@ MonoBehaviour:
   PushForce: 75
   muzzleParticlePrefab: {fileID: 5426031798781912364, guid: 12a91f77ed72e8d4388cd5a419e6e464,
     type: 3}
-  bulletTraceController: {fileID: 7752963050437424821}
+  bulletTraceController: {fileID: 0}
   bulletsPerFire: 1
   RangeDamageFalloff:
     serializedVersion: 2
@@ -282,9 +287,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  spreadRadius: 0
-  spreadIncreaseEachShot: 0
-  recovery: 1
+  spreadRadius: 0.3
+  spreadIncreaseEachShot: 0.25
+  recovery: 4
   spreadOnFirstShot: 0
   CurrentSpread: 0
 --- !u!114 &9109869561109422248
