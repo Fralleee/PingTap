@@ -4,48 +4,48 @@ using UnityEngine;
 
 namespace Fralle.PingTap.Benchmark
 {
-	public class BenchmarkController : MonoBehaviour
-	{
-		[SerializeField] BenchmarkEvent benchmarkEvent;
-		[SerializeField] TextMeshProUGUI textMeshProUGUI;
+  public class BenchmarkController : MonoBehaviour
+  {
+    [SerializeField] BenchmarkEvent benchmarkEvent;
+    [SerializeField] TextMeshProUGUI textMeshProUGUI;
 
-		int frameCount = 0;
-		float timePassed = 0f;
+    int frameCount = 0;
+    float timePassed = 0f;
 
-		void Start()
-		{
-			if (benchmarkEvent != null)
-				benchmarkEvent.Run(this);
-		}
+    void Start()
+    {
+      if (benchmarkEvent != null)
+        benchmarkEvent.Run(this);
+    }
 
-		void Update()
-		{
-			frameCount++;
-			timePassed += Time.deltaTime;
-		}
+    void Update()
+    {
+      frameCount++;
+      timePassed += Time.deltaTime;
+    }
 
-		public float CurrentFps
-		{
-			get
-			{
-				var fps = frameCount / timePassed;
-				textMeshProUGUI.text = fps.ToString();
+    public float CurrentFps
+    {
+      get
+      {
+        float fps = frameCount / timePassed;
+        textMeshProUGUI.text = fps.ToString();
 
-				frameCount = 0;
-				timePassed = 0;
-				return fps;
-			}
-		}
+        frameCount = 0;
+        timePassed = 0;
+        return fps;
+      }
+    }
 
-		public void RunEnumerators(IEnumerator[] enumerators)
-		{
-			StartCoroutine(RunEnumeratorsCoroutine(enumerators));
-		}
+    public void RunEnumerators(IEnumerator[] enumerators)
+    {
+      StartCoroutine(RunEnumeratorsCoroutine(enumerators));
+    }
 
-		IEnumerator RunEnumeratorsCoroutine(IEnumerator[] enumerators)
-		{
-			foreach (var e in enumerators)
-				yield return StartCoroutine(e);
-		}
-	}
+    IEnumerator RunEnumeratorsCoroutine(IEnumerator[] enumerators)
+    {
+      foreach (IEnumerator e in enumerators)
+        yield return StartCoroutine(e);
+    }
+  }
 }

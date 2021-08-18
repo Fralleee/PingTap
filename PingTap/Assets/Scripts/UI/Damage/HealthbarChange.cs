@@ -4,41 +4,41 @@ using UnityEngine.UI;
 
 namespace Fralle.UI
 {
-	public class HealthbarChange : MonoBehaviour
-	{
-		[SerializeField] Image actualHealthbar;
-		[SerializeField] Image changeHealthbar;
+  public class HealthbarChange : MonoBehaviour
+  {
+    [SerializeField] Image actualHealthbar;
+    [SerializeField] Image changeHealthbar;
 
-		[SerializeField] float changeSpeed = 0.75f;
-		[SerializeField] float delay = 1f;
+    [SerializeField] float changeSpeed = 0.75f;
+    [SerializeField] float delay = 1f;
 
-		DamageController damageController;
+    DamageController damageController;
 
-		float delayTimer;
+    float delayTimer;
 
-		void Awake()
-		{
-			damageController = GetComponentInParent<DamageController>();
-			damageController.OnHealthChange += HandleDamageControllerChange;
-		}
+    void Awake()
+    {
+      damageController = GetComponentInParent<DamageController>();
+      damageController.OnHealthChange += HandleDamageControllerChange;
+    }
 
-		void Update()
-		{
-			delayTimer -= Time.deltaTime;
-			if (!(delayTimer < 0))
-				return;
-			if (actualHealthbar.fillAmount < changeHealthbar.fillAmount)
-				changeHealthbar.fillAmount -= changeSpeed * Time.deltaTime;
-		}
+    void Update()
+    {
+      delayTimer -= Time.deltaTime;
+      if (!(delayTimer < 0))
+        return;
+      if (actualHealthbar.fillAmount < changeHealthbar.fillAmount)
+        changeHealthbar.fillAmount -= changeSpeed * Time.deltaTime;
+    }
 
-		void HandleDamageControllerChange(float currentHealth, float maxHealth)
-		{
-			delayTimer = delay;
-		}
+    void HandleDamageControllerChange(float currentHealth, float maxHealth)
+    {
+      delayTimer = delay;
+    }
 
-		void OnDestroy()
-		{
-			damageController.OnHealthChange -= HandleDamageControllerChange;
-		}
-	}
+    void OnDestroy()
+    {
+      damageController.OnHealthChange -= HandleDamageControllerChange;
+    }
+  }
 }

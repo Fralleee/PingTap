@@ -4,22 +4,22 @@ using UnityEngine;
 
 namespace Fralle
 {
-	[CustomEditor(typeof(PlayerAttack)), CanEditMultipleObjects]
-	public class PlayerAttackEditor : Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			PlayerAttack playerAttack = (PlayerAttack)target;
+  [CustomEditor(typeof(PlayerAttack)), CanEditMultipleObjects]
+  public class PlayerAttackEditor : Editor
+  {
+    public override void OnInspectorGUI()
+    {
+      PlayerAttack playerAttack = (PlayerAttack)target;
 
-			if (GUILayout.Button("Equip Weapon"))
-				playerAttack.EquipFirstWeaponInList();
+      if (GUILayout.Button("Equip Weapon"))
+        playerAttack.EquipFirstWeaponInList();
 
-			if (GUILayout.Button("Remove Weapon"))
-				playerAttack.RemoveWeapon();
+      if (GUILayout.Button("Remove Weapon"))
+        playerAttack.RemoveWeapon();
 
-			base.OnInspectorGUI();
+      base.OnInspectorGUI();
 
-		}
-	}
+    }
+  }
 }
 #endif

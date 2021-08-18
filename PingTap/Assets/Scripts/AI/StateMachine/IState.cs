@@ -1,6 +1,6 @@
 ﻿namespace Fralle.PingTap
 {
-	public interface IState
-	{
-	}
+  public interface IState
+  {
+  }
 }

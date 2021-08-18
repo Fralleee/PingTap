@@ -1,81 +1,81 @@
-﻿using Fralle.Core.Extensions;
+﻿using Fralle.Core;
 using Fralle.Core.Pooling;
 using System.Collections;
 using UnityEngine;
 
 namespace Fralle.PingTap
 {
-	public class ProjectileAttack : AttackAction
-	{
-		[Header("ProjectileAttack")]
-		[SerializeField] GameObject muzzleParticlePrefab;
-		[SerializeField] Projectile projectilePrefab;
-		[SerializeField] ProjectileData projectileData;
+  public class ProjectileAttack : AttackAction
+  {
+    [Header("ProjectileAttack")]
+    [SerializeField] GameObject muzzleParticlePrefab;
+    [SerializeField] Projectile projectilePrefab;
+    [SerializeField] ProjectileData projectileData;
 
-		[Space(10)]
-		[SerializeField] int projectilesPerFire = 1;
-		[SerializeField] float delayTimePerProjectiles = 0f;
-		[SerializeField] float spreadRadiusOnMaxRange = 0f;
+    [Space(10)]
+    [SerializeField] int projectilesPerFire = 1;
+    [SerializeField] float delayTimePerProjectiles = 0f;
+    [SerializeField] float spreadRadiusOnMaxRange = 0f;
 
-		ParticleSystem muzzleParticle;
+    ParticleSystem muzzleParticle;
 
-		internal override void Start()
-		{
-			base.Start();
+    internal override void Start()
+    {
+      base.Start();
 
-			SetupMuzzle();
-		}
+      SetupMuzzle();
+    }
 
-		void SetupMuzzle()
-		{
-			var instance = Instantiate(muzzleParticlePrefab, Combatant.AimTransform.position, Combatant.AimTransform.rotation, Combatant.AimTransform);
-			if (Combatant.gameObject.CompareTag("Player"))
-				instance.SetLayerRecursively(LayerMask.NameToLayer("FPO")); // this should only be performed on localplayer
-			muzzleParticle = instance.GetComponent<ParticleSystem>();
-		}
+    void SetupMuzzle()
+    {
+      GameObject instance = Instantiate(muzzleParticlePrefab, Combatant.AimTransform.position, Combatant.AimTransform.rotation, Combatant.AimTransform);
+      if (Combatant.gameObject.CompareTag("Player"))
+        instance.SetLayerRecursively(LayerMask.NameToLayer("FPO")); // this should only be performed on localplayer
+      muzzleParticle = instance.GetComponent<ParticleSystem>();
+    }
 
-		public override void Fire()
-		{
-			var muzzle = GetMuzzle();
+    public override void Fire()
+    {
+      Transform muzzle = GetMuzzle();
 
-			muzzleParticle.transform.position = muzzle.position;
-			muzzleParticle.Play();
+      muzzleParticle.transform.position = muzzle.position;
+      muzzleParticle.Play();
 
-			projectileData.Attacker = Combatant;
-			projectileData.Forward = Weapon.Combatant.AimTransform.forward;
-			projectileData.Damage = Damage;
-			projectileData.Element = Element;
-			projectileData.DamageEffects = DamageEffects;
-			projectileData.HitboxLayer = HitboxLayer;
+      projectileData.Attacker = Combatant;
+      projectileData.Forward = Weapon.Combatant.AimTransform.forward;
+      projectileData.Damage = Damage;
+      projectileData.Element = Element;
+      projectileData.DamageEffects = DamageEffects;
+      projectileData.HitboxLayer = HitboxLayer;
 
 
-			StartCoroutine(SpawnProjectiles(muzzle));
-		}
+      StartCoroutine(SpawnProjectiles(muzzle));
+    }
 
-		public override float GetRange() => projectileData.Range;
+    public override float GetRange() => projectileData.Range;
 
-		IEnumerator SpawnProjectiles(Transform muzzle)
-		{
-			for (int i = 0; i < projectilesPerFire; i++)
-			{
-				Combatant.Stats.OnAttack(1);
+    IEnumerator SpawnProjectiles(Transform muzzle)
+    {
+      for (int i = 0; i < projectilesPerFire; i++)
+      {
+        Combatant.Stats.OnAttack(1);
 
-				Ray ray = new Ray(Weapon.Combatant.AimTransform.position, Weapon.Combatant.AimTransform.forward);
-				if (Physics.Raycast(ray, out var hitInfo, projectileData.Range, Weapon.Combatant.teamController.AttackLayerMask))
-					projectileData.Forward = (hitInfo.point - muzzle.position).normalized;
-				else
-					projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;
+        Ray ray = new Ray(Weapon.Combatant.AimTransform.position, Weapon.Combatant.AimTransform.forward);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, projectileData.Range, Weapon.Combatant.teamController.AttackLayerMask))
+          projectileData.Forward = (hitInfo.point - muzzle.position).normalized;
+        else
+          projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;
 
-				var spread = (Random.insideUnitCircle * spreadRadiusOnMaxRange) / projectileData.Range;
-				projectileData.Forward += new Vector3(0, spread.y, spread.x);
+        Vector2 spread = (Random.insideUnitCircle * spreadRadiusOnMaxRange) / projectileData.Range;
+        projectileData.Forward += new Vector3(0, spread.y, spread.x);
 
-				var instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.Forward, transform.up));
-				var projectile = instance.GetComponent<Projectile>();
-				projectile.gameObject.layer = Combatant.teamController.AllyProjectiles;
-				projectile.Initiate(projectileData);
+        GameObject instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.Forward, transform.up));
+        Projectile projectile = instance.GetComponent<Projectile>();
+        projectile.gameObject.layer = Combatant.teamController.AllyProjectiles;
+        projectile.Initiate(projectileData);
 
-				yield return new WaitForSeconds(delayTimePerProjectiles);
-			}
-		}
-	}
+        yield return new WaitForSeconds(delayTimePerProjectiles);
+      }
+    }
+  }
 }

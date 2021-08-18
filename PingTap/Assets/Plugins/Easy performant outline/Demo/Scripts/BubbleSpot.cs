@@ -4,105 +4,105 @@ using UnityEngine;
 
 namespace EPOOutline.Demo
 {
-	public class BubbleSpot : MonoBehaviour
-	{
-		[SerializeField]
-		private Transform trackPosition;
+  public class BubbleSpot : MonoBehaviour
+  {
+    [SerializeField]
+    private Transform trackPosition;
 
-		[SerializeField]
-		private Vector3 trackShift;
+    [SerializeField]
+    private Vector3 trackShift;
 
-		[SerializeField]
-		private Camera targetCamera;
+    [SerializeField]
+    private Camera targetCamera;
 
-		[SerializeField]
-		private Transform bubble;
+    [SerializeField]
+    private Transform bubble;
 
-		[SerializeField]
-		private bool visibleFromBegining = false;
+    [SerializeField]
+    private bool visibleFromBegining = false;
 
-		[SerializeField]
-		private float showDelay = 0.0f;
+    [SerializeField]
+    private float showDelay = 0.0f;
 
-		[SerializeField]
-		private float showDuration = 5.0f;
+    [SerializeField]
+    private float showDuration = 5.0f;
 
-		[SerializeField]
-		private bool once;
+    [SerializeField]
+    private bool once;
 
-		private bool wasShown = false;
+    private bool wasShown = false;
 
-		private int playersInside = 0;
+    private int playersInside = 0;
 
-		private IEnumerator Start()
-		{
-			Hide(0.0f);
+    private IEnumerator Start()
+    {
+      Hide(0.0f);
 
-			if (!visibleFromBegining)
-				yield break;
+      if (!visibleFromBegining)
+        yield break;
 
-			yield return new WaitForSeconds(showDelay);
+      yield return new WaitForSeconds(showDelay);
 
-			Show();
+      Show();
 
-			yield return new WaitForSeconds(showDuration);
+      yield return new WaitForSeconds(showDuration);
 
-			Hide();
-		}
+      Hide();
+    }
 
-		private void Reset()
-		{
-			targetCamera = FindObjectOfType<Camera>();
-		}
+    private void Reset()
+    {
+      targetCamera = FindObjectOfType<Camera>();
+    }
 
-		private void OnTriggerEnter(Collider other)
-		{
-			if (!other.GetComponent<Character>())
-				return;
+    private void OnTriggerEnter(Collider other)
+    {
+      if (!other.GetComponent<Character>())
+        return;
 
-			if (playersInside++ == 0)
-				Show();
-		}
+      if (playersInside++ == 0)
+        Show();
+    }
 
-		private void OnTriggerExit(Collider other)
-		{
-			if (!other.GetComponent<Character>())
-				return;
+    private void OnTriggerExit(Collider other)
+    {
+      if (!other.GetComponent<Character>())
+        return;
 
-			if (--playersInside == 0)
-				Hide();
-		}
+      if (--playersInside == 0)
+        Hide();
+    }
 
-		private void Show()
-		{
-			if (wasShown && once)
-				return;
+    private void Show()
+    {
+      if (wasShown && once)
+        return;
 
-			wasShown = true;
-			Show(0.5f);
-		}
+      wasShown = true;
+      Show(0.5f);
+    }
 
-		private void Hide()
-		{
-			Hide(0.15f);
-		}
+    private void Hide()
+    {
+      Hide(0.15f);
+    }
 
-		private void Hide(float duration)
-		{
-			bubble.gameObject.SetActive(false);
-		}
+    private void Hide(float duration)
+    {
+      bubble.gameObject.SetActive(false);
+    }
 
-		private void Show(float duration)
-		{
-			bubble.gameObject.SetActive(true);
-		}
+    private void Show(float duration)
+    {
+      bubble.gameObject.SetActive(true);
+    }
 
-		private void Update()
-		{
-			if (trackPosition)
-				transform.position = trackPosition.position + trackShift;
+    private void Update()
+    {
+      if (trackPosition)
+        transform.position = trackPosition.position + trackShift;
 
-			bubble.transform.position = targetCamera.WorldToScreenPoint(transform.position);
-		}
-	}
+      bubble.transform.position = targetCamera.WorldToScreenPoint(transform.position);
+    }
+  }
 }

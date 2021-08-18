@@ -4,117 +4,117 @@ using UnityEngine.AI;
 
 namespace EPOOutline.Demo
 {
-	public class Chicken : MonoBehaviour
-	{
-		[SerializeField]
-		private bool alwaysActive = false;
+  public class Chicken : MonoBehaviour
+  {
+    [SerializeField]
+    private bool alwaysActive = false;
 
-		[SerializeField]
-		private bool updateChicken = true;
+    [SerializeField]
+    private bool updateChicken = true;
 
-		[SerializeField]
-		private float searchRadius = 5.0f;
+    [SerializeField]
+    private float searchRadius = 5.0f;
 
-		private Outlinable outlinable;
+    private Outlinable outlinable;
 
-		private NavMeshAgent agent;
+    private NavMeshAgent agent;
 
-		private Animator animator;
+    private Animator animator;
 
-		private int enteredCount = 0;
+    private int enteredCount = 0;
 
-		private static int priority = 0;
+    private static int priority = 0;
 
-		private void Awake()
-		{
-			agent = GetComponent<NavMeshAgent>();
-			outlinable = GetComponent<Outlinable>();
-			animator = GetComponent<Animator>();
-			if (!alwaysActive)
-			{
-				outlinable.enabled = false;
-			}
+    private void Awake()
+    {
+      agent = GetComponent<NavMeshAgent>();
+      outlinable = GetComponent<Outlinable>();
+      animator = GetComponent<Animator>();
+      if (!alwaysActive)
+      {
+        outlinable.enabled = false;
+      }
 
-			agent.avoidancePriority = priority++;
+      agent.avoidancePriority = priority++;
 
-			if (updateChicken)
-				StartCoroutine(UpdateChicken());
-		}
+      if (updateChicken)
+        StartCoroutine(UpdateChicken());
+    }
 
-		private void OnTriggerEnter(Collider other)
-		{
-			if (alwaysActive)
-				return;
+    private void OnTriggerEnter(Collider other)
+    {
+      if (alwaysActive)
+        return;
 
-			if (!other.GetComponent<Character>())
-				return;
+      if (!other.GetComponent<Character>())
+        return;
 
-			outlinable.enabled = true;
-		}
+      outlinable.enabled = true;
+    }
 
-		private void OnTriggerExit(Collider other)
-		{
-			if (alwaysActive)
-				return;
+    private void OnTriggerExit(Collider other)
+    {
+      if (alwaysActive)
+        return;
 
-			if (!other.GetComponent<Character>())
-				return;
+      if (!other.GetComponent<Character>())
+        return;
 
-			if (--enteredCount != 0)
-				return;
+      if (--enteredCount != 0)
+        return;
 
-			outlinable.enabled = false;
-		}
+      outlinable.enabled = false;
+    }
 
-		private IEnumerator UpdateChicken()
-		{
-			NavMeshPath path = new NavMeshPath();
-			while (true)
-			{
-				animator.CrossFade("Walk In Place", 0.1f);
+    private IEnumerator UpdateChicken()
+    {
+      NavMeshPath path = new NavMeshPath();
+      while (true)
+      {
+        animator.CrossFade("Walk In Place", 0.1f);
 
-				Vector2 point = Random.insideUnitCircle;
-				Vector3 shift = new Vector3(point.x, 0, point.y) * searchRadius;
+        Vector2 point = Random.insideUnitCircle;
+        Vector3 shift = new Vector3(point.x, 0, point.y) * searchRadius;
 
-				NavMeshHit hit;
-				if (!NavMesh.SamplePosition(transform.position + shift, out hit, searchRadius, -1))
-				{
-					yield return null;
-					continue;
-				}
+        NavMeshHit hit;
+        if (!NavMesh.SamplePosition(transform.position + shift, out hit, searchRadius, -1))
+        {
+          yield return null;
+          continue;
+        }
 
-				Debug.DrawLine(transform.position, hit.position, Color.yellow, 3.0f);
+        Debug.DrawLine(transform.position, hit.position, Color.yellow, 3.0f);
 
-				if (!NavMesh.CalculatePath(transform.position, hit.position, -1, path))
-				{
-					yield return null;
-					continue;
-				}
+        if (!NavMesh.CalculatePath(transform.position, hit.position, -1, path))
+        {
+          yield return null;
+          continue;
+        }
 
-				agent.destination = hit.position;
+        agent.destination = hit.position;
 
-				while (agent.pathStatus != NavMeshPathStatus.PathComplete)
-					yield return null;
+        while (agent.pathStatus != NavMeshPathStatus.PathComplete)
+          yield return null;
 
-				float timeToWait = (agent.remainingDistance / agent.speed) * 1.5f;
-				while (agent.remainingDistance > agent.stoppingDistance && timeToWait > 0.0f)
-				{
-					timeToWait -= Time.deltaTime;
-					yield return null;
-				}
+        float timeToWait = (agent.remainingDistance / agent.speed) * 1.5f;
+        while (agent.remainingDistance > agent.stoppingDistance && timeToWait > 0.0f)
+        {
+          timeToWait -= Time.deltaTime;
+          yield return null;
+        }
 
-				animator.CrossFade("Eat", 0.1f);
+        animator.CrossFade("Eat", 0.1f);
 
-				yield return new WaitForSeconds(Random.Range(1.0f, 5.0f));
+        yield return new WaitForSeconds(Random.Range(1.0f, 5.0f));
 
-				yield return null;
-			}
-		}
+        yield return null;
+      }
+    }
 
-		private void OnDrawGizmos()
-		{
-			Gizmos.color = new Color(1.0f, 0.0f, 0.0f, 0.2f);
-			Gizmos.DrawSphere(transform.position, searchRadius);
-		}
-	}
+    private void OnDrawGizmos()
+    {
+      Gizmos.color = new Color(1.0f, 0.0f, 0.0f, 0.2f);
+      Gizmos.DrawSphere(transform.position, searchRadius);
+    }
+  }
 }

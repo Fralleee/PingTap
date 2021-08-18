@@ -4,267 +4,267 @@ using UnityEngine;
 
 namespace EPOOutline
 {
-	public enum DilateRenderMode
-	{
-		PostProcessing,
-		EdgeShift
-	}
+  public enum DilateRenderMode
+  {
+    PostProcessing,
+    EdgeShift
+  }
 
-	public enum RenderStyle
-	{
-		Single = 1,
-		FrontBack = 2
-	}
+  public enum RenderStyle
+  {
+    Single = 1,
+    FrontBack = 2
+  }
 
-	[Flags]
-	public enum OutlinableDrawingMode
-	{
-		Normal = 1,
-		ZOnly = 2
-	}
+  [Flags]
+  public enum OutlinableDrawingMode
+  {
+    Normal = 1,
+    ZOnly = 2
+  }
 
-	[ExecuteAlways]
-	public class Outlinable : MonoBehaviour
-	{
-		private static HashSet<Outlinable> outlinables = new HashSet<Outlinable>();
+  [ExecuteAlways]
+  public class Outlinable : MonoBehaviour
+  {
+    private static HashSet<Outlinable> outlinables = new HashSet<Outlinable>();
 
-		private static Plane[] frustrumPlanes = new Plane[6];
+    private static Plane[] frustrumPlanes = new Plane[6];
 
-		[System.Serializable]
-		public class OutlineProperties
-		{
+    [System.Serializable]
+    public class OutlineProperties
+    {
 #pragma warning disable CS0649
-			[SerializeField]
-			private bool enabled = true;
+      [SerializeField]
+      private bool enabled = true;
 
-			public bool Enabled
-			{
-				get
-				{
-					return enabled;
-				}
+      public bool Enabled
+      {
+        get
+        {
+          return enabled;
+        }
 
-				set
-				{
-					enabled = value;
-				}
-			}
+        set
+        {
+          enabled = value;
+        }
+      }
 
-			[SerializeField]
-			private Color color = Color.yellow;
+      [SerializeField]
+      private Color color = Color.yellow;
 
-			public Color Color
-			{
-				get
-				{
-					return color;
-				}
+      public Color Color
+      {
+        get
+        {
+          return color;
+        }
 
-				set
-				{
-					color = value;
-				}
-			}
+        set
+        {
+          color = value;
+        }
+      }
 
-			[SerializeField]
-			[Range(0.0f, 1.0f)]
-			private float dilateShift = 1.0f;
+      [SerializeField]
+      [Range(0.0f, 1.0f)]
+      private float dilateShift = 1.0f;
 
-			public float DilateShift
-			{
-				get
-				{
-					return dilateShift;
-				}
+      public float DilateShift
+      {
+        get
+        {
+          return dilateShift;
+        }
 
-				set
-				{
-					dilateShift = value;
-				}
-			}
+        set
+        {
+          dilateShift = value;
+        }
+      }
 
-			[SerializeField]
-			[Range(0.0f, 1.0f)]
-			private float blurShift = 1.0f;
+      [SerializeField]
+      [Range(0.0f, 1.0f)]
+      private float blurShift = 1.0f;
 
-			public float BlurShift
-			{
-				get
-				{
-					return blurShift;
-				}
+      public float BlurShift
+      {
+        get
+        {
+          return blurShift;
+        }
 
-				set
-				{
-					blurShift = value;
-				}
-			}
+        set
+        {
+          blurShift = value;
+        }
+      }
 
-			[SerializeField]
-			private SerializedPass fillPass = new SerializedPass();
+      [SerializeField]
+      private SerializedPass fillPass = new SerializedPass();
 
-			public SerializedPass FillPass
-			{
-				get
-				{
-					return fillPass;
-				}
-			}
+      public SerializedPass FillPass
+      {
+        get
+        {
+          return fillPass;
+        }
+      }
 #pragma warning restore CS0649
-		}
+    }
 
-		[SerializeField]
-		private OutlinableDrawingMode drawingMode = OutlinableDrawingMode.Normal;
+    [SerializeField]
+    private OutlinableDrawingMode drawingMode = OutlinableDrawingMode.Normal;
 
-		[SerializeField]
-		private int outlineLayer = 0;
+    [SerializeField]
+    private int outlineLayer = 0;
 
-		[SerializeField]
-		private List<OutlineTarget> outlineTargets = new List<OutlineTarget>();
+    [SerializeField]
+    private List<OutlineTarget> outlineTargets = new List<OutlineTarget>();
 
-		[SerializeField]
-		private RenderStyle renderStyle = RenderStyle.Single;
+    [SerializeField]
+    private RenderStyle renderStyle = RenderStyle.Single;
 
 #pragma warning disable CS0649
-		[SerializeField]
-		private OutlineProperties outlineParameters = new OutlineProperties();
+    [SerializeField]
+    private OutlineProperties outlineParameters = new OutlineProperties();
 
-		[SerializeField]
-		private OutlineProperties backParameters = new OutlineProperties();
+    [SerializeField]
+    private OutlineProperties backParameters = new OutlineProperties();
 
-		[SerializeField]
-		private OutlineProperties frontParameters = new OutlineProperties();
+    [SerializeField]
+    private OutlineProperties frontParameters = new OutlineProperties();
 
 #pragma warning restore CS0649
 
-		public RenderStyle RenderStyle
-		{
-			get
-			{
-				return renderStyle;
-			}
+    public RenderStyle RenderStyle
+    {
+      get
+      {
+        return renderStyle;
+      }
 
-			set
-			{
-				renderStyle = value;
-			}
-		}
+      set
+      {
+        renderStyle = value;
+      }
+    }
 
-		public OutlinableDrawingMode DrawingMode
-		{
-			get
-			{
-				return drawingMode;
-			}
-		}
+    public OutlinableDrawingMode DrawingMode
+    {
+      get
+      {
+        return drawingMode;
+      }
+    }
 
-		public int OutlineLayer
-		{
-			get
-			{
-				return outlineLayer;
-			}
+    public int OutlineLayer
+    {
+      get
+      {
+        return outlineLayer;
+      }
 
-			set
-			{
-				outlineLayer = value;
-			}
-		}
+      set
+      {
+        outlineLayer = value;
+      }
+    }
 
 
-		public List<OutlineTarget> OutlineTargets
-		{
-			get
-			{
-				return outlineTargets;
-			}
-		}
+    public List<OutlineTarget> OutlineTargets
+    {
+      get
+      {
+        return outlineTargets;
+      }
+    }
 
-		public OutlineProperties OutlineParameters
-		{
-			get
-			{
-				return outlineParameters;
-			}
-		}
+    public OutlineProperties OutlineParameters
+    {
+      get
+      {
+        return outlineParameters;
+      }
+    }
 
-		public OutlineProperties BackParameters
-		{
-			get
-			{
-				return backParameters;
-			}
-		}
+    public OutlineProperties BackParameters
+    {
+      get
+      {
+        return backParameters;
+      }
+    }
 
-		public OutlineProperties FrontParameters
-		{
-			get
-			{
-				return frontParameters;
-			}
-		}
+    public OutlineProperties FrontParameters
+    {
+      get
+      {
+        return frontParameters;
+      }
+    }
 
-		private bool IsVisible(Plane[] planes)
-		{
-			int visibleCount = 0;
-			foreach (OutlineTarget target in outlineTargets)
-			{
-				if (target.Renderer != null && GeometryUtility.TestPlanesAABB(planes, target.Renderer.bounds))
-					visibleCount++;
-			}
+    private bool IsVisible(Plane[] planes)
+    {
+      int visibleCount = 0;
+      foreach (OutlineTarget target in outlineTargets)
+      {
+        if (target.Renderer != null && GeometryUtility.TestPlanesAABB(planes, target.Renderer.bounds))
+          visibleCount++;
+      }
 
-			return visibleCount > 0;
-		}
+      return visibleCount > 0;
+    }
 
-		private void Reset()
-		{
-			AddAllChildRenderersToRenderingList();
-		}
+    private void Reset()
+    {
+      AddAllChildRenderersToRenderingList();
+    }
 
-		private void OnValidate()
-		{
-			outlineLayer = Mathf.Clamp(outlineLayer, 0, 63);
-		}
+    private void OnValidate()
+    {
+      outlineLayer = Mathf.Clamp(outlineLayer, 0, 63);
+    }
 
-		private void OnEnable()
-		{
-			outlinables.Add(this);
-		}
+    private void OnEnable()
+    {
+      outlinables.Add(this);
+    }
 
-		private void OnDisable()
-		{
-			outlinables.Remove(this);
-		}
+    private void OnDisable()
+    {
+      outlinables.Remove(this);
+    }
 
-		public static void GetAllActiveOutlinables(Camera camera, List<Outlinable> outlinablesList)
-		{
-			outlinablesList.Clear();
-			GeometryUtility.CalculateFrustumPlanes(camera, frustrumPlanes);
-			foreach (Outlinable outlinable in outlinables)
-				if (outlinable.IsVisible(frustrumPlanes))
-					outlinablesList.Add(outlinable);
-		}
+    public static void GetAllActiveOutlinables(Camera camera, List<Outlinable> outlinablesList)
+    {
+      outlinablesList.Clear();
+      GeometryUtility.CalculateFrustumPlanes(camera, frustrumPlanes);
+      foreach (Outlinable outlinable in outlinables)
+        if (outlinable.IsVisible(frustrumPlanes))
+          outlinablesList.Add(outlinable);
+    }
 
-		private int GetSubmeshCount(Renderer renderer)
-		{
-			if (renderer is MeshRenderer)
-				return renderer.GetComponent<MeshFilter>().sharedMesh.subMeshCount;
-			else if (renderer is SkinnedMeshRenderer)
-				return (renderer as SkinnedMeshRenderer).sharedMesh.subMeshCount;
-			else
-				return 1;
-		}
+    private int GetSubmeshCount(Renderer renderer)
+    {
+      if (renderer is MeshRenderer)
+        return renderer.GetComponent<MeshFilter>().sharedMesh.subMeshCount;
+      else if (renderer is SkinnedMeshRenderer)
+        return (renderer as SkinnedMeshRenderer).sharedMesh.subMeshCount;
+      else
+        return 1;
+    }
 
-		public void AddAllChildRenderersToRenderingList()
-		{
-			outlineTargets.Clear();
-			Renderer[] renderers = GetComponentsInChildren<Renderer>(true);
-			foreach (Renderer renderer in renderers)
-			{
-				int submeshesCount = GetSubmeshCount(renderer);
-				for (int index = 0; index < submeshesCount; index++)
-					outlineTargets.Add(new OutlineTarget(renderer, index));
-			}
-		}
-	}
+    public void AddAllChildRenderersToRenderingList()
+    {
+      outlineTargets.Clear();
+      Renderer[] renderers = GetComponentsInChildren<Renderer>(true);
+      foreach (Renderer renderer in renderers)
+      {
+        int submeshesCount = GetSubmeshCount(renderer);
+        for (int index = 0; index < submeshesCount; index++)
+          outlineTargets.Add(new OutlineTarget(renderer, index));
+      }
+    }
+  }
 }

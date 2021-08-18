@@ -5,63 +5,63 @@ using UnityEngine.SceneManagement;
 
 namespace Fralle.UI.Menu
 {
-	public class PauseMenu : MonoBehaviour, PlayerControls.IMenuActions
-	{
-		const string MainMenuScene = "Main menu";
+  public class PauseMenu : MonoBehaviour, PlayerControls.IMenuActions
+  {
+    const string MainMenuScene = "Main menu";
 
-		[SerializeField] bool showMenuCanvas;
-		[SerializeField] GameObject canvas;
+    [SerializeField] bool showMenuCanvas;
+    [SerializeField] GameObject canvas;
 
-		[Header("Other")]
-		[SerializeField] GameObject root = null;
-		[SerializeField] GameObject options = null;
+    [Header("Other")]
+    [SerializeField] GameObject root = null;
+    [SerializeField] GameObject options = null;
 
-		PlayerControls controls;
+    PlayerControls controls;
 
-		bool isOpen;
+    bool isOpen;
 
-		void Awake()
-		{
-			controls = new PlayerControls();
-			controls.Menu.SetCallbacks(this);
-			controls.Menu.Enable();
-		}
+    void Awake()
+    {
+      controls = new PlayerControls();
+      controls.Menu.SetCallbacks(this);
+      controls.Menu.Enable();
+    }
 
-		void ToggleMenu()
-		{
-			isOpen = !isOpen;
-			//PlayerController.ConfigureCursor(!isOpen);
-			//PlayerController.Toggle(!isOpen);
-			//PlayerAttack.Toggle(!isOpen);
-			//PlayerAbilityController.Toggle(!isOpen);
-			Player.Toggle(!isOpen);
-			StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);
+    void ToggleMenu()
+    {
+      isOpen = !isOpen;
+      //PlayerController.ConfigureCursor(!isOpen);
+      //PlayerController.Toggle(!isOpen);
+      //PlayerAttack.Toggle(!isOpen);
+      //PlayerAbilityController.Toggle(!isOpen);
+      Player.Toggle(!isOpen);
+      StateManager.SetGameState(isOpen ? GameState.PauseMenu : GameState.Playing);
 
-			if (showMenuCanvas)
-				canvas.SetActive(isOpen);
-		}
+      if (showMenuCanvas)
+        canvas.SetActive(isOpen);
+    }
 
-		void OnEnable()
-		{
-			options.SetActive(false);
-		}
+    void OnEnable()
+    {
+      options.SetActive(false);
+    }
 
-		public void OnToggle(InputAction.CallbackContext context)
-		{
-			if (context.performed)
-				ToggleMenu();
-		}
+    public void OnToggle(InputAction.CallbackContext context)
+    {
+      if (context.performed)
+        ToggleMenu();
+    }
 
-		public static void ToMainMenu()
-		{
-			SceneManager.LoadScene(MainMenuScene);
-		}
+    public static void ToMainMenu()
+    {
+      SceneManager.LoadScene(MainMenuScene);
+    }
 
-		public void Options()
-		{
-			options.gameObject.SetActive(true);
-			options.GetComponent<SubMenu>().InGame = StateManager.GameState == GameState.Playing;
-			root.SetActive(false);
-		}
-	}
+    public void Options()
+    {
+      options.gameObject.SetActive(true);
+      options.GetComponent<SubMenu>().InGame = StateManager.GameState == GameState.Playing;
+      root.SetActive(false);
+    }
+  }
 }

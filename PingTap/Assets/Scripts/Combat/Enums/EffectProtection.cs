@@ -1,8 +1,8 @@
 ﻿namespace Fralle.PingTap
 {
-	public enum EffectProtection
-	{
-		Block,
-		Ignore
-	}
+  public enum EffectProtection
+  {
+    Block,
+    Ignore
+  }
 }

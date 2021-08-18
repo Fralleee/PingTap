@@ -3,51 +3,51 @@ using UnityEngine;
 
 namespace Fralle.PingTap
 {
-	[CreateAssetMenu(menuName = "Combat/Impact Atlas")]
-	public class ImpactAtlas : ScriptableObject
-	{
-		[SerializeField] List<GameObject> impactEffects;
-		[SerializeField] GameObject fallback;
+  [CreateAssetMenu(menuName = "Combat/Impact Atlas")]
+  public class ImpactAtlas : ScriptableObject
+  {
+    [SerializeField] List<GameObject> impactEffects;
+    [SerializeField] GameObject fallback;
 
-		[SerializeField] bool debug;
+    [SerializeField] bool debug;
 
-		Dictionary<string, GameObject> dictionary = new Dictionary<string, GameObject>();
+    Dictionary<string, GameObject> dictionary = new Dictionary<string, GameObject>();
 
-		public GameObject GetImpactEffectFromTag(string tag)
-		{
-			if (debug)
-				DebugLog(tag);
+    public GameObject GetImpactEffectFromTag(string tag)
+    {
+      if (debug)
+        DebugLog(tag);
 
-			if (dictionary.TryGetValue(tag, out GameObject effect))
-				return effect;
+      if (dictionary.TryGetValue(tag, out GameObject effect))
+        return effect;
 
-			return fallback;
-		}
+      return fallback;
+    }
 
-		void MapToDictionary()
-		{
-			foreach (var effect in impactEffects)
-			{
-				if (dictionary.ContainsKey(effect.tag))
-					Debug.LogWarning($"Dictionary alread contains effect for tag: {effect.tag}");
-				else
-					dictionary.Add(effect.tag, effect);
-			}
-		}
+    void MapToDictionary()
+    {
+      foreach (GameObject effect in impactEffects)
+      {
+        if (dictionary.ContainsKey(effect.tag))
+          Debug.LogWarning($"Dictionary alread contains effect for tag: {effect.tag}");
+        else
+          dictionary.Add(effect.tag, effect);
+      }
+    }
 
-		void DebugLog(string tag)
-		{
-			foreach (KeyValuePair<string, GameObject> kvp in dictionary)
-			{
-				Debug.Log($"{kvp.Key}: {kvp.Value.name}");
-			}
+    void DebugLog(string tag)
+    {
+      foreach (KeyValuePair<string, GameObject> kvp in dictionary)
+      {
+        Debug.Log($"{kvp.Key}: {kvp.Value.name}");
+      }
 
-			Debug.Log($"Tag: {tag}. Dictionary.ContainsKey: {dictionary.ContainsKey(tag)}");
-		}
+      Debug.Log($"Tag: {tag}. Dictionary.ContainsKey: {dictionary.ContainsKey(tag)}");
+    }
 
-		void OnEnable()
-		{
-			MapToDictionary();
-		}
-	}
+    void OnEnable()
+    {
+      MapToDictionary();
+    }
+  }
 }

@@ -5,59 +5,59 @@ using UnityEngine.SceneManagement;
 
 namespace Fralle.Gameplay
 {
-	public class MatchManager : MonoBehaviour
-	{
-		public static event Action OnMatchEnd = delegate { };
-		public static event Action OnDefeat = delegate { };
-		public static event Action OnVictory = delegate { };
+  public class MatchManager : MonoBehaviour
+  {
+    public static event Action OnMatchEnd = delegate { };
+    public static event Action OnDefeat = delegate { };
+    public static event Action OnVictory = delegate { };
 
-		[Header("Audio")]
-		[SerializeField] AudioEvent victorySound;
-		[SerializeField] AudioEvent defeatSound;
+    [Header("Audio")]
+    [SerializeField] AudioEvent victorySound;
+    [SerializeField] AudioEvent defeatSound;
 
-		HeadQuarters headQuarters;
-		bool isHqDead;
+    HeadQuarters headQuarters;
+    bool isHqDead;
 
-		public bool IsPlayingMatch => !SceneManager.GetSceneByName("Main Menu").isLoaded;
+    public bool IsPlayingMatch => !SceneManager.GetSceneByName("Main Menu").isLoaded;
 
-		public void Setup()
-		{
-			headQuarters = FindObjectOfType<HeadQuarters>();
-			headQuarters.OnDeath += HeadQuarters_OnDeath;
-		}
+    public void Setup()
+    {
+      headQuarters = FindObjectOfType<HeadQuarters>();
+      headQuarters.OnDeath += HeadQuarters_OnDeath;
+    }
 
-		public void MatchOver()
-		{
-			if (isHqDead)
-			{
-				Victory();
-			}
-			else
-			{
-				Defeat();
-			}
+    public void MatchOver()
+    {
+      if (isHqDead)
+      {
+        Victory();
+      }
+      else
+      {
+        Defeat();
+      }
 
-			Managers.Instance.Camera.ActivateSceneCamera();
-			OnMatchEnd();
-		}
+      Managers.Instance.Camera.ActivateSceneCamera();
+      OnMatchEnd();
+    }
 
-		void Victory()
-		{
-			Debug.Log("Victory");
-			Managers.Instance.Audio.Play(victorySound);
-			OnVictory();
-		}
+    void Victory()
+    {
+      Debug.Log("Victory");
+      Managers.Instance.Audio.Play(victorySound);
+      OnVictory();
+    }
 
-		void Defeat()
-		{
-			Debug.Log("Defeat");
-			Managers.Instance.Audio.Play(defeatSound);
-			OnDefeat();
-		}
+    void Defeat()
+    {
+      Debug.Log("Defeat");
+      Managers.Instance.Audio.Play(defeatSound);
+      OnDefeat();
+    }
 
-		void HeadQuarters_OnDeath(HeadQuarters obj)
-		{
-			isHqDead = true;
-		}
-	}
+    void HeadQuarters_OnDeath(HeadQuarters obj)
+    {
+      isHqDead = true;
+    }
+  }
 }

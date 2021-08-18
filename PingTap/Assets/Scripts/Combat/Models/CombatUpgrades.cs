@@ -2,9 +2,9 @@
 
 namespace Fralle.PingTap
 {
-	[Serializable]
-	public class CombatUpgrades
-	{
-		public float ExtraAccuracy = 1f;
-	}
+  [Serializable]
+  public class CombatUpgrades
+  {
+    public float ExtraAccuracy = 1f;
+  }
 }

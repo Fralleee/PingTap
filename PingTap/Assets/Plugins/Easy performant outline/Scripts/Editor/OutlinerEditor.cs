@@ -4,77 +4,77 @@ using UnityEngine;
 
 namespace EPOOutline
 {
-	[CustomEditor(typeof(Outliner))]
-	public class OutlinerEditor : Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			SerializedProperty maskProperty = serializedObject.FindProperty("outlineLayerMask");
-			long currentMask = maskProperty.longValue;
+  [CustomEditor(typeof(Outliner))]
+  public class OutlinerEditor : Editor
+  {
+    public override void OnInspectorGUI()
+    {
+      SerializedProperty maskProperty = serializedObject.FindProperty("outlineLayerMask");
+      long currentMask = maskProperty.longValue;
 
-			string maskValue = "Mask: none";
-			if (currentMask == -1 || currentMask == long.MaxValue)
-				maskValue = "Mask: all";
-			else if (currentMask != 0)
-				maskValue = "Mask: mixed";
+      string maskValue = "Mask: none";
+      if (currentMask == -1 || currentMask == long.MaxValue)
+        maskValue = "Mask: all";
+      else if (currentMask != 0)
+        maskValue = "Mask: mixed";
 
-			if (GUILayout.Button(maskValue, EditorStyles.layerMaskField))
-			{
-				GenericMenu maskMenu = new GenericMenu();
+      if (GUILayout.Button(maskValue, EditorStyles.layerMaskField))
+      {
+        GenericMenu maskMenu = new GenericMenu();
 
-				maskMenu.AddItem(new GUIContent("none"), currentMask == 0, () =>
-						{
-							maskProperty.longValue = 0;
-							serializedObject.ApplyModifiedProperties();
-						});
+        maskMenu.AddItem(new GUIContent("none"), currentMask == 0, () =>
+            {
+              maskProperty.longValue = 0;
+              serializedObject.ApplyModifiedProperties();
+            });
 
-				maskMenu.AddItem(new GUIContent("all"), currentMask == -1 || currentMask == long.MaxValue, () =>
-						{
-							maskProperty.longValue = -1;
-							serializedObject.ApplyModifiedProperties();
-						});
+        maskMenu.AddItem(new GUIContent("all"), currentMask == -1 || currentMask == long.MaxValue, () =>
+            {
+              maskProperty.longValue = -1;
+              serializedObject.ApplyModifiedProperties();
+            });
 
-				for (int index = 0; index < sizeof(long) * 8; index++)
-				{
-					int capturedIndex = index;
+        for (int index = 0; index < sizeof(long) * 8; index++)
+        {
+          int capturedIndex = index;
 
-					if (index >= 20)
-					{
-						int decima = index / 10;
-						int lowerDecima = decima * 10;
-						int higherDecima = (decima + 1) * 10;
-						if (higherDecima > 63)
-							higherDecima = 63;
+          if (index >= 20)
+          {
+            int decima = index / 10;
+            int lowerDecima = decima * 10;
+            int higherDecima = (decima + 1) * 10;
+            if (higherDecima > 63)
+              higherDecima = 63;
 
-						maskMenu.AddItem(new GUIContent(lowerDecima + "-" + higherDecima + "/" + index), (currentMask & 1 << index) != 0, () =>
-								{
-									maskProperty.longValue = currentMask ^ (1 << capturedIndex);
-									serializedObject.ApplyModifiedProperties();
-								});
-					}
-					else
-					{
-						maskMenu.AddItem(new GUIContent(index.ToString()), (currentMask & 1 << index) != 0, () =>
-							 {
-								 maskProperty.longValue = currentMask ^ (1 << capturedIndex);
-								 serializedObject.ApplyModifiedProperties();
-							 });
-					}
-				}
+            maskMenu.AddItem(new GUIContent(lowerDecima + "-" + higherDecima + "/" + index), (currentMask & 1 << index) != 0, () =>
+                {
+                  maskProperty.longValue = currentMask ^ (1 << capturedIndex);
+                  serializedObject.ApplyModifiedProperties();
+                });
+          }
+          else
+          {
+            maskMenu.AddItem(new GUIContent(index.ToString()), (currentMask & 1 << index) != 0, () =>
+               {
+                 maskProperty.longValue = currentMask ^ (1 << capturedIndex);
+                 serializedObject.ApplyModifiedProperties();
+               });
+          }
+        }
 
-				maskMenu.ShowAsContext();
-			}
+        maskMenu.ShowAsContext();
+      }
 
-			DrawPropertiesExcluding(serializedObject,
-					"m_Script",
-					"outlineLayerMask",
-					"infoRendererScale");
+      DrawPropertiesExcluding(serializedObject,
+          "m_Script",
+          "outlineLayerMask",
+          "infoRendererScale");
 
-			if (serializedObject.FindProperty("useInfoBuffer").boolValue)
-				EditorGUILayout.PropertyField(serializedObject.FindProperty("infoRendererScale"));
+      if (serializedObject.FindProperty("useInfoBuffer").boolValue)
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("infoRendererScale"));
 
-			serializedObject.ApplyModifiedProperties();
-		}
-	}
+      serializedObject.ApplyModifiedProperties();
+    }
+  }
 }
 #endif

@@ -3,52 +3,52 @@ using UnityEngine;
 
 namespace Fralle.PingTap
 {
-	public class StatsController : StatsControllerBase
-	{
-		[Header("Major stats")]
-		public CharacterMajorStat Agility;
-		public CharacterMajorStat Dexterity;
-		public CharacterMajorStat Strength;
+  public class StatsController : StatsControllerBase
+  {
+    [Header("Major stats")]
+    public CharacterMajorStat Agility;
+    public CharacterMajorStat Dexterity;
+    public CharacterMajorStat Strength;
 
-		[Header("Minor stats")]
-		public CharacterMinorStat Aim;
-		public CharacterMinorStat JumpPower;
-		public CharacterMinorStat ReloadSpeed;
-		public CharacterMinorStat RunSpeed;
+    [Header("Minor stats")]
+    public CharacterMinorStat Aim;
+    public CharacterMinorStat JumpPower;
+    public CharacterMinorStat ReloadSpeed;
+    public CharacterMinorStat RunSpeed;
 
 
-		Combatant combatatant;
+    Combatant combatatant;
 
-		protected override void Awake()
-		{
-			base.Awake();
+    protected override void Awake()
+    {
+      base.Awake();
 
-			AddMajorStatToDict(StatAttribute.Dexterity, Dexterity);
-			AddMajorStatToDict(StatAttribute.Agility, Agility);
-			AddMajorStatToDict(StatAttribute.Strength, Strength);
+      AddMajorStatToDict(StatAttribute.Dexterity, Dexterity);
+      AddMajorStatToDict(StatAttribute.Agility, Agility);
+      AddMajorStatToDict(StatAttribute.Strength, Strength);
 
-			AddMinorStatToDict(StatAttribute.Aim, Aim);
-			AddMinorStatToDict(StatAttribute.Jumppower, JumpPower);
-			AddMinorStatToDict(StatAttribute.Reloadspeed, ReloadSpeed);
-			AddMinorStatToDict(StatAttribute.Runspeed, RunSpeed);
+      AddMinorStatToDict(StatAttribute.Aim, Aim);
+      AddMinorStatToDict(StatAttribute.Jumppower, JumpPower);
+      AddMinorStatToDict(StatAttribute.Reloadspeed, ReloadSpeed);
+      AddMinorStatToDict(StatAttribute.Runspeed, RunSpeed);
 
-			combatatant = GetComponent<Combatant>();
-		}
+      combatatant = GetComponent<Combatant>();
+    }
 
-		void Start()
-		{
-			// Event handlers	
-			Aim.OnChanged += AimChanged;
-		}
+    void Start()
+    {
+      // Event handlers	
+      Aim.OnChanged += AimChanged;
+    }
 
-		void AimChanged(CharacterStat aim)
-		{
-			combatatant.Modifiers.ExtraAccuracy = aim.Value;
-		}
+    void AimChanged(CharacterStat aim)
+    {
+      combatatant.Modifiers.ExtraAccuracy = aim.Value;
+    }
 
-		void OnDestroy()
-		{
-			Aim.OnChanged -= AimChanged;
-		}
-	}
+    void OnDestroy()
+    {
+      Aim.OnChanged -= AimChanged;
+    }
+  }
 }

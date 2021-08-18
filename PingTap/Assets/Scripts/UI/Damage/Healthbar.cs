@@ -4,27 +4,27 @@ using UnityEngine.UI;
 
 namespace Fralle.UI
 {
-	public class Healthbar : MonoBehaviour
-	{
-		[SerializeField] Image foregroundImage = null;
+  public class Healthbar : MonoBehaviour
+  {
+    [SerializeField] Image foregroundImage = null;
 
-		DamageController damageController;
+    DamageController damageController;
 
-		void Awake()
-		{
-			damageController = GetComponentInParent<DamageController>();
-			damageController.OnHealthChange += HandleDamageControllerChange;
-		}
+    void Awake()
+    {
+      damageController = GetComponentInParent<DamageController>();
+      damageController.OnHealthChange += HandleDamageControllerChange;
+    }
 
-		void HandleDamageControllerChange(float currentHealth, float maxHealth)
-		{
-			float percentage = Mathf.Clamp01(currentHealth / maxHealth);
-			foregroundImage.fillAmount = percentage;
-		}
+    void HandleDamageControllerChange(float currentHealth, float maxHealth)
+    {
+      float percentage = Mathf.Clamp01(currentHealth / maxHealth);
+      foregroundImage.fillAmount = percentage;
+    }
 
-		void OnDestroy()
-		{
-			damageController.OnHealthChange -= HandleDamageControllerChange;
-		}
-	}
+    void OnDestroy()
+    {
+      damageController.OnHealthChange -= HandleDamageControllerChange;
+    }
+  }
 }

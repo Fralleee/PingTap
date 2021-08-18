@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Fralle.Gameplay
 {
-	[Serializable]
-	public class SpawnProbability
-	{
-		public float Chance;
-		public GameObject Prefab;
-	}
+  [Serializable]
+  public class SpawnProbability
+  {
+    public float Chance;
+    public GameObject Prefab;
+  }
 }

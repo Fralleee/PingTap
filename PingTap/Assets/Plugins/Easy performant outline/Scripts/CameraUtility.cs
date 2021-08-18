@@ -21,27 +21,27 @@ using UnityEngine.Experimental.Rendering.HDPipeline;
 
 namespace EPOOutline
 {
-	public static class CameraUtility
-	{
-		public static int GetMSAA(Camera camera)
-		{
-			int antialiasing = GetRenderPipelineMSAA();
+  public static class CameraUtility
+  {
+    public static int GetMSAA(Camera camera)
+    {
+      int antialiasing = GetRenderPipelineMSAA();
 
-			int msaa = Mathf.Max(antialiasing, 1);
-			if (!camera.allowMSAA)
-				msaa = 1;
+      int msaa = Mathf.Max(antialiasing, 1);
+      if (!camera.allowMSAA)
+        msaa = 1;
 
-			if (camera.actualRenderingPath != RenderingPath.Forward &&
-					camera.actualRenderingPath != RenderingPath.VertexLit)
-				msaa = 1;
+      if (camera.actualRenderingPath != RenderingPath.Forward &&
+          camera.actualRenderingPath != RenderingPath.VertexLit)
+        msaa = 1;
 
-			return msaa;
-		}
+      return msaa;
+    }
 
-		private static int GetRenderPipelineMSAA()
-		{
+    private static int GetRenderPipelineMSAA()
+    {
 #if URP_OUTLINE && UNITY_2019_1_OR_NEWER
-            if (PipelineFetcher.CurrentAsset is
+      if (PipelineFetcher.CurrentAsset is
 #if UNITY_2019_3_OR_NEWER
                 UniversalRenderPipelineAsset
 #else
@@ -49,7 +49,7 @@ namespace EPOOutline
 #endif
                 )
 
-                return (PipelineFetcher.CurrentAsset as
+        return (PipelineFetcher.CurrentAsset as
 #if UNITY_2019_3_OR_NEWER
                     UniversalRenderPipelineAsset
 #else
@@ -63,7 +63,7 @@ namespace EPOOutline
                 return 1;
 #endif
 
-			return QualitySettings.antiAliasing;
-		}
-	}
+      return QualitySettings.antiAliasing;
+    }
+  }
 }

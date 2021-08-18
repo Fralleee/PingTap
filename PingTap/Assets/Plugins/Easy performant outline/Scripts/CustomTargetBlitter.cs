@@ -4,77 +4,77 @@ using UnityEngine.Rendering;
 
 namespace EPOOutline
 {
-	[ExecuteAlways]
-	public class CustomTargetBlitter : MonoBehaviour
-	{
+  [ExecuteAlways]
+  public class CustomTargetBlitter : MonoBehaviour
+  {
 #pragma warning disable 0649
-		[SerializeField]
-		private string customTargetName;
+    [SerializeField]
+    private string customTargetName;
 #pragma warning restore 0649
 
-		private CommandBuffer buffer;
+    private CommandBuffer buffer;
 
-		private Material blitMaterial;
+    private Material blitMaterial;
 
-		private Coroutine blitProcess = null;
+    private Coroutine blitProcess = null;
 
-		private void Awake()
-		{
-			buffer = new CommandBuffer();
-		}
+    private void Awake()
+    {
+      buffer = new CommandBuffer();
+    }
 
-		private void OnEnable()
-		{
-			StopAllCoroutines();
-			blitProcess = StartCoroutine(Blit());
-		}
+    private void OnEnable()
+    {
+      StopAllCoroutines();
+      blitProcess = StartCoroutine(Blit());
+    }
 
-		private void Update()
-		{
-			if (blitProcess != null)
-				return;
+    private void Update()
+    {
+      if (blitProcess != null)
+        return;
 
-			StopAllCoroutines();
-			blitProcess = StartCoroutine(Blit());
-		}
+      StopAllCoroutines();
+      blitProcess = StartCoroutine(Blit());
+    }
 
-		private void OnDestroy()
-		{
-			if (buffer != null)
-				buffer.Dispose();
-		}
+    private void OnDestroy()
+    {
+      if (buffer != null)
+        buffer.Dispose();
+    }
 
-		private void CheckMaterial()
-		{
-			if (blitMaterial == null)
-				blitMaterial = new Material(OutlineEffect.LoadMaterial("TransparentBlit"));
-		}
+    private void CheckMaterial()
+    {
+      if (blitMaterial == null)
+        blitMaterial = new Material(OutlineEffect.LoadMaterial("TransparentBlit"));
+    }
 
-		private IEnumerator Blit()
-		{
-			WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
+    private IEnumerator Blit()
+    {
+      WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
 
-			if (buffer == null)
-			{
-				buffer = new CommandBuffer();
-				buffer.name = "Custom target blitter";
-			}
+      if (buffer == null)
+      {
+        buffer = new CommandBuffer();
+        buffer.name = "Custom target blitter";
+      }
 
-			while (enabled)
-			{
-				CheckMaterial();
+      while (enabled)
+      {
+        CheckMaterial();
 
-				yield return waitForEndOfFrame;
+        yield return waitForEndOfFrame;
 
-				RenderTexture target = TargetsHolder.Instance.GetAllocatedTarget(customTargetName);
-				if (target == null)
-					continue;
+        RenderTexture target = TargetsHolder.Instance.GetAllocatedTarget(customTargetName);
+        if (target == null)
+          continue;
 
-				buffer.Clear();
-				buffer.Blit(target, BuiltinRenderTextureType.None, blitMaterial);
+        buffer.Clear();
+        buffer.Blit(target, BuiltinRenderTextureType.None, blitMaterial);
 
-				Graphics.ExecuteCommandBuffer(buffer);
-			}
-		}
-	}
+        Graphics.ExecuteCommandBuffer(buffer);
+      }
+    }
+  }
 }

@@ -4,88 +4,88 @@ using UnityEngine;
 
 namespace Fralle.PingTap.AI
 {
-	public partial class AIBrain : MonoBehaviour, IDisableOnDeath
-	{
-		[HideInInspector] public TeamController teamController;
-		[HideInInspector] public float lastAlert;
+  public partial class AIBrain : MonoBehaviour, IDisableOnDeath
+  {
+    [HideInInspector] public TeamController teamController;
+    [HideInInspector] public float lastAlert;
 
-		[Readonly] public AIState currentState;
+    [Readonly] public AIState currentState;
 
-		[Header("Configuration")]
-		public AIPersonality personality;
-		public AIDifficulty difficulty;
+    [Header("Configuration")]
+    public AIPersonality personality;
+    public AIDifficulty difficulty;
 
-		[Header("Range - Distance")]
-		public float attackRange = 15f;
-		public float attackStoppingDistance = 5f;
-		public float alertDistance = 4f;
+    [Header("Range - Distance")]
+    public float attackRange = 15f;
+    public float attackStoppingDistance = 5f;
+    public float alertDistance = 4f;
 
-		[Header("Timers")]
-		public Vector2 reactionTimeRange = new Vector2(0.25f, 0.5f);
-		public float alertFrequency = 1f;
-		public int idleScanFrequency = 1;
-		public int searchScanFrequency = 4;
+    [Header("Timers")]
+    public Vector2 reactionTimeRange = new Vector2(0.25f, 0.5f);
+    public float alertFrequency = 1f;
+    public int idleScanFrequency = 1;
+    public int searchScanFrequency = 4;
 
-		[Header("Debug")]
-		[SerializeField] bool debugTransitions;
+    [Header("Debug")]
+    [SerializeField] bool debugTransitions;
 
-		StateMachine<AIState> stateMachine;
+    StateMachine<AIState> stateMachine;
 
-		AIAttack aiAttack;
+    AIAttack aiAttack;
 
-		public void ResetAlertTimer() => lastAlert = Time.time + alertFrequency;
+    public void ResetAlertTimer() => lastAlert = Time.time + alertFrequency;
 
-		public void AlertOthers(Vector3 position, AIState priorityState)
-		{
-			ResetAlertTimer();
-			var colliders = Physics.OverlapSphere(transform.position, alertDistance, 1 << teamController.AllyTeam);
-			foreach (var item in colliders)
-			{
-				var allyBrain = item.GetComponent<AIBrain>();
-				if (allyBrain)
-					allyBrain.personality.Alert(position, priorityState);
-			}
-		}
+    public void AlertOthers(Vector3 position, AIState priorityState)
+    {
+      ResetAlertTimer();
+      Collider[] colliders = Physics.OverlapSphere(transform.position, alertDistance, 1 << teamController.AllyTeam);
+      foreach (Collider item in colliders)
+      {
+        AIBrain allyBrain = item.GetComponent<AIBrain>();
+        if (allyBrain)
+          allyBrain.personality.Alert(position, priorityState);
+      }
+    }
 
-		void Awake()
-		{
-			aiAttack = GetComponent<AIAttack>();
-			teamController = GetComponent<TeamController>();
+    void Awake()
+    {
+      aiAttack = GetComponent<AIAttack>();
+      teamController = GetComponent<TeamController>();
 
-			personality = personality.CreateInstance();
-		}
+      personality = personality.CreateInstance();
+    }
 
-		void Start()
-		{
-			stateMachine = new StateMachine<AIState>();
-			stateMachine.OnTransition += OnTransition;
-			personality.Load(this, stateMachine);
-			AdjustDifficulty();
-		}
+    void Start()
+    {
+      stateMachine = new StateMachine<AIState>();
+      stateMachine.OnTransition += OnTransition;
+      personality.Load(this, stateMachine);
+      AdjustDifficulty();
+    }
 
-		void AdjustDifficulty()
-		{
-			aiAttack.AdjustOffset(difficulty.GetAimOffset());
-			aiAttack.AdjustAccuracy(difficulty.GetAccuracy());
-		}
+    void AdjustDifficulty()
+    {
+      aiAttack.AdjustOffset(difficulty.GetAimOffset());
+      aiAttack.AdjustAccuracy(difficulty.GetAccuracy());
+    }
 
-		void Update()
-		{
-			stateMachine.OnLogic();
-		}
+    void Update()
+    {
+      stateMachine.OnLogic();
+    }
 
-		void OnTransition(IState<AIState> newState)
-		{
-			if (debugTransitions)
-				Debug.Log($"Transitioned from {currentState} to {newState.identifier}");
+    void OnTransition(IState<AIState> newState)
+    {
+      if (debugTransitions)
+        Debug.Log($"Transitioned from {currentState} to {newState.identifier}");
 
-			currentState = newState.identifier;
-		}
+      currentState = newState.identifier;
+    }
 
-		void OnDrawGizmos()
-		{
-			Gizmos.color = currentState.Color();
-			Gizmos.DrawSphere(transform.position + Vector3.up * 2.5f, 0.25f);
-		}
-	}
+    void OnDrawGizmos()
+    {
+      Gizmos.color = currentState.Color();
+      Gizmos.DrawSphere(transform.position + Vector3.up * 2.5f, 0.25f);
+    }
+  }
 }
