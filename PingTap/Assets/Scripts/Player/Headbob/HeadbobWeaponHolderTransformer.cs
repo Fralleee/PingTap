@@ -28,7 +28,7 @@ namespace Fralle.PingTap
     public Quaternion GetRotation() => currentRotation;
     public override void Calculate()
     {
-      if (headbobMaster.Pause || !playerController.IsMoving)
+      if (headbobMaster.Pause || !playerController.IsMoving || !playerController.IsGrounded)
       {
         Reset();
         return;

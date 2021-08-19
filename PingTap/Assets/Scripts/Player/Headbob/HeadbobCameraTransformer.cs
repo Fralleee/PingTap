@@ -32,7 +32,7 @@ namespace Fralle.PingTap
     public Quaternion GetRotation() => Quaternion.identity;
     public override void Calculate()
     {
-      if (Pause || !playerController.IsMoving)
+      if (Pause || !playerController.IsMoving || !playerController.IsGrounded)
       {
         Reset();
         return;
