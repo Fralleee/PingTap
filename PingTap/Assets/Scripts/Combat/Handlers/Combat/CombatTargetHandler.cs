@@ -15,7 +15,7 @@ namespace Fralle.PingTap
     public void Setup(Combatant combatant)
     {
       teamController = combatant.teamController;
-      transform = combatant.AimTransform;
+      transform = combatant.aimTransform;
 
       defaultLayer = LayerMask.NameToLayer("Default");
     }

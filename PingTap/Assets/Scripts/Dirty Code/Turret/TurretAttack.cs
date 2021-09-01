@@ -39,7 +39,7 @@ namespace Fralle.Abilities.Turret
       if (EquippedWeapon)
         Destroy(EquippedWeapon.gameObject);
 
-      EquippedWeapon = Instantiate(weapon, combatant.WeaponHolder.position, combatant.WeaponHolder.rotation, combatant.WeaponHolder);
+      EquippedWeapon = Instantiate(weapon, combatant.weaponHolder.position, combatant.weaponHolder.rotation, combatant.weaponHolder);
       EquippedWeapon.Equip(combatant);
       GetMaxRange();
     }

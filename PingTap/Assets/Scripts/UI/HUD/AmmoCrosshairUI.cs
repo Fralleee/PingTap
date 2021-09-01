@@ -23,8 +23,8 @@ namespace Fralle.UI.HUD
       Combatant combatant = GetComponentInParent<Combatant>();
       combatant.OnWeaponSwitch += HandleWeaponSwitch;
 
-      if (combatant.EquippedWeapon)
-        HandleWeaponSwitch(combatant.EquippedWeapon, null);
+      if (combatant.equippedWeapon)
+        HandleWeaponSwitch(combatant.equippedWeapon, null);
     }
 
     void HandleWeaponSwitch(Weapon weapon, Weapon oldWeapon)

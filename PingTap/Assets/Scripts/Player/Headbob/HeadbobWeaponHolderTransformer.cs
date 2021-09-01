@@ -20,8 +20,8 @@ namespace Fralle.PingTap
       combatant = GetComponentInParent<Combatant>();
 
       combatant.OnWeaponSwitch += OnWeaponSwitch;
-      if (combatant.EquippedWeapon != null)
-        OnWeaponSwitch(combatant.EquippedWeapon, null);
+      if (combatant.equippedWeapon != null)
+        OnWeaponSwitch(combatant.equippedWeapon, null);
     }
 
     public Vector3 GetPosition() => currentPosition;

@@ -90,7 +90,7 @@ namespace Fralle.PingTap
 
       if (damageData.DamageAmount <= 0)
       {
-        damageData.Attacker?.Stats.OnSuccessfulAttack(damageData);
+        damageData.Attacker?.stats.OnSuccessfulAttack(damageData);
         return;
       }
 
@@ -104,7 +104,7 @@ namespace Fralle.PingTap
         Death(damageData);
       }
 
-      damageData.Attacker?.Stats.OnSuccessfulAttack(damageData);
+      damageData.Attacker?.stats.OnSuccessfulAttack(damageData);
     }
 
     public void RaycastHit(float? customDelay = null)

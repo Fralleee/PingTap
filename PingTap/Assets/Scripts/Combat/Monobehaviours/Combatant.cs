@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Fralle.PingTap
 {
@@ -10,19 +11,21 @@ namespace Fralle.PingTap
     public event Action<Weapon, Weapon> OnWeaponSwitch = delegate { };
     public event Action<DamageData> OnHit = delegate { };
 
-    [HideInInspector] public TeamController teamController;
+    [FormerlySerializedAs("TeamController")] [HideInInspector] public TeamController teamController;
 
-    public CombatScoreData Stats = new CombatScoreData();
-    public CombatUpgrades Modifiers = new CombatUpgrades();
+    [FormerlySerializedAs("Stats")] public CombatScoreData stats = new CombatScoreData();
+    [FormerlySerializedAs("Modifiers")] public CombatUpgrades modifiers = new CombatUpgrades();
 
-    public Transform AimTransform;
-    public Transform WeaponHolder;
-    [Readonly] public Weapon EquippedWeapon;
+    [FormerlySerializedAs("AimTransform")] public Transform aimTransform;
+    [FormerlySerializedAs("WeaponHolder")] public Transform weaponHolder;
+    [FormerlySerializedAs("EquippedWeapon")] [Readonly] public Weapon equippedWeapon;
 
+    [FormerlySerializedAs("ImpactAtlas")]
     [Header("Settings")]
     [Expandable]
     public ImpactAtlas impactAtlas;
 
+    [FormerlySerializedAs("HasActiveCamera")]
     [Header("Flags")]
     public bool hasActiveCamera;
 
@@ -37,7 +40,7 @@ namespace Fralle.PingTap
 
     public void PrimaryAction(bool keyDown = false)
     {
-      if (!EquippedWeapon || !primaryAction || primaryAction.Tapable && !keyDown)
+      if (!equippedWeapon || !primaryAction || primaryAction.Tapable && !keyDown)
         return;
 
       primaryAction.Perform();
@@ -45,7 +48,7 @@ namespace Fralle.PingTap
 
     public void SecondaryAction(bool keyDown = false)
     {
-      if (!EquippedWeapon || !secondaryAction || secondaryAction.Tapable && !keyDown)
+      if (!equippedWeapon || !secondaryAction || secondaryAction.Tapable && !keyDown)
         return;
 
       secondaryAction.Perform();
@@ -54,7 +57,7 @@ namespace Fralle.PingTap
     public void SetFpsLayers(string layerName)
     {
       int layer = LayerMask.NameToLayer(layerName);
-      EquippedWeapon.gameObject.SetLayerRecursively(layer);
+      equippedWeapon.gameObject.SetLayerRecursively(layer);
     }
 
     public void SuccessfulHit(DamageData damageData)
@@ -65,42 +68,43 @@ namespace Fralle.PingTap
     public void ClearWeapons()
     {
       string[] stringArray = { "Weapon Camera", "FPS" };
-      foreach (Transform child in WeaponHolder)
+      foreach (Transform child in weaponHolder)
       {
         if (!stringArray.Any(child.name.Contains))
           DestroyImmediate(child.gameObject);
       }
 
-      if (EquippedWeapon)
-        EquippedWeapon = null;
+      if (equippedWeapon)
+        equippedWeapon = null;
     }
 
     public void EquipWeapon(Weapon weapon, bool animationDistance = true)
     {
-      if (EquippedWeapon != null && weapon != null && EquippedWeapon.name == weapon.name)
+      if (equippedWeapon != null && weapon != null && equippedWeapon.name == weapon.name)
         return;
 
       ClearWeapons();
 
-      Weapon oldWeapon = EquippedWeapon;
-      Vector3 position = animationDistance ? WeaponHolder.position.With(y: -0.15f) : WeaponHolder.position;
+      Weapon oldWeapon = equippedWeapon;
+      Vector3 weaponHolderPosition = weaponHolder.position;
+      Vector3 position = animationDistance ? weaponHolderPosition.With(y: -0.15f) : weaponHolderPosition;
 
       if (weapon != null)
       {
-        EquippedWeapon = Instantiate(weapon, position, WeaponHolder.rotation, WeaponHolder);
-        EquippedWeapon.Equip(this);
+        equippedWeapon = Instantiate(weapon, position, weaponHolder.rotation, weaponHolder);
+        equippedWeapon.Equip(this);
 
         SetupAttackActions();
       }
       else
       {
-        EquippedWeapon = null;
+        equippedWeapon = null;
         primaryAction = null;
         secondaryAction = null;
       }
 
-      if (EquippedWeapon != null || oldWeapon != null)
-        OnWeaponSwitch(EquippedWeapon, oldWeapon);
+      if (equippedWeapon != null || oldWeapon != null)
+        OnWeaponSwitch(equippedWeapon, oldWeapon);
     }
 
     void Awake()
@@ -120,9 +124,9 @@ namespace Fralle.PingTap
 
     void SetupAttackActions()
     {
-      AttackAction[] attackActions = EquippedWeapon.GetComponentsInChildren<AttackAction>();
+      AttackAction[] attackActions = equippedWeapon.GetComponentsInChildren<AttackAction>();
       if (attackActions.Length > 2)
-        Debug.LogWarning($"Weapon {EquippedWeapon} has more attack actions than possible (2).");
+        Debug.LogWarning($"Weapon {equippedWeapon} has more attack actions than possible (2).");
       else if (attackActions.Length > 0)
       {
         primaryAction = attackActions[0];
@@ -134,10 +138,10 @@ namespace Fralle.PingTap
 
     void SetDefaults()
     {
-      if (AimTransform == null)
-        AimTransform = transform;
-      if (WeaponHolder == null)
-        WeaponHolder = transform;
+      if (aimTransform == null)
+        aimTransform = transform;
+      if (weaponHolder == null)
+        weaponHolder = transform;
 
       teamController = GetComponent<TeamController>();
     }

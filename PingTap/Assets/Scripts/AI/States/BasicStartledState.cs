@@ -12,7 +12,7 @@ namespace Fralle.PingTap.AI
 
     public override void OnEnter()
     {
-      controller.speed = controller.runSpeed;
+      controller.Speed = controller.RunSpeed;
     }
 
     public override void OnLogic()
@@ -21,7 +21,7 @@ namespace Fralle.PingTap.AI
 
     public override void OnExit()
     {
-      controller.Stop(controller.walkSpeed);
+      controller.Stop(controller.WalkSpeed);
     }
 
     public override void Setup(AIBrain aiBrain)

@@ -39,7 +39,7 @@ namespace Fralle
       Player.controls.Weapon.SetCallbacks(this);
       Player.controls.Weapon.Enable();
 
-      if (combatant.EquippedWeapon == null)
+      if (combatant.equippedWeapon == null)
         combatant.EquipWeapon(weapons[0]);
     }
 
@@ -57,41 +57,37 @@ namespace Fralle
     public void EquipFirstWeaponInList()
     {
       combatant.EquipWeapon(weapons[0], false);
-      combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
-      Debug.Log($"Equipped: {combatant.EquippedWeapon}");
+      combatant.equippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+      Debug.Log($"Equipped: {combatant.equippedWeapon}");
     }
 
     [ContextMenu("Remove Weapon")]
     public void RemoveWeapon()
     {
-      Debug.Log($"Removed: {combatant.EquippedWeapon}");
+      Debug.Log($"Removed: {combatant.equippedWeapon}");
       combatant.ClearWeapons();
     }
 
     void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
     {
-      if (combatant.EquippedWeapon == null)
+      if (combatant.equippedWeapon == null)
       {
         weaponCamera.localPosition = defaultWeaponCameraPosition;
         weaponCamera.localRotation = defaultWeaponCameraRotation;
         return;
       }
 
-      combatant.EquippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
-      weaponCamera.localPosition = combatant.EquippedWeapon.weaponCameraTransform.localPosition;
-      weaponCamera.localRotation = combatant.EquippedWeapon.weaponCameraTransform.localRotation;
+      combatant.equippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
+      weaponCamera.localPosition = combatant.equippedWeapon.weaponCameraTransform.localPosition;
+      weaponCamera.localRotation = combatant.equippedWeapon.weaponCameraTransform.localRotation;
     }
 
     void IWeaponActions.OnItemSelect(InputAction.CallbackContext context)
     {
-      if (context.performed)
-      {
-        int number = (int)context.ReadValue<float>();
-        if (weapons.Length >= number + 1)
-          combatant.EquipWeapon(weapons[number]);
-        else
-          combatant.EquipWeapon(null);
-      }
+      if (!context.performed)
+        return;
+      int number = (int)context.ReadValue<float>();
+      combatant.EquipWeapon(weapons.Length >= number + 1 ? weapons[number] : null);
     }
 
     void IWeaponActions.OnPrimaryFire(InputAction.CallbackContext context)

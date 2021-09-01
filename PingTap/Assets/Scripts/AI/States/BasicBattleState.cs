@@ -13,13 +13,13 @@ namespace Fralle.PingTap
     AIController controller;
 
     bool doRotate;
-    float rotateOnAngle = 35;
-    float defaultStoppingDistance = 0.5f;
+    readonly float rotateOnAngle = 35;
+    readonly float defaultStoppingDistance = 0.5f;
 
     public override void OnEnter()
     {
-      controller.speed = controller.walkSpeed;
-      controller.stoppingDistance = aiBrain.attackStoppingDistance;
+      controller.Speed = controller.WalkSpeed;
+      controller.StoppingDistance = aiBrain.attackStoppingDistance;
 
       aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
     }
@@ -38,7 +38,7 @@ namespace Fralle.PingTap
 
     public override void OnExit()
     {
-      controller.stoppingDistance = defaultStoppingDistance;
+      controller.StoppingDistance = defaultStoppingDistance;
       controller.Stop();
     }
 
@@ -52,18 +52,18 @@ namespace Fralle.PingTap
 
     void UpdateRotation()
     {
-      if (controller.velocity.magnitude > 0.1f)
+      if (controller.Velocity.magnitude > 0.1f)
         doRotate = false;
-      else if (Vector3.Angle(controller.transform.forward, aiAttack.aim.forward) > rotateOnAngle)
+      else if (Vector3.Angle(controller.transform.forward, aiAttack.Aim.forward) > rotateOnAngle)
         doRotate = true;
 
       if (doRotate)
       {
-        controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, aiAttack.aim.rotation, Time.deltaTime * 10f);
-        if (Vector3.Angle(controller.transform.forward, aiAttack.aim.forward) > 3f)
+        controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, aiAttack.Aim.rotation, Time.deltaTime * 10f);
+        if (Vector3.Angle(controller.transform.forward, aiAttack.Aim.forward) > 3f)
           return;
 
-        controller.transform.rotation = aiAttack.aim.rotation;
+        controller.transform.rotation = aiAttack.Aim.rotation;
         doRotate = false;
       }
     }

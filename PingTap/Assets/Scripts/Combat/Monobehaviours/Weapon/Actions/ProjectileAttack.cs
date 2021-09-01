@@ -28,7 +28,7 @@ namespace Fralle.PingTap
 
     void SetupMuzzle()
     {
-      GameObject instance = Instantiate(muzzleParticlePrefab, Combatant.AimTransform.position, Combatant.AimTransform.rotation, Combatant.AimTransform);
+      GameObject instance = Instantiate(muzzleParticlePrefab, Combatant.aimTransform.position, Combatant.aimTransform.rotation, Combatant.aimTransform);
       if (Combatant.gameObject.CompareTag("Player"))
         instance.SetLayerRecursively(LayerMask.NameToLayer("FPO")); // this should only be performed on localplayer
       muzzleParticle = instance.GetComponent<ParticleSystem>();
@@ -42,7 +42,7 @@ namespace Fralle.PingTap
       muzzleParticle.Play();
 
       projectileData.Attacker = Combatant;
-      projectileData.Forward = Weapon.Combatant.AimTransform.forward;
+      projectileData.Forward = Weapon.Combatant.aimTransform.forward;
       projectileData.Damage = Damage;
       projectileData.Element = Element;
       projectileData.DamageEffects = DamageEffects;
@@ -58,9 +58,9 @@ namespace Fralle.PingTap
     {
       for (int i = 0; i < projectilesPerFire; i++)
       {
-        Combatant.Stats.OnAttack(1);
+        Combatant.stats.OnAttack(1);
 
-        Ray ray = new Ray(Weapon.Combatant.AimTransform.position, Weapon.Combatant.AimTransform.forward);
+        Ray ray = new Ray(Weapon.Combatant.aimTransform.position, Weapon.Combatant.aimTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hitInfo, projectileData.Range, Weapon.Combatant.teamController.AttackLayerMask))
           projectileData.Forward = (hitInfo.point - muzzle.position).normalized;
         else

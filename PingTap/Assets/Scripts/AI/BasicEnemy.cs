@@ -102,7 +102,7 @@ namespace Fralle.PingTap
     void OnReceiveAttack(DamageController damageController, DamageData damageData)
     {
       if (!damageController.IsDead)
-        Alert(damageData.Attacker.AimTransform.position, AIState.Chasing);
+        Alert(damageData.Attacker.aimTransform.position, AIState.Chasing);
     }
 
     void OnDestroy()

@@ -43,7 +43,7 @@ namespace Fralle.PingTap
 
     void AimChanged(CharacterStat aim)
     {
-      combatatant.Modifiers.ExtraAccuracy = aim.Value;
+      combatatant.modifiers.ExtraAccuracy = aim.Value;
     }
 
     void OnDestroy()

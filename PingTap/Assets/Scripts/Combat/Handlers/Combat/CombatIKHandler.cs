@@ -1,18 +1,19 @@
 using Fralle.Core;
 using System;
 using System.Linq;
+using UnityEngine.Serialization;
 
 namespace Fralle.PingTap
 {
   [Serializable]
   public class CombatIKHandler
   {
-    public bool enabled;
-    public bool useLeftHand = true;
+    [FormerlySerializedAs("Enabled")] public bool enabled;
+    [FormerlySerializedAs("UseLeftHand")] public bool useLeftHand = true;
 
     Combatant combatant;
-    HandIK[] leftHandIks;
-    HandIK[] rightHandIks;
+    HandIK[] leftHandIKs;
+    HandIK[] rightHandIKs;
     HandIKTarget[] leftHandIKTargets;
     HandIKTarget[] rightHandIKTargets;
 
@@ -24,12 +25,12 @@ namespace Fralle.PingTap
       HandIK[] handIKs = this.combatant.GetComponentsInChildren<HandIK>();
       HandIKTarget[] handIKTargets = this.combatant.GetComponentsInChildren<HandIKTarget>();
 
-      leftHandIks = handIKs.Where(x => x.hand == Hand.Left).ToArray();
-      rightHandIks = handIKs.Where(x => x.hand == Hand.Right).ToArray();
+      leftHandIKs = handIKs.Where(x => x.Hand == Hand.Left).ToArray();
+      rightHandIKs = handIKs.Where(x => x.Hand == Hand.Right).ToArray();
       leftHandIKTargets = handIKTargets.Where(x => x.hand == Hand.Left).ToArray();
       rightHandIKTargets = handIKTargets.Where(x => x.hand == Hand.Right).ToArray();
 
-      if (combatant.EquippedWeapon != null)
+      if (combatant.equippedWeapon != null)
         SetupIK();
       else
       {
@@ -45,23 +46,23 @@ namespace Fralle.PingTap
 
     void SetupIK()
     {
-      if (useLeftHand && combatant.EquippedWeapon.leftHandGrip)
+      if (useLeftHand && combatant.equippedWeapon.leftHandGrip)
       {
-        foreach (HandIK ik in leftHandIks)
+        foreach (HandIK ik in leftHandIKs)
           ik.Toggle();
 
         foreach (HandIKTarget target in leftHandIKTargets)
-          target.Target(combatant.EquippedWeapon.leftHandGrip);
+          target.Target(combatant.equippedWeapon.leftHandGrip);
       }
 
-      if (combatant.EquippedWeapon.rightHandGrip)
-      {
-        foreach (HandIK ik in rightHandIks)
-          ik.Toggle();
+      if (!combatant.equippedWeapon.rightHandGrip)
+        return;
 
-        foreach (HandIKTarget target in rightHandIKTargets)
-          target.Target(combatant.EquippedWeapon.rightHandGrip);
-      }
+      foreach (HandIK ik in rightHandIKs)
+        ik.Toggle();
+
+      foreach (HandIKTarget target in rightHandIKTargets)
+        target.Target(combatant.equippedWeapon.rightHandGrip);
     }
 
     void HandleWeaponSwitch(Weapon newWeapon, Weapon oldWeapon)

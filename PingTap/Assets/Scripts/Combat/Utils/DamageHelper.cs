@@ -31,7 +31,7 @@ namespace Fralle.PingTap
         // we will receive more hits than shots fired
         Hitbox hitbox = hit.collider.transform.GetComponent<Hitbox>();
         HitArea hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
-        float falloffMultiplier = raycastAttack.RangeDamageFalloff.Evaluate(hit.distance / raycastAttack.Range);
+        float falloffMultiplier = raycastAttack.rangeDamageFalloff.Evaluate(hit.distance / raycastAttack.range);
         float damageAmount = raycastAttack.Damage;
         DamageData damageData = new DamageData()
         {
@@ -40,7 +40,7 @@ namespace Fralle.PingTap
           Collider = hit.collider,
           Effects = SetupDamageEffects(raycastAttack.DamageEffects, raycastAttack.Combatant, damageAmount),
           HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
-          Force = raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce,
+          Force = raycastAttack.Combatant.aimTransform.forward * raycastAttack.pushForce,
           Position = hit.point,
           Normal = hit.normal,
           HitArea = hitArea,
@@ -184,7 +184,7 @@ namespace Fralle.PingTap
       Rigidbody rigidBody = hit.transform.GetComponent<Rigidbody>();
       if (rigidBody != null)
       {
-        rigidBody.AddForce(raycastAttack.Combatant.AimTransform.forward * raycastAttack.PushForce, ForceMode.Impulse);
+        rigidBody.AddForce(raycastAttack.Combatant.aimTransform.forward * raycastAttack.pushForce, ForceMode.Impulse);
       }
     }
   }

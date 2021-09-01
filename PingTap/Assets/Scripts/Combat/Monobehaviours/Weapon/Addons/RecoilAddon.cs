@@ -49,7 +49,7 @@ namespace Fralle.PingTap
     }
     public void Activate()
     {
-      recoilTransformer = weapon.Combatant.AimTransform.GetComponentInChildren<RecoilTransformer>();
+      recoilTransformer = weapon.Combatant.aimTransform.GetComponentInChildren<RecoilTransformer>();
       if (recoilTransformer != null)
         recoilTransformer.Setup(recoilSpeed, recoilRecoverTime);
       else
