@@ -82,7 +82,7 @@ namespace Fralle.PingTap
       Vector3 forward = CalculateBulletSpread(1 / Combatant.modifiers.ExtraAccuracy);
 
       Debug.DrawRay(Combatant.aimTransform.position, forward, Color.red);
-      if (!Physics.Raycast(Combatant.aimTransform.position, forward, out RaycastHit hitInfo, range, Combatant.teamController.AttackLayerMask))
+      if (!Physics.Raycast(Combatant.aimTransform.position, forward, out RaycastHit hitInfo, range, Combatant.teamController.attackLayerMask))
       {
         BulletTrace(muzzle.position, muzzle.position + forward * range);
         return;

@@ -44,8 +44,8 @@ namespace Fralle.PingTap
       speedlines = Instantiate(speedlines, ac.postProcessController.transform);
       speedLinesEffect = speedlines.GetComponent<ParticleSystem>();
 
-      cameraShakeTransform = playerController.Camera.GetComponentInParent<ShakeTransformer>();
-      defaultFov = playerController.Camera.fieldOfView;
+      cameraShakeTransform = playerController.camera.GetComponentInParent<ShakeTransformer>();
+      defaultFov = playerController.camera.fieldOfView;
     }
 
     IEnumerator StopDash()
@@ -54,14 +54,14 @@ namespace Fralle.PingTap
       float waitTime = stopTime;
       while (elapsedTime < waitTime)
       {
-        playerController.Camera.fieldOfView = Mathf.SmoothStep(defaultFov + addFov, defaultFov, elapsedTime / waitTime);
+        playerController.camera.fieldOfView = Mathf.SmoothStep(defaultFov + addFov, defaultFov, elapsedTime / waitTime);
         abilityVolume.weight = Mathf.SmoothStep(1, 0, 1 - (elapsedTime / waitTime));
 
         elapsedTime += Time.deltaTime;
         yield return null;
       }
 
-      playerController.Camera.fieldOfView = defaultFov;
+      playerController.camera.fieldOfView = defaultFov;
 
       Reset();
     }
@@ -71,13 +71,13 @@ namespace Fralle.PingTap
       base.Perform();
 
       IsActive = true;
-      playerController.IsLocked = true;
-      Vector3 direction = playerController.CameraRig.forward;
+      playerController.isLocked = true;
+      Vector3 direction = playerController.cameraRig.forward;
       if (playerController.Movement.magnitude > 0)
       {
         direction = orientation.TransformDirection(playerController.Movement.ToVector3());
         if (playerController.Movement.y > 0)
-          direction += playerController.CameraRig.forward;
+          direction += playerController.cameraRig.forward;
       }
 
       rigidBody.velocity = Vector3.zero;
@@ -87,18 +87,18 @@ namespace Fralle.PingTap
       cameraShakeTransform.AddShakeEvent(cameraShake);
       abilityVolume.weight = 1;
       speedLinesEffect.Emit(100);
-      playerController.Camera.fieldOfView = defaultFov + addFov;
+      playerController.camera.fieldOfView = defaultFov + addFov;
 
       abilityController.StartCoroutine(StopDash());
     }
 
     void Reset()
     {
-      playerController.IsLocked = false;
+      playerController.isLocked = false;
       rigidBody.velocity = Vector3.zero;
       rigidBody.useGravity = true;
 
-      playerController.Camera.fieldOfView = defaultFov;
+      playerController.camera.fieldOfView = defaultFov;
       abilityVolume.weight = 0;
       IsActive = false;
     }

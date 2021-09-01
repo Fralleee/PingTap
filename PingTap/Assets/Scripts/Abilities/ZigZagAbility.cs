@@ -34,7 +34,7 @@ namespace Fralle.PingTap
     {
       base.Perform();
 
-      playerController.IsLocked = true;
+      playerController.isLocked = true;
       coroutine = abilityController.StartCoroutine(ZigZag());
     }
 
@@ -58,7 +58,7 @@ namespace Fralle.PingTap
     {
       rigidBody.velocity = Vector3.zero;
       zagRight = false;
-      playerController.IsLocked = false;
+      playerController.isLocked = false;
       IsActive = false;
     }
 

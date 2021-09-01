@@ -5,7 +5,7 @@ namespace Fralle.Gameplay
 {
   public class MatchStatePrepare : IState<MatchState>
   {
-    public MatchState identifier => MatchState.Prepare;
+    public MatchState Identifier => MatchState.Prepare;
     float prepareTime;
 
     public void OnEnter()

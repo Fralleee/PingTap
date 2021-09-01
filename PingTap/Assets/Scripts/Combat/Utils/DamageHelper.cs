@@ -20,7 +20,7 @@ namespace Fralle.PingTap
     {
       AddForce(raycastAttack, hit);
 
-      bool hitboxHit = raycastAttack.Combatant.teamController.Hitboxes.IsInLayerMask(hit.collider.gameObject.layer);
+      bool hitboxHit = raycastAttack.Combatant.teamController.hitboxes.IsInLayerMask(hit.collider.gameObject.layer);
       if (!hitboxHit)
         return null;
 
@@ -60,7 +60,7 @@ namespace Fralle.PingTap
     {
       AddForce(projectileData, position, collision);
 
-      bool hitboxHit = projectileData.Attacker.teamController.Hitboxes.IsInLayerMask(collision.collider.gameObject.layer);
+      bool hitboxHit = projectileData.Attacker.teamController.hitboxes.IsInLayerMask(collision.collider.gameObject.layer);
       if (!hitboxHit)
         return null;
 
@@ -124,7 +124,7 @@ namespace Fralle.PingTap
       }
 
       TeamController teamController = projectileData.Attacker.teamController;
-      Collider[] colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, teamController.Hostiles | 1 << 0);
+      Collider[] colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, teamController.hostiles | 1 << 0);
 
       List<Rigidbody> rigidBodies = new List<Rigidbody>();
       HashSet<DamageController> targets = new HashSet<DamageController>();

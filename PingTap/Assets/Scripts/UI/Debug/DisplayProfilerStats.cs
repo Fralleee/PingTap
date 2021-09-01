@@ -32,15 +32,15 @@ namespace Fralle.UI
       StringBuilder sb = new StringBuilder(500);
 
       if (frameTime)
-        sb.AppendLine($"Frame Time: {profilerController.FrameTime:F1} ms");
+        sb.AppendLine($"Frame Time: {profilerController.frameTime:F1} ms");
       if (fps)
-        sb.AppendLine($"FPS: {profilerController.Fps:F1} ms");
+        sb.AppendLine($"FPS: {profilerController.fps:F1} ms");
       if (gcMemory)
-        sb.AppendLine($"GC Memory: {profilerController.GcMemory} MB");
+        sb.AppendLine($"GC Memory: {profilerController.gcMemory} MB");
       if (systemMemory)
-        sb.AppendLine($"System Memory: {profilerController.SystemMemory} MB");
+        sb.AppendLine($"System Memory: {profilerController.systemMemory} MB");
       if (drawCalls)
-        sb.AppendLine($"Draw Calls: {profilerController.DrawCalls}");
+        sb.AppendLine($"Draw Calls: {profilerController.drawCalls}");
 
       statsText.text = sb.ToString();
     }

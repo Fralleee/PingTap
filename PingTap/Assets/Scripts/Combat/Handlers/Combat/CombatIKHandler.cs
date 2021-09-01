@@ -25,8 +25,8 @@ namespace Fralle.PingTap
       HandIK[] handIKs = this.combatant.GetComponentsInChildren<HandIK>();
       HandIKTarget[] handIKTargets = this.combatant.GetComponentsInChildren<HandIKTarget>();
 
-      leftHandIKs = handIKs.Where(x => x.Hand == Hand.Left).ToArray();
-      rightHandIKs = handIKs.Where(x => x.Hand == Hand.Right).ToArray();
+      leftHandIKs = handIKs.Where(x => x.hand == Hand.Left).ToArray();
+      rightHandIKs = handIKs.Where(x => x.hand == Hand.Right).ToArray();
       leftHandIKTargets = handIKTargets.Where(x => x.hand == Hand.Left).ToArray();
       rightHandIKTargets = handIKTargets.Where(x => x.hand == Hand.Right).ToArray();
 

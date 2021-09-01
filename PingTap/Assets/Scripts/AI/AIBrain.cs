@@ -38,7 +38,7 @@ namespace Fralle.PingTap.AI
     public void AlertOthers(Vector3 position, AIState priorityState)
     {
       ResetAlertTimer();
-      Collider[] colliders = Physics.OverlapSphere(transform.position, alertDistance, 1 << teamController.AllyTeam);
+      Collider[] colliders = Physics.OverlapSphere(transform.position, alertDistance, 1 << teamController.allyTeam);
       foreach (Collider item in colliders)
       {
         AIBrain allyBrain = item.GetComponent<AIBrain>();
@@ -77,9 +77,9 @@ namespace Fralle.PingTap.AI
     void OnTransition(IState<AIState> newState)
     {
       if (debugTransitions)
-        Debug.Log($"Transitioned from {currentState} to {newState.identifier}");
+        Debug.Log($"Transitioned from {currentState} to {newState.Identifier}");
 
-      currentState = newState.identifier;
+      currentState = newState.Identifier;
     }
 
     void OnDrawGizmos()

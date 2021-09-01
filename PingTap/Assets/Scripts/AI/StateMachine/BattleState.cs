@@ -5,7 +5,7 @@ namespace Fralle.PingTap.AI
 {
   public abstract class BattleState : ScriptableObject, IState<AIState>
   {
-    public AIState identifier => AIState.Battling;
+    public AIState Identifier => AIState.Battling;
 
     public abstract void OnEnter();
 

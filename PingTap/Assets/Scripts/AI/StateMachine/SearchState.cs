@@ -5,7 +5,7 @@ namespace Fralle.PingTap.AI
 {
   public abstract class SearchState : ScriptableObject, IState<AIState>
   {
-    public AIState identifier => AIState.Searching;
+    public AIState Identifier => AIState.Searching;
 
     public abstract void OnEnter();
 

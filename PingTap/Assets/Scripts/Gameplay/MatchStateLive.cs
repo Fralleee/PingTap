@@ -5,7 +5,7 @@ namespace Fralle.Gameplay
 {
   public class MatchStateLive : IState<MatchState>
   {
-    public MatchState identifier => MatchState.Live;
+    public MatchState Identifier => MatchState.Live;
     public void OnEnter()
     {
       Managers.Instance.State.SetState(MatchState.Live);

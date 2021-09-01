@@ -45,9 +45,9 @@ namespace Fralle.Gameplay
 
     public void SetState(MatchState newState)
     {
-      IState<MatchState> state = states.FirstOrDefault(x => x.identifier == newState);
+      IState<MatchState> state = states.FirstOrDefault(x => x.Identifier == newState);
       stateMachine.SetState(state);
-      MatchState = state.identifier;
+      MatchState = state.Identifier;
       EventManager.Broadcast(new GameStateChangeEvent(MatchState, newState));
     }
 

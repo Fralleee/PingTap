@@ -47,7 +47,7 @@ namespace Fralle.PingTap
         Reset();
       else
       {
-        if (playerController.IsGrounded)
+        if (playerController.isGrounded)
           ResetMomentum();
 
         PerformBob();
@@ -61,13 +61,13 @@ namespace Fralle.PingTap
 
     void PerformBob()
     {
-      if (playerController.RigidBody.velocity.y > 0) // Jumping
+      if (playerController.rigidBody.velocity.y > 0) // Jumping
       {
-        momentum -= playerController.RigidBody.velocity.y * jumpMagnitude;
+        momentum -= playerController.rigidBody.velocity.y * jumpMagnitude;
       }
       else // Falling
       {
-        momentum -= playerController.RigidBody.velocity.y * fallMagnitude;
+        momentum -= playerController.rigidBody.velocity.y * fallMagnitude;
       }
 
       momentum = Mathf.Clamp(momentum, -clampMomentum, clampMomentum);

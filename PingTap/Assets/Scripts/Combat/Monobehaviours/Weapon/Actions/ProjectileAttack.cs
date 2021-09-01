@@ -61,7 +61,7 @@ namespace Fralle.PingTap
         Combatant.stats.OnAttack(1);
 
         Ray ray = new Ray(Weapon.Combatant.aimTransform.position, Weapon.Combatant.aimTransform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, projectileData.Range, Weapon.Combatant.teamController.AttackLayerMask))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, projectileData.Range, Weapon.Combatant.teamController.attackLayerMask))
           projectileData.Forward = (hitInfo.point - muzzle.position).normalized;
         else
           projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;
@@ -71,7 +71,7 @@ namespace Fralle.PingTap
 
         GameObject instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.Forward, transform.up));
         Projectile projectile = instance.GetComponent<Projectile>();
-        projectile.gameObject.layer = Combatant.teamController.AllyProjectiles;
+        projectile.gameObject.layer = Combatant.teamController.allyProjectiles;
         projectile.Initiate(projectileData);
 
         yield return new WaitForSeconds(delayTimePerProjectiles);

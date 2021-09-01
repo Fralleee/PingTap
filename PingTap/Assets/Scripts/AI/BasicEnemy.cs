@@ -38,7 +38,7 @@ namespace Fralle.PingTap
 
     public override void Alert(Vector3 position, AIState statePriority)
     {
-      if (stateMachine.CurrentState.identifier < statePriority)
+      if (stateMachine.CurrentState.Identifier < statePriority)
         aiBrain.StartCoroutine(SetStartledState(position));
       else
         aiBrain.ResetAlertTimer();
@@ -47,7 +47,7 @@ namespace Fralle.PingTap
     IEnumerator SetStartledState(Vector3 position)
     {
       yield return new WaitForSeconds(aiBrain.reactionTimeRange.GetValueBetween());
-      if (stateMachine.CurrentState.identifier != AIState.Startled)
+      if (stateMachine.CurrentState.Identifier != AIState.Startled)
         stateMachine.SetState(startledState);
 
       startledState.NewOrigin(position);
@@ -84,7 +84,7 @@ namespace Fralle.PingTap
     void SetupTransitions()
     {
       stateMachine.AddTransition(startledState, searchState, () => navMeshAgent.remainingDistance < 0.5f);
-      stateMachine.AddTransition(searchState, wanderState, () => stateMachine.currentStateTime > maxSearchStateTime);
+      stateMachine.AddTransition(searchState, wanderState, () => stateMachine.CurrentStateTime > maxSearchStateTime);
 
       stateMachine.AddTransition(wanderState, chaseState, () => aiTargetingSystem.TargetInSight);
       stateMachine.AddTransition(searchState, chaseState, () => aiTargetingSystem.TargetInSight);

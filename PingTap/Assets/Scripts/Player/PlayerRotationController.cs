@@ -23,7 +23,7 @@ namespace Fralle
 
     void UpdateRotation()
     {
-      if (playerController.IsMoving)
+      if (playerController.isMoving)
       {
         transform.rotation = orientation.rotation;
         doRotate = false;

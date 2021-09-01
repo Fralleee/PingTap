@@ -4,7 +4,7 @@ namespace Fralle.Gameplay
 {
   public class MatchStateEnd : IState<MatchState>
   {
-    public MatchState identifier => MatchState.End;
+    public MatchState Identifier => MatchState.End;
     public void OnEnter()
     {
       Managers.Instance.State.SetState(MatchState.End);

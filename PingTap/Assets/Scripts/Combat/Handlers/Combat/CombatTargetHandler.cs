@@ -22,7 +22,7 @@ namespace Fralle.PingTap
 
     public void DetectTargets()
     {
-      if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 100f, 1 << defaultLayer | teamController.Hostiles | teamController.Neutrals))
+      if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, 100f, 1 << defaultLayer | teamController.hostiles | teamController.neutrals))
       {
         DamageController damageController = hitInfo.transform.gameObject.GetComponent<DamageController>();
         if (damageController)

@@ -38,10 +38,10 @@ namespace Fralle.PingTap
     {
       Movement = context.ReadValue<Vector2>();
 
-      if (animator)
+      if (Animator)
       {
-        animator.SetFloat(animHorizontal, Movement.x);
-        animator.SetFloat(animVertical, Movement.y);
+        Animator.SetFloat(AnimHorizontal, Movement.x);
+        Animator.SetFloat(AnimVertical, Movement.y);
       }
     }
 
@@ -57,7 +57,7 @@ namespace Fralle.PingTap
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-      crouchButton = context.ReadValueAsButton();
+      CrouchButton = context.ReadValueAsButton();
     }
   }
 }
