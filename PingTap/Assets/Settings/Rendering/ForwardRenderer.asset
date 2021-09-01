@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: UI on top
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     passTag: UI on top
     Event: 600
@@ -39,6 +39,19 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
+--- !u!114 &-3978275373711064760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31e9cfd28b3797e46937b6dfb680b777, type: 3}
+  m_Name: Depth Normals
+  m_EditorClassIdentifier: 
+  m_Active: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,7 +68,9 @@ MonoBehaviour:
   - {fileID: 5226530478053982904}
   - {fileID: -5549499571176310594}
   - {fileID: 407727501905947364}
-  m_RendererFeatureMap: b8022948c75d8848be78dae28a37fcb2e4ea42b4008aa805
+  - {fileID: -3978275373711064760}
+  - {fileID: 911732874907257248}
+  m_RendererFeatureMap: b8022948c75d8848be78dae28a37fcb2e4ea42b4008aa8054881441ba053cac8a089e41a3820a70c
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
   shaders:
@@ -97,7 +112,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d111dc2a0b22b142804f4d59508b893, type: 3}
   m_Name: URPOutlineFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
+--- !u!114 &911732874907257248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1195fbc42e1122468a7bd17f67b3f0f, type: 3}
+  m_Name: Outline
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    outlineMaterial: {fileID: 2100000, guid: d803af5aaebb95145b6448c4057ea517, type: 2}
 --- !u!114 &1696981692264647854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
   m_Name: SSAO
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_Shader: {fileID: 4800000, guid: 0849e84e3d62649e8882e9d6f056a017, type: 3}
   m_Settings:
     Downsample: 1

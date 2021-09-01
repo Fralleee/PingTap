@@ -1,12 +1,7 @@
-﻿// This code is an adaptation of the open-source work by Alexander Ameye
-// From a tutorial originally posted here:
-// https://alexanderameye.github.io/outlineshader
-// Code also available on his Gist account
-// https://gist.github.com/AlexanderAmeye
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.XR;
 
 public class DepthNormalsFeature : ScriptableRendererFeature
 {
@@ -14,16 +9,16 @@ public class DepthNormalsFeature : ScriptableRendererFeature
   {
     int kDepthBufferBits = 32;
     private RenderTargetHandle DepthAttachmentHandle { get; set; }
-    private RenderTextureDescriptor Descriptor { get; set; }
+    internal RenderTextureDescriptor Descriptor { get; private set; }
 
     private Material depthNormalsMaterial = null;
-    private FilteringSettings filteringSettings;
-    string profilerTag = "DepthNormals Prepass";
-    ShaderTagId shaderTagId = new ShaderTagId("DepthOnly");
+    private FilteringSettings mFilteringSettings;
+    string mProfilerTag = "DepthNormals Prepass";
+    ShaderTagId mShaderTagId = new ShaderTagId("DepthOnly");
 
     public DepthNormalsPass(RenderQueueRange renderQueueRange, LayerMask layerMask, Material material)
     {
-      filteringSettings = new FilteringSettings(renderQueueRange, layerMask);
+      mFilteringSettings = new FilteringSettings(renderQueueRange, layerMask);
       depthNormalsMaterial = material;
     }
 
@@ -53,21 +48,21 @@ public class DepthNormalsFeature : ScriptableRendererFeature
     // You don't have to call ScriptableRenderContext.submit, the render pipeline will call it at specific points in the pipeline.
     public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
     {
-      CommandBuffer cmd = CommandBufferPool.Get(profilerTag);
+      CommandBuffer cmd = CommandBufferPool.Get(mProfilerTag);
 
-      using (new ProfilingScope(cmd, new ProfilingSampler(profilerTag)))
+      using (new ProfilingScope(cmd, profilingSampler))
       {
         context.ExecuteCommandBuffer(cmd);
         cmd.Clear();
 
-        SortingCriteria sortFlags = renderingData.cameraData.defaultOpaqueSortFlags;
-        DrawingSettings drawSettings = CreateDrawingSettings(shaderTagId, ref renderingData, sortFlags);
+        var sortFlags = renderingData.cameraData.defaultOpaqueSortFlags;
+        var drawSettings = CreateDrawingSettings(mShaderTagId, ref renderingData, sortFlags);
         drawSettings.perObjectData = PerObjectData.None;
 
 
         ref CameraData cameraData = ref renderingData.cameraData;
         Camera camera = cameraData.camera;
-        if (cameraData.isStereoEnabled)
+        if (XRSettings.enabled)
           context.StartMultiEye(camera);
 
 
@@ -75,7 +70,7 @@ public class DepthNormalsFeature : ScriptableRendererFeature
 
 
         context.DrawRenderers(renderingData.cullResults, ref drawSettings,
-            ref filteringSettings);
+            ref mFilteringSettings);
 
         cmd.SetGlobalTexture("_CameraDepthNormalsTexture", DepthAttachmentHandle.id);
       }
@@ -87,10 +82,11 @@ public class DepthNormalsFeature : ScriptableRendererFeature
     /// Cleanup any allocated resources that were created during the execution of this render pass.
     public override void FrameCleanup(CommandBuffer cmd)
     {
-      if (DepthAttachmentHandle == RenderTargetHandle.CameraTarget)
-        return;
-      cmd.ReleaseTemporaryRT(DepthAttachmentHandle.id);
-      DepthAttachmentHandle = RenderTargetHandle.CameraTarget;
+      if (DepthAttachmentHandle != RenderTargetHandle.CameraTarget)
+      {
+        cmd.ReleaseTemporaryRT(DepthAttachmentHandle.id);
+        DepthAttachmentHandle = RenderTargetHandle.CameraTarget;
+      }
     }
   }
 
@@ -101,10 +97,8 @@ public class DepthNormalsFeature : ScriptableRendererFeature
   public override void Create()
   {
     depthNormalsMaterial = CoreUtils.CreateEngineMaterial("Hidden/Internal-DepthNormalsTexture");
-    depthNormalsPass = new DepthNormalsPass(RenderQueueRange.opaque, -1, depthNormalsMaterial)
-    {
-      renderPassEvent = RenderPassEvent.AfterRenderingPrePasses
-    };
+    depthNormalsPass = new DepthNormalsPass(RenderQueueRange.opaque, -1, depthNormalsMaterial);
+    depthNormalsPass.renderPassEvent = RenderPassEvent.AfterRenderingPrePasses;
     depthNormalsTexture.Init("_CameraDepthNormalsTexture");
   }
 

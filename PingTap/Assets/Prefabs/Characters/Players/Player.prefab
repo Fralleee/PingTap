@@ -631,7 +631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386371905872086469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.17871857, y: -0.024671793, z: -0.1818161}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1386371905833920356}
@@ -900,11 +900,10 @@ MonoBehaviour:
   mouseSensitivity: 3
   smoothTime: 0.01
   clampY: 90
-  crouchingSpeed: 8
-  crouchHeight: 1
+  crouchingSpeed: 10
   gravityModifier: 2
-  jumpHeight: 1.5
-  ModifiedJumpHeight: 1.5
+  jumpHeight: 1
+  ModifiedJumpHeight: 1
   queueJump: 0
   baseMovementSpeed: 4
   stopTime: 0.05
@@ -916,6 +915,7 @@ MonoBehaviour:
   CameraRig: {fileID: 1386371907097986392}
   Orientation: {fileID: 1386371906370868750}
   Body: {fileID: 1386371905872086479}
+  Model: {fileID: 5032271542734176097}
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -1376,7 +1376,7 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 4194304
+    m_Bits: 2147483648
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
@@ -2567,7 +2567,7 @@ PrefabInstance:
     - target: {fileID: 237315259224849010, guid: adf0a4e66f418a7499ac33e044321cf3,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.0043346034
+      value: 0.004334607
       objectReference: {fileID: 0}
     - target: {fileID: 237315259224849010, guid: adf0a4e66f418a7499ac33e044321cf3,
         type: 3}
@@ -2672,7 +2672,7 @@ PrefabInstance:
     - target: {fileID: 4529191906844716859, guid: adf0a4e66f418a7499ac33e044321cf3,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.002870334
+      value: 0.0028703406
       objectReference: {fileID: 0}
     - target: {fileID: 4529191906844716859, guid: adf0a4e66f418a7499ac33e044321cf3,
         type: 3}
