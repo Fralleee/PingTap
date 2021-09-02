@@ -40,7 +40,7 @@ namespace Fralle.PingTap
 
     IEnumerator ZigZag()
     {
-      IsActive = true;
+      isActive = true;
       for (int i = 0; i < zigZags; i++)
       {
         rigidBody.velocity = Vector3.zero;
@@ -59,7 +59,7 @@ namespace Fralle.PingTap
       rigidBody.velocity = Vector3.zero;
       zagRight = false;
       playerController.isLocked = false;
-      IsActive = false;
+      isActive = false;
     }
 
     public override void Abort()

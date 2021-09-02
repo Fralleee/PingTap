@@ -3,7 +3,6 @@ using Sirenix.OdinInspector;
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Fralle.PingTap
 {
@@ -25,7 +24,6 @@ namespace Fralle.PingTap
     [InlineEditor(InlineEditorObjectFieldModes.Foldout)]
     public ImpactAtlas impactAtlas;
 
-    [FormerlySerializedAs("HasActiveCamera")]
     [Header("Flags")]
     public bool hasActiveCamera;
 

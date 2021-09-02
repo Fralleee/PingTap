@@ -70,7 +70,7 @@ namespace Fralle.PingTap
     {
       base.Perform();
 
-      IsActive = true;
+      isActive = true;
       playerController.isLocked = true;
       Vector3 direction = playerController.cameraRig.forward;
       if (playerController.Movement.magnitude > 0)
@@ -100,7 +100,7 @@ namespace Fralle.PingTap
 
       playerController.camera.fieldOfView = defaultFov;
       abilityVolume.weight = 0;
-      IsActive = false;
+      isActive = false;
     }
 
     public override void Abort()
