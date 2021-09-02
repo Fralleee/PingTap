@@ -21,7 +21,7 @@ namespace Fralle.PingTap
     float reloadStatMultiplier = 1f;
     Weapon weapon;
 
-    public float ReloadTime => (reloadSpeed * reloadStatMultiplier);
+    public float ReloadTime => reloadSpeed * reloadStatMultiplier;
 
     [Header("Debug")]
     [ReadOnly] public float ReloadPercentage;

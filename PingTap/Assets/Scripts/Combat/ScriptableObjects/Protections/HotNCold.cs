@@ -10,14 +10,14 @@ namespace Fralle.PingTap
     {
       bool fireToWater = damageData.Element == Element.Fire && effectHandler.DamageEffects.Any(x => x.Element == Element.Water);
       if (fireToWater)
-        return new ProtectionResult() { EffectProtection = EffectProtection.Ignore, DamageData = damageData };
+        return new ProtectionResult { EffectProtection = EffectProtection.Ignore, DamageData = damageData };
 
       bool waterToFire = damageData.Element == Element.Water && effectHandler.DamageEffects.Any(x => x.Element == Element.Fire);
       if (waterToFire)
-        return new ProtectionResult() { EffectProtection = EffectProtection.Ignore, DamageData = damageData };
+        return new ProtectionResult { EffectProtection = EffectProtection.Ignore, DamageData = damageData };
 
       damageData.DamageAmount = 0;
-      return new ProtectionResult() { EffectProtection = EffectProtection, DamageData = damageData };
+      return new ProtectionResult { EffectProtection = EffectProtection, DamageData = damageData };
     }
   }
 }

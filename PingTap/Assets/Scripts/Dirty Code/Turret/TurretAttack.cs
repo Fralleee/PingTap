@@ -1,5 +1,6 @@
 ﻿using Fralle.PingTap;
 using Sirenix.OdinInspector;
+using System.Linq;
 using UnityEngine;
 
 namespace Fralle.Abilities.Turret
@@ -47,12 +48,7 @@ namespace Fralle.Abilities.Turret
     void GetMaxRange()
     {
       AttackAction[] attackActions = EquippedWeapon.GetComponentsInChildren<AttackAction>();
-      float longestRange = 0f;
-      foreach (AttackAction attackAction in attackActions)
-      {
-        if (attackAction.GetRange() > longestRange)
-          longestRange = attackAction.GetRange();
-      }
+      float longestRange = attackActions.Select(attackAction => attackAction.GetRange()).Prepend(0f).Max();
       turret.Range = Mathf.Min(longestRange, 200);
     }
 

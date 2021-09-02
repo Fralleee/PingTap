@@ -25,35 +25,34 @@ namespace Fralle.PingTap
         return null;
 
       DamageController damageController = hit.transform.GetComponentInParent<DamageController>();
-      if (damageController != null)
+      if (damageController == null)
+        return null;
+
+      // this will cause issues if we are for example hitting targets with shotgun
+      // we will receive more hits than shots fired
+      Hitbox hitbox = hit.collider.transform.GetComponent<Hitbox>();
+      HitArea hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
+      float falloffMultiplier = raycastAttack.rangeDamageFalloff.Evaluate(hit.distance / raycastAttack.range);
+      float damageAmount = raycastAttack.Damage;
+      DamageData damageData = new DamageData
       {
-        // this will cause issues if we are for example hitting targets with shotgun
-        // we will receive more hits than shots fired
-        Hitbox hitbox = hit.collider.transform.GetComponent<Hitbox>();
-        HitArea hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
-        float falloffMultiplier = raycastAttack.rangeDamageFalloff.Evaluate(hit.distance / raycastAttack.range);
-        float damageAmount = raycastAttack.Damage;
-        DamageData damageData = new DamageData()
-        {
-          Attacker = raycastAttack.Combatant,
-          Element = raycastAttack.Element,
-          Collider = hit.collider,
-          Effects = SetupDamageEffects(raycastAttack.DamageEffects, raycastAttack.Combatant, damageAmount),
-          HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
-          Force = raycastAttack.Combatant.aimTransform.forward * raycastAttack.pushForce,
-          Position = hit.point,
-          Normal = hit.normal,
-          HitArea = hitArea,
-          DamageAmount = hitArea.GetMultiplier() * damageAmount * falloffMultiplier,
-          ImpactEffect = hitArea.GetImpactEffect(damageController)
-        };
+        Attacker = raycastAttack.Combatant,
+        Element = raycastAttack.element,
+        Collider = hit.collider,
+        Effects = SetupDamageEffects(raycastAttack.damageEffects, raycastAttack.Combatant, damageAmount),
+        HitAngle = Vector3.Angle((raycastAttack.Weapon.transform.position - hit.transform.position).normalized, hit.transform.forward),
+        Force = raycastAttack.Combatant.aimTransform.forward * raycastAttack.pushForce,
+        Position = hit.point,
+        Normal = hit.normal,
+        HitArea = hitArea,
+        DamageAmount = hitArea.GetMultiplier() * damageAmount * falloffMultiplier,
+        ImpactEffect = hitArea.GetImpactEffect(damageController)
+      };
 
-        damageController.ReceiveAttack(damageData);
-        raycastAttack.Combatant.SuccessfulHit(damageData);
-        return damageData;
-      }
+      damageController.ReceiveAttack(damageData);
+      raycastAttack.Combatant.SuccessfulHit(damageData);
+      return damageData;
 
-      return null;
     }
 
     public static DamageData ProjectileHit(ProjectileData projectileData, Vector3 position, Collision collision)
@@ -67,27 +66,26 @@ namespace Fralle.PingTap
       Hitbox hitbox = collision.collider.transform.GetComponent<Hitbox>();
       HitArea hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
       DamageController damageController = collision.transform.GetComponentInParent<DamageController>();
-      if (damageController != null)
-      {
-        DamageData damageData = new DamageData()
-        {
-          Attacker = projectileData.Attacker,
-          Element = projectileData.Element,
-          HitAngle = Vector3.Angle((position - collision.transform.position).normalized, collision.transform.forward),
-          Effects = SetupDamageEffects(projectileData.DamageEffects, projectileData.Attacker, projectileData.Damage),
-          Force = projectileData.Forward * projectileData.Force,
-          Position = collision.GetContact(0).point,
-          Normal = collision.GetContact(0).normal,
-          HitArea = hitArea,
-          DamageAmount = hitArea.GetMultiplier() * projectileData.Damage,
-          ImpactEffect = hitArea.GetImpactEffect(damageController)
-        };
-        damageController.ReceiveAttack(damageData);
-        projectileData.Attacker.SuccessfulHit(damageData);
+      if (damageController == null)
+        return null;
 
-        return damageData;
-      }
-      return null;
+      DamageData damageData = new DamageData
+      {
+        Attacker = projectileData.Attacker,
+        Element = projectileData.Element,
+        HitAngle = Vector3.Angle((position - collision.transform.position).normalized, collision.transform.forward),
+        Effects = SetupDamageEffects(projectileData.DamageEffects, projectileData.Attacker, projectileData.Damage),
+        Force = projectileData.Forward * projectileData.Force,
+        Position = collision.GetContact(0).point,
+        Normal = collision.GetContact(0).normal,
+        HitArea = hitArea,
+        DamageAmount = hitArea.GetMultiplier() * projectileData.Damage,
+        ImpactEffect = hitArea.GetImpactEffect(damageController)
+      };
+      damageController.ReceiveAttack(damageData);
+      projectileData.Attacker.SuccessfulHit(damageData);
+
+      return damageData;
     }
 
     public static DamageData CollisionHit(Hitbox hitbox, Collision collision)
@@ -95,25 +93,24 @@ namespace Fralle.PingTap
       HitArea hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
       DamageController damageController = hitbox.GetComponentInParent<DamageController>();
       float damage = collision.impulse.magnitude;
-      if (damageController != null)
-      {
-        DamageData damageData = new DamageData()
-        {
-          Attacker = null,
-          Element = Element.None,
-          HitAngle = Vector3.Angle((collision.GetContact(0).point - collision.transform.position).normalized, collision.transform.forward),
-          Force = -collision.impulse,
-          Position = collision.GetContact(0).point,
-          Normal = collision.GetContact(0).normal,
-          HitArea = hitArea,
-          DamageAmount = hitArea.GetMultiplier() * damage,
-          ImpactEffect = hitArea.GetImpactEffect(damageController)
-        };
-        damageController.ReceiveAttack(damageData);
+      if (damageController == null)
+        return null;
 
-        return damageData;
-      }
-      return null;
+      DamageData damageData = new DamageData
+      {
+        Attacker = null,
+        Element = Element.None,
+        HitAngle = Vector3.Angle((collision.GetContact(0).point - collision.transform.position).normalized, collision.transform.forward),
+        Force = -collision.impulse,
+        Position = collision.GetContact(0).point,
+        Normal = collision.GetContact(0).normal,
+        HitArea = hitArea,
+        DamageAmount = hitArea.GetMultiplier() * damage,
+        ImpactEffect = hitArea.GetImpactEffect(damageController)
+      };
+      damageController.ReceiveAttack(damageData);
+
+      return damageData;
     }
 
     public static void Explosion(ProjectileData projectileData, Vector3 position, Collision collision = null)
@@ -152,7 +149,7 @@ namespace Fralle.PingTap
 
         float damageAmount = projectileData.Damage * distanceMultiplier;
         Vector3 targetPosition = damageController.transform.position;
-        DamageData damageData = new DamageData()
+        DamageData damageData = new DamageData
         {
           Attacker = projectileData.Attacker,
           Element = projectileData.Element,

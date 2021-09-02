@@ -21,7 +21,7 @@ namespace Fralle.PingTap.Benchmark
     {
       this.benchmarkController = benchmarkController;
       Debug.Log("--- Running AI Combat Testing ---");
-      IEnumerator[] enumerators = new IEnumerator[] { Wave1(), Wave2(), Wave3(), Wave4() };
+      IEnumerator[] enumerators = { Wave1(), Wave2(), Wave3(), Wave4() };
       benchmarkController.RunEnumerators(enumerators);
     }
 
@@ -79,7 +79,7 @@ namespace Fralle.PingTap.Benchmark
       End();
     }
 
-    void End()
+    static void End()
     {
       Debug.Log("--- Finished running AI Combat Testing ---");
     }
@@ -94,19 +94,18 @@ namespace Fralle.PingTap.Benchmark
       teamController.Setup();
     }
 
-    bool RandomPoint(out Vector3 result)
+    static void RandomPoint(out Vector3 result)
     {
       for (int i = 0; i < 30; i++)
       {
         Vector3 randomPoint = Vector3.zero + Random.insideUnitSphere * 25f;
-        if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
-        {
-          result = hit.position;
-          return true;
-        }
+        if (!NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+          continue;
+
+        result = hit.position;
+        return;
       }
       result = Vector3.zero;
-      return false;
     }
   }
 }

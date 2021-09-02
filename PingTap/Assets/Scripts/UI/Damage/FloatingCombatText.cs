@@ -24,6 +24,10 @@ namespace Fralle.UI
 
     void AddFloatingCombatText(DamageData damageData)
     {
+      Transform cameraTransform = Camera.main?.transform;
+      if (cameraTransform == null)
+        return;
+
       GameObject instance = ObjectPool.Spawn(combatTextPrefab, transform.position, Quaternion.identity);
 
       SetPosition(instance);
@@ -31,7 +35,7 @@ namespace Fralle.UI
       TextMeshPro text = instance.GetComponentInChildren<TextMeshPro>();
       SetText(text, Mathf.RoundToInt(damageData.DamageAmount));
 
-      instance.transform.LookAt(instance.transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
+      instance.transform.LookAt(instance.transform.position + cameraTransform.rotation * Vector3.forward, cameraTransform.rotation * Vector3.up);
     }
 
     void SetPosition(GameObject go)
@@ -40,7 +44,7 @@ namespace Fralle.UI
       go.transform.position = transform.position + position;
     }
 
-    static void SetText(TextMeshPro text, int number)
+    static void SetText(TMP_Text text, int number)
     {
       text.text = number.ToString();
     }

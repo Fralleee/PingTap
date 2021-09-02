@@ -9,12 +9,12 @@ namespace Fralle.PingTap
 
     void Start()
     {
-      if (configuration)
-      {
-        headbob = GetComponentInParent<HeadbobCameraTransformer>();
-        if (headbob)
-          headbob.overrideConfguration = configuration;
-      }
+      if (!configuration)
+        return;
+
+      headbob = GetComponentInParent<HeadbobCameraTransformer>();
+      if (headbob)
+        headbob.overrideConfguration = configuration;
 
     }
 

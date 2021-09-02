@@ -33,11 +33,11 @@ namespace Fralle.UI.Menu
         slider.onValueChanged.AddListener(SliderValueChanged);
       }
 
-      if (input)
-      {
-        input.text = PlayerPrefs.GetFloat(key).ToString("##.##");
-        input.onValueChanged.AddListener(InputValueChanged);
-      }
+      if (!input)
+        return;
+
+      input.text = PlayerPrefs.GetFloat(key).ToString("##.##");
+      input.onValueChanged.AddListener(InputValueChanged);
     }
 
     void SliderValueChanged(float value)

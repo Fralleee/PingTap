@@ -41,7 +41,7 @@ namespace Fralle.Abilities.Turret
         return;
 
       rigidbody.isKinematic = true;
-      float distance = (collider.size.y / 2f) + 0.1f;
+      float distance = collider.size.y / 2f + 0.1f;
 
       if (Physics.Raycast(transform.position, Vector3.down, out hitInfo, distance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
       {

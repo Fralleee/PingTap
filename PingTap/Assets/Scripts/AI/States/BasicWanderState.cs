@@ -6,7 +6,6 @@ namespace Fralle.PingTap.AI
   [CreateAssetMenu(menuName = "AI/States/Wander/Basic")]
   public class BasicWanderState : WanderState
   {
-    AIBrain aiBrain;
     AIController controller;
 
     float wanderDistance = 10f;
@@ -31,7 +30,6 @@ namespace Fralle.PingTap.AI
 
     public override void Setup(AIBrain aiBrain)
     {
-      this.aiBrain = aiBrain;
       controller = aiBrain.GetComponent<AIController>();
     }
   }

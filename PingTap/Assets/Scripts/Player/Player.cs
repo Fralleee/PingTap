@@ -50,7 +50,7 @@ namespace Fralle
       //QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
     }
 
-    void OnGamestateChanged(GameState gameState)
+    static void OnGamestateChanged(GameState gameState)
     {
     }
 

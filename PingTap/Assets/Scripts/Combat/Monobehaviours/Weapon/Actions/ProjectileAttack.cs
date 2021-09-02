@@ -44,9 +44,8 @@ namespace Fralle.PingTap
       projectileData.Attacker = Combatant;
       projectileData.Forward = Weapon.Combatant.aimTransform.forward;
       projectileData.Damage = Damage;
-      projectileData.Element = Element;
-      projectileData.DamageEffects = DamageEffects;
-      projectileData.HitboxLayer = HitboxLayer;
+      projectileData.Element = element;
+      projectileData.DamageEffects = damageEffects;
 
 
       StartCoroutine(SpawnProjectiles(muzzle));
@@ -66,7 +65,7 @@ namespace Fralle.PingTap
         else
           projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;
 
-        Vector2 spread = (Random.insideUnitCircle * spreadRadiusOnMaxRange) / projectileData.Range;
+        Vector2 spread = Random.insideUnitCircle * spreadRadiusOnMaxRange / projectileData.Range;
         projectileData.Forward += new Vector3(0, spread.y, spread.x);
 
         GameObject instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.Forward, transform.up));

@@ -5,19 +5,14 @@
     public static float AsDamageModifier(float damageModifier, DamageType damageApplication,
       DamageController target, float weaponDamage)
     {
-      switch (damageApplication)
+      return damageApplication switch
       {
-        case DamageType.Flat:
-          return damageModifier;
-        case DamageType.PercentageOfTargetCurrentHealth:
-          return target.CurrentHealth * damageModifier;
-        case DamageType.PercentageOfTargetMaxHealth:
-          return target.MaxHealth * damageModifier;
-        case DamageType.PercentageOfWeaponDamage:
-          return weaponDamage * damageModifier;
-        default:
-          return damageModifier;
-      }
+        DamageType.Flat => damageModifier,
+        DamageType.PercentageOfTargetCurrentHealth => target.CurrentHealth * damageModifier,
+        DamageType.PercentageOfTargetMaxHealth => target.MaxHealth * damageModifier,
+        DamageType.PercentageOfWeaponDamage => weaponDamage * damageModifier,
+        _ => damageModifier
+      };
     }
   }
 }

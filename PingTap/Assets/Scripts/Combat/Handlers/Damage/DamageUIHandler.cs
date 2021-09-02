@@ -1,6 +1,7 @@
 using EPOOutline;
 using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Fralle.PingTap
 {
@@ -30,11 +31,11 @@ namespace Fralle.PingTap
         outlinable.enabled = false;
 
       ui = this.damageController.transform.Find("TargetUI");
-      if (ui)
-      {
-        ui.gameObject.SetActive(false);
-        SetupUi();
-      }
+      if (!ui)
+        return;
+
+      ui.gameObject.SetActive(false);
+      SetupUi();
     }
 
     public void Timer()
@@ -55,7 +56,7 @@ namespace Fralle.PingTap
 
     public void Toggle(bool show, float? customDelay = null)
     {
-      timer = customDelay.HasValue ? customDelay.Value : delay;
+      timer = customDelay ?? delay;
 
       if (ui)
         ui.gameObject.SetActive(show);
@@ -69,9 +70,9 @@ namespace Fralle.PingTap
     void SetupUi()
     {
       if (healthbarPrefab)
-        GameObject.Instantiate(healthbarPrefab, ui.transform);
+        Object.Instantiate(healthbarPrefab, ui.transform);
       if (floatingCombatText)
-        GameObject.Instantiate(floatingCombatText, ui.transform);
+        Object.Instantiate(floatingCombatText, ui.transform);
     }
 
     void HandleReceiveAttack(DamageController dc, DamageData dd)

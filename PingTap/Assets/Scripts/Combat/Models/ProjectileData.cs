@@ -22,6 +22,5 @@ namespace Fralle.PingTap
     [HideInInspector] public Vector3 Forward;
     [HideInInspector] public Element Element;
     [HideInInspector] public DamageEffect[] DamageEffects;
-    [HideInInspector] public int HitboxLayer;
   }
 }

@@ -29,20 +29,20 @@ namespace Fralle.PingTap
 
     void HandleDamageTaken(DamageController damageController, DamageData damageData)
     {
-      if (audioSource && damageSound)
-      {
-        audioSource.clip = damageSound;
-        audioSource.Play();
-      }
+      if (!audioSource || !damageSound)
+        return;
+
+      audioSource.clip = damageSound;
+      audioSource.Play();
     }
 
     void HandleDeath(DamageController damageController, DamageData damageData)
     {
-      if (audioSource && deathSound)
-      {
-        audioSource.clip = deathSound;
-        audioSource.Play();
-      }
+      if (!audioSource || !deathSound)
+        return;
+
+      audioSource.clip = deathSound;
+      audioSource.Play();
     }
   }
 }

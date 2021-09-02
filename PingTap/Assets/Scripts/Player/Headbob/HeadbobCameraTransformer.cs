@@ -56,7 +56,7 @@ namespace Fralle.PingTap
     {
       timer += Configuration.BobbingSpeed * Time.deltaTime;
       if (timer > Mathf.PI * 2)
-        timer -= (Mathf.PI * 2);
+        timer -= Mathf.PI * 2;
     }
   }
 }

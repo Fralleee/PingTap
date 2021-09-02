@@ -2,6 +2,7 @@ using Fralle.Core;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Object = UnityEngine.Object;
 
 namespace Fralle.PingTap
 {
@@ -37,10 +38,10 @@ namespace Fralle.PingTap
         disableOnDeath.enabled = false;
 
       if (dc.gameObject.TryGetComponent(out CapsuleCollider targetCollider))
-        GameObject.Destroy(targetCollider);
+        Object.Destroy(targetCollider);
 
       dc.gameObject.SetLayerRecursively(LayerMask.NameToLayer("Corpse"));
-      GameObject.Destroy(dc.gameObject, 3f);
+      Object.Destroy(dc.gameObject, 3f);
     }
   }
 }

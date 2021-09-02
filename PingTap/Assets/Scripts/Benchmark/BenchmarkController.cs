@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -7,7 +9,7 @@ namespace Fralle.PingTap.Benchmark
   public class BenchmarkController : MonoBehaviour
   {
     [SerializeField] BenchmarkEvent benchmarkEvent;
-    [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] TextMeshProUGUI textMeshProUgui;
 
     int frameCount = 0;
     float timePassed = 0f;
@@ -29,7 +31,7 @@ namespace Fralle.PingTap.Benchmark
       get
       {
         float fps = frameCount / timePassed;
-        textMeshProUGUI.text = fps.ToString();
+        textMeshProUgui.text = fps.ToString();
 
         frameCount = 0;
         timePassed = 0;
@@ -42,10 +44,6 @@ namespace Fralle.PingTap.Benchmark
       StartCoroutine(RunEnumeratorsCoroutine(enumerators));
     }
 
-    IEnumerator RunEnumeratorsCoroutine(IEnumerator[] enumerators)
-    {
-      foreach (IEnumerator e in enumerators)
-        yield return StartCoroutine(e);
-    }
+    IEnumerator RunEnumeratorsCoroutine(IEnumerable<IEnumerator> enumerators) => enumerators.Select(StartCoroutine).GetEnumerator();
   }
 }

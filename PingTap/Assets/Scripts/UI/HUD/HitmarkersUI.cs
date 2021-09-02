@@ -43,7 +43,7 @@ namespace Fralle.UI.HUD
 
     void Fade()
     {
-      float percentage = 1 - ((lastHit - Time.time) / fadeTimer);
+      float percentage = 1 - (lastHit - Time.time) / fadeTimer;
 
       image.color = Color.Lerp(currentColor.Alpha(0.8f), currentColor.Alpha(0f), percentage);
 

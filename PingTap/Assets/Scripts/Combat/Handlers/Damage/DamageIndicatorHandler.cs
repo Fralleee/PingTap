@@ -49,10 +49,7 @@ namespace Fralle.PingTap
 
     void HandleReceiveAttack(DamageController dc, DamageData dd)
     {
-      if (dd.HitArea == HitArea.Head)
-        cameraShakeTransform.AddShakeEvent(headshotShake);
-      else
-        cameraShakeTransform.AddShakeEvent(bodyshotShake);
+      cameraShakeTransform.AddShakeEvent(dd.HitArea == HitArea.Head ? headshotShake : bodyshotShake);
     }
   }
 }

@@ -7,7 +7,7 @@ namespace Fralle.PingTap
 {
   public class AISensoryMemory
   {
-    public List<AIMemory> memories = new List<AIMemory>();
+    public List<AIMemory> Memories = new List<AIMemory>();
 
     TeamController teamController;
 
@@ -18,9 +18,8 @@ namespace Fralle.PingTap
 
     public void UpdateSenses(Sensor sensor)
     {
-      for (int i = 0; i < sensor.DetectedObjects.Count; i++)
+      foreach (var target in sensor.DetectedObjects)
       {
-        GameObject target = sensor.DetectedObjects[i];
         RefreshMemory(sensor.gameObject, target);
       }
     }
@@ -28,32 +27,32 @@ namespace Fralle.PingTap
     public void RefreshMemory(GameObject agent, GameObject target)
     {
       AIMemory memory = FetchMemory(target);
-      memory.damageController = target.GetComponentInParent<DamageController>();
-      memory.gameObject = target;
-      memory.hostile = teamController.CheckIfHostile(target);
-      memory.position = target.transform.position;
-      memory.direction = target.transform.position - agent.transform.position;
-      memory.distance = memory.direction.magnitude;
-      memory.angle = Vector3.Angle(agent.transform.forward, memory.direction);
-      memory.lastSeen = Time.time;
+      memory.DamageController = target.GetComponentInParent<DamageController>();
+      memory.GameObject = target;
+      memory.Hostile = teamController.CheckIfHostile(target);
+      memory.Position = target.transform.position;
+      memory.Direction = target.transform.position - agent.transform.position;
+      memory.Distance = memory.Direction.magnitude;
+      memory.Angle = Vector3.Angle(agent.transform.forward, memory.Direction);
+      memory.LastSeen = Time.time;
     }
 
     public AIMemory FetchMemory(GameObject gameObject)
     {
-      AIMemory memory = memories.Find(x => x.gameObject == gameObject);
-      if (memory == null)
-      {
-        memory = new AIMemory();
-        memories.Add(memory);
-      }
+      AIMemory memory = Memories.Find(x => x.GameObject == gameObject);
+      if (memory != null)
+        return memory;
+
+      memory = new AIMemory();
+      Memories.Add(memory);
 
       return memory;
     }
 
     public void ForgetMemories(float olderThan)
     {
-      memories.RemoveAll(m => m.Age > olderThan);
-      memories.RemoveAll(m => !m.gameObject);
+      Memories.RemoveAll(m => m.Age > olderThan);
+      Memories.RemoveAll(m => !m.GameObject);
     }
   }
 }

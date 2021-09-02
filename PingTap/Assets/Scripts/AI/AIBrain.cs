@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Fralle.PingTap.AI
 {
-  public partial class AIBrain : MonoBehaviour, IDisableOnDeath
+  public class AIBrain : MonoBehaviour, IDisableOnDeath
   {
     [HideInInspector] public TeamController teamController;
     [HideInInspector] public float lastAlert;

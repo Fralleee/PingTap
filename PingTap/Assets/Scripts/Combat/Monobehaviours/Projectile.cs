@@ -42,7 +42,7 @@ namespace Fralle.PingTap
           Explode();
       }
 
-      if (!hasCollision || (data.ExplodeOnImpactTime <= 0))
+      if (!hasCollision || data.ExplodeOnImpactTime <= 0)
         return;
       afterCollisionTime += Time.fixedDeltaTime;
       if (afterCollisionTime > data.ExplodeOnImpactTime)

@@ -4,11 +4,11 @@ namespace Fralle.PingTap
 {
   public class AIAttack : MonoBehaviour
   {
-    public Weapon Weapon;
-    public Transform Aim;
-    public AIAttackPattern Tap = new AIAttackPattern(new Vector2(0.4f, 0.6f), Vector2.one);
-    public AIAttackPattern Burst = new AIAttackPattern(new Vector2(0.5f, 0.9f), new Vector2(2, 4));
-    public AIAttackPattern Spray = new AIAttackPattern(Vector2.zero, new Vector2(10f, 15f));
+    public Weapon weapon;
+    public Transform aim;
+    public AIAttackPattern tap = new AIAttackPattern(new Vector2(0.4f, 0.6f), Vector2.one);
+    public AIAttackPattern burst = new AIAttackPattern(new Vector2(0.5f, 0.9f), new Vector2(2, 4));
+    public AIAttackPattern spray = new AIAttackPattern(Vector2.zero, new Vector2(10f, 15f));
     public Vector3 AimOffset { get; private set; }
     public float Accuracy { get; private set; }
 
@@ -23,26 +23,20 @@ namespace Fralle.PingTap
       if (combatant == null)
       {
         combatant = GetComponent<Combatant>();
-        combatant.EquipWeapon(Weapon);
+        combatant.EquipWeapon(weapon);
       }
 
-      currentAttackPattern = Tap;
+      currentAttackPattern = tap;
     }
 
     void SelectAttackPattern(float percentage)
     {
       if (percentage > 0.6f)
-      {
-        currentAttackPattern = Tap;
-      }
+        currentAttackPattern = tap;
       else if (percentage > 0.35f)
-      {
-        currentAttackPattern = Burst;
-      }
+        currentAttackPattern = burst;
       else
-      {
-        currentAttackPattern = Spray;
-      }
+        currentAttackPattern = spray;
     }
 
     public void AdjustOffset(Vector3 newOffset)
@@ -64,14 +58,14 @@ namespace Fralle.PingTap
       }
       else
       {
-        Aim.forward += new Vector3(0, Random.Range(-Accuracy, Accuracy), Random.Range(-Accuracy, Accuracy));
+        aim.forward += new Vector3(0, Random.Range(-Accuracy, Accuracy), Random.Range(-Accuracy, Accuracy));
         combatant.PrimaryAction();
         bulletsToFire--;
 
         if (bulletsToFire != 0)
           return;
 
-        float nextAttack = Random.Range(currentAttackPattern.TimeBetweenAttacks.x, currentAttackPattern.TimeBetweenAttacks.y);
+        float nextAttack = Random.Range(currentAttackPattern.timeBetweenAttacks.x, currentAttackPattern.timeBetweenAttacks.y);
         lastAttack = Time.time + nextAttack;
       }
     }
@@ -83,12 +77,12 @@ namespace Fralle.PingTap
 
       float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
       SelectAttackPattern(distanceToTarget / attackRange);
-      bulletsToFire = Random.Range((int)currentAttackPattern.BulletsPerAttack.x, (int)currentAttackPattern.BulletsPerAttack.y);
+      bulletsToFire = Random.Range((int)currentAttackPattern.bulletsPerAttack.x, (int)currentAttackPattern.bulletsPerAttack.y);
     }
 
     public void AimAt(Vector3 position)
     {
-      Aim.LookAt(position + AimOffset + Vector3.left * 0.1f, Vector3.up);
+      aim.LookAt(position + AimOffset + Vector3.left * 0.1f, Vector3.up);
     }
 
   }

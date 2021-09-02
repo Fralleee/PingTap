@@ -26,18 +26,10 @@ namespace Fralle.PingTap
     Sensor sensor;
     FOVCollider sensorCollider;
 
-    public GameObject lockedOnTarget { get; private set; }
-    public float AttackRange => 10f;
-    public bool HasTarget => bestMemory != null && !bestMemory.damageController.IsDead;
-    public GameObject Target => bestMemory?.gameObject;
-    public Vector3 TargetPosition => bestMemory != null ? bestMemory.position : Vector3.zero;
+    public bool HasTarget => bestMemory != null && !bestMemory.DamageController.IsDead;
+    public GameObject Target => bestMemory?.GameObject;
+    public Vector3 TargetPosition => bestMemory?.Position ?? Vector3.zero;
     public bool TargetInSight => bestMemory?.Age < 0.5f;
-    public float TargetDistance => bestMemory.distance;
-
-    public void LockOn()
-    {
-      lockedOnTarget = Target;
-    }
 
     void Awake()
     {
@@ -54,20 +46,20 @@ namespace Fralle.PingTap
 
     void EvaluateScores()
     {
-      foreach (AIMemory memory in memory.memories.Where(x => x.hostile))
+      foreach (AIMemory m in memory.Memories.Where(x => x.Hostile))
       {
-        memory.score = CalculateScore(memory);
-        if (bestMemory == null || memory.score > bestMemory.score)
-          bestMemory = memory;
+        m.Score = CalculateScore(m);
+        if (bestMemory == null || m.Score > bestMemory.Score)
+          bestMemory = m;
       }
     }
 
-    float Normalize(float value, float maxValue) => 1 - value / maxValue;
+    static float Normalize(float value, float maxValue) => 1 - value / maxValue;
 
     float CalculateScore(AIMemory memory)
     {
-      float distanceScore = Normalize(memory.distance, sensorCollider.Length) * distanceWeight;
-      float angleScore = Normalize(memory.angle, sensorCollider.FOVAngle) * angleWeight;
+      float distanceScore = Normalize(memory.Distance, sensorCollider.Length) * distanceWeight;
+      float angleScore = Normalize(memory.Angle, sensorCollider.FOVAngle) * angleWeight;
       float ageScore = Normalize(memory.Age, memorySpan) * ageWeight;
       return distanceScore + angleScore + ageScore;
     }
@@ -82,20 +74,18 @@ namespace Fralle.PingTap
 
     void OnDrawGizmos()
     {
-      if (debug)
-      {
-        float maxScore = float.MinValue;
-        foreach (AIMemory memory in memory.memories)
-          maxScore = Mathf.Max(maxScore, memory.score);
+      if (!debug)
+        return;
 
-        foreach (AIMemory memory in memory.memories)
-        {
-          memoryColor.a = memory.score / maxScore;
-          Gizmos.color = memoryColor;
-          if (memory == bestMemory)
-            Gizmos.color = bestMemoryColor;
-          Gizmos.DrawSphere(memory.position, 0.25f);
-        }
+      float maxScore = memory.Memories.Aggregate(float.MinValue, (current, m) => Mathf.Max(current, m.Score));
+
+      foreach (AIMemory m in memory.Memories)
+      {
+        memoryColor.a = m.Score / maxScore;
+        Gizmos.color = memoryColor;
+        if (m == bestMemory)
+          Gizmos.color = bestMemoryColor;
+        Gizmos.DrawSphere(m.Position, 0.25f);
       }
     }
   }

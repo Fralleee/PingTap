@@ -26,7 +26,6 @@ namespace Fralle.PingTap
     Transform orientation;
     ShakeTransformer cameraShakeTransform;
     Volume abilityVolume;
-    GameObject abilityVolumeGo;
     ParticleSystem speedLinesEffect;
 
     float defaultFov = 60f;
@@ -55,7 +54,7 @@ namespace Fralle.PingTap
       while (elapsedTime < waitTime)
       {
         playerController.camera.fieldOfView = Mathf.SmoothStep(defaultFov + addFov, defaultFov, elapsedTime / waitTime);
-        abilityVolume.weight = Mathf.SmoothStep(1, 0, 1 - (elapsedTime / waitTime));
+        abilityVolume.weight = Mathf.SmoothStep(1, 0, 1 - elapsedTime / waitTime);
 
         elapsedTime += Time.deltaTime;
         yield return null;
@@ -106,11 +105,6 @@ namespace Fralle.PingTap
     public override void Abort()
     {
       Reset();
-    }
-
-    void OnDestroy()
-    {
-      Destroy(abilityVolumeGo);
     }
   }
 }

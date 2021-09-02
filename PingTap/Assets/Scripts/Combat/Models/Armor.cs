@@ -43,24 +43,19 @@ namespace Fralle.PingTap
 
     ProtectionResult RunProtection(DamageData damageData, DamageController damageController)
     {
-      return !Protection ? new ProtectionResult() { EffectProtection = EffectProtection.Ignore, DamageData = damageData } : Protection.RunProtection(damageData, damageController, damageController.effectHandler);
+      return !Protection ? new ProtectionResult { EffectProtection = EffectProtection.Ignore, DamageData = damageData } : Protection.RunProtection(damageData, damageController, damageController.effectHandler);
     }
 
     ArmorElementModifier GetModifier(Element element)
     {
-      switch (element)
+      return element switch
       {
-        case Element.Fire:
-          return Fire;
-        case Element.Water:
-          return Water;
-        case Element.Earth:
-          return Earth;
-        case Element.Lightning:
-          return Lightning;
-        default:
-          return null;
-      }
+        Element.Fire => Fire,
+        Element.Water => Water,
+        Element.Earth => Earth,
+        Element.Lightning => Lightning,
+        _ => null
+      };
     }
   }
 }

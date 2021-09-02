@@ -12,8 +12,8 @@ namespace Fralle.AI
     public static event Action<ScoreController> OnAnyUnitDeath = delegate { };
     public event Action<DamageData> OnDeath = delegate { };
 
-    [HideInInspector] public DamageController DamageController;
-    [HideInInspector] public Combatant Combatant;
+    [HideInInspector] public DamageController damageController;
+    [HideInInspector] public Combatant combatant;
 
     [Header("Configuration")]
     public int startingScoreValue = 1;
@@ -30,10 +30,10 @@ namespace Fralle.AI
 
     void Awake()
     {
-      DamageController = GetComponent<DamageController>();
-      Combatant = GetComponent<Combatant>();
+      damageController = GetComponent<DamageController>();
+      combatant = GetComponent<Combatant>();
 
-      DamageController.OnDeath += HandleDeath;
+      damageController.OnDeath += HandleDeath;
     }
 
     void Start()
@@ -71,7 +71,7 @@ namespace Fralle.AI
 
     void OnDestroy()
     {
-      DamageController.OnDeath -= HandleDeath;
+      damageController.OnDeath -= HandleDeath;
     }
   }
 }

@@ -27,11 +27,11 @@ namespace Fralle.Resource
 
     void Update()
     {
-      if (currentAnimationTime > 0)
-      {
-        currentAnimationTime -= Time.deltaTime;
-        lootPickupVolume.weight = Mathf.Lerp(0, 1, currentAnimationTime / animationTime);
-      }
+      if (!(currentAnimationTime > 0))
+        return;
+
+      currentAnimationTime -= Time.deltaTime;
+      lootPickupVolume.weight = Mathf.Lerp(0, 1, currentAnimationTime / animationTime);
     }
 
     public void Receive(int droppedCredits = 0, InventoryItem item = null)

@@ -13,8 +13,6 @@ namespace Fralle.Gameplay
     [ReadOnly] public float TotalTimer;
     [ReadOnly] public float WaveTimer;
 
-    [SerializeField] float prepareTime = 5f;
-
     void Awake()
     {
     }
@@ -26,7 +24,6 @@ namespace Fralle.Gameplay
 
     public void ResetPreparationTimer()
     {
-      prepareTime = PrepareTimer;
     }
 
   }

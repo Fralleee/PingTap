@@ -42,19 +42,20 @@ namespace Fralle.Abilities.Turret
 
       currentScanTime = scanRate;
       Collider[] colliders = Physics.OverlapSphere(transform.position, turret.Range, layerMask);
-      if (colliders.Length > 0)
+      if (colliders.Length <= 0)
+        return;
+
+      foreach (Collider col in colliders.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude))
       {
-        foreach (Collider col in colliders.OrderBy(x => (x.transform.position - transform.position).sqrMagnitude))
-        {
-          if (Physics.Raycast(transform.position, col.transform.position - transform.position, out RaycastHit hitInfo, turret.Range, layerMask))
-          {
-            GameObject target = hitInfo.transform.gameObject;
-            turret.Target = target.GetComponent<DamageController>();
-            turret.TargetHeight = target.GetComponent<Collider>().bounds.center.y;
-            currentScanTime = 0;
-            break;
-          }
-        }
+        if (!Physics.Raycast(transform.position, col.transform.position - transform.position, out RaycastHit hitInfo,
+          turret.Range, layerMask))
+          continue;
+
+        GameObject target = hitInfo.transform.gameObject;
+        turret.Target = target.GetComponent<DamageController>();
+        turret.TargetHeight = target.GetComponent<Collider>().bounds.center.y;
+        currentScanTime = 0;
+        break;
       }
     }
 

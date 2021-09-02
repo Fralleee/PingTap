@@ -18,10 +18,7 @@ namespace Fralle.PingTap
       if (debug)
         DebugLog(tag);
 
-      if (dictionary.TryGetValue(tag, out GameObject effect))
-        return effect;
-
-      return fallback;
+      return dictionary.TryGetValue(tag, out GameObject effect) ? effect : fallback;
     }
 
     void MapToDictionary()

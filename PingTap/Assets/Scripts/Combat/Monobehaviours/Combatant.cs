@@ -38,7 +38,7 @@ namespace Fralle.PingTap
 
     public void PrimaryAction(bool keyDown = false)
     {
-      if (!equippedWeapon || !primaryAction || primaryAction.Tapable && !keyDown)
+      if (!equippedWeapon || !primaryAction || primaryAction.tapable && !keyDown)
         return;
 
       primaryAction.Perform();
@@ -46,16 +46,10 @@ namespace Fralle.PingTap
 
     public void SecondaryAction(bool keyDown = false)
     {
-      if (!equippedWeapon || !secondaryAction || secondaryAction.Tapable && !keyDown)
+      if (!equippedWeapon || !secondaryAction || secondaryAction.tapable && !keyDown)
         return;
 
       secondaryAction.Perform();
-    }
-
-    public void SetFpsLayers(string layerName)
-    {
-      int layer = LayerMask.NameToLayer(layerName);
-      equippedWeapon.gameObject.SetLayerRecursively(layer);
     }
 
     public void SuccessfulHit(DamageData damageData)

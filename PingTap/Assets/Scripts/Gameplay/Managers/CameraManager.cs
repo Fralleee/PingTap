@@ -11,12 +11,12 @@ namespace Fralle.Gameplay
       Cursor.visible = true;
       Cursor.lockState = CursorLockMode.None;
 
-      if (sceneCamera)
-      {
-        Player.Disable();
-        sceneCamera.gameObject.SetActive(true);
-        sceneCamera.GetComponent<AudioListener>().enabled = true;
-      }
+      if (!sceneCamera)
+        return;
+
+      Player.Disable();
+      sceneCamera.gameObject.SetActive(true);
+      sceneCamera.GetComponent<AudioListener>().enabled = true;
     }
   }
 

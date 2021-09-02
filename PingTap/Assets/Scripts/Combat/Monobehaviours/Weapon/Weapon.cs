@@ -85,12 +85,11 @@ namespace Fralle.PingTap
       transform.localPosition = Vector3.Lerp(startPosition, Vector3.zero, delta);
       transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.identity, delta);
 
-      if (equipTime >= equipAnimationTime)
-      {
-        animationComplete = true;
-        ActiveWeaponAction = Status.Ready;
+      if (!(equipTime >= equipAnimationTime))
         return;
-      }
+
+      animationComplete = true;
+      ActiveWeaponAction = Status.Ready;
     }
   }
 }

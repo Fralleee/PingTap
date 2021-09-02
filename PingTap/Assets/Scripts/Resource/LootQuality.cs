@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -38,12 +39,7 @@ namespace Fralle.Resource
     public static Type RandomQuality()
     {
       float value = Random.value;
-      foreach (KeyValuePair<Type, float> chance in QualityChance)
-      {
-        if (value < chance.Value)
-          return chance.Key;
-      }
-      return Type.Poor;
+      return (from chance in QualityChance where value < chance.Value select chance.Key).FirstOrDefault();
     }
   }
 }

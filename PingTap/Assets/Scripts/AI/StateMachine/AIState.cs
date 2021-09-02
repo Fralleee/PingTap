@@ -23,7 +23,7 @@ namespace Fralle.PingTap.AI
         AIState.Startled => UnityEngine.Color.blue,
         AIState.Chasing => UnityEngine.Color.yellow,
         AIState.Battling => UnityEngine.Color.red,
-        _ => UnityEngine.Color.gray,
+        _ => UnityEngine.Color.gray
       };
     }
   }

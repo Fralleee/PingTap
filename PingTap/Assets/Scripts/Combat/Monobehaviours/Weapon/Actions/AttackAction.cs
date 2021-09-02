@@ -1,5 +1,4 @@
-﻿using Fralle.Core.Enums;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.PingTap
 {
@@ -8,31 +7,27 @@ namespace Fralle.PingTap
   [RequireComponent(typeof(RecoilAddon))]
   public abstract class AttackAction : MonoBehaviour
   {
-    public MouseButton Button { get; set; }
-
     [Header("Shooting")]
-    [SerializeField] internal float MinDamage = 1;
-    [SerializeField] internal float MaxDamage = 10;
-    [SerializeField] internal int AmmoPerShot = 1;
-    [SerializeField] internal int ShotsPerSecond = 20;
-    [SerializeField] internal bool Tapable = false;
-    [SerializeField] internal Element Element;
-    [SerializeField] internal DamageEffect[] DamageEffects = new DamageEffect[0];
+    [SerializeField] internal float minDamage = 1;
+    [SerializeField] internal float maxDamage = 10;
+    [SerializeField] internal int ammoPerShot = 1;
+    [SerializeField] internal int shotsPerSecond = 20;
+    [SerializeField] internal bool tapable = false;
+    [SerializeField] internal Element element;
+    [SerializeField] internal DamageEffect[] damageEffects = new DamageEffect[0];
 
-    internal int HitboxLayer;
     internal Weapon Weapon;
     internal Combatant Combatant;
     int nextMuzzle;
 
     float fireRate;
 
-    internal float Damage => Random.Range(MinDamage, MaxDamage);
+    internal float Damage => Random.Range(minDamage, maxDamage);
     bool HasAmmo => Weapon.AmmoAddonController && Weapon.AmmoAddonController.HasAmmo();
 
     internal virtual void Awake()
     {
-      HitboxLayer = LayerMask.NameToLayer("Hitbox");
-      fireRate = 1f / ShotsPerSecond;
+      fireRate = 1f / shotsPerSecond;
     }
 
     internal virtual void Start()
@@ -44,7 +39,7 @@ namespace Fralle.PingTap
 #if UNITY_EDITOR
     internal virtual void OnValidate()
     {
-      fireRate = 1f / ShotsPerSecond;
+      fireRate = 1f / shotsPerSecond;
     }
 #endif
 
@@ -58,7 +53,7 @@ namespace Fralle.PingTap
       {
         Fire();
         Weapon.NextAvailableShot += fireRate;
-        Weapon.AmmoAddonController?.ChangeAmmo(-AmmoPerShot);
+        Weapon.AmmoAddonController.ChangeAmmo(-ammoPerShot);
 
         if (Weapon.RecoilAddon)
           Weapon.RecoilAddon.AddRecoil();

@@ -4,15 +4,15 @@ namespace Fralle.PingTap
 {
   public class AIMemory
   {
-    public float Age => Time.time - lastSeen;
-    public DamageController damageController;
-    public GameObject gameObject;
-    public Vector3 position;
-    public Vector3 direction;
-    public bool hostile;
-    public float distance;
-    public float angle;
-    public float lastSeen;
-    public float score;
+    public float Age => Time.time - LastSeen;
+    public DamageController DamageController;
+    public GameObject GameObject;
+    public Vector3 Position;
+    public Vector3 Direction;
+    public bool Hostile;
+    public float Distance;
+    public float Angle;
+    public float LastSeen;
+    public float Score;
   }
 }

@@ -27,7 +27,7 @@ namespace Fralle.PingTap
 
       LastDamageTimer -= 1f;
       float damage = BaseDamageModifier * DamageConverter.AsDamageModifier(DamageModifier / Time, DamageApplication, damageController, WeaponDamage);
-      damageController.ReceiveAttack(new DamageData()
+      damageController.ReceiveAttack(new DamageData
       {
         Attacker = Attacker,
         Element = Element,

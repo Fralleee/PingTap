@@ -37,7 +37,7 @@ namespace Fralle.UI.HUD
 
       Vector3 forward = playerOrientation.forward.With(y: 0);
       float headingAngle = Quaternion.LookRotation(forward).eulerAngles.y;
-      int displayAngle = 5 * (Mathf.RoundToInt(headingAngle / 5f));
+      int displayAngle = 5 * Mathf.RoundToInt(headingAngle / 5f);
 
       compassDirectionText.text = directionOverride.TryGetValue(displayAngle, out string textValue) ? textValue : displayAngle.ToString();
     }

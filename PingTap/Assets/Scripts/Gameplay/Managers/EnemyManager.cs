@@ -35,7 +35,7 @@ namespace Fralle.Gameplay
     //	spawnComplete = true;
     //}
 
-    void HandleEnemyDeath(ScoreController enemy)
+    static void HandleEnemyDeath(ScoreController enemy)
     {
       //if (spawnComplete && ScoreController.AliveCount == 0)
       //{

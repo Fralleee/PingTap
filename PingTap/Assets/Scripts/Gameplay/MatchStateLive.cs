@@ -26,7 +26,7 @@ namespace Fralle.Gameplay
       EventManager.RemoveListener<GameOverEvent>(OnGameOver);
     }
 
-    void OnGameOver(GameOverEvent evt)
+    static void OnGameOver(GameOverEvent evt)
     {
       Managers.Instance.State.SetState(MatchState.End);
     }

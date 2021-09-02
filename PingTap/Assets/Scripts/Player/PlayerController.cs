@@ -38,11 +38,11 @@ namespace Fralle.PingTap
     {
       Movement = context.ReadValue<Vector2>();
 
-      if (Animator)
-      {
-        Animator.SetFloat(AnimHorizontal, Movement.x);
-        Animator.SetFloat(AnimVertical, Movement.y);
-      }
+      if (!Animator)
+        return;
+
+      Animator.SetFloat(AnimHorizontal, Movement.x);
+      Animator.SetFloat(AnimVertical, Movement.y);
     }
 
     public void OnLook(InputAction.CallbackContext context)

@@ -6,7 +6,6 @@ namespace Fralle.PingTap.AI
   [CreateAssetMenu(menuName = "AI/States/Search/Basic")]
   public class BasicSearchState : SearchState
   {
-    AIBrain aiBrain;
     AIController controller;
 
     float searchDistance = 10f;
@@ -31,7 +30,6 @@ namespace Fralle.PingTap.AI
 
     public override void Setup(AIBrain aiBrain)
     {
-      this.aiBrain = aiBrain;
       controller = aiBrain.GetComponent<AIController>();
     }
   }

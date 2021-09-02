@@ -6,15 +6,16 @@ namespace Fralle.PingTap
   public class StatsController : StatsControllerBase
   {
     [Header("Major stats")]
-    public CharacterMajorStat Agility;
-    public CharacterMajorStat Dexterity;
-    public CharacterMajorStat Strength;
+    public CharacterMajorStat agility;
+    public CharacterMajorStat dexterity;
+    public CharacterMajorStat strength;
+
 
     [Header("Minor stats")]
-    public CharacterMinorStat Aim;
-    public CharacterMinorStat JumpPower;
-    public CharacterMinorStat ReloadSpeed;
-    public CharacterMinorStat RunSpeed;
+    public CharacterMinorStat aim;
+    public CharacterMinorStat jumpPower;
+    public CharacterMinorStat reloadSpeed;
+    public CharacterMinorStat runSpeed;
 
 
     Combatant combatatant;
@@ -23,14 +24,14 @@ namespace Fralle.PingTap
     {
       base.Awake();
 
-      AddMajorStatToDict(StatAttribute.Dexterity, Dexterity);
-      AddMajorStatToDict(StatAttribute.Agility, Agility);
-      AddMajorStatToDict(StatAttribute.Strength, Strength);
+      AddMajorStatToDict(StatAttribute.Dexterity, dexterity);
+      AddMajorStatToDict(StatAttribute.Agility, agility);
+      AddMajorStatToDict(StatAttribute.Strength, strength);
 
-      AddMinorStatToDict(StatAttribute.Aim, Aim);
-      AddMinorStatToDict(StatAttribute.Jumppower, JumpPower);
-      AddMinorStatToDict(StatAttribute.Reloadspeed, ReloadSpeed);
-      AddMinorStatToDict(StatAttribute.Runspeed, RunSpeed);
+      AddMinorStatToDict(StatAttribute.Aim, aim);
+      AddMinorStatToDict(StatAttribute.Jumppower, jumpPower);
+      AddMinorStatToDict(StatAttribute.Reloadspeed, reloadSpeed);
+      AddMinorStatToDict(StatAttribute.Runspeed, runSpeed);
 
       combatatant = GetComponent<Combatant>();
     }
@@ -38,7 +39,7 @@ namespace Fralle.PingTap
     void Start()
     {
       // Event handlers	
-      Aim.OnChanged += AimChanged;
+      aim.OnChanged += AimChanged;
     }
 
     void AimChanged(CharacterStat aim)
@@ -48,7 +49,7 @@ namespace Fralle.PingTap
 
     void OnDestroy()
     {
-      Aim.OnChanged -= AimChanged;
+      aim.OnChanged -= AimChanged;
     }
   }
 }

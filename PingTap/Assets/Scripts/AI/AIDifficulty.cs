@@ -12,38 +12,24 @@ namespace Fralle.PingTap.AI
 
   public static class AIDifficultyMethods
   {
-    public static float GetAccuracy(this AIDifficulty difficulty)
-    {
-      switch (difficulty)
+    public static float GetAccuracy(this AIDifficulty difficulty) =>
+      difficulty switch
       {
-        case AIDifficulty.Easy:
-          return 0.175f;
-        case AIDifficulty.Normal:
-          return 0.125f;
-        case AIDifficulty.Hard:
-          return 0.05f;
-        case AIDifficulty.Impossible:
-          return 0.025f;
-        default:
-          return 1f;
-      }
-    }
+        AIDifficulty.Easy => 0.175f,
+        AIDifficulty.Normal => 0.125f,
+        AIDifficulty.Hard => 0.05f,
+        AIDifficulty.Impossible => 0.025f,
+        _ => 1f
+      };
 
-    public static Vector3 GetAimOffset(this AIDifficulty difficulty)
-    {
-      switch (difficulty)
+    public static Vector3 GetAimOffset(this AIDifficulty difficulty) =>
+      difficulty switch
       {
-        case AIDifficulty.Easy:
-          return Vector3.up * 0.35f;
-        case AIDifficulty.Normal:
-          return Vector3.up * 0.75f;
-        case AIDifficulty.Hard:
-          return Vector3.up * 1.35f;
-        case AIDifficulty.Impossible:
-          return Vector3.up * 1.6f;
-        default:
-          return Vector3.zero;
-      }
-    }
+        AIDifficulty.Easy => Vector3.up * 0.35f,
+        AIDifficulty.Normal => Vector3.up * 0.75f,
+        AIDifficulty.Hard => Vector3.up * 1.35f,
+        AIDifficulty.Impossible => Vector3.up * 1.6f,
+        _ => Vector3.zero
+      };
   }
 }

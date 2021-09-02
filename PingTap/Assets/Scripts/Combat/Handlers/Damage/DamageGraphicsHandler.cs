@@ -45,7 +45,7 @@ namespace Fralle.PingTap
 
       currentColor = Color.Lerp(currentColor, Color.black, 1 - colorLerpTime);
       propBlock.SetColor(RendererColor, currentColor);
-      foreach (Renderer renderer in renderers)
+      foreach (SkinnedMeshRenderer renderer in renderers)
         renderer.SetPropertyBlock(propBlock);
 
       colorLerpTime -= Time.deltaTime;
@@ -82,7 +82,7 @@ namespace Fralle.PingTap
     void HandleDeath(DamageController damageController, DamageData damageData)
     {
       propBlock.SetColor(RendererColor, Color.black);
-      foreach (Renderer renderer in renderers)
+      foreach (SkinnedMeshRenderer renderer in renderers)
         renderer.SetPropertyBlock(propBlock);
 
       if (damageData.Gib && gibModel != null)
@@ -95,7 +95,7 @@ namespace Fralle.PingTap
 
         if (damageData.Collider)
         {
-          if (damageData.Collider.TryGetComponent<Rigidbody>(out Rigidbody rigidBody))
+          if (damageData.Collider.TryGetComponent(out Rigidbody rigidBody))
           {
             rigidBody.AddForce(damageData.Force * 10f, ForceMode.Impulse);
             return;

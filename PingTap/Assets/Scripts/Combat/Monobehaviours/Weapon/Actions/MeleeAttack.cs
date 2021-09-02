@@ -6,7 +6,7 @@ namespace Fralle.PingTap
 {
   public class MeleeAttack : AttackAction
   {
-    public float MeleeRadius = 2f;
+    public float meleeRadius = 2f;
 
     [SerializeField] float swingTime = 0.25f;
     [SerializeField] float recoveryTime = 1f;
@@ -23,7 +23,7 @@ namespace Fralle.PingTap
       PerformMelee();
     }
 
-    public override float GetRange() => MeleeRadius;
+    public override float GetRange() => meleeRadius;
 
     void LateUpdate()
     {
@@ -72,12 +72,12 @@ namespace Fralle.PingTap
         if (!TargetInArc(target))
           continue;
 
-        DamageData damageData = new DamageData()
+        DamageData damageData = new DamageData
         {
           DamageAmount = Damage,
           Attacker = Combatant,
-          Element = Element,
-          Effects = DamageEffects.Select(x => x.Setup(Combatant, Damage)).ToArray(),
+          Element = element,
+          Effects = damageEffects.Select(x => x.Setup(Combatant, Damage)).ToArray(),
           HitAngle = Vector3.Angle((transform.position - target.transform.position).normalized,
             target.transform.forward),
           Position = target.transform.position
@@ -94,7 +94,7 @@ namespace Fralle.PingTap
 
     IEnumerable<DamageController> GetTargets()
     {
-      Collider[] colliders = Physics.OverlapSphere(transform.position, MeleeRadius);
+      Collider[] colliders = Physics.OverlapSphere(transform.position, meleeRadius);
       return colliders.Select(x => x.GetComponentInParent<DamageController>())
         .Where(x => x != null).Distinct();
     }

@@ -54,18 +54,18 @@ namespace Fralle.PingTap
     {
       if (controller.Velocity.magnitude > 0.1f)
         doRotate = false;
-      else if (Vector3.Angle(controller.transform.forward, aiAttack.Aim.forward) > rotateOnAngle)
+      else if (Vector3.Angle(controller.transform.forward, aiAttack.aim.forward) > rotateOnAngle)
         doRotate = true;
 
-      if (doRotate)
-      {
-        controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, aiAttack.Aim.rotation, Time.deltaTime * 10f);
-        if (Vector3.Angle(controller.transform.forward, aiAttack.Aim.forward) > 3f)
-          return;
+      if (!doRotate)
+        return;
 
-        controller.transform.rotation = aiAttack.Aim.rotation;
-        doRotate = false;
-      }
+      controller.transform.rotation = Quaternion.Lerp(controller.transform.rotation, aiAttack.aim.rotation, Time.deltaTime * 10f);
+      if (Vector3.Angle(controller.transform.forward, aiAttack.aim.forward) > 3f)
+        return;
+
+      controller.transform.rotation = aiAttack.aim.rotation;
+      doRotate = false;
     }
 
   }
