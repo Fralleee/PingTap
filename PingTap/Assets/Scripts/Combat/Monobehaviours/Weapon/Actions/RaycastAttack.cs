@@ -122,13 +122,11 @@ namespace Fralle.PingTap
       bulletTraceController.Trace(origin, target);
     }
 
-#if UNITY_EDITOR
     internal override void OnValidate()
     {
       base.OnValidate();
       float lowestCurrentSpread = spreadOnFirstShot ? spreadIncreaseEachShot : 0f;
       currentSpread = lowestCurrentSpread;
     }
-#endif
   }
 }

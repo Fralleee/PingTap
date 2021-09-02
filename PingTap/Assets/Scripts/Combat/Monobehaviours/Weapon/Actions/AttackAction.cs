@@ -27,7 +27,7 @@ namespace Fralle.PingTap
 
     internal virtual void Awake()
     {
-      fireRate = 1f / shotsPerSecond;
+      OnValidate();
     }
 
     internal virtual void Start()
@@ -36,12 +36,10 @@ namespace Fralle.PingTap
       Combatant = Weapon.GetComponentInParent<Combatant>();
     }
 
-#if UNITY_EDITOR
     internal virtual void OnValidate()
     {
       fireRate = 1f / shotsPerSecond;
     }
-#endif
 
     public void Perform()
     {
