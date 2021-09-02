@@ -13,12 +13,12 @@ namespace Fralle.PingTap.AI
 
     public override void OnEnter()
     {
-      controller.speed = controller.walkSpeed;
+      controller.Speed = controller.walkSpeed;
     }
 
     public override void OnLogic()
     {
-      if (controller.remainingDistance > 0.5f)
+      if (controller.RemainingDistance > 0.5f)
         return;
 
       controller.SetRandomDestination(wanderDistance);

@@ -883,7 +883,7 @@ MonoBehaviour:
   <AttackAbility>k__BackingField: {fileID: 11400000, guid: 1b3ff257e4129d440a7b3dcf006eda98,
     type: 2}
   <UltimateAbility>k__BackingField: {fileID: 0}
-  PassiveAbilities: []
+  passiveAbilities: []
   postProcessController: {fileID: 0}
 --- !u!114 &8669944366694358800
 MonoBehaviour:
@@ -902,12 +902,12 @@ MonoBehaviour:
   clampY: 90
   gravityModifier: 2
   jumpHeight: 1
-  ModifiedJumpHeight: 1
+  modifiedJumpHeight: 1
   queueJump: 0
   baseMovementSpeed: 4
   stopTime: 0.05
   airControl: 0.5
-  ModifiedMovementSpeed: 4
+  modifiedMovementSpeed: 4
   maxAngleWalkable: 35
   maxAngleGrounded: 45
   camera: {fileID: 1386371905205327084}
@@ -985,22 +985,22 @@ MonoBehaviour:
   Aim:
     baseValue: 0
     value: 0
-    ParentAttribute: 2
+    parentAttribute: 2
     parentStatFactor: 1
   JumpPower:
     baseValue: 0
     value: 0
-    ParentAttribute: 1
+    parentAttribute: 1
     parentStatFactor: 1
   ReloadSpeed:
     baseValue: 0
     value: 0
-    ParentAttribute: 2
+    parentAttribute: 2
     parentStatFactor: 1
   RunSpeed:
     baseValue: 0
     value: 0
-    ParentAttribute: 1
+    parentAttribute: 1
     parentStatFactor: 1
 --- !u!114 &7336195050358658416
 MonoBehaviour:

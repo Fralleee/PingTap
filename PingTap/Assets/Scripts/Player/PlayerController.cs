@@ -52,7 +52,7 @@ namespace Fralle.PingTap
 
     public void OnJump(InputAction.CallbackContext context)
     {
-      jumpButton = context.ReadValueAsButton();
+      JumpButton = context.ReadValueAsButton();
     }
 
     public void OnCrouch(InputAction.CallbackContext context)

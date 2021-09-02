@@ -30,7 +30,6 @@ namespace Fralle.PingTap
     void Awake()
     {
       playerController = GetComponentInParent<PlayerController>();
-      playerController.OnGroundEnter += OnLanding;
 
       combatant = GetComponentInParent<Combatant>();
       combatant.OnWeaponSwitch += OnWeaponSwitch;
@@ -82,11 +81,11 @@ namespace Fralle.PingTap
       currentRotation = Quaternion.Lerp(currentRotation, Quaternion.identity, Time.deltaTime * resetSpeed);
     }
 
-    void OnLanding(float impact)
-    {
-      if (!pause)
-        momentum += impact * landMagnitude;
-    }
+    //void OnLanding(float impact)
+    //{
+    //  if (!pause)
+    //    momentum += impact * landMagnitude;
+    //}
     void OnWeaponSwitch(Weapon newWeapon, Weapon oldWeapon)
     {
       if (oldWeapon != null)

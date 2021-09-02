@@ -12,7 +12,7 @@ namespace Fralle.PingTap.AI
 
     public override void OnEnter()
     {
-      controller.speed = controller.runSpeed;
+      controller.Speed = controller.runSpeed;
     }
 
     public override void OnLogic()

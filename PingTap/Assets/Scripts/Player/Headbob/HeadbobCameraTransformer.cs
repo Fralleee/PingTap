@@ -16,7 +16,7 @@ namespace Fralle.PingTap
     [Header("Controls")]
     public bool Pause;
 
-    public float CurvePosition => Mathf.Sin(timer) * playerController.ModifiedMovementSpeed * 0.1f;
+    public float CurvePosition => Mathf.Sin(timer) * playerController.modifiedMovementSpeed * 0.1f;
     public float BobAmount => Mathf.Abs(CurvePosition);
 
     PlayerController playerController;

@@ -18,8 +18,8 @@ namespace Fralle.PingTap
 
     public override void OnEnter()
     {
-      controller.speed = controller.walkSpeed;
-      controller.stoppingDistance = aiBrain.attackStoppingDistance;
+      controller.Speed = controller.walkSpeed;
+      controller.StoppingDistance = aiBrain.attackStoppingDistance;
 
       aiBrain.AlertOthers(aiTargetingSystem.TargetPosition, AIState.Chasing);
     }
@@ -38,7 +38,7 @@ namespace Fralle.PingTap
 
     public override void OnExit()
     {
-      controller.stoppingDistance = defaultStoppingDistance;
+      controller.StoppingDistance = defaultStoppingDistance;
       controller.Stop();
     }
 
@@ -52,7 +52,7 @@ namespace Fralle.PingTap
 
     void UpdateRotation()
     {
-      if (controller.velocity.magnitude > 0.1f)
+      if (controller.Velocity.magnitude > 0.1f)
         doRotate = false;
       else if (Vector3.Angle(controller.transform.forward, aiAttack.Aim.forward) > rotateOnAngle)
         doRotate = true;
