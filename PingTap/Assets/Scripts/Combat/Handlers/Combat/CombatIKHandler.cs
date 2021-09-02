@@ -1,15 +1,14 @@
 using Fralle.Core;
 using System;
 using System.Linq;
-using UnityEngine.Serialization;
 
 namespace Fralle.PingTap
 {
   [Serializable]
   public class CombatIKHandler
   {
-    [FormerlySerializedAs("Enabled")] public bool enabled;
-    [FormerlySerializedAs("UseLeftHand")] public bool useLeftHand = true;
+    public bool enabled;
+    public bool useLeftHand = true;
 
     Combatant combatant;
     HandIK[] leftHandIKs;

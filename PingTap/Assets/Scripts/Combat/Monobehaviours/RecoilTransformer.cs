@@ -1,12 +1,13 @@
 using Fralle.Core;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Fralle.PingTap
 {
   public class RecoilTransformer : LocalTransformer, IRotator
   {
-    [Readonly] public float recoilSpeed = 15f;
-    [Readonly] public float recoilRecoverTime = 10f;
+    [ReadOnly] public float recoilSpeed = 15f;
+    [ReadOnly] public float recoilRecoverTime = 10f;
 
     Vector3 recoil = Vector3.zero;
     Quaternion currentRotation = Quaternion.identity;

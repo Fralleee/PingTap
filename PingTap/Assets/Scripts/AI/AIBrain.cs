@@ -1,5 +1,6 @@
 using Fralle.Core;
 using Fralle.Core.AI;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Fralle.PingTap.AI
@@ -9,7 +10,7 @@ namespace Fralle.PingTap.AI
     [HideInInspector] public TeamController teamController;
     [HideInInspector] public float lastAlert;
 
-    [Readonly] public AIState currentState;
+    [ReadOnly] public AIState currentState;
 
     [Header("Configuration")]
     public AIPersonality personality;

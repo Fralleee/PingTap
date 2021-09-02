@@ -1,20 +1,19 @@
 ﻿using Fralle.Core;
 using Fralle.Core.Pooling;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Fralle.PingTap
 {
   public class RaycastAttack : AttackAction
   {
-    [FormerlySerializedAs("Range")]
     [Header("RaycastAttack")]
     public float range = 50;
-    [FormerlySerializedAs("PushForce")] public float pushForce = 3.5f;
+    public float pushForce = 3.5f;
     [SerializeField] GameObject muzzleParticlePrefab;
     [SerializeField] BulletTraceController bulletTraceController;
     [SerializeField] int bulletsPerFire = 1;
-    [FormerlySerializedAs("RangeDamageFalloff")] public AnimationCurve rangeDamageFalloff = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
+    public AnimationCurve rangeDamageFalloff = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
 
     [Header("Spread")]
     [SerializeField] float spreadRadius = 0f;
@@ -22,7 +21,7 @@ namespace Fralle.PingTap
     [SerializeField] float recovery = 1f;
     [SerializeField] bool spreadOnFirstShot;
 
-    [FormerlySerializedAs("CurrentSpread")] [Readonly] public float currentSpread;
+    [ReadOnly] public float currentSpread;
 
     ParticleSystem muzzleParticle;
     float spreadStatMultiplier = 1f;

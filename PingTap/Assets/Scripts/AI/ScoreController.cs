@@ -1,5 +1,5 @@
-﻿using Fralle.Core;
-using Fralle.PingTap;
+﻿using Fralle.PingTap;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ namespace Fralle.AI
     public int startingScoreValue = 1;
 
     [Header("Values")]
-    [Readonly] public int scoreValue;
+    [ReadOnly] public int scoreValue;
 
     bool isDead;
 

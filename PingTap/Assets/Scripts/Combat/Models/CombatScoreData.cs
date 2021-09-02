@@ -1,4 +1,4 @@
-﻿using Fralle.Core;
+﻿using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 
@@ -7,11 +7,11 @@ namespace Fralle.PingTap
   [Serializable]
   public class CombatScoreData
   {
-    [Readonly] public int KillingBlows;
-    [Readonly] public float TotalDamage;
-    [Readonly] public float TotalShotsFired;
-    [Readonly] public float TotalShotsHit;
-    [Readonly] public float AccuracyPercentage;
+    [ReadOnly] public int KillingBlows;
+    [ReadOnly] public float TotalDamage;
+    [ReadOnly] public float TotalShotsFired;
+    [ReadOnly] public float TotalShotsHit;
+    [ReadOnly] public float AccuracyPercentage;
 
     List<DamageData> combatHistory = new List<DamageData>();
 

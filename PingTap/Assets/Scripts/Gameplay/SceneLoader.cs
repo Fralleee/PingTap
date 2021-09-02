@@ -1,23 +1,22 @@
-﻿using Fralle.Core;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Fralle.Gameplay
 {
   public class SceneLoader : MonoBehaviour
   {
-    [Scene] public string MenuScene;
-    [Scene] public string MasterScene;
+    public string menuScene;
+    public string masterScene;
 
     void Awake()
     {
-      Scene menu = SceneManager.GetSceneByName(MenuScene);
+      Scene menu = SceneManager.GetSceneByName(menuScene);
       if (!menu.isLoaded)
-        SceneManager.LoadScene(MenuScene, LoadSceneMode.Additive);
+        SceneManager.LoadScene(menuScene, LoadSceneMode.Additive);
 
-      Scene master = SceneManager.GetSceneByName(MasterScene);
+      Scene master = SceneManager.GetSceneByName(masterScene);
       if (!master.isLoaded)
-        SceneManager.LoadScene(MasterScene, LoadSceneMode.Additive);
+        SceneManager.LoadScene(masterScene, LoadSceneMode.Additive);
     }
   }
 }

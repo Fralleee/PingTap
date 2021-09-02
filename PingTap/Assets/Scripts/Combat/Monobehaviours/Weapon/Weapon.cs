@@ -1,4 +1,4 @@
-﻿using Fralle.Core;
+﻿using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -27,7 +27,7 @@ namespace Fralle.PingTap
     public bool IsEquipped { get; private set; }
 
     [Header("Debug")]
-    [Readonly] public float NextAvailableShot;
+    [ReadOnly] public float NextAvailableShot;
 
     float equipTime;
     bool animationComplete;

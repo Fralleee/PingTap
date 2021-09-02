@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Fralle.PingTap
 {
@@ -9,7 +8,7 @@ namespace Fralle.PingTap
   {
     [Header("Kickback")]
     [SerializeField] float kickbackForce = 0.15f;
-    [FormerlySerializedAs("recoverTime")] [SerializeField] float kickbackRecoverTime = 20f;
+    [SerializeField] float kickbackRecoverTime = 20f;
 
     [Header("RecoilAddon")]
     [SerializeField] bool randomizeRecoil = false;

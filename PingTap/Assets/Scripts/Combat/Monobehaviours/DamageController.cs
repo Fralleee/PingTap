@@ -1,4 +1,5 @@
 ﻿using Fralle.Core;
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Fralle.PingTap
     [Header("Stats")]
     public bool Immortal;
 
-    [ProgressBar("Health", "MaxHealth", EColor.Red)]
+    [ProgressBar("Health", "MaxHealth")]
     public float CurrentHealth;
     public float MaxHealth = 200f;
 

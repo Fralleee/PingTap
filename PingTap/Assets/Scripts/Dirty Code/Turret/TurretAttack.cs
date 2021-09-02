@@ -1,5 +1,5 @@
-﻿using Fralle.Core;
-using Fralle.PingTap;
+﻿using Fralle.PingTap;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Fralle.Abilities.Turret
@@ -7,7 +7,7 @@ namespace Fralle.Abilities.Turret
   [RequireComponent(typeof(Combatant))]
   public class TurretAttack : MonoBehaviour
   {
-    [Readonly] public Weapon EquippedWeapon;
+    [ReadOnly] public Weapon EquippedWeapon;
 
     [SerializeField] Weapon[] weapons = new Weapon[0];
 

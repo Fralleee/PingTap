@@ -1,4 +1,4 @@
-﻿using Fralle.Core;
+﻿using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -24,7 +24,7 @@ namespace Fralle.PingTap
     public float ReloadTime => (reloadSpeed * reloadStatMultiplier);
 
     [Header("Debug")]
-    [Readonly] public float ReloadPercentage;
+    [ReadOnly] public float ReloadPercentage;
 
     void Awake()
     {

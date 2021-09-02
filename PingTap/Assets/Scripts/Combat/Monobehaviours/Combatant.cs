@@ -1,4 +1,5 @@
 ﻿using Fralle.Core;
+using Sirenix.OdinInspector;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -11,18 +12,17 @@ namespace Fralle.PingTap
     public event Action<Weapon, Weapon> OnWeaponSwitch = delegate { };
     public event Action<DamageData> OnHit = delegate { };
 
-    [FormerlySerializedAs("TeamController")] [HideInInspector] public TeamController teamController;
+    [HideInInspector] public TeamController teamController;
 
-    [FormerlySerializedAs("Stats")] public CombatScoreData stats = new CombatScoreData();
-    [FormerlySerializedAs("Modifiers")] public CombatUpgrades modifiers = new CombatUpgrades();
+    public CombatScoreData stats = new CombatScoreData();
+    public CombatUpgrades modifiers = new CombatUpgrades();
 
-    [FormerlySerializedAs("AimTransform")] public Transform aimTransform;
-    [FormerlySerializedAs("WeaponHolder")] public Transform weaponHolder;
-    [FormerlySerializedAs("EquippedWeapon")] [Readonly] public Weapon equippedWeapon;
+    public Transform aimTransform;
+    public Transform weaponHolder;
+    [ReadOnly] public Weapon equippedWeapon;
 
-    [FormerlySerializedAs("ImpactAtlas")]
     [Header("Settings")]
-    [Expandable]
+    [InlineEditor(InlineEditorObjectFieldModes.Foldout)]
     public ImpactAtlas impactAtlas;
 
     [FormerlySerializedAs("HasActiveCamera")]

@@ -1,6 +1,5 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Fralle.UI.Menu
@@ -12,11 +11,9 @@ namespace Fralle.UI.Menu
     [SerializeField] TMP_InputField input = null;
     [SerializeField] Slider slider = null;
 
-    [FormerlySerializedAs("Min")]
     [Header("Clamp values")]
     [SerializeField] float min = 0.01f;
 
-    [FormerlySerializedAs("Max")]
     [SerializeField] float max = 100f;
 
     string key;

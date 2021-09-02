@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.XR;
 
 public class DepthNormalsFeature : ScriptableRendererFeature
 {
@@ -62,8 +61,8 @@ public class DepthNormalsFeature : ScriptableRendererFeature
 
         ref CameraData cameraData = ref renderingData.cameraData;
         Camera camera = cameraData.camera;
-        if (XRSettings.enabled)
-          context.StartMultiEye(camera);
+        //if (UnityEngine.XR.XRSettings.enabled)
+        //  context.StartMultiEye(camera);
 
 
         drawSettings.overrideMaterial = depthNormalsMaterial;

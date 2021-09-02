@@ -9,7 +9,10 @@ namespace Fralle
   {
     [HideInInspector] public Camera Camera;
     [HideInInspector] public Combatant Combatant;
-    [HideInInspector] public static PlayerControls controls;
+
+    public static PlayerControls controls;
+
+    GameObject ui;
 
     public static void Disable()
     {
@@ -36,16 +39,13 @@ namespace Fralle
       controls.Weapon.Enable();
 
       Combatant = GetComponent<Combatant>();
-      transform.Find("UI").gameObject.SetActive(true);
-
-
+      ui = transform.Find("UI").gameObject;
+      ui.SetActive(true);
     }
 
     void Start()
     {
       Camera = Camera.main;
-      transform.Find("UI").gameObject.SetActive(true);
-
       //QuantumConsole.Instance.OnActivate += ConsoleActivated;
       //QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
     }
