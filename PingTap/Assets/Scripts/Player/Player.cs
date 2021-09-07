@@ -12,7 +12,7 @@ namespace Fralle
 
     public static PlayerControls controls;
 
-    GameObject ui;
+    //GameObject ui;
 
     public static void Disable()
     {
@@ -39,8 +39,8 @@ namespace Fralle
       controls.Weapon.Enable();
 
       Combatant = GetComponent<Combatant>();
-      ui = transform.Find("UI").gameObject;
-      ui.SetActive(true);
+      //ui = transform.Find("UI").gameObject;
+      //ui.SetActive(true);
     }
 
     void Start()

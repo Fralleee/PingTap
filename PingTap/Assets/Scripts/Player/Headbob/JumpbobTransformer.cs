@@ -1,4 +1,5 @@
 using Fralle.Core;
+using Fralle.FpsController;
 using UnityEngine;
 
 namespace Fralle.PingTap
@@ -18,7 +19,7 @@ namespace Fralle.PingTap
     [SerializeField] float fallMagnitude = 0.002f;
     [SerializeField] float landMagnitude = 0.025f;
 
-    PlayerController playerController;
+    RigidbodyController playerController;
     Combatant combatant;
 
     Vector3 currentPosition = Vector3.zero;
@@ -29,9 +30,9 @@ namespace Fralle.PingTap
 
     void Awake()
     {
-      playerController = GetComponentInParent<PlayerController>();
+      playerController = GetComponentInParent<PlayerCamera>().controller;
 
-      combatant = GetComponentInParent<Combatant>();
+      combatant = playerController.GetComponent<Combatant>();
       combatant.OnWeaponSwitch += OnWeaponSwitch;
       if (combatant.equippedWeapon != null)
         OnWeaponSwitch(combatant.equippedWeapon, null);

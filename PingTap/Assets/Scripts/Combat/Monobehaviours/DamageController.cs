@@ -38,7 +38,7 @@ namespace Fralle.PingTap
 
     void Awake()
     {
-      postProcessController = GetComponentInChildren<PostProcessController>();
+      postProcessController = FindObjectOfType<PostProcessController>();
 
       if (ikHandler.enabled)
         ikHandler.Setup(this);

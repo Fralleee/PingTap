@@ -33,7 +33,7 @@ namespace Fralle.PingTap
     internal virtual void Start()
     {
       Weapon = GetComponent<Weapon>();
-      Combatant = Weapon.GetComponentInParent<Combatant>();
+      Combatant = Weapon.Combatant;
     }
 
     internal virtual void OnValidate()

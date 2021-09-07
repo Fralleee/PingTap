@@ -5,8 +5,9 @@ using static PlayerControls;
 
 public class PlayerAbilityController : AbilityController, IAbilityActions
 {
-  void Start()
+  protected override void Start()
   {
+    base.Start();
     Player.controls.Ability.SetCallbacks(this);
     Player.controls.Ability.Enable();
   }

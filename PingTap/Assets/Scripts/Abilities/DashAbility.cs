@@ -23,7 +23,6 @@ namespace Fralle.PingTap
     AbilityController abilityController;
     PlayerController playerController;
     Rigidbody rigidBody;
-    Transform orientation;
     ShakeTransformer cameraShakeTransform;
     Volume abilityVolume;
     ParticleSystem speedLinesEffect;
@@ -34,8 +33,7 @@ namespace Fralle.PingTap
     {
       abilityController = ac;
       playerController = ac.GetComponent<PlayerController>();
-      rigidBody = ac.GetComponentInChildren<Rigidbody>();
-      orientation = rigidBody.transform.Find("Orientation");
+      rigidBody = ac.GetComponent<Rigidbody>();
 
       if (ac.postProcessController)
         abilityVolume = ac.postProcessController.AddProfile(postProcess);
@@ -43,7 +41,7 @@ namespace Fralle.PingTap
       speedlines = Instantiate(speedlines, ac.postProcessController.transform);
       speedLinesEffect = speedlines.GetComponent<ParticleSystem>();
 
-      cameraShakeTransform = playerController.camera.GetComponentInParent<ShakeTransformer>();
+      cameraShakeTransform = playerController.cameraRig.GetComponent<ShakeTransformer>();
       defaultFov = playerController.camera.fieldOfView;
     }
 
@@ -74,7 +72,7 @@ namespace Fralle.PingTap
       Vector3 direction = playerController.cameraRig.forward;
       if (playerController.Movement.magnitude > 0)
       {
-        direction = orientation.TransformDirection(playerController.Movement.ToVector3());
+        direction = playerController.cameraRig.TransformDirection(playerController.Movement.ToVector3());
         if (playerController.Movement.y > 0)
           direction += playerController.cameraRig.forward;
       }

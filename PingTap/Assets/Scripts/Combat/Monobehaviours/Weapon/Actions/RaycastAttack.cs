@@ -110,8 +110,8 @@ namespace Fralle.PingTap
     Vector3 CalculateBulletSpread(float modifier)
     {
       float spreadPercent = spreadIncreaseEachShot > 0 ? currentSpread : 1;
-      Vector2 spread = spreadPercent * modifier * Random.insideUnitCircle * spreadRadius;
-      return Combatant.aimTransform.forward + new Vector3(0, spread.x, spread.y);
+      Vector3 spread = Combatant.aimTransform.TransformDirection(spreadPercent * modifier * Random.insideUnitCircle * spreadRadius);
+      return Combatant.aimTransform.forward + spread;
     }
 
     void BulletTrace(Vector3 origin, Vector3 target)

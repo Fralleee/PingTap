@@ -3,6 +3,7 @@ using Fralle.Core.CameraControls;
 using System;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Object = UnityEngine.Object;
 
 namespace Fralle.PingTap
 {
@@ -30,7 +31,7 @@ namespace Fralle.PingTap
 
       damageVolume = postProcessController.AddProfile(postProcess);
 
-      cameraShakeTransform = damageController.GetComponentInChildren<ShakeTransformer>();
+      cameraShakeTransform = Object.FindObjectOfType<ShakeTransformer>();
     }
 
     public void Clean()

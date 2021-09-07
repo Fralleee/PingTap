@@ -17,7 +17,6 @@ namespace Fralle.PingTap
     AbilityController abilityController;
     PlayerController playerController;
     Rigidbody rigidBody;
-    Transform orientation;
 
     Coroutine coroutine;
     bool zagRight;
@@ -27,7 +26,6 @@ namespace Fralle.PingTap
       abilityController = ac;
       playerController = ac.GetComponent<PlayerController>();
       rigidBody = ac.GetComponentInChildren<Rigidbody>();
-      orientation = rigidBody.transform.Find("Orientation");
     }
 
     public override void Perform()
@@ -45,7 +43,7 @@ namespace Fralle.PingTap
       {
         rigidBody.velocity = Vector3.zero;
         yield return new WaitForSeconds(delayBetweenDashes);
-        Vector3 direction = (orientation.forward + (zagRight ? orientation.right : -orientation.right) * strafeFactor).normalized;
+        Vector3 direction = (playerController.cameraRig.forward + (zagRight ? playerController.cameraRig.right : -playerController.cameraRig.right) * strafeFactor).normalized;
         rigidBody.AddForce(direction * dashPower, ForceMode.VelocityChange);
         zagRight = !zagRight;
         yield return new WaitForSeconds(dashTime);
@@ -66,10 +64,6 @@ namespace Fralle.PingTap
     {
       abilityController.StopCoroutine(coroutine);
       Reset();
-    }
-
-    void OnDestroy()
-    {
     }
   }
 }

@@ -1,4 +1,5 @@
 using Fralle.Core;
+using Fralle.FpsController;
 using UnityEngine;
 
 namespace Fralle.PingTap
@@ -19,13 +20,13 @@ namespace Fralle.PingTap
     public float CurvePosition => Mathf.Sin(timer) * playerController.modifiedMovementSpeed * 0.1f;
     public float BobAmount => Mathf.Abs(CurvePosition);
 
-    PlayerController playerController;
+    RigidbodyController playerController;
     Vector3 currentPosition = Vector3.zero;
     float timer;
 
     void Awake()
     {
-      playerController = GetComponentInParent<PlayerController>();
+      playerController = GetComponentInParent<PlayerCamera>().controller;
     }
 
     public Vector3 GetPosition() => currentPosition;

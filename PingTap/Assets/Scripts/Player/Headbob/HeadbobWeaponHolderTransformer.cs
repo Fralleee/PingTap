@@ -1,4 +1,5 @@
 using Fralle.Core;
+using Fralle.FpsController;
 using UnityEngine;
 
 namespace Fralle.PingTap
@@ -6,7 +7,7 @@ namespace Fralle.PingTap
   public partial class HeadbobWeaponHolderTransformer : LocalTransformer, IPositioner, IRotator
   {
     HeadbobCameraTransformer headbobMaster;
-    PlayerController playerController;
+    RigidbodyController playerController;
     Combatant combatant;
 
     Vector3 currentPosition = Vector3.zero;
@@ -16,8 +17,8 @@ namespace Fralle.PingTap
     void Awake()
     {
       headbobMaster = GetComponentInParent<HeadbobCameraTransformer>();
-      playerController = GetComponentInParent<PlayerController>();
-      combatant = GetComponentInParent<Combatant>();
+      playerController = GetComponentInParent<PlayerCamera>().controller;
+      combatant = playerController.GetComponent<Combatant>();
 
       combatant.OnWeaponSwitch += OnWeaponSwitch;
       if (combatant.equippedWeapon != null)
