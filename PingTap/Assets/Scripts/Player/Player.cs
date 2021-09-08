@@ -1,5 +1,8 @@
-﻿using Fralle.Gameplay;
+﻿using Fralle.Core.CameraControls;
+using Fralle.Gameplay;
 using Fralle.PingTap;
+using Sirenix.OdinInspector;
+using UnityEditor;
 using UnityEngine;
 
 namespace Fralle
@@ -7,12 +10,11 @@ namespace Fralle
   [SelectionBase]
   public class Player : MonoBehaviour
   {
-    [HideInInspector] public Camera Camera;
-    [HideInInspector] public Combatant Combatant;
-
+    [Required] [HideInInspector] public PlayerController playerController;
+    [Required] [HideInInspector] public PlayerCamera playerCamera;
     public static PlayerControls controls;
 
-    //GameObject ui;
+    [SerializeField] PlayerCamera playerCameraPrefab;
 
     public static void Disable()
     {
@@ -37,15 +39,10 @@ namespace Fralle
       controls.Movement.Enable();
       controls.Ability.Enable();
       controls.Weapon.Enable();
-
-      Combatant = GetComponent<Combatant>();
-      //ui = transform.Find("UI").gameObject;
-      //ui.SetActive(true);
     }
 
     void Start()
     {
-      Camera = Camera.main;
       //QuantumConsole.Instance.OnActivate += ConsoleActivated;
       //QuantumConsole.Instance.OnDeactivate += ConsoleDeactivated;
     }
@@ -80,5 +77,37 @@ namespace Fralle
       //QuantumConsole.Instance.OnDeactivate -= ConsoleDeactivated;
     }
 
+    [Button]
+    void SetupLocalPlayer()
+    {
+      playerController = GetComponent<PlayerController>();
+      playerCamera = FindObjectOfType<PlayerCamera>();
+      if (playerCamera == null)
+      {
+#if UNITY_EDITOR
+        playerCamera = (PlayerCamera)PrefabUtility.InstantiatePrefab(playerCameraPrefab);
+        playerCamera.transform.SetSiblingIndex(transform.GetSiblingIndex());
+#else
+        playerCamera = Instantiate(playerCameraPrefab).GetComponent<PlayerCamera>();
+#endif
+      }
+      playerCamera.controller = playerController;
+
+      var playerAttack = GetComponent<PlayerAttack>();
+      playerAttack.weaponCamera = playerCamera.weaponCamera;
+
+      var followTransformOffset = GetComponentInChildren<FollowTransformOffset>();
+      followTransformOffset.transformToFollow = playerCamera.transform;
+
+      var combatant = GetComponent<Combatant>();
+      combatant.aimTransform = playerCamera.transform;
+      combatant.weaponHolder = playerCamera.weaponHolder;
+
+#if UNITY_EDITOR
+      EditorUtility.SetDirty(playerAttack);
+      EditorUtility.SetDirty(followTransformOffset);
+      EditorUtility.SetDirty(combatant);
+#endif
+    }
   }
 }

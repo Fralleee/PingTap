@@ -1,5 +1,6 @@
 ﻿using Fralle.Core;
 using Fralle.PingTap;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerControls;
@@ -9,25 +10,22 @@ namespace Fralle
   [RequireComponent(typeof(Combatant))]
   public class PlayerAttack : MonoBehaviour, IWeaponActions
   {
-    [SerializeField] Combatant combatant;
+    public Transform weaponCamera;
+
     [SerializeField] Weapon[] weapons = new Weapon[0];
-    [SerializeField] Transform weaponCamera;
 
-    int firstPersonObjectsLayer;
-
-    bool primaryFireHold;
-    bool secondaryFireHold;
-
+    Combatant combatant;
     Vector3 defaultWeaponCameraPosition;
     Quaternion defaultWeaponCameraRotation;
+    int firstPersonObjectsLayer;
+    bool primaryFireHold;
+    bool secondaryFireHold;
 
     void Awake()
     {
       firstPersonObjectsLayer = LayerMask.NameToLayer("FPO");
 
-      if (combatant == null)
-        combatant = GetComponent<Combatant>();
-
+      combatant = GetComponent<Combatant>();
       combatant.OnWeaponSwitch += OnWeaponSwitch;
 
       defaultWeaponCameraPosition = weaponCamera.transform.localPosition;
@@ -53,7 +51,7 @@ namespace Fralle
         combatant.SecondaryAction();
     }
 
-    [ContextMenu("Equip Weapon")]
+    [Button("Equip Weapon")]
     public void EquipFirstWeaponInList()
     {
       combatant.EquipWeapon(weapons[0], false);
@@ -61,7 +59,7 @@ namespace Fralle
       Debug.Log($"Equipped: {combatant.equippedWeapon}");
     }
 
-    [ContextMenu("Remove Weapon")]
+    [Button("Remove Weapon")]
     public void RemoveWeapon()
     {
       Debug.Log($"Removed: {combatant.equippedWeapon}");

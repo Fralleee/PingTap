@@ -16,8 +16,8 @@ namespace Fralle.PingTap
     public CombatScoreData stats = new CombatScoreData();
     public CombatUpgrades modifiers = new CombatUpgrades();
 
-    public Transform aimTransform;
-    public Transform weaponHolder;
+    [Required] public Transform aimTransform;
+    [Required] public Transform weaponHolder;
     [ReadOnly] public Weapon equippedWeapon;
 
     [Header("Settings")]
@@ -101,7 +101,7 @@ namespace Fralle.PingTap
 
     void Awake()
     {
-      SetDefaults();
+      teamController = GetComponent<TeamController>();
 
       if (ikHandler.enabled)
         ikHandler.Setup(this);
@@ -126,16 +126,6 @@ namespace Fralle.PingTap
 
         AttackRange = Mathf.Max(Mathf.Min(primaryAction.GetRange(), secondaryAction ? secondaryAction.GetRange() : 0f), 10f);
       }
-    }
-
-    void SetDefaults()
-    {
-      if (aimTransform == null)
-        aimTransform = transform;
-      if (weaponHolder == null)
-        weaponHolder = transform;
-
-      teamController = GetComponent<TeamController>();
     }
 
     void OnDestroy()

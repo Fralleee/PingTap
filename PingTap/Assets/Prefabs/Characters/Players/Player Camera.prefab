@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bb643a01ccea84d987f0e5d3e38f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
+  weaponCamera: {fileID: 7913838968304182888}
+  weaponHolder: {fileID: 2048231110747761356}
 --- !u!114 &6651408295714680622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,6 +1033,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 82020fab6db36e54087523021fcb830b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1105123417483059895, guid: 82020fab6db36e54087523021fcb830b,
         type: 3}

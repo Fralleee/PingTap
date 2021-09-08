@@ -6,14 +6,19 @@ namespace Fralle
   public class PlayerRotationController : MonoBehaviour
   {
     [SerializeField] float rotateOnAngle = 35;
-    [SerializeField] Transform orientation;
 
     RigidbodyController playerController;
+    Transform orientation;
     bool doRotate;
 
     void Awake()
     {
       playerController = GetComponentInParent<RigidbodyController>();
+    }
+
+    private void Start()
+    {
+      orientation = playerController.cameraRig;
     }
 
     void Update()
