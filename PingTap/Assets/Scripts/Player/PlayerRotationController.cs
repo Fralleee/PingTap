@@ -1,4 +1,5 @@
-﻿using Fralle.FpsController;
+﻿using Fralle.Core;
+using Fralle.FpsController;
 using UnityEngine;
 
 namespace Fralle
@@ -28,24 +29,26 @@ namespace Fralle
 
     void UpdateRotation()
     {
+      Vector3 forward = new Vector3(orientation.forward.x, 0, orientation.forward.z).normalized;
+      Vector3 eulerAngles = orientation.rotation.eulerAngles.With(x: 0);
+      Quaternion horizontalRotation = Quaternion.Euler(eulerAngles);
+
       if (playerController.isMoving)
       {
-        transform.rotation = orientation.rotation;
+        transform.rotation = horizontalRotation;
         doRotate = false;
       }
-      else if (Vector3.Angle(orientation.forward, transform.forward) > rotateOnAngle)
-      {
+      else if (Vector3.Angle(forward, transform.forward) > rotateOnAngle)
         doRotate = true;
-      }
 
       if (!doRotate)
         return;
 
-      transform.rotation = Quaternion.Lerp(transform.rotation, orientation.rotation, Time.deltaTime * 10f);
-      if (Vector3.Angle(orientation.forward, transform.forward) > 3f)
+      transform.rotation = Quaternion.Lerp(transform.rotation, horizontalRotation, Time.deltaTime * 10f);
+      if (Vector3.Angle(forward, transform.forward) > 3f)
         return;
 
-      transform.rotation = orientation.rotation;
+      transform.rotation = horizontalRotation;
       doRotate = false;
     }
   }
