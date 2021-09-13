@@ -43,7 +43,7 @@ namespace Fralle.PingTap
       currentPosition = Vector3.zero;
       currentRotation = Quaternion.identity;
 
-      currentPosition.y = headbobMaster.BobAmount * headbobMaster.Configuration.WeaponBobbingAmount;
+      currentPosition.y = headbobMaster.BobAmount * headbobMaster.Configuration.WeaponBobbingAmount * playerController.movementSpeedProduct;
 
       float angleChanges = currentRotation.eulerAngles.y + headbobMaster.CurvePosition * headbobMaster.Configuration.WeaponRotationAmount;
       currentRotation = Quaternion.AngleAxis(angleChanges, localAxis);

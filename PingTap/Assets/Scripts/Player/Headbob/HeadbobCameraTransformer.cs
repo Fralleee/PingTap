@@ -46,7 +46,7 @@ namespace Fralle.PingTap
     void PerformBob()
     {
       currentPosition = Vector3.zero;
-      currentPosition.y = BobAmount * Configuration.CameraBobbingAmount;
+      currentPosition.y = BobAmount * Configuration.CameraBobbingAmount * playerController.movementSpeedProduct;
     }
     void Reset()
     {
