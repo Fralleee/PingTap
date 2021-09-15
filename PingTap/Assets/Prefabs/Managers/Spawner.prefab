@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3653748111939309824}
-  - component: {fileID: 3653748111939309830}
-  - component: {fileID: 3653748111939309825}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -32,34 +30,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3653748111939309830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653748111939309827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc797cdff1cb7634b997e63a1fb05c75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 7669301600273575201, guid: 643a53c2e8f4d8f40b8908cc829e1c6e,
-    type: 3}
-  spawnCenter: {x: -25, y: 0, z: -25}
-  minRange: 75
-  maxRange: 110
---- !u!114 &3653748111939309825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3653748111939309827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb0bd7d662bfa744dbed76ff29a53cdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  treasurePrefab: {fileID: 0}
-  spawnChance: 0
