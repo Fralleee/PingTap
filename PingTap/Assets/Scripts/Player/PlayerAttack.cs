@@ -1,6 +1,5 @@
 ﻿using Fralle.Core;
 using Fralle.PingTap;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerControls;
@@ -51,21 +50,6 @@ namespace Fralle
         combatant.SecondaryAction();
     }
 
-    [Button("Equip Weapon")]
-    public void EquipFirstWeaponInList()
-    {
-      combatant.EquipWeapon(weapons[0], false);
-      combatant.equippedWeapon.gameObject.SetLayerRecursively(firstPersonObjectsLayer);
-      Debug.Log($"Equipped: {combatant.equippedWeapon}");
-    }
-
-    [Button("Remove Weapon")]
-    public void RemoveWeapon()
-    {
-      Debug.Log($"Removed: {combatant.equippedWeapon}");
-      combatant.ClearWeapons();
-    }
-
     void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
     {
       if (combatant.equippedWeapon == null)
@@ -84,8 +68,8 @@ namespace Fralle
     {
       if (!context.performed)
         return;
-      int number = (int)context.ReadValue<float>();
-      combatant.EquipWeapon(weapons.Length >= number + 1 ? weapons[number] : null);
+      int number = context.ReadValue<int>();
+      combatant.EquipWeapon(weapons.Length >= number + 1 ? weapons[number] : null); // Move this logic to Combatant
     }
 
     void IWeaponActions.OnPrimaryFire(InputAction.CallbackContext context)

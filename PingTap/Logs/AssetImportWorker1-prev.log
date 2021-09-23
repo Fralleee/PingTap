@@ -4833,3 +4833,94 @@ Received Import Request.
 Start importing Assets/Animations/Guy/Crouching/Guy FBX@Walk Crouching Backward.fbx using Guid(283989c6b101eb041b3ca5457dd7de0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '149b419812c958135ed328ad10ab65af') in 0.009948 seconds 
   Import took 0.018873 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.303644 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.20 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.117 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5129ms)
+		BeginReloadAssembly (1929ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (141ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (3ms)
+			CreateAndSetChildDomain (1076ms)
+		EndReloadAssembly (3061ms)
+			LoadAssemblies (321ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (604ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (149ms)
+			SetupLoadedEditorAssemblies (1635ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (181ms)
+				ProcessInitializeOnLoadAttributes (1415ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (2ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (63ms)
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.99 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3711 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 267.5 MB.
+System memory in use after: 267.8 MB.
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 4780.
+Total: 32.791000 ms (FindLiveObjects: 2.068900 ms CreateObjectMapping: 0.754600 ms MarkObjects: 29.861100 ms  DeleteObjects: 0.102100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 24121.666456 seconds.
+  path: Assets/Models/Characters/Guy/Guy (Player).prefab
+  artifactKey: Guid(adf0a4e66f418a7499ac33e044321cf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Characters/Guy/Guy (Player).prefab using Guid(adf0a4e66f418a7499ac33e044321cf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ae67a0a1289ca6363ec9b1b838e46f9') in 1.803105 seconds 
+  Import took 2.188081 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000518 seconds.
+  path: Assets/Models/Characters/Guy/Guy Cartoon.blend
+  artifactKey: Guid(7340ca3dbb7e6444db0fed2386474fb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Characters/Guy/Guy Cartoon.blend using Guid(7340ca3dbb7e6444db0fed2386474fb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f445357427e6023649bdb0947194d62f') in 0.177122 seconds 
+  Import took 0.187343 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.414250 seconds.
+  path: Assets/Models/Characters/Guy/Guy (Enemy).prefab
+  artifactKey: Guid(166b7349040e81941856ed749646f06d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Characters/Guy/Guy (Enemy).prefab using Guid(166b7349040e81941856ed749646f06d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3e70bf2bf7c27a6d112c121fcf4d376') in 0.071378 seconds 
+  Import took 0.081052 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.959930 seconds.
+  path: Assets/Models/Characters/Guy/Guy.blend
+  artifactKey: Guid(6a136350542b7ea47b19f28a0e7b8547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Characters/Guy/Guy.blend using Guid(6a136350542b7ea47b19f28a0e7b8547) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ddc05b3d4daa84d62cab5e96bdac071d') in 0.147650 seconds 
+  Import took 0.156671 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

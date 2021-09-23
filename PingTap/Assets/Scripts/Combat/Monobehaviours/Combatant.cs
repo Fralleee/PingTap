@@ -36,6 +36,8 @@ namespace Fralle.PingTap
 
     public float AttackRange { get; private set; } = 10f;
 
+    int currentWeaponIndex;
+
     public void PrimaryAction(bool keyDown = false)
     {
       if (!equippedWeapon || !primaryAction || primaryAction.tapable && !keyDown)
