@@ -1,5 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Fralle.PingTap
@@ -7,10 +8,6 @@ namespace Fralle.PingTap
   public class Weapon : MonoBehaviour
   {
     public event Action<Status> OnActiveWeaponActionChanged = delegate { };
-
-    [Header("Weapon")]
-    public string WeaponName;
-    [SerializeField] float equipAnimationTime = 0.3f;
 
     [Header("Transforms")]
     public Transform[] Muzzles;
@@ -23,22 +20,21 @@ namespace Fralle.PingTap
     [HideInInspector] public Combatant Combatant;
     [HideInInspector] public RecoilAddon RecoilAddon;
     [HideInInspector] public AmmoAddon AmmoAddonController;
-
-    public bool IsEquipped { get; private set; }
+    [HideInInspector] public HeadbobAdjuster HeadbobAdjuster;
+    [HideInInspector] public int WeaponSlotIndex;
 
     [Header("Debug")]
     [ReadOnly] public float NextAvailableShot;
 
-    float equipTime;
-    bool animationComplete;
-    Vector3 startPosition;
-    Quaternion startRotation;
+    void Awake()
+    {
+      RecoilAddon = GetComponent<RecoilAddon>();
+      AmmoAddonController = GetComponent<AmmoAddon>();
+      HeadbobAdjuster = GetComponent<HeadbobAdjuster>();
+    }
 
     void Update()
     {
-      if (!animationComplete)
-        AnimateEquip();
-
       if (ActiveWeaponAction == Status.Firing)
       {
         NextAvailableShot -= Time.deltaTime;
@@ -51,45 +47,34 @@ namespace Fralle.PingTap
       }
     }
 
-    public void Equip(Combatant combatant, bool shouldAnimate = true)
+    public IEnumerator Unequip(float equipTime)
     {
-      if (string.IsNullOrWhiteSpace(WeaponName))
-        WeaponName = name;
-
       ActiveWeaponAction = Status.Equipping;
-      equipTime = 0f;
-      animationComplete = !shouldAnimate;
-      Combatant = combatant;
 
-      startPosition = shouldAnimate ? transform.localPosition : Vector3.zero;
-      startRotation = shouldAnimate ? transform.localRotation : Quaternion.identity;
+      Combatant.weaponAnimator.AnimateUnequip(Combatant, equipTime);
+      yield return new WaitForSeconds(equipTime);
 
-      RecoilAddon = GetComponent<RecoilAddon>();
-      RecoilAddon.Activate();
-      AmmoAddonController = GetComponent<AmmoAddon>();
+      ActiveWeaponAction = Status.NotEquipped;
+      gameObject.SetActive(false);
+    }
 
-      IsEquipped = true;
+    public IEnumerator Equip(float equipTime)
+    {
+      gameObject.SetActive(true);
+      ActiveWeaponAction = Status.Equipping;
+
+      Combatant.weaponAnimator.AnimateEquip(Combatant, equipTime);
+      yield return new WaitForSeconds(equipTime);
+
+      HeadbobAdjuster?.Activate();
+      RecoilAddon?.Activate();
+      ActiveWeaponAction = Status.Ready;
     }
 
     public void ChangeWeaponAction(Status newActiveWeaponAction)
     {
       ActiveWeaponAction = newActiveWeaponAction;
       OnActiveWeaponActionChanged(newActiveWeaponAction);
-    }
-
-    void AnimateEquip()
-    {
-      equipTime += Time.deltaTime;
-      equipTime = Mathf.Clamp(equipTime, 0f, equipAnimationTime);
-      float delta = -(Mathf.Cos(Mathf.PI * (equipTime / equipAnimationTime)) - 1f) / 2f;
-      transform.localPosition = Vector3.Lerp(startPosition, Vector3.zero, delta);
-      transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.identity, delta);
-
-      if (!(equipTime >= equipAnimationTime))
-        return;
-
-      animationComplete = true;
-      ActiveWeaponAction = Status.Ready;
     }
   }
 }

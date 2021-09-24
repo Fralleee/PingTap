@@ -6,6 +6,7 @@
     Firing = 1,
     Reloading = 2,
     Melee = 3,
-    Equipping = 4
+    Equipping = 4,
+    NotEquipped = 5
   }
 }

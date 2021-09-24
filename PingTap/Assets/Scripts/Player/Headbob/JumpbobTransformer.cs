@@ -17,7 +17,7 @@ namespace Fralle.PingTap
     [SerializeField] float rotationMagnitude = 20f;
     [SerializeField] float jumpMagnitude = 0.001f;
     [SerializeField] float fallMagnitude = 0.002f;
-    [SerializeField] float landMagnitude = 0.025f;
+    //[SerializeField] float landMagnitude = 0.025f;
 
     RigidbodyController playerController;
     Combatant combatant;

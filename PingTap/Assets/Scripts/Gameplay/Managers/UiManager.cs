@@ -8,7 +8,7 @@ namespace Fralle.Gameplay
     public event Action<bool> OnMenuToggle = delegate { };
 
     [Header("Settings")]
-    [SerializeField] bool allowPauseMenu = true;
+    //[SerializeField] bool allowPauseMenu = true;
 
     //[Header("References")]
     //[SerializeField] PauseMenu pauseMenu;

@@ -20,12 +20,7 @@ namespace Fralle.PingTap
 
     void Start()
     {
-      if (combatant == null)
-      {
-        combatant = GetComponent<Combatant>();
-        combatant.EquipWeapon(weapon);
-      }
-
+      combatant = GetComponent<Combatant>();
       currentAttackPattern = tap;
     }
 

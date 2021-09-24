@@ -36,8 +36,8 @@ namespace Fralle.PingTap
 
     void Update()
     {
-      if (!weapon.IsEquipped)
-        return;
+      //if (!weapon.IsEquipped)
+      //  return;
       if (kickbackForce <= 0)
         return;
 

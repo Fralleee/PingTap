@@ -35,13 +35,13 @@ namespace Fralle.Abilities.Turret
 
     void EquipWeapon(Weapon weapon)
     {
-      if (EquippedWeapon && EquippedWeapon.WeaponName == weapon.WeaponName)
-        return;
-      if (EquippedWeapon)
-        Destroy(EquippedWeapon.gameObject);
+      //if (EquippedWeapon && EquippedWeapon.WeaponName == weapon.WeaponName)
+      //  return;
+      //if (EquippedWeapon)
+      //  Destroy(EquippedWeapon.gameObject);
 
-      EquippedWeapon = Instantiate(weapon, combatant.weaponHolder.position, combatant.weaponHolder.rotation, combatant.weaponHolder);
-      EquippedWeapon.Equip(combatant);
+      //EquippedWeapon = Instantiate(weapon, combatant.weaponHolder.position, combatant.weaponHolder.rotation, combatant.weaponHolder);
+      //EquippedWeapon.Equip(combatant);
       GetMaxRange();
     }
 

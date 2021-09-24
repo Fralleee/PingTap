@@ -162,16 +162,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734e9ed3bbc42a24cbb91186771a4c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponName: Rifle
-  equipAnimationTime: 0.3
   Muzzles:
-  - {fileID: 1208704213795220663}
-  leftHandGrip: {fileID: 8063365078453462000}
-  rightHandGrip: {fileID: 3609378851149558724}
+  - {fileID: 1257606977036264297}
+  leftHandGrip: {fileID: 3396843734761712135}
+  rightHandGrip: {fileID: 642192752644767343}
   weaponCameraTransform: {fileID: 6822570053146102854}
   Combatant: {fileID: 0}
   RecoilAddon: {fileID: 0}
   AmmoAddonController: {fileID: 0}
+  WeaponSlotIndex: 0
   NextAvailableShot: 0
 --- !u!114 &7120206571760853769
 MonoBehaviour:
@@ -250,20 +249,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07349442e0fc02e42bd2ff8e78f6ffe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDamage: 2
-  MaxDamage: 3
-  AmmoPerShot: 1
-  ShotsPerSecond: 20
-  Tapable: 0
-  Element: 0
-  DamageEffects: []
-  Range: 50
-  PushForce: 75
+  minDamage: 1
+  maxDamage: 10
+  ammoPerShot: 1
+  shotsPerSecond: 20
+  tapable: 0
+  element: 0
+  damageEffects: []
+  range: 50
+  pushForce: 3.5
   muzzleParticlePrefab: {fileID: 5426031798781912364, guid: 12a91f77ed72e8d4388cd5a419e6e464,
     type: 3}
   bulletTraceController: {fileID: 0}
   bulletsPerFire: 1
-  RangeDamageFalloff:
+  rangeDamageFalloff:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -291,7 +290,7 @@ MonoBehaviour:
   spreadIncreaseEachShot: 0.25
   recovery: 4
   spreadOnFirstShot: 0
-  CurrentSpread: 0
+  currentSpread: 0
 --- !u!114 &9109869561109422248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,13 +303,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc81160f9967a3f448e61941cec0acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDamage: 10
-  MaxDamage: 30
-  AmmoPerShot: 1
-  ShotsPerSecond: 2
-  Tapable: 1
-  Element: 0
-  DamageEffects: []
+  minDamage: 1
+  maxDamage: 10
+  ammoPerShot: 1
+  shotsPerSecond: 20
+  tapable: 0
+  element: 0
+  damageEffects: []
   muzzleParticlePrefab: {fileID: 7439156794672867267, guid: 309990e226173f445a377c6f85e11d3e,
     type: 3}
   projectilePrefab: {fileID: 7309530114896631608, guid: 5b88ea405478bec428cbdddd88cef76a,
@@ -330,7 +329,6 @@ MonoBehaviour:
     Forward: {x: 0, y: 0, z: 0}
     Element: 0
     DamageEffects: []
-    HitboxLayer: 0
   projectilesPerFire: 1
   delayTimePerProjectiles: 0
   spreadRadiusOnMaxRange: 0
@@ -486,6 +484,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeoutTime: 0.2
+--- !u!1 &4028485090749108547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3396843734761712135}
+  m_Layer: 0
+  m_Name: Left Hand Grip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3396843734761712135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4028485090749108547}
+  m_LocalRotation: {x: 0.13197711, y: -0.58618355, z: -0.69763464, w: -0.39022657}
+  m_LocalPosition: {x: -0.0030361637, y: -0.0043471525, z: -0.10669997}
+  m_LocalScale: {x: 0.91094005, y: 0.90229, z: 0.9867702}
+  m_Children: []
+  m_Father: {fileID: 547296503678558383}
+  m_RootOrder: 43
+  m_LocalEulerAnglesHint: {x: -67.746, y: -227.216, z: 93.092}
+--- !u!1 &5767675081142149734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642192752644767343}
+  m_Layer: 0
+  m_Name: Right Hand Grip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &642192752644767343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767675081142149734}
+  m_LocalRotation: {x: 0.48236722, y: -0.65567255, z: -0.47951442, w: -0.32784364}
+  m_LocalPosition: {x: 0.387, y: 0.057, z: -0.02}
+  m_LocalScale: {x: 0.98027, y: 0.82021, z: 0.99952}
+  m_Children: []
+  m_Father: {fileID: 547296503678558383}
+  m_RootOrder: 44
+  m_LocalEulerAnglesHint: {x: -70.8, y: 278.6, z: -439.8}
 --- !u!1 &5961272946899523573
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +604,36 @@ Transform:
   m_Father: {fileID: 2261504441301463266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6435755835701775052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1257606977036264297}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1257606977036264297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435755835701775052}
+  m_LocalRotation: {x: -0.006170608, y: -0.7070799, z: -0.006170608, w: 0.7070799}
+  m_LocalPosition: {x: -0.401, y: 0.148, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 0.79999995}
+  m_Children: []
+  m_Father: {fileID: 547296503678558383}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7291218277627151509
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +661,7 @@ Transform:
   m_LocalPosition: {x: 0.3, y: -0.6, z: 0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 547296503678558383}
   - {fileID: 2261504441301463266}
   m_Father: {fileID: 1574042133890056261}
   m_RootOrder: 0
@@ -630,13 +719,88 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9039973389342998848}
-  m_LocalRotation: {x: 0.086993225, y: 0.060816202, z: -0.0053207306, w: 0.9943366}
-  m_LocalPosition: {x: -0.2, y: -0.1, z: -0.25}
+  m_LocalRotation: {x: 0.048582777, y: 0.0150787225, z: -0.000733516, w: 0.9987051}
+  m_LocalPosition: {x: 0.15, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1574042133890056261}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 10, y: 7, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.57, y: 1.73, z: 0}
+--- !u!1001 &5306484811335492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6343120984642069326}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7070799
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.006170608
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7070799
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.006170608
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 796d4a7a0a27d63499d371880142aeea,
+        type: 3}
+      propertyPath: m_Name
+      value: Heavy Pulse Rifle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 796d4a7a0a27d63499d371880142aeea, type: 3}
+--- !u!4 &547296503678558383 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 796d4a7a0a27d63499d371880142aeea,
+    type: 3}
+  m_PrefabInstance: {fileID: 5306484811335492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2261504441301330530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -648,9 +812,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: AssaultRifle
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f0b4adf647c52ef4c8f9f23485bf1079, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f0b4adf647c52ef4c8f9f23485bf1079, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f0b4adf647c52ef4c8f9f23485bf1079, type: 3}
       propertyPath: m_LocalScale.z

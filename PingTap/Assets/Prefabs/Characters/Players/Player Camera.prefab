@@ -485,6 +485,7 @@ GameObject:
   - component: {fileID: 8702914144664937361}
   - component: {fileID: 2764599297186097066}
   - component: {fileID: 6037040204158416390}
+  - component: {fileID: 8800446578653784163}
   - component: {fileID: 222444201763385743}
   m_Layer: 0
   m_Name: Weapon Holder
@@ -538,7 +539,6 @@ MonoBehaviour:
   rotationMagnitude: 20
   jumpMagnitude: 0.001
   fallMagnitude: 0.002
-  landMagnitude: 0.025
 --- !u!114 &2764599297186097066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +569,18 @@ MonoBehaviour:
   smoothSpeed: 10
   strafeRotationAmount: 1.6
   maxStrafeRotation: 5
+--- !u!114 &8800446578653784163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048231110747761359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec52f8e97abf4d2468f3d16b0f8b1ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &222444201763385743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,9 +1354,21 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 82020fab6db36e54087523021fcb830b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 82020fab6db36e54087523021fcb830b, type: 3}
+--- !u!4 &8498507715224180113 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1613409159406266152, guid: 82020fab6db36e54087523021fcb830b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2048231109688347977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9063882561020833910 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7036213049465896255, guid: 82020fab6db36e54087523021fcb830b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2048231109688347977}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2010433006285466274 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 82020fab6db36e54087523021fcb830b,
     type: 3}
   m_PrefabInstance: {fileID: 2048231109688347977}
   m_PrefabAsset: {fileID: 0}
@@ -1363,18 +1387,6 @@ Transform:
 --- !u!4 &960688310137823786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1241247172163432291, guid: 82020fab6db36e54087523021fcb830b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2048231109688347977}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2010433006285466274 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 82020fab6db36e54087523021fcb830b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2048231109688347977}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8498507715224180113 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1613409159406266152, guid: 82020fab6db36e54087523021fcb830b,
     type: 3}
   m_PrefabInstance: {fileID: 2048231109688347977}
   m_PrefabAsset: {fileID: 0}

@@ -13,9 +13,12 @@ namespace Fralle.PingTap
         return;
 
       headbob = GetComponentInParent<HeadbobCameraTransformer>();
-      if (headbob)
-        headbob.overrideConfguration = configuration;
+    }
 
+    public void Activate()
+    {
+      if (headbob && configuration)
+        headbob.overrideConfguration = configuration;
     }
 
     void OnDestroy()

@@ -11,8 +11,6 @@ namespace Fralle
   {
     public Transform weaponCamera;
 
-    [SerializeField] Weapon[] weapons = new Weapon[0];
-
     Combatant combatant;
     Vector3 defaultWeaponCameraPosition;
     Quaternion defaultWeaponCameraRotation;
@@ -35,9 +33,6 @@ namespace Fralle
     {
       Player.controls.Weapon.SetCallbacks(this);
       Player.controls.Weapon.Enable();
-
-      if (combatant.equippedWeapon == null)
-        combatant.EquipWeapon(weapons[0]);
     }
 
     void Update()
@@ -68,8 +63,8 @@ namespace Fralle
     {
       if (!context.performed)
         return;
-      int number = context.ReadValue<int>();
-      combatant.EquipWeapon(weapons.Length >= number + 1 ? weapons[number] : null); // Move this logic to Combatant
+      int weaponSlotIndex = (int)context.ReadValue<float>();
+      combatant.EquipWeapon(weaponSlotIndex);
     }
 
     void IWeaponActions.OnPrimaryFire(InputAction.CallbackContext context)

@@ -1,7 +1,7 @@
 ﻿using Fralle.Core;
 using Sirenix.OdinInspector;
 using System;
-using System.Linq;
+using System.Collections;
 using UnityEngine;
 
 namespace Fralle.PingTap
@@ -12,9 +12,9 @@ namespace Fralle.PingTap
     public event Action<DamageData> OnHit = delegate { };
 
     [HideInInspector] public TeamController teamController;
+    [HideInInspector] public IWeaponAnimator weaponAnimator;
 
-    public CombatScoreData stats = new CombatScoreData();
-    public CombatUpgrades modifiers = new CombatUpgrades();
+    [SerializeField] Weapon[] weaponSlots = new Weapon[3];
 
     [Required] public Transform aimTransform;
     [Required] public Transform weaponHolder;
@@ -23,6 +23,9 @@ namespace Fralle.PingTap
     [Header("Settings")]
     [InlineEditor(InlineEditorObjectFieldModes.Foldout)]
     public ImpactAtlas impactAtlas;
+
+    public CombatScoreData stats = new CombatScoreData();
+    public CombatUpgrades modifiers = new CombatUpgrades();
 
     [Header("Flags")]
     public bool hasActiveCamera;
@@ -34,9 +37,50 @@ namespace Fralle.PingTap
     AttackAction primaryAction;
     AttackAction secondaryAction;
 
+    bool isEquipping;
+    bool queuedWeaponSwitch;
+    int queueWeaponIndex = -1;
+
     public float AttackRange { get; private set; } = 10f;
 
-    int currentWeaponIndex;
+    void Awake()
+    {
+      teamController = GetComponent<TeamController>();
+      weaponAnimator = weaponHolder.GetComponent<IWeaponAnimator>();
+
+      if (ikHandler.enabled)
+        ikHandler.Setup(this);
+      targetHandler.Setup(this);
+    }
+
+    void Start()
+    {
+      SetupArsenal();
+      EquipWeapon();
+    }
+
+    void FixedUpdate()
+    {
+      if (hasActiveCamera)
+        targetHandler.DetectTargets();
+    }
+
+    void SetupArsenal()
+    {
+      for (int i = 0; i < weaponSlots.Length; i++)
+      {
+        var prefab = weaponSlots[i];
+        if (prefab == null)
+          continue;
+
+        var instance = Instantiate(prefab, weaponHolder.position, weaponHolder.rotation, weaponHolder);
+        instance.name = prefab.name;
+        instance.WeaponSlotIndex = i;
+        instance.Combatant = this;
+        instance.gameObject.SetActive(false);
+        weaponSlots[i] = instance;
+      }
+    }
 
     public void PrimaryAction(bool keyDown = false)
     {
@@ -59,67 +103,61 @@ namespace Fralle.PingTap
       OnHit(damageData);
     }
 
-    public void ClearWeapons()
-    {
-      string[] stringArray = { "Weapon Camera", "FPS" };
-      foreach (Transform child in weaponHolder)
-      {
-        if (!stringArray.Any(child.name.Contains))
-          DestroyImmediate(child.gameObject);
-      }
 
-      if (equippedWeapon)
-        equippedWeapon = null;
-    }
-
-    public void EquipWeapon(Weapon weapon, bool animationDistance = true)
+    public void EquipWeapon(int index = 0)
     {
-      if (equippedWeapon != null && weapon != null && equippedWeapon.name == weapon.name)
+      if (weaponSlots[index] == null)
         return;
 
-      ClearWeapons();
-
-      Weapon oldWeapon = equippedWeapon;
-      Vector3 weaponHolderPosition = weaponHolder.position;
-      Vector3 position = animationDistance ? weaponHolderPosition.With(y: -0.15f) : weaponHolderPosition;
-
-      if (weapon != null)
-      {
-        equippedWeapon = Instantiate(weapon, position, weaponHolder.rotation, weaponHolder);
-        equippedWeapon.Equip(this);
-
-        SetupAttackActions();
-      }
+      if (!isEquipping)
+        StartCoroutine(SwitchWeapon(index));
       else
       {
-        equippedWeapon = null;
-        primaryAction = null;
-        secondaryAction = null;
+        queuedWeaponSwitch = true;
+        queueWeaponIndex = index;
       }
-
-      if (equippedWeapon != null || oldWeapon != null)
-        OnWeaponSwitch(equippedWeapon, oldWeapon);
     }
 
-    void Awake()
+    IEnumerator SwitchWeapon(int index = 0)
     {
-      teamController = GetComponent<TeamController>();
+      float unequipTime = 0.2f;
+      float equipTime = 0.4f;
+      isEquipping = true;
 
-      if (ikHandler.enabled)
-        ikHandler.Setup(this);
-      targetHandler.Setup(this);
+      Weapon oldWeapon = equippedWeapon;
+      yield return oldWeapon?.Unequip(unequipTime);
+
+      if (equippedWeapon?.WeaponSlotIndex != index)
+        equippedWeapon = weaponSlots[index];
+      else
+        equippedWeapon = null;
+
+      OnWeaponSwitch(equippedWeapon, oldWeapon);
+
+      yield return equippedWeapon?.Equip(equipTime);
+
+      SetupAttackActions();
+      isEquipping = false;
+
+      if (queuedWeaponSwitch)
+      {
+        StartCoroutine(SwitchWeapon(queueWeaponIndex));
+        queueWeaponIndex = -1;
+        queuedWeaponSwitch = false;
+      }
     }
 
-    void FixedUpdate()
-    {
-      if (hasActiveCamera)
-        targetHandler.DetectTargets();
-    }
 
     void SetupAttackActions()
     {
-      AttackAction[] attackActions = equippedWeapon.GetComponentsInChildren<AttackAction>();
-      if (attackActions.Length > 2)
+      AttackAction[] attackActions = equippedWeapon?.GetComponentsInChildren<AttackAction>();
+      if (attackActions == null)
+      {
+        primaryAction = null;
+        secondaryAction = null;
+        AttackRange = 0;
+      }
+      else if (attackActions.Length > 2)
         Debug.LogWarning($"Weapon {equippedWeapon} has more attack actions than possible (2).");
       else if (attackActions.Length > 0)
       {

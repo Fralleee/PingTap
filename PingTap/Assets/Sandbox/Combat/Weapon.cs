@@ -117,7 +117,7 @@ public class Weapon : MonoBehaviour
 
     if (PrefabRayTrail != null)
     {
-      const int trailPoolSize = 16;
+      //const int trailPoolSize = 16;
       //ObjectPool.Instance.InitPool(PrefabRayTrail, trailPoolSize);
     }
 

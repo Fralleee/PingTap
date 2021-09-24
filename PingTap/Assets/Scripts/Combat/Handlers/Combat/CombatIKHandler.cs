@@ -45,23 +45,20 @@ namespace Fralle.PingTap
 
     void SetupIK()
     {
-      if (useLeftHand && combatant.equippedWeapon.leftHandGrip)
+      if (useLeftHand)
       {
         foreach (HandIK ik in leftHandIKs)
-          ik.Toggle();
+          ik.Toggle(combatant.equippedWeapon?.leftHandGrip);
 
         foreach (HandIKTarget target in leftHandIKTargets)
-          target.Target(combatant.equippedWeapon.leftHandGrip);
+          target.Target(combatant.equippedWeapon?.leftHandGrip);
       }
 
-      if (!combatant.equippedWeapon.rightHandGrip)
-        return;
-
       foreach (HandIK ik in rightHandIKs)
-        ik.Toggle();
+        ik.Toggle(combatant.equippedWeapon?.rightHandGrip);
 
       foreach (HandIKTarget target in rightHandIKTargets)
-        target.Target(combatant.equippedWeapon.rightHandGrip);
+        target.Target(combatant.equippedWeapon?.rightHandGrip);
     }
 
     void HandleWeaponSwitch(Weapon newWeapon, Weapon oldWeapon)
