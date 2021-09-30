@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
   public AudioClip DestroyedSound;
 
   //TODO : maybe pool that somewhere to not have to create one for each projectile.
-  public GameObject PrefabOnDestruction;
+  public UnityEngine.GameObject PrefabOnDestruction;
 
   Weapon m_Owner;
   Rigidbody m_Rigidbody;
@@ -48,7 +48,7 @@ public class Projectile : MonoBehaviour
   {
     Vector3 position = transform.position;
 
-    var effect = new GameObject(); // PoolSystem.Instance.GetInstance<GameObject>(PrefabOnDestruction);
+    var effect = new UnityEngine.GameObject(); // PoolSystem.Instance.GetInstance<GameObject>(PrefabOnDestruction);
     effect.transform.position = position;
     effect.SetActive(true);
 

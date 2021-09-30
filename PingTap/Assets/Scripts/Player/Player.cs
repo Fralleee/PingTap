@@ -2,8 +2,11 @@
 using Fralle.Gameplay;
 using Fralle.PingTap;
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Fralle
 {
@@ -15,6 +18,7 @@ namespace Fralle
     public static PlayerControls controls;
 
     [SerializeField] PlayerCamera playerCameraPrefab;
+    [SerializeField] PlayerHUD playerHUD;
 
     public static void Disable()
     {
@@ -39,6 +43,17 @@ namespace Fralle
       controls.Movement.Enable();
       controls.Ability.Enable();
       controls.Weapon.Enable();
+
+      StartCoroutine(SetupPlayerHUD());
+    }
+
+    IEnumerator SetupPlayerHUD()
+    {
+      AsyncOperationHandle<GameObject> loadPlayerHUD = Addressables.InstantiateAsync("PlayerHUD");
+      yield return loadPlayerHUD;
+      loadPlayerHUD.Result.transform.SetSiblingIndex(transform.GetSiblingIndex() + 1);
+      loadPlayerHUD.Result.name = "Player HUD";
+      playerHUD = loadPlayerHUD.Result.GetComponent<PlayerHUD>();
     }
 
     void Start()

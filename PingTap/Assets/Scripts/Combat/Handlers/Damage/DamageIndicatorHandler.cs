@@ -15,7 +15,7 @@ namespace Fralle.PingTap
     [SerializeField] ShakeTransformEventData headshotShake;
 
     DamageController damageController;
-    ShakeTransformer cameraShakeTransform;
+    PlayerCamera playerCamera;
     Volume damageVolume;
 
     bool invalidConfiguration => postProcess == null || bodyshotShake == null || headshotShake == null;
@@ -31,7 +31,7 @@ namespace Fralle.PingTap
 
       damageVolume = postProcessController.AddProfile(postProcess);
 
-      cameraShakeTransform = Object.FindObjectOfType<ShakeTransformer>();
+      playerCamera = Object.FindObjectOfType<PlayerCamera>();
     }
 
     public void Clean()
@@ -50,7 +50,7 @@ namespace Fralle.PingTap
 
     void HandleReceiveAttack(DamageController dc, DamageData dd)
     {
-      cameraShakeTransform.AddShakeEvent(dd.HitArea == HitArea.Head ? headshotShake : bodyshotShake);
+      playerCamera.AddShakeEvent(dd.HitArea == HitArea.Head ? headshotShake : bodyshotShake);
     }
   }
 }

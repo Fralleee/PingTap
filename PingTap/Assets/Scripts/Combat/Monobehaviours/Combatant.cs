@@ -12,7 +12,6 @@ namespace Fralle.PingTap
     public event Action<DamageData> OnHit = delegate { };
 
     [HideInInspector] public TeamController teamController;
-    [HideInInspector] public IWeaponAnimator weaponAnimator;
 
     [SerializeField] Weapon[] weaponSlots = new Weapon[3];
 
@@ -46,7 +45,6 @@ namespace Fralle.PingTap
     void Awake()
     {
       teamController = GetComponent<TeamController>();
-      weaponAnimator = weaponHolder.GetComponent<IWeaponAnimator>();
 
       if (ikHandler.enabled)
         ikHandler.Setup(this);
@@ -120,12 +118,13 @@ namespace Fralle.PingTap
 
     IEnumerator SwitchWeapon(int index = 0)
     {
-      float unequipTime = 0.2f;
-      float equipTime = 0.4f;
       isEquipping = true;
 
       Weapon oldWeapon = equippedWeapon;
-      yield return oldWeapon?.Unequip(unequipTime);
+      oldWeapon?.Unequip();
+      if (oldWeapon)
+        yield return new WaitForSeconds(oldWeapon.EquipTime);
+
 
       if (equippedWeapon?.WeaponSlotIndex != index)
         equippedWeapon = weaponSlots[index];
@@ -134,7 +133,9 @@ namespace Fralle.PingTap
 
       OnWeaponSwitch(equippedWeapon, oldWeapon);
 
-      yield return equippedWeapon?.Equip(equipTime);
+      equippedWeapon?.Equip();
+      if (equippedWeapon)
+        yield return new WaitForSeconds(equippedWeapon.EquipTime);
 
       SetupAttackActions();
       isEquipping = false;

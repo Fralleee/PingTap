@@ -23,7 +23,7 @@ namespace Fralle.PingTap
     AbilityController abilityController;
     PlayerController playerController;
     Rigidbody rigidBody;
-    ShakeTransformer cameraShakeTransform;
+    PlayerCamera playerCamera;
     Volume abilityVolume;
     ParticleSystem speedLinesEffect;
 
@@ -41,7 +41,7 @@ namespace Fralle.PingTap
       speedlines = Instantiate(speedlines, ac.postProcessController.transform);
       speedLinesEffect = speedlines.GetComponent<ParticleSystem>();
 
-      cameraShakeTransform = playerController.cameraRig.GetComponent<ShakeTransformer>();
+      playerCamera = playerController.cameraRig.GetComponent<PlayerCamera>();
       defaultFov = playerController.camera.fieldOfView;
     }
 
@@ -81,7 +81,7 @@ namespace Fralle.PingTap
       rigidBody.useGravity = false;
       rigidBody.AddForce(direction * dashPower, ForceMode.VelocityChange);
 
-      cameraShakeTransform.AddShakeEvent(cameraShake);
+      playerCamera.AddShakeEvent(cameraShake);
       abilityVolume.weight = 1;
       speedLinesEffect.Emit(100);
       playerController.camera.fieldOfView = defaultFov + addFov;

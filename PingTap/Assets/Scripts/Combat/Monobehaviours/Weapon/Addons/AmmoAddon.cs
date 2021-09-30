@@ -14,17 +14,14 @@ namespace Fralle.PingTap
 
     [SerializeField] bool infiniteAmmo = false;
     [SerializeField] float reloadSpeed = 0.75f;
-    [SerializeField] AnimationCurve blendOverLifetime = new AnimationCurve();
-
-    bool isReloading;
-    float rotationTime;
-    float reloadStatMultiplier = 1f;
-    Weapon weapon;
-
-    public float ReloadTime => reloadSpeed * reloadStatMultiplier;
 
     [Header("Debug")]
     [ReadOnly] public float ReloadPercentage;
+
+    Weapon weapon;
+    float reloadStatMultiplier = 1f;
+
+    public float ReloadTime => reloadSpeed * reloadStatMultiplier;
 
     void Awake()
     {
@@ -41,15 +38,8 @@ namespace Fralle.PingTap
     {
       if (infiniteAmmo)
         return;
-      if (isReloading)
-      {
-        ReloadPercentage = rotationTime / ReloadTime;
-        rotationTime = Mathf.Clamp(rotationTime + Time.deltaTime, 0, ReloadTime);
-        float animTime = blendOverLifetime.Evaluate(ReloadPercentage);
-        float spinDelta = -(Mathf.Cos(Mathf.PI * animTime) - 1f) / 2f;
-        transform.localRotation = Quaternion.Euler(new Vector3(spinDelta * 360f, 0, 0));
-      }
-      else if (Input.GetKeyDown(KeyCode.R) && weapon.ActiveWeaponAction == Status.Ready && CurrentAmmo < MaxAmmo)
+
+      if (Input.GetKeyDown(KeyCode.R) && weapon.ActiveWeaponAction == Status.Ready && CurrentAmmo < MaxAmmo)
         StartCoroutine(ReloadCooldown());
     }
 
@@ -74,13 +64,9 @@ namespace Fralle.PingTap
     IEnumerator ReloadCooldown()
     {
       weapon.ChangeWeaponAction(Status.Reloading);
-      isReloading = true;
-      rotationTime = 0f;
       yield return new WaitForSeconds(ReloadTime);
       ChangeAmmo(MaxAmmo, false);
       weapon.ChangeWeaponAction(Status.Ready);
-      transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-      isReloading = false;
     }
   }
 }

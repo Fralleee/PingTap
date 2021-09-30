@@ -1,6 +1,5 @@
 ﻿using Sirenix.OdinInspector;
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Fralle.PingTap
@@ -15,6 +14,8 @@ namespace Fralle.PingTap
     public Transform rightHandGrip;
     public Transform weaponCameraTransform;
 
+    [FoldoutGroup("Animator Settings")] public float EquipTime;
+
     public Status ActiveWeaponAction { get; private set; }
 
     [HideInInspector] public Combatant Combatant;
@@ -26,11 +27,14 @@ namespace Fralle.PingTap
     [Header("Debug")]
     [ReadOnly] public float NextAvailableShot;
 
+    Animator Animator;
+
     void Awake()
     {
       RecoilAddon = GetComponent<RecoilAddon>();
       AmmoAddonController = GetComponent<AmmoAddon>();
       HeadbobAdjuster = GetComponent<HeadbobAdjuster>();
+      Animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -45,27 +49,53 @@ namespace Fralle.PingTap
       {
         NextAvailableShot = 0;
       }
+
+      if (Input.GetKeyDown(KeyCode.R))
+      {
+        Reload();
+      }
     }
 
-    public IEnumerator Unequip(float equipTime)
+    void Reload()
+    {
+      ActiveWeaponAction = Status.Reloading;
+
+      Animator.SetTrigger("Reload");
+      Animator.speed = 1 / AmmoAddonController.ReloadTime;
+    }
+
+    void OnReloadEnd()
+    {
+      //ChangeAmmo(MaxAmmo, false);
+      ActiveWeaponAction = Status.Ready;
+    }
+
+    public void Unequip()
     {
       ActiveWeaponAction = Status.Equipping;
 
-      Combatant.weaponAnimator.AnimateUnequip(Combatant, equipTime);
-      yield return new WaitForSeconds(equipTime);
+      Animator.SetTrigger("Unequip");
+      Animator.speed = 1 / EquipTime;
+    }
 
+    void OnUnequipEnd()
+    {
       ActiveWeaponAction = Status.NotEquipped;
       gameObject.SetActive(false);
     }
 
-    public IEnumerator Equip(float equipTime)
+
+    public void Equip()
     {
-      gameObject.SetActive(true);
       ActiveWeaponAction = Status.Equipping;
+      gameObject.SetActive(true);
 
-      Combatant.weaponAnimator.AnimateEquip(Combatant, equipTime);
-      yield return new WaitForSeconds(equipTime);
+      Animator.SetTrigger("Equip");
+      Animator.speed = 1 / EquipTime;
+    }
 
+    void OnEquipEnd()
+    {
       HeadbobAdjuster?.Activate();
       RecoilAddon?.Activate();
       ActiveWeaponAction = Status.Ready;

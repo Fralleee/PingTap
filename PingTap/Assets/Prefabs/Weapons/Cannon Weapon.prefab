@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2954215162945410125}
   - component: {fileID: 961163272788429519}
   - component: {fileID: 2756431959190435258}
+  - component: {fileID: -3003764155637965855}
   m_Layer: 0
   m_Name: Cannon Weapon
   m_TagString: Untagged
@@ -161,16 +162,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734e9ed3bbc42a24cbb91186771a4c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponName: Cannon
-  equipAnimationTime: 0.3
   Muzzles:
   - {fileID: 1208704213795220663}
   leftHandGrip: {fileID: 8063365078453462000}
   rightHandGrip: {fileID: 3609378851149558724}
   weaponCameraTransform: {fileID: 3029529935867562324}
+  EquipTime: 0.4
   Combatant: {fileID: 0}
   RecoilAddon: {fileID: 0}
   AmmoAddonController: {fileID: 0}
+  HeadbobAdjuster: {fileID: 0}
+  WeaponSlotIndex: 0
   NextAvailableShot: 0
 --- !u!114 &1936215127245555199
 MonoBehaviour:
@@ -244,20 +246,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07349442e0fc02e42bd2ff8e78f6ffe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDamage: 4
-  MaxDamage: 8
-  AmmoPerShot: 1
-  ShotsPerSecond: 2
-  Tapable: 1
-  Element: 0
-  DamageEffects: []
-  Range: 50
-  PushForce: 500
+  minDamage: 1
+  maxDamage: 10
+  ammoPerShot: 1
+  shotsPerSecond: 20
+  tapable: 0
+  element: 0
+  damageEffects: []
+  range: 50
+  pushForce: 3.5
   muzzleParticlePrefab: {fileID: 8136334730752116704, guid: 7a3c17ee08a50ec488e3aeee1b4ce7a6,
     type: 3}
   bulletTraceController: {fileID: 0}
   bulletsPerFire: 8
-  RangeDamageFalloff:
+  rangeDamageFalloff:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -285,7 +287,7 @@ MonoBehaviour:
   spreadIncreaseEachShot: 0.125
   recovery: 1
   spreadOnFirstShot: 1
-  CurrentSpread: 0.125
+  currentSpread: 0.125
 --- !u!114 &2756431959190435258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,13 +300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc81160f9967a3f448e61941cec0acfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDamage: 1
-  MaxDamage: 10
-  AmmoPerShot: 1
-  ShotsPerSecond: 20
-  Tapable: 1
-  Element: 0
-  DamageEffects: []
+  minDamage: 1
+  maxDamage: 10
+  ammoPerShot: 1
+  shotsPerSecond: 20
+  tapable: 0
+  element: 0
+  damageEffects: []
   muzzleParticlePrefab: {fileID: 7439156794672867267, guid: 309990e226173f445a377c6f85e11d3e,
     type: 3}
   projectilePrefab: {fileID: 3072861576959639272, guid: 584a8f6471170db4fa1801fbbf0cc6a1,
@@ -324,10 +326,28 @@ MonoBehaviour:
     Forward: {x: 0, y: 0, z: 0}
     Element: 0
     DamageEffects: []
-    HitboxLayer: 0
   projectilesPerFire: 1
   delayTimePerProjectiles: 0
   spreadRadiusOnMaxRange: 0
+--- !u!95 &-3003764155637965855
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943643353794196974}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c5a2275cf3b1ed40b8d64780262594b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2965335579164342978
 GameObject:
   m_ObjectHideFlags: 0

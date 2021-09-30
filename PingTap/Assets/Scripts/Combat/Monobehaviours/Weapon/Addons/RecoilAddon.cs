@@ -18,11 +18,8 @@ namespace Fralle.PingTap
     [SerializeField] Vector3[] recoilPattern = new Vector3[0];
 
     Weapon weapon;
-    RecoilTransformer recoilTransformer;
-
+    PlayerCamera playerCamera;
     Vector3[] startPositions;
-    Vector3 recoil;
-
     int recoilPatternStep;
     int nextMuzzle;
     float recoilStatMultiplier = 1f;
@@ -48,9 +45,9 @@ namespace Fralle.PingTap
     }
     public void Activate()
     {
-      recoilTransformer = weapon.Combatant.aimTransform.GetComponentInChildren<RecoilTransformer>();
-      if (recoilTransformer != null)
-        recoilTransformer.Setup(recoilSpeed, recoilRecoverTime);
+      playerCamera = weapon.Combatant.aimTransform.GetComponentInChildren<PlayerCamera>();
+      if (playerCamera != null)
+        playerCamera.SetupRecoil(recoilSpeed, recoilRecoverTime);
       else
         Debug.Log($"{weapon.Combatant.name} does not have RecoilTransformer behaviour on AimTransform");
     }
@@ -65,11 +62,11 @@ namespace Fralle.PingTap
         float xRecoil = Random.Range(-randomRecoilConstraints.x, randomRecoilConstraints.x);
         float yRecoil = Random.Range(-randomRecoilConstraints.y, randomRecoilConstraints.y);
         float zRecoil = Random.Range(-randomRecoilConstraints.z, randomRecoilConstraints.z);
-        recoilTransformer.AddRecoil(new Vector3(xRecoil, yRecoil, zRecoil) * recoilStatMultiplier);
+        playerCamera.AddRecoil(new Vector3(xRecoil, yRecoil, zRecoil) * recoilStatMultiplier);
       }
       else if (recoilPattern.Length > 0)
       {
-        recoilTransformer.AddRecoil(recoilPattern[recoilPatternStep] * recoilStatMultiplier);
+        playerCamera.AddRecoil(recoilPattern[recoilPatternStep] * recoilStatMultiplier);
         recoilPatternStep++;
         if (recoilPatternStep > recoilPattern.Length - 1)
           recoilPatternStep = 0;

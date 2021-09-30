@@ -5,26 +5,26 @@ namespace Fralle.PingTap
   public class HeadbobAdjuster : MonoBehaviour
   {
     [SerializeField] HeadbobConfiguration configuration;
-    HeadbobCameraTransformer headbob;
+    PlayerCamera playerCamera;
 
     void Start()
     {
       if (!configuration)
         return;
 
-      headbob = GetComponentInParent<HeadbobCameraTransformer>();
+      playerCamera = GetComponentInParent<PlayerCamera>();
     }
 
     public void Activate()
     {
-      if (headbob && configuration)
-        headbob.overrideConfguration = configuration;
+      if (playerCamera && configuration)
+        playerCamera.overrideConfguration = configuration;
     }
 
     void OnDestroy()
     {
-      if (headbob)
-        headbob.overrideConfguration = null;
+      if (playerCamera)
+        playerCamera.overrideConfguration = null;
     }
   }
 }

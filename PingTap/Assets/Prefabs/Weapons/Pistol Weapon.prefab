@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 138328519036267000}
   - component: {fileID: 3554372640410329598}
   - component: {fileID: -728975497531095089}
+  - component: {fileID: 3816273285441613636}
   m_Layer: 0
   m_Name: Pistol Weapon
   m_TagString: Untagged
@@ -160,16 +161,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734e9ed3bbc42a24cbb91186771a4c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponName: Pistol
-  equipAnimationTime: 0.3
   Muzzles:
   - {fileID: 1208704213795220663}
   leftHandGrip: {fileID: 8063365078453462000}
   rightHandGrip: {fileID: 3609378851149558724}
   weaponCameraTransform: {fileID: 7774576615114151491}
+  EquipTime: 0.4
   Combatant: {fileID: 0}
   RecoilAddon: {fileID: 0}
   AmmoAddonController: {fileID: 0}
+  HeadbobAdjuster: {fileID: 0}
+  WeaponSlotIndex: 0
   NextAvailableShot: 0
 --- !u!114 &138328519036267000
 MonoBehaviour:
@@ -243,20 +245,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07349442e0fc02e42bd2ff8e78f6ffe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDamage: 100
-  MaxDamage: 100
-  AmmoPerShot: 1
-  ShotsPerSecond: 20
-  Tapable: 1
-  Element: 0
-  DamageEffects: []
-  Range: 50
-  PushForce: 100
+  minDamage: 1
+  maxDamage: 10
+  ammoPerShot: 1
+  shotsPerSecond: 20
+  tapable: 0
+  element: 0
+  damageEffects: []
+  range: 50
+  pushForce: 3.5
   muzzleParticlePrefab: {fileID: 1277314995582460547, guid: a1af3095c408ed84c8e5fb46dde0af6d,
     type: 3}
   bulletTraceController: {fileID: 0}
   bulletsPerFire: 1
-  RangeDamageFalloff:
+  rangeDamageFalloff:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -284,7 +286,26 @@ MonoBehaviour:
   spreadIncreaseEachShot: 0.2
   recovery: 1
   spreadOnFirstShot: 0
-  CurrentSpread: 0
+  currentSpread: 0
+--- !u!95 &3816273285441613636
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943643353794196974}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c5a2275cf3b1ed40b8d64780262594b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4850362187615264221
 GameObject:
   m_ObjectHideFlags: 0
