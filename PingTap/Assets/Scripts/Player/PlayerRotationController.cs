@@ -1,7 +1,7 @@
 ﻿using Fralle.FpsController;
 using UnityEngine;
 
-namespace Fralle
+namespace Fralle.PingTap
 {
   public class PlayerRotationController : MonoBehaviour
   {

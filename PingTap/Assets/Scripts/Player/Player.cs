@@ -1,6 +1,5 @@
 ﻿using Fralle.Core.CameraControls;
 using Fralle.Gameplay;
-using Fralle.PingTap;
 using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEditor;
@@ -8,7 +7,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Fralle
+namespace Fralle.PingTap
 {
   [SelectionBase]
   public class Player : MonoBehaviour

@@ -1,10 +1,9 @@
 ﻿using Fralle.Core;
-using Fralle.PingTap;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static PlayerControls;
 
-namespace Fralle
+namespace Fralle.PingTap
 {
   [RequireComponent(typeof(Combatant))]
   public class PlayerAttack : MonoBehaviour, IWeaponActions

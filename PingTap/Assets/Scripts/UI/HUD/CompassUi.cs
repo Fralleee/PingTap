@@ -1,4 +1,5 @@
 ﻿using Fralle.Core;
+using Fralle.PingTap;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

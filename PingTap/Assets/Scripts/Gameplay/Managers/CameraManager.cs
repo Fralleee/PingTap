@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Fralle.PingTap;
+using UnityEngine;
 
 namespace Fralle.Gameplay
 {
