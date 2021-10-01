@@ -39,9 +39,9 @@ namespace Fralle.PingTap
       fireRate = 1f / shotsPerSecond;
     }
 
-    public void Perform(bool buttonTap)
+    public void Perform(bool buttonTap = false)
     {
-      if (Weapon.ActiveWeaponAction != Status.Ready || isTapable && !buttonTap || !HasAmmo)
+      if (Weapon.Status != Status.Ready || isTapable && !buttonTap || !HasAmmo)
         return;
 
       Weapon.ChangeWeaponAction(Status.Firing);

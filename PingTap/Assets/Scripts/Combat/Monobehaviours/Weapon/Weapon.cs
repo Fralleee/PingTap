@@ -17,7 +17,7 @@ namespace Fralle.PingTap
     [FoldoutGroup("Timers and cooldowns")] public float EquipTime = 0.4f;
     [FoldoutGroup("Timers and cooldowns")] public float ReloadTime = 1f;
 
-    public Status ActiveWeaponAction { get; private set; }
+    public Status Status { get; private set; }
 
     [HideLabel]
     public AmmoAddon Ammo;
@@ -47,21 +47,14 @@ namespace Fralle.PingTap
 
     void Update()
     {
-      if (ActiveWeaponAction == Status.Firing)
+      if (Status == Status.Firing)
       {
         NextAvailableShot -= Time.deltaTime;
         if (NextAvailableShot <= 0)
           ChangeWeaponAction(Status.Ready);
       }
       else
-      {
         NextAvailableShot = 0;
-      }
-
-      if (Input.GetKeyDown(KeyCode.R))
-      {
-        Reload();
-      }
     }
 
     void SetupAttackActions()
@@ -78,33 +71,33 @@ namespace Fralle.PingTap
       }
     }
 
-    public void ChangeWeaponAction(Status newActiveWeaponAction)
+    public void ChangeWeaponAction(Status status)
     {
-      ActiveWeaponAction = newActiveWeaponAction;
-      OnActiveWeaponActionChanged(newActiveWeaponAction);
+      Status = status;
+      OnActiveWeaponActionChanged(status);
     }
 
     public void Reload()
     {
-      ActiveWeaponAction = Status.Reloading;
+      if (Ammo.CurrentAmmo == Ammo.MaxAmmo || Status == Status.Reloading)
+        return;
 
+      ChangeWeaponAction(Status.Reloading);
       Animator.SetTrigger("Reload");
       Animator.speed = 1 / Ammo.ReloadTime;
     }
 
     public void Unequip()
     {
-      ActiveWeaponAction = Status.Equipping;
-
+      ChangeWeaponAction(Status.Unequipping);
       Animator.SetTrigger("Unequip");
       Animator.speed = 1 / EquipTime;
     }
 
     public void Equip()
     {
-      ActiveWeaponAction = Status.Equipping;
+      ChangeWeaponAction(Status.Equipping);
       gameObject.SetActive(true);
-
       Animator.SetTrigger("Equip");
       Animator.speed = 1 / EquipTime;
     }
@@ -112,20 +105,23 @@ namespace Fralle.PingTap
     void OnReloadEnd()
     {
       Ammo.SetMaxAmmo();
-      ActiveWeaponAction = Status.Ready;
+      ChangeWeaponAction(Status.Ready);
     }
 
     void OnUnequipEnd()
     {
-      ActiveWeaponAction = Status.NotEquipped;
+      ChangeWeaponAction(Status.Disabled);
       gameObject.SetActive(false);
     }
 
     void OnEquipEnd()
     {
+      if (Status != Status.Equipping)
+        return;
+
       HeadbobAdjuster?.Activate();
       RecoilAddon?.Activate();
-      ActiveWeaponAction = Status.Ready;
+      ChangeWeaponAction(Status.Ready);
     }
   }
 }

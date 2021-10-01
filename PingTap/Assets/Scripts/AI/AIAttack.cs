@@ -46,7 +46,7 @@ namespace Fralle.PingTap
 
     public void Attack(Vector3 targetPosition, float attackRange)
     {
-      if (bulletsToFire <= 0 || combatant.equippedWeapon.ActiveWeaponAction != Status.Ready)
+      if (bulletsToFire <= 0 || combatant.equippedWeapon.Status != Status.Ready)
       {
         if (bulletsToFire == 0)
           StartAttack(targetPosition, attackRange);

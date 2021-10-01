@@ -88,7 +88,7 @@ namespace Fralle.PingTap
 
     public void EquipWeapon(int index = 0)
     {
-      if (weaponSlots[index] == null)
+      if (weaponSlots.Length - 1 < index)
         return;
 
       if (!isEquipping)

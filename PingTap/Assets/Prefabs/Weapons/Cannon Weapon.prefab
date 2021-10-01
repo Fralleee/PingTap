@@ -169,10 +169,8 @@ MonoBehaviour:
   EquipTime: 0.4
   ReloadTime: 1
   Ammo:
-    CurrAmmo: 0
-    MaxAmmo: 100
     CurrentAmmo: 0
-    MaximumAmmo: 100
+    MaxAmmo: 100
     InfiniteAmmo: 0
   Combatant: {fileID: 0}
   RecoilAddon: {fileID: 0}
@@ -182,6 +180,7 @@ MonoBehaviour:
   AttackRange: 0
   WeaponSlotIndex: 0
   NextAvailableShot: 0
+  unequipStarted: 0
 --- !u!114 &2954215162945410125
 MonoBehaviour:
   m_ObjectHideFlags: 0
