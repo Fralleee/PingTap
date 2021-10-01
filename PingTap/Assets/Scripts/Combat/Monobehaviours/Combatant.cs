@@ -33,8 +33,6 @@ namespace Fralle.PingTap
     [SerializeField] CombatIKHandler ikHandler;
 
     CombatTargetHandler targetHandler = new CombatTargetHandler();
-    AttackAction primaryAction;
-    AttackAction secondaryAction;
 
     bool isEquipping;
     bool queuedWeaponSwitch;
@@ -80,27 +78,13 @@ namespace Fralle.PingTap
       }
     }
 
-    public void PrimaryAction(bool keyDown = false)
-    {
-      if (!equippedWeapon || !primaryAction || primaryAction.tapable && !keyDown)
-        return;
-
-      primaryAction.Perform();
-    }
-
-    public void SecondaryAction(bool keyDown = false)
-    {
-      if (!equippedWeapon || !secondaryAction || secondaryAction.tapable && !keyDown)
-        return;
-
-      secondaryAction.Perform();
-    }
+    public void PrimaryAction(bool keyDown = false) => equippedWeapon?.PrimaryAttack?.Perform(keyDown);
+    public void SecondaryAction(bool keyDown = false) => equippedWeapon?.SecondaryAttack?.Perform(keyDown);
 
     public void SuccessfulHit(DamageData damageData)
     {
       OnHit(damageData);
     }
-
 
     public void EquipWeapon(int index = 0)
     {
@@ -137,7 +121,6 @@ namespace Fralle.PingTap
       if (equippedWeapon)
         yield return new WaitForSeconds(equippedWeapon.EquipTime);
 
-      SetupAttackActions();
       isEquipping = false;
 
       if (queuedWeaponSwitch)
@@ -145,27 +128,6 @@ namespace Fralle.PingTap
         StartCoroutine(SwitchWeapon(queueWeaponIndex));
         queueWeaponIndex = -1;
         queuedWeaponSwitch = false;
-      }
-    }
-
-
-    void SetupAttackActions()
-    {
-      AttackAction[] attackActions = equippedWeapon?.GetComponentsInChildren<AttackAction>();
-      if (attackActions == null)
-      {
-        primaryAction = null;
-        secondaryAction = null;
-        AttackRange = 0;
-      }
-      else if (attackActions.Length > 2)
-        Debug.LogWarning($"Weapon {equippedWeapon} has more attack actions than possible (2).");
-      else if (attackActions.Length > 0)
-      {
-        primaryAction = attackActions[0];
-        secondaryAction = attackActions.Length == 2 ? attackActions[1] : null;
-
-        AttackRange = Mathf.Max(Mathf.Min(primaryAction.GetRange(), secondaryAction ? secondaryAction.GetRange() : 0f), 10f);
       }
     }
 

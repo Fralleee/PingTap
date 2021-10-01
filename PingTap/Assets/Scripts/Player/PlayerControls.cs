@@ -324,7 +324,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""f06df7fc-f4b6-481e-b390-2e5adb98fb39"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
+                    ""interactions"": ""Press(behavior=2),Hold""
                 },
                 {
                     ""name"": ""SecondaryFire"",
@@ -333,6 +333,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7479da6-11d3-4361-a75f-14bfa6deb9bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -443,6 +451,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""SecondaryFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d73f048-8bcf-493c-b8e5-5249bdf9a313"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1050,6 +1069,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Weapon_ItemSelect = m_Weapon.FindAction("ItemSelect", throwIfNotFound: true);
         m_Weapon_PrimaryFire = m_Weapon.FindAction("PrimaryFire", throwIfNotFound: true);
         m_Weapon_SecondaryFire = m_Weapon.FindAction("SecondaryFire", throwIfNotFound: true);
+        m_Weapon_Reload = m_Weapon.FindAction("Reload", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Toggle = m_Menu.FindAction("Toggle", throwIfNotFound: true);
@@ -1223,6 +1243,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Weapon_ItemSelect;
     private readonly InputAction m_Weapon_PrimaryFire;
     private readonly InputAction m_Weapon_SecondaryFire;
+    private readonly InputAction m_Weapon_Reload;
     public struct WeaponActions
     {
         private @PlayerControls m_Wrapper;
@@ -1230,6 +1251,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @ItemSelect => m_Wrapper.m_Weapon_ItemSelect;
         public InputAction @PrimaryFire => m_Wrapper.m_Weapon_PrimaryFire;
         public InputAction @SecondaryFire => m_Wrapper.m_Weapon_SecondaryFire;
+        public InputAction @Reload => m_Wrapper.m_Weapon_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Weapon; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1248,6 +1270,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SecondaryFire.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSecondaryFire;
                 @SecondaryFire.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSecondaryFire;
                 @SecondaryFire.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnSecondaryFire;
+                @Reload.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_WeaponActionsCallbackInterface = instance;
             if (instance != null)
@@ -1261,6 +1286,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @SecondaryFire.started += instance.OnSecondaryFire;
                 @SecondaryFire.performed += instance.OnSecondaryFire;
                 @SecondaryFire.canceled += instance.OnSecondaryFire;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -1466,6 +1494,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnItemSelect(InputAction.CallbackContext context);
         void OnPrimaryFire(InputAction.CallbackContext context);
         void OnSecondaryFire(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

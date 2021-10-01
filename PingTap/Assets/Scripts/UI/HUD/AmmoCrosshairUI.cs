@@ -31,11 +31,9 @@ namespace Fralle.UI.HUD
     {
       if (weapon != null)
       {
-        AmmoAddon ammoAddon = weapon.GetComponent<AmmoAddon>();
-        ammoAddon.OnAmmoChanged += HandleAmmoChanged;
-
-        maxAmmo = ammoAddon.MaxAmmo;
-        currentAmmo = ammoAddon.MaxAmmo;
+        weapon.Ammo.OnAmmoChanged += HandleAmmoChanged;
+        maxAmmo = weapon.Ammo.MaxAmmo;
+        currentAmmo = weapon.Ammo.MaxAmmo;
       }
       else
       {
@@ -61,7 +59,6 @@ namespace Fralle.UI.HUD
     void HandleAmmoChanged(int ammoCount)
     {
       currentAmmo = ammoCount;
-
       image.fillAmount = currentAmmo / (float)maxAmmo;
     }
   }

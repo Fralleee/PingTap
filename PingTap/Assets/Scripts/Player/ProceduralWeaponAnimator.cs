@@ -11,7 +11,7 @@ namespace Fralle.PingTap
     [FoldoutGroup("Jumpbob")] [SerializeField] float jumpBobSmoothSpeed = 20f;
     [FoldoutGroup("Jumpbob")] [SerializeField] float jumpBobResetSpeed = 10f;
     [FoldoutGroup("Jumpbob")] [SerializeField] float jumpBobRotationMagnitude = 20f;
-    [FoldoutGroup("Jumpbob")] [SerializeField] float jumpBobJumpMagnitude = 0.001f;
+    [FoldoutGroup("Jumpbob")] [SerializeField] float jumpBobJumpMagnitude = 0.0005f;
     [FoldoutGroup("Jumpbob")] [SerializeField] float jumpBobFallMagnitude = 0.002f;
 
     [FoldoutGroup("Sway")] [SerializeField] float swaySmoothRotation = 10f;

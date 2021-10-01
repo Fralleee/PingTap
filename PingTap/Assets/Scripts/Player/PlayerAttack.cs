@@ -37,9 +37,7 @@ namespace Fralle.PingTap
     void Update()
     {
       if (primaryFireHold)
-      {
         combatant.PrimaryAction();
-      }
       else if (secondaryFireHold)
         combatant.SecondaryAction();
     }
@@ -62,6 +60,7 @@ namespace Fralle.PingTap
     {
       if (!context.performed)
         return;
+
       int weaponSlotIndex = (int)context.ReadValue<float>();
       combatant.EquipWeapon(weaponSlotIndex);
     }
@@ -71,8 +70,7 @@ namespace Fralle.PingTap
       if (context.performed)
       {
         primaryFireHold = true;
-        if (context.duration <= 0)
-          combatant.PrimaryAction(true);
+        combatant.PrimaryAction(true);
       }
       else if (context.canceled)
         primaryFireHold = false;
@@ -83,11 +81,19 @@ namespace Fralle.PingTap
       if (context.performed)
       {
         secondaryFireHold = true;
-        if (context.duration <= 0)
-          combatant.SecondaryAction(true);
+        combatant.SecondaryAction(true);
       }
       else if (context.canceled)
         secondaryFireHold = false;
+    }
+
+    public void OnReload(InputAction.CallbackContext context)
+    {
+      if (!context.performed)
+        return;
+
+
+      combatant.equippedWeapon.Reload();
     }
   }
 }

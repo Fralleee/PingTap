@@ -23,10 +23,9 @@ namespace Fralle.UI.HUD
     {
       if (weapon != null)
       {
-        AmmoAddon ammoAddon = weapon.GetComponent<AmmoAddon>();
-        ammoAddon.OnAmmoChanged += HandleAmmoChanged;
-        currentAmmoText.text = ammoAddon.CurrentAmmo.ToString();
-        maxAmmoText.text = ammoAddon.MaxAmmo.ToString();
+        weapon.Ammo.OnAmmoChanged += HandleAmmoChanged;
+        currentAmmoText.text = weapon.Ammo.CurrentAmmo.ToString();
+        maxAmmoText.text = weapon.Ammo.MaxAmmo.ToString();
       }
       else
       {

@@ -7,21 +7,28 @@ namespace Fralle.PingTap
   public class Weapon : MonoBehaviour
   {
     public event Action<Status> OnActiveWeaponActionChanged = delegate { };
+    public event Action<int> OnAmmoChanged = delegate { };
 
-    [Header("Transforms")]
-    public Transform[] Muzzles;
-    public Transform leftHandGrip;
-    public Transform rightHandGrip;
-    public Transform weaponCameraTransform;
+    [FoldoutGroup("References")] public Transform[] Muzzles;
+    [FoldoutGroup("References")] public Transform leftHandGrip;
+    [FoldoutGroup("References")] public Transform rightHandGrip;
+    [FoldoutGroup("References")] public Transform weaponCameraTransform;
 
-    [FoldoutGroup("Animator Settings")] public float EquipTime;
+    [FoldoutGroup("Timers and cooldowns")] public float EquipTime = 0.4f;
+    [FoldoutGroup("Timers and cooldowns")] public float ReloadTime = 1f;
 
     public Status ActiveWeaponAction { get; private set; }
 
+    [HideLabel]
+    public AmmoAddon Ammo;
+
     [HideInInspector] public Combatant Combatant;
     [HideInInspector] public RecoilAddon RecoilAddon;
-    [HideInInspector] public AmmoAddon AmmoAddonController;
+
     [HideInInspector] public HeadbobAdjuster HeadbobAdjuster;
+    [HideInInspector] public AttackAction PrimaryAttack;
+    [HideInInspector] public AttackAction SecondaryAttack;
+    [HideInInspector] public float AttackRange;
     [HideInInspector] public int WeaponSlotIndex;
 
     [Header("Debug")]
@@ -32,9 +39,10 @@ namespace Fralle.PingTap
     void Awake()
     {
       RecoilAddon = GetComponent<RecoilAddon>();
-      AmmoAddonController = GetComponent<AmmoAddon>();
       HeadbobAdjuster = GetComponent<HeadbobAdjuster>();
       Animator = GetComponent<Animator>();
+      Ammo.Setup(this);
+      SetupAttackActions();
     }
 
     void Update()
@@ -56,18 +64,32 @@ namespace Fralle.PingTap
       }
     }
 
-    void Reload()
+    void SetupAttackActions()
+    {
+      AttackAction[] attackActions = GetComponentsInChildren<AttackAction>();
+      if (attackActions.Length > 2)
+        Debug.LogWarning($"Weapon {name} has more attack actions than possible (2).");
+      else if (attackActions.Length > 0)
+      {
+        PrimaryAttack = attackActions[0];
+        SecondaryAttack = attackActions.Length == 2 ? attackActions[1] : null;
+
+        AttackRange = Mathf.Max(Mathf.Min(PrimaryAttack.GetRange(), SecondaryAttack ? SecondaryAttack.GetRange() : 0f), 10f);
+      }
+    }
+
+    public void ChangeWeaponAction(Status newActiveWeaponAction)
+    {
+      ActiveWeaponAction = newActiveWeaponAction;
+      OnActiveWeaponActionChanged(newActiveWeaponAction);
+    }
+
+    public void Reload()
     {
       ActiveWeaponAction = Status.Reloading;
 
       Animator.SetTrigger("Reload");
-      Animator.speed = 1 / AmmoAddonController.ReloadTime;
-    }
-
-    void OnReloadEnd()
-    {
-      //ChangeAmmo(MaxAmmo, false);
-      ActiveWeaponAction = Status.Ready;
+      Animator.speed = 1 / Ammo.ReloadTime;
     }
 
     public void Unequip()
@@ -78,13 +100,6 @@ namespace Fralle.PingTap
       Animator.speed = 1 / EquipTime;
     }
 
-    void OnUnequipEnd()
-    {
-      ActiveWeaponAction = Status.NotEquipped;
-      gameObject.SetActive(false);
-    }
-
-
     public void Equip()
     {
       ActiveWeaponAction = Status.Equipping;
@@ -94,17 +109,23 @@ namespace Fralle.PingTap
       Animator.speed = 1 / EquipTime;
     }
 
+    void OnReloadEnd()
+    {
+      Ammo.SetMaxAmmo();
+      ActiveWeaponAction = Status.Ready;
+    }
+
+    void OnUnequipEnd()
+    {
+      ActiveWeaponAction = Status.NotEquipped;
+      gameObject.SetActive(false);
+    }
+
     void OnEquipEnd()
     {
       HeadbobAdjuster?.Activate();
       RecoilAddon?.Activate();
       ActiveWeaponAction = Status.Ready;
-    }
-
-    public void ChangeWeaponAction(Status newActiveWeaponAction)
-    {
-      ActiveWeaponAction = newActiveWeaponAction;
-      OnActiveWeaponActionChanged(newActiveWeaponAction);
     }
   }
 }

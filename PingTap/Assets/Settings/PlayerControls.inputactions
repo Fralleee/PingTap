@@ -311,7 +311,7 @@
                     "id": "f06df7fc-f4b6-481e-b390-2e5adb98fb39",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press(behavior=2),Hold"
                 },
                 {
                     "name": "SecondaryFire",
@@ -320,6 +320,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "a7479da6-11d3-4361-a75f-14bfa6deb9bd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -430,6 +438,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "SecondaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d73f048-8bcf-493c-b8e5-5249bdf9a313",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

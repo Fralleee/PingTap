@@ -1,72 +1,50 @@
-﻿using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Fralle.PingTap
 {
-  public class AmmoAddon : MonoBehaviour
+  [Serializable]
+  public class AmmoAddon
   {
     public event Action<int> OnAmmoChanged = delegate { };
 
-    public int MaxAmmo = 30;
-    public int CurrentAmmo;
+    [ProgressBar("Ammo", "MaxAmmo")]
+    [FoldoutGroup("Ammo")] public int CurrentAmmo;
+    [FoldoutGroup("Ammo")] public int MaxAmmo = 100;
+    [FoldoutGroup("Ammo")] public bool InfiniteAmmo = false;
 
-    [SerializeField] bool infiniteAmmo = false;
-    [SerializeField] float reloadSpeed = 0.75f;
-
-    [Header("Debug")]
-    [ReadOnly] public float ReloadPercentage;
-
-    Weapon weapon;
+    Weapon Weapon;
     float reloadStatMultiplier = 1f;
 
-    public float ReloadTime => reloadSpeed * reloadStatMultiplier;
+    public float ReloadTime => Weapon.ReloadTime * reloadStatMultiplier;
 
-    void Awake()
+    public void Setup(Weapon weapon)
     {
-      weapon = GetComponent<Weapon>();
-    }
-
-    void Start()
-    {
+      Weapon = weapon;
       CurrentAmmo = MaxAmmo;
       OnAmmoChanged(CurrentAmmo);
     }
 
-    void Update()
-    {
-      if (infiniteAmmo)
-        return;
-
-      if (Input.GetKeyDown(KeyCode.R) && weapon.ActiveWeaponAction == Status.Ready && CurrentAmmo < MaxAmmo)
-        StartCoroutine(ReloadCooldown());
-    }
-
     public void ChangeAmmo(int change, bool apply = true)
     {
-      if (apply)
-        CurrentAmmo += change;
-      else
-        CurrentAmmo = change;
+      CurrentAmmo = apply ? CurrentAmmo + change : change;
       CurrentAmmo = Mathf.Clamp(CurrentAmmo, 0, MaxAmmo);
       OnAmmoChanged(CurrentAmmo);
     }
 
     public bool HasAmmo(int requiredAmmo = 1)
     {
-      if (infiniteAmmo || CurrentAmmo >= requiredAmmo)
+      if (InfiniteAmmo || CurrentAmmo >= requiredAmmo)
         return true;
-      StartCoroutine(ReloadCooldown());
+
+      Weapon.Reload();
       return false;
     }
 
-    IEnumerator ReloadCooldown()
+    public void SetMaxAmmo()
     {
-      weapon.ChangeWeaponAction(Status.Reloading);
-      yield return new WaitForSeconds(ReloadTime);
       ChangeAmmo(MaxAmmo, false);
-      weapon.ChangeWeaponAction(Status.Ready);
     }
   }
 }
