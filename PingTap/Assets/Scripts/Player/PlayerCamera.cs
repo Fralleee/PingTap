@@ -34,91 +34,27 @@ namespace Fralle.PingTap
     public float CurvePosition => Mathf.Sin(timer) * controller.currentMaxMovementSpeed * 0.1f;
     public float BobAmount => Mathf.Abs(CurvePosition);
     public void ApplyLookRotation(Quaternion quaternion) => lookRotation = quaternion;
-
-    void Update()
-    {
-      Headbob();
-      Recoil();
-      CameraShake();
-
-      transform.localPosition = controller.transform.position + currentOffset + headbobPosition + cameraShakePosition;
-      transform.localRotation = lookRotation * recoilRotation * cameraShakeRotation;
-    }
-    void Headbob()
-    {
-      if (Pause || !controller.isMoving || !controller.isGrounded)
-        ResetHeadbob();
-      else
-      {
-        headbobPosition = Vector3.zero;
-        headbobPosition.y = BobAmount * Configuration.CameraBobbingAmount * controller.movementSpeedProduct;
-
-        timer += Configuration.BobbingSpeed * Time.deltaTime;
-        if (timer > Mathf.PI * 2)
-          timer -= Mathf.PI * 2;
-      }
-    }
-
-    void Recoil()
-    {
-      Quaternion toRotation = Quaternion.Euler(recoil.y, recoil.x, recoil.z);
-      recoilRotation = Quaternion.RotateTowards(recoilRotation, toRotation, recoilSpeed * Time.deltaTime);
-      recoil = Vector3.Lerp(recoil, Vector3.zero, recoilRecoverTime * Time.deltaTime);
-    }
-
-    void CameraShake()
-    {
-      Vector3 positionOffset = Vector3.zero;
-      Vector3 rotationOffset = Vector3.zero;
-
-      for (int i = shakeEvents.Count - 1; i != -1; i--)
-      {
-        ShakeEvent shakeEvent = shakeEvents[i];
-        shakeEvent.Update();
-
-        if (shakeEvent.Target == ShakeTransformEventData.TargetTransform.Position)
-          positionOffset += shakeEvent.noise;
-        else
-          rotationOffset += shakeEvent.noise;
-
-        if (!shakeEvent.IsAlive())
-          shakeEvents.RemoveAt(i);
-      }
-
-      cameraShakePosition = positionOffset;
-      cameraShakeRotation = Quaternion.Euler(rotationOffset);
-    }
-
-    void ResetHeadbob()
-    {
-      timer = 0;
-      headbobPosition = Vector3.Lerp(headbobPosition, Vector3.zero, Time.deltaTime * HeadbobSmoothSpeed);
-    }
-
+    public void AddRecoil(Vector3 vector3) => recoil += vector3;
+    public void AddShakeEvent(ShakeTransformEventData data) => shakeEvents.Add(new ShakeEvent(data));
     public void SetupRecoil(float recoilSpeed, float recoilRecoverTime)
     {
       this.recoilSpeed = recoilSpeed;
       this.recoilRecoverTime = recoilRecoverTime;
     }
 
-    public void AddRecoil(Vector3 vector3)
+    void Update()
     {
-      recoil += vector3;
+      if (Pause || !controller.isMoving || !controller.isGrounded)
+        headbobPosition = ProceduralMotion.ResetHeadbob(headbobPosition, HeadbobSmoothSpeed);
+      else
+        (headbobPosition, timer) = ProceduralMotion.Headbob(BobAmount * Configuration.CameraBobbingAmount * controller.movementSpeedProduct, Configuration.BobbingSpeed, timer);
+
+      (recoil, recoilRotation) = ProceduralMotion.Recoil(recoil, recoilRotation, recoilSpeed, recoilRecoverTime);
+      (cameraShakePosition, cameraShakeRotation) = ProceduralMotion.CameraShake(shakeEvents);
+
+      transform.localPosition = controller.transform.position + currentOffset + headbobPosition + cameraShakePosition;
+      transform.localRotation = lookRotation * recoilRotation * cameraShakeRotation;
     }
-
-    public void AddShakeEvent(ShakeTransformEventData data)
-    {
-      shakeEvents.Add(new ShakeEvent(data));
-    }
-
-    public void AddShakeEvent(float amplitude, float frequency, float duration, AnimationCurve blendOverLifetime, ShakeTransformEventData.TargetTransform target)
-    {
-      ShakeTransformEventData data = ScriptableObject.CreateInstance<ShakeTransformEventData>();
-      data.Init(amplitude, frequency, duration, blendOverLifetime, target);
-
-      AddShakeEvent(data);
-    }
-
 
   }
 }

@@ -25,8 +25,6 @@ namespace Fralle.PingTap
     PlayerCamera playerCamera;
     RigidbodyController controller;
     Combatant combatant;
-
-    Vector3 localAxis = new Vector3(0, 1, 0);
     Vector3 headbobPosition;
     Vector3 jumpbobPosition;
     Quaternion headbobRotation;
@@ -61,16 +59,12 @@ namespace Fralle.PingTap
     void Headbob()
     {
       if (playerCamera.Pause || !controller.isMoving || !controller.isGrounded)
-        ResetHeadbob();
+        (headbobPosition, headbobRotation) = ProceduralMotion.ResetHeadbob(headbobPosition, headbobRotation, playerCamera.HeadbobSmoothSpeed);
       else
       {
-        headbobPosition = Vector3.zero;
-        headbobRotation = Quaternion.identity;
-
-        headbobPosition.y = playerCamera.BobAmount * playerCamera.Configuration.WeaponBobbingAmount * controller.movementSpeedProduct;
-
+        float bobAmount = playerCamera.BobAmount * playerCamera.Configuration.WeaponBobbingAmount * controller.movementSpeedProduct;
         float angleChanges = headbobRotation.eulerAngles.y + playerCamera.CurvePosition * playerCamera.Configuration.WeaponRotationAmount;
-        headbobRotation = Quaternion.AngleAxis(angleChanges, localAxis);
+        (headbobPosition, headbobRotation) = ProceduralMotion.Headbob(bobAmount, angleChanges);
       }
     }
 
@@ -110,12 +104,6 @@ namespace Fralle.PingTap
 
       Quaternion finalRotation = Quaternion.Euler(new Vector3(lookAmountY, lookAmountX, 0f));
       swayRotation = Quaternion.Slerp(swayRotation, finalRotation, Time.deltaTime * swaySmoothRotation);
-    }
-
-    void ResetHeadbob()
-    {
-      headbobPosition = Vector3.Lerp(headbobPosition, Vector3.zero, Time.deltaTime * playerCamera.HeadbobSmoothSpeed);
-      headbobRotation = Quaternion.Lerp(headbobRotation, Quaternion.identity, Time.deltaTime * playerCamera.HeadbobSmoothSpeed);
     }
 
     void ResetMomentum()
