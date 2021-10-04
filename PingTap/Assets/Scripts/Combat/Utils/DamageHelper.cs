@@ -121,21 +121,16 @@ namespace Fralle.PingTap
       TeamController teamController = projectileData.Attacker.teamController;
       Collider[] colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, teamController.hostiles | 1 << 0);
 
-      List<Rigidbody> rigidBodies = new List<Rigidbody>();
       HashSet<DamageController> targets = new HashSet<DamageController>();
       foreach (Collider col in colliders)
       {
-        if (col.TryGetComponent(out Rigidbody rigidbody) && !rigidBodies.Contains(rigidbody))
-          rigidBodies.Add(rigidbody);
-
         DamageController damageController = col.GetComponentInParent<DamageController>();
         if (damageController)
           targets.Add(damageController);
+
+        if (col.TryGetComponent(out Rigidbody rigidbody) && !rigidbody.isKinematic)
+          rigidbody.AddExplosionForce(projectileData.PushForce, position, projectileData.ExplosionRadius + 1, 0.5f, ForceMode.Impulse);
       }
-
-
-      foreach (Rigidbody rigidbody in rigidBodies)
-        rigidbody.AddExplosionForce(projectileData.PushForce, position, projectileData.ExplosionRadius + 1, 0.5f, ForceMode.Impulse);
 
       foreach (DamageController damageController in targets)
       {
