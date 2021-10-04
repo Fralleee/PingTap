@@ -29,7 +29,7 @@ namespace Fralle.PingTap
 
     public virtual DamageEffect Append(DamageEffect oldEffect = null)
     {
-      if (oldEffect == null)
+      if (!oldEffect)
         return this;
 
       // Always run Append on the effect with highest level

@@ -90,7 +90,7 @@ namespace Fralle.PingTap
 
       BulletTrace(muzzle.position, hitInfo.point);
 
-      if (damageData != null && damageData.ImpactEffect != null)
+      if (damageData != null && damageData.ImpactEffect)
         ObjectPool.Spawn(damageData.ImpactEffect, hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
       else
         ObjectPool.Spawn(Combatant.impactAtlas.GetImpactEffectFromTag(hitInfo.collider.tag), hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));

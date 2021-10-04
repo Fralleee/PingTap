@@ -89,7 +89,7 @@ public class OutlineFeature : ScriptableRendererFeature
   // This method is called when setting up the renderer once per-camera.
   public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
   {
-    if (Settings.OutlineMaterial == null)
+    if (!Settings.OutlineMaterial)
     {
       Debug.LogWarningFormat("Missing Outline Material");
       return;

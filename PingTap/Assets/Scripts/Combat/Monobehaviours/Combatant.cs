@@ -66,7 +66,7 @@ namespace Fralle.PingTap
       for (int i = 0; i < weaponSlots.Length; i++)
       {
         var prefab = weaponSlots[i];
-        if (prefab == null)
+        if (!prefab)
           continue;
 
         var instance = Instantiate(prefab, weaponHolder.position, weaponHolder.rotation, weaponHolder);

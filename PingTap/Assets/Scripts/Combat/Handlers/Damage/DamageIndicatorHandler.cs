@@ -18,7 +18,7 @@ namespace Fralle.PingTap
     PlayerCamera playerCamera;
     Volume damageVolume;
 
-    bool invalidConfiguration => postProcess == null || bodyshotShake == null || headshotShake == null;
+    bool invalidConfiguration => !postProcess || !bodyshotShake || !headshotShake;
 
     public void Setup(DamageController damageController, PostProcessController postProcessController)
     {

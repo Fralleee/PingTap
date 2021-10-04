@@ -26,7 +26,7 @@ namespace Fralle.Gameplay
 
       MatchManager.OnMatchEnd += HandleGameEnd;
 
-      //if (pauseMenu == null)
+      //if (!pauseMenu)
       //	FindObjectOfType<PauseMenu>();
 
       //pauseMenu.gameObject.SetActive(false);

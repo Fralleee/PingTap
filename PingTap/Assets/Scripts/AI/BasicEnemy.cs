@@ -106,7 +106,7 @@ namespace Fralle.PingTap
 
     void OnDestroy()
     {
-      if (damageController != null)
+      if (damageController)
         damageController.OnReceiveAttack -= OnReceiveAttack;
     }
 

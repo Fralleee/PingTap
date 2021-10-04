@@ -46,7 +46,7 @@ namespace Fralle.PingTap
     public void Activate()
     {
       playerCamera = weapon.Combatant.aimTransform.GetComponentInChildren<PlayerCamera>();
-      if (playerCamera != null)
+      if (playerCamera)
         playerCamera.SetupRecoil(recoilSpeed, recoilRecoverTime);
       else
         Debug.Log($"{weapon.Combatant.name} does not have RecoilTransformer behaviour on AimTransform");

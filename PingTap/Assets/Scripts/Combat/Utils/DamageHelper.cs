@@ -25,7 +25,7 @@ namespace Fralle.PingTap
         return null;
 
       DamageController damageController = hit.transform.GetComponentInParent<DamageController>();
-      if (damageController == null)
+      if (!damageController)
         return null;
 
       // this will cause issues if we are for example hitting targets with shotgun
@@ -66,7 +66,7 @@ namespace Fralle.PingTap
       Hitbox hitbox = collision.collider.transform.GetComponent<Hitbox>();
       HitArea hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
       DamageController damageController = collision.transform.GetComponentInParent<DamageController>();
-      if (damageController == null)
+      if (!damageController)
         return null;
 
       DamageData damageData = new DamageData
@@ -93,7 +93,7 @@ namespace Fralle.PingTap
       HitArea hitArea = hitbox ? hitbox.HitArea : HitArea.Chest;
       DamageController damageController = hitbox.GetComponentInParent<DamageController>();
       float damage = collision.impulse.magnitude;
-      if (damageController == null)
+      if (!damageController)
         return null;
 
       DamageData damageData = new DamageData
@@ -115,7 +115,7 @@ namespace Fralle.PingTap
 
     public static void Explosion(ProjectileData projectileData, Vector3 position, Collision collision = null)
     {
-      if (collision != null)
+      if (collision)
       {
         position = collision.GetContact(0).point;
       }
@@ -131,7 +131,7 @@ namespace Fralle.PingTap
           rigidBodies.Add(rigidbody);
 
         DamageController damageController = col.GetComponentInParent<DamageController>();
-        if (damageController != null)
+        if (damageController)
           targets.Add(damageController);
       }
 
@@ -168,7 +168,7 @@ namespace Fralle.PingTap
     {
       Vector3 direction = projectileData.Forward;
       Rigidbody rigidBody = collision.transform.GetComponent<Rigidbody>();
-      if (rigidBody == null)
+      if (!rigidBody)
         return;
 
       if (direction == Vector3.zero)
@@ -179,7 +179,7 @@ namespace Fralle.PingTap
     static void AddForce(RaycastAttack raycastAttack, RaycastHit hit)
     {
       Rigidbody rigidBody = hit.transform.GetComponent<Rigidbody>();
-      if (rigidBody != null)
+      if (rigidBody)
       {
         rigidBody.AddForce(raycastAttack.Combatant.aimTransform.forward * raycastAttack.pushForce, ForceMode.Impulse);
       }

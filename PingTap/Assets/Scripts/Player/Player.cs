@@ -96,7 +96,7 @@ namespace Fralle.PingTap
     {
       playerController = GetComponent<PlayerController>();
       playerCamera = FindObjectOfType<PlayerCamera>();
-      if (playerCamera == null)
+      if (!playerCamera)
       {
 #if UNITY_EDITOR
         playerCamera = (PlayerCamera)PrefabUtility.InstantiatePrefab(playerCameraPrefab);

@@ -115,13 +115,13 @@ public class Weapon : MonoBehaviour
     m_Source = GetComponentInChildren<AudioSource>();
     m_ClipContent = clipSize;
 
-    if (PrefabRayTrail != null)
+    if (PrefabRayTrail)
     {
       //const int trailPoolSize = 16;
       //ObjectPool.Instance.InitPool(PrefabRayTrail, trailPoolSize);
     }
 
-    if (projectilePrefab != null)
+    if (projectilePrefab)
     {
       //a minimum of 4 is useful for weapon that have a clip size of 1 and where you can throw a second
       //or more before the previous one was recycled/exploded.
@@ -160,10 +160,10 @@ public class Weapon : MonoBehaviour
     if (DisabledOnEmpty)
       gameObject.SetActive(ammoRemaining != 0 || m_ClipContent != 0);
 
-    if (FireAnimationClip != null)
+    if (FireAnimationClip)
       m_Animator.SetFloat("fireSpeed", FireAnimationClip.length / fireRate);
 
-    if (ReloadAnimationClip != null)
+    if (ReloadAnimationClip)
       m_Animator.SetFloat("reloadSpeed", ReloadAnimationClip.length / reloadTime);
 
     m_CurrentState = WeaponState.Idle;
@@ -261,7 +261,7 @@ public class Weapon : MonoBehaviour
     }
 
 
-    if (PrefabRayTrail != null)
+    if (PrefabRayTrail)
     {
       var pos = new Vector3[] { GetCorrectedMuzzlePlace(), hitPosition };
       var trail = new LineRenderer(); // PoolSystem.Instance.GetInstance<LineRenderer>(PrefabRayTrail);
@@ -315,7 +315,7 @@ public class Weapon : MonoBehaviour
     }
 
 
-    if (ReloadAudioClip != null)
+    if (ReloadAudioClip)
     {
       m_Source.pitch = Random.Range(0.7f, 1.0f);
       m_Source.PlayOneShot(ReloadAudioClip);

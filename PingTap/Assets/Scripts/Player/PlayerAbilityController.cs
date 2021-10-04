@@ -15,19 +15,19 @@ namespace Fralle.PingTap
 
     public void OnAttackAbility(InputAction.CallbackContext context)
     {
-      if (context.performed && AttackAbility != null && AttackAbility.IsReady)
+      if (context.performed && AttackAbility && AttackAbility.IsReady)
         AttackAbility.Perform();
     }
 
     public void OnMovementAbility(InputAction.CallbackContext context)
     {
-      if (context.performed && MovementAbility != null && MovementAbility.IsReady)
+      if (context.performed && MovementAbility && MovementAbility.IsReady)
         MovementAbility.Perform();
     }
 
     public void OnUltimateAbility(InputAction.CallbackContext context)
     {
-      if (context.performed && UltimateAbility != null && UltimateAbility.IsReady)
+      if (context.performed && UltimateAbility && UltimateAbility.IsReady)
         UltimateAbility.Perform();
     }
   }

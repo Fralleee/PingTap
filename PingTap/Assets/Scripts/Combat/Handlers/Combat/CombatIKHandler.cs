@@ -29,7 +29,7 @@ namespace Fralle.PingTap
       leftHandIKTargets = handIKTargets.Where(x => x.hand == Hand.Left).ToArray();
       rightHandIKTargets = handIKTargets.Where(x => x.hand == Hand.Right).ToArray();
 
-      if (combatant.equippedWeapon != null)
+      if (combatant.equippedWeapon)
         SetupIK();
       else
       {

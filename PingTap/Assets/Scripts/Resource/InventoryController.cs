@@ -42,7 +42,7 @@ namespace Fralle.Resource
         OnCreditsUpdate(Credits);
       }
 
-      if (item != null)
+      if (item)
         Items.Add(item);
 
       currentAnimationTime = animationTime;

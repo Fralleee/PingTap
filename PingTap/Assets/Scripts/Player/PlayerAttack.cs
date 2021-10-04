@@ -44,7 +44,7 @@ namespace Fralle.PingTap
 
     void OnWeaponSwitch(Weapon weapon, Weapon oldWeapon)
     {
-      if (combatant.equippedWeapon == null)
+      if (!combatant.equippedWeapon)
       {
         weaponCamera.localPosition = defaultWeaponCameraPosition;
         weaponCamera.localRotation = defaultWeaponCameraRotation;

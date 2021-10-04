@@ -12,7 +12,7 @@ namespace Fralle.PingTap
     public override DamageEffect Append(DamageEffect oldEffect = null)
     {
       base.Append(oldEffect);
-      if (oldEffect != null)
+      if (oldEffect)
         LastDamageTimer = ((DotEffect)oldEffect).LastDamageTimer;
       return this;
     }

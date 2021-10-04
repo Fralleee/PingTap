@@ -40,7 +40,7 @@ namespace Fralle.PingTap
       controller = playerCamera.controller;
       combatant = controller.GetComponent<Combatant>();
       combatant.OnWeaponSwitch += OnWeaponSwitch;
-      if (combatant.equippedWeapon != null)
+      if (combatant.equippedWeapon)
         OnWeaponSwitch(combatant.equippedWeapon, null);
     }
 
@@ -114,10 +114,10 @@ namespace Fralle.PingTap
 
     void OnWeaponSwitch(Weapon newWeapon, Weapon oldWeapon)
     {
-      if (oldWeapon != null)
+      if (oldWeapon)
         oldWeapon.OnActiveWeaponActionChanged -= OnWeaponActionChanged;
 
-      if (newWeapon != null)
+      if (newWeapon)
         newWeapon.OnActiveWeaponActionChanged += OnWeaponActionChanged;
     }
 

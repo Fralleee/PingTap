@@ -25,7 +25,7 @@ namespace Fralle.UI
     void AddFloatingCombatText(DamageData damageData)
     {
       Transform cameraTransform = Camera.main?.transform;
-      if (cameraTransform == null)
+      if (!cameraTransform)
         return;
 
       GameObject instance = ObjectPool.Spawn(combatTextPrefab, transform.position, Quaternion.identity);

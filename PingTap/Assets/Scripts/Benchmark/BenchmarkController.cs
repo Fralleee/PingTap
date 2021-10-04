@@ -16,7 +16,7 @@ namespace Fralle.PingTap.Benchmark
 
     void Start()
     {
-      if (benchmarkEvent != null)
+      if (benchmarkEvent)
         benchmarkEvent.Run(this);
     }
 

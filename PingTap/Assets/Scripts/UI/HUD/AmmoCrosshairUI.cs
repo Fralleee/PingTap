@@ -29,7 +29,7 @@ namespace Fralle.UI.HUD
 
     void HandleWeaponSwitch(Weapon weapon, Weapon oldWeapon)
     {
-      if (weapon != null)
+      if (weapon)
       {
         weapon.Ammo.OnAmmoChanged += HandleAmmoChanged;
         maxAmmo = weapon.Ammo.MaxAmmo;

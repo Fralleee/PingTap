@@ -66,9 +66,9 @@ namespace Fralle.PingTap
 
     void OnValidate()
     {
-      if (sensor == null)
+      if (!sensor)
         sensor = GetComponentInChildren<TriggerSensor>();
-      if (sensorCollider == null)
+      if (!sensorCollider)
         sensorCollider = GetComponentInChildren<FOVCollider>();
     }
 
