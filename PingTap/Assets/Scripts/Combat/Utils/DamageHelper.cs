@@ -115,10 +115,8 @@ namespace Fralle.PingTap
 
     public static void Explosion(ProjectileData projectileData, Vector3 position, Collision collision = null)
     {
-      if (collision)
-      {
+      if (collision != null)
         position = collision.GetContact(0).point;
-      }
 
       TeamController teamController = projectileData.Attacker.teamController;
       Collider[] colliders = Physics.OverlapSphere(position, projectileData.ExplosionRadius, teamController.hostiles | 1 << 0);
