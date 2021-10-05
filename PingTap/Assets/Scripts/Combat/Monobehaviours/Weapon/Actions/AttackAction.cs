@@ -21,7 +21,6 @@ namespace Fralle.PingTap
     float fireRate;
 
     internal float Damage => Random.Range(minDamage, maxDamage);
-    bool HasAmmo => Weapon.Ammo.HasAmmo();
 
     internal virtual void Awake()
     {
@@ -41,10 +40,11 @@ namespace Fralle.PingTap
 
     public void Perform(bool buttonTap = false)
     {
-      if (Weapon.Status != Status.Ready || isTapable && !buttonTap || !HasAmmo)
+      if (Weapon.Status != Status.Ready || isTapable && !buttonTap || !Weapon.Ammo.HasAmmo())
         return;
 
       Weapon.ChangeWeaponAction(Status.Firing);
+      Weapon.Animator.SetTrigger("Shoot");
       int shotsToFire = Mathf.RoundToInt(-Weapon.NextAvailableShot / fireRate);
       for (int i = 0; i <= shotsToFire; i++)
       {
@@ -55,7 +55,7 @@ namespace Fralle.PingTap
         if (Weapon.RecoilAddon)
           Weapon.RecoilAddon.AddRecoil();
 
-        if (!HasAmmo)
+        if (!Weapon.Ammo.HasAmmo())
           break;
       }
     }

@@ -35,13 +35,13 @@ namespace Fralle.PingTap
     {
       //if (!weapon.IsEquipped)
       //  return;
-      if (kickbackForce <= 0)
-        return;
+      //if (kickbackForce <= 0)
+      //  return;
 
-      for (int i = 0; i < startPositions.Length; i++)
-      {
-        weapon.Muzzles[i].parent.localPosition = Vector3.Lerp(weapon.Muzzles[i].parent.localPosition, startPositions[i], kickbackRecoverTime * Time.deltaTime);
-      }
+      //for (int i = 0; i < startPositions.Length; i++)
+      //{
+      //  weapon.Muzzles[i].parent.localPosition = Vector3.Lerp(weapon.Muzzles[i].parent.localPosition, startPositions[i], kickbackRecoverTime * Time.deltaTime);
+      //}
     }
     public void Activate()
     {
@@ -55,7 +55,7 @@ namespace Fralle.PingTap
     public void AddRecoil()
     {
 
-      AddKickback();
+      //AddKickback();
 
       if (randomizeRecoil)
       {

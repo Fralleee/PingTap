@@ -22,9 +22,9 @@ namespace Fralle.PingTap
     [HideLabel]
     public AmmoAddon Ammo;
 
+    [HideInInspector] public Animator Animator;
     [HideInInspector] public Combatant Combatant;
     [HideInInspector] public RecoilAddon RecoilAddon;
-
     [HideInInspector] public HeadbobAdjuster HeadbobAdjuster;
     [HideInInspector] public AttackAction PrimaryAttack;
     [HideInInspector] public AttackAction SecondaryAttack;
@@ -33,8 +33,6 @@ namespace Fralle.PingTap
 
     [Header("Debug")]
     [ReadOnly] public float NextAvailableShot;
-
-    Animator Animator;
 
     void Awake()
     {
