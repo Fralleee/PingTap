@@ -8,6 +8,7 @@ namespace Fralle.PingTap
   {
     public event Action<Status> OnActiveWeaponActionChanged = delegate { };
     public event Action<int> OnAmmoChanged = delegate { };
+    public event Action<Weapon, AttackAction> OnAttack = delegate { };
 
     [FoldoutGroup("References")] public Transform[] Muzzles;
     [FoldoutGroup("References")] public Transform leftHandGrip;
@@ -17,6 +18,13 @@ namespace Fralle.PingTap
     [FoldoutGroup("Timers and cooldowns")] public float EquipTime = 0.4f;
     [FoldoutGroup("Timers and cooldowns")] public float ReloadTime = 1f;
 
+    [FoldoutGroup("Headbob")] public HeadbobConfiguration headbobConfiguration;
+
+    [FoldoutGroup("Recoil")] public float recoilSpeed = 15f;
+    [FoldoutGroup("Recoil")] public float recoilRecoverTime = 10f;
+    [FoldoutGroup("Recoil")] public Vector3 recoilConstraints = Vector3.zero;
+    [FoldoutGroup("Recoil")] public float recoilStatMultiplier = 1f;
+
     public Status Status { get; private set; }
 
     [HideLabel]
@@ -24,8 +32,6 @@ namespace Fralle.PingTap
 
     [HideInInspector] public Animator Animator;
     [HideInInspector] public Combatant Combatant;
-    [HideInInspector] public RecoilAddon RecoilAddon;
-    [HideInInspector] public HeadbobAdjuster HeadbobAdjuster;
     [HideInInspector] public AttackAction PrimaryAttack;
     [HideInInspector] public AttackAction SecondaryAttack;
     [HideInInspector] public float AttackRange;
@@ -34,10 +40,11 @@ namespace Fralle.PingTap
     [Header("Debug")]
     [ReadOnly] public float NextAvailableShot;
 
+
+    public bool HasAmmo => Ammo.HasAmmo();
+
     void Awake()
     {
-      RecoilAddon = GetComponent<RecoilAddon>();
-      HeadbobAdjuster = GetComponent<HeadbobAdjuster>();
       Animator = GetComponent<Animator>();
       Ammo.Setup(this);
       SetupAttackActions();
@@ -67,6 +74,13 @@ namespace Fralle.PingTap
 
         AttackRange = Mathf.Max(Mathf.Min(PrimaryAttack.GetRange(), SecondaryAttack ? SecondaryAttack.GetRange() : 0f), 10f);
       }
+    }
+
+    public void Attack(AttackAction attackAction)
+    {
+      NextAvailableShot += attackAction.fireRate;
+      Ammo.ChangeAmmo(-attackAction.ammoPerShot);
+      OnAttack(this, attackAction);
     }
 
     public void ChangeWeaponAction(Status status)
@@ -117,8 +131,6 @@ namespace Fralle.PingTap
       if (Status != Status.Equipping)
         return;
 
-      HeadbobAdjuster?.Activate();
-      RecoilAddon?.Activate();
       ChangeWeaponAction(Status.Ready);
     }
   }

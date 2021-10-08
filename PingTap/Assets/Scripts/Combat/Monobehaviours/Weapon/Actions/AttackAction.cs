@@ -18,7 +18,7 @@ namespace Fralle.PingTap
     internal Combatant Combatant;
     int nextMuzzle;
 
-    float fireRate;
+    public float fireRate;
 
     internal float Damage => Random.Range(minDamage, maxDamage);
 
@@ -49,13 +49,9 @@ namespace Fralle.PingTap
       for (int i = 0; i <= shotsToFire; i++)
       {
         Fire();
-        Weapon.NextAvailableShot += fireRate;
-        Weapon.Ammo.ChangeAmmo(-ammoPerShot);
+        Weapon.Attack(this);
 
-        if (Weapon.RecoilAddon)
-          Weapon.RecoilAddon.AddRecoil();
-
-        if (!Weapon.Ammo.HasAmmo())
+        if (!Weapon.HasAmmo)
           break;
       }
     }

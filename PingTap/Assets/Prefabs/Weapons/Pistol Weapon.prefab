@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1574042133890056261}
   - component: {fileID: 6538450066252380014}
-  - component: {fileID: -3682598321081610597}
   - component: {fileID: 3179935029439454034}
-  - component: {fileID: 3554372640410329598}
   - component: {fileID: -728975497531095089}
   - component: {fileID: 3816273285441613636}
   m_Layer: 0
@@ -135,19 +133,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-3682598321081610597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943643353794196974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e071344bd6f00f458252e88dfdd8e9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  configuration: {fileID: 11400000, guid: 2e980b6dd3fe0b94193f50cf8b83153f, type: 2}
 --- !u!114 &3179935029439454034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,39 +152,24 @@ MonoBehaviour:
   weaponCameraTransform: {fileID: 7774576615114151491}
   EquipTime: 0.4
   ReloadTime: 1
+  headbobConfiguration: {fileID: 11400000, guid: 2e980b6dd3fe0b94193f50cf8b83153f,
+    type: 2}
+  recoilSpeed: 15
+  recoilRecoverTime: 10
+  recoilConstraints: {x: 3, y: 7, z: 1}
+  recoilStatMultiplier: 1
   Ammo:
-    CurrAmmo: 0
-    MaxAmmo: 100
     CurrentAmmo: 0
-    MaximumAmmo: 100
+    MaxAmmo: 100
     InfiniteAmmo: 0
+  Animator: {fileID: 0}
   Combatant: {fileID: 0}
   RecoilAddon: {fileID: 0}
-  HeadbobAdjuster: {fileID: 0}
   PrimaryAttack: {fileID: 0}
   SecondaryAttack: {fileID: 0}
   AttackRange: 0
   WeaponSlotIndex: 0
   NextAvailableShot: 0
---- !u!114 &3554372640410329598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943643353794196974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b43fb7f9cad1b41b8080efcd469e25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kickbackForce: 0.15
-  kickbackRecoverTime: 20
-  randomizeRecoil: 0
-  recoilSpeed: 15
-  recoilRecoverTime: 10
-  randomRecoilConstraints: {x: 0, y: 0, z: 0}
-  recoilPattern: []
 --- !u!114 &-728975497531095089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +189,7 @@ MonoBehaviour:
   isTapable: 0
   element: 0
   damageEffects: []
+  fireRate: 0.05
   range: 50
   pushForce: 3.5
   muzzleParticlePrefab: {fileID: 1277314995582460547, guid: a1af3095c408ed84c8e5fb46dde0af6d,
