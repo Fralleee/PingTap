@@ -15,30 +15,30 @@ namespace Fralle.PingTap
     [SerializeField] int bulletsPerFire = 1;
     public AnimationCurve rangeDamageFalloff = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1, 0));
 
-    [Header("Spread")]
-    [SerializeField] float spreadRadius = 0f;
-    [SerializeField] float spreadIncreaseEachShot = 0f;
-    [SerializeField] float recovery = 1f;
-    [SerializeField] bool spreadOnFirstShot;
+    [Header("BulletSpread")]
+    [SerializeField] float bulletSpreadRadius = 0f;
+    [SerializeField] float bulletSpreadIncreaseEachShot = 0f;
+    [SerializeField] float bulletSpreadRecovery = 1f;
+    [SerializeField] bool bulletSpreadOnFirstShot;
 
-    [ReadOnly] public float currentSpread;
+    [ReadOnly] public float currentBulletSpread;
 
     ParticleSystem muzzleParticle;
-    float spreadStatMultiplier = 1f;
+    float bulletSpreadStatMultiplier = 1f;
 
     internal override void Start()
     {
       base.Start();
 
-      float lowestCurrentSpread = spreadOnFirstShot ? spreadIncreaseEachShot : 0f;
-      currentSpread = lowestCurrentSpread;
+      float lowestCurrentBulletSpread = bulletSpreadOnFirstShot ? bulletSpreadIncreaseEachShot : 0f;
+      currentBulletSpread = lowestCurrentBulletSpread;
       SetupMuzzle();
       SetupBulletTrace();
     }
 
     void Update()
     {
-      ModifyCurrentSpread();
+      ModifyCurrentBulletSpread();
     }
 
     public override void Fire()
@@ -51,11 +51,11 @@ namespace Fralle.PingTap
       for (int i = 0; i < bulletsPerFire; i++)
         FireBullet(muzzle);
 
-      if (spreadIncreaseEachShot <= 0)
+      if (bulletSpreadIncreaseEachShot <= 0)
         return;
 
-      currentSpread += spreadIncreaseEachShot * spreadStatMultiplier;
-      currentSpread = Mathf.Clamp(currentSpread, 0, spreadRadius * spreadStatMultiplier);
+      currentBulletSpread += bulletSpreadIncreaseEachShot * bulletSpreadStatMultiplier;
+      currentBulletSpread = Mathf.Clamp(currentBulletSpread, 0, bulletSpreadRadius * bulletSpreadStatMultiplier);
     }
 
     public override float GetRange() => range;
@@ -96,20 +96,20 @@ namespace Fralle.PingTap
         ObjectPool.Spawn(Combatant.impactAtlas.GetImpactEffectFromTag(hitInfo.collider.tag), hitInfo.point, Quaternion.LookRotation(hitInfo.normal, Vector3.up));
     }
 
-    void ModifyCurrentSpread()
+    void ModifyCurrentBulletSpread()
     {
-      float lowestCurrentSpread = spreadOnFirstShot ? spreadIncreaseEachShot : 0f;
-      if (currentSpread.EqualsWithTolerance(lowestCurrentSpread))
+      float lowestCurrentBulletSpread = bulletSpreadOnFirstShot ? bulletSpreadIncreaseEachShot : 0f;
+      if (currentBulletSpread.EqualsWithTolerance(lowestCurrentBulletSpread))
         return;
 
-      currentSpread -= Time.deltaTime * recovery;
-      currentSpread = Mathf.Clamp(currentSpread, lowestCurrentSpread, spreadRadius);
+      currentBulletSpread -= Time.deltaTime * bulletSpreadRecovery;
+      currentBulletSpread = Mathf.Clamp(currentBulletSpread, lowestCurrentBulletSpread, bulletSpreadRadius);
     }
 
     Vector3 CalculateBulletSpread(float modifier)
     {
-      float spreadPercent = spreadIncreaseEachShot > 0 ? currentSpread : 1;
-      Vector3 spread = Combatant.aimTransform.TransformDirection(spreadPercent * modifier * Random.insideUnitCircle * spreadRadius);
+      float spreadPercent = bulletSpreadIncreaseEachShot > 0 ? currentBulletSpread : 1;
+      Vector3 spread = Combatant.aimTransform.TransformDirection(spreadPercent * modifier * Random.insideUnitCircle * bulletSpreadRadius);
       return Combatant.aimTransform.forward + spread;
     }
 
@@ -124,8 +124,8 @@ namespace Fralle.PingTap
     internal override void OnValidate()
     {
       base.OnValidate();
-      float lowestCurrentSpread = spreadOnFirstShot ? spreadIncreaseEachShot : 0f;
-      currentSpread = lowestCurrentSpread;
+      float lowestCurrentSpread = bulletSpreadOnFirstShot ? bulletSpreadIncreaseEachShot : 0f;
+      currentBulletSpread = lowestCurrentSpread;
     }
   }
 }

@@ -15,7 +15,7 @@ namespace Fralle.PingTap
     [Space(10)]
     [SerializeField] int projectilesPerFire = 1;
     [SerializeField] float delayTimePerProjectiles = 0f;
-    [SerializeField] float spreadRadiusOnMaxRange = 0f;
+    [SerializeField] float bulletSpreadRadiusOnMaxRange = 0f;
 
     ParticleSystem muzzleParticle;
 
@@ -65,8 +65,8 @@ namespace Fralle.PingTap
         else
           projectileData.Forward = (ray.GetPoint(Mathf.Min(projectileData.Range, 50f)) - muzzle.position).normalized;
 
-        Vector2 spread = Random.insideUnitCircle * spreadRadiusOnMaxRange / projectileData.Range;
-        projectileData.Forward += new Vector3(0, spread.y, spread.x);
+        Vector2 bulletSpread = Random.insideUnitCircle * bulletSpreadRadiusOnMaxRange / projectileData.Range;
+        projectileData.Forward += new Vector3(0, bulletSpread.y, bulletSpread.x);
 
         GameObject instance = ObjectPool.Spawn(projectilePrefab.gameObject, muzzle.position, Quaternion.LookRotation(projectileData.Forward, transform.up));
         Projectile projectile = instance.GetComponent<Projectile>();
