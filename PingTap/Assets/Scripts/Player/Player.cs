@@ -106,6 +106,9 @@ namespace Fralle.PingTap
 #endif
       }
       playerCamera.controller = playerController;
+#if UNITY_EDITOR
+      EditorUtility.SetDirty(playerCamera);
+#endif
 
       var playerAttack = GetComponent<PlayerAttack>();
       playerAttack.weaponCamera = playerCamera.weaponCamera;
