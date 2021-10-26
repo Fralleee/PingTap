@@ -1,10 +1,10 @@
 Using pre-set license
-Built from '2020.3/staging' branch; Version is '2020.3.16f1 (049d6eca3c44) revision 302446'; Using compiler version '192528614'; Build Type 'Release'
+Built from '2020.3/staging' branch; Version is '2020.3.21f1 (a38c86f6690f) revision 10718342'; Using compiler version '192528614'; Build Type 'Release'
 OS: 'Windows 10 Pro N; OS build 19043.1288; Version 2009; 64bit' Language: 'sv' Physical Memory: 8075 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
- COMMAND LINE ARGUMENTS:
-E:\Unity\2020.3.16f1\Editor\Unity.exe
+COMMAND LINE ARGUMENTS:
+E:\Unity\2020.3.21f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
@@ -15,14 +15,14 @@ E:/Unity/Projects/PingTap/PingTap
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-59218
+54791
 Successfully changed project path to: E:/Unity/Projects/PingTap/PingTap
 E:/Unity/Projects/PingTap/PingTap
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 99.92 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 140.87 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2020.3.16f1 (049d6eca3c44)
-[Subsystems] Discovering subsystems at path E:/Unity/2020.3.16f1/Editor/Data/Resources/UnitySubsystems
+Initialize engine version: 2020.3.21f1 (a38c86f6690f)
+[Subsystems] Discovering subsystems at path E:/Unity/2020.3.21f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path E:/Unity/Projects/PingTap/PingTap/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
@@ -31,78 +31,77 @@ Direct3D:
     Vendor:   
     VRAM:     8079 MB
     Driver:   30.0.14.9613
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Initialize mono
-Mono path[0] = 'E:/Unity/2020.3.16f1/Editor/Data/Managed'
-Mono path[1] = 'E:/Unity/2020.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = 'E:/Unity/2020.3.16f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56092
+Mono path[0] = 'E:/Unity/2020.3.21f1/Editor/Data/Managed'
+Mono path[1] = 'E:/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'E:/Unity/2020.3.21f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56904
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: E:/Unity/2020.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001052 seconds.
+Register platform support module: E:/Unity/2020.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002304 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 118.31 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 110.76 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.141 seconds
+- Completed reload, in  1.644 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1141ms)
-		BeginReloadAssembly (50ms)
+	ReloadAssembly (1645ms)
+		BeginReloadAssembly (61ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (585ms)
-			LoadAssemblies (48ms)
+		EndReloadAssembly (571ms)
+			LoadAssemblies (60ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (212ms)
+			SetupTypeCache (176ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (37ms)
-			SetupLoadedEditorAssemblies (259ms)
+			RebuildScriptCaches (43ms)
+			SetupLoadedEditorAssemblies (250ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (118ms)
-				BeforeProcessingInitializeOnLoad (19ms)
-				ProcessInitializeOnLoadAttributes (91ms)
-				ProcessInitializeOnLoadMethodAttributes (26ms)
+				RefreshPlugins (111ms)
+				BeforeProcessingInitializeOnLoad (18ms)
+				ProcessInitializeOnLoadAttributes (89ms)
+				ProcessInitializeOnLoadMethodAttributes (27ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005062 seconds.
+Registered in 0.017368 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 111.97 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 109.26 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.997 seconds
+- Completed reload, in  2.995 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2998ms)
-		BeginReloadAssembly (170ms)
+	ReloadAssembly (2996ms)
+		BeginReloadAssembly (155ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (23ms)
-		EndReloadAssembly (2764ms)
-			LoadAssemblies (182ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (2781ms)
+			LoadAssemblies (165ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (420ms)
+			SetupTypeCache (399ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (173ms)
-			SetupLoadedEditorAssemblies (1828ms)
+			RebuildScriptCaches (110ms)
+			SetupLoadedEditorAssemblies (1950ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (112ms)
-				BeforeProcessingInitializeOnLoad (133ms)
-				ProcessInitializeOnLoadAttributes (1487ms)
-				ProcessInitializeOnLoadMethodAttributes (88ms)
+				RefreshPlugins (109ms)
+				BeforeProcessingInitializeOnLoad (137ms)
+				ProcessInitializeOnLoadAttributes (1663ms)
+				ProcessInitializeOnLoadMethodAttributes (34ms)
 				AfterProcessingInitializeOnLoad (2ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -110,16 +109,15 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.11 seconds
-Refreshing native plugins compatible for Editor in 7.64 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 1.18 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4319 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 274.7 MB.
-System memory in use after: 274.9 MB.
+Unloading 4344 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 269.1 MB.
+System memory in use after: 269.4 MB.
 
-Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 4830.
-Total: 25.287800 ms (FindLiveObjects: 1.371000 ms CreateObjectMapping: 0.232800 ms MarkObjects: 22.423700 ms  DeleteObjects: 1.192000 ms)
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 4856.
+Total: 26.136100 ms (FindLiveObjects: 0.556300 ms CreateObjectMapping: 0.477800 ms MarkObjects: 24.993800 ms  DeleteObjects: 0.106900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -134,2021 +132,608 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Shaders/Toon 2
-  artifactKey: Guid(12eaecbf9f79dfa4a9eddf2170ccc30c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2 using Guid(12eaecbf9f79dfa4a9eddf2170ccc30c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55e6762bce2ffca4b5224f83ae96445d') in 0.015019 seconds 
-  Import took 0.026836 seconds .
+  path: Assets/Shaders/Toon/Toon_Slime.shadergraph
+  artifactKey: Guid(3ef05ec63152ae9488cbf74c84ddba20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon_Slime.shadergraph using Guid(3ef05ec63152ae9488cbf74c84ddba20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db19cfde7975b0972f052b7333633e3d') in 0.050062 seconds 
+  Import took 0.061603 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 93.695293 seconds.
-  path: Assets/Materials/Characters/OfficeGuy Toon2.mat
-  artifactKey: Guid(47f0f5677900ccc49844dc589f4a285e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Characters/OfficeGuy Toon2.mat using Guid(47f0f5677900ccc49844dc589f4a285e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f513b9593966e5bf2018aa5a2bda50d') in 0.255468 seconds 
-  Import took 0.264070 seconds .
+  Time since last request: 0.000262 seconds.
+  path: Assets/Shaders/Toon/Toon_Glow.shadergraph
+  artifactKey: Guid(a6c49873656da9e4eb442af8048299e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon_Glow.shadergraph using Guid(a6c49873656da9e4eb442af8048299e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7604d20596f34705ba47631651d2fe4') in 0.008832 seconds 
+  Import took 0.018924 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 15.412408 seconds.
-  path: Assets/Shaders/Toon 2/ToonLit.shader
-  artifactKey: Guid(4d247c9c705b3854ba293c5c51e9ffad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/ToonLit.shader using Guid(4d247c9c705b3854ba293c5c51e9ffad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faf4c934c4ba2fc2074a0b1994d3835f') in 0.009390 seconds 
-  Import took 0.018134 seconds .
+  Time since last request: 0.000292 seconds.
+  path: Assets/Shaders/Toon/Toon_Shaking.shadergraph
+  artifactKey: Guid(fb21774d41f391b4d9c7e32cf9ceec5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon_Shaking.shadergraph using Guid(fb21774d41f391b4d9c7e32cf9ceec5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ef20442acfbb079a50b90d8ba24a0cc8') in 0.009825 seconds 
+  Import took 0.021690 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.336521 seconds.
-  path: Assets/Shaders/Toon 2/ToonLit.shader
-  artifactKey: Guid(4d247c9c705b3854ba293c5c51e9ffad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/ToonLit.shader using Guid(4d247c9c705b3854ba293c5c51e9ffad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faf4c934c4ba2fc2074a0b1994d3835f') in 0.008636 seconds 
-  Import took 0.027727 seconds .
+  Time since last request: 0.000277 seconds.
+  path: Assets/Shaders/Toon/Toon_Ground.shadergraph
+  artifactKey: Guid(5ae7e09087010244bb9ced7b96fe67a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon_Ground.shadergraph using Guid(5ae7e09087010244bb9ced7b96fe67a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ed0ab6eda404fc3366597e443aca2ad') in 0.011819 seconds 
+  Import took 0.023528 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 53.378257 seconds.
-  path: Assets/Scenes/dust2.unity
-  artifactKey: Guid(9ea57a75cdafc8142b5030152e728d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/dust2.unity using Guid(9ea57a75cdafc8142b5030152e728d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24cf9ecc3dfac2dbda464f44ae7a76e5') in 0.010745 seconds 
-  Import took 0.021753 seconds .
+  Time since last request: 0.000287 seconds.
+  path: Assets/Shaders/Toon/Toon_DoubleSided.shadergraph
+  artifactKey: Guid(f8e6daf49eec07d46ab6480624568ce3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon_DoubleSided.shadergraph using Guid(f8e6daf49eec07d46ab6480624568ce3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1bb55e1406c9a8ce069f17a8291a300') in 0.007777 seconds 
+  Import took 0.019802 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.016644 seconds.
-  path: Assets/Scenes/dust2.unity
-  artifactKey: Guid(9ea57a75cdafc8142b5030152e728d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/dust2.unity using Guid(9ea57a75cdafc8142b5030152e728d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24cf9ecc3dfac2dbda464f44ae7a76e5') in 0.002890 seconds 
-  Import took 0.013151 seconds .
+  Time since last request: 5.424829 seconds.
+  path: Assets/Shaders/Toon/Toon_DetailMaskTint.shadergraph
+  artifactKey: Guid(c2f57d091fa8e17459a737c31526637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon_DetailMaskTint.shadergraph using Guid(c2f57d091fa8e17459a737c31526637b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa9554a1c643da6069c4fdbee4b0d1e2') in 0.007136 seconds 
+  Import took 0.016797 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 27.464130 seconds.
-  path: Assets/Settings/Rendering/ForwardRenderer.asset
-  artifactKey: Guid(b08be626ba53a754689999d23ea6dbf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/Rendering/ForwardRenderer.asset using Guid(b08be626ba53a754689999d23ea6dbf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa8f6cc259085159c3db4fcd58a575f4') in 0.016808 seconds 
-  Import took 0.031729 seconds .
+  Time since last request: 12.158187 seconds.
+  path: Assets/Shaders/Toon/Toon.shadergraph
+  artifactKey: Guid(bf36778a400a0894b86a1f49c422fa62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon.shadergraph using Guid(bf36778a400a0894b86a1f49c422fa62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '329c5395fe844d024cbf31b6e188c1fa') in 0.006373 seconds 
+  Import took 0.015904 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 60.965180 seconds.
-  path: Assets/Shaders/Toon 2/To.mat
-  artifactKey: Guid(f51b61cf2d65054429b38f19bfb245d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/To.mat using Guid(f51b61cf2d65054429b38f19bfb245d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5442aeafd8986f972cf4212d57dc9abb') in 0.030946 seconds 
-  Import took 0.042872 seconds .
+  Time since last request: 13.135111 seconds.
+  path: Assets/Shaders/SubGraphs/AdditionalLights.shadersubgraph
+  artifactKey: Guid(1b03813eb6f91994b841c8e22a1e1806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/AdditionalLights.shadersubgraph using Guid(1b03813eb6f91994b841c8e22a1e1806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d64e49f73c42d02e54f4258244f9d50') in 0.011513 seconds 
+  Import took 0.022301 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.785136 seconds.
-  path: Assets/Shaders/Toon 2/SmoothInkyOutlineHLSL.shader
-  artifactKey: Guid(069b0fb38e383e149bec511d3c99e49e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/SmoothInkyOutlineHLSL.shader using Guid(069b0fb38e383e149bec511d3c99e49e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '486be3d30cd7c32fe8f5f90bea66fd62') in 0.007732 seconds 
-  Import took 0.017124 seconds .
+  Time since last request: 0.000302 seconds.
+  path: Assets/Shaders/SubGraphs/AdditionalLightsToon.shadersubgraph
+  artifactKey: Guid(6898753f3a86c87489f6fcdfbeed7fe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/AdditionalLightsToon.shadersubgraph using Guid(6898753f3a86c87489f6fcdfbeed7fe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04ad483fac10de29b900e8263fd93cd4') in 0.008244 seconds 
+  Import took 0.019130 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.721435 seconds.
-  path: Assets/Shaders/Toon 2/SmoothInkyOutlineHLSL.mat
-  artifactKey: Guid(f51b61cf2d65054429b38f19bfb245d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/SmoothInkyOutlineHLSL.mat using Guid(f51b61cf2d65054429b38f19bfb245d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afcf3643df897507bac6b98019a32524') in 0.011595 seconds 
-  Import took 0.021178 seconds .
+  Time since last request: 0.000215 seconds.
+  path: Assets/Shaders/SubGraphs/ToonShading.shadersubgraph
+  artifactKey: Guid(fbed86498f4059d42b9f1788c6dee1c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/ToonShading.shadersubgraph using Guid(fbed86498f4059d42b9f1788c6dee1c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2627ee8e03c4dcb4451fcd67485fca3f') in 0.007514 seconds 
+  Import took 0.017910 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.802333 seconds.
-  path: Assets/Shaders/Toon 2/SmoothOutline.shader
-  artifactKey: Guid(bf222d192e8eeb34ab44641834867917) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/SmoothOutline.shader using Guid(bf222d192e8eeb34ab44641834867917) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-WARNING: Shader Unsupported: 'Toon/Smooth Outline' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Toon/Smooth Outline' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
- -> (artifact id: '5750b674e555f8e9342f9a0d87df0185') in 0.011438 seconds 
-  Import took 0.024306 seconds .
+  Time since last request: 0.000203 seconds.
+  path: Assets/Shaders/SubGraphs/Dissolve.shadersubgraph
+  artifactKey: Guid(a390532f98b438b45b9ff01b4142730e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/Dissolve.shadersubgraph using Guid(a390532f98b438b45b9ff01b4142730e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0104c5d92a068e2bd3f39adb48d6a785') in 0.006442 seconds 
+  Import took 0.015732 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.735491 seconds.
-  path: Assets/Shaders/Toon 2/SmoothOutline.mat
-  artifactKey: Guid(8c7c41889f1735c4b8d2e96128cb245c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/SmoothOutline.mat using Guid(8c7c41889f1735c4b8d2e96128cb245c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86a4afaf4ff3a0e74672aa2eab86f3b8') in 0.013756 seconds 
-  Import took 0.023527 seconds .
+  Time since last request: 0.000257 seconds.
+  path: Assets/Shaders/SubGraphs/TextureAndTint.shadersubgraph
+  artifactKey: Guid(4e91c4acaff9ecc42866a9b218b08e49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/TextureAndTint.shadersubgraph using Guid(4e91c4acaff9ecc42866a9b218b08e49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a98685e4527781f79b1a1f38b7adf542') in 0.006232 seconds 
+  Import took 0.014571 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.389429 seconds.
-  path: Assets/Shaders/Toon 2/ToonLit.mat
-  artifactKey: Guid(628b006982f769a49b2e4c198eade0b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/ToonLit.mat using Guid(628b006982f769a49b2e4c198eade0b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86fb11e4fe178d694b6f734e99fe685f') in 0.012532 seconds 
-  Import took 0.023282 seconds .
+  Time since last request: 0.000162 seconds.
+  path: Assets/Shaders/SubGraphs/MainLight.shadersubgraph
+  artifactKey: Guid(231093b74d3ab1341aa61c0ebb5d779d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/MainLight.shadersubgraph using Guid(231093b74d3ab1341aa61c0ebb5d779d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3772d3e2a6032dbb7bff6709173eeead') in 0.007309 seconds 
+  Import took 0.015911 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 10.844934 seconds.
-  path: Assets/Settings/Rendering/ForwardRenderer.asset
-  artifactKey: Guid(b08be626ba53a754689999d23ea6dbf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/Rendering/ForwardRenderer.asset using Guid(b08be626ba53a754689999d23ea6dbf1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a7c84e22f31177e7240f18702509603') in 0.005128 seconds 
-  Import took 0.014424 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.559666 seconds.
-  path: Assets/Materials/Characters/OfficeGuy Toon2.mat
-  artifactKey: Guid(47f0f5677900ccc49844dc589f4a285e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Characters/OfficeGuy Toon2.mat using Guid(47f0f5677900ccc49844dc589f4a285e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-WARNING: Shader Unsupported: 'Toon/Smooth Outline' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Toon/Smooth Outline' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
- -> (artifact id: '416b6efc0eb358931f187ff1496803be') in 0.013445 seconds 
-  Import took 0.022377 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 94.501657 seconds.
-  path: Assets/Shaders/Toon 2/SmoothInkyOutlineHLSL.mat
-  artifactKey: Guid(f51b61cf2d65054429b38f19bfb245d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/SmoothInkyOutlineHLSL.mat using Guid(f51b61cf2d65054429b38f19bfb245d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f94ec197ca1fd39ecce7920b22b22497') in 0.023524 seconds 
-  Import took 0.033782 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/Shaders/Toon 2/ToonLit.mat
-  artifactKey: Guid(628b006982f769a49b2e4c198eade0b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/ToonLit.mat using Guid(628b006982f769a49b2e4c198eade0b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecd45b4b0e6c843eff25616ad910cb72') in 0.012954 seconds 
-  Import took 0.022804 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000263 seconds.
-  path: Assets/Shaders/Toon 2/SmoothOutline.mat
-  artifactKey: Guid(8c7c41889f1735c4b8d2e96128cb245c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Shaders/Toon 2/SmoothOutline.mat using Guid(8c7c41889f1735c4b8d2e96128cb245c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-WARNING: Shader Unsupported: 'Toon/Smooth Outline' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-WARNING: Shader Unsupported: 'Toon/Smooth Outline' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
- -> (artifact id: '447c4f7682562413b1fd402f866c5d05') in 0.012617 seconds 
-  Import took 0.021836 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 945.246841 seconds.
-  path: Assets/Systems/FpsController/Scenes/Playground.unity
-  artifactKey: Guid(e4cba442f3255cf4baafc7c4ba1ebbe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Systems/FpsController/Scenes/Playground.unity using Guid(e4cba442f3255cf4baafc7c4ba1ebbe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b48a1c4d8b1d6d2cb59181f8f7ec5c5') in 0.012376 seconds 
-  Import took 0.036534 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 22542.170084 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Doomfist.blend
-  artifactKey: Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Doomfist.blend using Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd414420dd85377b292de01c8a9bb0aae') in 0.902973 seconds 
-  Import took 1.081266 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000508 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Doomfist.fbx
-  artifactKey: Guid(386c6af6293b6f144bba5cf490dfe97a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Doomfist.fbx using Guid(386c6af6293b6f144bba5cf490dfe97a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39ff5d4a76705b15763bfb6af8fbd01e') in 0.104800 seconds 
-  Import took 0.115874 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 190.192355 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/albedo.tif
-  artifactKey: Guid(36529ca00434b044882dc42be7b41eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/albedo.tif using Guid(36529ca00434b044882dc42be7b41eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd985da818ae68f892ca6a043e75201f2') in 0.121382 seconds 
-  Import took 0.139912 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.770678 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76_albedo.mat
-  artifactKey: Guid(8d9e0b57dbcad40459a4469a4288c082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76_albedo.mat using Guid(8d9e0b57dbcad40459a4469a4288c082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95b1842cff0aabcd14d67945192acdc9') in 0.021307 seconds 
-  Import took 0.031242 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 142.799955 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76_albedo.mat
-  artifactKey: Guid(8d9e0b57dbcad40459a4469a4288c082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76_albedo.mat using Guid(8d9e0b57dbcad40459a4469a4288c082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22567fb2fa6d8b53900499f6cd35e2d8') in 0.025233 seconds 
-  Import took 0.036075 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.562688 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/oldier76_albedo2.mat
-  artifactKey: Guid(93e33d17474082441b3929b68a4fbe77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/oldier76_albedo2.mat using Guid(93e33d17474082441b3929b68a4fbe77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fd0feaea500250edf42aa02fa29eb98') in 0.024070 seconds 
-  Import took 0.033689 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.769515 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/oldier76_albedo2.mat
-  artifactKey: Guid(93e33d17474082441b3929b68a4fbe77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/oldier76_albedo2.mat using Guid(93e33d17474082441b3929b68a4fbe77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66a3b4025c68407822b88a1cae1f9b75') in 0.018107 seconds 
-  Import took 0.029950 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.492241 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Yellow.mat
-  artifactKey: Guid(f8b9de420bcd937479a542fda9a06e23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Yellow.mat using Guid(f8b9de420bcd937479a542fda9a06e23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e114f009f61740a6e36e50dba3fea3fe') in 0.023071 seconds 
-  Import took 0.032853 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 89.951026 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000000D01.tif
-  artifactKey: Guid(40fc6df927b04af4c9c61b1dff30b725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000000D01.tif using Guid(40fc6df927b04af4c9c61b1dff30b725) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a905323b673d47d818dd3b6c6d814193') in 0.014512 seconds 
-  Import took 0.024165 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000224 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003285.tif
-  artifactKey: Guid(51cbbd812b60cb841902bc53ee04ef20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003285.tif using Guid(51cbbd812b60cb841902bc53ee04ef20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c3d7b2bba30f5f97ca488417e4db74d') in 0.014994 seconds 
-  Import took 0.024656 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000244 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/80001E284DAB.tif
-  artifactKey: Guid(a4cd2cc59ac961941bc2e17421d64a04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/80001E284DAB.tif using Guid(a4cd2cc59ac961941bc2e17421d64a04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34aeaf9aeffdbac3e66cb7a752e4ee41') in 0.013918 seconds 
-  Import took 0.025999 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000218 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031F6.tif
-  artifactKey: Guid(1b9727fdc366c0541ab49ee562bde225) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031F6.tif using Guid(1b9727fdc366c0541ab49ee562bde225) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a70a7280f7d77a742ca418d47805c67') in 0.017205 seconds 
-  Import took 0.027239 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000279 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003284.tif
-  artifactKey: Guid(182aa8dc72607e1418001a201d00d455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003284.tif using Guid(182aa8dc72607e1418001a201d00d455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '561f78de4a60e06fc3fb7ed761f3677f') in 0.015687 seconds 
-  Import took 0.025527 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/palette.png
-  artifactKey: Guid(57a58e8e2db545342bff5f608277f0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/palette.png using Guid(57a58e8e2db545342bff5f608277f0c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f19b5b3ddf93364f2414d09fcb632528') in 0.017360 seconds 
-  Import took 0.025649 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031F8.tif
-  artifactKey: Guid(d614ac450f60dc9448da76e8338838df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031F8.tif using Guid(d614ac450f60dc9448da76e8338838df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc43cfb652fc1e698ecd1df5d1b0be16') in 0.014538 seconds 
-  Import took 0.026504 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000335 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031F7.tif
-  artifactKey: Guid(a2197b490f3cca74a9d65860d280addd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031F7.tif using Guid(a2197b490f3cca74a9d65860d280addd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3dcd2b003780a8a7ed606fc92ea926b7') in 0.013913 seconds 
-  Import took 0.024025 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000258 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000000460.tif
-  artifactKey: Guid(2a93b640b03b23844ba9ea5660e15d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000000460.tif using Guid(2a93b640b03b23844ba9ea5660e15d25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4a0454df56fdea8e58f1c9b83d902d1') in 0.013373 seconds 
-  Import took 0.023015 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003219.tif
-  artifactKey: Guid(d725e4fde2aef49498e3820645310413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003219.tif using Guid(d725e4fde2aef49498e3820645310413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e5b1bbbf76d18140065bf943d2c2abb') in 0.015197 seconds 
-  Import took 0.025985 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003281.tif
-  artifactKey: Guid(1e8408afefab6ad46bd184496629dc32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003281.tif using Guid(1e8408afefab6ad46bd184496629dc32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32fe5d6ad2ec5857c1887bc6070fb530') in 0.014892 seconds 
-  Import took 0.024307 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003282.tif
-  artifactKey: Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003282.tif using Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2b7337442f8f3193d17819ab3a24f78') in 0.014325 seconds 
-  Import took 0.024519 seconds .
+  Time since last request: 0.000298 seconds.
+  path: Assets/Shaders/SubGraphs/DepthFade.shadersubgraph
+  artifactKey: Guid(4d9196dfc8e26b940ad1582dd0d656ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/DepthFade.shadersubgraph using Guid(4d9196dfc8e26b940ad1582dd0d656ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67ce9f6ca9986f9bea40c2b423e07a36') in 0.006569 seconds 
+  Import took 0.015976 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000217 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031F5.tif
-  artifactKey: Guid(71e485fca03a2504999fff788a826d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031F5.tif using Guid(71e485fca03a2504999fff788a826d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eba128a27b0db3a3abc78b4cda4606c0') in 0.016137 seconds 
-  Import took 0.025753 seconds .
+  path: Assets/Shaders/SubGraphs/Outline.shadersubgraph
+  artifactKey: Guid(36b1cdb3a2e056742ae9eed5db1cbfe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/Outline.shadersubgraph using Guid(36b1cdb3a2e056742ae9eed5db1cbfe9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21cded7393d03397e2fe09c5ce90cc4c') in 0.007181 seconds 
+  Import took 0.016654 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000235 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003216.tif
-  artifactKey: Guid(1ca0ac23528c6d0469b1209c4b054538) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003216.tif using Guid(1ca0ac23528c6d0469b1209c4b054538) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7018d6da0c513c857e1e9481dafdd498') in 0.012736 seconds 
-  Import took 0.022403 seconds .
+  Time since last request: 0.000238 seconds.
+  path: Assets/Shaders/SubGraphs/WaterNoise.shadersubgraph
+  artifactKey: Guid(9365b516ca2b6d44ab9b6f3e886b8700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/WaterNoise.shadersubgraph using Guid(9365b516ca2b6d44ab9b6f3e886b8700) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58dd74b3fe9b4194811a9cb9f813b496') in 0.006544 seconds 
+  Import took 0.015279 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000211 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031F9.tif
-  artifactKey: Guid(7d7998bbe22ca4048b44559d74127296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031F9.tif using Guid(7d7998bbe22ca4048b44559d74127296) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28cda6f4790a06e440cd3eac120edb4b') in 0.014006 seconds 
-  Import took 0.023092 seconds .
+  Time since last request: 0.000263 seconds.
+  path: Assets/Shaders/SubGraphs/Albedo.shadersubgraph
+  artifactKey: Guid(e5a8c819ad3623244a943a45dac4ffa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/Albedo.shadersubgraph using Guid(e5a8c819ad3623244a943a45dac4ffa4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a836d93ca561973cc875793d71a930cf') in 0.007709 seconds 
+  Import took 0.015392 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000312 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031FA.tif
-  artifactKey: Guid(50c18e9fa38570741b5a3d7fe8c76256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031FA.tif using Guid(50c18e9fa38570741b5a3d7fe8c76256) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '144f1fbc4f8d77ddf925f4b4a08ad715') in 0.015822 seconds 
-  Import took 0.025606 seconds .
+  Time since last request: 0.000275 seconds.
+  path: Assets/Shaders/SubGraphs/DetailMaskTint.shadersubgraph
+  artifactKey: Guid(6684c2a7a1360314b9be5350847814a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/DetailMaskTint.shadersubgraph using Guid(6684c2a7a1360314b9be5350847814a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5684eaf8930e28a727f3c25cd3243b0') in 0.007637 seconds 
+  Import took 0.016429 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000198 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003283.tif
-  artifactKey: Guid(c04e403a376d7874daa4b3522d37e3d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003283.tif using Guid(c04e403a376d7874daa4b3522d37e3d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bf9a123c5ccfea9e3aeadbaaa2b8e3a') in 0.013608 seconds 
-  Import took 0.022177 seconds .
+  Time since last request: 0.000275 seconds.
+  path: Assets/Shaders/SubGraphs/WindAddon.shadersubgraph
+  artifactKey: Guid(3bff7a12d3e008442a5f1fc0bb5232de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/WindAddon.shadersubgraph using Guid(3bff7a12d3e008442a5f1fc0bb5232de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d023e9a3fbc442cc745788ce0d832b4') in 0.006865 seconds 
+  Import took 0.016017 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000176 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003217.tif
-  artifactKey: Guid(e7d6489f3b2517341b0e20c393e94d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003217.tif using Guid(e7d6489f3b2517341b0e20c393e94d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f1c5474d8c73a945d40f9afaac09247') in 0.012928 seconds 
-  Import took 0.021592 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003218.tif
-  artifactKey: Guid(1f1f416eb0b01a745860319da168246c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003218.tif using Guid(1f1f416eb0b01a745860319da168246c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02a4c073e13a65883bbe277fa36baf81') in 0.014236 seconds 
-  Import took 0.024438 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.494160 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Doomfist.blend
-  artifactKey: Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Doomfist.blend using Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d452067d791d4afe5bfa73bdfa1a869') in 0.100966 seconds 
-  Import took 0.112459 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.790250 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures
-  artifactKey: Guid(d9b339404d46e754982d6a22d73448d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures using Guid(d9b339404d46e754982d6a22d73448d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbef720b2ddf29ca13940e861a5c5e82') in 0.007662 seconds 
-  Import took 0.018398 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.811225 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/Soldier_76_Hair.mat
-  artifactKey: Guid(a8881cbe6487c33479b2dd2ba44389fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/Soldier_76_Hair.mat using Guid(a8881cbe6487c33479b2dd2ba44389fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86f10918ee0379112a8da86cc34aaf4a') in 0.016014 seconds 
-  Import took 0.026769 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 58.612280 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/Solider_76_Goggles.mat
-  artifactKey: Guid(6596d46621f25724b90f59d2043d486e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/Solider_76_Goggles.mat using Guid(6596d46621f25724b90f59d2043d486e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '265aca8fe1cd01395d51b1cd12275b50') in 0.015429 seconds 
-  Import took 0.026285 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 42.655652 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003219.tif
-  artifactKey: Guid(d725e4fde2aef49498e3820645310413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003219.tif using Guid(d725e4fde2aef49498e3820645310413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b578a4929cc796fbe300ad9ea5a644d3') in 0.023890 seconds 
-  Import took 0.035390 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.780490 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier_76_Hair.mat
-  artifactKey: Guid(a8881cbe6487c33479b2dd2ba44389fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier_76_Hair.mat using Guid(a8881cbe6487c33479b2dd2ba44389fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '731dbb9f4bd8274b18dd39eece668ae0') in 0.035455 seconds 
-  Import took 0.046174 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000271 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Yellow.mat
-  artifactKey: Guid(f8b9de420bcd937479a542fda9a06e23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Yellow.mat using Guid(f8b9de420bcd937479a542fda9a06e23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b95f4a2bdb4552300f139cc328468a48') in 0.010508 seconds 
-  Import took 0.019494 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 19.193696 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003281.tif
-  artifactKey: Guid(1e8408afefab6ad46bd184496629dc32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003281.tif using Guid(1e8408afefab6ad46bd184496629dc32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c47bb0ac7d45e3ca9ca5f9f7858be55') in 0.015611 seconds 
-  Import took 0.024879 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 73.377398 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031F5.tif
-  artifactKey: Guid(71e485fca03a2504999fff788a826d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031F5.tif using Guid(71e485fca03a2504999fff788a826d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38021cf15dc7d752da2ec3d761cdad4b') in 0.022316 seconds 
-  Import took 0.033632 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 30.382106 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003285.tif
-  artifactKey: Guid(51cbbd812b60cb841902bc53ee04ef20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003285.tif using Guid(51cbbd812b60cb841902bc53ee04ef20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e727aa4e66817ad618eb91187c62cd7d') in 0.016024 seconds 
-  Import took 0.026071 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 54.245811 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/hair_text.tif
-  artifactKey: Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/hair_text.tif using Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed89c68112bf7a74fdff18d68cde6d74') in 0.016760 seconds 
-  Import took 0.027236 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.598245 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/hair_tex.tif
-  artifactKey: Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/hair_tex.tif using Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a7da67d31fa6a8060f23ebb4fd4683f') in 0.014140 seconds 
-  Import took 0.023376 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.456216 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/albedo_tex.tif
-  artifactKey: Guid(36529ca00434b044882dc42be7b41eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/albedo_tex.tif using Guid(36529ca00434b044882dc42be7b41eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b3aff1937069016613fc51c19f6e351') in 0.020207 seconds 
-  Import took 0.031955 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.026857 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/skin_normal.tif
-  artifactKey: Guid(71e485fca03a2504999fff788a826d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/skin_normal.tif using Guid(71e485fca03a2504999fff788a826d0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e304a68450e25358e91f786e97b86f78') in 0.019838 seconds 
-  Import took 0.030303 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.423965 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/skin_albedo.tif
-  artifactKey: Guid(36529ca00434b044882dc42be7b41eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/skin_albedo.tif using Guid(36529ca00434b044882dc42be7b41eab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1037c98451ea48184df7bf32fc5be8a8') in 0.020241 seconds 
-  Import took 0.031922 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.944490 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/hair_albedo.tif
-  artifactKey: Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/hair_albedo.tif using Guid(e2b52f20c573ed747a188c7f388c7e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f83e903d9204e18c378b47dbcc840498') in 0.014165 seconds 
-  Import took 0.023484 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.432936 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/hair_normal.tif
-  artifactKey: Guid(51cbbd812b60cb841902bc53ee04ef20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/hair_normal.tif using Guid(51cbbd812b60cb841902bc53ee04ef20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0379f4e39aead31b5d81f3410f252234') in 0.014826 seconds 
-  Import took 0.024564 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.619131 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/goggle_normal.tif
-  artifactKey: Guid(d725e4fde2aef49498e3820645310413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/goggle_normal.tif using Guid(d725e4fde2aef49498e3820645310413) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd37cc9f491ba7f12d2f423d7e4fee48e') in 0.012801 seconds 
-  Import took 0.021734 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.981930 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/goggle_albedo.tif
-  artifactKey: Guid(1f1f416eb0b01a745860319da168246c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/goggle_albedo.tif using Guid(1f1f416eb0b01a745860319da168246c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3aace82208d323f42832d3d454d26a33') in 0.014262 seconds 
-  Import took 0.024754 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.878721 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/goggle_occlusion.tif
-  artifactKey: Guid(e7d6489f3b2517341b0e20c393e94d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/goggle_occlusion.tif using Guid(e7d6489f3b2517341b0e20c393e94d8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5193d0538fc98fced1fb083bb10e64d') in 0.011945 seconds 
-  Import took 0.021874 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.313034 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/Soldier76_albedo.mat
-  artifactKey: Guid(8d9e0b57dbcad40459a4469a4288c082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/Soldier76_albedo.mat using Guid(8d9e0b57dbcad40459a4469a4288c082) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '216775544c4256666ad961897f30d5b8') in 0.057794 seconds 
-  Import took 0.069458 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000294 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/Soldier_76_Hair.mat
-  artifactKey: Guid(a8881cbe6487c33479b2dd2ba44389fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/Soldier_76_Hair.mat using Guid(a8881cbe6487c33479b2dd2ba44389fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4da5d624bc3e2f21afa173d308125326') in 0.035601 seconds 
-  Import took 0.048907 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000333 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/Solider_76_Goggles.mat
-  artifactKey: Guid(6596d46621f25724b90f59d2043d486e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/Solider_76_Goggles.mat using Guid(6596d46621f25724b90f59d2043d486e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e57fddfcfd2dc8e4f556bfd60d2f29f3') in 0.037795 seconds 
-  Import took 0.048170 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 190.220893 seconds.
-  path: Assets/Sandbox/overwatch/heroes/AR.blend
-  artifactKey: Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/AR.blend using Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '088b7e106da40bb1b8e50316a6fa9150') in 0.054263 seconds 
-  Import took 0.064864 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000234 seconds.
-  path: Assets/Sandbox/overwatch/heroes/AR.fbx
-  artifactKey: Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/AR.fbx using Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c54d86b5d6446fa1036e57d5dfb396e8') in 0.058691 seconds 
-  Import took 0.068205 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.002752 seconds.
-  path: Assets/Sandbox/overwatch/heroes/AR.fbx
-  artifactKey: Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/AR.fbx using Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c54d86b5d6446fa1036e57d5dfb396e8') in 0.063724 seconds 
-  Import took 0.072926 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.453141 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/00000000000A.tif
-  artifactKey: Guid(e9f1a6a82c06de44eaa966f1c76aa903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/00000000000A.tif using Guid(e9f1a6a82c06de44eaa966f1c76aa903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e136721bdef1592c3a139f721bc03d5') in 0.012983 seconds 
-  Import took 0.024308 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000250 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/00000000323D.tif
-  artifactKey: Guid(bb1a19b48b5cae64799d6874ce6ad15b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/00000000323D.tif using Guid(bb1a19b48b5cae64799d6874ce6ad15b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20443ac7d1edfc1b659f607dac305619') in 0.013725 seconds 
-  Import took 0.025615 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000333 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000038E8.tif
-  artifactKey: Guid(0bc5a2dce35bf2a45a53f99d309e909a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000038E8.tif using Guid(0bc5a2dce35bf2a45a53f99d309e909a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '322dfc703fe04cbcb8a4cbb896a92610') in 0.017035 seconds 
-  Import took 0.027059 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000237 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/00000000FA7B.tif
-  artifactKey: Guid(955ac0e344e71434b9292c107301b23f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/00000000FA7B.tif using Guid(955ac0e344e71434b9292c107301b23f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9c50f80e9981045b03ea8c316df34ad') in 0.013308 seconds 
-  Import took 0.023538 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000396 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031C3.tif
-  artifactKey: Guid(2a659a813db575d4a87b5e8a54833e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031C3.tif using Guid(2a659a813db575d4a87b5e8a54833e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bf11bad7f51bf713eacfb8f8de97276') in 0.017075 seconds 
-  Import took 0.028509 seconds .
+  Time since last request: 0.000260 seconds.
+  path: Assets/Shaders/SubGraphs/AmbientLightingBlending.shadersubgraph
+  artifactKey: Guid(035abf0eed3fa0842a29283b98e77128) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/AmbientLightingBlending.shadersubgraph using Guid(035abf0eed3fa0842a29283b98e77128) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfdb52e99a681b838185a356ee2c84fb') in 0.009759 seconds 
+  Import took 0.019529 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000283 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/000000003878.tif
-  artifactKey: Guid(f9b17126830922646afa145a5c0312eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/000000003878.tif using Guid(f9b17126830922646afa145a5c0312eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ecf21583b5b67f11af69c5e3534addb7') in 0.013430 seconds 
-  Import took 0.023165 seconds .
+  path: Assets/Shaders/SubGraphs/BakedGI_SubtractiveShadows.shadersubgraph
+  artifactKey: Guid(9a3d3b98d830e144eb620f6be9d65ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/BakedGI_SubtractiveShadows.shadersubgraph using Guid(9a3d3b98d830e144eb620f6be9d65ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c979169cb0c559db872377058be65f88') in 0.008013 seconds 
+  Import took 0.017740 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031C5.tif
-  artifactKey: Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031C5.tif using Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63ff41271b7e6466c9820345d8626b01') in 0.017858 seconds 
-  Import took 0.027595 seconds .
+  Time since last request: 0.000294 seconds.
+  path: Assets/Shaders/SubGraphs/ToonSpecular.shadersubgraph
+  artifactKey: Guid(87dc85b7edc8a8442adaa8215da4c975) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/ToonSpecular.shadersubgraph using Guid(87dc85b7edc8a8442adaa8215da4c975) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0d3545030ac083fcdba5629a1ec1ad7') in 0.009932 seconds 
+  Import took 0.019599 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000211 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000038E7.tif
-  artifactKey: Guid(6ab48c2e1b7c962469a84203610be739) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000038E7.tif using Guid(6ab48c2e1b7c962469a84203610be739) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b25cb3b77ac9545f9577fe6485b5975e') in 0.012116 seconds 
-  Import took 0.020427 seconds .
+  Time since last request: 0.000271 seconds.
+  path: Assets/Shaders/SubGraphs/ToonLightingModel.shadersubgraph
+  artifactKey: Guid(2146d4f705c217e489ca16fbb84d44d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/ToonLightingModel.shadersubgraph using Guid(2146d4f705c217e489ca16fbb84d44d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfb84f2c049fa6837f1cea976bd120b9') in 0.007256 seconds 
+  Import took 0.017088 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000191 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031C4.tif
-  artifactKey: Guid(6ace8bc23d654304fbdf3340a372c401) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031C4.tif using Guid(6ace8bc23d654304fbdf3340a372c401) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '058be4bf4d736b22ec1378747ef5420e') in 0.013293 seconds 
-  Import took 0.022659 seconds .
+  Time since last request: 0.000309 seconds.
+  path: Assets/Shaders/SubGraphs/RandomPositionTint.shadersubgraph
+  artifactKey: Guid(0e70b550a2a432d4d87a792d20bd7433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/RandomPositionTint.shadersubgraph using Guid(0e70b550a2a432d4d87a792d20bd7433) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24f0db7a51469e086c3aba148d431030') in 0.009100 seconds 
+  Import took 0.020608 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/00000000FA7A.tif
-  artifactKey: Guid(d10157dcb7cc93845b6cd3f2cff652b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/00000000FA7A.tif using Guid(d10157dcb7cc93845b6cd3f2cff652b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c419ac00a46ca4b4de118eaa80ff1a2f') in 0.014528 seconds 
-  Import took 0.023221 seconds .
+  Time since last request: 118.432706 seconds.
+  path: Assets/Shaders/Toon/Glass.shadergraph
+  artifactKey: Guid(6308ea4821d1aeb4cbe77aa991079282) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Glass.shadergraph using Guid(6308ea4821d1aeb4cbe77aa991079282) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2147e479a7b316518053d107c66dbd3f') in 0.007282 seconds 
+  Import took 0.017677 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031C2.tif
-  artifactKey: Guid(785f2bc2e68382548b5d5fbbfb45c5ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031C2.tif using Guid(785f2bc2e68382548b5d5fbbfb45c5ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e4b919bc226892a4f81020ab268138e') in 0.023365 seconds 
-  Import took 0.034440 seconds .
+  Time since last request: 108.238426 seconds.
+  path: Assets/Shaders/SubGraphs/Emission.shadersubgraph
+  artifactKey: Guid(9314a166ca2ae0f45928c69c3769b384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/SubGraphs/Emission.shadersubgraph using Guid(9314a166ca2ae0f45928c69c3769b384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7480709082a1ff96366b3fe6be1dd959') in 0.007749 seconds 
+  Import took 0.017758 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000279 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/00000000323C.tif
-  artifactKey: Guid(f249d8d314ed35347a89fe0a6a0eaaaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/00000000323C.tif using Guid(f249d8d314ed35347a89fe0a6a0eaaaa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ae28ae566dc437892d4b4ea2d705345') in 0.022992 seconds 
-  Import took 0.036621 seconds .
+  Time since last request: 29.404629 seconds.
+  path: Assets/Shaders/CustomHLSL/CustomLighting.hlsl
+  artifactKey: Guid(23c92d2936d6c554db4651369482a821) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/CustomHLSL/CustomLighting.hlsl using Guid(23c92d2936d6c554db4651369482a821) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a8bf06a19de5d62e180d460f377a7ea') in 0.012970 seconds 
+  Import took 0.025297 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000506 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000038D0.tif
-  artifactKey: Guid(e6ac439e9d774a544821e04f81042f76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000038D0.tif using Guid(e6ac439e9d774a544821e04f81042f76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35a29ee6cdfc383a7981bb8e3f49d740') in 0.016473 seconds 
-  Import took 0.028144 seconds .
+  Time since last request: 31.680783 seconds.
+  path: Assets/Models/OW/Soldier76/Soldier76_albedo 1.mat
+  artifactKey: Guid(458d252d47fa51c47ba33eb15fed4f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/OW/Soldier76/Soldier76_albedo 1.mat using Guid(458d252d47fa51c47ba33eb15fed4f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9ee90ef1c508f8cb3e2fb0524435876') in 0.286254 seconds 
+  Import took 0.295693 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000220 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000038D2.tif
-  artifactKey: Guid(ec6c2734b902b1c44957ca0ceb6f6294) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000038D2.tif using Guid(ec6c2734b902b1c44957ca0ceb6f6294) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ecfd332e68c6ff44410f3bdd8b35349') in 0.013791 seconds 
-  Import took 0.022856 seconds .
+  Time since last request: 15.809483 seconds.
+  path: Assets/Models/OW/Soldier76/Soldier76_toon.mat
+  artifactKey: Guid(458d252d47fa51c47ba33eb15fed4f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/OW/Soldier76/Soldier76_toon.mat using Guid(458d252d47fa51c47ba33eb15fed4f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '695d95484d14a2ee1938280a1dff132b') in 0.017404 seconds 
+  Import took 0.025850 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000190 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000038CF.tif
-  artifactKey: Guid(e24350ace967f3346919f4abc6929830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000038CF.tif using Guid(e24350ace967f3346919f4abc6929830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9897f33fe7d47c5309780c857450d421') in 0.012476 seconds 
-  Import took 0.022518 seconds .
+  Time since last request: 49.937887 seconds.
+  path: Assets/Models/OW/Soldier76/Soldier76_toon.mat
+  artifactKey: Guid(458d252d47fa51c47ba33eb15fed4f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/OW/Soldier76/Soldier76_toon.mat using Guid(458d252d47fa51c47ba33eb15fed4f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d95a165bf2938abfc62fbdb7194ec0f') in 0.009817 seconds 
+  Import took 0.018982 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.576195 seconds.
+  path: Assets/Materials/Toon Colors
+  artifactKey: Guid(dffdf838ca8bc5c4a8b258c932658a9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors using Guid(dffdf838ca8bc5c4a8b258c932658a9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32588d843d46281347a3365b474938fa') in 0.006301 seconds 
+  Import took 0.015709 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.031513 seconds.
+  path: Assets/Materials/Toon Colors/Toon Blue.mat
+  artifactKey: Guid(b0a63ef4d787cdc4a8ec681f67d664dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon Blue.mat using Guid(b0a63ef4d787cdc4a8ec681f67d664dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1fee27e40eb16151d49ed2424177ac37') in 0.018568 seconds 
+  Import took 0.027063 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 82.054032 seconds.
+  path: Assets/Shaders/Toon/Toon_outline.shadergraph
+  artifactKey: Guid(bb0378021f2bd95419bb780ab42e1b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shaders/Toon/Toon_outline.shadergraph using Guid(bb0378021f2bd95419bb780ab42e1b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0b95acd1a2c0cba5dad40937ee9f735') in 0.006088 seconds 
+  Import took 0.015181 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 88.905090 seconds.
+  path: Assets/Models/Characters/Guy/OfficeGuy Toon.mat
+  artifactKey: Guid(693c7d4d7ecc0f94babf84af2d359efe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Characters/Guy/OfficeGuy Toon.mat using Guid(693c7d4d7ecc0f94babf84af2d359efe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed443c5aa80eb0f56072de31e741e872') in 0.631514 seconds 
+  Import took 0.639937 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.546064 seconds.
+  path: Assets/Sandbox/overwatch/Sanctum Toon Variant.prefab
+  artifactKey: Guid(75745eb312c8ddc42bb6eb8ce81fe0bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sandbox/overwatch/Sanctum Toon Variant.prefab using Guid(75745eb312c8ddc42bb6eb8ce81fe0bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '187db574376b0a626871212efbf1bfca') in 1.010426 seconds 
+  Import took 1.091240 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.395303 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Beige.mat
+  artifactKey: Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Beige.mat using Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98d16752426a7256d4351aa8976146b7') in 0.046232 seconds 
+  Import took 0.055141 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Blue.mat
+  artifactKey: Guid(aa8b2c944324fca41888a564807a5850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Blue.mat using Guid(aa8b2c944324fca41888a564807a5850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e98767c0a9abd406bf600835794ccbf') in 0.021478 seconds 
+  Import took 0.030268 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Black.mat
+  artifactKey: Guid(4e7cbdc54ea5c93409d8589e48a7695b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Black.mat using Guid(4e7cbdc54ea5c93409d8589e48a7695b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69236703b0024c120e3def1419e25888') in 0.020406 seconds 
+  Import took 0.028923 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000204 seconds.
+  path: Assets/Materials/Toon Colors/Proto_DarkBeige.mat
+  artifactKey: Guid(26f324b41f7d13249aa0f3f12ca65726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_DarkBeige.mat using Guid(26f324b41f7d13249aa0f3f12ca65726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a57801e7357c9c2d776d059ab67a7c4') in 0.023335 seconds 
+  Import took 0.033112 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Orange.mat
+  artifactKey: Guid(4f054097f21052d4387eb8c925baa988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Orange.mat using Guid(4f054097f21052d4387eb8c925baa988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee5e0bb0df8db492b13dc304ecab1200') in 0.020957 seconds 
+  Import took 0.030506 seconds .
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000205 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000038D1.tif
-  artifactKey: Guid(699307df488eeb146a47041be246a86e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000038D1.tif using Guid(699307df488eeb146a47041be246a86e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e43505288d5e74c0d44803355e4d0176') in 0.015990 seconds 
-  Import took 0.024901 seconds .
+  path: Assets/Materials/Toon Colors/Proto_Gray.mat
+  artifactKey: Guid(60024de81fe4d2d4b8ce22a013b9ede7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Gray.mat using Guid(60024de81fe4d2d4b8ce22a013b9ede7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73cacbd3f5fabdcd8de36960609c5fe5') in 0.022404 seconds 
+  Import took 0.030882 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000187 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/00000000000E.tif
-  artifactKey: Guid(ab862d08f4d14bd4f92aa86dd0d41429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/00000000000E.tif using Guid(ab862d08f4d14bd4f92aa86dd0d41429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05ebe2a2a74ca5589c614f95dd0f9b1d') in 0.011932 seconds 
-  Import took 0.021417 seconds .
+  Time since last request: 0.000228 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Green.mat
+  artifactKey: Guid(b7253e2022530024697bbd3dc6d39e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Green.mat using Guid(b7253e2022530024697bbd3dc6d39e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e25133473dd114b95c259abefdbaf0f3') in 0.019855 seconds 
+  Import took 0.030507 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000232 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/00000000000A.tif
-  artifactKey: Guid(e9f1a6a82c06de44eaa966f1c76aa903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/00000000000A.tif using Guid(e9f1a6a82c06de44eaa966f1c76aa903) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e136721bdef1592c3a139f721bc03d5') in 0.007715 seconds 
-  Import took 0.017681 seconds .
+  Time since last request: 0.000227 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Peach.mat
+  artifactKey: Guid(8121834e9d72154498c8b727e2fb1f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Peach.mat using Guid(8121834e9d72154498c8b727e2fb1f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '729cdd362230b72a5fceb76920cb3965') in 0.019297 seconds 
+  Import took 0.029443 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000421 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/80006036E7EF.tif
-  artifactKey: Guid(7c51306ea5c0c0f4fa009ee555d3ccc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/80006036E7EF.tif using Guid(7c51306ea5c0c0f4fa009ee555d3ccc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32f79aedcd875145a60d52a84832a001') in 0.014268 seconds 
-  Import took 0.024210 seconds .
+  Time since last request: 0.000244 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Brown.mat
+  artifactKey: Guid(c723edd7862b9ae419af05a1d4e94ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Brown.mat using Guid(c723edd7862b9ae419af05a1d4e94ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1e6d06444d9d451df8fc00757b56ec0') in 0.022749 seconds 
+  Import took 0.032596 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 10.901036 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_albedo.mat
-  artifactKey: Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_albedo.mat using Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1c943b6faa1e37c7ab91d94ee781c06') in 0.020893 seconds 
-  Import took 0.030828 seconds .
+  Time since last request: 0.000267 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Teal.mat
+  artifactKey: Guid(1652ee59abd5c1946b2998b25d1557c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Teal.mat using Guid(1652ee59abd5c1946b2998b25d1557c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47eec23e9f3ab8d31ef2cb7ab341071b') in 0.022276 seconds 
+  Import took 0.035276 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.846696 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_material.mat
-  artifactKey: Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_material.mat using Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e0fe862b2454564be376bef2257d6f8') in 0.016366 seconds 
-  Import took 0.025003 seconds .
+  Time since last request: 0.000214 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Yellow.mat
+  artifactKey: Guid(4625f453163bf1e4188b305f0d1e91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Yellow.mat using Guid(4625f453163bf1e4188b305f0d1e91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5a3f525c36a75d434ebf6a1211e4c3e') in 0.020412 seconds 
+  Import took 0.031223 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 28.523629 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/0000000031C5.tif
-  artifactKey: Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/0000000031C5.tif using Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6040816f04ce2dde531d3651f9361429') in 0.016841 seconds 
-  Import took 0.026933 seconds .
+  Time since last request: 0.000208 seconds.
+  path: Assets/Materials/Toon Colors/Proto_Red.mat
+  artifactKey: Guid(4a08d5369b19ace4bb9af57955d5fe1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Proto_Red.mat using Guid(4a08d5369b19ace4bb9af57955d5fe1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14f294110f20e3ef5c039688e3dbb691') in 0.019231 seconds 
+  Import took 0.028666 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 22.577960 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_material.mat
-  artifactKey: Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_material.mat using Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03fdc183d8e2a86d5ba5943a6f14b9af') in 0.030588 seconds 
-  Import took 0.040842 seconds .
+  Time since last request: 2.354941 seconds.
+  path: Assets/Materials/Toon Colors/Beige.mat
+  artifactKey: Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Beige.mat using Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec065bb809a618fee101a6755cd0b70e') in 0.019611 seconds 
+  Import took 0.027941 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.708504 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_albedo.tif
-  artifactKey: Guid(785f2bc2e68382548b5d5fbbfb45c5ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_albedo.tif using Guid(785f2bc2e68382548b5d5fbbfb45c5ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd68a3b077c4ab2a13cace0e33573f45a') in 0.015444 seconds 
-  Import took 0.024718 seconds .
+  Time since last request: 7.429079 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Beige.mat
+  artifactKey: Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Beige.mat using Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c79cb059660ad8db42bca6278280edd1') in 0.024645 seconds 
+  Import took 0.035357 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.002015 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_albedo.tif
-  artifactKey: Guid(785f2bc2e68382548b5d5fbbfb45c5ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_albedo.tif using Guid(785f2bc2e68382548b5d5fbbfb45c5ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd68a3b077c4ab2a13cace0e33573f45a') in 0.015186 seconds 
-  Import took 0.023032 seconds .
+  Time since last request: 5.797598 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Black.mat
+  artifactKey: Guid(4e7cbdc54ea5c93409d8589e48a7695b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Black.mat using Guid(4e7cbdc54ea5c93409d8589e48a7695b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '601123f7da924c37768ffe398eedef74') in 0.020246 seconds 
+  Import took 0.029622 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.941318 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_metallic.tif
-  artifactKey: Guid(2a659a813db575d4a87b5e8a54833e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_metallic.tif using Guid(2a659a813db575d4a87b5e8a54833e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e43ab347f9b9b975c11fae12e5ad02e8') in 0.016346 seconds 
-  Import took 0.025062 seconds .
+  Time since last request: 2.640799 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Blue.mat
+  artifactKey: Guid(aa8b2c944324fca41888a564807a5850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Blue.mat using Guid(aa8b2c944324fca41888a564807a5850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73ca1eb3fe257f0e3ef1247d38ae098c') in 0.019983 seconds 
+  Import took 0.028708 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.003973 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_metallic.tif
-  artifactKey: Guid(2a659a813db575d4a87b5e8a54833e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_metallic.tif using Guid(2a659a813db575d4a87b5e8a54833e5c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e43ab347f9b9b975c11fae12e5ad02e8') in 0.015061 seconds 
-  Import took 0.023669 seconds .
+  Time since last request: 2.395505 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Brown.mat
+  artifactKey: Guid(c723edd7862b9ae419af05a1d4e94ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Brown.mat using Guid(c723edd7862b9ae419af05a1d4e94ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b3325aa728e3a248214681dc086bf17') in 0.018848 seconds 
+  Import took 0.027624 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.579706 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_normal.tif
-  artifactKey: Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_normal.tif using Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f81e5731eb376bf3ceae887e07a5f624') in 0.013539 seconds 
-  Import took 0.023602 seconds .
+  Time since last request: 2.166836 seconds.
+  path: Assets/Materials/Toon Colors/Toon_DarkBeige.mat
+  artifactKey: Guid(26f324b41f7d13249aa0f3f12ca65726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_DarkBeige.mat using Guid(26f324b41f7d13249aa0f3f12ca65726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '534ae22dfedaf2394684d5c0ff954948') in 0.020288 seconds 
+  Import took 0.030072 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.004129 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_normal.tif
-  artifactKey: Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_normal.tif using Guid(7a4f1c4830577ad4f899a85c075cddec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f81e5731eb376bf3ceae887e07a5f624') in 0.014324 seconds 
-  Import took 0.023394 seconds .
+  Time since last request: 2.053476 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Gray.mat
+  artifactKey: Guid(60024de81fe4d2d4b8ce22a013b9ede7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Gray.mat using Guid(60024de81fe4d2d4b8ce22a013b9ede7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9999642b978826ff9ef76910e2377613') in 0.021087 seconds 
+  Import took 0.030278 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 19.605053 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_occlusion.tif
-  artifactKey: Guid(6ace8bc23d654304fbdf3340a372c401) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_occlusion.tif using Guid(6ace8bc23d654304fbdf3340a372c401) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e03d115b870f59e51e5edb2c06e1d9d7') in 0.012979 seconds 
-  Import took 0.022637 seconds .
+  Time since last request: 2.184894 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Green.mat
+  artifactKey: Guid(b7253e2022530024697bbd3dc6d39e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Green.mat using Guid(b7253e2022530024697bbd3dc6d39e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3fbe85684588454a5dfef8015806f32') in 0.018930 seconds 
+  Import took 0.027975 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.006726 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR_occlusion.tif
-  artifactKey: Guid(6ace8bc23d654304fbdf3340a372c401) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR_occlusion.tif using Guid(6ace8bc23d654304fbdf3340a372c401) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e03d115b870f59e51e5edb2c06e1d9d7') in 0.010642 seconds 
-  Import took 0.020740 seconds .
+  Time since last request: 2.801097 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Orange.mat
+  artifactKey: Guid(4f054097f21052d4387eb8c925baa988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Orange.mat using Guid(4f054097f21052d4387eb8c925baa988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b712db9d1875d59353b36f16725c547f') in 0.019040 seconds 
+  Import took 0.027613 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 35.850016 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR.fbx
-  artifactKey: Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR.fbx using Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cf1880b08b79a69ea0370c583553c17') in 0.069173 seconds 
-  Import took 0.078719 seconds .
+  Time since last request: 2.143541 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Peach.mat
+  artifactKey: Guid(8121834e9d72154498c8b727e2fb1f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Peach.mat using Guid(8121834e9d72154498c8b727e2fb1f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a258ac0dfbe5789278e30f5d553fecb') in 0.018351 seconds 
+  Import took 0.028095 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 11.261205 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR.prefab
-  artifactKey: Guid(4f7e9ec0afae8d74da57ad5eee50aab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR.prefab using Guid(4f7e9ec0afae8d74da57ad5eee50aab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '633210b1b51398918ffa37c33a9c6946') in 0.025436 seconds 
-  Import took 0.037590 seconds .
+  Time since last request: 2.013013 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Red.mat
+  artifactKey: Guid(4a08d5369b19ace4bb9af57955d5fe1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Red.mat using Guid(4a08d5369b19ace4bb9af57955d5fe1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7fb09e1e00375c242d834e7cceb4e04') in 0.028940 seconds 
+  Import took 0.040706 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.020189 seconds.
-  path: Assets/Sandbox/overwatch/heroes/textures/AR.prefab
-  artifactKey: Guid(4f7e9ec0afae8d74da57ad5eee50aab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/textures/AR.prefab using Guid(4f7e9ec0afae8d74da57ad5eee50aab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '633210b1b51398918ffa37c33a9c6946') in 0.019203 seconds 
-  Import took 0.030306 seconds .
+  Time since last request: 2.242435 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Teal.mat
+  artifactKey: Guid(1652ee59abd5c1946b2998b25d1557c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Teal.mat using Guid(1652ee59abd5c1946b2998b25d1557c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f40c22b72f39385e927371bbe1f95f6') in 0.019198 seconds 
+  Import took 0.027499 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.083546 seconds.
-  path: Assets/Prefabs/Weapons
-  artifactKey: Guid(e679f7b0c823c9944bdbebb13b39a9b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons using Guid(e679f7b0c823c9944bdbebb13b39a9b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4365640181d3ab748d0c00b0060c10fc') in 0.007031 seconds 
-  Import took 0.015456 seconds .
+  Time since last request: 2.164208 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Yellow.mat
+  artifactKey: Guid(4625f453163bf1e4188b305f0d1e91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Yellow.mat using Guid(4625f453163bf1e4188b305f0d1e91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f3d766253a63c7de4581674e9195fd7') in 0.019452 seconds 
+  Import took 0.028016 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 12.855892 seconds.
-  path: Assets/Sandbox/overwatch/heroes/AR.blend
-  artifactKey: Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/AR.blend using Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cce8c7071ff1ad469318b90123ab8b50') in 0.052496 seconds 
-  Import took 0.062489 seconds .
+  Time since last request: 346.048404 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Beige.mat
+  artifactKey: Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Beige.mat using Guid(7614c87c9908a5145beb1bb4c539de08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd58b05d80c3bd40cd80a16f664271ccd') in 0.014056 seconds 
+  Import took 0.023733 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.582311 seconds.
-  path: Assets/Sandbox/overwatch/heroes/AR
-  artifactKey: Guid(d9b339404d46e754982d6a22d73448d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/AR using Guid(d9b339404d46e754982d6a22d73448d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a396d072ff867fa6371cb8c5a576ffa4') in 0.002992 seconds 
-  Import took 0.012217 seconds .
+  Time since last request: 0.000289 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Blue.mat
+  artifactKey: Guid(aa8b2c944324fca41888a564807a5850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Blue.mat using Guid(aa8b2c944324fca41888a564807a5850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '840dc744fa2ed996fca6ceb9d284dbfb') in 0.009856 seconds 
+  Import took 0.019021 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 11.554341 seconds.
-  path: Assets/Models
-  artifactKey: Guid(5d6102cf350121942b40de220d255cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models using Guid(5d6102cf350121942b40de220d255cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e22dc7d7f3668a2ccab7568179e124c8') in 0.010797 seconds 
-  Import took 0.023500 seconds .
+  Time since last request: 0.000281 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Black.mat
+  artifactKey: Guid(4e7cbdc54ea5c93409d8589e48a7695b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Black.mat using Guid(4e7cbdc54ea5c93409d8589e48a7695b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95389109926fe9048dc79058bb436302') in 0.009588 seconds 
+  Import took 0.018948 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.123600 seconds.
-  path: Assets/Models/OW
-  artifactKey: Guid(9ca8aacdd5e324c41bc139c210d270f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW using Guid(9ca8aacdd5e324c41bc139c210d270f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de174346221d29a4b3868baabf08afed') in 0.006845 seconds 
-  Import took 0.017420 seconds .
+  Time since last request: 0.000333 seconds.
+  path: Assets/Materials/Toon Colors/Toon_DarkBeige.mat
+  artifactKey: Guid(26f324b41f7d13249aa0f3f12ca65726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_DarkBeige.mat using Guid(26f324b41f7d13249aa0f3f12ca65726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4ac52f05342a8ef94cbef4a8ca34442') in 0.010768 seconds 
+  Import took 0.020483 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 39.552987 seconds.
-  path: Assets/Models/OW/AR/AR.fbx
-  artifactKey: Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/AR/AR.fbx using Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94d86e84aab4df4dfaccd66ec9c485c2') in 0.064975 seconds 
-  Import took 0.074836 seconds .
+  Time since last request: 0.000306 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Orange.mat
+  artifactKey: Guid(4f054097f21052d4387eb8c925baa988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Orange.mat using Guid(4f054097f21052d4387eb8c925baa988) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2a49643493bfbf52cfa479201c5b23e') in 0.012418 seconds 
+  Import took 0.022832 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.918503 seconds.
-  path: Assets/Models/OW/AR/AR.fbx
-  artifactKey: Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/AR/AR.fbx using Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6520691310543cde6038cf3f99d8e158') in 0.057149 seconds 
-  Import took 0.066527 seconds .
+  Time since last request: 0.000293 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Gray.mat
+  artifactKey: Guid(60024de81fe4d2d4b8ce22a013b9ede7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Gray.mat using Guid(60024de81fe4d2d4b8ce22a013b9ede7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69b68943f052feb2d986afbb345a89f0') in 0.009452 seconds 
+  Import took 0.019806 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.790086 seconds.
-  path: Assets/Models/OW/AR/AR.fbx
-  artifactKey: Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/AR/AR.fbx using Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b8bb20a00aef5ec0532ad23240df5de') in 0.066887 seconds 
-  Import took 0.077475 seconds .
+  Time since last request: 0.000208 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Green.mat
+  artifactKey: Guid(b7253e2022530024697bbd3dc6d39e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Green.mat using Guid(b7253e2022530024697bbd3dc6d39e2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01576fbb6b6518cf0e3ffe91eab581d7') in 0.009364 seconds 
+  Import took 0.017383 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.158625 seconds.
-  path: Assets/Models/OW/AR/AR.fbx
-  artifactKey: Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/AR/AR.fbx using Guid(a153c94535b892442917c15376af4bf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60f6c0347ccacba1fca7ab23e3f5c06b') in 0.059162 seconds 
-  Import took 0.069993 seconds .
+  Time since last request: 0.000425 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Peach.mat
+  artifactKey: Guid(8121834e9d72154498c8b727e2fb1f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Peach.mat using Guid(8121834e9d72154498c8b727e2fb1f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99af69e635c1757721dc51ee0c74b875') in 0.009979 seconds 
+  Import took 0.019206 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 118.014123 seconds.
-  path: Assets/Models/OW/AR/AR_material.mat
-  artifactKey: Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/AR/AR_material.mat using Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f93d018aacd0536550ba57c621b5b6ff') in 0.034635 seconds 
-  Import took 0.047514 seconds .
+  Time since last request: 0.000309 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Brown.mat
+  artifactKey: Guid(c723edd7862b9ae419af05a1d4e94ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Brown.mat using Guid(c723edd7862b9ae419af05a1d4e94ca6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '986127de058de1bd2c0f87e5a4a522ca') in 0.012548 seconds 
+  Import took 0.023281 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 72.394460 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f07de56eb87663feeb5f1af3f3a92d2e') in 0.190867 seconds 
-  Import took 0.207403 seconds .
+  Time since last request: 0.000230 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Teal.mat
+  artifactKey: Guid(1652ee59abd5c1946b2998b25d1557c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Teal.mat using Guid(1652ee59abd5c1946b2998b25d1557c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7093fe6f9da4037c24b73601f653e77') in 0.009971 seconds 
+  Import took 0.018390 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.858695 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea9d6e70a83721e939485a0354fdc17c') in 0.030603 seconds 
-  Import took 0.042265 seconds .
+  Time since last request: 0.000451 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Yellow.mat
+  artifactKey: Guid(4625f453163bf1e4188b305f0d1e91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Yellow.mat using Guid(4625f453163bf1e4188b305f0d1e91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91b7c7672fe8fb7501b3f2f583c16aee') in 0.010633 seconds 
+  Import took 0.020119 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 9.169918 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4587c5cfe4b68832966d78a8d96ffd9') in 0.028715 seconds 
-  Import took 0.041804 seconds .
+  Time since last request: 0.000321 seconds.
+  path: Assets/Materials/Toon Colors/Toon_Red.mat
+  artifactKey: Guid(4a08d5369b19ace4bb9af57955d5fe1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Toon Colors/Toon_Red.mat using Guid(4a08d5369b19ace4bb9af57955d5fe1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e26037c06a9cec4d2bd0fa276c20df30') in 0.010338 seconds 
+  Import took 0.019579 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 151.295681 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a7720bccdee5198218ba82b239b9d58') in 0.034106 seconds 
-  Import took 0.047518 seconds .
+  Time since last request: 44.677830 seconds.
+  path: Assets/Models/OW/AR/AR_material 1.mat
+  artifactKey: Guid(49c8180e078f62747abdf4ad97c59a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/OW/AR/AR_material 1.mat using Guid(49c8180e078f62747abdf4ad97c59a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9569cefd4afc405a1d9890116f2ac2df') in 0.036567 seconds 
+  Import took 0.046254 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 16.538807 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9e1a06daf5857aab747626d98499613') in 0.032839 seconds 
-  Import took 0.045684 seconds .
+  Time since last request: 84.051617 seconds.
+  path: Assets/Models/OW/AR/AR_toon.mat
+  artifactKey: Guid(49c8180e078f62747abdf4ad97c59a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/OW/AR/AR_toon.mat using Guid(49c8180e078f62747abdf4ad97c59a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea39cf797a013a767e8cf70b705bf03f') in 0.022631 seconds 
+  Import took 0.032431 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.774916 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd713f5d051df17fae73ef1ef53dd7355') in 0.029170 seconds 
-  Import took 0.042622 seconds .
+  Time since last request: 1517.181109 seconds.
+  path: Assets/WeaponController.controller
+  artifactKey: Guid(8c5a2275cf3b1ed40b8d64780262594b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/WeaponController.controller using Guid(8c5a2275cf3b1ed40b8d64780262594b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fec44aeafcdcdf3f7d39a3f2559b6852') in 0.026712 seconds 
+  Import took 0.039607 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.992526 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caefaffa65798af721bde421d055b253') in 0.026182 seconds 
-  Import took 0.038136 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 24.355260 seconds.
-  path: Assets/Prefabs/Weapons/Rifle Weapon.prefab
-  artifactKey: Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Weapons/Rifle Weapon.prefab using Guid(8cecd0eabab6c9346b66bba06ca54015) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '659c0d998902358e7a68acba6a1dd300') in 0.031746 seconds 
-  Import took 0.043032 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 138.702923 seconds.
-  path: Assets/Models/OW/AR/AR_material.mat
-  artifactKey: Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/AR/AR_material.mat using Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1284baca05ce425095ed591aa4a9ed49') in 0.032142 seconds 
-  Import took 0.042318 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.244940 seconds.
-  path: Assets/Models/OW/AR/AR_material.mat
-  artifactKey: Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/AR/AR_material.mat using Guid(fe088bb9ab9fcab4da96bfaa81c9d71c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1284baca05ce425095ed591aa4a9ed49') in 0.026051 seconds 
-  Import took 0.036532 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.010823 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.13 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.173 seconds
-Domain Reload Profiling:
-	ReloadAssembly (3179ms)
-		BeginReloadAssembly (793ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (104ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (389ms)
-		EndReloadAssembly (2311ms)
-			LoadAssemblies (117ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (399ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (104ms)
-			SetupLoadedEditorAssemblies (1409ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (7ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (154ms)
-				ProcessInitializeOnLoadAttributes (1202ms)
-				ProcessInitializeOnLoadMethodAttributes (41ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (76ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 4.24 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4107 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 279.0 MB.
-System memory in use after: 278.8 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4942.
-Total: 50.810000 ms (FindLiveObjects: 1.742900 ms CreateObjectMapping: 0.560000 ms MarkObjects: 46.501300 ms  DeleteObjects: 1.985700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.009592 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.02 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.199 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2199ms)
-		BeginReloadAssembly (180ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (70ms)
-		EndReloadAssembly (1952ms)
-			LoadAssemblies (129ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (377ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (108ms)
-			SetupLoadedEditorAssemblies (1076ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (122ms)
-				ProcessInitializeOnLoadAttributes (918ms)
-				ProcessInitializeOnLoadMethodAttributes (27ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (56ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.32 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 279.0 MB.
-System memory in use after: 278.8 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4946.
-Total: 29.142800 ms (FindLiveObjects: 0.419200 ms CreateObjectMapping: 0.263300 ms MarkObjects: 27.667500 ms  DeleteObjects: 0.790500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006884 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.99 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.111 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2112ms)
-		BeginReloadAssembly (159ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (55ms)
-		EndReloadAssembly (1883ms)
-			LoadAssemblies (105ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (400ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (83ms)
-			SetupLoadedEditorAssemblies (1070ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (110ms)
-				ProcessInitializeOnLoadAttributes (923ms)
-				ProcessInitializeOnLoadMethodAttributes (27ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (56ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 8.10 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 279.1 MB.
-System memory in use after: 278.9 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4950.
-Total: 54.441300 ms (FindLiveObjects: 3.575500 ms CreateObjectMapping: 0.807500 ms MarkObjects: 44.051800 ms  DeleteObjects: 5.981700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008789 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.00 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.187 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2188ms)
-		BeginReloadAssembly (163ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (60ms)
-		EndReloadAssembly (1965ms)
-			LoadAssemblies (109ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (384ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (95ms)
-			SetupLoadedEditorAssemblies (1117ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (125ms)
-				ProcessInitializeOnLoadAttributes (954ms)
-				ProcessInitializeOnLoadMethodAttributes (29ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (66ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.93 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 279.1 MB.
-System memory in use after: 279.0 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4954.
-Total: 28.676800 ms (FindLiveObjects: 0.559700 ms CreateObjectMapping: 0.475600 ms MarkObjects: 27.027500 ms  DeleteObjects: 0.612100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008356 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.97 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.316 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2317ms)
-		BeginReloadAssembly (166ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (69ms)
-		EndReloadAssembly (2093ms)
-			LoadAssemblies (98ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (385ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (86ms)
-			SetupLoadedEditorAssemblies (1265ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (215ms)
-				ProcessInitializeOnLoadAttributes (1006ms)
-				ProcessInitializeOnLoadMethodAttributes (34ms)
-				AfterProcessingInitializeOnLoad (3ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (71ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.55 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 279.2 MB.
-System memory in use after: 279.0 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4958.
-Total: 33.982200 ms (FindLiveObjects: 0.688600 ms CreateObjectMapping: 0.569700 ms MarkObjects: 32.074400 ms  DeleteObjects: 0.646800 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006968 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.48 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.344 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2344ms)
-		BeginReloadAssembly (151ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (56ms)
-		EndReloadAssembly (2130ms)
-			LoadAssemblies (97ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (365ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (85ms)
-			SetupLoadedEditorAssemblies (1162ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (10ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (183ms)
-				ProcessInitializeOnLoadAttributes (927ms)
-				ProcessInitializeOnLoadMethodAttributes (38ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (90ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.68 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 279.2 MB.
-System memory in use after: 279.1 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4962.
-Total: 23.991700 ms (FindLiveObjects: 0.445100 ms CreateObjectMapping: 0.181700 ms MarkObjects: 22.790100 ms  DeleteObjects: 0.573000 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 2408.615208 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.blend
-  artifactKey: Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.blend using Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c56f5578e46bd5ff74a0940170b6cfde') in 35.250063 seconds 
-  Import took 35.810537 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 857.197067 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.blend
-  artifactKey: Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.blend using Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f78a06cdf3a3fbd4799991c6eba24b12') in 31.606564 seconds 
-  Import took 32.020388 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 90.648600 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.fbx
-  artifactKey: Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.fbx using Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74b55d74e651e988745c5c27b02f6f6e') in 60.516664 seconds 
-  Import took 60.602977 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 199.031159 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.blend
-  artifactKey: Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.blend using Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3bf7fd9c18badbe97d5c89ec914df19') in 27.284051 seconds 
-  Import took 27.548901 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000247 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.fbx
-  artifactKey: Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.fbx using Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bab6455034b7b0d5e2d72a0c93ca4d0') in 50.310579 seconds 
-  Import took 50.388510 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 233.276050 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.blend
-  artifactKey: Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.blend using Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5f581fcd4777bcbc426051b187a7550') in 22.792957 seconds 
-  Import took 23.030069 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000265 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.fbx
-  artifactKey: Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.fbx using Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0655fbbdb2058b960e358f8ed31c7734') in 55.155324 seconds 
-  Import took 55.225657 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1035.089146 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.blend
-  artifactKey: Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.blend using Guid(781d737ed4f065640a07d9af69d548ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52ec07e2fef6e10129be100fa6199225') in 20.510497 seconds 
-  Import took 20.793274 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000288 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.fbx
-  artifactKey: Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.fbx using Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c6fb91c8c3efc198656d6f6e78b2164') in 38.802927 seconds 
-  Import took 38.857814 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 56005.117887 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.fbx
-  artifactKey: Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.fbx using Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9548a21af6b44cb2cda0d86f0892b5c6') in 46.145585 seconds 
-  Import took 46.725193 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 714.155976 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.fbx
-  artifactKey: Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.fbx using Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca0615b0d1b0a2b46e9bca57e5d57e89') in 43.935680 seconds 
-  Import took 44.025961 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 531.488645 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.fbx
-  artifactKey: Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.fbx using Guid(9b94ceced9cb02e4693ef6d513faef96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99343dc76da0891f08a486cfec4d0843') in 70.552170 seconds 
-  Import took 70.842943 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 247.850645 seconds.
-  path: Assets/Sandbox/overwatch/Sanctum.prefab
-  artifactKey: Guid(48a4ad06451781b4a94af3838008f72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/Sanctum.prefab using Guid(48a4ad06451781b4a94af3838008f72f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd6ec71e524394457cfdc091c162d18f') in 0.756527 seconds 
-  Import took 0.958636 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 84.071752 seconds.
-  path: Assets/Prefabs/Player/Player Camera.prefab
-  artifactKey: Guid(0cebb43563e8287489be48fb4bfeb896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player/Player Camera.prefab using Guid(0cebb43563e8287489be48fb4bfeb896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1820282939b8d1d5facc9000299eb7fd') in 0.389696 seconds 
-  Import took 0.401915 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000269 seconds.
-  path: Assets/Prefabs/Player/Player.prefab
-  artifactKey: Guid(7e7f3dec98c76694a984ca45a49a0aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player/Player.prefab using Guid(7e7f3dec98c76694a984ca45a49a0aff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3cebc0494c826a32e326db7721e33fa') in 0.984463 seconds 
-  Import took 1.002967 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Prefabs/Player/Player HUD.prefab
-  artifactKey: Guid(71122324eaadc3149ac031bc3e91c361) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player/Player HUD.prefab using Guid(71122324eaadc3149ac031bc3e91c361) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d752981f2d87952d9da5990ffbbcfe2') in 0.043422 seconds 
-  Import took 0.053211 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.409005 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 2.08 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  5.685 seconds
-Domain Reload Profiling:
-	ReloadAssembly (5699ms)
-		BeginReloadAssembly (2058ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (155ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (2ms)
-			CreateAndSetChildDomain (1193ms)
-		EndReloadAssembly (3449ms)
-			LoadAssemblies (625ms)
-			RebuildTransferFunctionScriptingTraits (2ms)
-			SetupTypeCache (844ms)
-			ReleaseScriptCaches (14ms)
-			RebuildScriptCaches (108ms)
-			SetupLoadedEditorAssemblies (1627ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
-				SetLoadedEditorAssemblies (2ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (168ms)
-				ProcessInitializeOnLoadAttributes (1393ms)
-				ProcessInitializeOnLoadMethodAttributes (47ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (1ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (111ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.96 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 363.6 MB.
-System memory in use after: 363.4 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5004.
-Total: 253.102700 ms (FindLiveObjects: 7.176700 ms CreateObjectMapping: 1.780600 ms MarkObjects: 241.461900 ms  DeleteObjects: 2.675500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.023587 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.36 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.804 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2807ms)
-		BeginReloadAssembly (398ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (17ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (190ms)
-		EndReloadAssembly (2318ms)
-			LoadAssemblies (189ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (403ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (105ms)
-			SetupLoadedEditorAssemblies (1232ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (35ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (139ms)
-				ProcessInitializeOnLoadAttributes (1018ms)
-				ProcessInitializeOnLoadMethodAttributes (35ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (85ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.14 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 363.7 MB.
-System memory in use after: 363.5 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5008.
-Total: 38.269700 ms (FindLiveObjects: 0.835000 ms CreateObjectMapping: 0.435000 ms MarkObjects: 36.283700 ms  DeleteObjects: 0.710700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008069 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.72 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.579 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2580ms)
-		BeginReloadAssembly (172ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (71ms)
-		EndReloadAssembly (2338ms)
-			LoadAssemblies (113ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (393ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (85ms)
-			SetupLoadedEditorAssemblies (1456ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (135ms)
-				ProcessInitializeOnLoadAttributes (1270ms)
-				ProcessInitializeOnLoadMethodAttributes (41ms)
-				AfterProcessingInitializeOnLoad (3ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (81ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.84 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 363.7 MB.
-System memory in use after: 363.6 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5012.
-Total: 51.531700 ms (FindLiveObjects: 1.324900 ms CreateObjectMapping: 0.708200 ms MarkObjects: 47.984900 ms  DeleteObjects: 1.504500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 599.532443 seconds.
-  path: Assets/Prefabs/Player/Player Camera.prefab
-  artifactKey: Guid(0cebb43563e8287489be48fb4bfeb896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player/Player Camera.prefab using Guid(0cebb43563e8287489be48fb4bfeb896) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b82feff418fc7981aa1ac01aeb095261') in 0.664664 seconds 
-  Import took 0.682764 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008647 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.81 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.924 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2926ms)
-		BeginReloadAssembly (399ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (21ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (1ms)
-			CreateAndSetChildDomain (198ms)
-		EndReloadAssembly (2421ms)
-			LoadAssemblies (168ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (559ms)
-			ReleaseScriptCaches (5ms)
-			RebuildScriptCaches (136ms)
-			SetupLoadedEditorAssemblies (1267ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (152ms)
-				ProcessInitializeOnLoadAttributes (1072ms)
-				ProcessInitializeOnLoadMethodAttributes (29ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (69ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.95 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 363.8 MB.
-System memory in use after: 363.6 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5016.
-Total: 40.276400 ms (FindLiveObjects: 0.782500 ms CreateObjectMapping: 1.878200 ms MarkObjects: 35.873900 ms  DeleteObjects: 1.737500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.009963 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.15 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  3.288 seconds
-Domain Reload Profiling:
-	ReloadAssembly (3289ms)
-		BeginReloadAssembly (315ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (15ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (1ms)
-			CreateAndSetChildDomain (129ms)
-		EndReloadAssembly (2893ms)
-			LoadAssemblies (162ms)
-			RebuildTransferFunctionScriptingTraits (4ms)
-			SetupTypeCache (466ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (114ms)
-			SetupLoadedEditorAssemblies (1839ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (254ms)
-				ProcessInitializeOnLoadAttributes (1538ms)
-				ProcessInitializeOnLoadMethodAttributes (33ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (76ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 2.13 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 363.8 MB.
-System memory in use after: 363.7 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5020.
-Total: 60.043600 ms (FindLiveObjects: 14.007500 ms CreateObjectMapping: 0.748500 ms MarkObjects: 43.780000 ms  DeleteObjects: 1.499500 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.009128 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 3.59 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.717 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2720ms)
-		BeginReloadAssembly (603ms)
-			ExecutionOrderSort (1ms)
-			DisableScriptedObjects (7ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (5ms)
-			CreateAndSetChildDomain (252ms)
-		EndReloadAssembly (2019ms)
-			LoadAssemblies (237ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (411ms)
-			ReleaseScriptCaches (40ms)
-			RebuildScriptCaches (105ms)
-			SetupLoadedEditorAssemblies (1084ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (4ms)
-				BeforeProcessingInitializeOnLoad (121ms)
-				ProcessInitializeOnLoadAttributes (922ms)
-				ProcessInitializeOnLoadMethodAttributes (28ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (59ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 10.47 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 363.9 MB.
-System memory in use after: 363.7 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5024.
-Total: 379.186800 ms (FindLiveObjects: 154.996200 ms CreateObjectMapping: 3.713100 ms MarkObjects: 129.199900 ms  DeleteObjects: 91.217200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.008632 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.70 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.720 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2722ms)
-		BeginReloadAssembly (333ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (19ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (1ms)
-			CreateAndSetChildDomain (148ms)
-		EndReloadAssembly (2320ms)
-			LoadAssemblies (119ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (456ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (101ms)
-			SetupLoadedEditorAssemblies (1338ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (12ms)
-				SetLoadedEditorAssemblies (2ms)
-				RefreshPlugins (2ms)
-				BeforeProcessingInitializeOnLoad (138ms)
-				ProcessInitializeOnLoadAttributes (1081ms)
-				ProcessInitializeOnLoadMethodAttributes (99ms)
-				AfterProcessingInitializeOnLoad (3ms)
-				EditorAssembliesLoaded (1ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (106ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.43 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 363.9 MB.
-System memory in use after: 363.8 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5028.
-Total: 34.870400 ms (FindLiveObjects: 1.725500 ms CreateObjectMapping: 0.645100 ms MarkObjects: 31.274000 ms  DeleteObjects: 1.220300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005673 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.38 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.367 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2368ms)
-		BeginReloadAssembly (198ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (15ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (76ms)
-		EndReloadAssembly (2107ms)
-			LoadAssemblies (103ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (418ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (157ms)
-			SetupLoadedEditorAssemblies (1143ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (121ms)
-				ProcessInitializeOnLoadAttributes (985ms)
-				ProcessInitializeOnLoadMethodAttributes (27ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (69ms)
-Platform modules already initialized, skipping
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Toon/Smooth Outline': fallback shader 'Toon/Basic' not found
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 1.14 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4106 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 364.0 MB.
-System memory in use after: 363.8 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 5032.
-Total: 27.734900 ms (FindLiveObjects: 0.624600 ms CreateObjectMapping: 0.475600 ms MarkObjects: 25.947800 ms  DeleteObjects: 0.683600 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 2618.806885 seconds.
-  path: Assets/Models/OW/Soldier76/Soldier76.prefab
-  artifactKey: Guid(4d90a9e922cbe6d499e7048878850c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/OW/Soldier76/Soldier76.prefab using Guid(4d90a9e922cbe6d499e7048878850c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10874534fffd1d01ecb99366a09acf65') in 3.077043 seconds 
-  Import took 3.349507 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.819677 seconds.
-  path: Assets/Scenes/sanctum.unity
-  artifactKey: Guid(464ff7317e7a82844b71a1344b7c7f17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/sanctum.unity using Guid(464ff7317e7a82844b71a1344b7c7f17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf3b9d722fa9da9202fb1e4c8dd6e846') in 0.012497 seconds 
-  Import took 0.023405 seconds .
+  Time since last request: 18.693480 seconds.
+  path: Assets/Assets.index
+  artifactKey: Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets.index using Guid(d75d0c4aabe4bc943b7d65c4b1d83b76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5cab29b23df806e739069859caeceb03') in 0.079128 seconds 
+  Import took 0.089194 seconds .
 

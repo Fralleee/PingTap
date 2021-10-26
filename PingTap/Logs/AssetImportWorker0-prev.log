@@ -15,11 +15,11 @@ E:/Unity/Projects/PingTap/PingTap
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-52639
+53476
 Successfully changed project path to: E:/Unity/Projects/PingTap/PingTap
 E:/Unity/Projects/PingTap/PingTap
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 113.48 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 189.50 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.16f1 (049d6eca3c44)
 [Subsystems] Discovering subsystems at path E:/Unity/2020.3.16f1/Editor/Data/Resources/UnitySubsystems
@@ -30,304 +30,48 @@ Direct3D:
     Renderer: NVIDIA GeForce GTX 1080 (ID=0x1b80)
     Vendor:   
     VRAM:     8079 MB
-    Driver:   30.0.14.7212
+    Driver:   30.0.14.9613
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Initialize mono
 Mono path[0] = 'E:/Unity/2020.3.16f1/Editor/Data/Managed'
 Mono path[1] = 'E:/Unity/2020.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'E:/Unity/2020.3.16f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56284
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56668
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: E:/Unity/2020.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001051 seconds.
+Registered in 0.136820 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 130.72 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 111.75 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.208 seconds
+- Completed reload, in  4.922 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1208ms)
-		BeginReloadAssembly (54ms)
+	ReloadAssembly (4923ms)
+		BeginReloadAssembly (2674ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (594ms)
-			LoadAssemblies (53ms)
+		EndReloadAssembly (868ms)
+			LoadAssemblies (2673ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (173ms)
+			SetupTypeCache (450ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (46ms)
-			SetupLoadedEditorAssemblies (291ms)
+			RebuildScriptCaches (45ms)
+			SetupLoadedEditorAssemblies (270ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (5ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (131ms)
-				BeforeProcessingInitializeOnLoad (21ms)
-				ProcessInitializeOnLoadAttributes (103ms)
-				ProcessInitializeOnLoadMethodAttributes (31ms)
+				RefreshPlugins (112ms)
+				BeforeProcessingInitializeOnLoad (23ms)
+				ProcessInitializeOnLoadAttributes (92ms)
+				ProcessInitializeOnLoadMethodAttributes (38ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006838 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 123.46 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.855 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2856ms)
-		BeginReloadAssembly (157ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (25ms)
-		EndReloadAssembly (2637ms)
-			LoadAssemblies (107ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (392ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (149ms)
-			SetupLoadedEditorAssemblies (1822ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (8ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (124ms)
-				BeforeProcessingInitializeOnLoad (143ms)
-				ProcessInitializeOnLoadAttributes (1472ms)
-				ProcessInitializeOnLoadMethodAttributes (73ms)
-				AfterProcessingInitializeOnLoad (2ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 1.00 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 4319 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 274.7 MB.
-System memory in use after: 275.0 MB.
-
-Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 4830.
-Total: 27.523200 ms (FindLiveObjects: 0.399400 ms CreateObjectMapping: 0.187200 ms MarkObjects: 26.691100 ms  DeleteObjects: 0.243400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/Sandbox/overwatch/heroes/Doomfist.blend
-  artifactKey: Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Doomfist.blend using Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '169b04da78deb303e29a33db73ec2fb8') in 0.410082 seconds 
-  Import took 0.421895 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000303 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.blend
-  artifactKey: Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.blend using Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '705c59240601d0de5df3beec316164e1') in 0.060064 seconds 
-  Import took 0.069470 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000241 seconds.
-  path: Assets/Sandbox/overwatch/heroes/AR.blend
-  artifactKey: Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/AR.blend using Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7814827acd9882264c5b1414491474a5') in 0.057745 seconds 
-  Import took 0.066408 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.023923 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.blend
-  artifactKey: Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.blend using Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c86ffee79424bedb1c6fdd5894e778bf') in 0.057627 seconds 
-  Import took 0.068113 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000257 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.fbx
-  artifactKey: Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.fbx using Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6359f6d6e4f9db2c65e17559c71552ab') in 0.132258 seconds 
-  Import took 0.143402 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000241 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.blend
-  artifactKey: Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.blend using Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c86ffee79424bedb1c6fdd5894e778bf') in 0.055854 seconds 
-  Import took 0.065049 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.682791 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.fbx
-  artifactKey: Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.fbx using Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89deb27b5df203aa3ce7577e342a345c') in 0.054947 seconds 
-  Import took 0.064608 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.494590 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.fbx
-  artifactKey: Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.fbx using Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1902386a6076b4ccce8bab21dc00e1ed') in 0.059958 seconds 
-  Import took 0.070245 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 406.868301 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Doomfist.blend
-  artifactKey: Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Doomfist.blend using Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8db1c94c0b2177a33ef67ea1b044924') in 0.247695 seconds 
-  Import took 0.261292 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Doomfist.fbx
-  artifactKey: Guid(386c6af6293b6f144bba5cf490dfe97a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Doomfist.fbx using Guid(386c6af6293b6f144bba5cf490dfe97a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0c0a662df01f0a52318a61da0958bd5') in 0.205455 seconds 
-  Import took 0.217444 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 136.843892 seconds.
-  path: Assets/Sandbox/overwatch/heroes/AR.blend
-  artifactKey: Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/AR.blend using Guid(6b74f7c4f03feb44cbd580ceb709d150) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f83ea63d1e473fcae68bbe2d98540054') in 0.142099 seconds 
-  Import took 0.156293 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000219 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Doomfist.blend
-  artifactKey: Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Doomfist.blend using Guid(d21c83dd61651f544a4c4f46e90701d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72ec192eee9b684096547c1e85fbec0a') in 0.197468 seconds 
-  Import took 0.210500 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000239 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.blend
-  artifactKey: Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.blend using Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '073e90b256679c77fbe125ae1c3274e7') in 0.122964 seconds 
-  Import took 0.133668 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000282 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.fbx
-  artifactKey: Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.fbx using Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f38aeb6cdf420c97aa5d0e4796c1dc26') in 0.122442 seconds 
-  Import took 0.131619 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 161.237386 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.blend
-  artifactKey: Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.blend using Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed269aff863728e20e2b2c519b461bbb') in 0.149063 seconds 
-  Import took 0.164533 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000287 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.fbx
-  artifactKey: Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.fbx using Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b47caf906a205deefbb5a74b5147e8f') in 0.117579 seconds 
-  Import took 0.130468 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 475.928839 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.blend
-  artifactKey: Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.blend using Guid(141a9ac208677084dae60b125f18639d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0160a532a10b7549e62d3a97f0c01220') in 0.105566 seconds 
-  Import took 0.123927 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000310 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76.fbx
-  artifactKey: Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76.fbx using Guid(5a67e5e8344ce3c4d8002ccb2423e97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '140055f1fda5d112ceed046d10252c28') in 0.108794 seconds 
-  Import took 0.122711 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.995643 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76
-  artifactKey: Guid(30965d673071e0d4a96032e07d0be764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76 using Guid(30965d673071e0d4a96032e07d0be764) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f5048d646844ad1005e7476cc5b78fd') in 0.002968 seconds 
-  Import took 0.014494 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.499380 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76@T-Pose.fbx
-  artifactKey: Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76@T-Pose.fbx using Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7642ada110c1bea8a2127b7e7d65ea0a') in 0.093609 seconds 
-  Import took 0.116722 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.299827 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.fbx
-  artifactKey: Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.fbx using Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed531efc0bcd3ef246d85868d4e42edc') in 0.110089 seconds 
-  Import took 0.121087 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.956757 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.fbx
-  artifactKey: Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.fbx using Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d5406b708e97281882089040fc233cc') in 0.078641 seconds 
-  Import took 0.091584 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 19.445087 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.fbx
-  artifactKey: Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.fbx using Guid(2009befa9e930dc46abd4d7a7bee9a1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0e4dc2cc3f372e509aa0c92fc4c00a5') in 0.088365 seconds 
-  Import took 0.103985 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 36.262184 seconds.
-  path: Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.prefab
-  artifactKey: Guid(4d90a9e922cbe6d499e7048878850c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Sandbox/overwatch/heroes/Soldier76/Soldier76.prefab using Guid(4d90a9e922cbe6d499e7048878850c5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0e5d897c8be7e8bd8266542b949f000') in 0.063185 seconds 
-  Import took 0.076849 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.867025 seconds.
-  path: Assets/Scenes/dust2.unity
-  artifactKey: Guid(9ea57a75cdafc8142b5030152e728d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/dust2.unity using Guid(9ea57a75cdafc8142b5030152e728d66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2089d488631130b0183784345b6c1b20') in 0.011332 seconds 
-  Import took 0.023420 seconds .
-
+Registered in 0.845147 seconds.
