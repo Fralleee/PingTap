@@ -26,7 +26,7 @@ namespace EPOOutline
           continue;
 
 #if UNITY_EDITOR
-        UnityEditor.Experimental.SceneManagement.PrefabStage stage = UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
+        UnityEditor.SceneManagement.PrefabStage stage = UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage();
 
         if (stage != null && !stage.IsPartOfPrefabContents(outlinable.gameObject))
           continue;
