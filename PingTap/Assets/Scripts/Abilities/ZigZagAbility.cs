@@ -1,4 +1,5 @@
 using Fralle.AbilitySystem;
+using Fralle.FpsController;
 using System.Collections;
 using UnityEngine;
 

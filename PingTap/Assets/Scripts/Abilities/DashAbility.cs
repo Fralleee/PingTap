@@ -1,6 +1,7 @@
 using Fralle.AbilitySystem;
 using Fralle.Core;
 using Fralle.Core.CameraControls;
+using Fralle.FpsController;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;

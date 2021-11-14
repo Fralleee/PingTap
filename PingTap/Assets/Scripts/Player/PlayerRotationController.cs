@@ -7,12 +7,12 @@ namespace Fralle.PingTap
   {
     [SerializeField] float rotateOnAngle = 35;
 
-    RigidbodyController playerController;
+    FpsController.PlayerController playerController;
     bool doRotate;
 
     void Awake()
     {
-      playerController = GetComponentInParent<RigidbodyController>();
+      playerController = GetComponentInParent<FpsController.PlayerController>();
     }
 
     void Update()

@@ -15,15 +15,15 @@ namespace Fralle.PingTap
     [FoldoutGroup("Jumpbob")] [SerializeField] float jumpBobFallMagnitude = 0.002f;
 
     [FoldoutGroup("Sway")] [SerializeField] float swaySmoothRotation = 10f;
-    [FoldoutGroup("Sway")] [SerializeField] float swayLookRotationAmount = 0.6f;
-    [FoldoutGroup("Sway")] [SerializeField] float swayMaxLookRotation = 3f;
+    [FoldoutGroup("Sway")] [SerializeField] float swayLookRotationAmount = 1.6f;
+    [FoldoutGroup("Sway")] [SerializeField] float swayMaxLookRotation = 3.2f;
 
     [FoldoutGroup("Tilt")] [SerializeField] float tiltSmoothSpeed = 10f;
-    [FoldoutGroup("Tilt")] [SerializeField] float tiltStrafeRotationAmount = 1.6f;
-    [FoldoutGroup("Tilt")] [SerializeField] float tiltMaxStrafeRotation = 5f;
+    [FoldoutGroup("Tilt")] [SerializeField] float tiltRotationAmount = 3.2f;
+    [FoldoutGroup("Tilt")] [SerializeField] float tiltMaxRotation = 5f;
 
     PlayerCamera playerCamera;
-    RigidbodyController controller;
+    FpsController.PlayerController controller;
     Combatant combatant;
     Vector3 headbobPosition;
     Vector3 jumpbobPosition;
@@ -87,11 +87,12 @@ namespace Fralle.PingTap
 
     void Tilt()
     {
-      if (controller.isMoving && !controller.Movement.x.EqualsWithTolerance(0f))
+      if (controller.isMoving)
       {
-        float strafeAmount = Mathf.Clamp(-controller.Movement.x * tiltStrafeRotationAmount, -tiltMaxStrafeRotation, tiltMaxStrafeRotation);
-        Quaternion strafeRot = Quaternion.Euler(new Vector3(0f, 0f, strafeAmount));
-        tiltRotation = Quaternion.Lerp(tiltRotation, Quaternion.identity * strafeRot, Time.deltaTime * tiltSmoothSpeed);
+        float horizontalAmount = Mathf.Clamp(-controller.Movement.x * tiltRotationAmount, -tiltMaxRotation, tiltMaxRotation);
+        float verticalAmount = Mathf.Clamp(-controller.Movement.y * tiltRotationAmount, -tiltMaxRotation, tiltMaxRotation);
+        Quaternion rotation = Quaternion.Euler(new Vector3(verticalAmount, 0f, horizontalAmount));
+        tiltRotation = Quaternion.Lerp(tiltRotation, Quaternion.identity * rotation, Time.deltaTime * tiltSmoothSpeed);
       }
       else
         tiltRotation = Quaternion.Lerp(tiltRotation, Quaternion.identity, Time.deltaTime * tiltSmoothSpeed);

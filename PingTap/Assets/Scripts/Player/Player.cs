@@ -1,4 +1,5 @@
 ﻿using Fralle.Core.CameraControls;
+using Fralle.FpsController;
 using Fralle.Gameplay;
 using Sirenix.OdinInspector;
 using System.Collections;
@@ -39,7 +40,6 @@ namespace Fralle.PingTap
     void Awake()
     {
       controls = new PlayerControls();
-      controls.Movement.Enable();
       controls.Ability.Enable();
       controls.Weapon.Enable();
 

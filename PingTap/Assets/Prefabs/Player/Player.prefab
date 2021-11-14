@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1554100150}
   - component: {fileID: 1089889711}
   - component: {fileID: 4417886065994653082}
-  - component: {fileID: 8669944366694358800}
+  - component: {fileID: 848576061802847121}
   - component: {fileID: 1821515927939034793}
   - component: {fileID: 4910702748399881733}
   - component: {fileID: 2139313407611311001}
@@ -37,6 +37,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5032271542734176097}
   m_Father: {fileID: 0}
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f071039b9a182418e594d93b4fb47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 8669944366694358800}
+  playerController: {fileID: 0}
   playerCamera: {fileID: 0}
   playerCameraPrefab: {fileID: 8917092351511895917, guid: 0cebb43563e8287489be48fb4bfeb896,
     type: 3}
@@ -194,7 +195,7 @@ MonoBehaviour:
   <UltimateAbility>k__BackingField: {fileID: 0}
   passiveAbilities: []
   postProcessController: {fileID: 0}
---- !u!114 &8669944366694358800
+--- !u!114 &848576061802847121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1386371906627268470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 772aa21764fc7ed44b87b203fb05b176, type: 3}
+  m_Script: {fileID: 11500000, guid: ea2b41dc72ece3545adba3214d95b389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
@@ -217,7 +218,7 @@ MonoBehaviour:
   stepsSinceLastJump: 0
   previouslyGrounded: 0
   currentMaxMovementSpeed: 7
-  modifiedJumpHeight: 1
+  modifiedJumpHeight: 2
   groundContactNormal: {x: 0, y: 0, z: 0}
   slopeAngle: 0
   eyeHeight: 0
@@ -233,7 +234,7 @@ MonoBehaviour:
   maxMovementSpeed: 7
   crouchModifier: 0.5
   groundAcceleration: 7
-  airAcceleration: 7
+  airAcceleration: 0.75
   groundLayers:
     serializedVersion: 2
     m_Bits: 1
@@ -242,11 +243,11 @@ MonoBehaviour:
   snapToGroundProbingDistance: 1
   fallTimestepBuffer: 3
   maxFallSpeed: 30
-  jumpHeight: 1
+  jumpHeight: 2
   jumpTimestepCooldown: 3
   eyeHeightOffset: -0.5
   standingHeight: 2
-  crouchHeight: 1.3
+  crouchHeight: 1
   cameraSmoothTime: 0.1
 --- !u!114 &1821515927939034793
 MonoBehaviour:
@@ -353,6 +354,19 @@ MonoBehaviour:
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 539000833
+--- !u!114 &273463659054337028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5664939967139964379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957bc444997f4f94289deca4a136f8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateOnAngle: 35
 --- !u!1001 &50442926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -897,16 +911,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3974177108095699234}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &273463659054337028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5664939967139964379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 957bc444997f4f94289deca4a136f8a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateOnAngle: 35
