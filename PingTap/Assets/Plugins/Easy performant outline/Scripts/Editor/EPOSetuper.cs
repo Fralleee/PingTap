@@ -1,12 +1,10 @@
 ﻿#if UNITY_EDITOR
 using System;
-using System.IO;
 using System.Text;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace EPOOutline
 {
@@ -154,7 +152,7 @@ namespace EPOOutline
 #if URP_OUTLINE
                 && !CheckShouldFixFeature() && CheckHasActiveRenderers();
 #else
-								;
+                ;
 #endif
     }
 

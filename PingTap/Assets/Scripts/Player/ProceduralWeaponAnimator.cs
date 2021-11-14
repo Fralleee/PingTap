@@ -1,5 +1,4 @@
 using Fralle.Core;
-using Fralle.FpsController;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

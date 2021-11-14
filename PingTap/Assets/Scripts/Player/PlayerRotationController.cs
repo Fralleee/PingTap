@@ -1,5 +1,4 @@
-﻿using Fralle.FpsController;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Fralle.PingTap
 {
