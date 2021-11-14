@@ -73,7 +73,7 @@ namespace SensorToolkit
     {
       get
       {
-        return DestinationTransform != null ? (Vector2)DestinationTransform.position : destination;
+        return DestinationTransform != null ? DestinationTransform.position : destination;
       }
       set
       {

@@ -96,7 +96,7 @@ namespace SensorToolkit
     public delegate void SensorUpdateHandler();
     public event SensorUpdateHandler OnSensorUpdate;
 
-    Vector2 direction { get { return WorldSpace ? Direction.normalized : (Vector2)transform.TransformDirection(Direction.normalized); } }
+    Vector2 direction { get { return WorldSpace ? Direction.normalized : transform.TransformDirection(Direction.normalized); } }
     RayDistanceComparer2D distanceComparer = new RayDistanceComparer2D();
 
     bool isObstructed = false;
